@@ -1,0 +1,165 @@
+{
+  "seed": 7,
+  "all_agree": true,
+  "cases": [
+    {
+      "case": "exact answer + right source",
+      "question_id": "q-0000",
+      "response": {
+        "answer": "Alto-4000",
+        "cited_sources": [
+          "doc-0000"
+        ]
+      },
+      "human_expected_pass": true,
+      "oracle_passed": true,
+      "oracle_correct": true,
+      "oracle_cited_required": true,
+      "agree": true,
+      "rationale": "correct token, cited the doc that holds it"
+    },
+    {
+      "case": "answer in a sentence + right source",
+      "question_id": "q-0000",
+      "response": {
+        "answer": "It is Alto-4000.",
+        "cited_sources": [
+          "doc-0000"
+        ]
+      },
+      "human_expected_pass": true,
+      "oracle_passed": true,
+      "oracle_correct": true,
+      "oracle_cited_required": true,
+      "agree": true,
+      "rationale": "token contained in a natural sentence"
+    },
+    {
+      "case": "right answer, NO citation",
+      "question_id": "q-0000",
+      "response": {
+        "answer": "Alto-4000",
+        "cited_sources": []
+      },
+      "human_expected_pass": false,
+      "oracle_passed": false,
+      "oracle_correct": true,
+      "oracle_cited_required": false,
+      "agree": true,
+      "rationale": "correct but ungrounded -> oracle refuses"
+    },
+    {
+      "case": "right answer, cited a distractor",
+      "question_id": "q-0000",
+      "response": {
+        "answer": "Alto-4000",
+        "cited_sources": [
+          "doc-0017"
+        ]
+      },
+      "human_expected_pass": false,
+      "oracle_passed": false,
+      "oracle_correct": true,
+      "oracle_cited_required": false,
+      "agree": true,
+      "rationale": "correct token but did not retrieve the real source"
+    },
+    {
+      "case": "right answer, cited another entity's doc",
+      "question_id": "q-0000",
+      "response": {
+        "answer": "Alto-4000",
+        "cited_sources": [
+          "doc-0017"
+        ]
+      },
+      "human_expected_pass": false,
+      "oracle_passed": false,
+      "oracle_correct": true,
+      "oracle_cited_required": false,
+      "agree": true,
+      "rationale": "wrong source -> not grounded"
+    },
+    {
+      "case": "wrong answer, right source",
+      "question_id": "q-0000",
+      "response": {
+        "answer": "Cobalt-4002",
+        "cited_sources": [
+          "doc-0000"
+        ]
+      },
+      "human_expected_pass": false,
+      "oracle_passed": false,
+      "oracle_correct": false,
+      "oracle_cited_required": true,
+      "agree": true,
+      "rationale": "grounded but the token is wrong"
+    },
+    {
+      "case": "empty answer, right source",
+      "question_id": "q-0000",
+      "response": {
+        "answer": "",
+        "cited_sources": [
+          "doc-0000"
+        ]
+      },
+      "human_expected_pass": false,
+      "oracle_passed": false,
+      "oracle_correct": false,
+      "oracle_cited_required": true,
+      "agree": true,
+      "rationale": "no answer cannot be correct"
+    },
+    {
+      "case": "case/space-insensitive match",
+      "question_id": "q-0000",
+      "response": {
+        "answer": "  ALTO-4000  ",
+        "cited_sources": [
+          "doc-0000"
+        ]
+      },
+      "human_expected_pass": true,
+      "oracle_passed": true,
+      "oracle_correct": true,
+      "oracle_cited_required": true,
+      "agree": true,
+      "rationale": "normalization handles case and whitespace"
+    },
+    {
+      "case": "right source among several citations",
+      "question_id": "q-0000",
+      "response": {
+        "answer": "Alto-4000",
+        "cited_sources": [
+          "doc-0017",
+          "doc-0000"
+        ]
+      },
+      "human_expected_pass": true,
+      "oracle_passed": true,
+      "oracle_correct": true,
+      "oracle_cited_required": true,
+      "agree": true,
+      "rationale": "extra citations are fine as long as the required one is present"
+    },
+    {
+      "case": "second question, exact + right source",
+      "question_id": "q-0001",
+      "response": {
+        "answer": "Basalt-4001",
+        "cited_sources": [
+          "doc-0000"
+        ]
+      },
+      "human_expected_pass": true,
+      "oracle_passed": true,
+      "oracle_correct": true,
+      "oracle_cited_required": true,
+      "agree": true,
+      "rationale": "independent question, same rules"
+    }
+  ]
+}

@@ -1,0 +1,584 @@
+{
+  "counts": {
+    "distractors": 6,
+    "documents": 18,
+    "entities": 12,
+    "questions": 60
+  },
+  "documents": [
+    {
+      "id": "doc-0000",
+      "text": "Kestrel Works is a registered organization in the FAULTLINE corpus. The archival reference of Kestrel Works is Alto-4000. The external auditor of Kestrel Works is Basalt-4001. The flagship product of Kestrel Works is Cobalt-4002. The headquarters district of Kestrel Works is Drift-4003. The internal codename of Kestrel Works is Ferro-4004.",
+      "title": "Kestrel Works"
+    },
+    {
+      "id": "doc-0001",
+      "text": "Marrow Union is a registered organization in the FAULTLINE corpus. The archival reference of Marrow Union is Gossamer-4005. The external auditor of Marrow Union is Helix-4006. The flagship product of Marrow Union is Indigo-4007. The headquarters district of Marrow Union is Jade-4008. The internal codename of Marrow Union is Kelvin-4009.",
+      "title": "Marrow Union"
+    },
+    {
+      "id": "doc-0002",
+      "text": "Borel Labs is a registered organization in the FAULTLINE corpus. The archival reference of Borel Labs is Lumen-4010. The external auditor of Borel Labs is Mica-4011. The flagship product of Borel Labs is Nyx-4012. The headquarters district of Borel Labs is Onyx-4013. The internal codename of Borel Labs is Prism-4014.",
+      "title": "Borel Labs"
+    },
+    {
+      "id": "doc-0003",
+      "text": "Riven Labs is a registered organization in the FAULTLINE corpus. The archival reference of Riven Labs is Quartz-4015. The external auditor of Riven Labs is Rune-4016. The flagship product of Riven Labs is Sable-4017. The headquarters district of Riven Labs is Talc-4018. The internal codename of Riven Labs is Ultra-4019.",
+      "title": "Riven Labs"
+    },
+    {
+      "id": "doc-0004",
+      "text": "Lodestar Systems is a registered organization in the FAULTLINE corpus. The archival reference of Lodestar Systems is Vellum-4020. The external auditor of Lodestar Systems is Wisp-4021. The flagship product of Lodestar Systems is Xeno-4022. The headquarters district of Lodestar Systems is Yolk-4023. The internal codename of Lodestar Systems is Zinc-4024.",
+      "title": "Lodestar Systems"
+    },
+    {
+      "id": "doc-0005",
+      "text": "Borel Systems is a registered organization in the FAULTLINE corpus. The archival reference of Borel Systems is Alto-4025. The external auditor of Borel Systems is Basalt-4026. The flagship product of Borel Systems is Cobalt-4027. The headquarters district of Borel Systems is Drift-4028. The internal codename of Borel Systems is Ferro-4029.",
+      "title": "Borel Systems"
+    },
+    {
+      "id": "doc-0006",
+      "text": "Girona Labs is a registered organization in the FAULTLINE corpus. The archival reference of Girona Labs is Gossamer-4030. The external auditor of Girona Labs is Helix-4031. The flagship product of Girona Labs is Indigo-4032. The headquarters district of Girona Labs is Jade-4033. The internal codename of Girona Labs is Kelvin-4034.",
+      "title": "Girona Labs"
+    },
+    {
+      "id": "doc-0007",
+      "text": "Cinder Collective is a registered organization in the FAULTLINE corpus. The archival reference of Cinder Collective is Lumen-4035. The external auditor of Cinder Collective is Mica-4036. The flagship product of Cinder Collective is Nyx-4037. The headquarters district of Cinder Collective is Onyx-4038. The internal codename of Cinder Collective is Prism-4039.",
+      "title": "Cinder Collective"
+    },
+    {
+      "id": "doc-0008",
+      "text": "Nimbus Labs is a registered organization in the FAULTLINE corpus. The archival reference of Nimbus Labs is Quartz-4040. The external auditor of Nimbus Labs is Rune-4041. The flagship product of Nimbus Labs is Sable-4042. The headquarters district of Nimbus Labs is Talc-4043. The internal codename of Nimbus Labs is Ultra-4044.",
+      "title": "Nimbus Labs"
+    },
+    {
+      "id": "doc-0009",
+      "text": "Halcyon Labs is a registered organization in the FAULTLINE corpus. The archival reference of Halcyon Labs is Vellum-4045. The external auditor of Halcyon Labs is Wisp-4046. The flagship product of Halcyon Labs is Xeno-4047. The headquarters district of Halcyon Labs is Yolk-4048. The internal codename of Halcyon Labs is Zinc-4049.",
+      "title": "Halcyon Labs"
+    },
+    {
+      "id": "doc-0010",
+      "text": "Riven Collective is a registered organization in the FAULTLINE corpus. The archival reference of Riven Collective is Alto-4050. The external auditor of Riven Collective is Basalt-4051. The flagship product of Riven Collective is Cobalt-4052. The headquarters district of Riven Collective is Drift-4053. The internal codename of Riven Collective is Ferro-4054.",
+      "title": "Riven Collective"
+    },
+    {
+      "id": "doc-0011",
+      "text": "Dovetail Works is a registered organization in the FAULTLINE corpus. The archival reference of Dovetail Works is Gossamer-4055. The external auditor of Dovetail Works is Helix-4056. The flagship product of Dovetail Works is Indigo-4057. The headquarters district of Dovetail Works is Jade-4058. The internal codename of Dovetail Works is Kelvin-4059.",
+      "title": "Dovetail Works"
+    },
+    {
+      "id": "doc-0012",
+      "text": "An analyst memo discusses Riven Collective and Dovetail Works. It reviews market sentiment and partnerships but records no codenames, districts, products, auditors, or archival references.",
+      "title": "Analyst memo 0000"
+    },
+    {
+      "id": "doc-0013",
+      "text": "An analyst memo discusses Halcyon Labs and Kestrel Works. It reviews market sentiment and partnerships but records no codenames, districts, products, auditors, or archival references.",
+      "title": "Analyst memo 0001"
+    },
+    {
+      "id": "doc-0014",
+      "text": "An analyst memo discusses Halcyon Labs and Dovetail Works. It reviews market sentiment and partnerships but records no codenames, districts, products, auditors, or archival references.",
+      "title": "Analyst memo 0002"
+    },
+    {
+      "id": "doc-0015",
+      "text": "An analyst memo discusses Girona Labs and Kestrel Works. It reviews market sentiment and partnerships but records no codenames, districts, products, auditors, or archival references.",
+      "title": "Analyst memo 0003"
+    },
+    {
+      "id": "doc-0016",
+      "text": "An analyst memo discusses Riven Labs and Kestrel Works. It reviews market sentiment and partnerships but records no codenames, districts, products, auditors, or archival references.",
+      "title": "Analyst memo 0004"
+    },
+    {
+      "id": "doc-0017",
+      "text": "An analyst memo discusses Nimbus Labs and Borel Labs. It reviews market sentiment and partnerships but records no codenames, districts, products, auditors, or archival references.",
+      "title": "Analyst memo 0005"
+    }
+  ],
+  "questions": [
+    {
+      "answer": "Alto-4000",
+      "attribute": "archival_reference",
+      "entity": "Kestrel Works",
+      "id": "q-0000",
+      "prompt": "What is the archival reference of Kestrel Works?",
+      "required_source": "doc-0000"
+    },
+    {
+      "answer": "Basalt-4001",
+      "attribute": "external_auditor",
+      "entity": "Kestrel Works",
+      "id": "q-0001",
+      "prompt": "Which firm is the external auditor of Kestrel Works?",
+      "required_source": "doc-0000"
+    },
+    {
+      "answer": "Cobalt-4002",
+      "attribute": "flagship_product",
+      "entity": "Kestrel Works",
+      "id": "q-0002",
+      "prompt": "What is the flagship product of Kestrel Works?",
+      "required_source": "doc-0000"
+    },
+    {
+      "answer": "Drift-4003",
+      "attribute": "headquarters_district",
+      "entity": "Kestrel Works",
+      "id": "q-0003",
+      "prompt": "In which district is Kestrel Works headquartered?",
+      "required_source": "doc-0000"
+    },
+    {
+      "answer": "Ferro-4004",
+      "attribute": "internal_codename",
+      "entity": "Kestrel Works",
+      "id": "q-0004",
+      "prompt": "What is the internal codename of Kestrel Works?",
+      "required_source": "doc-0000"
+    },
+    {
+      "answer": "Gossamer-4005",
+      "attribute": "archival_reference",
+      "entity": "Marrow Union",
+      "id": "q-0005",
+      "prompt": "What is the archival reference of Marrow Union?",
+      "required_source": "doc-0001"
+    },
+    {
+      "answer": "Helix-4006",
+      "attribute": "external_auditor",
+      "entity": "Marrow Union",
+      "id": "q-0006",
+      "prompt": "Which firm is the external auditor of Marrow Union?",
+      "required_source": "doc-0001"
+    },
+    {
+      "answer": "Indigo-4007",
+      "attribute": "flagship_product",
+      "entity": "Marrow Union",
+      "id": "q-0007",
+      "prompt": "What is the flagship product of Marrow Union?",
+      "required_source": "doc-0001"
+    },
+    {
+      "answer": "Jade-4008",
+      "attribute": "headquarters_district",
+      "entity": "Marrow Union",
+      "id": "q-0008",
+      "prompt": "In which district is Marrow Union headquartered?",
+      "required_source": "doc-0001"
+    },
+    {
+      "answer": "Kelvin-4009",
+      "attribute": "internal_codename",
+      "entity": "Marrow Union",
+      "id": "q-0009",
+      "prompt": "What is the internal codename of Marrow Union?",
+      "required_source": "doc-0001"
+    },
+    {
+      "answer": "Lumen-4010",
+      "attribute": "archival_reference",
+      "entity": "Borel Labs",
+      "id": "q-0010",
+      "prompt": "What is the archival reference of Borel Labs?",
+      "required_source": "doc-0002"
+    },
+    {
+      "answer": "Mica-4011",
+      "attribute": "external_auditor",
+      "entity": "Borel Labs",
+      "id": "q-0011",
+      "prompt": "Which firm is the external auditor of Borel Labs?",
+      "required_source": "doc-0002"
+    },
+    {
+      "answer": "Nyx-4012",
+      "attribute": "flagship_product",
+      "entity": "Borel Labs",
+      "id": "q-0012",
+      "prompt": "What is the flagship product of Borel Labs?",
+      "required_source": "doc-0002"
+    },
+    {
+      "answer": "Onyx-4013",
+      "attribute": "headquarters_district",
+      "entity": "Borel Labs",
+      "id": "q-0013",
+      "prompt": "In which district is Borel Labs headquartered?",
+      "required_source": "doc-0002"
+    },
+    {
+      "answer": "Prism-4014",
+      "attribute": "internal_codename",
+      "entity": "Borel Labs",
+      "id": "q-0014",
+      "prompt": "What is the internal codename of Borel Labs?",
+      "required_source": "doc-0002"
+    },
+    {
+      "answer": "Quartz-4015",
+      "attribute": "archival_reference",
+      "entity": "Riven Labs",
+      "id": "q-0015",
+      "prompt": "What is the archival reference of Riven Labs?",
+      "required_source": "doc-0003"
+    },
+    {
+      "answer": "Rune-4016",
+      "attribute": "external_auditor",
+      "entity": "Riven Labs",
+      "id": "q-0016",
+      "prompt": "Which firm is the external auditor of Riven Labs?",
+      "required_source": "doc-0003"
+    },
+    {
+      "answer": "Sable-4017",
+      "attribute": "flagship_product",
+      "entity": "Riven Labs",
+      "id": "q-0017",
+      "prompt": "What is the flagship product of Riven Labs?",
+      "required_source": "doc-0003"
+    },
+    {
+      "answer": "Talc-4018",
+      "attribute": "headquarters_district",
+      "entity": "Riven Labs",
+      "id": "q-0018",
+      "prompt": "In which district is Riven Labs headquartered?",
+      "required_source": "doc-0003"
+    },
+    {
+      "answer": "Ultra-4019",
+      "attribute": "internal_codename",
+      "entity": "Riven Labs",
+      "id": "q-0019",
+      "prompt": "What is the internal codename of Riven Labs?",
+      "required_source": "doc-0003"
+    },
+    {
+      "answer": "Vellum-4020",
+      "attribute": "archival_reference",
+      "entity": "Lodestar Systems",
+      "id": "q-0020",
+      "prompt": "What is the archival reference of Lodestar Systems?",
+      "required_source": "doc-0004"
+    },
+    {
+      "answer": "Wisp-4021",
+      "attribute": "external_auditor",
+      "entity": "Lodestar Systems",
+      "id": "q-0021",
+      "prompt": "Which firm is the external auditor of Lodestar Systems?",
+      "required_source": "doc-0004"
+    },
+    {
+      "answer": "Xeno-4022",
+      "attribute": "flagship_product",
+      "entity": "Lodestar Systems",
+      "id": "q-0022",
+      "prompt": "What is the flagship product of Lodestar Systems?",
+      "required_source": "doc-0004"
+    },
+    {
+      "answer": "Yolk-4023",
+      "attribute": "headquarters_district",
+      "entity": "Lodestar Systems",
+      "id": "q-0023",
+      "prompt": "In which district is Lodestar Systems headquartered?",
+      "required_source": "doc-0004"
+    },
+    {
+      "answer": "Zinc-4024",
+      "attribute": "internal_codename",
+      "entity": "Lodestar Systems",
+      "id": "q-0024",
+      "prompt": "What is the internal codename of Lodestar Systems?",
+      "required_source": "doc-0004"
+    },
+    {
+      "answer": "Alto-4025",
+      "attribute": "archival_reference",
+      "entity": "Borel Systems",
+      "id": "q-0025",
+      "prompt": "What is the archival reference of Borel Systems?",
+      "required_source": "doc-0005"
+    },
+    {
+      "answer": "Basalt-4026",
+      "attribute": "external_auditor",
+      "entity": "Borel Systems",
+      "id": "q-0026",
+      "prompt": "Which firm is the external auditor of Borel Systems?",
+      "required_source": "doc-0005"
+    },
+    {
+      "answer": "Cobalt-4027",
+      "attribute": "flagship_product",
+      "entity": "Borel Systems",
+      "id": "q-0027",
+      "prompt": "What is the flagship product of Borel Systems?",
+      "required_source": "doc-0005"
+    },
+    {
+      "answer": "Drift-4028",
+      "attribute": "headquarters_district",
+      "entity": "Borel Systems",
+      "id": "q-0028",
+      "prompt": "In which district is Borel Systems headquartered?",
+      "required_source": "doc-0005"
+    },
+    {
+      "answer": "Ferro-4029",
+      "attribute": "internal_codename",
+      "entity": "Borel Systems",
+      "id": "q-0029",
+      "prompt": "What is the internal codename of Borel Systems?",
+      "required_source": "doc-0005"
+    },
+    {
+      "answer": "Gossamer-4030",
+      "attribute": "archival_reference",
+      "entity": "Girona Labs",
+      "id": "q-0030",
+      "prompt": "What is the archival reference of Girona Labs?",
+      "required_source": "doc-0006"
+    },
+    {
+      "answer": "Helix-4031",
+      "attribute": "external_auditor",
+      "entity": "Girona Labs",
+      "id": "q-0031",
+      "prompt": "Which firm is the external auditor of Girona Labs?",
+      "required_source": "doc-0006"
+    },
+    {
+      "answer": "Indigo-4032",
+      "attribute": "flagship_product",
+      "entity": "Girona Labs",
+      "id": "q-0032",
+      "prompt": "What is the flagship product of Girona Labs?",
+      "required_source": "doc-0006"
+    },
+    {
+      "answer": "Jade-4033",
+      "attribute": "headquarters_district",
+      "entity": "Girona Labs",
+      "id": "q-0033",
+      "prompt": "In which district is Girona Labs headquartered?",
+      "required_source": "doc-0006"
+    },
+    {
+      "answer": "Kelvin-4034",
+      "attribute": "internal_codename",
+      "entity": "Girona Labs",
+      "id": "q-0034",
+      "prompt": "What is the internal codename of Girona Labs?",
+      "required_source": "doc-0006"
+    },
+    {
+      "answer": "Lumen-4035",
+      "attribute": "archival_reference",
+      "entity": "Cinder Collective",
+      "id": "q-0035",
+      "prompt": "What is the archival reference of Cinder Collective?",
+      "required_source": "doc-0007"
+    },
+    {
+      "answer": "Mica-4036",
+      "attribute": "external_auditor",
+      "entity": "Cinder Collective",
+      "id": "q-0036",
+      "prompt": "Which firm is the external auditor of Cinder Collective?",
+      "required_source": "doc-0007"
+    },
+    {
+      "answer": "Nyx-4037",
+      "attribute": "flagship_product",
+      "entity": "Cinder Collective",
+      "id": "q-0037",
+      "prompt": "What is the flagship product of Cinder Collective?",
+      "required_source": "doc-0007"
+    },
+    {
+      "answer": "Onyx-4038",
+      "attribute": "headquarters_district",
+      "entity": "Cinder Collective",
+      "id": "q-0038",
+      "prompt": "In which district is Cinder Collective headquartered?",
+      "required_source": "doc-0007"
+    },
+    {
+      "answer": "Prism-4039",
+      "attribute": "internal_codename",
+      "entity": "Cinder Collective",
+      "id": "q-0039",
+      "prompt": "What is the internal codename of Cinder Collective?",
+      "required_source": "doc-0007"
+    },
+    {
+      "answer": "Quartz-4040",
+      "attribute": "archival_reference",
+      "entity": "Nimbus Labs",
+      "id": "q-0040",
+      "prompt": "What is the archival reference of Nimbus Labs?",
+      "required_source": "doc-0008"
+    },
+    {
+      "answer": "Rune-4041",
+      "attribute": "external_auditor",
+      "entity": "Nimbus Labs",
+      "id": "q-0041",
+      "prompt": "Which firm is the external auditor of Nimbus Labs?",
+      "required_source": "doc-0008"
+    },
+    {
+      "answer": "Sable-4042",
+      "attribute": "flagship_product",
+      "entity": "Nimbus Labs",
+      "id": "q-0042",
+      "prompt": "What is the flagship product of Nimbus Labs?",
+      "required_source": "doc-0008"
+    },
+    {
+      "answer": "Talc-4043",
+      "attribute": "headquarters_district",
+      "entity": "Nimbus Labs",
+      "id": "q-0043",
+      "prompt": "In which district is Nimbus Labs headquartered?",
+      "required_source": "doc-0008"
+    },
+    {
+      "answer": "Ultra-4044",
+      "attribute": "internal_codename",
+      "entity": "Nimbus Labs",
+      "id": "q-0044",
+      "prompt": "What is the internal codename of Nimbus Labs?",
+      "required_source": "doc-0008"
+    },
+    {
+      "answer": "Vellum-4045",
+      "attribute": "archival_reference",
+      "entity": "Halcyon Labs",
+      "id": "q-0045",
+      "prompt": "What is the archival reference of Halcyon Labs?",
+      "required_source": "doc-0009"
+    },
+    {
+      "answer": "Wisp-4046",
+      "attribute": "external_auditor",
+      "entity": "Halcyon Labs",
+      "id": "q-0046",
+      "prompt": "Which firm is the external auditor of Halcyon Labs?",
+      "required_source": "doc-0009"
+    },
+    {
+      "answer": "Xeno-4047",
+      "attribute": "flagship_product",
+      "entity": "Halcyon Labs",
+      "id": "q-0047",
+      "prompt": "What is the flagship product of Halcyon Labs?",
+      "required_source": "doc-0009"
+    },
+    {
+      "answer": "Yolk-4048",
+      "attribute": "headquarters_district",
+      "entity": "Halcyon Labs",
+      "id": "q-0048",
+      "prompt": "In which district is Halcyon Labs headquartered?",
+      "required_source": "doc-0009"
+    },
+    {
+      "answer": "Zinc-4049",
+      "attribute": "internal_codename",
+      "entity": "Halcyon Labs",
+      "id": "q-0049",
+      "prompt": "What is the internal codename of Halcyon Labs?",
+      "required_source": "doc-0009"
+    },
+    {
+      "answer": "Alto-4050",
+      "attribute": "archival_reference",
+      "entity": "Riven Collective",
+      "id": "q-0050",
+      "prompt": "What is the archival reference of Riven Collective?",
+      "required_source": "doc-0010"
+    },
+    {
+      "answer": "Basalt-4051",
+      "attribute": "external_auditor",
+      "entity": "Riven Collective",
+      "id": "q-0051",
+      "prompt": "Which firm is the external auditor of Riven Collective?",
+      "required_source": "doc-0010"
+    },
+    {
+      "answer": "Cobalt-4052",
+      "attribute": "flagship_product",
+      "entity": "Riven Collective",
+      "id": "q-0052",
+      "prompt": "What is the flagship product of Riven Collective?",
+      "required_source": "doc-0010"
+    },
+    {
+      "answer": "Drift-4053",
+      "attribute": "headquarters_district",
+      "entity": "Riven Collective",
+      "id": "q-0053",
+      "prompt": "In which district is Riven Collective headquartered?",
+      "required_source": "doc-0010"
+    },
+    {
+      "answer": "Ferro-4054",
+      "attribute": "internal_codename",
+      "entity": "Riven Collective",
+      "id": "q-0054",
+      "prompt": "What is the internal codename of Riven Collective?",
+      "required_source": "doc-0010"
+    },
+    {
+      "answer": "Gossamer-4055",
+      "attribute": "archival_reference",
+      "entity": "Dovetail Works",
+      "id": "q-0055",
+      "prompt": "What is the archival reference of Dovetail Works?",
+      "required_source": "doc-0011"
+    },
+    {
+      "answer": "Helix-4056",
+      "attribute": "external_auditor",
+      "entity": "Dovetail Works",
+      "id": "q-0056",
+      "prompt": "Which firm is the external auditor of Dovetail Works?",
+      "required_source": "doc-0011"
+    },
+    {
+      "answer": "Indigo-4057",
+      "attribute": "flagship_product",
+      "entity": "Dovetail Works",
+      "id": "q-0057",
+      "prompt": "What is the flagship product of Dovetail Works?",
+      "required_source": "doc-0011"
+    },
+    {
+      "answer": "Jade-4058",
+      "attribute": "headquarters_district",
+      "entity": "Dovetail Works",
+      "id": "q-0058",
+      "prompt": "In which district is Dovetail Works headquartered?",
+      "required_source": "doc-0011"
+    },
+    {
+      "answer": "Kelvin-4059",
+      "attribute": "internal_codename",
+      "entity": "Dovetail Works",
+      "id": "q-0059",
+      "prompt": "What is the internal codename of Dovetail Works?",
+      "required_source": "doc-0011"
+    }
+  ],
+  "seed": 7,
+  "spec_version": "1.0.0"
+}
