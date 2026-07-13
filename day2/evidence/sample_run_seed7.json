@@ -1,0 +1,188 @@
+{
+  "outcome": {
+    "answer": "12015",
+    "cited_sources": [
+      "doc-0000",
+      "doc-0001",
+      "doc-0002"
+    ],
+    "reason": null,
+    "status": "solved",
+    "step_cap": 12,
+    "steps_used": 7,
+    "task_id": "sample-seed7-k3",
+    "trace": [
+      {
+        "index": 1,
+        "observation": {
+          "candidates": [
+            {
+              "doc_id": "doc-0000",
+              "score": 3.0,
+              "title": "Kestrel Works"
+            },
+            {
+              "doc_id": "doc-0013",
+              "score": 1.0,
+              "title": "Analyst memo 0001"
+            },
+            {
+              "doc_id": "doc-0015",
+              "score": 1.0,
+              "title": "Analyst memo 0003"
+            },
+            {
+              "doc_id": "doc-0016",
+              "score": 1.0,
+              "title": "Analyst memo 0004"
+            }
+          ],
+          "error": null,
+          "ok": true,
+          "tool": "search"
+        },
+        "thought": "locate the fact document for 'Kestrel Works'",
+        "tool_call": {
+          "query": "Kestrel Works",
+          "tool": "search"
+        }
+      },
+      {
+        "index": 2,
+        "observation": {
+          "doc_id": "doc-0000",
+          "error": null,
+          "ok": true,
+          "text": "Kestrel Works is a registered organization in the FAULTLINE corpus. The archival reference of Kestrel Works is Alto-4000. The external auditor of Kestrel Works is Basalt-4001. The flagship product of Kestrel Works is Cobalt-4002. The headquarters district of Kestrel Works is Drift-4003. The internal codename of Kestrel Works is Ferro-4004.",
+          "title": "Kestrel Works",
+          "tool": "lookup"
+        },
+        "thought": "read the archival reference of 'Kestrel Works' from doc-0000",
+        "tool_call": {
+          "doc_id": "doc-0000",
+          "tool": "lookup"
+        }
+      },
+      {
+        "index": 3,
+        "observation": {
+          "candidates": [
+            {
+              "doc_id": "doc-0001",
+              "score": 3.0,
+              "title": "Marrow Union"
+            }
+          ],
+          "error": null,
+          "ok": true,
+          "tool": "search"
+        },
+        "thought": "locate the fact document for 'Marrow Union'",
+        "tool_call": {
+          "query": "Marrow Union",
+          "tool": "search"
+        }
+      },
+      {
+        "index": 4,
+        "observation": {
+          "doc_id": "doc-0001",
+          "error": null,
+          "ok": true,
+          "text": "Marrow Union is a registered organization in the FAULTLINE corpus. The archival reference of Marrow Union is Gossamer-4005. The external auditor of Marrow Union is Helix-4006. The flagship product of Marrow Union is Indigo-4007. The headquarters district of Marrow Union is Jade-4008. The internal codename of Marrow Union is Kelvin-4009.",
+          "title": "Marrow Union",
+          "tool": "lookup"
+        },
+        "thought": "read the archival reference of 'Marrow Union' from doc-0001",
+        "tool_call": {
+          "doc_id": "doc-0001",
+          "tool": "lookup"
+        }
+      },
+      {
+        "index": 5,
+        "observation": {
+          "candidates": [
+            {
+              "doc_id": "doc-0002",
+              "score": 3.0,
+              "title": "Borel Labs"
+            },
+            {
+              "doc_id": "doc-0017",
+              "score": 1.0,
+              "title": "Analyst memo 0005"
+            }
+          ],
+          "error": null,
+          "ok": true,
+          "tool": "search"
+        },
+        "thought": "locate the fact document for 'Borel Labs'",
+        "tool_call": {
+          "query": "Borel Labs",
+          "tool": "search"
+        }
+      },
+      {
+        "index": 6,
+        "observation": {
+          "doc_id": "doc-0002",
+          "error": null,
+          "ok": true,
+          "text": "Borel Labs is a registered organization in the FAULTLINE corpus. The archival reference of Borel Labs is Lumen-4010. The external auditor of Borel Labs is Mica-4011. The flagship product of Borel Labs is Nyx-4012. The headquarters district of Borel Labs is Onyx-4013. The internal codename of Borel Labs is Prism-4014.",
+          "title": "Borel Labs",
+          "tool": "lookup"
+        },
+        "thought": "read the archival reference of 'Borel Labs' from doc-0002",
+        "tool_call": {
+          "doc_id": "doc-0002",
+          "tool": "lookup"
+        }
+      },
+      {
+        "index": 7,
+        "observation": {
+          "error": null,
+          "expression": "4000+4005+4010",
+          "ok": true,
+          "tool": "calc",
+          "value": 12015
+        },
+        "thought": "sum the 3 archival numbers",
+        "tool_call": {
+          "expression": "4000+4005+4010",
+          "tool": "calc"
+        }
+      }
+    ]
+  },
+  "task": {
+    "entities": [
+      "Kestrel Works",
+      "Marrow Union",
+      "Borel Labs"
+    ],
+    "kind": "archive_sum",
+    "task_id": "sample-seed7-k3"
+  },
+  "verdict": {
+    "cited_sources": [
+      "doc-0000",
+      "doc-0001",
+      "doc-0002"
+    ],
+    "correct": true,
+    "expected_answer": "12015",
+    "got_answer": "12015",
+    "grounded": true,
+    "passed": true,
+    "required_sources": [
+      "doc-0000",
+      "doc-0001",
+      "doc-0002"
+    ],
+    "status": "solved",
+    "task_id": "sample-seed7-k3"
+  }
+}

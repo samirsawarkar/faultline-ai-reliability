@@ -1,0 +1,35 @@
+{
+  "expected_answer": "12015",
+  "outcomes": [
+    {
+      "answer": "12015",
+      "correct": true,
+      "grounded": true,
+      "label": "agent_real",
+      "schema_valid": true,
+      "semantically_passes": true
+    },
+    {
+      "answer": "12016",
+      "correct": false,
+      "grounded": true,
+      "label": "wrong_number",
+      "schema_valid": true,
+      "semantically_passes": false
+    },
+    {
+      "answer": "12015",
+      "correct": true,
+      "grounded": false,
+      "label": "ungrounded",
+      "schema_valid": true,
+      "semantically_passes": false
+    }
+  ],
+  "required_sources": [
+    "doc-0000",
+    "doc-0001",
+    "doc-0002"
+  ],
+  "seed": 7
+}
