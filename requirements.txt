@@ -1,0 +1,7 @@
+# FAULTLINE dependencies. Pinned for reproducibility (a reliability standard:
+# the same commit installs the same versions on every machine and in CI).
+#
+# Day 1 is standard-library only and needs just pytest to run its suite.
+# Day 2+ additionally requires pydantic v2 for its typed contracts.
+pydantic==2.13.4
+pytest==8.4.2

@@ -1,0 +1,102 @@
+# FAULTLINE
+
+**A reproducible workbench for measuring where document-grounded AI systems break — built in public, one disciplined day at a time.**
+
+[![CI](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.9%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/)
+[![Tests](https://img.shields.io/badge/tests-33%20passing-brightgreen.svg)](#quickstart)
+
+---
+
+## The thesis
+
+AI systems that answer from documents fail along **predictable faultlines** —
+they return a plausible answer while citing the wrong source, no source, or a
+source that never contained the fact — and today those failures are graded by
+*eyeballing*, which is neither reproducible nor honest.
+
+FAULTLINE replaces the eyeball with a **seeded, deterministic environment** and a
+**required-source oracle**: the same seed builds the same corpus and questions
+bit-for-bit on any machine, and a pure-function oracle counts an answer as
+passing only when it is both *correct* **and** *grounded* in the one document
+that actually holds the fact. Because the ruler cannot drift and the judge cannot
+be bargained with, every number FAULTLINE reports is exactly reproducible — the
+precondition for trusting any claim that one system is more grounded than another.
+
+## Why this repo exists
+
+This is an **AI reliability engineering** portfolio built as a 50-day arc. Each
+day is a small, self-contained, fully-owned increment that holds itself to the
+standards below — not a demo, but a specimen you could put under a microscope.
+
+### Reliability standards this repo holds itself to
+
+| Standard | How it shows up |
+| --- | --- |
+| **Determinism as a gate** | Seeded RNG only; no wall-clock, no hash-order iteration. Same seed → byte-identical output, re-proven in CI across 3 Python versions and multiple processes. |
+| **An honest oracle** | Correctness is a *pure function*, not a judgment call. A right answer with a wrong/absent citation does **not** pass. |
+| **Typed contracts** | Every agent boundary is a Pydantic model with `extra="forbid"`; malformed input becomes a structured outcome, never an escaped exception. |
+| **Bounded execution** | The agent loop cannot hang — termination is structural (a step cap in the loop shape), not a hoped-for timeout. |
+| **Two-layer judging** | Schema validity (is it well-formed?) is kept separate from semantic correctness (is it right?). Both are required; neither is sufficient. |
+| **Evidence, not assertions** | Every claim ships a committed, regenerable artifact under `dayN/evidence/`. |
+| **Decision logs** | Every non-obvious choice is recorded with its *why* and its *reversal cost* (`DECISIONS.md`, globally numbered D-001…). |
+| **Green CI** | Unit tests **and** the determinism proof **and** the fault attack run on every push. |
+
+## The 50-day arc
+
+| Day | Focus | Status | Key artifacts |
+| --- | --- | --- | --- |
+| **[01](day1/)** | Deterministic environment + required-source oracle | ✅ Done | seeded corpus, `oracle_check`, cross-process determinism proof |
+| **[02](day2/)** | Bounded, deterministic single agent + typed contracts | ✅ Done | reason→tool→observe loop, 3 typed tools, forced over-budget attack |
+| 03–50 | Fault injection, measurement, and hardening | 🔜 Planned | building on the frozen days above |
+
+> The arc is deliberately cumulative: Day 2's agent runs against Day 1's frozen
+> environment, and later days inject faults into this fully-owned baseline. That
+> coupling is exactly why FAULTLINE is **one monorepo**, not fifty fragments.
+
+## Repository map
+
+```
+faultline-ai-reliability/
+├── day1/                 deterministic env + oracle (stdlib only)
+│   ├── faultline/        env.py (generator), oracle.py (the judge)
+│   ├── scripts/          determinism + hand-check experiments
+│   ├── tests/            the Day-1 gate (11 tests)
+│   ├── evidence/         digests, determinism report, sample env
+│   └── THESIS / MEASUREMENT / DECISIONS / LEARN.md
+├── day2/                 bounded single agent + Pydantic contracts
+│   ├── faultline_agent/  contracts, tools, agent loop, verdict
+│   ├── scripts/          over-budget attack, structured run, validity-vs-correctness
+│   ├── tests/            the Day-2 gate (22 tests)
+│   ├── evidence/         budget termination, sample run, schema-vs-semantic
+│   └── README / DECISIONS / LEARN / MARKET.md
+├── .github/workflows/    CI: tests + determinism proof + fault attack
+├── requirements.txt      pinned deps (pydantic, pytest)
+└── Makefile              make venv && make test
+```
+
+Each day carries its own README and a **mastery gate** — you should be able to
+*explain*, *build*, *debug*, *measure*, and *defend* everything in it.
+
+## Quickstart
+
+```bash
+# Day 1 is standard-library only:
+cd day1 && python3 -m pytest tests/ -q          # 11 tests
+
+# Day 2 adds pydantic — from the repo root:
+make venv                                        # .venv from pinned deps
+make test                                        # full gate: 33 tests, day1 + day2
+
+# Re-prove the headline claims yourself:
+make determinism      # Day 1: byte-identical env across processes/hashseeds
+make attack           # Day 2: forced over-budget task → clean INCOMPLETE
+```
+
+Requires Python ≥ 3.9. Day 1 needs no third-party packages; Day 2+ needs
+`pydantic` v2 (see `requirements.txt`).
+
+## License
+
+[MIT](LICENSE) © 2026 Samir Sawarkar

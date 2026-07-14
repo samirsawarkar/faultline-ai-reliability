@@ -1,0 +1,47 @@
+name: CI
+
+# Every push and PR runs the full gate on three Python versions. Determinism
+# claims are only credible if a machine re-proves them on every commit, so the
+# determinism experiment and the over-budget attack run here too, not just the
+# unit tests.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: gate (py${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install pinned dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Day 1 — determinism + oracle tests (stdlib)
+        run: cd day1 && python -m pytest tests/ -v
+
+      - name: Day 1 — cross-process / cross-hashseed determinism proof
+        run: cd day1 && python scripts/experiment_determinism.py
+
+      - name: Day 1 — enforced oracle hand-check
+        run: cd day1 && python scripts/handcheck.py
+
+      - name: Day 2 — contracts + termination tests
+        run: cd day2 && python -m pytest tests/ -v
+
+      - name: Day 2 — forced over-budget termination attack
+        run: cd day2 && python scripts/experiment_budget.py
