@@ -56,3 +56,11 @@ jobs:
 
       - name: Day 3 — mislabeled-input attack
         run: cd day3 && python scripts/attack_mislabeled.py
+
+      - name: Day 4 — span / tracer / redaction + forced-failure gate
+        run: cd day4 && python -m pytest tests/ -v
+
+      - name: Day 4 — traces reproduce byte-for-byte (100-run failure report)
+        run: |
+          python day4/scripts/make_traces.py
+          git diff --exit-code -- day4/evidence/
