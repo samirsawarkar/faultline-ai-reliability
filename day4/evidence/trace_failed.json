@@ -1,0 +1,99 @@
+{
+  "seed": 7,
+  "span_count": 4,
+  "spans": [
+    {
+      "attributes": {},
+      "end_seq": 8,
+      "error": {
+        "message": "tool sum exploded (token=***REDACTED*** at index 1",
+        "type": "RiskyToolError"
+      },
+      "input_ref": {
+        "preview": "{\"secret\":\"***REDACTED***\",\"task\":\"sum the archive\"}",
+        "redacted": true,
+        "sha256": "629a341e820051a7a96ea25f7543d1a5fea0987e407b804b20948cea9a38173d",
+        "size_bytes": 52
+      },
+      "kind": "agent",
+      "name": "agent",
+      "output_ref": null,
+      "parent_span_id": null,
+      "span_id": "trace-00000007-span-0000",
+      "start_seq": 1,
+      "status": "error",
+      "trace_id": "trace-00000007"
+    },
+    {
+      "attributes": {},
+      "end_seq": 3,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"prompt\":\"sum the archive\"}",
+        "redacted": false,
+        "sha256": "7b2982dd5e74d8e1dfa47a5686a6c276f78776d0f89dcc4df9c3a0e818469ffb",
+        "size_bytes": 28
+      },
+      "kind": "model",
+      "name": "model.plan",
+      "output_ref": {
+        "preview": "{\"plan\":[\"retrieve\",\"sum\",\"verify\"]}",
+        "redacted": false,
+        "sha256": "ed4f912cdb6d56dcb11f4629f5a9dcaa842c83308b8eb72ab2d4eea2a9a21178",
+        "size_bytes": 36
+      },
+      "parent_span_id": "trace-00000007-span-0000",
+      "span_id": "trace-00000007-span-0001",
+      "start_seq": 2,
+      "status": "ok",
+      "trace_id": "trace-00000007"
+    },
+    {
+      "attributes": {},
+      "end_seq": 5,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"index\":0,\"step\":\"retrieve\"}",
+        "redacted": false,
+        "sha256": "54521481d1e7245ce306b51548ac6141fb096da0f11e1c9c7d40d5c244a2d7d3",
+        "size_bytes": 29
+      },
+      "kind": "tool",
+      "name": "tool.retrieve",
+      "output_ref": {
+        "preview": "{\"index\":0,\"ok\":true,\"step\":\"retrieve\",\"value\":10}",
+        "redacted": false,
+        "sha256": "f05b497b484332724ab4ce42430d3ab5d8d723e7174a9041bd66d85f227a45b1",
+        "size_bytes": 50
+      },
+      "parent_span_id": "trace-00000007-span-0000",
+      "span_id": "trace-00000007-span-0002",
+      "start_seq": 4,
+      "status": "ok",
+      "trace_id": "trace-00000007"
+    },
+    {
+      "attributes": {},
+      "end_seq": 7,
+      "error": {
+        "message": "tool sum exploded (token=***REDACTED*** at index 1",
+        "type": "RiskyToolError"
+      },
+      "input_ref": {
+        "preview": "{\"index\":1,\"step\":\"sum\"}",
+        "redacted": false,
+        "sha256": "858cac1289a82e2b98802047109050bf94d63281407864f1116e73c59c302916",
+        "size_bytes": 24
+      },
+      "kind": "tool",
+      "name": "tool.sum",
+      "output_ref": null,
+      "parent_span_id": "trace-00000007-span-0000",
+      "span_id": "trace-00000007-span-0003",
+      "start_seq": 6,
+      "status": "error",
+      "trace_id": "trace-00000007"
+    }
+  ],
+  "trace_id": "trace-00000007"
+}
