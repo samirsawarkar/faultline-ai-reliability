@@ -1,0 +1,57 @@
+{
+  "malformed_inputs": {
+    "all_invalid": true,
+    "n": 5,
+    "results": [
+      {
+        "input": {
+          "entities": [],
+          "task_id": "m1"
+        },
+        "status": "invalid"
+      },
+      {
+        "input": {
+          "entities": "not-a-list",
+          "task_id": "m2"
+        },
+        "status": "invalid"
+      },
+      {
+        "input": {
+          "task_id": "m3"
+        },
+        "status": "invalid"
+      },
+      {
+        "input": {
+          "entities": [
+            123,
+            456
+          ],
+          "task_id": "m4"
+        },
+        "status": "invalid"
+      },
+      {
+        "input": {
+          "entities": [
+            "X"
+          ],
+          "sneaky_field": true,
+          "task_id": "m5"
+        },
+        "status": "invalid"
+      }
+    ]
+  },
+  "tier_mislabeling": {
+    "clean_baseline_easy_rate": 1.0,
+    "declared_bucket": "easy",
+    "honest_matches_clean": true,
+    "honest_rate_by_actual_tier": 1.0,
+    "n_in_bucket": 200,
+    "n_mislabeled_detected": 100,
+    "naive_rate_if_labels_trusted": 0.5
+  }
+}

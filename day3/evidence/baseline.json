@@ -1,0 +1,175 @@
+{
+  "config": {
+    "cost": {
+      "base_prompt_chars": 200,
+      "chars_per_token": 4,
+      "price_per_1k_tokens_usd": 0.5
+    },
+    "latency": {
+      "per_token_ms": 0.05,
+      "tool_base_ms": {
+        "calc": 1.0,
+        "lookup": 3.0,
+        "search": 5.0
+      }
+    },
+    "master_seed": 20260714,
+    "n_per_tier": 500,
+    "spec_version": "3.0.0",
+    "step_cap": 12,
+    "tiers": [
+      {
+        "hops": [
+          1,
+          2,
+          3
+        ],
+        "tier": "easy"
+      },
+      {
+        "hops": [
+          4,
+          5,
+          6
+        ],
+        "tier": "medium"
+      },
+      {
+        "hops": [
+          6,
+          7,
+          8
+        ],
+        "tier": "hard"
+      }
+    ],
+    "wilson_z": 1.96
+  },
+  "content_hash": "adc9630595cfa8a992e8f5807de026022497c1ae7c7b75d2066fdda1a2f16b31",
+  "spec_version": "3.0.0",
+  "success_vs_hops": [
+    {
+      "hops": 1,
+      "n": 176,
+      "success_rate": 1.0,
+      "successes": 176,
+      "wilson_high": 1.0,
+      "wilson_low": 0.978639
+    },
+    {
+      "hops": 2,
+      "n": 154,
+      "success_rate": 1.0,
+      "successes": 154,
+      "wilson_high": 1.0,
+      "wilson_low": 0.975662
+    },
+    {
+      "hops": 3,
+      "n": 170,
+      "success_rate": 1.0,
+      "successes": 170,
+      "wilson_high": 1.0,
+      "wilson_low": 0.977902
+    },
+    {
+      "hops": 4,
+      "n": 166,
+      "success_rate": 1.0,
+      "successes": 166,
+      "wilson_high": 1.0,
+      "wilson_low": 0.977381
+    },
+    {
+      "hops": 5,
+      "n": 163,
+      "success_rate": 1.0,
+      "successes": 163,
+      "wilson_high": 1.0,
+      "wilson_low": 0.976975
+    },
+    {
+      "hops": 6,
+      "n": 340,
+      "success_rate": 0.0,
+      "successes": 0,
+      "wilson_high": 0.011173,
+      "wilson_low": 0.0
+    },
+    {
+      "hops": 7,
+      "n": 192,
+      "success_rate": 0.0,
+      "successes": 0,
+      "wilson_high": 0.019616,
+      "wilson_low": 0.0
+    },
+    {
+      "hops": 8,
+      "n": 139,
+      "success_rate": 0.0,
+      "successes": 0,
+      "wilson_high": 0.026894,
+      "wilson_low": 0.0
+    }
+  ],
+  "tiers": [
+    {
+      "cost_usd_mean": 0.242364,
+      "hop_histogram": {
+        "1": 176,
+        "2": 154,
+        "3": 170
+      },
+      "latency_ms_mean": 38.6404,
+      "latency_ms_p95": 58.3,
+      "n": 500,
+      "steps_mean": 4.976,
+      "steps_median": 5.0,
+      "success_rate": 1.0,
+      "successes": 500,
+      "tier": "easy",
+      "tokens_mean": 484.728,
+      "wilson_high": 1.0,
+      "wilson_low": 0.992375
+    },
+    {
+      "cost_usd_mean": 0.543442,
+      "hop_histogram": {
+        "4": 166,
+        "5": 163,
+        "6": 171
+      },
+      "latency_ms_mean": 92.5822,
+      "latency_ms_p95": 110.1,
+      "n": 500,
+      "steps_mean": 10.678,
+      "steps_median": 11.0,
+      "success_rate": 0.658,
+      "successes": 329,
+      "tier": "medium",
+      "tokens_mean": 1086.884,
+      "wilson_high": 0.698235,
+      "wilson_low": 0.615355
+    },
+    {
+      "cost_usd_mean": 0.628811,
+      "hop_histogram": {
+        "6": 169,
+        "7": 192,
+        "8": 139
+      },
+      "latency_ms_mean": 108.3811,
+      "latency_ms_p95": 110.5,
+      "n": 500,
+      "steps_mean": 12.0,
+      "steps_median": 12.0,
+      "success_rate": 0.0,
+      "successes": 0,
+      "tier": "hard",
+      "tokens_mean": 1257.622,
+      "wilson_high": 0.007625,
+      "wilson_low": 0.0
+    }
+  ]
+}

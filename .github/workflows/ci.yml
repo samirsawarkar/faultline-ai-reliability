@@ -45,3 +45,14 @@ jobs:
 
       - name: Day 2 — forced over-budget termination attack
         run: cd day2 && python scripts/experiment_budget.py
+
+      - name: Day 3 — baseline + Wilson + reproducibility tests
+        run: cd day3 && python -m pytest tests/ -v
+
+      - name: Day 3 — baseline reproduces byte-for-byte from committed config
+        run: |
+          python day3/scripts/build_baseline.py
+          git diff --exit-code -- day3/evidence/baseline.json day3/evidence/success_vs_hops.svg
+
+      - name: Day 3 — mislabeled-input attack
+        run: cd day3 && python scripts/attack_mislabeled.py
