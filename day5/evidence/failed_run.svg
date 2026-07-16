@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="742" height="276" font-family="monospace" font-size="13">
+<rect width="742" height="276" fill="white"/>
+<text x="16" y="30" font-weight="bold">trace-00000007   status=ERROR   spans=4</text>
+<line x1="210" y1="46" x2="670" y2="46" stroke="#e0e0e0"/>
+<text x="16" y="60">agent [agent]</text>
+<rect x="210.0" y="50" width="460.0" height="14" rx="3" fill="#c62828"/>
+<text x="16" y="77" fill="#c62828" font-size="11">→ agent: RiskyToolError: tool sum exploded (token=***REDACTED*** at index 1</text>
+<line x1="210" y1="80" x2="670" y2="80" stroke="#e0e0e0"/>
+<text x="16" y="94">  model.plan [model]</text>
+<rect x="275.7" y="84" width="65.7" height="14" rx="3" fill="#2e7d32"/>
+<line x1="210" y1="114" x2="670" y2="114" stroke="#e0e0e0"/>
+<text x="16" y="128">  tool.retrieve [tool]</text>
+<rect x="407.1" y="118" width="65.7" height="14" rx="3" fill="#2e7d32"/>
+<line x1="210" y1="148" x2="670" y2="148" stroke="#e0e0e0"/>
+<text x="16" y="162">  tool.sum [tool]</text>
+<rect x="538.6" y="152" width="65.7" height="14" rx="3" fill="#c62828"/>
+<text x="16" y="179" fill="#c62828" font-size="11">→ tool.sum: RiskyToolError: tool sum exploded (token=***REDACTED*** at index 1</text>
+<text x="16" y="204" fill="#c62828">failing: agent &gt; tool.sum</text>
+</svg>

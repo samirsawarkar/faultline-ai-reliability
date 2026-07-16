@@ -1,0 +1,11 @@
+TRACE trace-00000007   status=ERROR   spans=4
+seq                           span
+ 1-8  |########################| X agent [agent]
+          -> RiskyToolError: tool sum exploded (token=***REDACTED*** at index 1
+ 2-3  |   ###                  | .   model.plan [model]
+ 4-5  |          ###           | .   tool.retrieve [tool]
+ 6-7  |                 ###    | X   tool.sum [tool]
+            -> RiskyToolError: tool sum exploded (token=***REDACTED*** at index 1
+
+failing path: agent > tool.sum
+root-cause span(s): tool.sum

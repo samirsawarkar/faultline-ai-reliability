@@ -1,0 +1,7 @@
+{
+  "avg_ms_per_reconstruction": 0.0295,
+  "iterations": 200,
+  "note": "wall-clock; excluded from CI byte-diff by design",
+  "total_seconds": 0.005894,
+  "trace_id": "trace-00000007"
+}

@@ -1,0 +1,106 @@
+{
+  "all_scenarios_reconstructable": true,
+  "claim": "structured store still names the failure after each deletion; raw-log finding always costs a full scan",
+  "scenarios": [
+    {
+      "expected_named": true,
+      "failing_paths": [
+        [
+          "agent",
+          "tool.sum"
+        ]
+      ],
+      "missing_spans": 0,
+      "ok": true,
+      "orphan_spans": [],
+      "present_spans": 4,
+      "rawlog_rows_scanned_to_find_failure": 4,
+      "reconstructable": true,
+      "root_cause_named": true,
+      "root_cause_spans": [
+        "tool.sum"
+      ],
+      "scenario": "intact",
+      "sequence_gaps": [],
+      "store_rows_scanned_to_find_failure": 2,
+      "store_uses_index": true
+    },
+    {
+      "expected_named": true,
+      "failing_paths": [
+        [
+          "agent",
+          "tool.sum"
+        ]
+      ],
+      "missing_spans": 0,
+      "ok": true,
+      "orphan_spans": [],
+      "present_spans": 4,
+      "rawlog_rows_scanned_to_find_failure": 4,
+      "reconstructable": true,
+      "root_cause_named": true,
+      "root_cause_spans": [
+        "tool.sum"
+      ],
+      "scenario": "drop_error_message",
+      "sequence_gaps": [],
+      "store_rows_scanned_to_find_failure": 2,
+      "store_uses_index": true
+    },
+    {
+      "expected_named": true,
+      "failing_paths": [
+        [
+          "agent",
+          "tool.sum"
+        ]
+      ],
+      "missing_spans": 1,
+      "ok": true,
+      "orphan_spans": [],
+      "present_spans": 3,
+      "rawlog_rows_scanned_to_find_failure": 3,
+      "reconstructable": true,
+      "root_cause_named": true,
+      "root_cause_spans": [
+        "tool.sum"
+      ],
+      "scenario": "delete_intermediate_span",
+      "sequence_gaps": [
+        [
+          3,
+          6
+        ]
+      ],
+      "store_rows_scanned_to_find_failure": 2,
+      "store_uses_index": true
+    },
+    {
+      "expected_named": true,
+      "failing_paths": [
+        [
+          "tool.sum"
+        ]
+      ],
+      "missing_spans": 1,
+      "ok": true,
+      "orphan_spans": [
+        "trace-00000007-span-0001",
+        "trace-00000007-span-0002",
+        "trace-00000007-span-0003"
+      ],
+      "present_spans": 3,
+      "rawlog_rows_scanned_to_find_failure": 3,
+      "reconstructable": true,
+      "root_cause_named": true,
+      "root_cause_spans": [
+        "tool.sum"
+      ],
+      "scenario": "delete_root_span",
+      "sequence_gaps": [],
+      "store_rows_scanned_to_find_failure": 1,
+      "store_uses_index": true
+    }
+  ]
+}

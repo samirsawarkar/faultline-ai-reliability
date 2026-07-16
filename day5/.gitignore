@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+# On-disk store is regenerated from code (binary, sqlite-version dependent).
+evidence/trace.db
