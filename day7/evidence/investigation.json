@@ -1,0 +1,32 @@
+{
+  "divergence_hop": 3,
+  "example_fail": {
+    "hops_reached": 2,
+    "n_hops": 3,
+    "span_count": 3,
+    "spans_complete": true,
+    "success": false,
+    "trial": 2
+  },
+  "example_pass": {
+    "hops_reached": 3,
+    "n_hops": 3,
+    "span_count": 4,
+    "spans_complete": true,
+    "success": true,
+    "trial": 0
+  },
+  "explanation": "At n=3 the naive constant-per-step prediction (0.91833) lies above the measured 95% CI [0.781797, 0.849354]. Per-hop reliability declines with depth (hop1=0.972 -> hop3=0.904417), so end-to-end reliability compounds faster downward than p1**n predicts.",
+  "measured": 0.818,
+  "measured_ci95": [
+    0.781797,
+    0.849354
+  ],
+  "measured_minus_naive": -0.10033,
+  "naive": 0.91833,
+  "naive_ci95": [
+    0.902597,
+    0.931651
+  ],
+  "trace_gaps_in_examples": 0
+}

@@ -1,0 +1,75 @@
+{
+  "seed": 2,
+  "span_count": 3,
+  "spans": [
+    {
+      "attributes": {},
+      "end_seq": 6,
+      "error": {
+        "message": "hop 2 failed (p_k=0.940)",
+        "type": "RiskyToolError"
+      },
+      "input_ref": {
+        "preview": "{\"n_hops\":3}",
+        "redacted": false,
+        "sha256": "b3faec770bebd3da1e612159af3125f18ceffca2256934dafda47414efc0b4c5",
+        "size_bytes": 12
+      },
+      "kind": "agent",
+      "name": "agent",
+      "output_ref": null,
+      "parent_span_id": null,
+      "span_id": "trace-00000002-span-0000",
+      "start_seq": 1,
+      "status": "error",
+      "trace_id": "trace-00000002"
+    },
+    {
+      "attributes": {},
+      "end_seq": 3,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"hop\":1}",
+        "redacted": false,
+        "sha256": "a18c8cadf5fb9cd74c760eb059ec4a766f72efab1a26ddcd80b31da900c5c6e6",
+        "size_bytes": 9
+      },
+      "kind": "tool",
+      "name": "hop.1",
+      "output_ref": {
+        "preview": "{\"hop\":1,\"ok\":true}",
+        "redacted": false,
+        "sha256": "80325111adc97d113694c44a164bd649d9fd947eb62d26329166d75ba5c4bc36",
+        "size_bytes": 19
+      },
+      "parent_span_id": "trace-00000002-span-0000",
+      "span_id": "trace-00000002-span-0001",
+      "start_seq": 2,
+      "status": "ok",
+      "trace_id": "trace-00000002"
+    },
+    {
+      "attributes": {},
+      "end_seq": 5,
+      "error": {
+        "message": "hop 2 failed (p_k=0.940)",
+        "type": "RiskyToolError"
+      },
+      "input_ref": {
+        "preview": "{\"hop\":2}",
+        "redacted": false,
+        "sha256": "be4624952280a8630bf17012f1c06ebc03150b061b199648452860102ecdbbb9",
+        "size_bytes": 9
+      },
+      "kind": "tool",
+      "name": "hop.2",
+      "output_ref": null,
+      "parent_span_id": "trace-00000002-span-0000",
+      "span_id": "trace-00000002-span-0002",
+      "start_seq": 4,
+      "status": "error",
+      "trace_id": "trace-00000002"
+    }
+  ],
+  "trace_id": "trace-00000002"
+}

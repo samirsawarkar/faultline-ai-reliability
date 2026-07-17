@@ -87,3 +87,11 @@ jobs:
           git diff --exit-code -- day6/evidence/bundle_simulator.json \
             day6/evidence/replay_simulator.json \
             day6/evidence/replay_report.json
+
+      - name: Day 7 — hop sweep + Q1 measurement + observability gate
+        run: cd day7 && python -m pytest tests/ -v
+
+      - name: Day 7 — Q1 results + figure reproduce byte-for-byte
+        run: |
+          python day7/scripts/run_q1.py
+          git diff --exit-code -- day7/evidence/

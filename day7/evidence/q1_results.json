@@ -1,0 +1,244 @@
+{
+  "config": {
+    "master_seed": 20260717,
+    "max_hops": 8,
+    "model_version": "1.0.0",
+    "trials": 500
+  },
+  "curve": [
+    {
+      "corrected": 0.972,
+      "hops": 1,
+      "measured": 0.966,
+      "measured_ci95": [
+        0.946229,
+        0.978665
+      ],
+      "measured_minus_naive": -0.006,
+      "naive": 0.972,
+      "naive_ci95": [
+        0.966417,
+        0.976677
+      ],
+      "naive_outside_measured_ci": false
+    },
+    {
+      "corrected": 0.920046,
+      "hops": 2,
+      "measured": 0.922,
+      "measured_ci95": [
+        0.895146,
+        0.942419
+      ],
+      "measured_minus_naive": -0.022784,
+      "naive": 0.944784,
+      "naive_ci95": [
+        0.933962,
+        0.953898
+      ],
+      "naive_outside_measured_ci": false
+    },
+    {
+      "corrected": 0.832105,
+      "hops": 3,
+      "measured": 0.818,
+      "measured_ci95": [
+        0.781797,
+        0.849354
+      ],
+      "measured_minus_naive": -0.10033,
+      "naive": 0.91833,
+      "naive_ci95": [
+        0.902597,
+        0.931651
+      ],
+      "naive_outside_measured_ci": true
+    },
+    {
+      "corrected": 0.731328,
+      "hops": 4,
+      "measured": 0.746,
+      "measured_ci95": [
+        0.706069,
+        0.78218
+      ],
+      "measured_minus_naive": -0.146617,
+      "naive": 0.892617,
+      "naive_ci95": [
+        0.872285,
+        0.909922
+      ],
+      "naive_outside_measured_ci": true
+    },
+    {
+      "corrected": 0.618355,
+      "hops": 5,
+      "measured": 0.626,
+      "measured_ci95": [
+        0.582779,
+        0.6673
+      ],
+      "measured_minus_naive": -0.241624,
+      "naive": 0.867624,
+      "naive_ci95": [
+        0.842991,
+        0.8887
+      ],
+      "naive_outside_measured_ci": true
+    },
+    {
+      "corrected": 0.502581,
+      "hops": 6,
+      "measured": 0.51,
+      "measured_ci95": [
+        0.466274,
+        0.553574
+      ],
+      "measured_minus_naive": -0.33333,
+      "naive": 0.84333,
+      "naive_ci95": [
+        0.814681,
+        0.867973
+      ],
+      "naive_outside_measured_ci": true
+    },
+    {
+      "corrected": 0.386055,
+      "hops": 7,
+      "measured": 0.388,
+      "measured_ci95": [
+        0.346296,
+        0.431412
+      ],
+      "measured_minus_naive": -0.431717,
+      "naive": 0.819717,
+      "naive_ci95": [
+        0.787322,
+        0.847729
+      ],
+      "naive_outside_measured_ci": true
+    },
+    {
+      "corrected": 0.297283,
+      "hops": 8,
+      "measured": 0.288,
+      "measured_ci95": [
+        0.250043,
+        0.329189
+      ],
+      "measured_minus_naive": -0.508765,
+      "naive": 0.796765,
+      "naive_ci95": [
+        0.760881,
+        0.827958
+      ],
+      "naive_outside_measured_ci": true
+    }
+  ],
+  "finding": "End-to-end reliability decays faster than naive constant-per-step compounding predicts. Single-hop reliability is 0.972, but by 8 hops measured success is 0.288 (95% CI [0.250043, 0.329189]) versus a naive prediction of 0.796765 \u2014 a gap of 0.508765. The naive model leaves the measured 95% CI at n=3 hops.",
+  "first_divergence_hop": 3,
+  "model": {
+    "DECAY": 0.03,
+    "P0": 0.97,
+    "PMIN": 0.5,
+    "form": "p_k = clamp(P0 - DECAY*(k-1), PMIN, 1.0)"
+  },
+  "observability_gate": {
+    "every_run_backed_by_record": true,
+    "gate_passed": true,
+    "runs": 4000,
+    "runs_expected": 4000,
+    "trace_gaps": 0
+  },
+  "per_hop_reliability": [
+    {
+      "ci95": [
+        0.966417,
+        0.976677
+      ],
+      "hop": 1,
+      "rate": 0.972,
+      "reached": 4000,
+      "success": 3888
+    },
+    {
+      "ci95": [
+        0.938478,
+        0.953614
+      ],
+      "hop": 2,
+      "rate": 0.946549,
+      "reached": 3405,
+      "success": 3223
+    },
+    {
+      "ci95": [
+        0.892884,
+        0.914827
+      ],
+      "hop": 3,
+      "rate": 0.904417,
+      "reached": 2762,
+      "success": 2498
+    },
+    {
+      "ci95": [
+        0.864199,
+        0.892189
+      ],
+      "hop": 4,
+      "rate": 0.878889,
+      "reached": 2089,
+      "success": 1836
+    },
+    {
+      "ci95": [
+        0.826101,
+        0.863135
+      ],
+      "hop": 5,
+      "rate": 0.845523,
+      "reached": 1463,
+      "success": 1237
+    },
+    {
+      "ci95": [
+        0.786342,
+        0.83661
+      ],
+      "hop": 6,
+      "rate": 0.812771,
+      "reached": 924,
+      "success": 751
+    },
+    {
+      "ci95": [
+        0.72903,
+        0.803138
+      ],
+      "hop": 7,
+      "rate": 0.768145,
+      "reached": 496,
+      "success": 381
+    },
+    {
+      "ci95": [
+        0.704669,
+        0.824566
+      ],
+      "hop": 8,
+      "rate": 0.770053,
+      "reached": 187,
+      "success": 144
+    }
+  ],
+  "question": "Q1: How does end-to-end reliability change as required tool hops grow?",
+  "single_hop_reliability": {
+    "ci95": [
+      0.966417,
+      0.976677
+    ],
+    "p1": 0.972,
+    "reached": 4000
+  }
+}

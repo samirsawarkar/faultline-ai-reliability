@@ -5,7 +5,7 @@
 [![CI](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/tests-95%20passing-brightgreen.svg)](#quickstart)
+[![Tests](https://img.shields.io/badge/tests-113%20passing-brightgreen.svg)](#quickstart)
 
 ---
 
@@ -43,6 +43,7 @@ standards below — not a demo, but a specimen you could put under a microscope.
 | **Redaction at the trace layer** | Spans store leak-free payload references; secrets are masked even inside captured error messages — the injected secret never reaches a committed trace. |
 | **Reconstructable under data loss** | Runs persist in an indexed SQLite store; a stranger reconstructs the failure from the viewer alone, and it still names the root cause after fields or whole spans are deleted. |
 | **Claims never exceed evidence** | Replay separates playback from re-execution: captured simulator runs replay *and* re-execute byte-identically, while a real-provider stand-in is reported as playback-only — the reproducibility boundary is documented, not overstated. |
+| **Every number has an interval** | Success rates carry Wilson 95% CIs, and claims like "naive compounding is wrong" are made precise as the first hop where the naive and measured intervals are disjoint (n=3) — never a bare point estimate. |
 | **Evidence, not assertions** | Every claim ships a committed, regenerable artifact under `dayN/evidence/`. |
 | **Decision logs** | Every non-obvious choice is recorded with its *why* and its *reversal cost* (`DECISIONS.md`, globally numbered D-001…). |
 | **Green CI** | Unit tests **and** the determinism proof **and** the fault attack run on every push. |
@@ -57,7 +58,8 @@ standards below — not a demo, but a specimen you could put under a microscope.
 | **[04](day4/)** | Tracing: linked spans that survive failures | ✅ Done | entry-written/`finally`-closed spans, redaction policy, 100-run forced-failure gate |
 | **[05](day5/)** | Reconstruct a failed run in minutes | ✅ Done | indexed SQLite trace store, timeline viewer, SVG snapshot, deletion-survival attack |
 | **[06](day6/)** | Exact replay + reproducibility boundary | ✅ Done | replay bundle, deterministic replay harness, playback-vs-reexecution difference report |
-| 07–50 | Fault injection, measurement, and hardening | 🔜 Planned | building on the frozen days above |
+| **[07](day7/)** | Q1 — reliability vs required tool hops | ✅ Done | hop-count sweep, per-step accounting, measured-vs-naive curve with Wilson CIs, Checkpoint 7 |
+| 08–50 | Fault injection, measurement, and hardening | 🔜 Planned | building on the frozen days above |
 
 > The arc is deliberately cumulative: Day 2's agent runs against Day 1's frozen
 > environment, and later days inject faults into this fully-owned baseline. That
@@ -103,6 +105,12 @@ faultline-ai-reliability/
 │   ├── tests/            exact-replay + boundary + guards gate (11 tests)
 │   ├── evidence/         bundle_simulator.json, replay_simulator.json, replay_report.json
 │   └── README / LIMITATIONS / LEARN-reproducibility / DECISIONS / REFLECTION.md
+├── day7/                 Q1: reliability vs required tool hops (stdlib only)
+│   ├── faultline_hops/   simulator, sweep+accounting, stats (Wilson), model, figure, observability
+│   ├── scripts/          run_q1 (results + figure + investigation)
+│   ├── tests/            sweep/stats/model/observability gate (18 tests)
+│   ├── evidence/         q1_results.json, measured_vs_naive.svg, investigation.json
+│   └── CHECKPOINT-7 / LEARN-compounding / DECISIONS / REFLECTION.md
 ├── .github/workflows/    CI: tests + determinism proof + fault attacks
 ├── requirements.txt      pinned deps (pydantic, pytest)
 └── Makefile              make venv && make test
@@ -119,7 +127,7 @@ cd day1 && python3 -m pytest tests/ -q          # 11 tests
 
 # Day 2 adds pydantic — from the repo root:
 make venv                                        # .venv from pinned deps
-make test                                        # full gate: 95 tests, day1–day6
+make test                                        # full gate: 113 tests, day1–day7
 
 # Re-prove the headline claims yourself:
 make determinism      # Day 1: byte-identical env across processes/hashseeds
@@ -127,10 +135,11 @@ make attack           # Day 2: forced over-budget task → clean INCOMPLETE
 make day4-traces      # Day 4: 100 forced failures → all complete error spans
 make day5-evidence    # Day 5: reconstruct a failed run; survive deletions
 make day6-replay      # Day 6: capture, replay exactly, report the boundary
+make day7-q1          # Day 7: measure reliability vs hops; naive falsified at n=3
 ```
 
-Requires Python ≥ 3.9. Days 1, 4, 5, and 6 need no third-party packages; Days
-2–3 need `pydantic` v2 (see `requirements.txt`).
+Requires Python ≥ 3.9. Days 1 and 4–7 need no third-party packages; Days 2–3
+need `pydantic` v2 (see `requirements.txt`).
 
 ## License
 
