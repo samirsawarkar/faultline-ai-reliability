@@ -1,0 +1,43 @@
+{
+  "claims": {
+    "cannot": [
+      "regenerate a real provider's output by re-execution",
+      "produce a real provider's output for an input we did not capture",
+      "reproduce uncaptured entropy (sampling / hardware RNG / model drift)"
+    ],
+    "reexecution_reproduces_run": "only for the deterministic simulator",
+    "replay_reproduces_captured_bytes": "always (playback of recorded calls)"
+  },
+  "claims_hold": true,
+  "scenarios": [
+    {
+      "calls_replayed": 3,
+      "provider": "simulator",
+      "reexec_diff_count": 0,
+      "reexec_diff_paths": [],
+      "reexec_exact": true,
+      "replay_diff_count": 0,
+      "replay_exact": true
+    },
+    {
+      "calls_replayed": 3,
+      "provider": "flaky",
+      "reexec_diff_count": 8,
+      "reexec_diff_paths": [
+        ".spans[0].output_ref.preview",
+        ".spans[0].output_ref.sha256",
+        ".spans[2].output_ref.preview",
+        ".spans[2].output_ref.sha256",
+        ".spans[3].output_ref.preview",
+        ".spans[3].output_ref.sha256",
+        ".spans[4].output_ref.preview",
+        ".spans[4].output_ref.sha256"
+      ],
+      "reexec_exact": false,
+      "replay_diff_count": 0,
+      "replay_exact": true
+    }
+  ],
+  "seed": 6,
+  "task": "sum the archive"
+}

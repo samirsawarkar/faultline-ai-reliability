@@ -1,0 +1,204 @@
+{
+  "bundle_format": "1.0.0",
+  "inputs": {
+    "fail_at": null,
+    "plan": [
+      "retrieve",
+      "sum",
+      "verify"
+    ],
+    "seed": 6,
+    "task": "sum the archive"
+  },
+  "provider": "simulator",
+  "recorded_calls": [
+    {
+      "component": "tool.retrieve",
+      "input_digest": "54521481d1e7245ce306b51548ac6141fb096da0f11e1c9c7d40d5c244a2d7d3",
+      "output": {
+        "by": "simulator",
+        "step": "retrieve",
+        "value": 10
+      },
+      "seq": 0
+    },
+    {
+      "component": "tool.sum",
+      "input_digest": "858cac1289a82e2b98802047109050bf94d63281407864f1116e73c59c302916",
+      "output": {
+        "by": "simulator",
+        "step": "sum",
+        "value": 20
+      },
+      "seq": 1
+    },
+    {
+      "component": "tool.verify",
+      "input_digest": "d9fa2ca298c3382dfc34104f8fea2e7bab86ea3b1a9e822a25e0673e23bd6f18",
+      "output": {
+        "by": "simulator",
+        "step": "verify",
+        "value": 30
+      },
+      "seq": 2
+    }
+  ],
+  "state": {
+    "failed": false,
+    "final": {
+      "results": [
+        {
+          "by": "simulator",
+          "step": "retrieve",
+          "value": 10
+        },
+        {
+          "by": "simulator",
+          "step": "sum",
+          "value": 20
+        },
+        {
+          "by": "simulator",
+          "step": "verify",
+          "value": 30
+        }
+      ]
+    },
+    "initial": {
+      "results": []
+    }
+  },
+  "trace": {
+    "seed": 6,
+    "span_count": 5,
+    "spans": [
+      {
+        "attributes": {},
+        "end_seq": 10,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"task\":\"sum the archive\"}",
+          "redacted": false,
+          "sha256": "84ff52ab09f7c0ceccde9b2349c58777fcb8097c824d0adff598648b4f9eb45c",
+          "size_bytes": 26
+        },
+        "kind": "agent",
+        "name": "agent",
+        "output_ref": {
+          "preview": "{\"results\":[{\"by\":\"simulator\",\"step\":\"retrieve\",\"value\":10},{\"by\":\"simulator\",\"step\":\"sum\",\"value\":20},{\"by\":\"simulator\"...(truncated)",
+          "redacted": false,
+          "sha256": "935ff69f9066ce3ae5b59d8eb0c72a32d65c95ee1637605ab5b633fa7b36ad1c",
+          "size_bytes": 150
+        },
+        "parent_span_id": null,
+        "span_id": "trace-00000006-span-0000",
+        "start_seq": 1,
+        "status": "ok",
+        "trace_id": "trace-00000006"
+      },
+      {
+        "attributes": {},
+        "end_seq": 3,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"prompt\":\"sum the archive\"}",
+          "redacted": false,
+          "sha256": "7b2982dd5e74d8e1dfa47a5686a6c276f78776d0f89dcc4df9c3a0e818469ffb",
+          "size_bytes": 28
+        },
+        "kind": "model",
+        "name": "model.plan",
+        "output_ref": {
+          "preview": "{\"plan\":[\"retrieve\",\"sum\",\"verify\"]}",
+          "redacted": false,
+          "sha256": "ed4f912cdb6d56dcb11f4629f5a9dcaa842c83308b8eb72ab2d4eea2a9a21178",
+          "size_bytes": 36
+        },
+        "parent_span_id": "trace-00000006-span-0000",
+        "span_id": "trace-00000006-span-0001",
+        "start_seq": 2,
+        "status": "ok",
+        "trace_id": "trace-00000006"
+      },
+      {
+        "attributes": {},
+        "end_seq": 5,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"index\":0,\"step\":\"retrieve\"}",
+          "redacted": false,
+          "sha256": "54521481d1e7245ce306b51548ac6141fb096da0f11e1c9c7d40d5c244a2d7d3",
+          "size_bytes": 29
+        },
+        "kind": "tool",
+        "name": "tool.retrieve",
+        "output_ref": {
+          "preview": "{\"by\":\"simulator\",\"step\":\"retrieve\",\"value\":10}",
+          "redacted": false,
+          "sha256": "4877105450bfc747343b3fb2fb20b85caf487e410aba01105add136faa8f034f",
+          "size_bytes": 47
+        },
+        "parent_span_id": "trace-00000006-span-0000",
+        "span_id": "trace-00000006-span-0002",
+        "start_seq": 4,
+        "status": "ok",
+        "trace_id": "trace-00000006"
+      },
+      {
+        "attributes": {},
+        "end_seq": 7,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"index\":1,\"step\":\"sum\"}",
+          "redacted": false,
+          "sha256": "858cac1289a82e2b98802047109050bf94d63281407864f1116e73c59c302916",
+          "size_bytes": 24
+        },
+        "kind": "tool",
+        "name": "tool.sum",
+        "output_ref": {
+          "preview": "{\"by\":\"simulator\",\"step\":\"sum\",\"value\":20}",
+          "redacted": false,
+          "sha256": "515663daeeddbeedf971c41f104756df86c76141f1a103f75496b3b429236993",
+          "size_bytes": 42
+        },
+        "parent_span_id": "trace-00000006-span-0000",
+        "span_id": "trace-00000006-span-0003",
+        "start_seq": 6,
+        "status": "ok",
+        "trace_id": "trace-00000006"
+      },
+      {
+        "attributes": {},
+        "end_seq": 9,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"index\":2,\"step\":\"verify\"}",
+          "redacted": false,
+          "sha256": "d9fa2ca298c3382dfc34104f8fea2e7bab86ea3b1a9e822a25e0673e23bd6f18",
+          "size_bytes": 27
+        },
+        "kind": "tool",
+        "name": "tool.verify",
+        "output_ref": {
+          "preview": "{\"by\":\"simulator\",\"step\":\"verify\",\"value\":30}",
+          "redacted": false,
+          "sha256": "abaab3c35ce715ae8faafd33013aebe8d952aaf0d8e2d308f27de4303b9f1f6f",
+          "size_bytes": 45
+        },
+        "parent_span_id": "trace-00000006-span-0000",
+        "span_id": "trace-00000006-span-0004",
+        "start_seq": 8,
+        "status": "ok",
+        "trace_id": "trace-00000006"
+      }
+    ],
+    "trace_id": "trace-00000006"
+  },
+  "versions": {
+    "bundle_format": "1.0.0",
+    "program": "1.0.0",
+    "simulator": "1.0.0",
+    "trace_schema_fingerprint": "bffc2ca23a3d8f1f32de53484e052a028654872849703ecb9b6f15f5b062b1a9"
+  }
+}

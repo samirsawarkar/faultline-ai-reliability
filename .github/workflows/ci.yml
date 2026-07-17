@@ -76,3 +76,14 @@ jobs:
             day5/evidence/timeline_failed.txt \
             day5/evidence/attack_report.json \
             day5/evidence/incident_narrative.md
+
+      - name: Day 6 — replay bundle + boundary report
+        run: cd day6 && python -m pytest tests/ -v
+
+      - name: Day 6 — replay bundle + report reproduce byte-for-byte
+        run: |
+          python day6/scripts/make_evidence.py
+          # environment.json is runtime-specific (excluded)
+          git diff --exit-code -- day6/evidence/bundle_simulator.json \
+            day6/evidence/replay_simulator.json \
+            day6/evidence/replay_report.json
