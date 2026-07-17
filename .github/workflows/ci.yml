@@ -95,3 +95,11 @@ jobs:
         run: |
           python day7/scripts/run_q1.py
           git diff --exit-code -- day7/evidence/
+
+      - name: Day 8 — fault spec + triggers + boundary + injection integrity
+        run: cd day8 && python -m pytest tests/ -v
+
+      - name: Day 8 — injector evidence reproduces byte-for-byte (identical triggers, no leakage)
+        run: |
+          python day8/scripts/make_evidence.py
+          git diff --exit-code -- day8/evidence/

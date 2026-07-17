@@ -1,0 +1,682 @@
+{
+  "calls": [
+    {
+      "component": "tool.retrieve",
+      "index": 0,
+      "step": "retrieve"
+    },
+    {
+      "component": "tool.sum",
+      "index": 1,
+      "step": "sum"
+    },
+    {
+      "component": "tool.verify",
+      "index": 2,
+      "step": "verify"
+    },
+    {
+      "component": "tool.retrieve",
+      "index": 3,
+      "step": "retrieve"
+    },
+    {
+      "component": "tool.sum",
+      "index": 4,
+      "step": "sum"
+    },
+    {
+      "component": "tool.verify",
+      "index": 5,
+      "step": "verify"
+    },
+    {
+      "component": "tool.retrieve",
+      "index": 6,
+      "step": "retrieve"
+    },
+    {
+      "component": "tool.sum",
+      "index": 7,
+      "step": "sum"
+    },
+    {
+      "component": "tool.verify",
+      "index": 8,
+      "step": "verify"
+    },
+    {
+      "component": "tool.retrieve",
+      "index": 9,
+      "step": "retrieve"
+    },
+    {
+      "component": "tool.sum",
+      "index": 10,
+      "step": "sum"
+    },
+    {
+      "component": "tool.verify",
+      "index": 11,
+      "step": "verify"
+    }
+  ],
+  "cost_units": 120,
+  "faults_fired": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8
+  ],
+  "ground_truth": {
+    "count": 12,
+    "entries": [
+      {
+        "component": "tool.retrieve",
+        "fault_id": "F-prb-stall",
+        "fired": true,
+        "input_digest": "54521481d1e7245ce306b51548ac6141fb096da0f11e1c9c7d40d5c244a2d7d3",
+        "label": "fault:stall",
+        "mode": "stall",
+        "seq": 0,
+        "severity": 4,
+        "span_id": "trace-20260718-span-0000",
+        "trigger": "probabilistic"
+      },
+      {
+        "component": "tool.sum",
+        "fault_id": null,
+        "fired": false,
+        "input_digest": "858cac1289a82e2b98802047109050bf94d63281407864f1116e73c59c302916",
+        "label": "clean",
+        "mode": null,
+        "seq": 1,
+        "severity": null,
+        "span_id": "trace-20260718-span-0001",
+        "trigger": null
+      },
+      {
+        "component": "tool.verify",
+        "fault_id": "F-evn-truncate",
+        "fired": true,
+        "input_digest": "d9fa2ca298c3382dfc34104f8fea2e7bab86ea3b1a9e822a25e0673e23bd6f18",
+        "label": "fault:truncate",
+        "mode": "truncate",
+        "seq": 2,
+        "severity": 2,
+        "span_id": "trace-20260718-span-0002",
+        "trigger": "every_n"
+      },
+      {
+        "component": "tool.retrieve",
+        "fault_id": "F-prb-stall",
+        "fired": true,
+        "input_digest": "f909d73f522105b2d9a9683642a81c5adbce98f9f857de71f2f948854aa7920f",
+        "label": "fault:stall",
+        "mode": "stall",
+        "seq": 3,
+        "severity": 4,
+        "span_id": "trace-20260718-span-0003",
+        "trigger": "probabilistic"
+      },
+      {
+        "component": "tool.sum",
+        "fault_id": "F-idx-corrupt",
+        "fired": true,
+        "input_digest": "7bd41b4b71de2d1cbb35e32ca0e106fd1890f1b142951f64e793fc1624e8ebb3",
+        "label": "fault:corrupt",
+        "mode": "corrupt",
+        "seq": 4,
+        "severity": 3,
+        "span_id": "trace-20260718-span-0004",
+        "trigger": "call_index"
+      },
+      {
+        "component": "tool.verify",
+        "fault_id": null,
+        "fired": false,
+        "input_digest": "3415ab2b866e54c7848ec05fe718be92b0fbb8c1a083faa420ba881e5852cc22",
+        "label": "clean",
+        "mode": null,
+        "seq": 5,
+        "severity": null,
+        "span_id": "trace-20260718-span-0005",
+        "trigger": null
+      },
+      {
+        "component": "tool.retrieve",
+        "fault_id": "F-prb-stall",
+        "fired": true,
+        "input_digest": "1230177b57d50ca65ce28f2c00a5ea56d7b5d15e451379c33cbe325fa9ae6baa",
+        "label": "fault:stall",
+        "mode": "stall",
+        "seq": 6,
+        "severity": 4,
+        "span_id": "trace-20260718-span-0006",
+        "trigger": "probabilistic"
+      },
+      {
+        "component": "tool.sum",
+        "fault_id": "F-idx-error",
+        "fired": true,
+        "input_digest": "4ac1cc925721d18116fdc0fc4637e1c33b57af2e3c0d11d3cdacc10446348e8c",
+        "label": "fault:error",
+        "mode": "error",
+        "seq": 7,
+        "severity": 5,
+        "span_id": "trace-20260718-span-0007",
+        "trigger": "call_index"
+      },
+      {
+        "component": "tool.verify",
+        "fault_id": "F-evn-truncate",
+        "fired": true,
+        "input_digest": "84e8b090aba35e15a1aa8525fddead6b17f43d008b893d6dad3e4f0e2c69430c",
+        "label": "fault:truncate",
+        "mode": "truncate",
+        "seq": 8,
+        "severity": 2,
+        "span_id": "trace-20260718-span-0008",
+        "trigger": "every_n"
+      },
+      {
+        "component": "tool.retrieve",
+        "fault_id": null,
+        "fired": false,
+        "input_digest": "79e597583f7b7eab2dba35e4abeccdfdef22575e64625ef635a87eb33f828d18",
+        "label": "clean",
+        "mode": null,
+        "seq": 9,
+        "severity": null,
+        "span_id": "trace-20260718-span-0009",
+        "trigger": null
+      },
+      {
+        "component": "tool.sum",
+        "fault_id": null,
+        "fired": false,
+        "input_digest": "ac60e95b622d6f8eb4a65b43374ab36f83afec0483c1f4da873e38d56f0eb0c9",
+        "label": "clean",
+        "mode": null,
+        "seq": 10,
+        "severity": null,
+        "span_id": "trace-20260718-span-0010",
+        "trigger": null
+      },
+      {
+        "component": "tool.verify",
+        "fault_id": null,
+        "fired": false,
+        "input_digest": "2510ff45cd9b4eda37d566b87649be934de5fa1a7ab0f17406e91d76b523ea01",
+        "label": "clean",
+        "mode": null,
+        "seq": 11,
+        "severity": null,
+        "span_id": "trace-20260718-span-0011",
+        "trigger": null
+      }
+    ],
+    "fired": 7,
+    "run_seed": 20260718
+  },
+  "no_label_leakage": true,
+  "outputs": [
+    {
+      "step": "retrieve",
+      "tokens": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "value": 10
+    },
+    {
+      "step": "sum",
+      "tokens": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "value": 20
+    },
+    {
+      "step": "verify",
+      "tokens": [
+        2,
+        3,
+        4
+      ],
+      "value": 30
+    },
+    {
+      "step": "retrieve",
+      "tokens": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "value": 40
+    },
+    {
+      "step": "sum",
+      "tokens": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "value": 383
+    },
+    {
+      "step": "verify",
+      "tokens": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "value": 60
+    },
+    {
+      "step": "retrieve",
+      "tokens": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "value": 70
+    },
+    "RAISED",
+    {
+      "step": "verify",
+      "tokens": [
+        8,
+        9,
+        10
+      ],
+      "value": 90
+    },
+    {
+      "step": "retrieve",
+      "tokens": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "value": 100
+    },
+    {
+      "step": "sum",
+      "tokens": [
+        10,
+        11,
+        12,
+        13
+      ],
+      "value": 110
+    },
+    {
+      "step": "verify",
+      "tokens": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "value": 120
+    }
+  ],
+  "run_seed": 20260718,
+  "spec_version": "1.0.0",
+  "specs": [
+    {
+      "component": "*",
+      "fault_id": "F-idx-corrupt",
+      "label": "fault:corrupt",
+      "mode": "corrupt",
+      "rate": 1.0,
+      "seed": 1,
+      "severity": 3,
+      "spec_version": "1.0.0",
+      "trigger": "call_index",
+      "trigger_value": "4"
+    },
+    {
+      "component": "tool.verify",
+      "fault_id": "F-evn-truncate",
+      "label": "fault:truncate",
+      "mode": "truncate",
+      "rate": 1.0,
+      "seed": 2,
+      "severity": 2,
+      "spec_version": "1.0.0",
+      "trigger": "every_n",
+      "trigger_value": "2"
+    },
+    {
+      "component": "tool.retrieve",
+      "fault_id": "F-prb-stall",
+      "label": "fault:stall",
+      "mode": "stall",
+      "rate": 0.5,
+      "seed": 9,
+      "severity": 4,
+      "spec_version": "1.0.0",
+      "trigger": "probabilistic",
+      "trigger_value": ""
+    },
+    {
+      "component": "tool.sum",
+      "fault_id": "F-idx-error",
+      "label": "fault:error",
+      "mode": "error",
+      "rate": 1.0,
+      "seed": 3,
+      "severity": 5,
+      "spec_version": "1.0.0",
+      "trigger": "call_index",
+      "trigger_value": "7"
+    }
+  ],
+  "trace": {
+    "seed": 20260718,
+    "span_count": 12,
+    "spans": [
+      {
+        "attributes": {},
+        "end_seq": 2,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.retrieve\",\"seq\":0}",
+          "redacted": false,
+          "sha256": "2ad8fcdfb531dfbbad772d8fd3b877a7d4bf919108904c9ba42f945e9195ac65",
+          "size_bytes": 37
+        },
+        "kind": "tool",
+        "name": "call.tool.retrieve",
+        "output_ref": {
+          "preview": "{\"step\":\"retrieve\",\"tokens\":[0,1,2,3],\"value\":10}",
+          "redacted": false,
+          "sha256": "4e32f95ff900269ab12b11396aefe51c35a698ea7c7e290c5c506dc94fad5052",
+          "size_bytes": 49
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260718-span-0000",
+        "start_seq": 1,
+        "status": "ok",
+        "trace_id": "trace-20260718"
+      },
+      {
+        "attributes": {},
+        "end_seq": 4,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.sum\",\"seq\":1}",
+          "redacted": false,
+          "sha256": "46940dc89b4facb3dbae73224277e6fa2892b4578d24e12b78bc0c2e25427f90",
+          "size_bytes": 32
+        },
+        "kind": "tool",
+        "name": "call.tool.sum",
+        "output_ref": {
+          "preview": "{\"step\":\"sum\",\"tokens\":[1,2,3,4],\"value\":20}",
+          "redacted": false,
+          "sha256": "eb10703073aca9a8031500a383bd87ae6ca60f966a04165aa0c659d8198672fd",
+          "size_bytes": 44
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260718-span-0001",
+        "start_seq": 3,
+        "status": "ok",
+        "trace_id": "trace-20260718"
+      },
+      {
+        "attributes": {},
+        "end_seq": 6,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.verify\",\"seq\":2}",
+          "redacted": false,
+          "sha256": "0586543f29d79fab315a6502fa8cc20f48f651c37a8d0806350644bee4d23698",
+          "size_bytes": 35
+        },
+        "kind": "tool",
+        "name": "call.tool.verify",
+        "output_ref": {
+          "preview": "{\"step\":\"verify\",\"tokens\":[2,3,4],\"value\":30}",
+          "redacted": false,
+          "sha256": "98bf54e14f40ed8f742dbb09cb97489667865e0646de5fe3dbc0187d7f2033f6",
+          "size_bytes": 45
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260718-span-0002",
+        "start_seq": 5,
+        "status": "ok",
+        "trace_id": "trace-20260718"
+      },
+      {
+        "attributes": {},
+        "end_seq": 8,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.retrieve\",\"seq\":3}",
+          "redacted": false,
+          "sha256": "283feef25bce566867fd8f1c3dff85dffbacc946731092f4701d782b207e3399",
+          "size_bytes": 37
+        },
+        "kind": "tool",
+        "name": "call.tool.retrieve",
+        "output_ref": {
+          "preview": "{\"step\":\"retrieve\",\"tokens\":[3,4,5,6],\"value\":40}",
+          "redacted": false,
+          "sha256": "e4cba26527631f8628701b004caaa1a4e89346965a594a00b4b00f845a702baf",
+          "size_bytes": 49
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260718-span-0003",
+        "start_seq": 7,
+        "status": "ok",
+        "trace_id": "trace-20260718"
+      },
+      {
+        "attributes": {},
+        "end_seq": 10,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.sum\",\"seq\":4}",
+          "redacted": false,
+          "sha256": "d181e7811d4ee841b5fec3eb1755f940a1ead40e8a30659195aca4e3aee900e0",
+          "size_bytes": 32
+        },
+        "kind": "tool",
+        "name": "call.tool.sum",
+        "output_ref": {
+          "preview": "{\"step\":\"sum\",\"tokens\":[4,5,6,7],\"value\":383}",
+          "redacted": false,
+          "sha256": "28e1a09c51dfdd753eb50782f23846446fe9cdd0608214054ff87214f5c22611",
+          "size_bytes": 45
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260718-span-0004",
+        "start_seq": 9,
+        "status": "ok",
+        "trace_id": "trace-20260718"
+      },
+      {
+        "attributes": {},
+        "end_seq": 12,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.verify\",\"seq\":5}",
+          "redacted": false,
+          "sha256": "1f70f005368efa328741c74d6e48c8bec13c6c8b74fc153fbaf015ca10525e5e",
+          "size_bytes": 35
+        },
+        "kind": "tool",
+        "name": "call.tool.verify",
+        "output_ref": {
+          "preview": "{\"step\":\"verify\",\"tokens\":[5,6,7,8],\"value\":60}",
+          "redacted": false,
+          "sha256": "565a2a27485c5e75a431a74a221c69cc5f2b7dca2a2964b32e58eb52ae5685f1",
+          "size_bytes": 47
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260718-span-0005",
+        "start_seq": 11,
+        "status": "ok",
+        "trace_id": "trace-20260718"
+      },
+      {
+        "attributes": {},
+        "end_seq": 14,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.retrieve\",\"seq\":6}",
+          "redacted": false,
+          "sha256": "5fe44007c68b7535e51bc72fba85aeb563f52051a1ccf0e3de3fb81a48baf40a",
+          "size_bytes": 37
+        },
+        "kind": "tool",
+        "name": "call.tool.retrieve",
+        "output_ref": {
+          "preview": "{\"step\":\"retrieve\",\"tokens\":[6,7,8,9],\"value\":70}",
+          "redacted": false,
+          "sha256": "06fc3715ffb5518a4bfbb0f3dd38bf383e8fb41ef06ba5053720fc83102ff9df",
+          "size_bytes": 49
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260718-span-0006",
+        "start_seq": 13,
+        "status": "ok",
+        "trace_id": "trace-20260718"
+      },
+      {
+        "attributes": {},
+        "end_seq": 16,
+        "error": {
+          "message": "boundary call did not complete",
+          "type": "InjectedFaultError"
+        },
+        "input_ref": {
+          "preview": "{\"component\":\"tool.sum\",\"seq\":7}",
+          "redacted": false,
+          "sha256": "038f1966f3c41de82b68d6f512f0f44089f37c8fb1e062009347370f11d81d1a",
+          "size_bytes": 32
+        },
+        "kind": "tool",
+        "name": "call.tool.sum",
+        "output_ref": null,
+        "parent_span_id": null,
+        "span_id": "trace-20260718-span-0007",
+        "start_seq": 15,
+        "status": "error",
+        "trace_id": "trace-20260718"
+      },
+      {
+        "attributes": {},
+        "end_seq": 18,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.verify\",\"seq\":8}",
+          "redacted": false,
+          "sha256": "e95e53866eba3ca93fe64962a59f8397f3dd5aeeeeee87458e6a1a415c669f61",
+          "size_bytes": 35
+        },
+        "kind": "tool",
+        "name": "call.tool.verify",
+        "output_ref": {
+          "preview": "{\"step\":\"verify\",\"tokens\":[8,9,10],\"value\":90}",
+          "redacted": false,
+          "sha256": "07f9c456befaa76a6e5c27f78d62c0cf37983a43a19e079c448968c0319e4685",
+          "size_bytes": 46
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260718-span-0008",
+        "start_seq": 17,
+        "status": "ok",
+        "trace_id": "trace-20260718"
+      },
+      {
+        "attributes": {},
+        "end_seq": 20,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.retrieve\",\"seq\":9}",
+          "redacted": false,
+          "sha256": "d82d855d55508ebcfcb6eb772f5d32ccea395e6bec6a24edf33b34765c0f5cd1",
+          "size_bytes": 37
+        },
+        "kind": "tool",
+        "name": "call.tool.retrieve",
+        "output_ref": {
+          "preview": "{\"step\":\"retrieve\",\"tokens\":[9,10,11,12],\"value\":100}",
+          "redacted": false,
+          "sha256": "31e1a7fee2c038b3ffe6ed24438006a96bb470311ddfef9d22bee477fa353294",
+          "size_bytes": 53
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260718-span-0009",
+        "start_seq": 19,
+        "status": "ok",
+        "trace_id": "trace-20260718"
+      },
+      {
+        "attributes": {},
+        "end_seq": 22,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.sum\",\"seq\":10}",
+          "redacted": false,
+          "sha256": "06708e43446226b486de00c997db090fad48dbb7d88c4ae1d838eae7251c77f7",
+          "size_bytes": 33
+        },
+        "kind": "tool",
+        "name": "call.tool.sum",
+        "output_ref": {
+          "preview": "{\"step\":\"sum\",\"tokens\":[10,11,12,13],\"value\":110}",
+          "redacted": false,
+          "sha256": "e0cd4b2c8018285d04c78ddbf547cccc30d0611dbf645318f3b5cfd8f8c4ca01",
+          "size_bytes": 49
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260718-span-0010",
+        "start_seq": 21,
+        "status": "ok",
+        "trace_id": "trace-20260718"
+      },
+      {
+        "attributes": {},
+        "end_seq": 24,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.verify\",\"seq\":11}",
+          "redacted": false,
+          "sha256": "b30dec4f547a9da26f1bd48e09065eca3f9201fbe8c1797f7a5481007f0c84dc",
+          "size_bytes": 36
+        },
+        "kind": "tool",
+        "name": "call.tool.verify",
+        "output_ref": {
+          "preview": "{\"step\":\"verify\",\"tokens\":[11,12,13,14],\"value\":120}",
+          "redacted": false,
+          "sha256": "d593a34e479398b8f52fa97809de49922427f76a518cc31f968fc93c0081e449",
+          "size_bytes": 52
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260718-span-0011",
+        "start_seq": 23,
+        "status": "ok",
+        "trace_id": "trace-20260718"
+      }
+    ],
+    "trace_id": "trace-20260718"
+  }
+}

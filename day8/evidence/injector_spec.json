@@ -1,0 +1,65 @@
+{
+  "fields": [
+    "fault_id",
+    "component",
+    "mode",
+    "severity",
+    "trigger",
+    "trigger_value",
+    "seed",
+    "rate",
+    "label",
+    "spec_version"
+  ],
+  "spec_version": "1.0.0",
+  "specs": [
+    {
+      "component": "*",
+      "fault_id": "F-idx-corrupt",
+      "label": "fault:corrupt",
+      "mode": "corrupt",
+      "rate": 1.0,
+      "seed": 1,
+      "severity": 3,
+      "spec_version": "1.0.0",
+      "trigger": "call_index",
+      "trigger_value": "4"
+    },
+    {
+      "component": "tool.verify",
+      "fault_id": "F-evn-truncate",
+      "label": "fault:truncate",
+      "mode": "truncate",
+      "rate": 1.0,
+      "seed": 2,
+      "severity": 2,
+      "spec_version": "1.0.0",
+      "trigger": "every_n",
+      "trigger_value": "2"
+    },
+    {
+      "component": "tool.retrieve",
+      "fault_id": "F-prb-stall",
+      "label": "fault:stall",
+      "mode": "stall",
+      "rate": 0.5,
+      "seed": 9,
+      "severity": 4,
+      "spec_version": "1.0.0",
+      "trigger": "probabilistic",
+      "trigger_value": ""
+    },
+    {
+      "component": "tool.sum",
+      "fault_id": "F-idx-error",
+      "label": "fault:error",
+      "mode": "error",
+      "rate": 1.0,
+      "seed": 3,
+      "severity": 5,
+      "spec_version": "1.0.0",
+      "trigger": "call_index",
+      "trigger_value": "7"
+    }
+  ]
+}

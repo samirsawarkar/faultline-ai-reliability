@@ -1,0 +1,113 @@
+{
+  "all_seeds_reproducible": true,
+  "deterministic_fault_ids": [
+    "F-idx-corrupt",
+    "F-evn-truncate",
+    "F-idx-error"
+  ],
+  "deterministic_triggers_seed_independent": true,
+  "label_leaks_total": 0,
+  "no_label_leakage": true,
+  "per_seed": [
+    {
+      "calls": 12,
+      "cost_units": 120,
+      "faults_fired": 7,
+      "fired_seqs": [
+        0,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8
+      ],
+      "leaks": [],
+      "outputs_sha256": "5e10830b3d6331553891c6048b72677678e6c05e438e365af41fa837002d3923",
+      "reproducible_on_repeat": true,
+      "seed": 20260718,
+      "truth_sha256": "3ccac24ee0839c936afc17adac23608ca5b4f6ce18fae98f67f91e814bda603a"
+    },
+    {
+      "calls": 12,
+      "cost_units": 80,
+      "faults_fired": 6,
+      "fired_seqs": [
+        0,
+        2,
+        4,
+        6,
+        7,
+        8
+      ],
+      "leaks": [],
+      "outputs_sha256": "5e10830b3d6331553891c6048b72677678e6c05e438e365af41fa837002d3923",
+      "reproducible_on_repeat": true,
+      "seed": 1,
+      "truth_sha256": "750104aeefd360b73618b321133ea058d5c735670c4841a7be6b872c6a4d6099"
+    },
+    {
+      "calls": 12,
+      "cost_units": 40,
+      "faults_fired": 5,
+      "fired_seqs": [
+        2,
+        4,
+        6,
+        7,
+        8
+      ],
+      "leaks": [],
+      "outputs_sha256": "5e10830b3d6331553891c6048b72677678e6c05e438e365af41fa837002d3923",
+      "reproducible_on_repeat": true,
+      "seed": 42,
+      "truth_sha256": "ad40a1219333fc608a17fac011dc75d2ad05d6c1ac6601eba2b106e2ed954f44"
+    },
+    {
+      "calls": 12,
+      "cost_units": 40,
+      "faults_fired": 5,
+      "fired_seqs": [
+        2,
+        4,
+        6,
+        7,
+        8
+      ],
+      "leaks": [],
+      "outputs_sha256": "5e10830b3d6331553891c6048b72677678e6c05e438e365af41fa837002d3923",
+      "reproducible_on_repeat": true,
+      "seed": 777,
+      "truth_sha256": "8889755f8f6e8af2692f9cedd27476928121ef40c57c396312c04642d2e6dc55"
+    },
+    {
+      "calls": 12,
+      "cost_units": 40,
+      "faults_fired": 5,
+      "fired_seqs": [
+        2,
+        4,
+        7,
+        8,
+        9
+      ],
+      "leaks": [],
+      "outputs_sha256": "5e10830b3d6331553891c6048b72677678e6c05e438e365af41fa837002d3923",
+      "reproducible_on_repeat": true,
+      "seed": 100000,
+      "truth_sha256": "8e46221a2af7e2934635390b26609bb0fa8070b4285bc4e1ad86f27dc8f5facf"
+    }
+  ],
+  "probabilistic_fault_ids": [
+    "F-prb-stall"
+  ],
+  "probabilistic_trigger_varies_across_seeds": true,
+  "seeds": [
+    20260718,
+    1,
+    42,
+    777,
+    100000
+  ],
+  "spec_count": 4
+}
