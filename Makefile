@@ -8,8 +8,8 @@
 # repo works even when checked out under a directory whose name contains spaces.
 PY := ./.venv/bin/python
 
-.PHONY: help venv test test-day1 test-day2 test-day3 test-day4 test-day5 test-day6 test-day7 test-day8 determinism attack \
-        day3-baseline day3-attack day4-traces day5-evidence day6-replay day7-q1 day8-inject evidence clean
+.PHONY: help venv test test-day1 test-day2 test-day3 test-day4 test-day5 test-day6 test-day7 test-day8 test-day9 determinism attack \
+        day3-baseline day3-attack day4-traces day5-evidence day6-replay day7-q1 day8-inject day9-detect evidence clean
 
 help:
 	@echo "make venv          create .venv and install pinned deps"
@@ -23,6 +23,7 @@ help:
 	@echo "make day6-replay   regenerate Day 6 replay bundle + difference report"
 	@echo "make day7-q1       regenerate Day 7 Q1 results + measured-vs-naive figure"
 	@echo "make day8-inject   regenerate Day 8 fault-injection evidence"
+	@echo "make day9-detect   regenerate Day 9 detector sweep + scored runs"
 	@echo "make evidence      regenerate all committed evidence artifacts"
 	@echo "make clean         remove caches"
 
@@ -31,7 +32,7 @@ venv:
 	$(PY) -m pip install --upgrade pip
 	$(PY) -m pip install -r requirements.txt
 
-test: test-day1 test-day2 test-day3 test-day4 test-day5 test-day6 test-day7 test-day8
+test: test-day1 test-day2 test-day3 test-day4 test-day5 test-day6 test-day7 test-day8 test-day9
 
 test-day1:
 	$(PY) -m pytest day1/tests/ -q
@@ -56,6 +57,9 @@ test-day7:
 
 test-day8:
 	$(PY) -m pytest day8/tests/ -q
+
+test-day9:
+	$(PY) -m pytest day9/tests/ -q
 
 determinism:
 	$(PY) day1/scripts/experiment_determinism.py
@@ -84,6 +88,9 @@ day7-q1:
 day8-inject:
 	$(PY) day8/scripts/make_evidence.py
 
+day9-detect:
+	$(PY) day9/scripts/make_evidence.py
+
 evidence:
 	$(PY) day1/scripts/experiment_determinism.py
 	$(PY) day2/scripts/experiment_budget.py
@@ -96,6 +103,7 @@ evidence:
 	$(PY) day6/scripts/make_evidence.py
 	$(PY) day7/scripts/run_q1.py
 	$(PY) day8/scripts/make_evidence.py
+	$(PY) day9/scripts/make_evidence.py
 
 clean:
 	find . -type d -name __pycache__ -prune -exec rm -rf {} +

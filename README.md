@@ -5,7 +5,7 @@
 [![CI](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/tests-158%20passing-brightgreen.svg)](#quickstart)
+[![Tests](https://img.shields.io/badge/tests-180%20passing-brightgreen.svg)](#quickstart)
 
 ---
 
@@ -60,7 +60,8 @@ standards below — not a demo, but a specimen you could put under a microscope.
 | **[06](day6/)** | Exact replay + reproducibility boundary | ✅ Done | replay bundle, deterministic replay harness, playback-vs-reexecution difference report |
 | **[07](day7/)** | Q1 — reliability vs required tool hops | ✅ Done | hop-count sweep, per-step accounting, measured-vs-naive curve with Wilson CIs, Checkpoint 7 |
 | **[08](day8/)** | Reproducible fault injection + independent ground truth | ✅ Done | 10-field fault spec, deterministic triggers, out-of-band truth log, cross-seed integrity attack (0 leaks) |
-| 09–50 | Measurement and hardening | 🔜 Planned | building on the frozen days above |
+| **[09](day9/)** | F1/F2 fault families + deterministic detectors, scored vs truth | ✅ Done | schema + latency-budget detectors, severity sweep with precision/recall against the injection log, fault cards |
+| 10–50 | More fault families, evaluation, and hardening | 🔜 Planned | building on the frozen days above |
 
 > The arc is deliberately cumulative: Day 2's agent runs against Day 1's frozen
 > environment, and later days inject faults into this fully-owned baseline. That
@@ -118,6 +119,12 @@ faultline-ai-reliability/
 │   ├── tests/            spec/triggers/boundary/integrity gate (45 tests)
 │   ├── evidence/         injector_spec.json, integrity_report.json, fault_trace.json
 │   └── CHECKPOINT-8 / LEARN-chaos / DECISIONS / REFLECTION.md
+├── day9/                 F1/F2 fault families + detectors, scored vs truth (stdlib only)
+│   ├── faultline_detect/ schema, latency, detectors, injectors, runner, score, experiment, cards
+│   ├── scripts/          make_evidence (fault cards + detector sweep + scored runs + traces)
+│   ├── tests/            schema/detectors/score/experiment gate (22 tests)
+│   ├── evidence/         fault_cards.json, detector_sweep.json, scored_runs.json, trace_f1/f2.json
+│   └── CHECKPOINT-9 / LEARN-validation-latency / DECISIONS / REFLECTION.md
 ├── .github/workflows/    CI: tests + determinism proof + fault attacks
 ├── requirements.txt      pinned deps (pydantic, pytest)
 └── Makefile              make venv && make test
@@ -134,7 +141,7 @@ cd day1 && python3 -m pytest tests/ -q          # 11 tests
 
 # Day 2 adds pydantic — from the repo root:
 make venv                                        # .venv from pinned deps
-make test                                        # full gate: 158 tests, day1–day8
+make test                                        # full gate: 180 tests, day1–day9
 
 # Re-prove the headline claims yourself:
 make determinism      # Day 1: byte-identical env across processes/hashseeds
@@ -144,9 +151,10 @@ make day5-evidence    # Day 5: reconstruct a failed run; survive deletions
 make day6-replay      # Day 6: capture, replay exactly, report the boundary
 make day7-q1          # Day 7: measure reliability vs hops; naive falsified at n=3
 make day8-inject      # Day 8: inject faults across seeds; identical triggers, 0 label leaks
+make day9-detect      # Day 9: sweep severity; score F1/F2 detectors vs injection truth
 ```
 
-Requires Python ≥ 3.9. Days 1 and 4–8 need no third-party packages; Days 2–3
+Requires Python ≥ 3.9. Days 1 and 4–9 need no third-party packages; Days 2–3
 need `pydantic` v2 (see `requirements.txt`).
 
 ## License

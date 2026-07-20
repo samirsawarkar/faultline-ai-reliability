@@ -103,3 +103,11 @@ jobs:
         run: |
           python day8/scripts/make_evidence.py
           git diff --exit-code -- day8/evidence/
+
+      - name: Day 9 — F1/F2 detectors + scoring against injection truth
+        run: cd day9 && python -m pytest tests/ -v
+
+      - name: Day 9 — detector sweep + scored runs reproduce byte-for-byte
+        run: |
+          python day9/scripts/make_evidence.py
+          git diff --exit-code -- day9/evidence/

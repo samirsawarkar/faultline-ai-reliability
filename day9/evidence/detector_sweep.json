@@ -1,0 +1,203 @@
+{
+  "budget": 45,
+  "f1_schema_sweep": [
+    {
+      "f1": 0.8,
+      "fn": 2,
+      "fp": 0,
+      "n": 12,
+      "precision": 1.0,
+      "recall": 0.666667,
+      "severity": 1,
+      "tn": 6,
+      "tp": 4
+    },
+    {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "n": 12,
+      "precision": 1.0,
+      "recall": 1.0,
+      "severity": 2,
+      "tn": 6,
+      "tp": 6
+    },
+    {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "n": 12,
+      "precision": 1.0,
+      "recall": 1.0,
+      "severity": 3,
+      "tn": 6,
+      "tp": 6
+    },
+    {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "n": 12,
+      "precision": 1.0,
+      "recall": 1.0,
+      "severity": 4,
+      "tn": 6,
+      "tp": 6
+    },
+    {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "n": 12,
+      "precision": 1.0,
+      "recall": 1.0,
+      "severity": 5,
+      "tn": 6,
+      "tp": 6
+    }
+  ],
+  "f2_budget_sensitivity": [
+    {
+      "budget": 30,
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "n": 12,
+      "precision": 1.0,
+      "recall": 1.0,
+      "severity": 4,
+      "tn": 6,
+      "tp": 6
+    },
+    {
+      "budget": 45,
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "n": 12,
+      "precision": 1.0,
+      "recall": 1.0,
+      "severity": 4,
+      "tn": 6,
+      "tp": 6
+    },
+    {
+      "budget": 50,
+      "f1": 0.0,
+      "fn": 6,
+      "fp": 0,
+      "n": 12,
+      "precision": null,
+      "recall": 0.0,
+      "severity": 4,
+      "tn": 6,
+      "tp": 0
+    },
+    {
+      "budget": 60,
+      "f1": 0.0,
+      "fn": 6,
+      "fp": 0,
+      "n": 12,
+      "precision": null,
+      "recall": 0.0,
+      "severity": 4,
+      "tn": 6,
+      "tp": 0
+    }
+  ],
+  "f2_latency_sweep": [
+    {
+      "f1": 0.0,
+      "fn": 6,
+      "fp": 0,
+      "n": 12,
+      "precision": null,
+      "recall": 0.0,
+      "severity": 1,
+      "tn": 6,
+      "tp": 0
+    },
+    {
+      "f1": 0.0,
+      "fn": 6,
+      "fp": 0,
+      "n": 12,
+      "precision": null,
+      "recall": 0.0,
+      "severity": 2,
+      "tn": 6,
+      "tp": 0
+    },
+    {
+      "f1": 0.0,
+      "fn": 6,
+      "fp": 0,
+      "n": 12,
+      "precision": null,
+      "recall": 0.0,
+      "severity": 3,
+      "tn": 6,
+      "tp": 0
+    },
+    {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "n": 12,
+      "precision": 1.0,
+      "recall": 1.0,
+      "severity": 4,
+      "tn": 6,
+      "tp": 6
+    },
+    {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "n": 12,
+      "precision": 1.0,
+      "recall": 1.0,
+      "severity": 5,
+      "tn": 6,
+      "tp": 6
+    }
+  ],
+  "headline": {
+    "f1_precision_min": 1.0,
+    "f1_recall_at_severity_1": 0.666667,
+    "f1_recall_at_severity_2plus": 1.0,
+    "f2_detected_from_severity": 4
+  },
+  "scenario": {
+    "calls": 12,
+    "clean_negatives": 6,
+    "fires_on": "every 2nd call (seqs 0,2,4,6,8,10)"
+  },
+  "scored_against": "day8 GroundTruthLog (injection truth), joined by seq",
+  "seed": 20260719,
+  "specificity": {
+    "duration_detector_vs_corruption_truth": {
+      "f1": 0.0,
+      "fn": 6,
+      "fp": 0,
+      "n": 12,
+      "precision": null,
+      "recall": 0.0,
+      "tn": 6,
+      "tp": 0
+    },
+    "each_detector_blind_to_other_family": true,
+    "schema_detector_vs_latency_truth": {
+      "f1": 0.0,
+      "fn": 6,
+      "fp": 0,
+      "n": 12,
+      "precision": null,
+      "recall": 0.0,
+      "tn": 6,
+      "tp": 0
+    }
+  }
+}
