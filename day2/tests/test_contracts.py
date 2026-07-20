@@ -1,6 +1,6 @@
 """Validation cannot be bypassed, and the outcome is always structured."""
 import pytest
-from conftest import entities
+from _agent_testkit import entities
 from pydantic import ValidationError
 
 from faultline_agent import Agent, AgentOutcome, OutcomeStatus, load_env

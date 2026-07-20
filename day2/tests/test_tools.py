@@ -1,5 +1,5 @@
 """The three tools are typed, deterministic, and calc is not an eval hole."""
-from conftest import entities
+from _agent_testkit import entities
 
 from faultline_agent import (
     CalcCall,

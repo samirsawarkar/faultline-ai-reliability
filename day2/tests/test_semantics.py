@@ -1,6 +1,6 @@
 """Schema validity is not semantic correctness (the Day-2 learning goal), and
 the agent is deterministic (the FAULTLINE house rule)."""
-from conftest import entities
+from _agent_testkit import entities
 
 from faultline_agent import Agent, ArchiveSumTask, OutcomeStatus, load_env, verdict
 from faultline_agent.contracts import AgentOutcome

@@ -3,8 +3,9 @@
 If any of these fail, the mission fails by definition.
 """
 import json
+from pathlib import Path
 
-from conftest import EVIDENCE
+EVIDENCE = Path(__file__).resolve().parents[1] / "evidence"
 
 from faultline_baseline import (
     BaselineConfig,

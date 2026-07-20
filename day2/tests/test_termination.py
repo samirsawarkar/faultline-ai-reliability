@@ -1,7 +1,7 @@
 """Termination is the Day-2 gate: the agent must never hang and must always
 return a structured outcome. These tests prove the loop is bounded and that an
 over-budget task stops cleanly as INCOMPLETE."""
-from conftest import entities
+from _agent_testkit import entities
 
 from faultline_agent import Agent, AgentOutcome, OutcomeStatus, load_env, verdict
 from faultline_agent import ArchiveSumTask

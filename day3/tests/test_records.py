@@ -1,6 +1,8 @@
 """Per-run records, accounting determinism, and mislabel detection."""
-from conftest import EVIDENCE
 import json
+from pathlib import Path
+
+EVIDENCE = Path(__file__).resolve().parents[1] / "evidence"
 
 from faultline_baseline import (
     BaselineConfig,
