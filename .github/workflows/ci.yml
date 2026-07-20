@@ -111,3 +111,11 @@ jobs:
         run: |
           python day9/scripts/make_evidence.py
           git diff --exit-code -- day9/evidence/
+
+      - name: Day 10 — F3/F4 contracts, classifier boundary + false-negative analysis
+        run: cd day10 && python -m pytest tests/ -v
+
+      - name: Day 10 — contract report + false negatives reproduce byte-for-byte
+        run: |
+          python day10/scripts/make_evidence.py
+          git diff --exit-code -- day10/evidence/

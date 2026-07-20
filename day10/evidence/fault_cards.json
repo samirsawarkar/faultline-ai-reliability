@@ -1,0 +1,40 @@
+{
+  "cards": [
+    {
+      "detectability": "malformed -> schema; nonmultiple -> invariant; drift_value / offbase_tokens -> ESCAPE all deterministic contracts (only the oracle catches them)",
+      "detectors": [
+        "schema (structural)",
+        "semantic invariant: value is a round ten"
+      ],
+      "family": "wrong-data",
+      "id": "F3",
+      "kinds": {
+        "drift_value": "schema-valid (may escape)",
+        "malformed_range": "malformed (schema catches)",
+        "malformed_tokens": "malformed (schema catches)",
+        "nonmultiple": "schema-valid (may escape)",
+        "offbase_tokens": "schema-valid (may escape)"
+      },
+      "name": "Schema drift / semantic corruption",
+      "severity": "scales magnitude but NOT detectability of escaping kinds",
+      "signal": "repair_signal (malformed) / invariant_violation",
+      "truth_label_prefix": "F3:",
+      "what": "The tool returns wrong data. Some outputs are malformed (schema catches them); others are SCHEMA-VALID but wrong \u2014 a different round-ten value, or a shifted-but-consecutive token run \u2014 which a contract validator accepts."
+    },
+    {
+      "detectability": "recall 1.0 \u2014 the signal is explicit, not inferred",
+      "detectors": [
+        "provider-error detector (explicit flag)"
+      ],
+      "family": "explicit-failure",
+      "id": "F4",
+      "kinds": {
+        "provider_error": "explicit error (always detectable)"
+      },
+      "name": "Provider error",
+      "signal": "circuit-breaker signal (open after threshold errors in window)",
+      "truth_label_prefix": "F4:",
+      "what": "The provider returns an explicit error envelope instead of a value (a 5xx-style hard failure). The call raises; there is no content to inspect."
+    }
+  ]
+}

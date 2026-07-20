@@ -1,0 +1,10 @@
+{
+  "not_separable": {
+    "schema_valid_semantic_wrong": "drift_value / offbase_tokens: schema-valid, invariant-respecting, non-erroring -> classified OK. Only the oracle knows it is wrong. Reported as a missed detection with evidence, never as detected."
+  },
+  "separable": {
+    "invariant_violation": "value not a round ten (semantic invariant)",
+    "malformed": "schema violation (structural)",
+    "provider_error": "explicit error flag (recall 1.0)"
+  }
+}

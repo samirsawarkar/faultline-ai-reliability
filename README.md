@@ -5,7 +5,7 @@
 [![CI](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/tests-180%20passing-brightgreen.svg)](#quickstart)
+[![Tests](https://img.shields.io/badge/tests-198%20passing-brightgreen.svg)](#quickstart)
 
 ---
 
@@ -61,7 +61,8 @@ standards below — not a demo, but a specimen you could put under a microscope.
 | **[07](day7/)** | Q1 — reliability vs required tool hops | ✅ Done | hop-count sweep, per-step accounting, measured-vs-naive curve with Wilson CIs, Checkpoint 7 |
 | **[08](day8/)** | Reproducible fault injection + independent ground truth | ✅ Done | 10-field fault spec, deterministic triggers, out-of-band truth log, cross-seed integrity attack (0 leaks) |
 | **[09](day9/)** | F1/F2 fault families + deterministic detectors, scored vs truth | ✅ Done | schema + latency-budget detectors, severity sweep with precision/recall against the injection log, fault cards |
-| 10–50 | More fault families, evaluation, and hardening | 🔜 Planned | building on the frozen days above |
+| **[10](day10/)** | F3/F4 — schema-valid wrong data vs explicit provider errors | ✅ Done | correctness oracle, semantic invariant, mixed classifier, false-negative analysis (40% of wrong-data escapes), circuit-breaker signal |
+| 11–50 | More fault families, evaluation, and hardening | 🔜 Planned | building on the frozen days above |
 
 > The arc is deliberately cumulative: Day 2's agent runs against Day 1's frozen
 > environment, and later days inject faults into this fully-owned baseline. That
@@ -125,6 +126,12 @@ faultline-ai-reliability/
 │   ├── tests/            schema/detectors/score/experiment gate (22 tests)
 │   ├── evidence/         fault_cards.json, detector_sweep.json, scored_runs.json, trace_f1/f2.json
 │   └── CHECKPOINT-9 / LEARN-validation-latency / DECISIONS / REFLECTION.md
+├── day10/                F3/F4 — schema-valid wrong vs provider errors (stdlib only)
+│   ├── faultline_contracts/ oracle, corruptions, invariant+classifier, breaker, runner, score
+│   ├── scripts/          make_evidence (cards + contract report + false negatives + traces)
+│   ├── tests/            oracle/corruption/classifier/score gate (18 tests)
+│   ├── evidence/         contract_report.json, false_negatives.json, classifier_boundaries.json, trace_f3/f4.json
+│   └── CHECKPOINT-10 / LEARN-semantic-invariants / DECISIONS / REFLECTION.md
 ├── .github/workflows/    CI: tests + determinism proof + fault attacks
 ├── requirements.txt      pinned deps (pydantic, pytest)
 └── Makefile              make venv && make test
@@ -141,7 +148,7 @@ cd day1 && python3 -m pytest tests/ -q          # 11 tests
 
 # Day 2 adds pydantic — from the repo root:
 make venv                                        # .venv from pinned deps
-make test                                        # full gate: 180 tests, day1–day9
+make test                                        # full gate: 198 tests, day1–day10
 
 # Re-prove the headline claims yourself:
 make determinism      # Day 1: byte-identical env across processes/hashseeds
@@ -152,9 +159,10 @@ make day6-replay      # Day 6: capture, replay exactly, report the boundary
 make day7-q1          # Day 7: measure reliability vs hops; naive falsified at n=3
 make day8-inject      # Day 8: inject faults across seeds; identical triggers, 0 label leaks
 make day9-detect      # Day 9: sweep severity; score F1/F2 detectors vs injection truth
+make day10-contracts  # Day 10: F3/F4; which wrong values escape contract validation
 ```
 
-Requires Python ≥ 3.9. Days 1 and 4–9 need no third-party packages; Days 2–3
+Requires Python ≥ 3.9. Days 1 and 4–10 need no third-party packages; Days 2–3
 need `pydantic` v2 (see `requirements.txt`).
 
 ## License

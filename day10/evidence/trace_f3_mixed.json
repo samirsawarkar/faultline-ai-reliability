@@ -1,0 +1,525 @@
+{
+  "confusion_vs_injection_truth": {
+    "f1": 0.75,
+    "fn": 2,
+    "fp": 0,
+    "n": 12,
+    "precision": 1.0,
+    "recall": 0.6,
+    "tn": 7,
+    "tp": 3
+  },
+  "family": "F3",
+  "seed": 20260720,
+  "trace": {
+    "seed": 20260720,
+    "span_count": 12,
+    "spans": [
+      {
+        "attributes": {},
+        "end_seq": 2,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.retrieve\",\"seq\":0}",
+          "redacted": false,
+          "sha256": "2ad8fcdfb531dfbbad772d8fd3b877a7d4bf919108904c9ba42f945e9195ac65",
+          "size_bytes": 37
+        },
+        "kind": "tool",
+        "name": "call.tool.retrieve",
+        "output_ref": {
+          "preview": "{\"step\":\"retrieve\",\"tokens\":[0,1,2,3],\"value\":170}",
+          "redacted": false,
+          "sha256": "55d875a8adc04c52db0d70c5770ff5d669309cf8c8855a5dab1e4ef8e6b23bde",
+          "size_bytes": 50
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260720-span-0000",
+        "start_seq": 1,
+        "status": "ok",
+        "trace_id": "trace-20260720"
+      },
+      {
+        "attributes": {},
+        "end_seq": 4,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.sum\",\"seq\":1}",
+          "redacted": false,
+          "sha256": "46940dc89b4facb3dbae73224277e6fa2892b4578d24e12b78bc0c2e25427f90",
+          "size_bytes": 32
+        },
+        "kind": "tool",
+        "name": "call.tool.sum",
+        "output_ref": {
+          "preview": "{\"step\":\"sum\",\"tokens\":[1,2],\"value\":20}",
+          "redacted": false,
+          "sha256": "f3b55714a47b3eb68ffffddab0a7b1fcbc00e54caa66077030d8f7a7772e7b62",
+          "size_bytes": 40
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260720-span-0001",
+        "start_seq": 3,
+        "status": "ok",
+        "trace_id": "trace-20260720"
+      },
+      {
+        "attributes": {},
+        "end_seq": 6,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.verify\",\"seq\":2}",
+          "redacted": false,
+          "sha256": "0586543f29d79fab315a6502fa8cc20f48f651c37a8d0806350644bee4d23698",
+          "size_bytes": 35
+        },
+        "kind": "tool",
+        "name": "call.tool.verify",
+        "output_ref": {
+          "preview": "{\"step\":\"verify\",\"tokens\":[2,3,4,5],\"value\":32}",
+          "redacted": false,
+          "sha256": "849c982e7c2284841297ec86a506f2c8f65c1ae8c40f7b623b40208daf9c403e",
+          "size_bytes": 47
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260720-span-0002",
+        "start_seq": 5,
+        "status": "ok",
+        "trace_id": "trace-20260720"
+      },
+      {
+        "attributes": {},
+        "end_seq": 8,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.retrieve\",\"seq\":3}",
+          "redacted": false,
+          "sha256": "283feef25bce566867fd8f1c3dff85dffbacc946731092f4701d782b207e3399",
+          "size_bytes": 37
+        },
+        "kind": "tool",
+        "name": "call.tool.retrieve",
+        "output_ref": {
+          "preview": "{\"step\":\"retrieve\",\"tokens\":[3,4,5,6],\"value\":80}",
+          "redacted": false,
+          "sha256": "ed0c9b1ec5787929f7731bb2d2b355b20e0af2cc7a547e97251f75a3682dbc00",
+          "size_bytes": 49
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260720-span-0003",
+        "start_seq": 7,
+        "status": "ok",
+        "trace_id": "trace-20260720"
+      },
+      {
+        "attributes": {},
+        "end_seq": 10,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.sum\",\"seq\":4}",
+          "redacted": false,
+          "sha256": "d181e7811d4ee841b5fec3eb1755f940a1ead40e8a30659195aca4e3aee900e0",
+          "size_bytes": 32
+        },
+        "kind": "tool",
+        "name": "call.tool.sum",
+        "output_ref": {
+          "preview": "{\"step\":\"sum\",\"tokens\":[6,7,8,9],\"value\":50}",
+          "redacted": false,
+          "sha256": "ffcaee4c54c272457ba57ac0a477839f10320ec0226ebd9c4dc99f509236af4f",
+          "size_bytes": 44
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260720-span-0004",
+        "start_seq": 9,
+        "status": "ok",
+        "trace_id": "trace-20260720"
+      },
+      {
+        "attributes": {},
+        "end_seq": 12,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.verify\",\"seq\":5}",
+          "redacted": false,
+          "sha256": "1f70f005368efa328741c74d6e48c8bec13c6c8b74fc153fbaf015ca10525e5e",
+          "size_bytes": 35
+        },
+        "kind": "tool",
+        "name": "call.tool.verify",
+        "output_ref": {
+          "preview": "{\"step\":\"verify\",\"tokens\":[5,6,7,8],\"value\":60}",
+          "redacted": false,
+          "sha256": "565a2a27485c5e75a431a74a221c69cc5f2b7dca2a2964b32e58eb52ae5685f1",
+          "size_bytes": 47
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260720-span-0005",
+        "start_seq": 11,
+        "status": "ok",
+        "trace_id": "trace-20260720"
+      },
+      {
+        "attributes": {},
+        "end_seq": 14,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.retrieve\",\"seq\":6}",
+          "redacted": false,
+          "sha256": "5fe44007c68b7535e51bc72fba85aeb563f52051a1ccf0e3de3fb81a48baf40a",
+          "size_bytes": 37
+        },
+        "kind": "tool",
+        "name": "call.tool.retrieve",
+        "output_ref": {
+          "preview": "{\"step\":\"retrieve\",\"tokens\":[6,7,8,9],\"value\":70}",
+          "redacted": false,
+          "sha256": "06fc3715ffb5518a4bfbb0f3dd38bf383e8fb41ef06ba5053720fc83102ff9df",
+          "size_bytes": 49
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260720-span-0006",
+        "start_seq": 13,
+        "status": "ok",
+        "trace_id": "trace-20260720"
+      },
+      {
+        "attributes": {},
+        "end_seq": 16,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.sum\",\"seq\":7}",
+          "redacted": false,
+          "sha256": "038f1966f3c41de82b68d6f512f0f44089f37c8fb1e062009347370f11d81d1a",
+          "size_bytes": 32
+        },
+        "kind": "tool",
+        "name": "call.tool.sum",
+        "output_ref": {
+          "preview": "{\"step\":\"sum\",\"tokens\":[7,8,9,10],\"value\":80}",
+          "redacted": false,
+          "sha256": "669e492598e2b8967dae61df2f17b3d08ece09c1b7b82802748544432e730786",
+          "size_bytes": 45
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260720-span-0007",
+        "start_seq": 15,
+        "status": "ok",
+        "trace_id": "trace-20260720"
+      },
+      {
+        "attributes": {},
+        "end_seq": 18,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.verify\",\"seq\":8}",
+          "redacted": false,
+          "sha256": "e95e53866eba3ca93fe64962a59f8397f3dd5aeeeeee87458e6a1a415c669f61",
+          "size_bytes": 35
+        },
+        "kind": "tool",
+        "name": "call.tool.verify",
+        "output_ref": {
+          "preview": "{\"step\":\"verify\",\"tokens\":[8,9,10,11],\"value\":90}",
+          "redacted": false,
+          "sha256": "19847f7e9ed9d407e60f0e251573ed924a66b3f3188efef6bcf37e37d160b584",
+          "size_bytes": 49
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260720-span-0008",
+        "start_seq": 17,
+        "status": "ok",
+        "trace_id": "trace-20260720"
+      },
+      {
+        "attributes": {},
+        "end_seq": 20,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.retrieve\",\"seq\":9}",
+          "redacted": false,
+          "sha256": "d82d855d55508ebcfcb6eb772f5d32ccea395e6bec6a24edf33b34765c0f5cd1",
+          "size_bytes": 37
+        },
+        "kind": "tool",
+        "name": "call.tool.retrieve",
+        "output_ref": {
+          "preview": "{\"step\":\"retrieve\",\"tokens\":[9,10,11,12],\"value\":100}",
+          "redacted": false,
+          "sha256": "31e1a7fee2c038b3ffe6ed24438006a96bb470311ddfef9d22bee477fa353294",
+          "size_bytes": 53
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260720-span-0009",
+        "start_seq": 19,
+        "status": "ok",
+        "trace_id": "trace-20260720"
+      },
+      {
+        "attributes": {},
+        "end_seq": 22,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.sum\",\"seq\":10}",
+          "redacted": false,
+          "sha256": "06708e43446226b486de00c997db090fad48dbb7d88c4ae1d838eae7251c77f7",
+          "size_bytes": 33
+        },
+        "kind": "tool",
+        "name": "call.tool.sum",
+        "output_ref": {
+          "preview": "{\"step\":\"sum\",\"tokens\":[10,11,12,13],\"value\":110}",
+          "redacted": false,
+          "sha256": "e0cd4b2c8018285d04c78ddbf547cccc30d0611dbf645318f3b5cfd8f8c4ca01",
+          "size_bytes": 49
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260720-span-0010",
+        "start_seq": 21,
+        "status": "ok",
+        "trace_id": "trace-20260720"
+      },
+      {
+        "attributes": {},
+        "end_seq": 24,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.verify\",\"seq\":11}",
+          "redacted": false,
+          "sha256": "b30dec4f547a9da26f1bd48e09065eca3f9201fbe8c1797f7a5481007f0c84dc",
+          "size_bytes": 36
+        },
+        "kind": "tool",
+        "name": "call.tool.verify",
+        "output_ref": {
+          "preview": "{\"step\":\"verify\",\"tokens\":[11,12,13,14],\"value\":120}",
+          "redacted": false,
+          "sha256": "d593a34e479398b8f52fa97809de49922427f76a518cc31f968fc93c0081e449",
+          "size_bytes": 52
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260720-span-0011",
+        "start_seq": 23,
+        "status": "ok",
+        "trace_id": "trace-20260720"
+      }
+    ],
+    "trace_id": "trace-20260720"
+  },
+  "verdicts": [
+    {
+      "classifier_class": "malformed",
+      "component": "tool.retrieve",
+      "injected": "malformed_range",
+      "oracle_correct": false,
+      "output": {
+        "step": "retrieve",
+        "tokens": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "value": 170
+      },
+      "raised": false,
+      "seq": 0
+    },
+    {
+      "classifier_class": "malformed",
+      "component": "tool.sum",
+      "injected": "malformed_tokens",
+      "oracle_correct": false,
+      "output": {
+        "step": "sum",
+        "tokens": [
+          1,
+          2
+        ],
+        "value": 20
+      },
+      "raised": false,
+      "seq": 1
+    },
+    {
+      "classifier_class": "invariant_violation",
+      "component": "tool.verify",
+      "injected": "nonmultiple",
+      "oracle_correct": false,
+      "output": {
+        "step": "verify",
+        "tokens": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "value": 32
+      },
+      "raised": false,
+      "seq": 2
+    },
+    {
+      "classifier_class": "ok",
+      "component": "tool.retrieve",
+      "injected": "drift_value",
+      "oracle_correct": false,
+      "output": {
+        "step": "retrieve",
+        "tokens": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "value": 80
+      },
+      "raised": false,
+      "seq": 3
+    },
+    {
+      "classifier_class": "ok",
+      "component": "tool.sum",
+      "injected": "offbase_tokens",
+      "oracle_correct": false,
+      "output": {
+        "step": "sum",
+        "tokens": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "value": 50
+      },
+      "raised": false,
+      "seq": 4
+    },
+    {
+      "classifier_class": "ok",
+      "component": "tool.verify",
+      "injected": "clean",
+      "oracle_correct": true,
+      "output": {
+        "step": "verify",
+        "tokens": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "value": 60
+      },
+      "raised": false,
+      "seq": 5
+    },
+    {
+      "classifier_class": "ok",
+      "component": "tool.retrieve",
+      "injected": "clean",
+      "oracle_correct": true,
+      "output": {
+        "step": "retrieve",
+        "tokens": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "value": 70
+      },
+      "raised": false,
+      "seq": 6
+    },
+    {
+      "classifier_class": "ok",
+      "component": "tool.sum",
+      "injected": "clean",
+      "oracle_correct": true,
+      "output": {
+        "step": "sum",
+        "tokens": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "value": 80
+      },
+      "raised": false,
+      "seq": 7
+    },
+    {
+      "classifier_class": "ok",
+      "component": "tool.verify",
+      "injected": "clean",
+      "oracle_correct": true,
+      "output": {
+        "step": "verify",
+        "tokens": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "value": 90
+      },
+      "raised": false,
+      "seq": 8
+    },
+    {
+      "classifier_class": "ok",
+      "component": "tool.retrieve",
+      "injected": "clean",
+      "oracle_correct": true,
+      "output": {
+        "step": "retrieve",
+        "tokens": [
+          9,
+          10,
+          11,
+          12
+        ],
+        "value": 100
+      },
+      "raised": false,
+      "seq": 9
+    },
+    {
+      "classifier_class": "ok",
+      "component": "tool.sum",
+      "injected": "clean",
+      "oracle_correct": true,
+      "output": {
+        "step": "sum",
+        "tokens": [
+          10,
+          11,
+          12,
+          13
+        ],
+        "value": 110
+      },
+      "raised": false,
+      "seq": 10
+    },
+    {
+      "classifier_class": "ok",
+      "component": "tool.verify",
+      "injected": "clean",
+      "oracle_correct": true,
+      "output": {
+        "step": "verify",
+        "tokens": [
+          11,
+          12,
+          13,
+          14
+        ],
+        "value": 120
+      },
+      "raised": false,
+      "seq": 11
+    }
+  ]
+}
