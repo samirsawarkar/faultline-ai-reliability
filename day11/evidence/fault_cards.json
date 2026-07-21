@@ -1,0 +1,34 @@
+{
+  "cards": [
+    {
+      "detectability": "consistency catches the incoherent kind; the coherent drift requires semantic evaluation (oracle)",
+      "detection_nature": "semantic",
+      "detector": "context-consistency invariant (final == sum(context))",
+      "family": "semantic",
+      "id": "F5",
+      "kinds": {
+        "context_drift": "a coherent wrong value (final recomputed to match) -> passes the consistency invariant, ESCAPES; needs oracle",
+        "context_inconsistent": "a wrong value with the final left unchanged -> breaks final==sum(context); caught"
+      },
+      "name": "Context corruption",
+      "signal": "context_integrity violation",
+      "truth_label_prefix": "F5:",
+      "what": "A plausible WRONG value enters the task's running context and flows into the final result. The output stays well-formed."
+    },
+    {
+      "detectability": "recall 1.0 \u2014 counting and equality, no correctness model",
+      "detection_nature": "deterministic",
+      "detector": "repetition detector + step-budget detector",
+      "family": "deterministic",
+      "id": "F6",
+      "kinds": {
+        "budget_exhaustion": "the loop hits the step budget without completing",
+        "repetition": "the loop repeats a step and never progresses"
+      },
+      "name": "Loop exhaustion",
+      "signal": "loop_detect (repetition or budget-exhaustion)",
+      "truth_label_prefix": "F6:",
+      "what": "The agent loop fails to terminate correctly within its step budget (6); a clean task completes in 4 steps."
+    }
+  ]
+}

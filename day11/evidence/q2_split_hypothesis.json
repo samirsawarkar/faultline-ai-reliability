@@ -1,0 +1,21 @@
+{
+  "falsifiable_by": "a deterministic detector that closes F5 context_drift or F3 drift_value/offbase_tokens without any correctness model would refute the split. None exists by construction: those corruptions are structurally identical to correct outputs.",
+  "hypothesis": "Detection accuracy bifurcates by DETECTION NATURE, not by fault severity. Deterministic faults (F2 latency, F4 provider error, F6 loop exhaustion) are detected at recall 1.0 by cheap structural/counting detectors with NO residual escape. Semantic faults (F3 schema-valid drift, F5 context corruption) leave an irreducible escape set under ANY deterministic detector; closing them requires semantic evaluation (an oracle or a validated judge). Q2 (Mission 15) will measure this split with confidence intervals.",
+  "question": "Q2 \u2014 how does detection accuracy split across the fault spectrum?",
+  "supporting": {
+    "f5_consistency_recall": 0.5,
+    "f5_escape_needs_semantic_eval": 2,
+    "f6_deterministic_recall": 1.0,
+    "f6_escape_set_size": 0,
+    "fully_deterministic_faults": [
+      "F2",
+      "F4",
+      "F6"
+    ],
+    "require_semantic_evaluation": [
+      "F1",
+      "F3",
+      "F5"
+    ]
+  }
+}

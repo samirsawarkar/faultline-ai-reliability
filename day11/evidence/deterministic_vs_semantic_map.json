@@ -1,0 +1,89 @@
+{
+  "definition": {
+    "deterministic": "verdict from structure/counts/equality/explicit flags; no model of correctness",
+    "semantic": "verdict needs a correctness or meaning model (value invariant or oracle/judge)"
+  },
+  "faults": [
+    {
+      "fault": "F1",
+      "name": "structured-output corruption",
+      "nature": "deterministic",
+      "observed_recall": {
+        "severity_1": 0.666667,
+        "severity_2plus": 1.0
+      },
+      "primary_detector": "schema (structural)",
+      "residual": "small in-range value drift is schema-valid (missed at low severity)",
+      "semantic_residual": true
+    },
+    {
+      "fault": "F2",
+      "name": "tool latency / timeout",
+      "nature": "deterministic",
+      "observed_recall": {
+        "at_or_above_budget": 1.0,
+        "detected_from_severity": 4
+      },
+      "primary_detector": "duration vs budget",
+      "semantic_residual": false
+    },
+    {
+      "escape_kinds": [
+        "drift_value",
+        "offbase_tokens"
+      ],
+      "fault": "F3",
+      "name": "schema drift / semantic corruption",
+      "nature": "mixed",
+      "observed_recall": {
+        "mixed_classifier": 0.6
+      },
+      "primary_detector": "schema + value invariant",
+      "semantic_residual": true
+    },
+    {
+      "fault": "F4",
+      "name": "provider error",
+      "nature": "deterministic",
+      "observed_recall": {
+        "all": 1.0
+      },
+      "primary_detector": "explicit error flag",
+      "semantic_residual": false
+    },
+    {
+      "escape_kinds": [
+        "context_drift"
+      ],
+      "fault": "F5",
+      "name": "context corruption",
+      "nature": "semantic",
+      "observed_recall": {
+        "consistency_invariant": 0.5
+      },
+      "primary_detector": "context-consistency invariant",
+      "semantic_residual": true
+    },
+    {
+      "fault": "F6",
+      "name": "loop exhaustion (repetition / budget)",
+      "nature": "deterministic",
+      "observed_recall": {
+        "all": 1.0
+      },
+      "primary_detector": "repetition + step-budget",
+      "semantic_residual": false
+    }
+  ],
+  "fully_deterministic_recall_1_no_escape": [
+    "F2",
+    "F4",
+    "F6"
+  ],
+  "require_semantic_evaluation": [
+    "F1",
+    "F3",
+    "F5"
+  ],
+  "separation_holds": true
+}

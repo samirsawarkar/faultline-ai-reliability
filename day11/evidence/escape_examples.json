@@ -1,0 +1,57 @@
+{
+  "escapes": [
+    {
+      "consistency_check": "passed",
+      "expected_context": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "expected_final": 100,
+      "got_context": [
+        10,
+        60,
+        30,
+        40
+      ],
+      "got_final": 140,
+      "injected_kind": "context_drift",
+      "needs_semantic_eval": true,
+      "oracle_verdict": "wrong",
+      "seq": 0
+    },
+    {
+      "consistency_check": "passed",
+      "expected_context": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "expected_final": 100,
+      "got_context": [
+        10,
+        60,
+        30,
+        40
+      ],
+      "got_final": 140,
+      "injected_kind": "context_drift",
+      "needs_semantic_eval": true,
+      "oracle_verdict": "wrong",
+      "seq": 2
+    }
+  ],
+  "f5_consistency_confusion": {
+    "f1": 0.666667,
+    "fn": 2,
+    "fp": 0,
+    "n": 8,
+    "precision": 1.0,
+    "recall": 0.5,
+    "tn": 4,
+    "tp": 2
+  },
+  "note": "F5 context_drift: coherent, well-formed, consistent \u2014 yet wrong. Passed every deterministic/consistency check; only the oracle catches it. Isolated here as REQUIRING semantic evaluation."
+}

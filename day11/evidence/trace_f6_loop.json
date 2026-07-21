@@ -1,0 +1,413 @@
+{
+  "confusion_vs_injection_truth": {
+    "f1": 1.0,
+    "fn": 0,
+    "fp": 0,
+    "n": 8,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tn": 4,
+    "tp": 4
+  },
+  "family": "F6",
+  "seed": 20260721,
+  "trace": {
+    "seed": 20260721,
+    "span_count": 8,
+    "spans": [
+      {
+        "attributes": {},
+        "end_seq": 2,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"seq\":0,\"steps\":6}",
+          "redacted": false,
+          "sha256": "5c0bf915a2ba5ab9d5533c3d545a6a13e342ad104b178b1c8959ed5ef35229f2",
+          "size_bytes": 19
+        },
+        "kind": "agent",
+        "name": "run.0",
+        "output_ref": {
+          "preview": "{\"completed\":false,\"final\":null}",
+          "redacted": false,
+          "sha256": "8778966b9ee2c520d453cea4f966a1665537864ae8a6ea663860f126f2734bc1",
+          "size_bytes": 32
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260721-span-0000",
+        "start_seq": 1,
+        "status": "ok",
+        "trace_id": "trace-20260721"
+      },
+      {
+        "attributes": {},
+        "end_seq": 4,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"seq\":1,\"steps\":6}",
+          "redacted": false,
+          "sha256": "f59ff12c5344a09800c0dcd7546b297b6fb86d68785216f0a0ff6afa6d3e77f6",
+          "size_bytes": 19
+        },
+        "kind": "agent",
+        "name": "run.1",
+        "output_ref": {
+          "preview": "{\"completed\":false,\"final\":null}",
+          "redacted": false,
+          "sha256": "8778966b9ee2c520d453cea4f966a1665537864ae8a6ea663860f126f2734bc1",
+          "size_bytes": 32
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260721-span-0001",
+        "start_seq": 3,
+        "status": "ok",
+        "trace_id": "trace-20260721"
+      },
+      {
+        "attributes": {},
+        "end_seq": 6,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"seq\":2,\"steps\":6}",
+          "redacted": false,
+          "sha256": "d068eda93a716412df0c91c5e5040c3a233de7265b5126e27835405aba83a19b",
+          "size_bytes": 19
+        },
+        "kind": "agent",
+        "name": "run.2",
+        "output_ref": {
+          "preview": "{\"completed\":false,\"final\":null}",
+          "redacted": false,
+          "sha256": "8778966b9ee2c520d453cea4f966a1665537864ae8a6ea663860f126f2734bc1",
+          "size_bytes": 32
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260721-span-0002",
+        "start_seq": 5,
+        "status": "ok",
+        "trace_id": "trace-20260721"
+      },
+      {
+        "attributes": {},
+        "end_seq": 8,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"seq\":3,\"steps\":6}",
+          "redacted": false,
+          "sha256": "38db3c243bc623457fd12d3cd75ab960e219bcd2a32c8eecce5b62e1ce9bb5a1",
+          "size_bytes": 19
+        },
+        "kind": "agent",
+        "name": "run.3",
+        "output_ref": {
+          "preview": "{\"completed\":false,\"final\":null}",
+          "redacted": false,
+          "sha256": "8778966b9ee2c520d453cea4f966a1665537864ae8a6ea663860f126f2734bc1",
+          "size_bytes": 32
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260721-span-0003",
+        "start_seq": 7,
+        "status": "ok",
+        "trace_id": "trace-20260721"
+      },
+      {
+        "attributes": {},
+        "end_seq": 10,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"seq\":4,\"steps\":4}",
+          "redacted": false,
+          "sha256": "2fc34a133717f4e0474a889929b4ecc3015be228f0d10529e2ef633a4722edc2",
+          "size_bytes": 19
+        },
+        "kind": "agent",
+        "name": "run.4",
+        "output_ref": {
+          "preview": "{\"completed\":true,\"final\":100}",
+          "redacted": false,
+          "sha256": "6b52ce66e16ca9f3369d83b63e7d4a1ac44c66f231fd36ea6c26c5d404a692e2",
+          "size_bytes": 30
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260721-span-0004",
+        "start_seq": 9,
+        "status": "ok",
+        "trace_id": "trace-20260721"
+      },
+      {
+        "attributes": {},
+        "end_seq": 12,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"seq\":5,\"steps\":4}",
+          "redacted": false,
+          "sha256": "ba2616fcafdc4b23d29da7dbffaba4564d6b0ac95ae962e4d5f0226524199c15",
+          "size_bytes": 19
+        },
+        "kind": "agent",
+        "name": "run.5",
+        "output_ref": {
+          "preview": "{\"completed\":true,\"final\":100}",
+          "redacted": false,
+          "sha256": "6b52ce66e16ca9f3369d83b63e7d4a1ac44c66f231fd36ea6c26c5d404a692e2",
+          "size_bytes": 30
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260721-span-0005",
+        "start_seq": 11,
+        "status": "ok",
+        "trace_id": "trace-20260721"
+      },
+      {
+        "attributes": {},
+        "end_seq": 14,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"seq\":6,\"steps\":4}",
+          "redacted": false,
+          "sha256": "7df7033d2e692c9f0423095c0b638a8abda767c15c215896d8692b2357c38aab",
+          "size_bytes": 19
+        },
+        "kind": "agent",
+        "name": "run.6",
+        "output_ref": {
+          "preview": "{\"completed\":true,\"final\":100}",
+          "redacted": false,
+          "sha256": "6b52ce66e16ca9f3369d83b63e7d4a1ac44c66f231fd36ea6c26c5d404a692e2",
+          "size_bytes": 30
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260721-span-0006",
+        "start_seq": 13,
+        "status": "ok",
+        "trace_id": "trace-20260721"
+      },
+      {
+        "attributes": {},
+        "end_seq": 16,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"seq\":7,\"steps\":4}",
+          "redacted": false,
+          "sha256": "c124056e77ee662873e67df7432b5e2a556c840252c4eaa485adf4e92d93f257",
+          "size_bytes": 19
+        },
+        "kind": "agent",
+        "name": "run.7",
+        "output_ref": {
+          "preview": "{\"completed\":true,\"final\":100}",
+          "redacted": false,
+          "sha256": "6b52ce66e16ca9f3369d83b63e7d4a1ac44c66f231fd36ea6c26c5d404a692e2",
+          "size_bytes": 30
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260721-span-0007",
+        "start_seq": 15,
+        "status": "ok",
+        "trace_id": "trace-20260721"
+      }
+    ],
+    "trace_id": "trace-20260721"
+  },
+  "verdicts": [
+    {
+      "context_integrity_violation": false,
+      "injected": "repetition",
+      "loop_detected": true,
+      "oracle_correct": false,
+      "result": {
+        "completed": false,
+        "context": [
+          10
+        ],
+        "final": null,
+        "step_signatures": [
+          "step:0",
+          "step:1",
+          "step:1",
+          "step:1",
+          "step:1",
+          "step:1"
+        ],
+        "steps_used": 6
+      },
+      "seq": 0
+    },
+    {
+      "context_integrity_violation": false,
+      "injected": "budget_exhaustion",
+      "loop_detected": true,
+      "oracle_correct": false,
+      "result": {
+        "completed": false,
+        "context": [
+          10,
+          20,
+          30,
+          40,
+          50,
+          60
+        ],
+        "final": null,
+        "step_signatures": [
+          "step:0",
+          "step:1",
+          "step:2",
+          "step:3",
+          "step:4",
+          "step:5"
+        ],
+        "steps_used": 6
+      },
+      "seq": 1
+    },
+    {
+      "context_integrity_violation": false,
+      "injected": "repetition",
+      "loop_detected": true,
+      "oracle_correct": false,
+      "result": {
+        "completed": false,
+        "context": [
+          10
+        ],
+        "final": null,
+        "step_signatures": [
+          "step:0",
+          "step:1",
+          "step:1",
+          "step:1",
+          "step:1",
+          "step:1"
+        ],
+        "steps_used": 6
+      },
+      "seq": 2
+    },
+    {
+      "context_integrity_violation": false,
+      "injected": "budget_exhaustion",
+      "loop_detected": true,
+      "oracle_correct": false,
+      "result": {
+        "completed": false,
+        "context": [
+          10,
+          20,
+          30,
+          40,
+          50,
+          60
+        ],
+        "final": null,
+        "step_signatures": [
+          "step:0",
+          "step:1",
+          "step:2",
+          "step:3",
+          "step:4",
+          "step:5"
+        ],
+        "steps_used": 6
+      },
+      "seq": 3
+    },
+    {
+      "context_integrity_violation": false,
+      "injected": "clean",
+      "loop_detected": false,
+      "oracle_correct": true,
+      "result": {
+        "completed": true,
+        "context": [
+          10,
+          20,
+          30,
+          40
+        ],
+        "final": 100,
+        "step_signatures": [
+          "step:0",
+          "step:1",
+          "step:2",
+          "step:3"
+        ],
+        "steps_used": 4
+      },
+      "seq": 4
+    },
+    {
+      "context_integrity_violation": false,
+      "injected": "clean",
+      "loop_detected": false,
+      "oracle_correct": true,
+      "result": {
+        "completed": true,
+        "context": [
+          10,
+          20,
+          30,
+          40
+        ],
+        "final": 100,
+        "step_signatures": [
+          "step:0",
+          "step:1",
+          "step:2",
+          "step:3"
+        ],
+        "steps_used": 4
+      },
+      "seq": 5
+    },
+    {
+      "context_integrity_violation": false,
+      "injected": "clean",
+      "loop_detected": false,
+      "oracle_correct": true,
+      "result": {
+        "completed": true,
+        "context": [
+          10,
+          20,
+          30,
+          40
+        ],
+        "final": 100,
+        "step_signatures": [
+          "step:0",
+          "step:1",
+          "step:2",
+          "step:3"
+        ],
+        "steps_used": 4
+      },
+      "seq": 6
+    },
+    {
+      "context_integrity_violation": false,
+      "injected": "clean",
+      "loop_detected": false,
+      "oracle_correct": true,
+      "result": {
+        "completed": true,
+        "context": [
+          10,
+          20,
+          30,
+          40
+        ],
+        "final": 100,
+        "step_signatures": [
+          "step:0",
+          "step:1",
+          "step:2",
+          "step:3"
+        ],
+        "steps_used": 4
+      },
+      "seq": 7
+    }
+  ]
+}

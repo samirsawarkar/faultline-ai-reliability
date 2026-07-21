@@ -119,3 +119,11 @@ jobs:
         run: |
           python day10/scripts/make_evidence.py
           git diff --exit-code -- day10/evidence/
+
+      - name: Day 11 — F5/F6 spectrum, deterministic-vs-semantic map + Q2 hypothesis
+        run: cd day11 && python -m pytest tests/ -v
+
+      - name: Day 11 — spectrum map + Q2 hypothesis reproduce byte-for-byte
+        run: |
+          python day11/scripts/make_evidence.py
+          git diff --exit-code -- day11/evidence/
