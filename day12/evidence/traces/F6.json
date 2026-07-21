@@ -1,0 +1,311 @@
+{
+  "fault_id": "F6",
+  "ground_truth": {
+    "count": 8,
+    "entries": [
+      {
+        "component": "task",
+        "fault_id": "F6",
+        "fired": true,
+        "input_digest": "run-0",
+        "label": "F6:repetition",
+        "mode": "repetition",
+        "seq": 0,
+        "severity": 2,
+        "span_id": null,
+        "trigger": "call_index"
+      },
+      {
+        "component": "task",
+        "fault_id": null,
+        "fired": false,
+        "input_digest": "run-1",
+        "label": "clean",
+        "mode": null,
+        "seq": 1,
+        "severity": null,
+        "span_id": null,
+        "trigger": null
+      },
+      {
+        "component": "task",
+        "fault_id": null,
+        "fired": false,
+        "input_digest": "run-2",
+        "label": "clean",
+        "mode": null,
+        "seq": 2,
+        "severity": null,
+        "span_id": null,
+        "trigger": null
+      },
+      {
+        "component": "task",
+        "fault_id": null,
+        "fired": false,
+        "input_digest": "run-3",
+        "label": "clean",
+        "mode": null,
+        "seq": 3,
+        "severity": null,
+        "span_id": null,
+        "trigger": null
+      },
+      {
+        "component": "task",
+        "fault_id": null,
+        "fired": false,
+        "input_digest": "run-4",
+        "label": "clean",
+        "mode": null,
+        "seq": 4,
+        "severity": null,
+        "span_id": null,
+        "trigger": null
+      },
+      {
+        "component": "task",
+        "fault_id": null,
+        "fired": false,
+        "input_digest": "run-5",
+        "label": "clean",
+        "mode": null,
+        "seq": 5,
+        "severity": null,
+        "span_id": null,
+        "trigger": null
+      },
+      {
+        "component": "task",
+        "fault_id": null,
+        "fired": false,
+        "input_digest": "run-6",
+        "label": "clean",
+        "mode": null,
+        "seq": 6,
+        "severity": null,
+        "span_id": null,
+        "trigger": null
+      },
+      {
+        "component": "task",
+        "fault_id": null,
+        "fired": false,
+        "input_digest": "run-7",
+        "label": "clean",
+        "mode": null,
+        "seq": 7,
+        "severity": null,
+        "span_id": null,
+        "trigger": null
+      }
+    ],
+    "fired": 1,
+    "run_seed": 20260722
+  },
+  "summary": {
+    "faults_fired": [
+      0
+    ],
+    "runs": 8
+  },
+  "trace": {
+    "seed": 20260722,
+    "span_count": 8,
+    "spans": [
+      {
+        "attributes": {},
+        "end_seq": 2,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"seq\":0,\"steps\":6}",
+          "redacted": false,
+          "sha256": "5c0bf915a2ba5ab9d5533c3d545a6a13e342ad104b178b1c8959ed5ef35229f2",
+          "size_bytes": 19
+        },
+        "kind": "agent",
+        "name": "run.0",
+        "output_ref": {
+          "preview": "{\"completed\":false,\"final\":null}",
+          "redacted": false,
+          "sha256": "8778966b9ee2c520d453cea4f966a1665537864ae8a6ea663860f126f2734bc1",
+          "size_bytes": 32
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260722-span-0000",
+        "start_seq": 1,
+        "status": "ok",
+        "trace_id": "trace-20260722"
+      },
+      {
+        "attributes": {},
+        "end_seq": 4,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"seq\":1,\"steps\":4}",
+          "redacted": false,
+          "sha256": "c075a127ec87809f8355b57bccc6f54abd8555c1b73fa3b6a5cda0f618bce5ab",
+          "size_bytes": 19
+        },
+        "kind": "agent",
+        "name": "run.1",
+        "output_ref": {
+          "preview": "{\"completed\":true,\"final\":100}",
+          "redacted": false,
+          "sha256": "6b52ce66e16ca9f3369d83b63e7d4a1ac44c66f231fd36ea6c26c5d404a692e2",
+          "size_bytes": 30
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260722-span-0001",
+        "start_seq": 3,
+        "status": "ok",
+        "trace_id": "trace-20260722"
+      },
+      {
+        "attributes": {},
+        "end_seq": 6,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"seq\":2,\"steps\":4}",
+          "redacted": false,
+          "sha256": "7263466ff81ce739ace5e7a5cd976c07a1cc8632cd09b60da410197ab0683b65",
+          "size_bytes": 19
+        },
+        "kind": "agent",
+        "name": "run.2",
+        "output_ref": {
+          "preview": "{\"completed\":true,\"final\":100}",
+          "redacted": false,
+          "sha256": "6b52ce66e16ca9f3369d83b63e7d4a1ac44c66f231fd36ea6c26c5d404a692e2",
+          "size_bytes": 30
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260722-span-0002",
+        "start_seq": 5,
+        "status": "ok",
+        "trace_id": "trace-20260722"
+      },
+      {
+        "attributes": {},
+        "end_seq": 8,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"seq\":3,\"steps\":4}",
+          "redacted": false,
+          "sha256": "e62a92eccef3a082f0db1e53930ae6cac85b8b76866b178a4a35477065e1e197",
+          "size_bytes": 19
+        },
+        "kind": "agent",
+        "name": "run.3",
+        "output_ref": {
+          "preview": "{\"completed\":true,\"final\":100}",
+          "redacted": false,
+          "sha256": "6b52ce66e16ca9f3369d83b63e7d4a1ac44c66f231fd36ea6c26c5d404a692e2",
+          "size_bytes": 30
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260722-span-0003",
+        "start_seq": 7,
+        "status": "ok",
+        "trace_id": "trace-20260722"
+      },
+      {
+        "attributes": {},
+        "end_seq": 10,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"seq\":4,\"steps\":4}",
+          "redacted": false,
+          "sha256": "2fc34a133717f4e0474a889929b4ecc3015be228f0d10529e2ef633a4722edc2",
+          "size_bytes": 19
+        },
+        "kind": "agent",
+        "name": "run.4",
+        "output_ref": {
+          "preview": "{\"completed\":true,\"final\":100}",
+          "redacted": false,
+          "sha256": "6b52ce66e16ca9f3369d83b63e7d4a1ac44c66f231fd36ea6c26c5d404a692e2",
+          "size_bytes": 30
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260722-span-0004",
+        "start_seq": 9,
+        "status": "ok",
+        "trace_id": "trace-20260722"
+      },
+      {
+        "attributes": {},
+        "end_seq": 12,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"seq\":5,\"steps\":4}",
+          "redacted": false,
+          "sha256": "ba2616fcafdc4b23d29da7dbffaba4564d6b0ac95ae962e4d5f0226524199c15",
+          "size_bytes": 19
+        },
+        "kind": "agent",
+        "name": "run.5",
+        "output_ref": {
+          "preview": "{\"completed\":true,\"final\":100}",
+          "redacted": false,
+          "sha256": "6b52ce66e16ca9f3369d83b63e7d4a1ac44c66f231fd36ea6c26c5d404a692e2",
+          "size_bytes": 30
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260722-span-0005",
+        "start_seq": 11,
+        "status": "ok",
+        "trace_id": "trace-20260722"
+      },
+      {
+        "attributes": {},
+        "end_seq": 14,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"seq\":6,\"steps\":4}",
+          "redacted": false,
+          "sha256": "7df7033d2e692c9f0423095c0b638a8abda767c15c215896d8692b2357c38aab",
+          "size_bytes": 19
+        },
+        "kind": "agent",
+        "name": "run.6",
+        "output_ref": {
+          "preview": "{\"completed\":true,\"final\":100}",
+          "redacted": false,
+          "sha256": "6b52ce66e16ca9f3369d83b63e7d4a1ac44c66f231fd36ea6c26c5d404a692e2",
+          "size_bytes": 30
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260722-span-0006",
+        "start_seq": 13,
+        "status": "ok",
+        "trace_id": "trace-20260722"
+      },
+      {
+        "attributes": {},
+        "end_seq": 16,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"seq\":7,\"steps\":4}",
+          "redacted": false,
+          "sha256": "c124056e77ee662873e67df7432b5e2a556c840252c4eaa485adf4e92d93f257",
+          "size_bytes": 19
+        },
+        "kind": "agent",
+        "name": "run.7",
+        "output_ref": {
+          "preview": "{\"completed\":true,\"final\":100}",
+          "redacted": false,
+          "sha256": "6b52ce66e16ca9f3369d83b63e7d4a1ac44c66f231fd36ea6c26c5d404a692e2",
+          "size_bytes": 30
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260722-span-0007",
+        "start_seq": 15,
+        "status": "ok",
+        "trace_id": "trace-20260722"
+      }
+    ],
+    "trace_id": "trace-20260722"
+  }
+}

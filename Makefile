@@ -8,8 +8,8 @@
 # repo works even when checked out under a directory whose name contains spaces.
 PY := ./.venv/bin/python
 
-.PHONY: help venv test test-day1 test-day2 test-day3 test-day4 test-day5 test-day6 test-day7 test-day8 test-day9 test-day10 test-day11 determinism attack \
-        day3-baseline day3-attack day4-traces day5-evidence day6-replay day7-q1 day8-inject day9-detect day10-contracts day11-spectrum evidence clean
+.PHONY: help venv test test-day1 test-day2 test-day3 test-day4 test-day5 test-day6 test-day7 test-day8 test-day9 test-day10 test-day11 test-day12 determinism attack \
+        day3-baseline day3-attack day4-traces day5-evidence day6-replay day7-q1 day8-inject day9-detect day10-contracts day11-spectrum day12-catalog evidence clean
 
 help:
 	@echo "make venv          create .venv and install pinned deps"
@@ -26,6 +26,7 @@ help:
 	@echo "make day9-detect   regenerate Day 9 detector sweep + scored runs"
 	@echo "make day10-contracts regenerate Day 10 contract report + false negatives"
 	@echo "make day11-spectrum regenerate Day 11 spectrum map + Q2 hypothesis"
+	@echo "make day12-catalog regenerate Day 12 fault catalog + gallery + audit"
 	@echo "make evidence      regenerate all committed evidence artifacts"
 	@echo "make clean         remove caches"
 
@@ -34,7 +35,7 @@ venv:
 	$(PY) -m pip install --upgrade pip
 	$(PY) -m pip install -r requirements.txt
 
-test: test-day1 test-day2 test-day3 test-day4 test-day5 test-day6 test-day7 test-day8 test-day9 test-day10 test-day11
+test: test-day1 test-day2 test-day3 test-day4 test-day5 test-day6 test-day7 test-day8 test-day9 test-day10 test-day11 test-day12
 
 test-day1:
 	$(PY) -m pytest day1/tests/ -q
@@ -68,6 +69,9 @@ test-day10:
 
 test-day11:
 	$(PY) -m pytest day11/tests/ -q
+
+test-day12:
+	$(PY) -m pytest day12/tests/ -q
 
 determinism:
 	$(PY) day1/scripts/experiment_determinism.py
@@ -105,6 +109,9 @@ day10-contracts:
 day11-spectrum:
 	$(PY) day11/scripts/make_evidence.py
 
+day12-catalog:
+	$(PY) day12/scripts/make_evidence.py
+
 evidence:
 	$(PY) day1/scripts/experiment_determinism.py
 	$(PY) day2/scripts/experiment_budget.py
@@ -120,6 +127,7 @@ evidence:
 	$(PY) day9/scripts/make_evidence.py
 	$(PY) day10/scripts/make_evidence.py
 	$(PY) day11/scripts/make_evidence.py
+	$(PY) day12/scripts/make_evidence.py
 
 clean:
 	find . -type d -name __pycache__ -prune -exec rm -rf {} +

@@ -127,3 +127,11 @@ jobs:
         run: |
           python day11/scripts/make_evidence.py
           git diff --exit-code -- day11/evidence/
+
+      - name: Day 12 — fault catalog + gallery + reproducibility/integrity audit
+        run: cd day12 && python -m pytest tests/ -v
+
+      - name: Day 12 — catalog, gallery + audit reproduce byte-for-byte
+        run: |
+          python day12/scripts/make_evidence.py
+          git diff --exit-code -- day12/evidence/

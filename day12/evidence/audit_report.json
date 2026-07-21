@@ -1,0 +1,55 @@
+{
+  "all_cards_complete": true,
+  "all_detectors_scored_vs_truth": true,
+  "all_reproducible": true,
+  "audit_passed": true,
+  "cards_complete": {
+    "F1": true,
+    "F2": true,
+    "F3": true,
+    "F4": true,
+    "F5": true,
+    "F6": true
+  },
+  "catalog_reproducible": true,
+  "detectors_scored_vs_truth": {
+    "F1": true,
+    "F2": true,
+    "F3": true,
+    "F4": true,
+    "F5": true,
+    "F6": true
+  },
+  "fault_ids": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6"
+  ],
+  "label_leaks": {
+    "F1": [],
+    "F2": [],
+    "F3": [],
+    "F4": [],
+    "F5": [],
+    "F6": []
+  },
+  "no_label_leakage": true,
+  "reproducible": {
+    "F1": true,
+    "F2": true,
+    "F3": true,
+    "F4": true,
+    "F5": true,
+    "F6": true
+  },
+  "required_card_fields": [
+    "trigger",
+    "trace",
+    "detector",
+    "recovery",
+    "metric"
+  ]
+}

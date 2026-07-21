@@ -1,0 +1,327 @@
+{
+  "cards": [
+    {
+      "detector": {
+        "measured_in": "day9",
+        "name": "schema validator",
+        "nature": "deterministic",
+        "signal": "repair_signal"
+      },
+      "family": "structured-output",
+      "id": "F1",
+      "metric": {
+        "detector_precision": 1.0,
+        "detector_recall": 1.0,
+        "measured_in": "day9",
+        "note": "recall rises with severity; small in-range drift is a residual",
+        "recall_at_severity_1": 0.666667
+      },
+      "name": "Structured-output corruption",
+      "producing_component": "tool output (data plane)",
+      "recovery": {
+        "deterministic": true,
+        "planned_mechanism": "M1 repair-retry (Mission 18)",
+        "signal_today": "repair_signal (day9)",
+        "strategy": "structured repair, then bounded retry"
+      },
+      "spec": {
+        "component": "*",
+        "fault_id": "F1",
+        "label": "F1:corrupt",
+        "mode": "corrupt",
+        "rate": 1.0,
+        "seed": 1,
+        "severity": 3,
+        "spec_version": "1.0.0",
+        "trigger": "every_n",
+        "trigger_value": "2"
+      },
+      "trace": {
+        "artifact": "evidence/traces/F1.json",
+        "faults_fired": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          10
+        ],
+        "ground_truth_entries": 12,
+        "span_count": 12,
+        "trace_sha256": "c2a39817ba89bf1fac9957a1cac755cf6f7513f31f4fd914bbea6f162b20a79a"
+      },
+      "trigger": "Deterministic: every_n=2 on the call index; verdict is a pure function of (spec, run_seed, seq, input_digest). Severity scales the value offset."
+    },
+    {
+      "detector": {
+        "measured_in": "day9",
+        "name": "duration vs budget",
+        "nature": "deterministic",
+        "signal": "timeout_signal"
+      },
+      "family": "latency",
+      "id": "F2",
+      "metric": {
+        "detected_from_severity": 4,
+        "detector_precision": 1.0,
+        "detector_recall": 1.0,
+        "measured_in": "day9",
+        "note": "budget-gated (default budget 45)"
+      },
+      "name": "Tool latency / timeout",
+      "producing_component": "tool/provider transport (timing)",
+      "recovery": {
+        "deterministic": true,
+        "planned_mechanism": "M2 timeout policy (Mission 18)",
+        "signal_today": "timeout_signal (day9)",
+        "strategy": "timeout then bounded retry / hedge"
+      },
+      "spec": {
+        "component": "*",
+        "fault_id": "F2",
+        "label": "F2:latency",
+        "mode": "stall",
+        "rate": 1.0,
+        "seed": 1,
+        "severity": 4,
+        "spec_version": "1.0.0",
+        "trigger": "every_n",
+        "trigger_value": "2"
+      },
+      "trace": {
+        "artifact": "evidence/traces/F2.json",
+        "faults_fired": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          10
+        ],
+        "ground_truth_entries": 12,
+        "span_count": 12,
+        "trace_sha256": "d7fc64517a561ea089273459f383cd67b3ed08d78d8bd82f5e269ded493c27d9"
+      },
+      "trigger": "Deterministic: every_n=2 on the call index; virtual duration = BASE + severity*10 (no wall clock)."
+    },
+    {
+      "detector": {
+        "measured_in": "day10",
+        "name": "schema + value invariant",
+        "nature": "mixed",
+        "note": "drift_value/offbase_tokens ESCAPE all deterministic checks",
+        "signal": "invariant_violation (caught subset only)"
+      },
+      "family": "wrong-data",
+      "id": "F3",
+      "metric": {
+        "detector_precision": 1.0,
+        "detector_recall": 0.6,
+        "escape_kinds": [
+          "drift_value",
+          "offbase_tokens"
+        ],
+        "measured_in": "day10",
+        "note": "40% of wrong-data escapes deterministic checks"
+      },
+      "name": "Schema drift / semantic corruption",
+      "producing_component": "tool output (data plane)",
+      "recovery": {
+        "deterministic": false,
+        "planned_mechanism": "validated judge (Mission 16)",
+        "signal_today": "invariant_violation for incoherent subset; coherent drift escapes",
+        "strategy": "semantic validation (oracle/judge), then reject/repair"
+      },
+      "spec": {
+        "component": "*",
+        "fault_id": "F3",
+        "label": "F3:drift_value",
+        "mode": "drift_value",
+        "rate": 1.0,
+        "seed": 1,
+        "severity": 3,
+        "spec_version": "1.0.0",
+        "trigger": "every_n",
+        "trigger_value": "2"
+      },
+      "trace": {
+        "artifact": "evidence/traces/F3.json",
+        "faults_fired": [
+          3
+        ],
+        "ground_truth_entries": 12,
+        "span_count": 12,
+        "trace_sha256": "21b9b717dbb3f9e3e5bb069e9ae73f6d53f18d8f8021461acab12b546e896138"
+      },
+      "trigger": "Deterministic: call_index on a fixed run; produces a different in-range round-ten value (schema-valid, wrong)."
+    },
+    {
+      "detector": {
+        "measured_in": "day10",
+        "name": "explicit error flag",
+        "nature": "deterministic",
+        "signal": "provider_error + circuit-breaker"
+      },
+      "family": "explicit-failure",
+      "id": "F4",
+      "metric": {
+        "detector_precision": 1.0,
+        "detector_recall": 1.0,
+        "measured_in": "day10",
+        "note": "explicit signal; recall 1.0"
+      },
+      "name": "Provider error",
+      "producing_component": "tool/provider transport (availability)",
+      "recovery": {
+        "deterministic": true,
+        "planned_mechanism": "M3 circuit breaker / M4 fallback (Mission 20)",
+        "signal_today": "circuit-breaker open (day10)",
+        "strategy": "circuit breaker, then fallback provider"
+      },
+      "spec": {
+        "component": "*",
+        "fault_id": "F4",
+        "label": "F4:provider_error",
+        "mode": "provider_error",
+        "rate": 1.0,
+        "seed": 1,
+        "severity": 5,
+        "spec_version": "1.0.0",
+        "trigger": "every_n",
+        "trigger_value": "2"
+      },
+      "trace": {
+        "artifact": "evidence/traces/F4.json",
+        "faults_fired": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          10
+        ],
+        "ground_truth_entries": 12,
+        "span_count": 12,
+        "trace_sha256": "97683756566678a6c7df64a8658ff88d8bc3e78a6191e1081b4544c0cecd59eb"
+      },
+      "trigger": "Deterministic: every_n=2 on the call index; the call raises an explicit error envelope (no content)."
+    },
+    {
+      "detector": {
+        "measured_in": "day11",
+        "name": "context-consistency invariant",
+        "nature": "semantic",
+        "note": "coherent context_drift escapes; needs the oracle",
+        "signal": "context_integrity violation (incoherent only)"
+      },
+      "family": "semantic",
+      "id": "F5",
+      "metric": {
+        "detector_precision": 1.0,
+        "detector_recall": 0.5,
+        "escape_kinds": [
+          "context_drift"
+        ],
+        "measured_in": "day11",
+        "note": "consistency catches incoherent; drift escapes"
+      },
+      "name": "Context corruption",
+      "producing_component": "agent context / state (memory)",
+      "recovery": {
+        "deterministic": false,
+        "planned_mechanism": "context validation + judge",
+        "signal_today": "context_integrity violation for incoherent subset",
+        "strategy": "context re-grounding / cross-source agreement"
+      },
+      "spec": {
+        "component": "*",
+        "fault_id": "F5",
+        "label": "F5:context_drift",
+        "mode": "context_drift",
+        "rate": 1.0,
+        "seed": 1,
+        "severity": 2,
+        "spec_version": "1.0.0",
+        "trigger": "call_index",
+        "trigger_value": "0"
+      },
+      "trace": {
+        "artifact": "evidence/traces/F5.json",
+        "faults_fired": [
+          0
+        ],
+        "ground_truth_entries": 8,
+        "span_count": 8,
+        "trace_sha256": "57ba5aae60183e75628f11de68801caf4658d8aadae7a3ecabfbd6e289231e12"
+      },
+      "trigger": "Deterministic: call_index on the run; a plausible wrong context value is inserted and the final recomputed to stay consistent."
+    },
+    {
+      "detector": {
+        "measured_in": "day11",
+        "name": "repetition + step-budget",
+        "nature": "deterministic",
+        "signal": "loop_detect (repetition or budget-exhaustion)"
+      },
+      "family": "deterministic-termination",
+      "id": "F6",
+      "metric": {
+        "detector_precision": 1.0,
+        "detector_recall": 1.0,
+        "measured_in": "day11",
+        "note": "deterministic; recall 1.0, no escape"
+      },
+      "name": "Loop exhaustion",
+      "producing_component": "agent control loop (controller)",
+      "recovery": {
+        "deterministic": true,
+        "planned_mechanism": "bounded loop (Day 2) + recovery policies",
+        "signal_today": "loop_detect (day11)",
+        "strategy": "structural step-budget cap + abort; progress check"
+      },
+      "spec": {
+        "component": "*",
+        "fault_id": "F6",
+        "label": "F6:repetition",
+        "mode": "repetition",
+        "rate": 1.0,
+        "seed": 1,
+        "severity": 2,
+        "spec_version": "1.0.0",
+        "trigger": "call_index",
+        "trigger_value": "0"
+      },
+      "trace": {
+        "artifact": "evidence/traces/F6.json",
+        "faults_fired": [
+          0
+        ],
+        "ground_truth_entries": 8,
+        "span_count": 8,
+        "trace_sha256": "ccf3b6ed8b7d29c5964f76b3d74658b06039731d69b0e938062c5b96b1366d4d"
+      },
+      "trigger": "Deterministic: call_index on the run; the loop repeats a step or burns the step budget without completing."
+    }
+  ],
+  "catalog_version": "1.0.0",
+  "fault_count": 6,
+  "normalized_spec_fields": [
+    "fault_id",
+    "component",
+    "mode",
+    "severity",
+    "trigger",
+    "trigger_value",
+    "seed",
+    "rate",
+    "label",
+    "spec_version"
+  ],
+  "required_card_fields": [
+    "trigger",
+    "trace",
+    "detector",
+    "recovery",
+    "metric"
+  ]
+}

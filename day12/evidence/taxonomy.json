@@ -1,0 +1,102 @@
+{
+  "by_component": [
+    {
+      "component": "agent context / state (memory)",
+      "detection_natures": [
+        "semantic"
+      ],
+      "failure_kind": "state",
+      "faults": [
+        {
+          "detection_nature": "semantic",
+          "fault": "F5",
+          "name": "Context corruption"
+        }
+      ],
+      "layer": "agent internals"
+    },
+    {
+      "component": "agent control loop (controller)",
+      "detection_natures": [
+        "deterministic"
+      ],
+      "failure_kind": "control",
+      "faults": [
+        {
+          "detection_nature": "deterministic",
+          "fault": "F6",
+          "name": "Loop exhaustion"
+        }
+      ],
+      "layer": "agent internals"
+    },
+    {
+      "component": "tool output (data plane)",
+      "detection_natures": [
+        "deterministic",
+        "mixed"
+      ],
+      "failure_kind": "content",
+      "faults": [
+        {
+          "detection_nature": "deterministic",
+          "fault": "F1",
+          "name": "Structured-output corruption"
+        },
+        {
+          "detection_nature": "mixed",
+          "fault": "F3",
+          "name": "Schema drift / semantic corruption"
+        }
+      ],
+      "layer": "provider boundary"
+    },
+    {
+      "component": "tool/provider transport (availability)",
+      "detection_natures": [
+        "deterministic"
+      ],
+      "failure_kind": "transport",
+      "faults": [
+        {
+          "detection_nature": "deterministic",
+          "fault": "F4",
+          "name": "Provider error"
+        }
+      ],
+      "layer": "provider boundary"
+    },
+    {
+      "component": "tool/provider transport (timing)",
+      "detection_natures": [
+        "deterministic"
+      ],
+      "failure_kind": "transport",
+      "faults": [
+        {
+          "detection_nature": "deterministic",
+          "fault": "F2",
+          "name": "Tool latency / timeout"
+        }
+      ],
+      "layer": "provider boundary"
+    }
+  ],
+  "by_layer": {
+    "agent internals": [
+      "F5",
+      "F6"
+    ],
+    "provider boundary": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ]
+  },
+  "note": "Faults grouped by the component that PRODUCES them. Hardening is per-component; provider-boundary faults are mostly deterministic to detect, agent-internal value faults are where semantics bite.",
+  "observation": {
+    "agent internals": "F5 (context/state) is semantic; F6 (control loop) is deterministic (counting/termination).",
+    "provider boundary": "F1-F4: content (F1/F3) + transport (F2/F4). Transport faults are deterministic; content faults split (malformed deterministic, semantic wrong escapes)."
+  }
+}
