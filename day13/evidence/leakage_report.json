@@ -1,0 +1,27 @@
+{
+  "contamination_attack": {
+    "attempted": "duplicate a test sample into train",
+    "clean_before": true,
+    "detected_after": true,
+    "leaked_ids": [
+      "15b4f70f99856f13"
+    ]
+  },
+  "contamination_baseline_clean": true,
+  "label_leakage": {
+    "no_label_leakage": true,
+    "reason": "detector receives only injection config (modality/kind/severity/seed); expected_label is never an input"
+  },
+  "passed": true,
+  "result_fresh_against_own_dataset": true,
+  "split_disjoint": true,
+  "stale_reuse_attack": {
+    "attempted": "reuse a result computed on v1 against a changed dataset v2",
+    "dataset_v1": "de5068d574cae9fd",
+    "dataset_v2": "c3e1a52b87d00e34",
+    "result_verdict_on_v1": "fresh",
+    "result_verdict_on_v2": "stale",
+    "stale_reuse_blocked": true,
+    "versions_differ": true
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "code_version": "eval-1.0.0",
+  "dataset_version": "de5068d574cae9fd",
+  "freshness_against_own_dataset": "fresh",
+  "overall": {
+    "f1": 0.842105,
+    "fn": 3,
+    "fp": 0,
+    "n": 17,
+    "precision": 1.0,
+    "recall": 0.727273,
+    "tn": 6,
+    "tp": 8
+  },
+  "per_modality": {
+    "F1": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "n": 3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tn": 1,
+      "tp": 2
+    },
+    "F2": {
+      "f1": 0.666667,
+      "fn": 1,
+      "fp": 0,
+      "n": 3,
+      "precision": 1.0,
+      "recall": 0.5,
+      "tn": 1,
+      "tp": 1
+    },
+    "F3": {
+      "f1": 0.666667,
+      "fn": 1,
+      "fp": 0,
+      "n": 3,
+      "precision": 1.0,
+      "recall": 0.5,
+      "tn": 1,
+      "tp": 1
+    },
+    "F4": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "n": 2,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tn": 1,
+      "tp": 1
+    },
+    "F5": {
+      "f1": 0.666667,
+      "fn": 1,
+      "fp": 0,
+      "n": 3,
+      "precision": 1.0,
+      "recall": 0.5,
+      "tn": 1,
+      "tp": 1
+    },
+    "F6": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "n": 3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tn": 1,
+      "tp": 2
+    }
+  },
+  "result_id": "66ac42d8d4433e5c",
+  "sample_count": 17,
+  "split": "test"
+}

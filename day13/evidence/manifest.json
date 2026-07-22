@@ -1,0 +1,589 @@
+{
+  "config": {
+    "F1": {
+      "clean": 3,
+      "kinds": [
+        "corrupt"
+      ],
+      "seeds": [
+        1,
+        2
+      ],
+      "severities": [
+        1,
+        3,
+        5
+      ]
+    },
+    "F2": {
+      "clean": 3,
+      "kinds": [
+        "latency"
+      ],
+      "seeds": [
+        1,
+        2
+      ],
+      "severities": [
+        1,
+        3,
+        5
+      ]
+    },
+    "F3": {
+      "clean": 3,
+      "kinds": [
+        "nonmultiple",
+        "drift_value"
+      ],
+      "seeds": [
+        1,
+        2
+      ],
+      "severities": [
+        3
+      ]
+    },
+    "F4": {
+      "clean": 3,
+      "kinds": [
+        "provider_error"
+      ],
+      "seeds": [
+        1,
+        2
+      ],
+      "severities": [
+        5
+      ]
+    },
+    "F5": {
+      "clean": 3,
+      "kinds": [
+        "context_inconsistent",
+        "context_drift"
+      ],
+      "seeds": [
+        1,
+        2
+      ],
+      "severities": [
+        2
+      ]
+    },
+    "F6": {
+      "clean": 3,
+      "kinds": [
+        "repetition",
+        "budget_exhaustion"
+      ],
+      "seeds": [
+        1,
+        2
+      ],
+      "severities": [
+        2
+      ]
+    }
+  },
+  "dataset_version": "de5068d574cae9fd",
+  "generator_version": "dataset-1.0.0",
+  "leakage_controls": [
+    "sample_id = content hash of config (identity unambiguous)",
+    "split is a deterministic, stratified, disjoint partition",
+    "expected_label grounded in injection truth, never a detector",
+    "dataset_version = content hash of this manifest (stale reuse detectable)"
+  ],
+  "sample_count": 44,
+  "samples": [
+    {
+      "expected_faulty": true,
+      "expected_label": "F2",
+      "is_fault": true,
+      "kind": "latency",
+      "modality": "F2",
+      "sample_id": "04824a5f7eff2e74",
+      "seed": 1,
+      "severity": 3,
+      "split": "test"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F2",
+      "is_fault": true,
+      "kind": "latency",
+      "modality": "F2",
+      "sample_id": "0591c274daa3712d",
+      "seed": 2,
+      "severity": 5,
+      "split": "test"
+    },
+    {
+      "expected_faulty": false,
+      "expected_label": "clean",
+      "is_fault": false,
+      "kind": "clean",
+      "modality": "F5",
+      "sample_id": "0e9639feedc900b7",
+      "seed": 1000,
+      "severity": 0,
+      "split": "test"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F5",
+      "is_fault": true,
+      "kind": "context_drift",
+      "modality": "F5",
+      "sample_id": "10c4fce1efa432dd",
+      "seed": 1,
+      "severity": 2,
+      "split": "test"
+    },
+    {
+      "expected_faulty": false,
+      "expected_label": "clean",
+      "is_fault": false,
+      "kind": "clean",
+      "modality": "F2",
+      "sample_id": "1429e86640318f85",
+      "seed": 1000,
+      "severity": 0,
+      "split": "test"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F1",
+      "is_fault": true,
+      "kind": "corrupt",
+      "modality": "F1",
+      "sample_id": "15b4f70f99856f13",
+      "seed": 1,
+      "severity": 3,
+      "split": "test"
+    },
+    {
+      "expected_faulty": false,
+      "expected_label": "clean",
+      "is_fault": false,
+      "kind": "clean",
+      "modality": "F2",
+      "sample_id": "192041c74b419c31",
+      "seed": 1001,
+      "severity": 0,
+      "split": "train"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F5",
+      "is_fault": true,
+      "kind": "context_inconsistent",
+      "modality": "F5",
+      "sample_id": "1b0a468b82a5dc08",
+      "seed": 1,
+      "severity": 2,
+      "split": "test"
+    },
+    {
+      "expected_faulty": false,
+      "expected_label": "clean",
+      "is_fault": false,
+      "kind": "clean",
+      "modality": "F3",
+      "sample_id": "1e9f88e9a1391f40",
+      "seed": 1000,
+      "severity": 0,
+      "split": "test"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F4",
+      "is_fault": true,
+      "kind": "provider_error",
+      "modality": "F4",
+      "sample_id": "287dd80bfc5e1940",
+      "seed": 2,
+      "severity": 5,
+      "split": "test"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F3",
+      "is_fault": true,
+      "kind": "nonmultiple",
+      "modality": "F3",
+      "sample_id": "2ae5812b02ecdd30",
+      "seed": 1,
+      "severity": 3,
+      "split": "test"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F3",
+      "is_fault": true,
+      "kind": "nonmultiple",
+      "modality": "F3",
+      "sample_id": "2b3368ecbf4f20a1",
+      "seed": 2,
+      "severity": 3,
+      "split": "train"
+    },
+    {
+      "expected_faulty": false,
+      "expected_label": "clean",
+      "is_fault": false,
+      "kind": "clean",
+      "modality": "F3",
+      "sample_id": "39459558a70f4d39",
+      "seed": 1001,
+      "severity": 0,
+      "split": "train"
+    },
+    {
+      "expected_faulty": false,
+      "expected_label": "clean",
+      "is_fault": false,
+      "kind": "clean",
+      "modality": "F4",
+      "sample_id": "49faa2792ae148aa",
+      "seed": 1001,
+      "severity": 0,
+      "split": "test"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F6",
+      "is_fault": true,
+      "kind": "budget_exhaustion",
+      "modality": "F6",
+      "sample_id": "4ee409edc772dc31",
+      "seed": 2,
+      "severity": 2,
+      "split": "test"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F5",
+      "is_fault": true,
+      "kind": "context_inconsistent",
+      "modality": "F5",
+      "sample_id": "513202a9cfb24c28",
+      "seed": 2,
+      "severity": 2,
+      "split": "train"
+    },
+    {
+      "expected_faulty": false,
+      "expected_label": "clean",
+      "is_fault": false,
+      "kind": "clean",
+      "modality": "F3",
+      "sample_id": "530163efbce5b8cb",
+      "seed": 1002,
+      "severity": 0,
+      "split": "train"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F5",
+      "is_fault": true,
+      "kind": "context_drift",
+      "modality": "F5",
+      "sample_id": "599b51381f2d0c52",
+      "seed": 2,
+      "severity": 2,
+      "split": "train"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F1",
+      "is_fault": true,
+      "kind": "corrupt",
+      "modality": "F1",
+      "sample_id": "5a581e17802ee718",
+      "seed": 2,
+      "severity": 5,
+      "split": "test"
+    },
+    {
+      "expected_faulty": false,
+      "expected_label": "clean",
+      "is_fault": false,
+      "kind": "clean",
+      "modality": "F6",
+      "sample_id": "5b42d48149b77cc5",
+      "seed": 1002,
+      "severity": 0,
+      "split": "test"
+    },
+    {
+      "expected_faulty": false,
+      "expected_label": "clean",
+      "is_fault": false,
+      "kind": "clean",
+      "modality": "F5",
+      "sample_id": "5dbd158d64d6e253",
+      "seed": 1001,
+      "severity": 0,
+      "split": "train"
+    },
+    {
+      "expected_faulty": false,
+      "expected_label": "clean",
+      "is_fault": false,
+      "kind": "clean",
+      "modality": "F1",
+      "sample_id": "5f4ae655e729e8f4",
+      "seed": 1001,
+      "severity": 0,
+      "split": "test"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F6",
+      "is_fault": true,
+      "kind": "repetition",
+      "modality": "F6",
+      "sample_id": "66c05906de0b3a89",
+      "seed": 2,
+      "severity": 2,
+      "split": "test"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F2",
+      "is_fault": true,
+      "kind": "latency",
+      "modality": "F2",
+      "sample_id": "6b4f1a7ebe7525de",
+      "seed": 1,
+      "severity": 1,
+      "split": "train"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F1",
+      "is_fault": true,
+      "kind": "corrupt",
+      "modality": "F1",
+      "sample_id": "71c9339cd68dd487",
+      "seed": 2,
+      "severity": 1,
+      "split": "train"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F6",
+      "is_fault": true,
+      "kind": "budget_exhaustion",
+      "modality": "F6",
+      "sample_id": "7360d9d0f9e3c91c",
+      "seed": 1,
+      "severity": 2,
+      "split": "train"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F1",
+      "is_fault": true,
+      "kind": "corrupt",
+      "modality": "F1",
+      "sample_id": "76d1777322376596",
+      "seed": 2,
+      "severity": 3,
+      "split": "train"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F1",
+      "is_fault": true,
+      "kind": "corrupt",
+      "modality": "F1",
+      "sample_id": "867d9ba2f51eb98b",
+      "seed": 1,
+      "severity": 5,
+      "split": "train"
+    },
+    {
+      "expected_faulty": false,
+      "expected_label": "clean",
+      "is_fault": false,
+      "kind": "clean",
+      "modality": "F4",
+      "sample_id": "86f738fa21317c75",
+      "seed": 1002,
+      "severity": 0,
+      "split": "train"
+    },
+    {
+      "expected_faulty": false,
+      "expected_label": "clean",
+      "is_fault": false,
+      "kind": "clean",
+      "modality": "F6",
+      "sample_id": "9288cf9a3523e923",
+      "seed": 1001,
+      "severity": 0,
+      "split": "train"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F3",
+      "is_fault": true,
+      "kind": "drift_value",
+      "modality": "F3",
+      "sample_id": "936251f9f3ec4981",
+      "seed": 2,
+      "severity": 3,
+      "split": "test"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F2",
+      "is_fault": true,
+      "kind": "latency",
+      "modality": "F2",
+      "sample_id": "97e1d283878d41f1",
+      "seed": 2,
+      "severity": 3,
+      "split": "train"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F6",
+      "is_fault": true,
+      "kind": "repetition",
+      "modality": "F6",
+      "sample_id": "9822e7ddde259cd4",
+      "seed": 1,
+      "severity": 2,
+      "split": "train"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F1",
+      "is_fault": true,
+      "kind": "corrupt",
+      "modality": "F1",
+      "sample_id": "9a67ac6bf805e205",
+      "seed": 1,
+      "severity": 1,
+      "split": "train"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F3",
+      "is_fault": true,
+      "kind": "drift_value",
+      "modality": "F3",
+      "sample_id": "b1024f3e5b225317",
+      "seed": 1,
+      "severity": 3,
+      "split": "train"
+    },
+    {
+      "expected_faulty": false,
+      "expected_label": "clean",
+      "is_fault": false,
+      "kind": "clean",
+      "modality": "F1",
+      "sample_id": "b4644ae00b498ba1",
+      "seed": 1000,
+      "severity": 0,
+      "split": "train"
+    },
+    {
+      "expected_faulty": false,
+      "expected_label": "clean",
+      "is_fault": false,
+      "kind": "clean",
+      "modality": "F5",
+      "sample_id": "b90652a704b810b5",
+      "seed": 1002,
+      "severity": 0,
+      "split": "train"
+    },
+    {
+      "expected_faulty": false,
+      "expected_label": "clean",
+      "is_fault": false,
+      "kind": "clean",
+      "modality": "F6",
+      "sample_id": "bfce25ff17d22bb5",
+      "seed": 1000,
+      "severity": 0,
+      "split": "train"
+    },
+    {
+      "expected_faulty": false,
+      "expected_label": "clean",
+      "is_fault": false,
+      "kind": "clean",
+      "modality": "F4",
+      "sample_id": "e0355b8c495568d4",
+      "seed": 1000,
+      "severity": 0,
+      "split": "train"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F2",
+      "is_fault": true,
+      "kind": "latency",
+      "modality": "F2",
+      "sample_id": "e84a7d24852c4b63",
+      "seed": 1,
+      "severity": 5,
+      "split": "train"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F2",
+      "is_fault": true,
+      "kind": "latency",
+      "modality": "F2",
+      "sample_id": "ef8e08b532d42f96",
+      "seed": 2,
+      "severity": 1,
+      "split": "train"
+    },
+    {
+      "expected_faulty": false,
+      "expected_label": "clean",
+      "is_fault": false,
+      "kind": "clean",
+      "modality": "F2",
+      "sample_id": "efc6a54a67e9ba8a",
+      "seed": 1002,
+      "severity": 0,
+      "split": "train"
+    },
+    {
+      "expected_faulty": false,
+      "expected_label": "clean",
+      "is_fault": false,
+      "kind": "clean",
+      "modality": "F1",
+      "sample_id": "f8859dbc239817cd",
+      "seed": 1002,
+      "severity": 0,
+      "split": "train"
+    },
+    {
+      "expected_faulty": true,
+      "expected_label": "F4",
+      "is_fault": true,
+      "kind": "provider_error",
+      "modality": "F4",
+      "sample_id": "fe1ce9aabdf85dd8",
+      "seed": 1,
+      "severity": 5,
+      "split": "train"
+    }
+  ],
+  "split_method": "stratified by (modality, is_fault); within each stratum, samples sorted by sample_id, the first 2/5 (>=1, <n) assigned to test. Deterministic and balanced across families.",
+  "split_sizes": {
+    "test": 17,
+    "train": 27
+  }
+}

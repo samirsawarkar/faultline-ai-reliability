@@ -135,3 +135,11 @@ jobs:
         run: |
           python day12/scripts/make_evidence.py
           git diff --exit-code -- day12/evidence/
+
+      - name: Day 13 — versioned dataset, eval runner + leakage attacks
+        run: cd day13 && python -m pytest tests/ -v
+
+      - name: Day 13 — dataset manifest, splits, eval + leakage report reproduce byte-for-byte
+        run: |
+          python day13/scripts/make_evidence.py
+          git diff --exit-code -- day13/evidence/

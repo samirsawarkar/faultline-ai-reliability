@@ -5,7 +5,7 @@
 [![CI](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/tests-222%20passing-brightgreen.svg)](#quickstart)
+[![Tests](https://img.shields.io/badge/tests-236%20passing-brightgreen.svg)](#quickstart)
 
 ---
 
@@ -64,7 +64,8 @@ standards below — not a demo, but a specimen you could put under a microscope.
 | **[10](day10/)** | F3/F4 — schema-valid wrong data vs explicit provider errors | ✅ Done | correctness oracle, semantic invariant, mixed classifier, false-negative analysis (40% of wrong-data escapes), circuit-breaker signal |
 | **[11](day11/)** | F5/F6 — completing the six-fault spectrum | ✅ Done | context corruption (semantic) + loop exhaustion (deterministic), F1–F6 deterministic-vs-semantic map, committed Q2 split hypothesis |
 | **[12](day12/)** | Fault catalog + gallery | ✅ Done | six complete fault cards (trigger/trace/detector/recovery/metric), gallery (JSON/MD/HTML), reproducibility + ground-truth integrity audit, taxonomy by producing component |
-| 13–50 | Evaluation, recovery, cascade, and hardening | 🔜 Planned | building on the frozen days above |
+| **[13](day13/)** | Evaluation harness + versioned dataset | ✅ Done | content-addressed dataset version, deterministic stratified splits, immutable oracle-grounded eval results, contamination + stale-reuse attacks, dataset card |
+| 14–50 | Intervals, recovery, cascade, and hardening | 🔜 Planned | building on the frozen days above |
 
 > The arc is deliberately cumulative: Day 2's agent runs against Day 1's frozen
 > environment, and later days inject faults into this fully-owned baseline. That
@@ -146,6 +147,12 @@ faultline-ai-reliability/
 │   ├── tests/            catalog/audit gate (12 tests)
 │   ├── evidence/         catalog.json, GALLERY.md, catalog.html, audit_report.json, taxonomy.json, traces/F1-F6.json
 │   └── CHECKPOINT-12 / LEARN-taxonomy / DECISIONS / REFLECTION.md
+├── day13/                evaluation harness + versioned dataset (stdlib only)
+│   ├── faultline_eval/   dataset (versioned+splits), predict, runner, leakage, card
+│   ├── scripts/          eval.py (reproducible command), make_evidence
+│   ├── tests/            dataset/eval/leakage gate (14 tests)
+│   ├── evidence/         manifest.json, splits.json, eval_result.json, leakage_report.json, DATASET_CARD.md
+│   └── CHECKPOINT-13 / LEARN-eval-infra / DECISIONS / REFLECTION.md
 ├── .github/workflows/    CI: tests + determinism proof + fault attacks
 ├── requirements.txt      pinned deps (pydantic, pytest)
 └── Makefile              make venv && make test
@@ -162,7 +169,7 @@ cd day1 && python3 -m pytest tests/ -q          # 11 tests
 
 # Day 2 adds pydantic — from the repo root:
 make venv                                        # .venv from pinned deps
-make test                                        # full gate: 222 tests, day1–day12
+make test                                        # full gate: 236 tests, day1–day13
 
 # Re-prove the headline claims yourself:
 make determinism      # Day 1: byte-identical env across processes/hashseeds
@@ -176,9 +183,10 @@ make day9-detect      # Day 9: sweep severity; score F1/F2 detectors vs injectio
 make day10-contracts  # Day 10: F3/F4; which wrong values escape contract validation
 make day11-spectrum   # Day 11: F5/F6; deterministic-vs-semantic map + Q2 hypothesis
 make day12-catalog    # Day 12: fault catalog + gallery + reproducibility/integrity audit
+make day13-eval       # Day 13: run the versioned, leakage-resistant eval (test split)
 ```
 
-Requires Python ≥ 3.9. Days 1 and 4–12 need no third-party packages; Days 2–3
+Requires Python ≥ 3.9. Days 1 and 4–13 need no third-party packages; Days 2–3
 need `pydantic` v2 (see `requirements.txt`).
 
 ## License
