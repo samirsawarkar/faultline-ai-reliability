@@ -3,5 +3,5 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-sys.path.insert(0, str(ROOT.parent / "day8"))
-sys.path.insert(0, str(ROOT.parent / "day9"))
+sys.path.insert(0, str(ROOT.parent / "day08"))
+sys.path.insert(0, str(ROOT.parent / "day09"))

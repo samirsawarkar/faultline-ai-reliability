@@ -52,15 +52,15 @@ standards below — not a demo, but a specimen you could put under a microscope.
 
 | Day | Focus | Status | Key artifacts |
 | --- | --- | --- | --- |
-| **[01](day1/)** | Deterministic environment + required-source oracle | ✅ Done | seeded corpus, `oracle_check`, cross-process determinism proof |
-| **[02](day2/)** | Bounded, deterministic single agent + typed contracts | ✅ Done | reason→tool→observe loop, 3 typed tools, forced over-budget attack |
-| **[03](day3/)** | The zero point: baseline across difficulty tiers | ✅ Done | seeded batch runner, Wilson intervals, success-vs-hops figure, reproducibility gate |
-| **[04](day4/)** | Tracing: linked spans that survive failures | ✅ Done | entry-written/`finally`-closed spans, redaction policy, 100-run forced-failure gate |
-| **[05](day5/)** | Reconstruct a failed run in minutes | ✅ Done | indexed SQLite trace store, timeline viewer, SVG snapshot, deletion-survival attack |
-| **[06](day6/)** | Exact replay + reproducibility boundary | ✅ Done | replay bundle, deterministic replay harness, playback-vs-reexecution difference report |
-| **[07](day7/)** | Q1 — reliability vs required tool hops | ✅ Done | hop-count sweep, per-step accounting, measured-vs-naive curve with Wilson CIs, Checkpoint 7 |
-| **[08](day8/)** | Reproducible fault injection + independent ground truth | ✅ Done | 10-field fault spec, deterministic triggers, out-of-band truth log, cross-seed integrity attack (0 leaks) |
-| **[09](day9/)** | F1/F2 fault families + deterministic detectors, scored vs truth | ✅ Done | schema + latency-budget detectors, severity sweep with precision/recall against the injection log, fault cards |
+| **[01](day01/)** | Deterministic environment + required-source oracle | ✅ Done | seeded corpus, `oracle_check`, cross-process determinism proof |
+| **[02](day02/)** | Bounded, deterministic single agent + typed contracts | ✅ Done | reason→tool→observe loop, 3 typed tools, forced over-budget attack |
+| **[03](day03/)** | The zero point: baseline across difficulty tiers | ✅ Done | seeded batch runner, Wilson intervals, success-vs-hops figure, reproducibility gate |
+| **[04](day04/)** | Tracing: linked spans that survive failures | ✅ Done | entry-written/`finally`-closed spans, redaction policy, 100-run forced-failure gate |
+| **[05](day05/)** | Reconstruct a failed run in minutes | ✅ Done | indexed SQLite trace store, timeline viewer, SVG snapshot, deletion-survival attack |
+| **[06](day06/)** | Exact replay + reproducibility boundary | ✅ Done | replay bundle, deterministic replay harness, playback-vs-reexecution difference report |
+| **[07](day07/)** | Q1 — reliability vs required tool hops | ✅ Done | hop-count sweep, per-step accounting, measured-vs-naive curve with Wilson CIs, Checkpoint 7 |
+| **[08](day08/)** | Reproducible fault injection + independent ground truth | ✅ Done | 10-field fault spec, deterministic triggers, out-of-band truth log, cross-seed integrity attack (0 leaks) |
+| **[09](day09/)** | F1/F2 fault families + deterministic detectors, scored vs truth | ✅ Done | schema + latency-budget detectors, severity sweep with precision/recall against the injection log, fault cards |
 | **[10](day10/)** | F3/F4 — schema-valid wrong data vs explicit provider errors | ✅ Done | correctness oracle, semantic invariant, mixed classifier, false-negative analysis (40% of wrong-data escapes), circuit-breaker signal |
 | **[11](day11/)** | F5/F6 — completing the six-fault spectrum | ✅ Done | context corruption (semantic) + loop exhaustion (deterministic), F1–F6 deterministic-vs-semantic map, committed Q2 split hypothesis |
 | **[12](day12/)** | Fault catalog + gallery | ✅ Done | six complete fault cards (trigger/trace/detector/recovery/metric), gallery (JSON/MD/HTML), reproducibility + ground-truth integrity audit, taxonomy by producing component |
@@ -76,55 +76,55 @@ standards below — not a demo, but a specimen you could put under a microscope.
 
 ```
 faultline-ai-reliability/
-├── day1/                 deterministic env + oracle (stdlib only)
+├── day01/                 deterministic env + oracle (stdlib only)
 │   ├── faultline/        env.py (generator), oracle.py (the judge)
 │   ├── scripts/          determinism + hand-check experiments
 │   ├── tests/            the Day-1 gate (11 tests)
 │   ├── evidence/         digests, determinism report, sample env
 │   └── THESIS / MEASUREMENT / DECISIONS / LEARN.md
-├── day2/                 bounded single agent + Pydantic contracts
+├── day02/                 bounded single agent + Pydantic contracts
 │   ├── faultline_agent/  contracts, tools, agent loop, verdict
 │   ├── scripts/          over-budget attack, structured run, validity-vs-correctness
 │   ├── tests/            the Day-2 gate (22 tests)
 │   ├── evidence/         budget termination, sample run, schema-vs-semantic
 │   └── README / DECISIONS / LEARN / MARKET.md
-├── day3/                 the zero point: reproducible baseline across tiers
+├── day03/                 the zero point: reproducible baseline across tiers
 │   ├── faultline_baseline/  config, tiers, accounting, Wilson stats, runner, SVG
 │   ├── scripts/          build_baseline, attack_mislabeled
 │   ├── tests/            the reproducibility gate (19 tests)
 │   ├── evidence/         baseline.json, success_vs_hops.svg, mislabel_attack.json
 │   └── README / DECISIONS / LEARN-wilson / CHECKPOINT-3.md
-├── day4/                 tracing: linked spans that survive failures (stdlib only)
+├── day04/                 tracing: linked spans that survive failures (stdlib only)
 │   ├── faultline_trace/  schema, tracer, redaction, audit, instrumented pipeline
 │   ├── scripts/          make_traces (example traces + 100-run failure report)
 │   ├── tests/            the forced-failure gate (19 tests)
 │   ├── evidence/         trace_normal.json, trace_failed.json, forced_failure_report.json
 │   └── README / SPAN_SCHEMA / REDACTION / DECISIONS / LEARN-otel / REFLECTION.md
-├── day5/                 SQLite trace store + timeline viewer (stdlib only)
+├── day05/                 SQLite trace store + timeline viewer (stdlib only)
 │   ├── faultline_store/  store+indices, reconstruct, terminal viewer, SVG, attack
 │   ├── scripts/          build_store, timeline (CLI), make_evidence
 │   ├── tests/            store/reconstruct/attack gate (13 tests)
 │   ├── evidence/         failed_run.svg, timeline_failed.txt, attack_report.json, incident_narrative.md
 │   └── README / LEARN-sqlite / DECISIONS / REFLECTION.md
-├── day6/                 replay bundle + deterministic replay harness (stdlib only)
+├── day06/                 replay bundle + deterministic replay harness (stdlib only)
 │   ├── faultline_replay/ bundle, providers (record/replay), capture, replay, diff, report
 │   ├── scripts/          make_evidence, replay_demo (CLI)
 │   ├── tests/            exact-replay + boundary + guards gate (11 tests)
 │   ├── evidence/         bundle_simulator.json, replay_simulator.json, replay_report.json
 │   └── README / LIMITATIONS / LEARN-reproducibility / DECISIONS / REFLECTION.md
-├── day7/                 Q1: reliability vs required tool hops (stdlib only)
+├── day07/                 Q1: reliability vs required tool hops (stdlib only)
 │   ├── faultline_hops/   simulator, sweep+accounting, stats (Wilson), model, figure, observability
 │   ├── scripts/          run_q1 (results + figure + investigation)
 │   ├── tests/            sweep/stats/model/observability gate (18 tests)
 │   ├── evidence/         q1_results.json, measured_vs_naive.svg, investigation.json
 │   └── CHECKPOINT-7 / LEARN-compounding / DECISIONS / REFLECTION.md
-├── day8/                 reproducible fault injection + independent ground truth (stdlib only)
+├── day08/                 reproducible fault injection + independent ground truth (stdlib only)
 │   ├── faultline_inject/ spec (10 fields), triggers, faults, truth log, boundary, integrity
 │   ├── scripts/          make_evidence (spec + integrity report + labelled fault trace)
 │   ├── tests/            spec/triggers/boundary/integrity gate (45 tests)
 │   ├── evidence/         injector_spec.json, integrity_report.json, fault_trace.json
 │   └── CHECKPOINT-8 / LEARN-chaos / DECISIONS / REFLECTION.md
-├── day9/                 F1/F2 fault families + detectors, scored vs truth (stdlib only)
+├── day09/                 F1/F2 fault families + detectors, scored vs truth (stdlib only)
 │   ├── faultline_detect/ schema, latency, detectors, injectors, runner, score, experiment, cards
 │   ├── scripts/          make_evidence (fault cards + detector sweep + scored runs + traces)
 │   ├── tests/            schema/detectors/score/experiment gate (22 tests)
@@ -172,21 +172,21 @@ Each day carries its own README and a **mastery gate** — you should be able to
 
 ```bash
 # Day 1 is standard-library only:
-cd day1 && python3 -m pytest tests/ -q          # 11 tests
+cd day01 && python3 -m pytest tests/ -q          # 11 tests
 
 # Day 2 adds pydantic — from the repo root:
 make venv                                        # .venv from pinned deps
-make test                                        # full gate: 261 tests, day1–day14
+make test                                        # full gate: 261 tests, day01–day14
 
 # Re-prove the headline claims yourself:
 make determinism      # Day 1: byte-identical env across processes/hashseeds
 make attack           # Day 2: forced over-budget task → clean INCOMPLETE
-make day4-traces      # Day 4: 100 forced failures → all complete error spans
-make day5-evidence    # Day 5: reconstruct a failed run; survive deletions
-make day6-replay      # Day 6: capture, replay exactly, report the boundary
-make day7-q1          # Day 7: measure reliability vs hops; naive falsified at n=3
-make day8-inject      # Day 8: inject faults across seeds; identical triggers, 0 label leaks
-make day9-detect      # Day 9: sweep severity; score F1/F2 detectors vs injection truth
+make day04-traces      # Day 4: 100 forced failures → all complete error spans
+make day05-evidence    # Day 5: reconstruct a failed run; survive deletions
+make day06-replay      # Day 6: capture, replay exactly, report the boundary
+make day07-q1          # Day 7: measure reliability vs hops; naive falsified at n=3
+make day08-inject      # Day 8: inject faults across seeds; identical triggers, 0 label leaks
+make day09-detect      # Day 9: sweep severity; score F1/F2 detectors vs injection truth
 make day10-contracts  # Day 10: F3/F4; which wrong values escape contract validation
 make day11-spectrum   # Day 11: F5/F6; deterministic-vs-semantic map + Q2 hypothesis
 make day12-catalog    # Day 12: fault catalog + gallery + reproducibility/integrity audit

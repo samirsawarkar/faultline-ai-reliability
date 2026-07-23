@@ -183,6 +183,6 @@
       ]
     }
   },
-  "scored_against": "day8 GroundTruthLog (injection truth) + day11 oracle",
+  "scored_against": "day08 GroundTruthLog (injection truth) + day11 oracle",
   "seed": 20260721
 }

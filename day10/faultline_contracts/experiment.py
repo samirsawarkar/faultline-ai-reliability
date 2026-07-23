@@ -86,7 +86,7 @@ def build_report(seed: int = DEFAULT_SEED) -> Dict[str, Any]:
 
     return {
         "seed": seed,
-        "scored_against": "day8 GroundTruthLog (injection truth) + day10 oracle",
+        "scored_against": "day08 GroundTruthLog (injection truth) + day10 oracle",
         "mixed_run_verdicts": verdicts,
         "f3_detection": f3.to_dict(),
         "f4_detection": f4.to_dict(),

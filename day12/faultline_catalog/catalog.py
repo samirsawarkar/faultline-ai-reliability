@@ -15,7 +15,7 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 _ROOT = Path(__file__).resolve().parents[2]
-for rel in ("day9", "day10", "day11"):
+for rel in ("day09", "day10", "day11"):
     p = _ROOT / rel
     if str(p) not in sys.path:
         sys.path.insert(0, str(p))
@@ -41,11 +41,11 @@ def _metrics() -> Dict[str, Dict[str, Any]]:
     f1 = {r["severity"]: r["recall"] for r in d9["f1_schema_sweep"]}
     return {
         "F1": {"detector_recall": f1.get(3), "detector_precision": 1.0,
-               "recall_at_severity_1": f1.get(1), "measured_in": "day9",
+               "recall_at_severity_1": f1.get(1), "measured_in": "day09",
                "note": "recall rises with severity; small in-range drift is a residual"},
         "F2": {"detector_recall": 1.0,
                "detected_from_severity": d9["headline"]["f2_detected_from_severity"],
-               "detector_precision": 1.0, "measured_in": "day9",
+               "detector_precision": 1.0, "measured_in": "day09",
                "note": "budget-gated (default budget 45)"},
         "F3": {"detector_recall": d10["f3_detection"]["recall"],
                "detector_precision": d10["f3_detection"]["precision"],

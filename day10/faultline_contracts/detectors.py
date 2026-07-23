@@ -22,7 +22,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, List, Optional
 
-_DAY9 = Path(__file__).resolve().parents[2] / "day9"
+_DAY9 = Path(__file__).resolve().parents[2] / "day09"
 if str(_DAY9) not in sys.path:
     sys.path.insert(0, str(_DAY9))
 

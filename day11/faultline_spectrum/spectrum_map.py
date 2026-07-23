@@ -18,7 +18,7 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List
 
-_DAY9 = Path(__file__).resolve().parents[2] / "day9"
+_DAY9 = Path(__file__).resolve().parents[2] / "day09"
 _DAY10 = Path(__file__).resolve().parents[2] / "day10"
 for p in (_DAY9, _DAY10):
     if str(p) not in sys.path:

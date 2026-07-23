@@ -17,8 +17,8 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 _ROOT = Path(__file__).resolve().parents[2]
-if str(_ROOT / "day9") not in sys.path:
-    sys.path.insert(0, str(_ROOT / "day9"))
+if str(_ROOT / "day09") not in sys.path:
+    sys.path.insert(0, str(_ROOT / "day09"))
 
 from faultline_detect.score import Confusion  # noqa: E402 (reuse Day 9)
 

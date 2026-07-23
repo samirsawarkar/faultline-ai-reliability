@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import List, Optional, Tuple
 
-_DAY8 = Path(__file__).resolve().parents[2] / "day8"
+_DAY8 = Path(__file__).resolve().parents[2] / "day08"
 if str(_DAY8) not in sys.path:
     sys.path.insert(0, str(_DAY8))
 

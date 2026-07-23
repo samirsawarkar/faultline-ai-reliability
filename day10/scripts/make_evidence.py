@@ -18,9 +18,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-sys.path.insert(0, str(ROOT.parent / "day8"))
-sys.path.insert(0, str(ROOT.parent / "day9"))
-sys.path.insert(0, str(ROOT.parent / "day4"))
+sys.path.insert(0, str(ROOT.parent / "day08"))
+sys.path.insert(0, str(ROOT.parent / "day09"))
+sys.path.insert(0, str(ROOT.parent / "day04"))
 
 import faultline_trace as ft  # noqa: E402
 
@@ -72,7 +72,7 @@ def main() -> None:
     tracer3 = ft.Tracer(SEED)
     obs3, truth3, _ = run_contracts(f3_specs(), SEED, tracer=tracer3)
     _dump(EVIDENCE / "false_negatives.json", {
-        "scored_against": "day8 GroundTruthLog + day10 oracle",
+        "scored_against": "day08 GroundTruthLog + day10 oracle",
         "note": "schema-valid semantic corruption: wrong per oracle, classified OK. "
                 "Reported as MISSED, never as detected.",
         "f3_detection_confusion": score_detection(obs3, truth3, "F3").to_dict(),

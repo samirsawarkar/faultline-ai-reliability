@@ -198,7 +198,7 @@
       "fired": 1
     }
   },
-  "scored_against": "day8 GroundTruthLog (injection truth) + day10 oracle",
+  "scored_against": "day08 GroundTruthLog (injection truth) + day10 oracle",
   "seed": 20260720,
   "severity_invariance": {
     "drift_value": {

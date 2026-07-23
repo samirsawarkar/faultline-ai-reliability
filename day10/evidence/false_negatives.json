@@ -54,5 +54,5 @@
     "tp": 3
   },
   "note": "schema-valid semantic corruption: wrong per oracle, classified OK. Reported as MISSED, never as detected.",
-  "scored_against": "day8 GroundTruthLog + day10 oracle"
+  "scored_against": "day08 GroundTruthLog + day10 oracle"
 }

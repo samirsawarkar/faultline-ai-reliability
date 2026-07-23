@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Any, Dict
 
 _ROOT = Path(__file__).resolve().parents[2]
-for rel in ("day4", "day8", "day9", "day10", "day11"):
+for rel in ("day04", "day08", "day09", "day10", "day11"):
     p = _ROOT / rel
     if str(p) not in sys.path:
         sys.path.insert(0, str(p))
@@ -20,7 +20,7 @@ for rel in ("day4", "day8", "day9", "day10", "day11"):
 import faultline_trace as ft  # noqa: E402
 
 import faultline_contracts as fc  # noqa: E402 (day10)
-import faultline_detect as fd  # noqa: E402 (day9)
+import faultline_detect as fd  # noqa: E402 (day09)
 import faultline_spectrum as fsp  # noqa: E402 (day11)
 from faultline_contracts import ContractFaultSpec  # noqa: E402
 from faultline_spectrum import SpectrumFaultSpec  # noqa: E402
@@ -34,7 +34,7 @@ def _pack(fault_id: str, trace: Dict[str, Any], truth,
             "ground_truth": truth.to_dict(), "trace": trace}
 
 
-def _day9_trace(fault_id: str, spec) -> Dict[str, Any]:
+def _day09_trace(fault_id: str, spec) -> Dict[str, Any]:
     tr = ft.Tracer(SEED)
     obs, truth, cost = fd.run([spec], SEED, tracer=tr)
     fired = truth.fired_seqs()
@@ -64,10 +64,10 @@ def _day11_trace(fault_id: str, spec) -> Dict[str, Any]:
 
 def canonical_trace(fault_id: str) -> Dict[str, Any]:
     if fault_id == "F1":
-        return _day9_trace("F1", fd.f1_corruption_spec(
+        return _day09_trace("F1", fd.f1_corruption_spec(
             "*", 3, mode="corrupt", trigger="every_n", trigger_value="2", seed=1))
     if fault_id == "F2":
-        return _day9_trace("F2", fd.f2_latency_spec(
+        return _day09_trace("F2", fd.f2_latency_spec(
             "*", 4, trigger="every_n", trigger_value="2", seed=1))
     if fault_id == "F3":
         return _day10_trace("F3", ContractFaultSpec(

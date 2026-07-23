@@ -8,22 +8,22 @@
 # repo works even when checked out under a directory whose name contains spaces.
 PY := ./.venv/bin/python
 
-.PHONY: help venv test test-day1 test-day2 test-day3 test-day4 test-day5 test-day6 test-day7 test-day8 test-day9 test-day10 test-day11 test-day12 test-day13 test-day14 determinism attack \
-        day3-baseline day3-attack day4-traces day5-evidence day6-replay day7-q1 day8-inject day9-detect day10-contracts day11-spectrum day12-catalog day13-eval day14-stats evidence clean
+.PHONY: help venv test test-day01 test-day02 test-day03 test-day04 test-day05 test-day06 test-day07 test-day08 test-day09 test-day10 test-day11 test-day12 test-day13 test-day14 determinism attack \
+        day03-baseline day03-attack day04-traces day05-evidence day06-replay day07-q1 day08-inject day09-detect day10-contracts day11-spectrum day12-catalog day13-eval day14-stats evidence clean
 
 help:
 	@echo "make venv          create .venv and install pinned deps"
-	@echo "make test          run the full gate (day1 … day7)"
+	@echo "make test          run the full gate (day01 … day14)"
 	@echo "make determinism   re-prove Day 1 cross-process determinism"
 	@echo "make attack        re-run the Day 2 over-budget termination attack"
-	@echo "make day3-baseline rebuild the Day 3 baseline.json + figure"
-	@echo "make day3-attack   re-run the Day 3 mislabeled-input attack"
-	@echo "make day4-traces   regenerate Day 4 traces + 100-run failure report"
-	@echo "make day5-evidence rebuild the Day 5 store, viewer, SVG + attack report"
-	@echo "make day6-replay   regenerate Day 6 replay bundle + difference report"
-	@echo "make day7-q1       regenerate Day 7 Q1 results + measured-vs-naive figure"
-	@echo "make day8-inject   regenerate Day 8 fault-injection evidence"
-	@echo "make day9-detect   regenerate Day 9 detector sweep + scored runs"
+	@echo "make day03-baseline rebuild the Day 3 baseline.json + figure"
+	@echo "make day03-attack   re-run the Day 3 mislabeled-input attack"
+	@echo "make day04-traces   regenerate Day 4 traces + 100-run failure report"
+	@echo "make day05-evidence rebuild the Day 5 store, viewer, SVG + attack report"
+	@echo "make day06-replay   regenerate Day 6 replay bundle + difference report"
+	@echo "make day07-q1       regenerate Day 7 Q1 results + measured-vs-naive figure"
+	@echo "make day08-inject   regenerate Day 8 fault-injection evidence"
+	@echo "make day09-detect   regenerate Day 9 detector sweep + scored runs"
 	@echo "make day10-contracts regenerate Day 10 contract report + false negatives"
 	@echo "make day11-spectrum regenerate Day 11 spectrum map + Q2 hypothesis"
 	@echo "make day12-catalog regenerate Day 12 fault catalog + gallery + audit"
@@ -37,34 +37,34 @@ venv:
 	$(PY) -m pip install --upgrade pip
 	$(PY) -m pip install -r requirements.txt
 
-test: test-day1 test-day2 test-day3 test-day4 test-day5 test-day6 test-day7 test-day8 test-day9 test-day10 test-day11 test-day12 test-day13 test-day14
+test: test-day01 test-day02 test-day03 test-day04 test-day05 test-day06 test-day07 test-day08 test-day09 test-day10 test-day11 test-day12 test-day13 test-day14
 
-test-day1:
-	$(PY) -m pytest day1/tests/ -q
+test-day01:
+	$(PY) -m pytest day01/tests/ -q
 
-test-day2:
-	$(PY) -m pytest day2/tests/ -q
+test-day02:
+	$(PY) -m pytest day02/tests/ -q
 
-test-day3:
-	$(PY) -m pytest day3/tests/ -q
+test-day03:
+	$(PY) -m pytest day03/tests/ -q
 
-test-day4:
-	$(PY) -m pytest day4/tests/ -q
+test-day04:
+	$(PY) -m pytest day04/tests/ -q
 
-test-day5:
-	$(PY) -m pytest day5/tests/ -q
+test-day05:
+	$(PY) -m pytest day05/tests/ -q
 
-test-day6:
-	$(PY) -m pytest day6/tests/ -q
+test-day06:
+	$(PY) -m pytest day06/tests/ -q
 
-test-day7:
-	$(PY) -m pytest day7/tests/ -q
+test-day07:
+	$(PY) -m pytest day07/tests/ -q
 
-test-day8:
-	$(PY) -m pytest day8/tests/ -q
+test-day08:
+	$(PY) -m pytest day08/tests/ -q
 
-test-day9:
-	$(PY) -m pytest day9/tests/ -q
+test-day09:
+	$(PY) -m pytest day09/tests/ -q
 
 test-day10:
 	$(PY) -m pytest day10/tests/ -q
@@ -82,34 +82,34 @@ test-day14:
 	$(PY) -m pytest day14/tests/ -q
 
 determinism:
-	$(PY) day1/scripts/experiment_determinism.py
+	$(PY) day01/scripts/experiment_determinism.py
 
 attack:
-	$(PY) day2/scripts/experiment_budget.py
+	$(PY) day02/scripts/experiment_budget.py
 
-day3-baseline:
-	$(PY) day3/scripts/build_baseline.py
+day03-baseline:
+	$(PY) day03/scripts/build_baseline.py
 
-day3-attack:
-	$(PY) day3/scripts/attack_mislabeled.py
+day03-attack:
+	$(PY) day03/scripts/attack_mislabeled.py
 
-day4-traces:
-	$(PY) day4/scripts/make_traces.py
+day04-traces:
+	$(PY) day04/scripts/make_traces.py
 
-day5-evidence:
-	$(PY) day5/scripts/make_evidence.py
+day05-evidence:
+	$(PY) day05/scripts/make_evidence.py
 
-day6-replay:
-	$(PY) day6/scripts/make_evidence.py
+day06-replay:
+	$(PY) day06/scripts/make_evidence.py
 
-day7-q1:
-	$(PY) day7/scripts/run_q1.py
+day07-q1:
+	$(PY) day07/scripts/run_q1.py
 
-day8-inject:
-	$(PY) day8/scripts/make_evidence.py
+day08-inject:
+	$(PY) day08/scripts/make_evidence.py
 
-day9-detect:
-	$(PY) day9/scripts/make_evidence.py
+day09-detect:
+	$(PY) day09/scripts/make_evidence.py
 
 day10-contracts:
 	$(PY) day10/scripts/make_evidence.py
@@ -127,18 +127,18 @@ day14-stats:
 	$(PY) day14/scripts/make_evidence.py
 
 evidence:
-	$(PY) day1/scripts/experiment_determinism.py
-	$(PY) day2/scripts/experiment_budget.py
-	$(PY) day2/scripts/run_agent.py
-	$(PY) day2/scripts/schema_vs_semantic.py
-	$(PY) day3/scripts/build_baseline.py
-	$(PY) day3/scripts/attack_mislabeled.py
-	$(PY) day4/scripts/make_traces.py
-	$(PY) day5/scripts/make_evidence.py
-	$(PY) day6/scripts/make_evidence.py
-	$(PY) day7/scripts/run_q1.py
-	$(PY) day8/scripts/make_evidence.py
-	$(PY) day9/scripts/make_evidence.py
+	$(PY) day01/scripts/experiment_determinism.py
+	$(PY) day02/scripts/experiment_budget.py
+	$(PY) day02/scripts/run_agent.py
+	$(PY) day02/scripts/schema_vs_semantic.py
+	$(PY) day03/scripts/build_baseline.py
+	$(PY) day03/scripts/attack_mislabeled.py
+	$(PY) day04/scripts/make_traces.py
+	$(PY) day05/scripts/make_evidence.py
+	$(PY) day06/scripts/make_evidence.py
+	$(PY) day07/scripts/run_q1.py
+	$(PY) day08/scripts/make_evidence.py
+	$(PY) day09/scripts/make_evidence.py
 	$(PY) day10/scripts/make_evidence.py
 	$(PY) day11/scripts/make_evidence.py
 	$(PY) day12/scripts/make_evidence.py

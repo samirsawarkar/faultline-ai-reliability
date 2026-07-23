@@ -11,7 +11,7 @@
   },
   "mcnemar": {
     "large (30,5)": {
-      "p_value": 4.976233487907421e-05,
+      "p_value": 4.976233487907419e-05,
       "recommended": "chi2",
       "significant_at_0.05": true
     },

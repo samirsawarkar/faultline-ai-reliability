@@ -76,9 +76,9 @@ def card_skeletons() -> List[FaultCard]:
                     "function of (spec, run_seed, seq, input_digest). Severity scales "
                     "the value offset.",
             detector={"name": "schema validator", "nature": "deterministic",
-                      "signal": "repair_signal", "measured_in": "day9"},
+                      "signal": "repair_signal", "measured_in": "day09"},
             recovery={"strategy": "structured repair, then bounded retry",
-                      "signal_today": "repair_signal (day9)",
+                      "signal_today": "repair_signal (day09)",
                       "planned_mechanism": "M1 repair-retry (Mission 18)",
                       "deterministic": True}),
         FaultCard(
@@ -88,9 +88,9 @@ def card_skeletons() -> List[FaultCard]:
             trigger="Deterministic: every_n=2 on the call index; virtual duration = "
                     "BASE + severity*10 (no wall clock).",
             detector={"name": "duration vs budget", "nature": "deterministic",
-                      "signal": "timeout_signal", "measured_in": "day9"},
+                      "signal": "timeout_signal", "measured_in": "day09"},
             recovery={"strategy": "timeout then bounded retry / hedge",
-                      "signal_today": "timeout_signal (day9)",
+                      "signal_today": "timeout_signal (day09)",
                       "planned_mechanism": "M2 timeout policy (Mission 18)",
                       "deterministic": True}),
         FaultCard(

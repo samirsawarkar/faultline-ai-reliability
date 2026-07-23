@@ -2,7 +2,7 @@
   "cards": [
     {
       "detector": {
-        "measured_in": "day9",
+        "measured_in": "day09",
         "name": "schema validator",
         "nature": "deterministic",
         "signal": "repair_signal"
@@ -12,7 +12,7 @@
       "metric": {
         "detector_precision": 1.0,
         "detector_recall": 1.0,
-        "measured_in": "day9",
+        "measured_in": "day09",
         "note": "recall rises with severity; small in-range drift is a residual",
         "recall_at_severity_1": 0.666667
       },
@@ -21,7 +21,7 @@
       "recovery": {
         "deterministic": true,
         "planned_mechanism": "M1 repair-retry (Mission 18)",
-        "signal_today": "repair_signal (day9)",
+        "signal_today": "repair_signal (day09)",
         "strategy": "structured repair, then bounded retry"
       },
       "spec": {
@@ -54,7 +54,7 @@
     },
     {
       "detector": {
-        "measured_in": "day9",
+        "measured_in": "day09",
         "name": "duration vs budget",
         "nature": "deterministic",
         "signal": "timeout_signal"
@@ -65,7 +65,7 @@
         "detected_from_severity": 4,
         "detector_precision": 1.0,
         "detector_recall": 1.0,
-        "measured_in": "day9",
+        "measured_in": "day09",
         "note": "budget-gated (default budget 45)"
       },
       "name": "Tool latency / timeout",
@@ -73,7 +73,7 @@
       "recovery": {
         "deterministic": true,
         "planned_mechanism": "M2 timeout policy (Mission 18)",
-        "signal_today": "timeout_signal (day9)",
+        "signal_today": "timeout_signal (day09)",
         "strategy": "timeout then bounded retry / hedge"
       },
       "spec": {

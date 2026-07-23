@@ -1,0 +1,893 @@
+{
+  "runs": [
+    {
+      "budget": 45,
+      "calls": [
+        {
+          "component": "tool.retrieve",
+          "duration": 10,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 10,
+            "seq": 0,
+            "timeout_signal": false
+          },
+          "ground_truth": {
+            "fired": true,
+            "label": "F1:corrupt",
+            "mode": "corrupt",
+            "severity": 1
+          },
+          "output": {
+            "step": "retrieve",
+            "tokens": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "value": 121
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 0,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 0
+        },
+        {
+          "component": "tool.sum",
+          "duration": 10,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 10,
+            "seq": 1,
+            "timeout_signal": false
+          },
+          "ground_truth": {
+            "fired": false,
+            "label": "clean",
+            "mode": null,
+            "severity": null
+          },
+          "output": {
+            "step": "sum",
+            "tokens": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "value": 20
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 1,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 1
+        },
+        {
+          "component": "tool.verify",
+          "duration": 10,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 10,
+            "seq": 2,
+            "timeout_signal": false
+          },
+          "ground_truth": {
+            "fired": true,
+            "label": "F1:corrupt",
+            "mode": "corrupt",
+            "severity": 1
+          },
+          "output": {
+            "step": "verify",
+            "tokens": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "value": 141
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 2,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 2
+        },
+        {
+          "component": "tool.retrieve",
+          "duration": 10,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 10,
+            "seq": 3,
+            "timeout_signal": false
+          },
+          "ground_truth": {
+            "fired": false,
+            "label": "clean",
+            "mode": null,
+            "severity": null
+          },
+          "output": {
+            "step": "retrieve",
+            "tokens": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "value": 40
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 3,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 3
+        },
+        {
+          "component": "tool.sum",
+          "duration": 10,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 10,
+            "seq": 4,
+            "timeout_signal": false
+          },
+          "ground_truth": {
+            "fired": true,
+            "label": "F1:corrupt",
+            "mode": "corrupt",
+            "severity": 1
+          },
+          "output": {
+            "step": "sum",
+            "tokens": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "value": 161
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": true,
+            "seq": 4,
+            "valid": false,
+            "violation_codes": [
+              "value_range"
+            ]
+          },
+          "seq": 4
+        },
+        {
+          "component": "tool.verify",
+          "duration": 10,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 10,
+            "seq": 5,
+            "timeout_signal": false
+          },
+          "ground_truth": {
+            "fired": false,
+            "label": "clean",
+            "mode": null,
+            "severity": null
+          },
+          "output": {
+            "step": "verify",
+            "tokens": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "value": 60
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 5,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 5
+        },
+        {
+          "component": "tool.retrieve",
+          "duration": 10,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 10,
+            "seq": 6,
+            "timeout_signal": false
+          },
+          "ground_truth": {
+            "fired": true,
+            "label": "F1:corrupt",
+            "mode": "corrupt",
+            "severity": 1
+          },
+          "output": {
+            "step": "retrieve",
+            "tokens": [
+              6,
+              7,
+              8,
+              9
+            ],
+            "value": 181
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": true,
+            "seq": 6,
+            "valid": false,
+            "violation_codes": [
+              "value_range"
+            ]
+          },
+          "seq": 6
+        },
+        {
+          "component": "tool.sum",
+          "duration": 10,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 10,
+            "seq": 7,
+            "timeout_signal": false
+          },
+          "ground_truth": {
+            "fired": false,
+            "label": "clean",
+            "mode": null,
+            "severity": null
+          },
+          "output": {
+            "step": "sum",
+            "tokens": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "value": 80
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 7,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 7
+        },
+        {
+          "component": "tool.verify",
+          "duration": 10,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 10,
+            "seq": 8,
+            "timeout_signal": false
+          },
+          "ground_truth": {
+            "fired": true,
+            "label": "F1:corrupt",
+            "mode": "corrupt",
+            "severity": 1
+          },
+          "output": {
+            "step": "verify",
+            "tokens": [
+              8,
+              9,
+              10,
+              11
+            ],
+            "value": 201
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": true,
+            "seq": 8,
+            "valid": false,
+            "violation_codes": [
+              "value_range"
+            ]
+          },
+          "seq": 8
+        },
+        {
+          "component": "tool.retrieve",
+          "duration": 10,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 10,
+            "seq": 9,
+            "timeout_signal": false
+          },
+          "ground_truth": {
+            "fired": false,
+            "label": "clean",
+            "mode": null,
+            "severity": null
+          },
+          "output": {
+            "step": "retrieve",
+            "tokens": [
+              9,
+              10,
+              11,
+              12
+            ],
+            "value": 100
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 9,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 9
+        },
+        {
+          "component": "tool.sum",
+          "duration": 10,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 10,
+            "seq": 10,
+            "timeout_signal": false
+          },
+          "ground_truth": {
+            "fired": true,
+            "label": "F1:corrupt",
+            "mode": "corrupt",
+            "severity": 1
+          },
+          "output": {
+            "step": "sum",
+            "tokens": [
+              10,
+              11,
+              12,
+              13
+            ],
+            "value": 221
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": true,
+            "seq": 10,
+            "valid": false,
+            "violation_codes": [
+              "value_range"
+            ]
+          },
+          "seq": 10
+        },
+        {
+          "component": "tool.verify",
+          "duration": 10,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 10,
+            "seq": 11,
+            "timeout_signal": false
+          },
+          "ground_truth": {
+            "fired": false,
+            "label": "clean",
+            "mode": null,
+            "severity": null
+          },
+          "output": {
+            "step": "verify",
+            "tokens": [
+              11,
+              12,
+              13,
+              14
+            ],
+            "value": 120
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 11,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 11
+        }
+      ],
+      "confusion_vs_injection_truth": {
+        "f1": 0.8,
+        "fn": 2,
+        "fp": 0,
+        "n": 12,
+        "precision": 1.0,
+        "recall": 0.666667,
+        "tn": 6,
+        "tp": 4
+      },
+      "family": "F1",
+      "seed": 20260719,
+      "specs": [
+        {
+          "component": "*",
+          "fault_id": "F1-corrupt",
+          "label": "F1:corrupt",
+          "mode": "corrupt",
+          "rate": 1.0,
+          "seed": 20260719,
+          "severity": 1,
+          "spec_version": "1.0.0",
+          "trigger": "every_n",
+          "trigger_value": "2"
+        }
+      ],
+      "total_cost": 0
+    },
+    {
+      "budget": 45,
+      "calls": [
+        {
+          "component": "tool.retrieve",
+          "duration": 50,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 50,
+            "seq": 0,
+            "timeout_signal": true
+          },
+          "ground_truth": {
+            "fired": true,
+            "label": "F2:latency",
+            "mode": "stall",
+            "severity": 4
+          },
+          "output": {
+            "step": "retrieve",
+            "tokens": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "value": 10
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 0,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 0
+        },
+        {
+          "component": "tool.sum",
+          "duration": 10,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 10,
+            "seq": 1,
+            "timeout_signal": false
+          },
+          "ground_truth": {
+            "fired": false,
+            "label": "clean",
+            "mode": null,
+            "severity": null
+          },
+          "output": {
+            "step": "sum",
+            "tokens": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "value": 20
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 1,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 1
+        },
+        {
+          "component": "tool.verify",
+          "duration": 50,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 50,
+            "seq": 2,
+            "timeout_signal": true
+          },
+          "ground_truth": {
+            "fired": true,
+            "label": "F2:latency",
+            "mode": "stall",
+            "severity": 4
+          },
+          "output": {
+            "step": "verify",
+            "tokens": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "value": 30
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 2,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 2
+        },
+        {
+          "component": "tool.retrieve",
+          "duration": 10,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 10,
+            "seq": 3,
+            "timeout_signal": false
+          },
+          "ground_truth": {
+            "fired": false,
+            "label": "clean",
+            "mode": null,
+            "severity": null
+          },
+          "output": {
+            "step": "retrieve",
+            "tokens": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "value": 40
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 3,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 3
+        },
+        {
+          "component": "tool.sum",
+          "duration": 50,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 50,
+            "seq": 4,
+            "timeout_signal": true
+          },
+          "ground_truth": {
+            "fired": true,
+            "label": "F2:latency",
+            "mode": "stall",
+            "severity": 4
+          },
+          "output": {
+            "step": "sum",
+            "tokens": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "value": 50
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 4,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 4
+        },
+        {
+          "component": "tool.verify",
+          "duration": 10,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 10,
+            "seq": 5,
+            "timeout_signal": false
+          },
+          "ground_truth": {
+            "fired": false,
+            "label": "clean",
+            "mode": null,
+            "severity": null
+          },
+          "output": {
+            "step": "verify",
+            "tokens": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "value": 60
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 5,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 5
+        },
+        {
+          "component": "tool.retrieve",
+          "duration": 50,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 50,
+            "seq": 6,
+            "timeout_signal": true
+          },
+          "ground_truth": {
+            "fired": true,
+            "label": "F2:latency",
+            "mode": "stall",
+            "severity": 4
+          },
+          "output": {
+            "step": "retrieve",
+            "tokens": [
+              6,
+              7,
+              8,
+              9
+            ],
+            "value": 70
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 6,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 6
+        },
+        {
+          "component": "tool.sum",
+          "duration": 10,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 10,
+            "seq": 7,
+            "timeout_signal": false
+          },
+          "ground_truth": {
+            "fired": false,
+            "label": "clean",
+            "mode": null,
+            "severity": null
+          },
+          "output": {
+            "step": "sum",
+            "tokens": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "value": 80
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 7,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 7
+        },
+        {
+          "component": "tool.verify",
+          "duration": 50,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 50,
+            "seq": 8,
+            "timeout_signal": true
+          },
+          "ground_truth": {
+            "fired": true,
+            "label": "F2:latency",
+            "mode": "stall",
+            "severity": 4
+          },
+          "output": {
+            "step": "verify",
+            "tokens": [
+              8,
+              9,
+              10,
+              11
+            ],
+            "value": 90
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 8,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 8
+        },
+        {
+          "component": "tool.retrieve",
+          "duration": 10,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 10,
+            "seq": 9,
+            "timeout_signal": false
+          },
+          "ground_truth": {
+            "fired": false,
+            "label": "clean",
+            "mode": null,
+            "severity": null
+          },
+          "output": {
+            "step": "retrieve",
+            "tokens": [
+              9,
+              10,
+              11,
+              12
+            ],
+            "value": 100
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 9,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 9
+        },
+        {
+          "component": "tool.sum",
+          "duration": 50,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 50,
+            "seq": 10,
+            "timeout_signal": true
+          },
+          "ground_truth": {
+            "fired": true,
+            "label": "F2:latency",
+            "mode": "stall",
+            "severity": 4
+          },
+          "output": {
+            "step": "sum",
+            "tokens": [
+              10,
+              11,
+              12,
+              13
+            ],
+            "value": 110
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 10,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 10
+        },
+        {
+          "component": "tool.verify",
+          "duration": 10,
+          "duration_signal": {
+            "budget": 45,
+            "duration": 10,
+            "seq": 11,
+            "timeout_signal": false
+          },
+          "ground_truth": {
+            "fired": false,
+            "label": "clean",
+            "mode": null,
+            "severity": null
+          },
+          "output": {
+            "step": "verify",
+            "tokens": [
+              11,
+              12,
+              13,
+              14
+            ],
+            "value": 120
+          },
+          "raised": false,
+          "schema_signal": {
+            "repair_signal": false,
+            "seq": 11,
+            "valid": true,
+            "violation_codes": []
+          },
+          "seq": 11
+        }
+      ],
+      "confusion_vs_injection_truth": {
+        "f1": 1.0,
+        "fn": 0,
+        "fp": 0,
+        "n": 12,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tn": 6,
+        "tp": 6
+      },
+      "family": "F2",
+      "seed": 20260719,
+      "specs": [
+        {
+          "component": "*",
+          "fault_id": "F2-latency",
+          "label": "F2:latency",
+          "mode": "stall",
+          "rate": 1.0,
+          "seed": 20260719,
+          "severity": 4,
+          "spec_version": "1.0.0",
+          "trigger": "every_n",
+          "trigger_value": "2"
+        }
+      ],
+      "total_cost": 240
+    }
+  ],
+  "scored_against": "day08 GroundTruthLog (injection truth), joined by seq"
+}

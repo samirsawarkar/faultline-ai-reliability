@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 _ROOT = Path(__file__).resolve().parents[2]
-for rel in ("day8", "day9", "day10"):
+for rel in ("day08", "day09", "day10"):
     p = _ROOT / rel
     if str(p) not in sys.path:
         sys.path.insert(0, str(p))

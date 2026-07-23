@@ -17,7 +17,7 @@ Every fault, linked **fault -> trace -> detector -> metric**. Generated from `ca
 
 - **Family / component:** structured-output / tool output (data plane)
 - **Trigger:** Deterministic: every_n=2 on the call index; verdict is a pure function of (spec, run_seed, seq, input_digest). Severity scales the value offset.
-- **Detector:** schema validator — *deterministic* (signal: `repair_signal`, measured in day9)
+- **Detector:** schema validator — *deterministic* (signal: `repair_signal`, measured in day09)
 - **Recovery:** structured repair, then bounded retry (planned: M1 repair-retry (Mission 18))
 - **Metric:** recall 1.0, precision 1.0 — recall rises with severity; small in-range drift is a residual
 - **Trace:** `evidence/traces/F1.json` (12 spans, 12 labelled)
@@ -27,7 +27,7 @@ Every fault, linked **fault -> trace -> detector -> metric**. Generated from `ca
 
 - **Family / component:** latency / tool/provider transport (timing)
 - **Trigger:** Deterministic: every_n=2 on the call index; virtual duration = BASE + severity*10 (no wall clock).
-- **Detector:** duration vs budget — *deterministic* (signal: `timeout_signal`, measured in day9)
+- **Detector:** duration vs budget — *deterministic* (signal: `timeout_signal`, measured in day09)
 - **Recovery:** timeout then bounded retry / hedge (planned: M2 timeout policy (Mission 18))
 - **Metric:** recall 1.0, precision 1.0 — budget-gated (default budget 45)
 - **Trace:** `evidence/traces/F2.json` (12 spans, 12 labelled)

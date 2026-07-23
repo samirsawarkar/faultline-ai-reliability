@@ -39,7 +39,7 @@ def test_missing_any_required_field_fails_validation():
     # recovery/metric must be rejected.
     for missing in REQUIRED_CARD_FIELDS:
         card = card_skeletons()[0]
-        card.metric = {"detector_recall": 1.0, "measured_in": "day9"}
+        card.metric = {"detector_recall": 1.0, "measured_in": "day09"}
         card.trace = {"artifact": "x"}
         setattr(card, missing, "" if isinstance(getattr(card, missing), str) else {})
         with pytest.raises(ValueError):

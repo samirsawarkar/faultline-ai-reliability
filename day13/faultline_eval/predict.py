@@ -13,13 +13,13 @@ import sys
 from pathlib import Path
 
 _ROOT = Path(__file__).resolve().parents[2]
-for rel in ("day8", "day9", "day10", "day11"):
+for rel in ("day08", "day09", "day10", "day11"):
     p = _ROOT / rel
     if str(p) not in sys.path:
         sys.path.insert(0, str(p))
 
 import faultline_contracts as fc  # noqa: E402 (day10)
-import faultline_detect as fd  # noqa: E402 (day9)
+import faultline_detect as fd  # noqa: E402 (day09)
 import faultline_spectrum as fsp  # noqa: E402 (day11)
 from faultline_contracts import ContractFaultSpec, classify, detected_faulty  # noqa: E402
 from faultline_spectrum import SpectrumFaultSpec, context_integrity_detect, loop_detect  # noqa: E402
