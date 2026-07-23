@@ -143,3 +143,11 @@ jobs:
         run: |
           python day13/scripts/make_evidence.py
           git diff --exit-code -- day13/evidence/
+
+      - name: Day 14 — verified intervals, McNemar + paired comparison
+        run: cd day14 && python -m pytest tests/ -v
+
+      - name: Day 14 — stats verification + paired comparison reproduce byte-for-byte
+        run: |
+          python day14/scripts/make_evidence.py
+          git diff --exit-code -- day14/evidence/

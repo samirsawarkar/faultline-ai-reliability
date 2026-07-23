@@ -1,0 +1,47 @@
+{
+  "design": "paired: System A (schema only) vs System B (schema+invariant) on identical seeded F3 samples",
+  "interpretation": {
+    "paired": "Of 20 discordant pairs, schema-only alone was right on 0 and schema+invariant alone on 20. Only these discordant pairs carry information about a difference. McNemar (exact) p = 0.0000, so the difference favouring schema+invariant is significant at 0.05. Concordant pairs (both right or both wrong) are correctly ignored.",
+    "system_a": "Observed rate 40/80 = 50.0%. 95% Wilson CI [39.3%, 60.7%]: with this much data the true rate is consistent with anything in that band. Two rates whose intervals overlap are NOT distinguishable at this sample size \u2014 collect more samples to narrow the band.",
+    "system_b": "Observed rate 60/80 = 75.0%. 95% Wilson CI [64.5%, 83.2%]: with this much data the true rate is consistent with anything in that band. Two rates whose intervals overlap are NOT distinguishable at this sample size \u2014 collect more samples to narrow the band."
+  },
+  "mcnemar": {
+    "b": 0,
+    "c": 20,
+    "chi2_p_value": 2.151786437812016e-05,
+    "chi2_statistic": 18.05,
+    "continuity_correction": true,
+    "exact_p_value": 1.9073486328125e-06,
+    "n_discordant": 20,
+    "p_value": 1.9073486328125e-06,
+    "recommended": "exact",
+    "significant_at_0.05": true,
+    "table": {
+      "a_only": 0,
+      "b_only": 20,
+      "both_correct": 40,
+      "both_wrong": 20,
+      "discordant": 20,
+      "n": 80
+    }
+  },
+  "n_paired_samples": 80,
+  "system_a": {
+    "accuracy": 0.5,
+    "correct": 40,
+    "name": "schema-only",
+    "wilson_ci95": [
+      0.393,
+      0.607
+    ]
+  },
+  "system_b": {
+    "accuracy": 0.75,
+    "correct": 60,
+    "name": "schema+invariant",
+    "wilson_ci95": [
+      0.6452,
+      0.8319
+    ]
+  }
+}

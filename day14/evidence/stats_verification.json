@@ -1,0 +1,86 @@
+{
+  "all_passed": true,
+  "checks": {
+    "bootstrap": {
+      "agrees_with_wilson": true,
+      "bootstrap": [
+        0.72,
+        0.88
+      ],
+      "degenerate_point": true,
+      "deterministic": true,
+      "ok": true,
+      "wilson": [
+        0.7112,
+        0.8666
+      ]
+    },
+    "chi2_sf_reference": {
+      "critical_ok": true,
+      "cross_check_Zsq": true,
+      "expected": {
+        "2.7055435": 0.1,
+        "3.8414588": 0.05,
+        "6.6348966": 0.01
+      },
+      "ok": true
+    },
+    "mcnemar": {
+      "chi2_10_2_is_49_over_12": true,
+      "empty_is_p1": true,
+      "exact_1_5_is_0.21875": true,
+      "ok": true
+    },
+    "norm_ppf_reference": {
+      "expected": {
+        "0.75": 0.67448975,
+        "0.95": 1.644853627,
+        "0.975": 1.959963985,
+        "0.995": 2.575829304
+      },
+      "ok": true
+    },
+    "wilson_reference_values": {
+      "expected": {
+        "0/10": [
+          0.0,
+          0.2775
+        ],
+        "10/10": [
+          0.7225,
+          1.0
+        ],
+        "5/10": [
+          0.2366,
+          0.7634
+        ]
+      },
+      "got": {
+        "0/10": [
+          0.0,
+          0.2775
+        ],
+        "10/10": [
+          0.7225,
+          1.0
+        ],
+        "5/10": [
+          0.2366,
+          0.7634
+        ]
+      },
+      "ok": true
+    },
+    "wilson_score_equation": {
+      "max_residual": 4.163336342344337e-17,
+      "ok": true,
+      "residuals": {
+        "1/20": 6.938893903907228e-18,
+        "25/50": 3.469446951953614e-18,
+        "3/7": 1.3877787807814457e-17,
+        "5/10": 4.163336342344337e-17,
+        "80/100": 6.938893903907228e-18
+      }
+    }
+  }
+}

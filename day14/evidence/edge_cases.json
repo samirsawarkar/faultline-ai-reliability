@@ -1,0 +1,58 @@
+{
+  "bootstrap": {
+    "degenerate all-ones (n=20)": [
+      1.0,
+      1.0
+    ],
+    "single sample n=1": [
+      1.0,
+      1.0
+    ]
+  },
+  "mcnemar": {
+    "large (30,5)": {
+      "p_value": 4.976233487907421e-05,
+      "recommended": "chi2",
+      "significant_at_0.05": true
+    },
+    "no discordant (0,0)": {
+      "p_value": 1.0,
+      "significant_at_0.05": false
+    },
+    "one-sided small (0,6)": {
+      "p_value": 0.03125,
+      "recommended": "exact",
+      "significant_at_0.05": true
+    },
+    "symmetric (6,6)": {
+      "p_value": 1.0,
+      "significant_at_0.05": false
+    }
+  },
+  "wilson": {
+    "0/1": [
+      0.0,
+      0.7935
+    ],
+    "0/10 (p=0)": [
+      0.0,
+      0.2775
+    ],
+    "1/1 (p=1)": [
+      0.2065,
+      1.0
+    ],
+    "1/1000 (tiny rate)": [
+      0.000177,
+      0.005643
+    ],
+    "10/10 (p=1)": [
+      0.7225,
+      1.0
+    ],
+    "n=0 (no data)": [
+      0.0,
+      1.0
+    ]
+  }
+}
