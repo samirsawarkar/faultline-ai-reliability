@@ -5,7 +5,7 @@
 [![CI](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/tests-261%20passing-brightgreen.svg)](#quickstart)
+[![Tests](https://img.shields.io/badge/tests-269%20passing-brightgreen.svg)](#quickstart)
 
 ---
 
@@ -66,7 +66,8 @@ standards below — not a demo, but a specimen you could put under a microscope.
 | **[12](day12/)** | Fault catalog + gallery | ✅ Done | six complete fault cards (trigger/trace/detector/recovery/metric), gallery (JSON/MD/HTML), reproducibility + ground-truth integrity audit, taxonomy by producing component |
 | **[13](day13/)** | Evaluation harness + versioned dataset | ✅ Done | content-addressed dataset version, deterministic stratified splits, immutable oracle-grounded eval results, contamination + stale-reuse attacks, dataset card |
 | **[14](day14/)** | Intervals + paired statistical design | ✅ Done | verified Wilson + bootstrap intervals, McNemar's paired test (exact + chi-square), independent verification, plain-English interpretation guide |
-| 15–50 | Detection accuracy (Q2), recovery, cascade, and hardening | 🔜 Planned | building on the frozen days above |
+| **[15](day15/)** | Q2 — detection accuracy per fault | ✅ Done | per-class confusion matrices with Wilson CIs, deterministic/semantic groups, every FP/FN traced (0 FP, 10 FN: 4 semantic escapes + 6 threshold), micro-vs-macro |
+| 16–50 | Judge validation, recovery, cascade, and hardening | 🔜 Planned | building on the frozen days above |
 
 > The arc is deliberately cumulative: Day 2's agent runs against Day 1's frozen
 > environment, and later days inject faults into this fully-owned baseline. That
@@ -160,6 +161,12 @@ faultline-ai-reliability/
 │   ├── tests/            intervals/paired/verify gate (25 tests)
 │   ├── evidence/         stats_verification.json, edge_cases.json, paired_comparison.json, INTERPRETATION.md
 │   └── CHECKPOINT-14 / LEARN-paired-bootstrap / DECISIONS / REFLECTION.md
+├── day15/                Q2 — detection accuracy per fault (stdlib only)
+│   ├── faultline_q2/     q2 (per-class confusion + CIs + groups), investigate, tables
+│   ├── scripts/          make_evidence (Q2 results + failures + traces)
+│   ├── tests/            per-class + no-hiding + trace gate (8 tests)
+│   ├── evidence/         q2_results.json, q2_failures.json, Q2_FINDINGS.md, traces/<id>.json
+│   └── CHECKPOINT-15 / LEARN-imbalanced-metrics / DECISIONS / REFLECTION.md
 ├── .github/workflows/    CI: tests + determinism proof + fault attacks
 ├── requirements.txt      pinned deps (pydantic, pytest)
 └── Makefile              make venv && make test
@@ -176,7 +183,7 @@ cd day01 && python3 -m pytest tests/ -q          # 11 tests
 
 # Day 2 adds pydantic — from the repo root:
 make venv                                        # .venv from pinned deps
-make test                                        # full gate: 261 tests, day01–day14
+make test                                        # full gate: 269 tests, day01–day15
 
 # Re-prove the headline claims yourself:
 make determinism      # Day 1: byte-identical env across processes/hashseeds
@@ -192,9 +199,10 @@ make day11-spectrum   # Day 11: F5/F6; deterministic-vs-semantic map + Q2 hypoth
 make day12-catalog    # Day 12: fault catalog + gallery + reproducibility/integrity audit
 make day13-eval       # Day 13: run the versioned, leakage-resistant eval (test split)
 make day14-stats      # Day 14: verify intervals + McNemar; run the paired comparison
+make day15-q2         # Day 15: Q2 per-class confusion + intervals; investigate every FP/FN
 ```
 
-Requires Python ≥ 3.9. Days 1 and 4–14 need no third-party packages; Days 2–3
+Requires Python ≥ 3.9. Days 1 and 4–15 need no third-party packages; Days 2–3
 need `pydantic` v2 (see `requirements.txt`).
 
 ## License

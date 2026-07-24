@@ -1,0 +1,54 @@
+{
+  "kind": "latency",
+  "modality": "F2",
+  "observable": {
+    "duration": 20,
+    "output": {
+      "step": "retrieve",
+      "tokens": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "value": 10
+    },
+    "raised": false
+  },
+  "outcome": "FN",
+  "sample_id": "ef8e08b532d42f96",
+  "seed": 2,
+  "severity": 1,
+  "trace": {
+    "seed": 2,
+    "span_count": 1,
+    "spans": [
+      {
+        "attributes": {},
+        "end_seq": 2,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"component\":\"tool.retrieve\",\"seq\":0}",
+          "redacted": false,
+          "sha256": "2ad8fcdfb531dfbbad772d8fd3b877a7d4bf919108904c9ba42f945e9195ac65",
+          "size_bytes": 37
+        },
+        "kind": "tool",
+        "name": "call.tool.retrieve",
+        "output_ref": {
+          "preview": "{\"step\":\"retrieve\",\"tokens\":[0,1,2,3],\"value\":10}",
+          "redacted": false,
+          "sha256": "4e32f95ff900269ab12b11396aefe51c35a698ea7c7e290c5c506dc94fad5052",
+          "size_bytes": 49
+        },
+        "parent_span_id": null,
+        "span_id": "trace-00000002-span-0000",
+        "start_seq": 1,
+        "status": "ok",
+        "trace_id": "trace-00000002"
+      }
+    ],
+    "trace_id": "trace-00000002"
+  },
+  "why": "threshold-reducible: the fault is below the detector's threshold (schema value range / latency budget); tightening it would catch this"
+}

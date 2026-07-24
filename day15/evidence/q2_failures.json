@@ -1,0 +1,257 @@
+{
+  "dataset_version": "de5068d574cae9fd",
+  "failures": [
+    {
+      "kind": "corrupt",
+      "modality": "F1",
+      "observable": {
+        "duration": 10,
+        "output": {
+          "step": "retrieve",
+          "tokens": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "value": 121
+        },
+        "raised": false
+      },
+      "outcome": "FN",
+      "sample_id": "9a67ac6bf805e205",
+      "seed": 1,
+      "severity": 1,
+      "trace_artifact": "evidence/traces/9a67ac6bf805e205.json",
+      "why": "threshold-reducible: the fault is below the detector's threshold (schema value range / latency budget); tightening it would catch this"
+    },
+    {
+      "kind": "corrupt",
+      "modality": "F1",
+      "observable": {
+        "duration": 10,
+        "output": {
+          "step": "retrieve",
+          "tokens": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "value": 121
+        },
+        "raised": false
+      },
+      "outcome": "FN",
+      "sample_id": "71c9339cd68dd487",
+      "seed": 2,
+      "severity": 1,
+      "trace_artifact": "evidence/traces/71c9339cd68dd487.json",
+      "why": "threshold-reducible: the fault is below the detector's threshold (schema value range / latency budget); tightening it would catch this"
+    },
+    {
+      "kind": "latency",
+      "modality": "F2",
+      "observable": {
+        "duration": 20,
+        "output": {
+          "step": "retrieve",
+          "tokens": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "value": 10
+        },
+        "raised": false
+      },
+      "outcome": "FN",
+      "sample_id": "6b4f1a7ebe7525de",
+      "seed": 1,
+      "severity": 1,
+      "trace_artifact": "evidence/traces/6b4f1a7ebe7525de.json",
+      "why": "threshold-reducible: the fault is below the detector's threshold (schema value range / latency budget); tightening it would catch this"
+    },
+    {
+      "kind": "latency",
+      "modality": "F2",
+      "observable": {
+        "duration": 20,
+        "output": {
+          "step": "retrieve",
+          "tokens": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "value": 10
+        },
+        "raised": false
+      },
+      "outcome": "FN",
+      "sample_id": "ef8e08b532d42f96",
+      "seed": 2,
+      "severity": 1,
+      "trace_artifact": "evidence/traces/ef8e08b532d42f96.json",
+      "why": "threshold-reducible: the fault is below the detector's threshold (schema value range / latency budget); tightening it would catch this"
+    },
+    {
+      "kind": "latency",
+      "modality": "F2",
+      "observable": {
+        "duration": 40,
+        "output": {
+          "step": "retrieve",
+          "tokens": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "value": 10
+        },
+        "raised": false
+      },
+      "outcome": "FN",
+      "sample_id": "04824a5f7eff2e74",
+      "seed": 1,
+      "severity": 3,
+      "trace_artifact": "evidence/traces/04824a5f7eff2e74.json",
+      "why": "threshold-reducible: the fault is below the detector's threshold (schema value range / latency budget); tightening it would catch this"
+    },
+    {
+      "kind": "latency",
+      "modality": "F2",
+      "observable": {
+        "duration": 40,
+        "output": {
+          "step": "retrieve",
+          "tokens": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "value": 10
+        },
+        "raised": false
+      },
+      "outcome": "FN",
+      "sample_id": "97e1d283878d41f1",
+      "seed": 2,
+      "severity": 3,
+      "trace_artifact": "evidence/traces/97e1d283878d41f1.json",
+      "why": "threshold-reducible: the fault is below the detector's threshold (schema value range / latency budget); tightening it would catch this"
+    },
+    {
+      "kind": "drift_value",
+      "modality": "F3",
+      "observable": {
+        "error_code": null,
+        "output": {
+          "step": "retrieve",
+          "tokens": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "value": 60
+        },
+        "raised": false
+      },
+      "outcome": "FN",
+      "sample_id": "b1024f3e5b225317",
+      "seed": 1,
+      "severity": 3,
+      "trace_artifact": "evidence/traces/b1024f3e5b225317.json",
+      "why": "irreducible semantic escape: schema-valid, invariant-respecting, structurally identical to a correct output \u2014 only the oracle knows"
+    },
+    {
+      "kind": "drift_value",
+      "modality": "F3",
+      "observable": {
+        "error_code": null,
+        "output": {
+          "step": "retrieve",
+          "tokens": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "value": 60
+        },
+        "raised": false
+      },
+      "outcome": "FN",
+      "sample_id": "936251f9f3ec4981",
+      "seed": 2,
+      "severity": 3,
+      "trace_artifact": "evidence/traces/936251f9f3ec4981.json",
+      "why": "irreducible semantic escape: schema-valid, invariant-respecting, structurally identical to a correct output \u2014 only the oracle knows"
+    },
+    {
+      "kind": "context_drift",
+      "modality": "F5",
+      "observable": {
+        "completed": true,
+        "context": [
+          10,
+          60,
+          30,
+          40
+        ],
+        "final": 140,
+        "step_signatures": [
+          "step:0",
+          "step:1",
+          "step:2",
+          "step:3"
+        ],
+        "steps_used": 4
+      },
+      "outcome": "FN",
+      "sample_id": "10c4fce1efa432dd",
+      "seed": 1,
+      "severity": 2,
+      "trace_artifact": "evidence/traces/10c4fce1efa432dd.json",
+      "why": "irreducible semantic escape: schema-valid, invariant-respecting, structurally identical to a correct output \u2014 only the oracle knows"
+    },
+    {
+      "kind": "context_drift",
+      "modality": "F5",
+      "observable": {
+        "completed": true,
+        "context": [
+          10,
+          60,
+          30,
+          40
+        ],
+        "final": 140,
+        "step_signatures": [
+          "step:0",
+          "step:1",
+          "step:2",
+          "step:3"
+        ],
+        "steps_used": 4
+      },
+      "outcome": "FN",
+      "sample_id": "599b51381f2d0c52",
+      "seed": 2,
+      "severity": 2,
+      "trace_artifact": "evidence/traces/599b51381f2d0c52.json",
+      "why": "irreducible semantic escape: schema-valid, invariant-respecting, structurally identical to a correct output \u2014 only the oracle knows"
+    }
+  ],
+  "false_negatives": 10,
+  "false_positives": 0,
+  "fn_taxonomy": {
+    "irreducible_semantic_escape": 4,
+    "threshold_reducible": 6
+  }
+}

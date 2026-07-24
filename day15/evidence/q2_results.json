@@ -1,0 +1,462 @@
+{
+  "full_labelled_set": {
+    "aggregation_warning": {
+      "macro_recall": 0.6667,
+      "micro_recall": 0.615385,
+      "note": "The micro (overall) recall averages over all samples and HIDES the per-class spread. Report per class: the semantic group is far below the deterministic group. Macro != micro is the tell.",
+      "per_class_recall": {
+        "F1": 0.666667,
+        "F2": 0.333333,
+        "F3": 0.5,
+        "F4": 1.0,
+        "F5": 0.5,
+        "F6": 1.0
+      }
+    },
+    "dataset_version": "de5068d574cae9fd",
+    "groups": {
+      "deterministic": {
+        "f1": 0.8,
+        "fn": 4,
+        "fp": 0,
+        "n": 21,
+        "n_negative": 9,
+        "n_positive": 12,
+        "precision": 1.0,
+        "precision_ci95": [
+          0.6756,
+          1.0
+        ],
+        "recall": 0.666667,
+        "recall_ci95": [
+          0.3906,
+          0.8619
+        ],
+        "tn": 9,
+        "tp": 8
+      },
+      "semantic": {
+        "f1": 0.727273,
+        "fn": 6,
+        "fp": 0,
+        "n": 23,
+        "n_negative": 9,
+        "n_positive": 14,
+        "precision": 1.0,
+        "precision_ci95": [
+          0.6756,
+          1.0
+        ],
+        "recall": 0.571429,
+        "recall_ci95": [
+          0.3259,
+          0.7862
+        ],
+        "tn": 9,
+        "tp": 8
+      }
+    },
+    "n_samples": 44,
+    "no_hiding": {
+      "failures_listed": 10,
+      "fn_taxonomy": {
+        "irreducible_semantic_escape": 4,
+        "threshold_reducible": 6
+      },
+      "reconciled": true,
+      "total_false_negatives": 10,
+      "total_false_positives": 0
+    },
+    "overall_micro": {
+      "f1": 0.761905,
+      "fn": 10,
+      "fp": 0,
+      "n": 44,
+      "n_negative": 18,
+      "n_positive": 26,
+      "precision": 1.0,
+      "precision_ci95": [
+        0.8064,
+        1.0
+      ],
+      "recall": 0.615385,
+      "recall_ci95": [
+        0.4253,
+        0.7757
+      ],
+      "tn": 18,
+      "tp": 16
+    },
+    "per_class_confusion": {
+      "F1": {
+        "f1": 0.8,
+        "fn": 2,
+        "fp": 0,
+        "n": 9,
+        "n_negative": 3,
+        "n_positive": 6,
+        "precision": 1.0,
+        "precision_ci95": [
+          0.5101,
+          1.0
+        ],
+        "recall": 0.666667,
+        "recall_ci95": [
+          0.3,
+          0.9032
+        ],
+        "tn": 3,
+        "tp": 4
+      },
+      "F2": {
+        "f1": 0.5,
+        "fn": 4,
+        "fp": 0,
+        "n": 9,
+        "n_negative": 3,
+        "n_positive": 6,
+        "precision": 1.0,
+        "precision_ci95": [
+          0.3424,
+          1.0
+        ],
+        "recall": 0.333333,
+        "recall_ci95": [
+          0.0968,
+          0.7
+        ],
+        "tn": 3,
+        "tp": 2
+      },
+      "F3": {
+        "f1": 0.666667,
+        "fn": 2,
+        "fp": 0,
+        "n": 7,
+        "n_negative": 3,
+        "n_positive": 4,
+        "precision": 1.0,
+        "precision_ci95": [
+          0.3424,
+          1.0
+        ],
+        "recall": 0.5,
+        "recall_ci95": [
+          0.15,
+          0.85
+        ],
+        "tn": 3,
+        "tp": 2
+      },
+      "F4": {
+        "f1": 1.0,
+        "fn": 0,
+        "fp": 0,
+        "n": 5,
+        "n_negative": 3,
+        "n_positive": 2,
+        "precision": 1.0,
+        "precision_ci95": [
+          0.3424,
+          1.0
+        ],
+        "recall": 1.0,
+        "recall_ci95": [
+          0.3424,
+          1.0
+        ],
+        "tn": 3,
+        "tp": 2
+      },
+      "F5": {
+        "f1": 0.666667,
+        "fn": 2,
+        "fp": 0,
+        "n": 7,
+        "n_negative": 3,
+        "n_positive": 4,
+        "precision": 1.0,
+        "precision_ci95": [
+          0.3424,
+          1.0
+        ],
+        "recall": 0.5,
+        "recall_ci95": [
+          0.15,
+          0.85
+        ],
+        "tn": 3,
+        "tp": 2
+      },
+      "F6": {
+        "f1": 1.0,
+        "fn": 0,
+        "fp": 0,
+        "n": 7,
+        "n_negative": 3,
+        "n_positive": 4,
+        "precision": 1.0,
+        "precision_ci95": [
+          0.5101,
+          1.0
+        ],
+        "recall": 1.0,
+        "recall_ci95": [
+          0.5101,
+          1.0
+        ],
+        "tn": 3,
+        "tp": 4
+      }
+    },
+    "q2_findings": {
+      "conclusion": "Detection accuracy must be read PER CLASS, not aggregated. Precision is 1.0 everywhere (zero false positives across all families). The false negatives are of two kinds: THRESHOLD-REDUCIBLE (low-severity F1/F2 below a schema range / latency budget \u2014 caught by tightening the threshold) and IRREDUCIBLE SEMANTIC ESCAPES (F3 drift_value, F5 context_drift \u2014 no deterministic detector closes them). This confirms Q2's split hypothesis (Day 11); at this sample size the group interval bands are wide, so the split is directional evidence plus the structural proof that the escapes are undetectable.",
+      "deterministic_group_recall": 0.666667,
+      "deterministic_group_recall_ci95": [
+        0.3906,
+        0.8619
+      ],
+      "false_positives_total": 0,
+      "fn_taxonomy": {
+        "irreducible_semantic_escape": 4,
+        "threshold_reducible": 6
+      },
+      "semantic_group_recall": 0.571429,
+      "semantic_group_recall_ci95": [
+        0.3259,
+        0.7862
+      ]
+    },
+    "split": "all"
+  },
+  "held_out_test": {
+    "aggregation_warning": {
+      "macro_recall": 0.75,
+      "micro_recall": 0.727273,
+      "note": "The micro (overall) recall averages over all samples and HIDES the per-class spread. Report per class: the semantic group is far below the deterministic group. Macro != micro is the tell.",
+      "per_class_recall": {
+        "F1": 1.0,
+        "F2": 0.5,
+        "F3": 0.5,
+        "F4": 1.0,
+        "F5": 0.5,
+        "F6": 1.0
+      }
+    },
+    "dataset_version": "de5068d574cae9fd",
+    "groups": {
+      "deterministic": {
+        "f1": 0.888889,
+        "fn": 1,
+        "fp": 0,
+        "n": 8,
+        "n_negative": 3,
+        "n_positive": 5,
+        "precision": 1.0,
+        "precision_ci95": [
+          0.5101,
+          1.0
+        ],
+        "recall": 0.8,
+        "recall_ci95": [
+          0.3755,
+          0.9638
+        ],
+        "tn": 3,
+        "tp": 4
+      },
+      "semantic": {
+        "f1": 0.8,
+        "fn": 2,
+        "fp": 0,
+        "n": 9,
+        "n_negative": 3,
+        "n_positive": 6,
+        "precision": 1.0,
+        "precision_ci95": [
+          0.5101,
+          1.0
+        ],
+        "recall": 0.666667,
+        "recall_ci95": [
+          0.3,
+          0.9032
+        ],
+        "tn": 3,
+        "tp": 4
+      }
+    },
+    "n_samples": 17,
+    "no_hiding": {
+      "failures_listed": 3,
+      "fn_taxonomy": {
+        "irreducible_semantic_escape": 2,
+        "threshold_reducible": 1
+      },
+      "reconciled": true,
+      "total_false_negatives": 3,
+      "total_false_positives": 0
+    },
+    "overall_micro": {
+      "f1": 0.842105,
+      "fn": 3,
+      "fp": 0,
+      "n": 17,
+      "n_negative": 6,
+      "n_positive": 11,
+      "precision": 1.0,
+      "precision_ci95": [
+        0.6756,
+        1.0
+      ],
+      "recall": 0.727273,
+      "recall_ci95": [
+        0.4344,
+        0.9025
+      ],
+      "tn": 6,
+      "tp": 8
+    },
+    "per_class_confusion": {
+      "F1": {
+        "f1": 1.0,
+        "fn": 0,
+        "fp": 0,
+        "n": 3,
+        "n_negative": 1,
+        "n_positive": 2,
+        "precision": 1.0,
+        "precision_ci95": [
+          0.3424,
+          1.0
+        ],
+        "recall": 1.0,
+        "recall_ci95": [
+          0.3424,
+          1.0
+        ],
+        "tn": 1,
+        "tp": 2
+      },
+      "F2": {
+        "f1": 0.666667,
+        "fn": 1,
+        "fp": 0,
+        "n": 3,
+        "n_negative": 1,
+        "n_positive": 2,
+        "precision": 1.0,
+        "precision_ci95": [
+          0.2065,
+          1.0
+        ],
+        "recall": 0.5,
+        "recall_ci95": [
+          0.0945,
+          0.9055
+        ],
+        "tn": 1,
+        "tp": 1
+      },
+      "F3": {
+        "f1": 0.666667,
+        "fn": 1,
+        "fp": 0,
+        "n": 3,
+        "n_negative": 1,
+        "n_positive": 2,
+        "precision": 1.0,
+        "precision_ci95": [
+          0.2065,
+          1.0
+        ],
+        "recall": 0.5,
+        "recall_ci95": [
+          0.0945,
+          0.9055
+        ],
+        "tn": 1,
+        "tp": 1
+      },
+      "F4": {
+        "f1": 1.0,
+        "fn": 0,
+        "fp": 0,
+        "n": 2,
+        "n_negative": 1,
+        "n_positive": 1,
+        "precision": 1.0,
+        "precision_ci95": [
+          0.2065,
+          1.0
+        ],
+        "recall": 1.0,
+        "recall_ci95": [
+          0.2065,
+          1.0
+        ],
+        "tn": 1,
+        "tp": 1
+      },
+      "F5": {
+        "f1": 0.666667,
+        "fn": 1,
+        "fp": 0,
+        "n": 3,
+        "n_negative": 1,
+        "n_positive": 2,
+        "precision": 1.0,
+        "precision_ci95": [
+          0.2065,
+          1.0
+        ],
+        "recall": 0.5,
+        "recall_ci95": [
+          0.0945,
+          0.9055
+        ],
+        "tn": 1,
+        "tp": 1
+      },
+      "F6": {
+        "f1": 1.0,
+        "fn": 0,
+        "fp": 0,
+        "n": 3,
+        "n_negative": 1,
+        "n_positive": 2,
+        "precision": 1.0,
+        "precision_ci95": [
+          0.3424,
+          1.0
+        ],
+        "recall": 1.0,
+        "recall_ci95": [
+          0.3424,
+          1.0
+        ],
+        "tn": 1,
+        "tp": 2
+      }
+    },
+    "q2_findings": {
+      "conclusion": "Detection accuracy must be read PER CLASS, not aggregated. Precision is 1.0 everywhere (zero false positives across all families). The false negatives are of two kinds: THRESHOLD-REDUCIBLE (low-severity F1/F2 below a schema range / latency budget \u2014 caught by tightening the threshold) and IRREDUCIBLE SEMANTIC ESCAPES (F3 drift_value, F5 context_drift \u2014 no deterministic detector closes them). This confirms Q2's split hypothesis (Day 11); at this sample size the group interval bands are wide, so the split is directional evidence plus the structural proof that the escapes are undetectable.",
+      "deterministic_group_recall": 0.8,
+      "deterministic_group_recall_ci95": [
+        0.3755,
+        0.9638
+      ],
+      "false_positives_total": 0,
+      "fn_taxonomy": {
+        "irreducible_semantic_escape": 2,
+        "threshold_reducible": 1
+      },
+      "semantic_group_recall": 0.666667,
+      "semantic_group_recall_ci95": [
+        0.3,
+        0.9032
+      ]
+    },
+    "split": "test"
+  }
+}

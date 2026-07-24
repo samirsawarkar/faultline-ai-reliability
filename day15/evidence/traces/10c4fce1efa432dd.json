@@ -1,0 +1,57 @@
+{
+  "kind": "context_drift",
+  "modality": "F5",
+  "observable": {
+    "completed": true,
+    "context": [
+      10,
+      60,
+      30,
+      40
+    ],
+    "final": 140,
+    "step_signatures": [
+      "step:0",
+      "step:1",
+      "step:2",
+      "step:3"
+    ],
+    "steps_used": 4
+  },
+  "outcome": "FN",
+  "sample_id": "10c4fce1efa432dd",
+  "seed": 1,
+  "severity": 2,
+  "trace": {
+    "seed": 1,
+    "span_count": 1,
+    "spans": [
+      {
+        "attributes": {},
+        "end_seq": 2,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"steps\":4}",
+          "redacted": false,
+          "sha256": "a74725c6e624b191b57b182935490f89171eb9ea2cbed25cc8538dd306877626",
+          "size_bytes": 11
+        },
+        "kind": "agent",
+        "name": "run.0",
+        "output_ref": {
+          "preview": "{\"completed\":true,\"final\":140}",
+          "redacted": false,
+          "sha256": "8b746073088e55448a370e33c333694ebc5336c5ee62f08617231bbdea2f8358",
+          "size_bytes": 30
+        },
+        "parent_span_id": null,
+        "span_id": "trace-00000001-span-0000",
+        "start_seq": 1,
+        "status": "ok",
+        "trace_id": "trace-00000001"
+      }
+    ],
+    "trace_id": "trace-00000001"
+  },
+  "why": "irreducible semantic escape: schema-valid, invariant-respecting, structurally identical to a correct output \u2014 only the oracle knows"
+}
