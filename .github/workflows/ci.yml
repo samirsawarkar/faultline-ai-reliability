@@ -159,3 +159,11 @@ jobs:
         run: |
           python day15/scripts/make_evidence.py
           git diff --exit-code -- day15/evidence/
+
+      - name: Day 16 — narrow LLM judge validation (agreement, bias, slices)
+        run: cd day16 && python -m pytest tests/ -v
+
+      - name: Day 16 — judge rubric, validation set + agreement report reproduce byte-for-byte
+        run: |
+          python day16/scripts/make_evidence.py
+          git diff --exit-code -- day16/evidence/

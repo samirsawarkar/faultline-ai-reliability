@@ -1,0 +1,100 @@
+{
+  "failure_slices": [
+    "borderline_tokens"
+  ],
+  "human_ceiling_inter_rater": {
+    "cohen_kappa": 0.8,
+    "kappa_label": "substantial",
+    "note": "human-vs-human agreement \u2014 the reliability ceiling the judge is measured against, not 1.0",
+    "raw_agreement": 0.9167
+  },
+  "judge": "simulated",
+  "judge_vs_human": {
+    "cohen_kappa": 0.5,
+    "confusion_judge_vs_human": {
+      "fn": 0,
+      "fp": 6,
+      "tn": 12,
+      "tp": 6
+    },
+    "kappa_label": "moderate",
+    "n": 24,
+    "raw_agreement": 0.75,
+    "raw_agreement_ci95": [
+      0.551,
+      0.88
+    ]
+  },
+  "per_slice_agreement": {
+    "borderline_extra": {
+      "agreement": 1.0,
+      "disagreements": 0,
+      "n": 6
+    },
+    "borderline_tokens": {
+      "agreement": 0.0,
+      "disagreements": 6,
+      "n": 6
+    },
+    "clear_accept": {
+      "agreement": 1.0,
+      "disagreements": 0,
+      "n": 6
+    },
+    "clear_reject": {
+      "agreement": 1.0,
+      "disagreements": 0,
+      "n": 6
+    }
+  },
+  "positional_bias": {
+    "fair_control": {
+      "by_kind": {
+        "clear": {
+          "bias_rate": 0.0,
+          "n": 6,
+          "order_dependent": 0
+        },
+        "close": {
+          "bias_rate": 0.0,
+          "n": 6,
+          "order_dependent": 0
+        }
+      },
+      "n_pairs": 12,
+      "order_dependent_total": 0,
+      "positional_bias_rate": 0.0
+    },
+    "judge_under_test": {
+      "by_kind": {
+        "clear": {
+          "bias_rate": 0.0,
+          "n": 6,
+          "order_dependent": 0
+        },
+        "close": {
+          "bias_rate": 1.0,
+          "n": 6,
+          "order_dependent": 6
+        }
+      },
+      "n_pairs": 12,
+      "order_dependent_total": 6,
+      "positional_bias_rate": 0.5
+    },
+    "note": "each pair presented in both orders; an order-dependent winner is positional bias"
+  },
+  "rubric_scope": "narrow fallback-quality for F3 drift_value / F5 context_drift only",
+  "validation_set_size": 24,
+  "verdict": {
+    "conditions": [
+      "core success is scored ONLY by the Day-1 oracle; the judge never contributes to it",
+      "judge kappa 0.5 (moderate) vs human ceiling 0.8 (substantial)",
+      "failure slice(s) where the judge must not be trusted alone: ['borderline_tokens']",
+      "positional bias rate 0.5 on paired mode (fair control 0.0) \u2014 prefer pointwise, or average both orders"
+    ],
+    "forbidden_from_core_success_scoring": true,
+    "rationale": "The judge agrees with humans on clear cases but is lenient on token-order drift (a zero-agreement slice) and is fully order-dependent on close pairwise calls. It is therefore NOT validated for standalone use and is forbidden from core scoring; it may assist ONLY on the narrow fallback-quality question, outside its failure slice, with the bias mitigated.",
+    "validated_for_standalone_use": false
+  }
+}

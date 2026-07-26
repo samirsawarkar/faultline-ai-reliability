@@ -5,7 +5,7 @@
 [![CI](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/tests-269%20passing-brightgreen.svg)](#quickstart)
+[![Tests](https://img.shields.io/badge/tests-281%20passing-brightgreen.svg)](#quickstart)
 
 ---
 
@@ -67,7 +67,8 @@ standards below — not a demo, but a specimen you could put under a microscope.
 | **[13](day13/)** | Evaluation harness + versioned dataset | ✅ Done | content-addressed dataset version, deterministic stratified splits, immutable oracle-grounded eval results, contamination + stale-reuse attacks, dataset card |
 | **[14](day14/)** | Intervals + paired statistical design | ✅ Done | verified Wilson + bootstrap intervals, McNemar's paired test (exact + chi-square), independent verification, plain-English interpretation guide |
 | **[15](day15/)** | Q2 — detection accuracy per fault | ✅ Done | per-class confusion matrices with Wilson CIs, deterministic/semantic groups, every FP/FN traced (0 FP, 10 FN: 4 semantic escapes + 6 threshold), micro-vs-macro |
-| 16–50 | Judge validation, recovery, cascade, and hardening | 🔜 Planned | building on the frozen days above |
+| **[16](day16/)** | Validate a narrow LLM judge | ✅ Done | narrow fallback-quality rubric, blinded human labels, Cohen's κ vs inter-rater ceiling, positional-bias + failure-slice report, judge card forbidding core-success scoring |
+| 17–50 | Subgroup gates, recovery, cascade, and hardening | 🔜 Planned | building on the frozen days above |
 
 > The arc is deliberately cumulative: Day 2's agent runs against Day 1's frozen
 > environment, and later days inject faults into this fully-owned baseline. That
@@ -167,6 +168,12 @@ faultline-ai-reliability/
 │   ├── tests/            per-class + no-hiding + trace gate (8 tests)
 │   ├── evidence/         q2_results.json, q2_failures.json, Q2_FINDINGS.md, traces/<id>.json
 │   └── CHECKPOINT-15 / LEARN-imbalanced-metrics / DECISIONS / REFLECTION.md
+├── day16/                validate a narrow LLM judge (stdlib only)
+│   ├── faultline_judge/  rubric, validation_set, judge adapter, agreement, report, card
+│   ├── scripts/          make_evidence (rubric + validation set + agreement report + card)
+│   ├── tests/            rubric/agreement + verdict/forbid gate (12 tests)
+│   ├── evidence/         judge_rubric.md, validation_set.json, agreement_report.json, JUDGE_CARD.md
+│   └── CHECKPOINT-16 / LEARN-judge-reliability / DECISIONS / REFLECTION.md
 ├── .github/workflows/    CI: tests + determinism proof + fault attacks
 ├── requirements.txt      pinned deps (pydantic, pytest)
 └── Makefile              make venv && make test
@@ -183,7 +190,7 @@ cd day01 && python3 -m pytest tests/ -q          # 11 tests
 
 # Day 2 adds pydantic — from the repo root:
 make venv                                        # .venv from pinned deps
-make test                                        # full gate: 269 tests, day01–day15
+make test                                        # full gate: 281 tests, day01–day16
 
 # Re-prove the headline claims yourself:
 make determinism      # Day 1: byte-identical env across processes/hashseeds
@@ -200,9 +207,10 @@ make day12-catalog    # Day 12: fault catalog + gallery + reproducibility/integr
 make day13-eval       # Day 13: run the versioned, leakage-resistant eval (test split)
 make day14-stats      # Day 14: verify intervals + McNemar; run the paired comparison
 make day15-q2         # Day 15: Q2 per-class confusion + intervals; investigate every FP/FN
+make day16-judge      # Day 16: validate the narrow LLM judge (agreement, bias, slices)
 ```
 
-Requires Python ≥ 3.9. Days 1 and 4–15 need no third-party packages; Days 2–3
+Requires Python ≥ 3.9. Days 1 and 4–16 need no third-party packages; Days 2–3
 need `pydantic` v2 (see `requirements.txt`).
 
 ## License
