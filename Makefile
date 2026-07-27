@@ -8,12 +8,12 @@
 # repo works even when checked out under a directory whose name contains spaces.
 PY := ./.venv/bin/python
 
-.PHONY: help venv test test-day01 test-day02 test-day03 test-day04 test-day05 test-day06 test-day07 test-day08 test-day09 test-day10 test-day11 test-day12 test-day13 test-day14 test-day15 test-day16 determinism attack \
-        day03-baseline day03-attack day04-traces day05-evidence day06-replay day07-q1 day08-inject day09-detect day10-contracts day11-spectrum day12-catalog day13-eval day14-stats day15-q2 day16-judge evidence clean
+.PHONY: help venv test test-day01 test-day02 test-day03 test-day04 test-day05 test-day06 test-day07 test-day08 test-day09 test-day10 test-day11 test-day12 test-day13 test-day14 test-day15 test-day16 test-day17 determinism attack \
+        day03-baseline day03-attack day04-traces day05-evidence day06-replay day07-q1 day08-inject day09-detect day10-contracts day11-spectrum day12-catalog day13-eval day14-stats day15-q2 day16-judge day17-subgroups evidence clean
 
 help:
 	@echo "make venv          create .venv and install pinned deps"
-	@echo "make test          run the full gate (day01 … day16)"
+	@echo "make test          run the full gate (day01 … day17)"
 	@echo "make determinism   re-prove Day 1 cross-process determinism"
 	@echo "make attack        re-run the Day 2 over-budget termination attack"
 	@echo "make day03-baseline rebuild the Day 3 baseline.json + figure"
@@ -31,6 +31,7 @@ help:
 	@echo "make day14-stats   regenerate Day 14 stats verification + paired comparison"
 	@echo "make day15-q2      regenerate Day 15 Q2 per-class confusion + failures"
 	@echo "make day16-judge   regenerate Day 16 judge validation + agreement/bias report"
+	@echo "make day17-subgroups regenerate Day 17 subgroup report + evaluation audit"
 	@echo "make evidence      regenerate all committed evidence artifacts"
 	@echo "make clean         remove caches"
 
@@ -39,7 +40,7 @@ venv:
 	$(PY) -m pip install --upgrade pip
 	$(PY) -m pip install -r requirements.txt
 
-test: test-day01 test-day02 test-day03 test-day04 test-day05 test-day06 test-day07 test-day08 test-day09 test-day10 test-day11 test-day12 test-day13 test-day14 test-day15 test-day16
+test: test-day01 test-day02 test-day03 test-day04 test-day05 test-day06 test-day07 test-day08 test-day09 test-day10 test-day11 test-day12 test-day13 test-day14 test-day15 test-day16 test-day17
 
 test-day01:
 	$(PY) -m pytest day01/tests/ -q
@@ -88,6 +89,9 @@ test-day15:
 
 test-day16:
 	$(PY) -m pytest day16/tests/ -q
+
+test-day17:
+	$(PY) -m pytest day17/tests/ -q
 
 determinism:
 	$(PY) day01/scripts/experiment_determinism.py
@@ -140,6 +144,9 @@ day15-q2:
 day16-judge:
 	$(PY) day16/scripts/make_evidence.py
 
+day17-subgroups:
+	$(PY) day17/scripts/make_evidence.py
+
 evidence:
 	$(PY) day01/scripts/experiment_determinism.py
 	$(PY) day02/scripts/experiment_budget.py
@@ -160,6 +167,7 @@ evidence:
 	$(PY) day14/scripts/make_evidence.py
 	$(PY) day15/scripts/make_evidence.py
 	$(PY) day16/scripts/make_evidence.py
+	$(PY) day17/scripts/make_evidence.py
 
 clean:
 	find . -type d -name __pycache__ -prune -exec rm -rf {} +

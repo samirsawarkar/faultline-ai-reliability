@@ -1,0 +1,20 @@
+{
+  "audit_passed": true,
+  "discipline_applied": true,
+  "gate_passed": true,
+  "ignored_contradictions": [],
+  "no_contradiction_ignored": true,
+  "reversal_detector_detail": {
+    "aggregate_order": "b>a",
+    "detector_recovers_known_paradox": true,
+    "reversal_slices": [
+      {
+        "severity": "large"
+      },
+      {
+        "severity": "small"
+      }
+    ]
+  },
+  "reversal_detector_verified": true
+}

@@ -167,3 +167,11 @@ jobs:
         run: |
           python day16/scripts/make_evidence.py
           git diff --exit-code -- day16/evidence/
+
+      - name: Day 17 — subgroup analysis, reversal detection + measurement gate
+        run: cd day17 && python -m pytest tests/ -v
+
+      - name: Day 17 — subgroup report + evaluation audit reproduce byte-for-byte
+        run: |
+          python day17/scripts/make_evidence.py
+          git diff --exit-code -- day17/evidence/
