@@ -1,0 +1,486 @@
+{
+  "m1_exhausted": {
+    "seed": 20260728,
+    "span_count": 5,
+    "spans": [
+      {
+        "attributes": {},
+        "end_seq": 10,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"max\":4}",
+          "redacted": false,
+          "sha256": "cd0027836f7aca7f1cb633e821cf4b04323105bea04a766455aecd52eb1830bb",
+          "size_bytes": 9
+        },
+        "kind": "agent",
+        "name": "repair_retry",
+        "output_ref": {
+          "preview": "{\"recovered\":false}",
+          "redacted": false,
+          "sha256": "53e06a0dc417a3909e9f58ea6bf951037f6cd8c258b81e0ca7fdcd3f171073bb",
+          "size_bytes": 19
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260728-span-0000",
+        "start_seq": 1,
+        "status": "ok",
+        "trace_id": "trace-20260728"
+      },
+      {
+        "attributes": {},
+        "end_seq": 3,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"i\":0}",
+          "redacted": false,
+          "sha256": "e9f74e715a1806aa651489dcf176e77013b3c851dbc114cc9c24f2fe9d411d65",
+          "size_bytes": 7
+        },
+        "kind": "tool",
+        "name": "attempt.0",
+        "output_ref": {
+          "preview": "{\"latency\":5,\"valid\":false}",
+          "redacted": false,
+          "sha256": "ff5ed5af15f3755457832494c16a028a56bec7d34b301bbe0cd1bd0e265ffbe9",
+          "size_bytes": 27
+        },
+        "parent_span_id": "trace-20260728-span-0000",
+        "span_id": "trace-20260728-span-0001",
+        "start_seq": 2,
+        "status": "ok",
+        "trace_id": "trace-20260728"
+      },
+      {
+        "attributes": {},
+        "end_seq": 5,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"i\":1}",
+          "redacted": false,
+          "sha256": "0b549edd218c251f511934cc2f3bc5c7f4780e27af6b8ab4ae8d92cd94121b4a",
+          "size_bytes": 7
+        },
+        "kind": "tool",
+        "name": "attempt.1",
+        "output_ref": {
+          "preview": "{\"latency\":5,\"valid\":false}",
+          "redacted": false,
+          "sha256": "ff5ed5af15f3755457832494c16a028a56bec7d34b301bbe0cd1bd0e265ffbe9",
+          "size_bytes": 27
+        },
+        "parent_span_id": "trace-20260728-span-0000",
+        "span_id": "trace-20260728-span-0002",
+        "start_seq": 4,
+        "status": "ok",
+        "trace_id": "trace-20260728"
+      },
+      {
+        "attributes": {},
+        "end_seq": 7,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"i\":2}",
+          "redacted": false,
+          "sha256": "38f38fbef725fffb9fa39683d9e50f05ca8c61130c2da2322f9e9021007a2abf",
+          "size_bytes": 7
+        },
+        "kind": "tool",
+        "name": "attempt.2",
+        "output_ref": {
+          "preview": "{\"latency\":5,\"valid\":false}",
+          "redacted": false,
+          "sha256": "ff5ed5af15f3755457832494c16a028a56bec7d34b301bbe0cd1bd0e265ffbe9",
+          "size_bytes": 27
+        },
+        "parent_span_id": "trace-20260728-span-0000",
+        "span_id": "trace-20260728-span-0003",
+        "start_seq": 6,
+        "status": "ok",
+        "trace_id": "trace-20260728"
+      },
+      {
+        "attributes": {},
+        "end_seq": 9,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"i\":3}",
+          "redacted": false,
+          "sha256": "6867a9ad5ed5490cad237e5a82ff1c3f3a6858a7ec42be49b40b12a65911dcd7",
+          "size_bytes": 7
+        },
+        "kind": "tool",
+        "name": "attempt.3",
+        "output_ref": {
+          "preview": "{\"latency\":5,\"valid\":false}",
+          "redacted": false,
+          "sha256": "ff5ed5af15f3755457832494c16a028a56bec7d34b301bbe0cd1bd0e265ffbe9",
+          "size_bytes": 27
+        },
+        "parent_span_id": "trace-20260728-span-0000",
+        "span_id": "trace-20260728-span-0004",
+        "start_seq": 8,
+        "status": "ok",
+        "trace_id": "trace-20260728"
+      }
+    ],
+    "trace_id": "trace-20260728"
+  },
+  "m1_recovered": {
+    "seed": 20260728,
+    "span_count": 4,
+    "spans": [
+      {
+        "attributes": {},
+        "end_seq": 8,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"max\":4}",
+          "redacted": false,
+          "sha256": "cd0027836f7aca7f1cb633e821cf4b04323105bea04a766455aecd52eb1830bb",
+          "size_bytes": 9
+        },
+        "kind": "agent",
+        "name": "repair_retry",
+        "output_ref": {
+          "preview": "{\"recovered\":true}",
+          "redacted": false,
+          "sha256": "a419f689dc39684c9d524ed9188489cfe075f8dcd83d9b707f2f9a1bf5c6b5f2",
+          "size_bytes": 18
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260728-span-0000",
+        "start_seq": 1,
+        "status": "ok",
+        "trace_id": "trace-20260728"
+      },
+      {
+        "attributes": {},
+        "end_seq": 3,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"i\":0}",
+          "redacted": false,
+          "sha256": "e9f74e715a1806aa651489dcf176e77013b3c851dbc114cc9c24f2fe9d411d65",
+          "size_bytes": 7
+        },
+        "kind": "tool",
+        "name": "attempt.0",
+        "output_ref": {
+          "preview": "{\"latency\":5,\"valid\":false}",
+          "redacted": false,
+          "sha256": "ff5ed5af15f3755457832494c16a028a56bec7d34b301bbe0cd1bd0e265ffbe9",
+          "size_bytes": 27
+        },
+        "parent_span_id": "trace-20260728-span-0000",
+        "span_id": "trace-20260728-span-0001",
+        "start_seq": 2,
+        "status": "ok",
+        "trace_id": "trace-20260728"
+      },
+      {
+        "attributes": {},
+        "end_seq": 5,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"i\":1}",
+          "redacted": false,
+          "sha256": "0b549edd218c251f511934cc2f3bc5c7f4780e27af6b8ab4ae8d92cd94121b4a",
+          "size_bytes": 7
+        },
+        "kind": "tool",
+        "name": "attempt.1",
+        "output_ref": {
+          "preview": "{\"latency\":5,\"valid\":false}",
+          "redacted": false,
+          "sha256": "ff5ed5af15f3755457832494c16a028a56bec7d34b301bbe0cd1bd0e265ffbe9",
+          "size_bytes": 27
+        },
+        "parent_span_id": "trace-20260728-span-0000",
+        "span_id": "trace-20260728-span-0002",
+        "start_seq": 4,
+        "status": "ok",
+        "trace_id": "trace-20260728"
+      },
+      {
+        "attributes": {},
+        "end_seq": 7,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"i\":2}",
+          "redacted": false,
+          "sha256": "38f38fbef725fffb9fa39683d9e50f05ca8c61130c2da2322f9e9021007a2abf",
+          "size_bytes": 7
+        },
+        "kind": "tool",
+        "name": "attempt.2",
+        "output_ref": {
+          "preview": "{\"latency\":5,\"valid\":true}",
+          "redacted": false,
+          "sha256": "2f03db537f8755b68a8ef7927bd6348a419a8a1b9f2c7703f0143904f1b74877",
+          "size_bytes": 26
+        },
+        "parent_span_id": "trace-20260728-span-0000",
+        "span_id": "trace-20260728-span-0003",
+        "start_seq": 6,
+        "status": "ok",
+        "trace_id": "trace-20260728"
+      }
+    ],
+    "trace_id": "trace-20260728"
+  },
+  "m2_exhausted": {
+    "seed": 20260728,
+    "span_count": 6,
+    "spans": [
+      {
+        "attributes": {},
+        "end_seq": 12,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"timeout\":30}",
+          "redacted": false,
+          "sha256": "2e134e47e356ce08bffed9fc79e7f38fa3b38ef0d3812f182202731896133dc4",
+          "size_bytes": 14
+        },
+        "kind": "agent",
+        "name": "timeout_retry",
+        "output_ref": {
+          "preview": "{\"recovered\":false}",
+          "redacted": false,
+          "sha256": "53e06a0dc417a3909e9f58ea6bf951037f6cd8c258b81e0ca7fdcd3f171073bb",
+          "size_bytes": 19
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260728-span-0000",
+        "start_seq": 1,
+        "status": "ok",
+        "trace_id": "trace-20260728"
+      },
+      {
+        "attributes": {},
+        "end_seq": 3,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"i\":0}",
+          "redacted": false,
+          "sha256": "e9f74e715a1806aa651489dcf176e77013b3c851dbc114cc9c24f2fe9d411d65",
+          "size_bytes": 7
+        },
+        "kind": "tool",
+        "name": "attempt.0",
+        "output_ref": {
+          "preview": "{\"completed\":false,\"duration\":90,\"waited\":30}",
+          "redacted": false,
+          "sha256": "944437cd2ef2d7b1d3f8bceb69f18612abc5a182388a2720ec85ae51b2a95fe8",
+          "size_bytes": 45
+        },
+        "parent_span_id": "trace-20260728-span-0000",
+        "span_id": "trace-20260728-span-0001",
+        "start_seq": 2,
+        "status": "ok",
+        "trace_id": "trace-20260728"
+      },
+      {
+        "attributes": {},
+        "end_seq": 5,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"i\":1}",
+          "redacted": false,
+          "sha256": "0b549edd218c251f511934cc2f3bc5c7f4780e27af6b8ab4ae8d92cd94121b4a",
+          "size_bytes": 7
+        },
+        "kind": "tool",
+        "name": "attempt.1",
+        "output_ref": {
+          "preview": "{\"completed\":false,\"duration\":90,\"waited\":30}",
+          "redacted": false,
+          "sha256": "944437cd2ef2d7b1d3f8bceb69f18612abc5a182388a2720ec85ae51b2a95fe8",
+          "size_bytes": 45
+        },
+        "parent_span_id": "trace-20260728-span-0000",
+        "span_id": "trace-20260728-span-0002",
+        "start_seq": 4,
+        "status": "ok",
+        "trace_id": "trace-20260728"
+      },
+      {
+        "attributes": {},
+        "end_seq": 7,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"i\":2}",
+          "redacted": false,
+          "sha256": "38f38fbef725fffb9fa39683d9e50f05ca8c61130c2da2322f9e9021007a2abf",
+          "size_bytes": 7
+        },
+        "kind": "tool",
+        "name": "attempt.2",
+        "output_ref": {
+          "preview": "{\"completed\":false,\"duration\":90,\"waited\":30}",
+          "redacted": false,
+          "sha256": "944437cd2ef2d7b1d3f8bceb69f18612abc5a182388a2720ec85ae51b2a95fe8",
+          "size_bytes": 45
+        },
+        "parent_span_id": "trace-20260728-span-0000",
+        "span_id": "trace-20260728-span-0003",
+        "start_seq": 6,
+        "status": "ok",
+        "trace_id": "trace-20260728"
+      },
+      {
+        "attributes": {},
+        "end_seq": 9,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"i\":3}",
+          "redacted": false,
+          "sha256": "6867a9ad5ed5490cad237e5a82ff1c3f3a6858a7ec42be49b40b12a65911dcd7",
+          "size_bytes": 7
+        },
+        "kind": "tool",
+        "name": "attempt.3",
+        "output_ref": {
+          "preview": "{\"completed\":false,\"duration\":90,\"waited\":30}",
+          "redacted": false,
+          "sha256": "944437cd2ef2d7b1d3f8bceb69f18612abc5a182388a2720ec85ae51b2a95fe8",
+          "size_bytes": 45
+        },
+        "parent_span_id": "trace-20260728-span-0000",
+        "span_id": "trace-20260728-span-0004",
+        "start_seq": 8,
+        "status": "ok",
+        "trace_id": "trace-20260728"
+      },
+      {
+        "attributes": {},
+        "end_seq": 11,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"i\":4}",
+          "redacted": false,
+          "sha256": "83f0969936f48733b59108ddca066bbfb311bd59b4074351193833026bd18de2",
+          "size_bytes": 7
+        },
+        "kind": "tool",
+        "name": "attempt.4",
+        "output_ref": {
+          "preview": "{\"completed\":false,\"duration\":90,\"waited\":30}",
+          "redacted": false,
+          "sha256": "944437cd2ef2d7b1d3f8bceb69f18612abc5a182388a2720ec85ae51b2a95fe8",
+          "size_bytes": 45
+        },
+        "parent_span_id": "trace-20260728-span-0000",
+        "span_id": "trace-20260728-span-0005",
+        "start_seq": 10,
+        "status": "ok",
+        "trace_id": "trace-20260728"
+      }
+    ],
+    "trace_id": "trace-20260728"
+  },
+  "m2_recovered": {
+    "seed": 20260728,
+    "span_count": 4,
+    "spans": [
+      {
+        "attributes": {},
+        "end_seq": 8,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"timeout\":30}",
+          "redacted": false,
+          "sha256": "2e134e47e356ce08bffed9fc79e7f38fa3b38ef0d3812f182202731896133dc4",
+          "size_bytes": 14
+        },
+        "kind": "agent",
+        "name": "timeout_retry",
+        "output_ref": {
+          "preview": "{\"recovered\":true}",
+          "redacted": false,
+          "sha256": "a419f689dc39684c9d524ed9188489cfe075f8dcd83d9b707f2f9a1bf5c6b5f2",
+          "size_bytes": 18
+        },
+        "parent_span_id": null,
+        "span_id": "trace-20260728-span-0000",
+        "start_seq": 1,
+        "status": "ok",
+        "trace_id": "trace-20260728"
+      },
+      {
+        "attributes": {},
+        "end_seq": 3,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"i\":0}",
+          "redacted": false,
+          "sha256": "e9f74e715a1806aa651489dcf176e77013b3c851dbc114cc9c24f2fe9d411d65",
+          "size_bytes": 7
+        },
+        "kind": "tool",
+        "name": "attempt.0",
+        "output_ref": {
+          "preview": "{\"completed\":false,\"duration\":60,\"waited\":30}",
+          "redacted": false,
+          "sha256": "c3c4a4eea0a962cb3756ba9b36969e91df3dd5230c27afc73a7868eb8b1aef48",
+          "size_bytes": 45
+        },
+        "parent_span_id": "trace-20260728-span-0000",
+        "span_id": "trace-20260728-span-0001",
+        "start_seq": 2,
+        "status": "ok",
+        "trace_id": "trace-20260728"
+      },
+      {
+        "attributes": {},
+        "end_seq": 5,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"i\":1}",
+          "redacted": false,
+          "sha256": "0b549edd218c251f511934cc2f3bc5c7f4780e27af6b8ab4ae8d92cd94121b4a",
+          "size_bytes": 7
+        },
+        "kind": "tool",
+        "name": "attempt.1",
+        "output_ref": {
+          "preview": "{\"completed\":false,\"duration\":40,\"waited\":30}",
+          "redacted": false,
+          "sha256": "62c3b0fdf8bb93d2ae35c1b080ad2d467ac0e0bd20747b4a6eb091f4dce62a19",
+          "size_bytes": 45
+        },
+        "parent_span_id": "trace-20260728-span-0000",
+        "span_id": "trace-20260728-span-0002",
+        "start_seq": 4,
+        "status": "ok",
+        "trace_id": "trace-20260728"
+      },
+      {
+        "attributes": {},
+        "end_seq": 7,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"i\":2}",
+          "redacted": false,
+          "sha256": "38f38fbef725fffb9fa39683d9e50f05ca8c61130c2da2322f9e9021007a2abf",
+          "size_bytes": 7
+        },
+        "kind": "tool",
+        "name": "attempt.2",
+        "output_ref": {
+          "preview": "{\"completed\":true,\"duration\":20,\"waited\":20}",
+          "redacted": false,
+          "sha256": "b9b3903bc55317f86564d3135cb71ef609b91db8bb6367af2d3b4c84d34b2e32",
+          "size_bytes": 44
+        },
+        "parent_span_id": "trace-20260728-span-0000",
+        "span_id": "trace-20260728-span-0003",
+        "start_seq": 6,
+        "status": "ok",
+        "trace_id": "trace-20260728"
+      }
+    ],
+    "trace_id": "trace-20260728"
+  }
+}

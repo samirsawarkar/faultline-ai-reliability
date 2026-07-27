@@ -1,0 +1,215 @@
+{
+  "configs": {
+    "M1_repair": {
+      "base_delay": 5,
+      "cost_budget": 6,
+      "cost_per_attempt": 1,
+      "jitter": true,
+      "max_attempts": 4,
+      "max_delay": 40,
+      "seed": 20260728,
+      "total_latency_budget": 200
+    },
+    "M2_timeout": {
+      "base_delay": 10,
+      "cost_budget": 8,
+      "cost_per_attempt": 1,
+      "jitter": true,
+      "max_attempts": 5,
+      "max_delay": 80,
+      "seed": 20260728,
+      "total_latency_budget": 400
+    },
+    "no_recovery": {
+      "base_delay": 0,
+      "cost_budget": 1,
+      "cost_per_attempt": 1,
+      "jitter": false,
+      "max_attempts": 1,
+      "max_delay": 0,
+      "seed": 20260728,
+      "total_latency_budget": 1000
+    }
+  },
+  "exhaustion_attack": {
+    "checks": {
+      "all_ceilings_hold": true,
+      "m1_attempts_le_max": true,
+      "m1_cost_le_budget": true,
+      "m1_status": "exhausted_attempts",
+      "m1_terminal": true,
+      "m2_attempts_le_max": true,
+      "m2_cost_le_budget": true,
+      "m2_latency_bounded": true,
+      "m2_status": "exhausted_attempts",
+      "m2_terminal": true
+    },
+    "m1": {
+      "attempts": 4,
+      "delays": [
+        2,
+        4,
+        8
+      ],
+      "recovered": false,
+      "status": "exhausted_attempts",
+      "total_cost": 4,
+      "total_latency": 34
+    },
+    "m2": {
+      "attempts": 5,
+      "delays": [
+        5,
+        9,
+        16,
+        58
+      ],
+      "recovered": false,
+      "status": "exhausted_attempts",
+      "total_cost": 5,
+      "total_latency": 238
+    }
+  },
+  "new_failure_analysis": {
+    "idempotency": {
+      "duplicate_deliveries": 3,
+      "safe_to_repeat": true,
+      "side_effects_naive": 3,
+      "side_effects_with_ledger": 1
+    },
+    "wasted_recovery_on_persistent": {
+      "attempts": 4,
+      "benefit": "none (fault never clears) \u2014 recovery adds cost without success",
+      "status": "exhausted_attempts",
+      "wasted_cost": 4,
+      "wasted_latency": 34
+    }
+  },
+  "paired_m1": {
+    "mcnemar": {
+      "b": 0,
+      "c": 6,
+      "chi2_p_value": 0.041226833337163676,
+      "chi2_statistic": 4.166666666666667,
+      "continuity_correction": true,
+      "exact_p_value": 0.03125,
+      "n_discordant": 6,
+      "p_value": 0.03125,
+      "recommended": "exact",
+      "significant_at_0.05": true,
+      "table": {
+        "a_only": 0,
+        "b_only": 6,
+        "both_correct": 0,
+        "both_wrong": 3,
+        "discordant": 6,
+        "n": 9
+      }
+    },
+    "no_recovery_success": 0,
+    "policy": {
+      "base_delay": 5,
+      "cost_budget": 6,
+      "cost_per_attempt": 1,
+      "jitter": true,
+      "max_attempts": 4,
+      "max_delay": 40,
+      "seed": 20260728,
+      "total_latency_budget": 200
+    },
+    "recovery_success": 6,
+    "scenarios": [
+      1,
+      2,
+      3,
+      1,
+      2,
+      3,
+      99,
+      99,
+      99
+    ]
+  },
+  "paired_m2": {
+    "mcnemar": {
+      "b": 0,
+      "c": 6,
+      "chi2_p_value": 0.041226833337163676,
+      "chi2_statistic": 4.166666666666667,
+      "continuity_correction": true,
+      "exact_p_value": 0.03125,
+      "n_discordant": 6,
+      "p_value": 0.03125,
+      "recommended": "exact",
+      "significant_at_0.05": true,
+      "table": {
+        "a_only": 0,
+        "b_only": 6,
+        "both_correct": 0,
+        "both_wrong": 3,
+        "discordant": 6,
+        "n": 9
+      }
+    },
+    "no_recovery_success": 0,
+    "policy": {
+      "base_delay": 10,
+      "cost_budget": 8,
+      "cost_per_attempt": 1,
+      "jitter": true,
+      "max_attempts": 5,
+      "max_delay": 80,
+      "seed": 20260728,
+      "total_latency_budget": 400
+    },
+    "recovery_success": 6,
+    "scenarios": [
+      [
+        "transient",
+        60,
+        20
+      ],
+      [
+        "transient",
+        50,
+        20
+      ],
+      [
+        "persistent",
+        90,
+        0
+      ],
+      [
+        "transient",
+        40,
+        20
+      ],
+      [
+        "persistent",
+        70,
+        0
+      ],
+      [
+        "transient",
+        55,
+        15
+      ],
+      [
+        "transient",
+        45,
+        20
+      ],
+      [
+        "transient",
+        35,
+        15
+      ],
+      [
+        "persistent",
+        80,
+        0
+      ]
+    ],
+    "timeout": 30
+  }
+}

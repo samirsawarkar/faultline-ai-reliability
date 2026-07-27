@@ -5,7 +5,7 @@
 [![CI](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/tests-292%20passing-brightgreen.svg)](#quickstart)
+[![Tests](https://img.shields.io/badge/tests-302%20passing-brightgreen.svg)](#quickstart)
 
 ---
 
@@ -69,7 +69,8 @@ standards below — not a demo, but a specimen you could put under a microscope.
 | **[15](day15/)** | Q2 — detection accuracy per fault | ✅ Done | per-class confusion matrices with Wilson CIs, deterministic/semantic groups, every FP/FN traced (0 FP, 10 FN: 4 semantic escapes + 6 threshold), micro-vs-macro |
 | **[16](day16/)** | Validate a narrow LLM judge | ✅ Done | narrow fallback-quality rubric, blinded human labels, Cohen's κ vs inter-rater ceiling, positional-bias + failure-slice report, judge card forbidding core-success scoring |
 | **[17](day17/)** | Subgroup analysis + measurement gate | ✅ Done | slice by fault/severity/hops/outcome, min-sample + Holm discipline, Simpson's-paradox reversal detector, audit that fails if any contradiction is ignored |
-| 18–50 | Recovery, cascade, and hardening | 🔜 Planned | building on the frozen days above |
+| **[18](day18/)** | M1/M2 — bounded recovery | ✅ Done | schema repair-retry + timeout/backoff/jitter inside a validated budget (attempts/cost/latency), idempotency ledger (side-effect-once), paired McNemar (recovery helps, p=0.031) |
+| 19–50 | Retry crossover, cascade, and hardening | 🔜 Planned | building on the frozen days above |
 
 > The arc is deliberately cumulative: Day 2's agent runs against Day 1's frozen
 > environment, and later days inject faults into this fully-owned baseline. That
@@ -181,6 +182,12 @@ faultline-ai-reliability/
 │   ├── tests/            slicer/gate + reversal/audit gate (11 tests)
 │   ├── evidence/         subgroup_report.json, evaluation_audit.json, SUBGROUP_FINDINGS.md
 │   └── CHECKPOINT-17 / LEARN-simpson / DECISIONS / REFLECTION.md
+├── day18/                bounded recovery — M1 repair-retry + M2 timeout (stdlib only)
+│   ├── faultline_recovery/ policy, engine, idempotency, repair (M1), timeout (M2), experiment
+│   ├── scripts/          make_evidence (recovery report + Day-4 recovery traces)
+│   ├── tests/            bounded/budgeted/idempotent + paired gate (10 tests)
+│   ├── evidence/         recovery_report.json, recovery_traces.json
+│   └── CHECKPOINT-18 / LEARN-idempotency / DECISIONS / REFLECTION.md
 ├── .github/workflows/    CI: tests + determinism proof + fault attacks
 ├── requirements.txt      pinned deps (pydantic, pytest)
 └── Makefile              make venv && make test
@@ -197,7 +204,7 @@ cd day01 && python3 -m pytest tests/ -q          # 11 tests
 
 # Day 2 adds pydantic — from the repo root:
 make venv                                        # .venv from pinned deps
-make test                                        # full gate: 292 tests, day01–day17
+make test                                        # full gate: 302 tests, day01–day18
 
 # Re-prove the headline claims yourself:
 make determinism      # Day 1: byte-identical env across processes/hashseeds
@@ -216,9 +223,10 @@ make day14-stats      # Day 14: verify intervals + McNemar; run the paired compa
 make day15-q2         # Day 15: Q2 per-class confusion + intervals; investigate every FP/FN
 make day16-judge      # Day 16: validate the narrow LLM judge (agreement, bias, slices)
 make day17-subgroups  # Day 17: subgroup analysis + reversal search + measurement gate
+make day18-recovery   # Day 18: bounded repair-retry + timeout/backoff/jitter; paired McNemar
 ```
 
-Requires Python ≥ 3.9. Days 1 and 4–17 need no third-party packages; Days 2–3
+Requires Python ≥ 3.9. Days 1 and 4–18 need no third-party packages; Days 2–3
 need `pydantic` v2 (see `requirements.txt`).
 
 ## License
