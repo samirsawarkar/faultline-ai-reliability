@@ -183,3 +183,11 @@ jobs:
         run: |
           python day18/scripts/make_evidence.py
           git diff --exit-code -- day18/evidence/
+
+      - name: Day 19 — retry crossover (sweep, ceilings, storm)
+        run: cd day19 && python -m pytest tests/ -v
+
+      - name: Day 19 — retry sweep + crossover curve reproduce byte-for-byte
+        run: |
+          python day19/scripts/make_evidence.py
+          git diff --exit-code -- day19/evidence/

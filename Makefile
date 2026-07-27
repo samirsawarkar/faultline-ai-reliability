@@ -8,12 +8,12 @@
 # repo works even when checked out under a directory whose name contains spaces.
 PY := ./.venv/bin/python
 
-.PHONY: help venv test test-day01 test-day02 test-day03 test-day04 test-day05 test-day06 test-day07 test-day08 test-day09 test-day10 test-day11 test-day12 test-day13 test-day14 test-day15 test-day16 test-day17 test-day18 determinism attack \
-        day03-baseline day03-attack day04-traces day05-evidence day06-replay day07-q1 day08-inject day09-detect day10-contracts day11-spectrum day12-catalog day13-eval day14-stats day15-q2 day16-judge day17-subgroups day18-recovery evidence clean
+.PHONY: help venv test test-day01 test-day02 test-day03 test-day04 test-day05 test-day06 test-day07 test-day08 test-day09 test-day10 test-day11 test-day12 test-day13 test-day14 test-day15 test-day16 test-day17 test-day18 test-day19 determinism attack \
+        day03-baseline day03-attack day04-traces day05-evidence day06-replay day07-q1 day08-inject day09-detect day10-contracts day11-spectrum day12-catalog day13-eval day14-stats day15-q2 day16-judge day17-subgroups day18-recovery day19-retry evidence clean
 
 help:
 	@echo "make venv          create .venv and install pinned deps"
-	@echo "make test          run the full gate (day01 … day18)"
+	@echo "make test          run the full gate (day01 … day19)"
 	@echo "make determinism   re-prove Day 1 cross-process determinism"
 	@echo "make attack        re-run the Day 2 over-budget termination attack"
 	@echo "make day03-baseline rebuild the Day 3 baseline.json + figure"
@@ -33,6 +33,7 @@ help:
 	@echo "make day16-judge   regenerate Day 16 judge validation + agreement/bias report"
 	@echo "make day17-subgroups regenerate Day 17 subgroup report + evaluation audit"
 	@echo "make day18-recovery regenerate Day 18 recovery report + traces"
+	@echo "make day19-retry  regenerate Day 19 retry sweep + crossover curve"
 	@echo "make evidence      regenerate all committed evidence artifacts"
 	@echo "make clean         remove caches"
 
@@ -41,7 +42,7 @@ venv:
 	$(PY) -m pip install --upgrade pip
 	$(PY) -m pip install -r requirements.txt
 
-test: test-day01 test-day02 test-day03 test-day04 test-day05 test-day06 test-day07 test-day08 test-day09 test-day10 test-day11 test-day12 test-day13 test-day14 test-day15 test-day16 test-day17 test-day18
+test: test-day01 test-day02 test-day03 test-day04 test-day05 test-day06 test-day07 test-day08 test-day09 test-day10 test-day11 test-day12 test-day13 test-day14 test-day15 test-day16 test-day17 test-day18 test-day19
 
 test-day01:
 	$(PY) -m pytest day01/tests/ -q
@@ -96,6 +97,9 @@ test-day17:
 
 test-day18:
 	$(PY) -m pytest day18/tests/ -q
+
+test-day19:
+	$(PY) -m pytest day19/tests/ -q
 
 determinism:
 	$(PY) day01/scripts/experiment_determinism.py
@@ -154,6 +158,9 @@ day17-subgroups:
 day18-recovery:
 	$(PY) day18/scripts/make_evidence.py
 
+day19-retry:
+	$(PY) day19/scripts/make_evidence.py
+
 evidence:
 	$(PY) day01/scripts/experiment_determinism.py
 	$(PY) day02/scripts/experiment_budget.py
@@ -176,6 +183,7 @@ evidence:
 	$(PY) day16/scripts/make_evidence.py
 	$(PY) day17/scripts/make_evidence.py
 	$(PY) day18/scripts/make_evidence.py
+	$(PY) day19/scripts/make_evidence.py
 
 clean:
 	find . -type d -name __pycache__ -prune -exec rm -rf {} +

@@ -1,0 +1,12 @@
+{
+  "crossover_K": {
+    "correlated": 3,
+    "independent": 4
+  },
+  "fail_condition_respected": true,
+  "recommended_region": {
+    "correlated_max_attempts": 2,
+    "independent_max_attempts": 3
+  },
+  "statement": "Retries help until roughly K=4 on independent failures, but the DEFENSIBLE budget is K=3 \u2014 beyond it, success gains fall below 0.05 while amplification exceeds 2.0x and p99 breaches 120. Under CORRELATED failures (shared outage + retry storm) retries are near-pure amplification: success plateaus around 0.45 while amplification reaches 4.065x and p99 reaches 256.6 \u2014 so the correlated budget is only K=2, and a circuit breaker (Mission 20) is required. The recommendation is capped by the ceilings, so it never trades a success bump for an unacceptable cost/tail cost."
+}

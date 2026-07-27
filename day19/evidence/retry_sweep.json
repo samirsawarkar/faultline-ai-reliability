@@ -1,0 +1,272 @@
+{
+  "ceilings": {
+    "cost_ceiling_amplification": 2.0,
+    "min_marginal_success": 0.05,
+    "p99_latency_budget": 120
+  },
+  "correlated": [
+    {
+      "K": 1,
+      "amplification": 1.0,
+      "n": 200,
+      "p95_latency": 10.0,
+      "p99_ci95": [
+        10.0,
+        10.0
+      ],
+      "p99_latency": 10.0,
+      "queue_delay": 0.0,
+      "scenario": "correlated",
+      "success_ci95": [
+        0.2087,
+        0.3302
+      ],
+      "success_per_attempt": 0.265,
+      "success_rate": 0.265,
+      "successes": 53,
+      "total_attempts": 200
+    },
+    {
+      "K": 2,
+      "amplification": 1.735,
+      "n": 200,
+      "p95_latency": 53.4,
+      "p99_ci95": [
+        53.4,
+        53.4
+      ],
+      "p99_latency": 53.4,
+      "queue_delay": 29.4,
+      "scenario": "correlated",
+      "success_ci95": [
+        0.3014,
+        0.4337
+      ],
+      "success_per_attempt": 0.2104,
+      "success_rate": 0.365,
+      "successes": 73,
+      "total_attempts": 347
+    },
+    {
+      "K": 3,
+      "amplification": 2.37,
+      "n": 200,
+      "p95_latency": 94.8,
+      "p99_ci95": [
+        94.8,
+        94.8
+      ],
+      "p99_latency": 94.8,
+      "queue_delay": 54.8,
+      "scenario": "correlated",
+      "success_ci95": [
+        0.3489,
+        0.4843
+      ],
+      "success_per_attempt": 0.1751,
+      "success_rate": 0.415,
+      "successes": 83,
+      "total_attempts": 474
+    },
+    {
+      "K": 4,
+      "amplification": 2.955,
+      "n": 200,
+      "p95_latency": 142.2,
+      "p99_ci95": [
+        142.2,
+        142.2
+      ],
+      "p99_latency": 142.2,
+      "queue_delay": 78.2,
+      "scenario": "correlated",
+      "success_ci95": [
+        0.373,
+        0.5093
+      ],
+      "success_per_attempt": 0.1489,
+      "success_rate": 0.44,
+      "successes": 88,
+      "total_attempts": 591
+    },
+    {
+      "K": 5,
+      "amplification": 3.515,
+      "n": 200,
+      "p95_latency": 179.6,
+      "p99_ci95": [
+        179.6,
+        179.6
+      ],
+      "p99_latency": 179.6,
+      "queue_delay": 100.6,
+      "scenario": "correlated",
+      "success_ci95": [
+        0.3826,
+        0.5192
+      ],
+      "success_per_attempt": 0.128,
+      "success_rate": 0.45,
+      "successes": 90,
+      "total_attempts": 703
+    },
+    {
+      "K": 6,
+      "amplification": 4.065,
+      "n": 200,
+      "p95_latency": 256.6,
+      "p99_ci95": [
+        256.6,
+        256.6
+      ],
+      "p99_latency": 256.6,
+      "queue_delay": 122.6,
+      "scenario": "correlated",
+      "success_ci95": [
+        0.3826,
+        0.5192
+      ],
+      "success_per_attempt": 0.1107,
+      "success_rate": 0.45,
+      "successes": 90,
+      "total_attempts": 813
+    }
+  ],
+  "independent": [
+    {
+      "K": 1,
+      "amplification": 1.0,
+      "n": 200,
+      "p95_latency": 10.0,
+      "p99_ci95": [
+        10.0,
+        10.0
+      ],
+      "p99_latency": 10.0,
+      "queue_delay": 0.0,
+      "scenario": "independent",
+      "success_ci95": [
+        0.3875,
+        0.5242
+      ],
+      "success_per_attempt": 0.455,
+      "success_rate": 0.455,
+      "successes": 91,
+      "total_attempts": 200
+    },
+    {
+      "K": 2,
+      "amplification": 1.545,
+      "n": 200,
+      "p95_latency": 45.8,
+      "p99_ci95": [
+        45.8,
+        45.8
+      ],
+      "p99_latency": 45.8,
+      "queue_delay": 21.8,
+      "scenario": "independent",
+      "success_ci95": [
+        0.5765,
+        0.708
+      ],
+      "success_per_attempt": 0.4175,
+      "success_rate": 0.645,
+      "successes": 129,
+      "total_attempts": 309
+    },
+    {
+      "K": 3,
+      "amplification": 1.9,
+      "n": 200,
+      "p95_latency": 76.0,
+      "p99_ci95": [
+        76.0,
+        76.0
+      ],
+      "p99_latency": 76.0,
+      "queue_delay": 36.0,
+      "scenario": "independent",
+      "success_ci95": [
+        0.6963,
+        0.8139
+      ],
+      "success_per_attempt": 0.4,
+      "success_rate": 0.76,
+      "successes": 152,
+      "total_attempts": 380
+    },
+    {
+      "K": 4,
+      "amplification": 2.14,
+      "n": 200,
+      "p95_latency": 109.6,
+      "p99_ci95": [
+        109.6,
+        109.6
+      ],
+      "p99_latency": 109.6,
+      "queue_delay": 45.6,
+      "scenario": "independent",
+      "success_ci95": [
+        0.7284,
+        0.8407
+      ],
+      "success_per_attempt": 0.3692,
+      "success_rate": 0.79,
+      "successes": 158,
+      "total_attempts": 428
+    },
+    {
+      "K": 5,
+      "amplification": 2.35,
+      "n": 200,
+      "p95_latency": 133.0,
+      "p99_ci95": [
+        133.0,
+        133.0
+      ],
+      "p99_latency": 133.0,
+      "queue_delay": 54.0,
+      "scenario": "independent",
+      "success_ci95": [
+        0.75,
+        0.8583
+      ],
+      "success_per_attempt": 0.3447,
+      "success_rate": 0.81,
+      "successes": 162,
+      "total_attempts": 470
+    },
+    {
+      "K": 6,
+      "amplification": 2.54,
+      "n": 200,
+      "p95_latency": 195.6,
+      "p99_ci95": [
+        195.6,
+        195.6
+      ],
+      "p99_latency": 195.6,
+      "queue_delay": 61.6,
+      "scenario": "independent",
+      "success_ci95": [
+        0.7773,
+        0.88
+      ],
+      "success_per_attempt": 0.3287,
+      "success_rate": 0.835,
+      "successes": 167,
+      "total_attempts": 508
+    }
+  ],
+  "params": {
+    "KMAX": 6,
+    "N": 200,
+    "outage_frac": 0.4,
+    "p_flaky": 0.5,
+    "queue_coef": 40,
+    "rho_persistent": 0.15,
+    "seed": 20260729
+  }
+}
