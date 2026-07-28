@@ -191,3 +191,11 @@ jobs:
         run: |
           python day19/scripts/make_evidence.py
           git diff --exit-code -- day19/evidence/
+
+      - name: Day 20 — circuit breaker + fallback (states, provenance, attacks)
+        run: cd day20 && python -m pytest tests/ -v
+
+      - name: Day 20 — breaker report + state diagram + traces reproduce byte-for-byte
+        run: |
+          python day20/scripts/make_evidence.py
+          git diff --exit-code -- day20/evidence/

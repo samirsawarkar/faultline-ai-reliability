@@ -1,0 +1,92 @@
+{
+  "fallback_failure": {
+    "availability": 1.0,
+    "degraded_kept_availability": true,
+    "failure_not_hidden": true,
+    "primary_calls": 8,
+    "served_degraded": 60,
+    "unanswered": 0
+  },
+  "false_open": {
+    "blip_pattern": "one isolated failure every 10 ticks",
+    "tuned_threshold3_of_5": {
+      "healthy_blocked": 0,
+      "opens": 0
+    },
+    "tuning_prevents_false_opens": true,
+    "twitchy_threshold1": {
+      "healthy_blocked": 25,
+      "opens": 4
+    }
+  },
+  "flapping": {
+    "damped": {
+      "transitions": 7
+    },
+    "damping_reduces_flapping": true,
+    "eager": {
+      "transitions": 21
+    }
+  },
+  "paired_outage": {
+    "availability_gain_from_fallback": 0.3333,
+    "breaker_only": {
+      "answered": 38,
+      "availability": 0.6333,
+      "healthy_blocked": 2,
+      "n": 60,
+      "primary_calls": 42,
+      "served_degraded": 0,
+      "served_primary": 38,
+      "served_secondary": 0,
+      "unanswered": 22
+    },
+    "breaker_plus_fallback": {
+      "answered": 60,
+      "availability": 1.0,
+      "healthy_blocked": 2,
+      "n": 60,
+      "primary_calls": 42,
+      "served_degraded": 0,
+      "served_primary": 38,
+      "served_secondary": 22,
+      "unanswered": 0
+    },
+    "mcnemar_answered_naive_vs_breaker_fb": {
+      "b": 0,
+      "c": 20,
+      "chi2_p_value": 2.151786437812016e-05,
+      "chi2_statistic": 18.05,
+      "continuity_correction": true,
+      "exact_p_value": 1.9073486328125e-06,
+      "n_discordant": 20,
+      "p_value": 1.9073486328125e-06,
+      "recommended": "exact",
+      "significant_at_0.05": true,
+      "table": {
+        "a_only": 0,
+        "b_only": 20,
+        "both_correct": 40,
+        "both_wrong": 0,
+        "discordant": 20,
+        "n": 60
+      }
+    },
+    "naive_no_breaker_no_fallback": {
+      "answered": 40,
+      "availability": 0.6667,
+      "healthy_blocked": 0,
+      "n": 60,
+      "primary_calls": 60,
+      "served_degraded": 0,
+      "served_primary": 40,
+      "served_secondary": 0,
+      "unanswered": 20
+    },
+    "outage": [
+      20,
+      40
+    ],
+    "primary_calls_saved_by_breaker": 18
+  }
+}
