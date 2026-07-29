@@ -1,0 +1,37 @@
+{
+  "conditions": {
+    "max_mean_cost_ci_upper": 1.75,
+    "max_p95_latency_ci_upper": 80.0,
+    "max_wrong_ci_upper": 0.02,
+    "min_success_ci_lower": 0.78
+  },
+  "model_caveats": [
+    "P4 is a reference upper-bound policy: the simulator supplies the transient/persistent retryability label without classification error.",
+    "P4's fallback guard is the strict simulator oracle, not the Day-16 narrow judge; production guard error and its cost/latency must be measured before deployment.",
+    "Bootstrap and Wilson intervals quantify repeated-seed uncertainty inside this configured simulator, not model-form or production-shift uncertainty."
+  ],
+  "paired_success_vs_no_recovery": {
+    "b": 0,
+    "c": 143,
+    "chi2_p_value": 1.60329370140181e-32,
+    "chi2_statistic": 141.006993006993,
+    "continuity_correction": true,
+    "exact_p_value": 1.79366203433577e-43,
+    "n_discordant": 143,
+    "p_value": 1.60329370140181e-32,
+    "recommended": "chi2",
+    "significant_at_0.05": true,
+    "table": {
+      "a_only": 0,
+      "b_only": 143,
+      "both_correct": 230,
+      "both_wrong": 27,
+      "discordant": 143,
+      "n": 400
+    }
+  },
+  "question": "Which cascade policy provides the best user-visible correct success per unit cost and latency?",
+  "statement": "P4_selective_guarded is the only eligible policy that leads both correct successes per cost (0.6362) and per 100 latency (3.5389); its paired 95% efficiency-difference intervals versus every other eligible policy stay above zero. It returns correct visible answers at rate 0.9325 (95% CI [0.9036, 0.9532]) with mean cost 1.4656 (bootstrap CI [1.41, 1.5212]) and p95 latency 50.0 (bootstrap CI [50.0, 50.0]).",
+  "tradeoff": "Selectively retrying transient faults and quality-gating one fallback avoids persistent retry waste and the full cascade's repetition path. The recommendation is not universal: both stress attacks violate at least one uncertainty-aware operating threshold.",
+  "winner": "P4_selective_guarded"
+}

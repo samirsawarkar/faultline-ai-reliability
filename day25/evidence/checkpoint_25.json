@@ -1,0 +1,23 @@
+{
+  "checkpoint": 25,
+  "fail_condition_triggered": false,
+  "gate": {
+    "all_after_tests_green": true,
+    "all_after_traces_complete": true,
+    "all_before_tests_red": true,
+    "all_fixes_replay_verified": true,
+    "all_regressions_trace_linked": true,
+    "all_required_sections_present": true,
+    "all_source_evidence_matched": true,
+    "passed": true,
+    "same_tests_flip_red_to_green": true,
+    "two_or_three_incident_reports": true
+  },
+  "incident_count": 2,
+  "mission": "Turn failures into replay-verified postmortems whose fixes stay fixed.",
+  "red_to_green": {
+    "INC-25-001": "red->green",
+    "INC-25-002": "red->green"
+  },
+  "repetitions_per_version": 20
+}

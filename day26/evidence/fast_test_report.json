@@ -1,0 +1,49 @@
+{
+  "collected": 93,
+  "day_range": [
+    1,
+    26
+  ],
+  "passed": 93,
+  "passed_all": true,
+  "profile": "fast",
+  "python_hash_seed": 0,
+  "suites": [
+    {
+      "day": 1,
+      "passed": true,
+      "suite": "day01/tests/",
+      "test_count": 11
+    },
+    {
+      "day": 4,
+      "passed": true,
+      "suite": "day04/tests/",
+      "test_count": 19
+    },
+    {
+      "day": 13,
+      "passed": true,
+      "suite": "day13/tests/",
+      "test_count": 14
+    },
+    {
+      "day": 21,
+      "passed": true,
+      "suite": "day21/tests/",
+      "test_count": 13
+    },
+    {
+      "day": 25,
+      "passed": true,
+      "suite": "day25/tests/",
+      "test_count": 19
+    },
+    {
+      "day": 26,
+      "passed": true,
+      "suite": "day26/tests/",
+      "test_count": 17
+    }
+  ]
+}

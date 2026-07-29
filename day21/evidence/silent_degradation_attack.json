@@ -1,0 +1,57 @@
+{
+  "attack": "Keep every request answered through the secondary, preserve valid provenance, and silently corrupt fallback quality while leaving is_degraded=false.",
+  "availability_only_monitor": {
+    "alerts": 0,
+    "bad_answers_seen": 0,
+    "fooled": true,
+    "threshold": 0.99
+  },
+  "bad_fallback_answers": 30,
+  "degraded_flag_only_monitor": {
+    "alerts": 0,
+    "bad_answers_seen": 0,
+    "fooled": true
+  },
+  "delivered_answers": 120,
+  "evidence_sample": {
+    "first_bad_fallback": {
+      "oracle_passed": false,
+      "provenance": {
+        "answered": true,
+        "is_degraded": false,
+        "is_fallback": true,
+        "served_by": "secondary"
+      },
+      "request_index": 3,
+      "seed": 2026073103,
+      "strict_quality_acceptable": false,
+      "variant": "clear_reject"
+    }
+  },
+  "known_caveat_reproduced": true,
+  "quality_detector": {
+    "alerts": 20,
+    "bad_answers_missed": 10,
+    "bad_answers_seen": 20,
+    "partially_resisted_attack": true,
+    "precision": {
+      "count": 20,
+      "n": 20,
+      "rate": 1.0,
+      "wilson_ci95": [
+        0.8389,
+        1.0
+      ]
+    },
+    "recall": {
+      "count": 20,
+      "n": 30,
+      "rate": 0.6667,
+      "wilson_ci95": [
+        0.4878,
+        0.8077
+      ]
+    }
+  },
+  "system_availability": 1.0
+}

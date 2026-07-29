@@ -1,0 +1,74 @@
+{
+  "best_by_fault": {
+    "F1": {
+      "mean_cost": 3.4167,
+      "mechanism": "M1_repair_retry",
+      "note": "Ranked by correct success, then mean cost, then p95 latency; containment-only mechanisms may be safer without winning success.",
+      "p95_latency": 70,
+      "success_rate": 0.75
+    },
+    "F2": {
+      "mean_cost": 3.4167,
+      "mechanism": "M2_timeout_backoff",
+      "note": "Ranked by correct success, then mean cost, then p95 latency; containment-only mechanisms may be safer without winning success.",
+      "p95_latency": 155,
+      "success_rate": 0.75
+    },
+    "F3": {
+      "mean_cost": null,
+      "mechanism": "none_of_M1_M6",
+      "note": "No mechanism improves correct success over the paired baseline; semantic rejection/re-grounding is still required.",
+      "p95_latency": null,
+      "success_rate": 0.25
+    },
+    "F4": {
+      "mean_cost": 2.6667,
+      "mechanism": "M4_provider_fallback",
+      "note": "Ranked by correct success, then mean cost, then p95 latency; containment-only mechanisms may be safer without winning success.",
+      "p95_latency": 70,
+      "success_rate": 0.75
+    },
+    "F5": {
+      "mean_cost": null,
+      "mechanism": "none_of_M1_M6",
+      "note": "No mechanism improves correct success over the paired baseline; semantic rejection/re-grounding is still required.",
+      "p95_latency": null,
+      "success_rate": 0.25
+    },
+    "F6": {
+      "mean_cost": 5.5833,
+      "mechanism": "M6_repetition_recovery",
+      "note": "Ranked by correct success, then mean cost, then p95 latency; containment-only mechanisms may be safer without winning success.",
+      "p95_latency": 70,
+      "success_rate": 0.6667
+    }
+  },
+  "checkpoint_22": {
+    "ceilings_hold": true,
+    "new_failures_measured": true,
+    "paired_evidence_complete": true,
+    "passed": true,
+    "six_mechanism_matrix_complete": true
+  },
+  "composition_policy": {
+    "do_not_compose_blindly": "Applying every mechanism to every request compounds false opens, premature ceilings, latency, cost, and repetition false positives.",
+    "order": [
+      "outer M5 step/cost ceiling",
+      "fault-specific detector",
+      "narrow recovery (M1/M2/M3+M4/M6)",
+      "oracle or narrow semantic quality check",
+      "terminal success, contained failure, or escalation"
+    ],
+    "rule": "Detect first, then select the narrowest mechanism: M1 for F1, M2 for F2, M3+M4 for F4, M5 as an outer envelope, and M6 inside that envelope for F6. F3/F5 require semantic rejection/re-grounding; none of M1\u2013M6 proves those answers correct."
+  },
+  "fail_condition_guard": {
+    "all_recovery_induced_harms_measured": true,
+    "every_cell_has_outcome_cost_latency": true,
+    "every_mechanism_has_harm_audit": true,
+    "every_mechanism_has_paired_evidence": true,
+    "expected_cells": 36,
+    "observed_cells": 36,
+    "passed": true,
+    "unpaired_cells": []
+  }
+}

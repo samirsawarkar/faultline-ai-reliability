@@ -1,0 +1,541 @@
+{
+  "config": {
+    "fallback_clear_wrong_rate": 0.25,
+    "fallback_exact_rate": 0.55,
+    "fallback_guard": "strict_simulator_oracle",
+    "latency_scale": 1.0,
+    "n": 400,
+    "name": "base",
+    "per_request_cost_budget": 5.0,
+    "per_request_latency_budget": 120.0,
+    "persistent_share_given_fault": 0.4,
+    "primary_fault_rate": 0.4,
+    "retryability_signal": "simulator_truth",
+    "seed_base": 2026080300
+  },
+  "fail_condition_guard": {
+    "all_policies_share_seeds": true,
+    "dual_efficiency_dominance_proven": true,
+    "paired_statistics_present": true,
+    "passed": true,
+    "winner_attacked": true,
+    "winner_has_cost": true,
+    "winner_has_latency": true,
+    "winner_has_uncertainty": true,
+    "winner_model_caveats_present": true
+  },
+  "policy_definitions": {
+    "P0_no_recovery": "one primary call; timeout is user-visible failure",
+    "P1_bounded_retry": "one retry for any timeout; persistent faults exhaust",
+    "P2_unchecked_fallback": "secondary after timeout; no semantic quality gate",
+    "P3_full_cascade": "retry + breaker + fallback + narrow judge + repetition + ceilings",
+    "P4_selective_guarded": "route by simulator retryability truth; persistent faults use one strict-oracle-gated fallback (reference upper-bound policy)"
+  },
+  "policy_metrics": {
+    "P0_no_recovery": {
+      "contained": {
+        "count": 0,
+        "n": 400,
+        "rate": 0.0,
+        "wilson_ci95": [
+          0.0,
+          0.0095
+        ]
+      },
+      "mean_cost": {
+        "bootstrap_ci95": [
+          1.0,
+          1.0
+        ],
+        "value": 1.0
+      },
+      "mean_latency": 18.5,
+      "n": 400,
+      "p95_latency": {
+        "bootstrap_ci95": [
+          30.0,
+          30.0
+        ],
+        "value": 30.0
+      },
+      "policy": "P0_no_recovery",
+      "statuses": {
+        "primary_success": 230,
+        "primary_timeout": 170
+      },
+      "success_per_100_latency": {
+        "bootstrap_ci95": [
+          2.7121,
+          3.5714
+        ],
+        "value": 3.1081
+      },
+      "success_per_cost": {
+        "bootstrap_ci95": [
+          0.5225,
+          0.625
+        ],
+        "value": 0.575
+      },
+      "user_visible_correct_success": {
+        "count": 230,
+        "n": 400,
+        "rate": 0.575,
+        "wilson_ci95": [
+          0.5261,
+          0.6225
+        ]
+      },
+      "visible_answer": {
+        "count": 230,
+        "n": 400,
+        "rate": 0.575,
+        "wilson_ci95": [
+          0.5261,
+          0.6225
+        ]
+      },
+      "wrong_visible_answer": {
+        "count": 0,
+        "n": 400,
+        "rate": 0.0,
+        "wilson_ci95": [
+          0.0,
+          0.0095
+        ]
+      }
+    },
+    "P1_bounded_retry": {
+      "contained": {
+        "count": 65,
+        "n": 400,
+        "rate": 0.1625,
+        "wilson_ci95": [
+          0.1296,
+          0.2018
+        ]
+      },
+      "mean_cost": {
+        "bootstrap_ci95": [
+          1.3775,
+          1.4725
+        ],
+        "value": 1.425
+      },
+      "mean_latency": 29.4375,
+      "n": 400,
+      "p95_latency": {
+        "bootstrap_ci95": [
+          65.0,
+          65.0
+        ],
+        "value": 65.0
+      },
+      "policy": "P1_bounded_retry",
+      "statuses": {
+        "primary_success": 230,
+        "retry_exhausted": 65,
+        "retry_recovered": 105
+      },
+      "success_per_100_latency": {
+        "bootstrap_ci95": [
+          2.5569,
+          3.1889
+        ],
+        "value": 2.845
+      },
+      "success_per_cost": {
+        "bootstrap_ci95": [
+          0.5473,
+          0.6268
+        ],
+        "value": 0.5877
+      },
+      "user_visible_correct_success": {
+        "count": 335,
+        "n": 400,
+        "rate": 0.8375,
+        "wilson_ci95": [
+          0.7982,
+          0.8704
+        ]
+      },
+      "visible_answer": {
+        "count": 335,
+        "n": 400,
+        "rate": 0.8375,
+        "wilson_ci95": [
+          0.7982,
+          0.8704
+        ]
+      },
+      "wrong_visible_answer": {
+        "count": 0,
+        "n": 400,
+        "rate": 0.0,
+        "wilson_ci95": [
+          0.0,
+          0.0095
+        ]
+      }
+    },
+    "P2_unchecked_fallback": {
+      "contained": {
+        "count": 0,
+        "n": 400,
+        "rate": 0.0,
+        "wilson_ci95": [
+          0.0,
+          0.0095
+        ]
+      },
+      "mean_cost": {
+        "bootstrap_ci95": [
+          1.3775,
+          1.4725
+        ],
+        "value": 1.425
+      },
+      "mean_latency": 23.6,
+      "n": 400,
+      "p95_latency": {
+        "bootstrap_ci95": [
+          42.0,
+          42.0
+        ],
+        "value": 42.0
+      },
+      "policy": "P2_unchecked_fallback",
+      "statuses": {
+        "fallback_correct": 104,
+        "fallback_wrong_visible": 66,
+        "primary_success": 230
+      },
+      "success_per_100_latency": {
+        "bootstrap_ci95": [
+          3.2252,
+          3.9148
+        ],
+        "value": 3.5381
+      },
+      "success_per_cost": {
+        "bootstrap_ci95": [
+          0.5462,
+          0.6271
+        ],
+        "value": 0.586
+      },
+      "user_visible_correct_success": {
+        "count": 334,
+        "n": 400,
+        "rate": 0.835,
+        "wilson_ci95": [
+          0.7955,
+          0.8682
+        ]
+      },
+      "visible_answer": {
+        "count": 400,
+        "n": 400,
+        "rate": 1.0,
+        "wilson_ci95": [
+          0.9905,
+          1.0
+        ]
+      },
+      "wrong_visible_answer": {
+        "count": 66,
+        "n": 400,
+        "rate": 0.165,
+        "wilson_ci95": [
+          0.1318,
+          0.2045
+        ]
+      }
+    },
+    "P3_full_cascade": {
+      "contained": {
+        "count": 27,
+        "n": 400,
+        "rate": 0.0675,
+        "wilson_ci95": [
+          0.0468,
+          0.0964
+        ]
+      },
+      "mean_cost": {
+        "bootstrap_ci95": [
+          1.5869,
+          1.7594
+        ],
+        "value": 1.6719
+      },
+      "mean_latency": 32.6325,
+      "n": 400,
+      "p95_latency": {
+        "bootstrap_ci95": [
+          81.0,
+          98.0
+        ],
+        "value": 81.0
+      },
+      "policy": "P3_full_cascade",
+      "statuses": {
+        "cascade_ceiling_abort": 14,
+        "cascade_fallback_correct": 38,
+        "judge_rejected": 13,
+        "primary_success": 230,
+        "retry_recovered": 105
+      },
+      "success_per_100_latency": {
+        "bootstrap_ci95": [
+          2.5757,
+          3.1751
+        ],
+        "value": 2.8576
+      },
+      "success_per_cost": {
+        "bootstrap_ci95": [
+          0.5179,
+          0.6005
+        ],
+        "value": 0.5578
+      },
+      "user_visible_correct_success": {
+        "count": 373,
+        "n": 400,
+        "rate": 0.9325,
+        "wilson_ci95": [
+          0.9036,
+          0.9532
+        ]
+      },
+      "visible_answer": {
+        "count": 373,
+        "n": 400,
+        "rate": 0.9325,
+        "wilson_ci95": [
+          0.9036,
+          0.9532
+        ]
+      },
+      "wrong_visible_answer": {
+        "count": 0,
+        "n": 400,
+        "rate": 0.0,
+        "wilson_ci95": [
+          0.0,
+          0.0095
+        ]
+      }
+    },
+    "P4_selective_guarded": {
+      "contained": {
+        "count": 27,
+        "n": 400,
+        "rate": 0.0675,
+        "wilson_ci95": [
+          0.0468,
+          0.0964
+        ]
+      },
+      "mean_cost": {
+        "bootstrap_ci95": [
+          1.41,
+          1.5212
+        ],
+        "value": 1.4656
+      },
+      "mean_latency": 26.35,
+      "n": 400,
+      "p95_latency": {
+        "bootstrap_ci95": [
+          50.0,
+          50.0
+        ],
+        "value": 50.0
+      },
+      "policy": "P4_selective_guarded",
+      "statuses": {
+        "guarded_fallback_correct": 38,
+        "guarded_fallback_rejected": 27,
+        "primary_success": 230,
+        "selective_retry_recovered": 105
+      },
+      "success_per_100_latency": {
+        "bootstrap_ci95": [
+          3.2488,
+          3.8344
+        ],
+        "value": 3.5389
+      },
+      "success_per_cost": {
+        "bootstrap_ci95": [
+          0.6037,
+          0.672
+        ],
+        "value": 0.6362
+      },
+      "user_visible_correct_success": {
+        "count": 373,
+        "n": 400,
+        "rate": 0.9325,
+        "wilson_ci95": [
+          0.9036,
+          0.9532
+        ]
+      },
+      "visible_answer": {
+        "count": 373,
+        "n": 400,
+        "rate": 0.9325,
+        "wilson_ci95": [
+          0.9036,
+          0.9532
+        ]
+      },
+      "wrong_visible_answer": {
+        "count": 0,
+        "n": 400,
+        "rate": 0.0,
+        "wilson_ci95": [
+          0.0,
+          0.0095
+        ]
+      }
+    }
+  },
+  "population": {
+    "clean": 230,
+    "fallback_quality": {
+      "borderline_tokens": 77,
+      "clear_wrong": 98,
+      "exact": 225
+    },
+    "n": 400,
+    "persistent_cascade": 65,
+    "seed_digest": "99b53f8869731323",
+    "transient_fault": 105
+  },
+  "selection": {
+    "dominance_proven": true,
+    "eligibility": {
+      "P0_no_recovery": {
+        "checks": {
+          "mean_cost_upper_bound": true,
+          "p95_latency_upper_bound": true,
+          "success_lower_bound": false,
+          "wrong_answer_upper_bound": true
+        },
+        "eligible": false
+      },
+      "P1_bounded_retry": {
+        "checks": {
+          "mean_cost_upper_bound": true,
+          "p95_latency_upper_bound": true,
+          "success_lower_bound": true,
+          "wrong_answer_upper_bound": true
+        },
+        "eligible": true
+      },
+      "P2_unchecked_fallback": {
+        "checks": {
+          "mean_cost_upper_bound": true,
+          "p95_latency_upper_bound": true,
+          "success_lower_bound": true,
+          "wrong_answer_upper_bound": false
+        },
+        "eligible": false
+      },
+      "P3_full_cascade": {
+        "checks": {
+          "mean_cost_upper_bound": false,
+          "p95_latency_upper_bound": false,
+          "success_lower_bound": true,
+          "wrong_answer_upper_bound": true
+        },
+        "eligible": false
+      },
+      "P4_selective_guarded": {
+        "checks": {
+          "mean_cost_upper_bound": true,
+          "p95_latency_upper_bound": true,
+          "success_lower_bound": true,
+          "wrong_answer_upper_bound": true
+        },
+        "eligible": true
+      }
+    },
+    "eligible_candidates": [
+      "P1_bounded_retry",
+      "P4_selective_guarded"
+    ],
+    "paired_dominance_vs_other_eligible": {
+      "P1_bounded_retry": {
+        "baseline": "P1_bounded_retry",
+        "candidate": "P4_selective_guarded",
+        "mean_cost_delta": {
+          "paired_bootstrap_ci95": [
+            0.0319,
+            0.05
+          ],
+          "value": 0.0406
+        },
+        "mean_latency_delta": {
+          "paired_bootstrap_ci95": [
+            -3.8,
+            -2.4225
+          ],
+          "value": -3.0875
+        },
+        "n": 400,
+        "same_seed_population": true,
+        "success_mcnemar": {
+          "b": 0,
+          "c": 38,
+          "chi2_p_value": 1.94670606018067e-09,
+          "chi2_statistic": 36.0263157894737,
+          "continuity_correction": true,
+          "exact_p_value": 7.27595761418343e-12,
+          "n_discordant": 38,
+          "p_value": 1.94670606018067e-09,
+          "recommended": "chi2",
+          "significant_at_0.05": true,
+          "table": {
+            "a_only": 0,
+            "b_only": 38,
+            "both_correct": 335,
+            "both_wrong": 27,
+            "discordant": 38,
+            "n": 400
+          }
+        },
+        "success_per_100_latency_delta": {
+          "paired_bootstrap_ci95": [
+            0.5544,
+            0.8367
+          ],
+          "value": 0.6939
+        },
+        "success_per_cost_delta": {
+          "paired_bootstrap_ci95": [
+            0.0319,
+            0.0664
+          ],
+          "value": 0.0485
+        },
+        "success_rate_delta": 0.095
+      }
+    },
+    "point_leader_success_per_cost": "P4_selective_guarded",
+    "point_leader_success_per_latency": "P4_selective_guarded",
+    "reason": "one eligible policy leads both efficiency metrics and both paired 95% bootstrap difference intervals remain above zero",
+    "thresholds": {
+      "max_mean_cost_ci_upper": 1.75,
+      "max_p95_latency_ci_upper": 80.0,
+      "max_wrong_ci_upper": 0.02,
+      "min_success_ci_lower": 0.78
+    },
+    "winner": "P4_selective_guarded"
+  }
+}

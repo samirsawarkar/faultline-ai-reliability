@@ -1,0 +1,221 @@
+{
+  "seed": 2026080207,
+  "span_count": 9,
+  "spans": [
+    {
+      "attributes": {
+        "regression_test_id": "R25-001-correct-within-cascade-envelope"
+      },
+      "end_seq": 18,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"incident_id\":\"INC-25-001\",\"policy_version\":\"fixed\"}",
+        "redacted": false,
+        "sha256": "aa43ca07490d5f7c26327a255493f9f71cfe8381951df0f84ad11eef0f6485c3",
+        "size_bytes": 53
+      },
+      "kind": "agent",
+      "name": "postmortem.incident",
+      "output_ref": {
+        "preview": "{\"metrics\":{\"cost\":11,\"cost_budget\":12,\"latency\":94,\"step_budget\":9,\"steps\":6},\"policy_version\":\"fixed\",\"terminal\":{\"cor...(truncated)",
+        "redacted": false,
+        "sha256": "d3c4bbce9ca46db4643518ec072a9cc89a5df567664668112b8fe7ef8682fa66",
+        "size_bytes": 228
+      },
+      "parent_span_id": null,
+      "span_id": "trace-2026080207-span-0000",
+      "start_seq": 1,
+      "status": "ok",
+      "trace_id": "trace-2026080207"
+    },
+    {
+      "attributes": {},
+      "end_seq": 3,
+      "error": {
+        "message": "primary latency 80 exceeded timeout 30",
+        "type": "PrimaryTimeout"
+      },
+      "input_ref": {
+        "preview": "{\"attempt\":0,\"timeout\":30}",
+        "redacted": false,
+        "sha256": "0179a8cbd5fe2f1168b992b52c95cf458242d6c9f46449abdd21e12b6ca5915e",
+        "size_bytes": 26
+      },
+      "kind": "tool",
+      "name": "provider.primary.attempt.0",
+      "output_ref": null,
+      "parent_span_id": "trace-2026080207-span-0000",
+      "span_id": "trace-2026080207-span-0001",
+      "start_seq": 2,
+      "status": "error",
+      "trace_id": "trace-2026080207"
+    },
+    {
+      "attributes": {},
+      "end_seq": 5,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"delay\":5}",
+        "redacted": false,
+        "sha256": "4f51f146c49bdba4ef38eead4be8cf9d88fa293c9b39eaf87ecac87d2e4ecb8b",
+        "size_bytes": 11
+      },
+      "kind": "agent",
+      "name": "recovery.retry_backoff",
+      "output_ref": {
+        "preview": "{\"next_attempt\":1}",
+        "redacted": false,
+        "sha256": "956021c026c36f008ac149ef7abc07a7a84941aa0f9d89f68427bc6778739e09",
+        "size_bytes": 18
+      },
+      "parent_span_id": "trace-2026080207-span-0000",
+      "span_id": "trace-2026080207-span-0002",
+      "start_seq": 4,
+      "status": "ok",
+      "trace_id": "trace-2026080207"
+    },
+    {
+      "attributes": {},
+      "end_seq": 7,
+      "error": {
+        "message": "primary latency 80 exceeded timeout 30",
+        "type": "PrimaryTimeout"
+      },
+      "input_ref": {
+        "preview": "{\"attempt\":1,\"timeout\":30}",
+        "redacted": false,
+        "sha256": "8cea3290d245c8129d430afe8bddbce76c40f07020a73042f5011bfc12cb2eb3",
+        "size_bytes": 26
+      },
+      "kind": "tool",
+      "name": "provider.primary.attempt.1",
+      "output_ref": null,
+      "parent_span_id": "trace-2026080207-span-0000",
+      "span_id": "trace-2026080207-span-0003",
+      "start_seq": 6,
+      "status": "error",
+      "trace_id": "trace-2026080207"
+    },
+    {
+      "attributes": {},
+      "end_seq": 9,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"route\":\"secondary\",\"variant\":\"borderline_tokens\"}",
+        "redacted": false,
+        "sha256": "c9b1f4fb51d5f947716bc0ca640737dd4d8672149e17afe4153856e6dfa057c2",
+        "size_bytes": 51
+      },
+      "kind": "tool",
+      "name": "provider.secondary.stale",
+      "output_ref": {
+        "preview": "{\"tokens\":[3,4,5,6],\"value\":100}",
+        "redacted": false,
+        "sha256": "b41b81c4e8b0625e9dc0a3915560585c2f47dd247d354e34885848a400b17cca",
+        "size_bytes": 32
+      },
+      "parent_span_id": "trace-2026080207-span-0000",
+      "span_id": "trace-2026080207-span-0004",
+      "start_seq": 8,
+      "status": "ok",
+      "trace_id": "trace-2026080207"
+    },
+    {
+      "attributes": {},
+      "end_seq": 11,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"candidate\":{\"tokens\":[3,4,5,6],\"value\":100},\"required\":{\"tokens\":[1,2,3,4],\"value\":100}}",
+        "redacted": false,
+        "sha256": "afebe9b1b417f9194fd51c8fb5518bba4eb04a27e302d26080e418d8a22d3f9f",
+        "size_bytes": 90
+      },
+      "kind": "tool",
+      "name": "quality.strict_token_guard",
+      "output_ref": {
+        "preview": "{\"tokens_exact\":false,\"verdict\":\"reject\"}",
+        "redacted": false,
+        "sha256": "e4afdb3592a7db87ce3369fe0e936e356fd73ece313b5e9e2afaf6cbd134540c",
+        "size_bytes": 41
+      },
+      "parent_span_id": "trace-2026080207-span-0000",
+      "span_id": "trace-2026080207-span-0005",
+      "start_seq": 10,
+      "status": "ok",
+      "trace_id": "trace-2026080207"
+    },
+    {
+      "attributes": {},
+      "end_seq": 13,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"candidate\":\"trusted_tertiary\",\"quarantined\":[\"secondary:stale-fallback\"]}",
+        "redacted": false,
+        "sha256": "6a76c9e64b48c6dfc8befe083100461ec6646f335dbfb9a33041106ccf2716a3",
+        "size_bytes": 75
+      },
+      "kind": "agent",
+      "name": "recovery.route_diversity_fence",
+      "output_ref": {
+        "preview": "{\"selected_route\":\"trusted_tertiary\"}",
+        "redacted": false,
+        "sha256": "3cbc72946f1186d189980d0b2bec2263aaa6d26c6be0e3e94b181ea27226839c",
+        "size_bytes": 37
+      },
+      "parent_span_id": "trace-2026080207-span-0000",
+      "span_id": "trace-2026080207-span-0006",
+      "start_seq": 12,
+      "status": "ok",
+      "trace_id": "trace-2026080207"
+    },
+    {
+      "attributes": {},
+      "end_seq": 15,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"independent_context\":true}",
+        "redacted": false,
+        "sha256": "33514a6c20b0ce3055630fddb1971974f77f41744f5f96a9b9784c0c586ff7f9",
+        "size_bytes": 28
+      },
+      "kind": "tool",
+      "name": "provider.trusted_tertiary",
+      "output_ref": {
+        "preview": "{\"tokens\":[1,2,3,4],\"value\":100}",
+        "redacted": false,
+        "sha256": "e3aa4cf2f470a477261c1cfff6b4435a5342944e04b49e897319669271be2022",
+        "size_bytes": 32
+      },
+      "parent_span_id": "trace-2026080207-span-0000",
+      "span_id": "trace-2026080207-span-0007",
+      "start_seq": 14,
+      "status": "ok",
+      "trace_id": "trace-2026080207"
+    },
+    {
+      "attributes": {},
+      "end_seq": 17,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"candidate\":{\"tokens\":[1,2,3,4],\"value\":100}}",
+        "redacted": false,
+        "sha256": "808db0fe6210b95d14c3071c4704e48172fc8003295dcef06d87a4a39ab9a784",
+        "size_bytes": 46
+      },
+      "kind": "agent",
+      "name": "agent.final_synthesis",
+      "output_ref": {
+        "preview": "{\"visible_answer\":{\"tokens\":[1,2,3,4],\"value\":100}}",
+        "redacted": false,
+        "sha256": "02d4cfcb0356c2bd8b55beb8eff92797ae1d682132273a7eec0ae9f2aab29d9d",
+        "size_bytes": 51
+      },
+      "parent_span_id": "trace-2026080207-span-0000",
+      "span_id": "trace-2026080207-span-0008",
+      "start_seq": 16,
+      "status": "ok",
+      "trace_id": "trace-2026080207"
+    }
+  ],
+  "trace_id": "trace-2026080207"
+}

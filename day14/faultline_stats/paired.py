@@ -19,6 +19,12 @@ from .mathfns import binom_two_sided_p, chi2_sf_df1
 EXACT_THRESHOLD = 25          # use exact binomial when discordant pairs are few
 
 
+def _stable_float(value: float) -> float:
+    """Canonicalize derived statistics across supported Python/libm versions."""
+
+    return float(format(value, ".15g"))
+
+
 @dataclass(frozen=True)
 class PairedTable:
     both_correct: int         # n11
@@ -62,15 +68,15 @@ def mcnemar_test(b: int, c: int, correction: bool = True) -> Dict[str, Any]:
     b, c are the off-diagonal cells (A-only and B-only). Returns the corrected
     chi-square statistic + p, the exact binomial p, and which to report."""
     n = b + c
-    exact_p = binom_two_sided_p(b, c)
+    exact_p = _stable_float(binom_two_sided_p(b, c))
     if n == 0:
         chi2 = 0.0
         chi2_p = 1.0
     else:
         diff = abs(b - c)
         chi2 = ((diff - 1) ** 2 / n) if correction else (diff ** 2 / n)
-        chi2 = max(0.0, chi2)
-        chi2_p = chi2_sf_df1(chi2)
+        chi2 = _stable_float(max(0.0, chi2))
+        chi2_p = _stable_float(chi2_sf_df1(chi2))
     use_exact = n < EXACT_THRESHOLD
     return {
         "b": b, "c": c, "n_discordant": n,

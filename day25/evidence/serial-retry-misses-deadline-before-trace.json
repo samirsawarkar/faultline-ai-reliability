@@ -1,0 +1,77 @@
+{
+  "seed": 2026080301,
+  "span_count": 3,
+  "spans": [
+    {
+      "attributes": {
+        "regression_test_id": "R25-002-correct-by-user-deadline"
+      },
+      "end_seq": 6,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"incident_id\":\"INC-25-002\",\"policy_version\":\"legacy\"}",
+        "redacted": false,
+        "sha256": "e55c4dcee7d684b69cc62373a9a8777c851a78c92453af9fd079e955cee4d525",
+        "size_bytes": 54
+      },
+      "kind": "agent",
+      "name": "postmortem.incident",
+      "output_ref": {
+        "preview": "{\"metrics\":{\"cost\":2,\"cost_budget\":2,\"latency\":45,\"latency_budget\":45,\"steps\":2},\"policy_version\":\"legacy\",\"terminal\":{\"...(truncated)",
+        "redacted": false,
+        "sha256": "7bdc6280f5c945953c792bcaf7a7bd6f15e9605412b8c8812c3441e35d56c866",
+        "size_bytes": 236
+      },
+      "parent_span_id": null,
+      "span_id": "trace-2026080301-span-0000",
+      "start_seq": 1,
+      "status": "ok",
+      "trace_id": "trace-2026080301"
+    },
+    {
+      "attributes": {},
+      "end_seq": 3,
+      "error": {
+        "message": "primary latency exceeded timeout 30",
+        "type": "PrimaryTimeout"
+      },
+      "input_ref": {
+        "preview": "{\"fault\":\"transient_latency\",\"timeout\":30}",
+        "redacted": false,
+        "sha256": "3153f2476f9604476c3e72cc47c7c56923a98bae5cc6d50418db8ba66e0536a0",
+        "size_bytes": 42
+      },
+      "kind": "tool",
+      "name": "provider.primary",
+      "output_ref": null,
+      "parent_span_id": "trace-2026080301-span-0000",
+      "span_id": "trace-2026080301-span-0001",
+      "start_seq": 2,
+      "status": "error",
+      "trace_id": "trace-2026080301"
+    },
+    {
+      "attributes": {},
+      "end_seq": 5,
+      "error": {
+        "message": "serial retry completes at 50 after deadline 45",
+        "type": "UserDeadlineExceeded"
+      },
+      "input_ref": {
+        "preview": "{\"deadline\":45,\"duration\":20,\"start_at\":30}",
+        "redacted": false,
+        "sha256": "67bbc67cd76a81c4f08b0d311ade2a71807c230c24d0d5397481185ad20640ed",
+        "size_bytes": 43
+      },
+      "kind": "tool",
+      "name": "recovery.serial_retry",
+      "output_ref": null,
+      "parent_span_id": "trace-2026080301-span-0000",
+      "span_id": "trace-2026080301-span-0002",
+      "start_seq": 4,
+      "status": "error",
+      "trace_id": "trace-2026080301"
+    }
+  ],
+  "trace_id": "trace-2026080301"
+}

@@ -1,0 +1,169 @@
+{
+  "collected": 417,
+  "day_range": [
+    1,
+    26
+  ],
+  "passed": 417,
+  "passed_all": true,
+  "profile": "full",
+  "python_hash_seed": 0,
+  "suites": [
+    {
+      "day": 1,
+      "passed": true,
+      "suite": "day01/tests/",
+      "test_count": 11
+    },
+    {
+      "day": 2,
+      "passed": true,
+      "suite": "day02/tests/",
+      "test_count": 22
+    },
+    {
+      "day": 3,
+      "passed": true,
+      "suite": "day03/tests/",
+      "test_count": 19
+    },
+    {
+      "day": 4,
+      "passed": true,
+      "suite": "day04/tests/",
+      "test_count": 19
+    },
+    {
+      "day": 5,
+      "passed": true,
+      "suite": "day05/tests/",
+      "test_count": 13
+    },
+    {
+      "day": 6,
+      "passed": true,
+      "suite": "day06/tests/",
+      "test_count": 11
+    },
+    {
+      "day": 7,
+      "passed": true,
+      "suite": "day07/tests/",
+      "test_count": 18
+    },
+    {
+      "day": 8,
+      "passed": true,
+      "suite": "day08/tests/",
+      "test_count": 45
+    },
+    {
+      "day": 9,
+      "passed": true,
+      "suite": "day09/tests/",
+      "test_count": 22
+    },
+    {
+      "day": 10,
+      "passed": true,
+      "suite": "day10/tests/",
+      "test_count": 18
+    },
+    {
+      "day": 11,
+      "passed": true,
+      "suite": "day11/tests/",
+      "test_count": 12
+    },
+    {
+      "day": 12,
+      "passed": true,
+      "suite": "day12/tests/",
+      "test_count": 12
+    },
+    {
+      "day": 13,
+      "passed": true,
+      "suite": "day13/tests/",
+      "test_count": 14
+    },
+    {
+      "day": 14,
+      "passed": true,
+      "suite": "day14/tests/",
+      "test_count": 25
+    },
+    {
+      "day": 15,
+      "passed": true,
+      "suite": "day15/tests/",
+      "test_count": 8
+    },
+    {
+      "day": 16,
+      "passed": true,
+      "suite": "day16/tests/",
+      "test_count": 12
+    },
+    {
+      "day": 17,
+      "passed": true,
+      "suite": "day17/tests/",
+      "test_count": 11
+    },
+    {
+      "day": 18,
+      "passed": true,
+      "suite": "day18/tests/",
+      "test_count": 10
+    },
+    {
+      "day": 19,
+      "passed": true,
+      "suite": "day19/tests/",
+      "test_count": 8
+    },
+    {
+      "day": 20,
+      "passed": true,
+      "suite": "day20/tests/",
+      "test_count": 9
+    },
+    {
+      "day": 21,
+      "passed": true,
+      "suite": "day21/tests/",
+      "test_count": 13
+    },
+    {
+      "day": 22,
+      "passed": true,
+      "suite": "day22/tests/",
+      "test_count": 17
+    },
+    {
+      "day": 23,
+      "passed": true,
+      "suite": "day23/tests/",
+      "test_count": 15
+    },
+    {
+      "day": 24,
+      "passed": true,
+      "suite": "day24/tests/",
+      "test_count": 17
+    },
+    {
+      "day": 25,
+      "passed": true,
+      "suite": "day25/tests/",
+      "test_count": 19
+    },
+    {
+      "day": 26,
+      "passed": true,
+      "suite": "day26/tests/",
+      "test_count": 17
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "artifacts": {
+    "causal_graph_json": "causal_graph.json",
+    "causal_graph_svg": "causal_graph.svg",
+    "narrative": "INCIDENT_NARRATIVE.md",
+    "replay_proof": "replay_stability.json",
+    "trace": "cascade_trace.json"
+  },
+  "config_digest": "939e2343e9f989713e332e7c404256e908f01e12c0d7b0746707817711560b26",
+  "event_span_index": {
+    "E01": [
+      "trace-2026080207-span-0001",
+      "trace-2026080207-span-0003"
+    ],
+    "E02": [
+      "trace-2026080207-span-0002",
+      "trace-2026080207-span-0004",
+      "trace-2026080207-span-0005"
+    ],
+    "E03": [
+      "trace-2026080207-span-0006"
+    ],
+    "E04": [
+      "trace-2026080207-span-0007"
+    ],
+    "E05": [
+      "trace-2026080207-span-0008"
+    ],
+    "E06": [
+      "trace-2026080207-span-0009"
+    ],
+    "E07": [
+      "trace-2026080207-span-0010",
+      "trace-2026080207-span-0011",
+      "trace-2026080207-span-0012"
+    ],
+    "E08": [
+      "trace-2026080207-span-0013",
+      "trace-2026080207-span-0014"
+    ],
+    "E09": [
+      "trace-2026080207-span-0015"
+    ]
+  },
+  "incident_id": "cascade-2026080207-1.0.0",
+  "initiating_event": "E01",
+  "propagation_chain": [
+    {
+      "event_id": "E01",
+      "label": "primary_latency_spike"
+    },
+    {
+      "event_id": "E02",
+      "label": "retry_amplification"
+    },
+    {
+      "event_id": "E03",
+      "label": "breaker_open"
+    },
+    {
+      "event_id": "E04",
+      "label": "fallback_routed"
+    },
+    {
+      "event_id": "E05",
+      "label": "stale_fallback_context"
+    },
+    {
+      "event_id": "E06",
+      "label": "judge_false_accept"
+    },
+    {
+      "event_id": "E07",
+      "label": "verification_repetition"
+    },
+    {
+      "event_id": "E08",
+      "label": "replan_reenters_fallback"
+    },
+    {
+      "event_id": "E09",
+      "label": "cost_ceiling_abort"
+    }
+  ],
+  "seed": 2026080207,
+  "terminal_event": "E09",
+  "trace_digest": "43e5f00f758a61e1b80f7b75fb69c4b7a993ca51a04668fdbd8c3f92a450e40e"
+}

@@ -1,0 +1,8 @@
+.git
+.venv
+**/__pycache__
+**/.pytest_cache
+**/*.pyc
+**/*.pyo
+day05/evidence/trace.db
+.DS_Store

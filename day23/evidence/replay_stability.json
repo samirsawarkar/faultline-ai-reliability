@@ -1,0 +1,73 @@
+{
+  "all_runs_trace_complete_and_labelled": true,
+  "config": {
+    "breaker_failure_threshold": 2,
+    "breaker_open_ticks": 5,
+    "breaker_window": 2,
+    "fallback_call_cost": 2,
+    "fallback_latency": 12,
+    "initiating_fault": "F2:primary_latency_spike",
+    "judge_cost": 1,
+    "judge_latency": 4,
+    "max_retry_attempts": 3,
+    "max_steps": 9,
+    "primary_attempt_cost": 2,
+    "primary_fault_latency": 80,
+    "primary_timeout": 30,
+    "reentry_fallback_cost": 1,
+    "reentry_fallback_latency": 8,
+    "repetition_threshold": 2,
+    "retry_backoff": 5,
+    "scenario_version": "1.0.0",
+    "synthesis_cost": 2,
+    "synthesis_latency": 5,
+    "total_cost_budget": 12,
+    "trigger_rate": 0.25,
+    "verification_cost": 1,
+    "verification_latency": 3
+  },
+  "config_digest": "939e2343e9f989713e332e7c404256e908f01e12c0d7b0746707817711560b26",
+  "cross_process_runs": [
+    {
+      "digest": "fb9daf3e3af8c5b43fce756ca9ac9eee7ee9171d463beeef07d5af11a428d5ce",
+      "python_hash_seed": 0
+    },
+    {
+      "digest": "fb9daf3e3af8c5b43fce756ca9ac9eee7ee9171d463beeef07d5af11a428d5ce",
+      "python_hash_seed": 1
+    },
+    {
+      "digest": "fb9daf3e3af8c5b43fce756ca9ac9eee7ee9171d463beeef07d5af11a428d5ce",
+      "python_hash_seed": 7
+    },
+    {
+      "digest": "fb9daf3e3af8c5b43fce756ca9ac9eee7ee9171d463beeef07d5af11a428d5ce",
+      "python_hash_seed": 99
+    }
+  ],
+  "cross_process_stable": true,
+  "expected_chain": [
+    "primary_latency_spike",
+    "retry_amplification",
+    "breaker_open",
+    "fallback_routed",
+    "stale_fallback_context",
+    "judge_false_accept",
+    "verification_repetition",
+    "replan_reenters_fallback",
+    "cost_ceiling_abort"
+  ],
+  "in_process_stable": true,
+  "repetitions": 20,
+  "reproducible_from_one_seed_and_config": true,
+  "seed": 2026080207,
+  "unique_incident_digests": [
+    "fb9daf3e3af8c5b43fce756ca9ac9eee7ee9171d463beeef07d5af11a428d5ce"
+  ],
+  "unique_label_chains": [
+    "[\"primary_latency_spike\",\"retry_amplification\",\"breaker_open\",\"fallback_routed\",\"stale_fallback_context\",\"judge_false_accept\",\"verification_repetition\",\"replan_reenters_fallback\",\"cost_ceiling_abort\"]"
+  ],
+  "unique_trace_digests": [
+    "43e5f00f758a61e1b80f7b75fb69c4b7a993ca51a04668fdbd8c3f92a450e40e"
+  ]
+}

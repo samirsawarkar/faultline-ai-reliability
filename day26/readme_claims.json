@@ -1,0 +1,151 @@
+{
+  "claims": [
+    {
+      "command": "make day07-q1",
+      "generator": "day07/scripts/run_q1.py",
+      "id": "tool_hops",
+      "readme_result": "Measured success 0.818 versus naive 0.91833; first interval separation at 3 hops",
+      "values": [
+        {
+          "artifact": "day07/evidence/investigation.json",
+          "json_pointer": "/measured",
+          "rendered": "0.818",
+          "value": 0.818
+        },
+        {
+          "artifact": "day07/evidence/investigation.json",
+          "json_pointer": "/naive",
+          "rendered": "0.91833",
+          "value": 0.91833
+        },
+        {
+          "artifact": "day07/evidence/investigation.json",
+          "json_pointer": "/divergence_hop",
+          "rendered": "3",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "command": "make day13-evidence",
+      "generator": "day13/scripts/make_evidence.py",
+      "id": "frozen_eval",
+      "readme_result": "Frozen test evaluation: F1 0.842105 over 17 samples",
+      "values": [
+        {
+          "artifact": "day13/evidence/eval_result.json",
+          "json_pointer": "/overall/f1",
+          "rendered": "0.842105",
+          "value": 0.842105
+        },
+        {
+          "artifact": "day13/evidence/eval_result.json",
+          "json_pointer": "/sample_count",
+          "rendered": "17",
+          "value": 17
+        }
+      ]
+    },
+    {
+      "command": "make day21-q4",
+      "generator": "day21/scripts/make_evidence.py",
+      "id": "fallback_quality",
+      "readme_result": "Availability 0.6667 → 1.0 while strict quality among answers 1.0 → 0.75",
+      "values": [
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "json_pointer": "/comparison/primary_only/availability/rate",
+          "rendered": "0.6667",
+          "value": 0.6667
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "json_pointer": "/comparison/fallback_enabled/availability/rate",
+          "rendered": "1.0",
+          "value": 1.0
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "json_pointer": "/comparison/primary_only/strict_quality_given_answered/rate",
+          "rendered": "1.0",
+          "value": 1.0
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "json_pointer": "/comparison/fallback_enabled/strict_quality_given_answered/rate",
+          "rendered": "0.75",
+          "value": 0.75
+        }
+      ]
+    },
+    {
+      "command": "make day24-q5",
+      "generator": "day24/scripts/make_evidence.py",
+      "id": "q5_policy",
+      "readme_result": "Reference P4: success 0.9325, mean cost 1.4656, p95 latency 50.0",
+      "values": [
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "json_pointer": "/policy_metrics/P4_selective_guarded/user_visible_correct_success/rate",
+          "rendered": "0.9325",
+          "value": 0.9325
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "json_pointer": "/policy_metrics/P4_selective_guarded/mean_cost/value",
+          "rendered": "1.4656",
+          "value": 1.4656
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "json_pointer": "/policy_metrics/P4_selective_guarded/p95_latency/value",
+          "rendered": "50.0",
+          "value": 50.0
+        }
+      ]
+    },
+    {
+      "command": "make day25-postmortems",
+      "generator": "day25/scripts/make_evidence.py",
+      "id": "postmortems",
+      "readme_result": "2 incidents replay red → green; Checkpoint 25 passes",
+      "values": [
+        {
+          "artifact": "day25/evidence/checkpoint_25.json",
+          "json_pointer": "/incident_count",
+          "rendered": "2",
+          "value": 2
+        },
+        {
+          "artifact": "day25/evidence/checkpoint_25.json",
+          "json_pointer": "/checkpoint",
+          "rendered": "25",
+          "value": 25
+        }
+      ]
+    },
+    {
+      "command": "make reproduce",
+      "generator": "day26/scripts/run_test_gate.py",
+      "id": "tests",
+      "readme_result": "417 tests collected and passed",
+      "values": [
+        {
+          "artifact": "day26/evidence/test_report.json",
+          "json_pointer": "/collected",
+          "rendered": "417",
+          "value": 417
+        },
+        {
+          "artifact": "day26/evidence/test_report.json",
+          "json_pointer": "/passed",
+          "rendered": "417",
+          "value": 417
+        }
+      ]
+    }
+  ],
+  "results_block_end": "<!-- RESULTS:END -->",
+  "results_block_start": "<!-- RESULTS:START -->",
+  "schema_version": "1.0.0"
+}

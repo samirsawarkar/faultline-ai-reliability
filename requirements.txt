@@ -1,7 +1,14 @@
-# FAULTLINE dependencies. Pinned for reproducibility (a reliability standard:
-# the same commit installs the same versions on every machine and in CI).
-#
-# Day 1 is standard-library only and needs just pytest to run its suite.
-# Day 2+ additionally requires pydantic v2 for its typed contracts.
+# FAULTLINE fully resolved Python dependency lock.
+# Regenerate intentionally; do not replace exact pins with compatible ranges.
+annotated-types==0.7.0
+exceptiongroup==1.3.1
+iniconfig==2.1.0
+packaging==26.2
+pluggy==1.6.0
 pydantic==2.13.4
+pydantic-core==2.46.4
+Pygments==2.20.0
 pytest==8.4.2
+tomli==2.4.1
+typing-extensions==4.16.0
+typing-inspection==0.4.2

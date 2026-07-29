@@ -1,0 +1,40 @@
+{
+  "experiments": [
+    {
+      "after_digest": "3fb62bb1c44c1bc712f5e2b627d9fc88e1424c3ff173a4c1a713267d16320056",
+      "artifact_count": 4,
+      "before_digest": "3fb62bb1c44c1bc712f5e2b627d9fc88e1424c3ff173a4c1a713267d16320056",
+      "byte_identical": true,
+      "command_succeeded": true,
+      "evidence_directory": "day07/evidence",
+      "name": "tool_hops",
+      "passed": true,
+      "script": "day07/scripts/run_q1.py"
+    },
+    {
+      "after_digest": "52d08b0cc45b693864511432ac4468219c35865575c5cc0857026cb4448723e4",
+      "artifact_count": 4,
+      "before_digest": "52d08b0cc45b693864511432ac4468219c35865575c5cc0857026cb4448723e4",
+      "byte_identical": true,
+      "command_succeeded": true,
+      "evidence_directory": "day21/evidence",
+      "name": "fallback_quality",
+      "passed": true,
+      "script": "day21/scripts/make_evidence.py"
+    },
+    {
+      "after_digest": "8831107c94fb1438cbac267b25774a34eb42763a23fffa02ceadd172971256ac",
+      "artifact_count": 11,
+      "before_digest": "8831107c94fb1438cbac267b25774a34eb42763a23fffa02ceadd172971256ac",
+      "byte_identical": true,
+      "command_succeeded": true,
+      "evidence_directory": "day25/evidence",
+      "name": "postmortem_replay",
+      "passed": true,
+      "script": "day25/scripts/make_evidence.py"
+    }
+  ],
+  "passed": true,
+  "profile": "fast",
+  "python_hash_seed": 0
+}

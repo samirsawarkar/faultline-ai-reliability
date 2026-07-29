@@ -1,0 +1,582 @@
+{
+  "audit": {
+    "all_error_spans_complete": true,
+    "all_events_labelled": true,
+    "all_spans_complete": true,
+    "chain_matches_spec": true,
+    "error_span_count": 3,
+    "passed": true,
+    "root_count": 1,
+    "span_count": 16,
+    "unresolved_causal_edges": [],
+    "unresolved_event_span_refs": [],
+    "unresolved_parent_links": []
+  },
+  "causal_edges": [
+    {
+      "cause": "E01",
+      "edge_id": "E01-E02",
+      "effect": "E02",
+      "relation": "timeout triggers retry"
+    },
+    {
+      "cause": "E02",
+      "edge_id": "E02-E03",
+      "effect": "E03",
+      "relation": "second failure opens breaker"
+    },
+    {
+      "cause": "E03",
+      "edge_id": "E03-E04",
+      "effect": "E04",
+      "relation": "open state routes fallback"
+    },
+    {
+      "cause": "E04",
+      "edge_id": "E04-E05",
+      "effect": "E05",
+      "relation": "secondary serves correlated stale context"
+    },
+    {
+      "cause": "E05",
+      "edge_id": "E05-E06",
+      "effect": "E06",
+      "relation": "semantic drift crosses judge blind spot"
+    },
+    {
+      "cause": "E06",
+      "edge_id": "E06-E07",
+      "effect": "E07",
+      "relation": "accepted drift reaches verification"
+    },
+    {
+      "cause": "E07",
+      "edge_id": "E07-E08",
+      "effect": "E08",
+      "relation": "repetition triggers replan"
+    },
+    {
+      "cause": "E08",
+      "edge_id": "E08-E09",
+      "effect": "E09",
+      "relation": "re-entry exhausts remaining cost"
+    }
+  ],
+  "config_digest": "939e2343e9f989713e332e7c404256e908f01e12c0d7b0746707817711560b26",
+  "events": [
+    {
+      "category": "initiating_fault",
+      "component": "primary_provider",
+      "detail": "Seeded F2 latency exceeds the primary timeout.",
+      "event_id": "E01",
+      "label": "primary_latency_spike",
+      "observed": true,
+      "span_refs": [
+        "trace-2026080207-span-0001",
+        "trace-2026080207-span-0003"
+      ]
+    },
+    {
+      "category": "recovery_side_effect",
+      "component": "retry_controller",
+      "detail": "M2 converts one timeout into a second failing primary call.",
+      "event_id": "E02",
+      "label": "retry_amplification",
+      "observed": true,
+      "span_refs": [
+        "trace-2026080207-span-0002",
+        "trace-2026080207-span-0004",
+        "trace-2026080207-span-0005"
+      ]
+    },
+    {
+      "category": "recovery_transition",
+      "component": "circuit_breaker",
+      "detail": "The second timeout satisfies the 2-of-2 breaker threshold.",
+      "event_id": "E03",
+      "label": "breaker_open",
+      "observed": true,
+      "span_refs": [
+        "trace-2026080207-span-0006"
+      ]
+    },
+    {
+      "category": "recovery_transition",
+      "component": "fallback_router",
+      "detail": "The open breaker sends the request to the secondary provider.",
+      "event_id": "E04",
+      "label": "fallback_routed",
+      "observed": true,
+      "span_refs": [
+        "trace-2026080207-span-0007"
+      ]
+    },
+    {
+      "category": "propagated_fault",
+      "component": "secondary_provider",
+      "detail": "The correlated secondary preserves the headline value but shifts context tokens.",
+      "event_id": "E05",
+      "label": "stale_fallback_context",
+      "observed": true,
+      "span_refs": [
+        "trace-2026080207-span-0008"
+      ]
+    },
+    {
+      "category": "detection_failure",
+      "component": "quality_gate",
+      "detail": "The known token-order blind spot accepts a strictly bad fallback.",
+      "event_id": "E06",
+      "label": "judge_false_accept",
+      "observed": true,
+      "span_refs": [
+        "trace-2026080207-span-0009"
+      ]
+    },
+    {
+      "category": "propagated_fault",
+      "component": "agent_controller",
+      "detail": "Accepted drift causes the agent to repeat the same failed verification.",
+      "event_id": "E07",
+      "label": "verification_repetition",
+      "observed": true,
+      "span_refs": [
+        "trace-2026080207-span-0010",
+        "trace-2026080207-span-0011",
+        "trace-2026080207-span-0012"
+      ]
+    },
+    {
+      "category": "recovery_side_effect",
+      "component": "repetition_recovery",
+      "detail": "M6 replans into the same correlated secondary and consumes the remaining envelope.",
+      "event_id": "E08",
+      "label": "replan_reenters_fallback",
+      "observed": true,
+      "span_refs": [
+        "trace-2026080207-span-0013",
+        "trace-2026080207-span-0014"
+      ]
+    },
+    {
+      "category": "terminal_containment",
+      "component": "global_budget",
+      "detail": "M5 refuses final synthesis before cost can exceed the configured ceiling.",
+      "event_id": "E09",
+      "label": "cost_ceiling_abort",
+      "observed": true,
+      "span_refs": [
+        "trace-2026080207-span-0015"
+      ]
+    }
+  ],
+  "incident_id": "cascade-2026080207-1.0.0",
+  "metrics": {
+    "breaker_transitions": 1,
+    "cost": 11,
+    "cost_ceiling": 12,
+    "fallback_calls": 2,
+    "latency": 98,
+    "primary_calls": 2,
+    "replans": 1,
+    "retry_calls_added": 1,
+    "step_ceiling": 9,
+    "steps": 8,
+    "verification_repeats": 3
+  },
+  "seed": 2026080207,
+  "terminal": {
+    "available_answer_suppressed": true,
+    "correct_answer_returned": false,
+    "status": "contained_cost_ceiling"
+  },
+  "trace": {
+    "seed": 2026080207,
+    "span_count": 16,
+    "spans": [
+      {
+        "attributes": {
+          "initiating_fault": "F2:primary_latency_spike",
+          "scenario_version": "1.0.0"
+        },
+        "end_seq": 32,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"config\":{\"breaker_failure_threshold\":2,\"breaker_open_ticks\":5,\"breaker_window\":2,\"fallback_call_cost\":2,\"fallback_late...(truncated)",
+          "redacted": false,
+          "sha256": "1bab8d4a0ef6c4aa99698d2d98c9a075f85052b9ba341d085a22ed784089947c",
+          "size_bytes": 592
+        },
+        "kind": "agent",
+        "name": "incident.cascade",
+        "output_ref": {
+          "preview": "{\"budget\":{\"cost\":11,\"cost_ceiling\":12,\"latency\":98,\"step_ceiling\":9,\"steps\":8},\"chain_labels\":[\"primary_latency_spike\",...(truncated)",
+          "redacted": false,
+          "sha256": "6b9ec422349fd720c080ca97c87119a6a6297a8c4e429b92318b4a1f6d4f4606",
+          "size_bytes": 371
+        },
+        "parent_span_id": null,
+        "span_id": "trace-2026080207-span-0000",
+        "start_seq": 1,
+        "status": "ok",
+        "trace_id": "trace-2026080207"
+      },
+      {
+        "attributes": {},
+        "end_seq": 3,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"seed\":2026080207,\"trigger_rate\":0.25}",
+          "redacted": false,
+          "sha256": "53267b557db2d3c8992b72117a63fe03c869ee96fccf52665bd2ae3fddc91829",
+          "size_bytes": 39
+        },
+        "kind": "tool",
+        "name": "inject.primary_latency",
+        "output_ref": {
+          "preview": "{\"roll\":0.20506752,\"triggered\":true}",
+          "redacted": false,
+          "sha256": "08159e8042e1fd8a48cd07201fb9d2d6d7755021ea01a8cc5842d0ab4cc3dee8",
+          "size_bytes": 36
+        },
+        "parent_span_id": "trace-2026080207-span-0000",
+        "span_id": "trace-2026080207-span-0001",
+        "start_seq": 2,
+        "status": "ok",
+        "trace_id": "trace-2026080207"
+      },
+      {
+        "attributes": {},
+        "end_seq": 11,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"max_attempts\":3}",
+          "redacted": false,
+          "sha256": "958cb7c79c50925396cc120fd6115837b7df98802ebe58510ec78d2ae4d39735",
+          "size_bytes": 18
+        },
+        "kind": "agent",
+        "name": "recovery.m2_retry",
+        "output_ref": {
+          "preview": "{\"breaker_state\":\"open\",\"budget\":{\"cost\":4,\"cost_ceiling\":12,\"latency\":65,\"step_ceiling\":9,\"steps\":2},\"primary_calls\":2}",
+          "redacted": false,
+          "sha256": "9ccbfcd42d7fcffa3b874595e37c8a1dee758e05d889612bf09388bc5c3ec710",
+          "size_bytes": 120
+        },
+        "parent_span_id": "trace-2026080207-span-0000",
+        "span_id": "trace-2026080207-span-0002",
+        "start_seq": 4,
+        "status": "ok",
+        "trace_id": "trace-2026080207"
+      },
+      {
+        "attributes": {},
+        "end_seq": 6,
+        "error": {
+          "message": "primary latency 80 exceeded timeout 30",
+          "type": "PrimaryTimeout"
+        },
+        "input_ref": {
+          "preview": "{\"attempt\":0,\"observed_latency\":80,\"timeout\":30}",
+          "redacted": false,
+          "sha256": "64aae9cc7caf28a9b3a542b2382f6ebe52cbab52088c3514bc9a86d5890eb162",
+          "size_bytes": 48
+        },
+        "kind": "tool",
+        "name": "provider.primary.attempt.0",
+        "output_ref": null,
+        "parent_span_id": "trace-2026080207-span-0002",
+        "span_id": "trace-2026080207-span-0003",
+        "start_seq": 5,
+        "status": "error",
+        "trace_id": "trace-2026080207"
+      },
+      {
+        "attributes": {},
+        "end_seq": 8,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"delay\":5}",
+          "redacted": false,
+          "sha256": "4f51f146c49bdba4ef38eead4be8cf9d88fa293c9b39eaf87ecac87d2e4ecb8b",
+          "size_bytes": 11
+        },
+        "kind": "agent",
+        "name": "recovery.backoff.0",
+        "output_ref": {
+          "preview": "{\"scheduled_retry\":1}",
+          "redacted": false,
+          "sha256": "61e6896c68fcbed3d9eabf1431f11218608931686a26e4c82fb0af8483e97cd8",
+          "size_bytes": 21
+        },
+        "parent_span_id": "trace-2026080207-span-0002",
+        "span_id": "trace-2026080207-span-0004",
+        "start_seq": 7,
+        "status": "ok",
+        "trace_id": "trace-2026080207"
+      },
+      {
+        "attributes": {},
+        "end_seq": 10,
+        "error": {
+          "message": "primary latency 80 exceeded timeout 30",
+          "type": "PrimaryTimeout"
+        },
+        "input_ref": {
+          "preview": "{\"attempt\":1,\"observed_latency\":80,\"timeout\":30}",
+          "redacted": false,
+          "sha256": "e772a37bff20dd123efd407b65acbff5face024cdc4001a542921660671d10f5",
+          "size_bytes": 48
+        },
+        "kind": "tool",
+        "name": "provider.primary.attempt.1",
+        "output_ref": null,
+        "parent_span_id": "trace-2026080207-span-0002",
+        "span_id": "trace-2026080207-span-0005",
+        "start_seq": 9,
+        "status": "error",
+        "trace_id": "trace-2026080207"
+      },
+      {
+        "attributes": {},
+        "end_seq": 13,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"transitions\":[{\"from\":\"closed\",\"reason\":\"failure_threshold\",\"tick\":1,\"to\":\"open\"}]}",
+          "redacted": false,
+          "sha256": "062a370b208e38637726552bc9458a9c7779fdaca9d9ff224cce98252b4e81b2",
+          "size_bytes": 85
+        },
+        "kind": "agent",
+        "name": "recovery.m3_breaker_open",
+        "output_ref": {
+          "preview": "{\"state\":\"open\",\"transitions\":[{\"from\":\"closed\",\"reason\":\"failure_threshold\",\"tick\":1,\"to\":\"open\"}]}",
+          "redacted": false,
+          "sha256": "1c525f0151f047d8e9b50db508a878c8bc1fccb23498ff2aafa8c61a26d4c0a2",
+          "size_bytes": 100
+        },
+        "parent_span_id": "trace-2026080207-span-0000",
+        "span_id": "trace-2026080207-span-0006",
+        "start_seq": 12,
+        "status": "ok",
+        "trace_id": "trace-2026080207"
+      },
+      {
+        "attributes": {},
+        "end_seq": 15,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"breaker_state\":\"open\"}",
+          "redacted": false,
+          "sha256": "c381d0e1f5a4137409268878b763c1113a04e3a7ad3c6c193ee6f639b78416e0",
+          "size_bytes": 24
+        },
+        "kind": "agent",
+        "name": "recovery.m4_fallback_route",
+        "output_ref": {
+          "preview": "{\"answered\":true,\"is_degraded\":false,\"is_fallback\":true,\"served_by\":\"secondary\"}",
+          "redacted": false,
+          "sha256": "a35d0fcad1d79de4e2f265f07e0027b15242fcb80c24b707066012f348b3967e",
+          "size_bytes": 80
+        },
+        "parent_span_id": "trace-2026080207-span-0000",
+        "span_id": "trace-2026080207-span-0007",
+        "start_seq": 14,
+        "status": "ok",
+        "trace_id": "trace-2026080207"
+      },
+      {
+        "attributes": {},
+        "end_seq": 17,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"variant\":\"borderline_tokens\"}",
+          "redacted": false,
+          "sha256": "29670b1fa0e23852e73514879c1366fbac17aebcb9f09be1f69de971793a87d2",
+          "size_bytes": 31
+        },
+        "kind": "tool",
+        "name": "provider.secondary",
+        "output_ref": {
+          "preview": "{\"tokens\":[3,4,5,6],\"value\":100}",
+          "redacted": false,
+          "sha256": "b41b81c4e8b0625e9dc0a3915560585c2f47dd247d354e34885848a400b17cca",
+          "size_bytes": 32
+        },
+        "parent_span_id": "trace-2026080207-span-0000",
+        "span_id": "trace-2026080207-span-0008",
+        "start_seq": 16,
+        "status": "ok",
+        "trace_id": "trace-2026080207"
+      },
+      {
+        "attributes": {},
+        "end_seq": 19,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"candidate\":{\"tokens\":[3,4,5,6],\"value\":100},\"scope\":\"fallback_quality\"}",
+          "redacted": false,
+          "sha256": "00f8bae0ea8e512678c16c588424240512da6a997d8b83095b91922e3c815f99",
+          "size_bytes": 73
+        },
+        "kind": "model",
+        "name": "quality.narrow_judge",
+        "output_ref": {
+          "preview": "{\"alert\":false,\"core_oracle_untouched\":true,\"judge_label\":\"accept\",\"reasons\":[],\"request_index\":0,\"seed\":2026080207}",
+          "redacted": false,
+          "sha256": "0a3622384774a3999b01f9ec809e785a14e14c6f89d4477eb8f1190d5fc19f7c",
+          "size_bytes": 116
+        },
+        "parent_span_id": "trace-2026080207-span-0000",
+        "span_id": "trace-2026080207-span-0009",
+        "start_seq": 18,
+        "status": "ok",
+        "trace_id": "trace-2026080207"
+      },
+      {
+        "attributes": {},
+        "end_seq": 21,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"fingerprint\":\"b41b81c4e8b0\",\"index\":0}",
+          "redacted": false,
+          "sha256": "e25ff3751c8e42113ec8e24ad379f8cbd1f17b872f3d16ccd692ef8a27e9ea3c",
+          "size_bytes": 40
+        },
+        "kind": "model",
+        "name": "agent.verify.0",
+        "output_ref": {
+          "preview": "{\"consecutive_same_fingerprint\":1,\"consistent_with_primary_context\":false}",
+          "redacted": false,
+          "sha256": "856aa4b587e62cccc7b76c2d4e522a3d6c332f2c093e7730b976007bb192ef0d",
+          "size_bytes": 74
+        },
+        "parent_span_id": "trace-2026080207-span-0000",
+        "span_id": "trace-2026080207-span-0010",
+        "start_seq": 20,
+        "status": "ok",
+        "trace_id": "trace-2026080207"
+      },
+      {
+        "attributes": {},
+        "end_seq": 23,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"fingerprint\":\"b41b81c4e8b0\",\"index\":1}",
+          "redacted": false,
+          "sha256": "6c15dcec2ddce80b877b5f05bf76705053150fba9ad75a370121d950572baaaa",
+          "size_bytes": 40
+        },
+        "kind": "model",
+        "name": "agent.verify.1",
+        "output_ref": {
+          "preview": "{\"consecutive_same_fingerprint\":2,\"consistent_with_primary_context\":false}",
+          "redacted": false,
+          "sha256": "53f4c9a29f1a3d077872d93c6b4238309c79935bc69362b1b0e5b36e91819b42",
+          "size_bytes": 74
+        },
+        "parent_span_id": "trace-2026080207-span-0000",
+        "span_id": "trace-2026080207-span-0011",
+        "start_seq": 22,
+        "status": "ok",
+        "trace_id": "trace-2026080207"
+      },
+      {
+        "attributes": {},
+        "end_seq": 25,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"fingerprint\":\"b41b81c4e8b0\",\"index\":2}",
+          "redacted": false,
+          "sha256": "86250496ec41c7bbfdd3f9cfd9e8fe8d78a7008074e68b030db2291aa876b7b8",
+          "size_bytes": 40
+        },
+        "kind": "model",
+        "name": "agent.verify.2",
+        "output_ref": {
+          "preview": "{\"consecutive_same_fingerprint\":3,\"consistent_with_primary_context\":false}",
+          "redacted": false,
+          "sha256": "fca14372868cc356dd7001a154268aee0c0bd72ed9545cd5fd6224bf1ce6f90b",
+          "size_bytes": 74
+        },
+        "parent_span_id": "trace-2026080207-span-0000",
+        "span_id": "trace-2026080207-span-0012",
+        "start_seq": 24,
+        "status": "ok",
+        "trace_id": "trace-2026080207"
+      },
+      {
+        "attributes": {},
+        "end_seq": 27,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"repetition_detected\":true}",
+          "redacted": false,
+          "sha256": "eaf2b78e4619cfca1b1c479e2b3f36532c7c6083959fbffab5fb274776ff11f1",
+          "size_bytes": 28
+        },
+        "kind": "agent",
+        "name": "recovery.m6_replan",
+        "output_ref": {
+          "preview": "{\"selected_route\":\"secondary_again\"}",
+          "redacted": false,
+          "sha256": "9fcb1a0bc515845628709032bf3535e92e607178e426bd8a63ee876b9a726b19",
+          "size_bytes": 36
+        },
+        "parent_span_id": "trace-2026080207-span-0000",
+        "span_id": "trace-2026080207-span-0013",
+        "start_seq": 26,
+        "status": "ok",
+        "trace_id": "trace-2026080207"
+      },
+      {
+        "attributes": {},
+        "end_seq": 29,
+        "error": null,
+        "input_ref": {
+          "preview": "{\"fingerprint\":\"b41b81c4e8b0\",\"reason\":\"m6_replan\"}",
+          "redacted": false,
+          "sha256": "28e547e6cf2eef616970a4b296475c42499773033b5dee1efc48f8aa5651bacc",
+          "size_bytes": 51
+        },
+        "kind": "tool",
+        "name": "provider.secondary.reentry",
+        "output_ref": {
+          "preview": "{\"tokens\":[3,4,5,6],\"value\":100}",
+          "redacted": false,
+          "sha256": "b41b81c4e8b0625e9dc0a3915560585c2f47dd247d354e34885848a400b17cca",
+          "size_bytes": 32
+        },
+        "parent_span_id": "trace-2026080207-span-0000",
+        "span_id": "trace-2026080207-span-0014",
+        "start_seq": 28,
+        "status": "ok",
+        "trace_id": "trace-2026080207"
+      },
+      {
+        "attributes": {},
+        "end_seq": 31,
+        "error": {
+          "message": "cost ceiling blocks final_synthesis: 13>12",
+          "type": "BudgetCeilingExceeded"
+        },
+        "input_ref": {
+          "preview": "{\"budget_before\":{\"cost\":11,\"cost_ceiling\":12,\"latency\":98,\"step_ceiling\":9,\"steps\":8},\"operation\":\"final_synthesis\"}",
+          "redacted": false,
+          "sha256": "66992ee4aa359814ca6f2e7caa2339a59e14ddcc8da1246b66ff594875ae5c2b",
+          "size_bytes": 117
+        },
+        "kind": "agent",
+        "name": "recovery.m5_cost_ceiling",
+        "output_ref": null,
+        "parent_span_id": "trace-2026080207-span-0000",
+        "span_id": "trace-2026080207-span-0015",
+        "start_seq": 30,
+        "status": "error",
+        "trace_id": "trace-2026080207"
+      }
+    ],
+    "trace_id": "trace-2026080207"
+  },
+  "trace_digest": "43e5f00f758a61e1b80f7b75fb69c4b7a993ca51a04668fdbd8c3f92a450e40e"
+}

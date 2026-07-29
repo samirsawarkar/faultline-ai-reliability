@@ -1,0 +1,15 @@
+{
+  "attestation": {
+    "eval_green": true,
+    "eval_result_id": "66ac42d8d4433e5c",
+    "fast_experiments_green": true,
+    "passed": true,
+    "readme_traceability_green": true,
+    "test_count": 417,
+    "tests_green": true
+  },
+  "base": "python:3.12.4-slim-bookworm@sha256:a3e58f9399353be051735f09be0316bfdeab571a5c6a24fd78b92df85bcb2d85",
+  "command": "make container-reproduce",
+  "image": "faultline:0.26.0-rc1",
+  "passed": true
+}

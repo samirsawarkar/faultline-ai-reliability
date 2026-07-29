@@ -1,0 +1,291 @@
+{
+  "seed": 2026080207,
+  "span_count": 12,
+  "spans": [
+    {
+      "attributes": {
+        "regression_test_id": "R25-001-correct-within-cascade-envelope"
+      },
+      "end_seq": 24,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"incident_id\":\"INC-25-001\",\"policy_version\":\"legacy\"}",
+        "redacted": false,
+        "sha256": "4a0601e36bf94ded940d588c9d1750f98108a620387efe6fd5f836afae27c967",
+        "size_bytes": 54
+      },
+      "kind": "agent",
+      "name": "postmortem.incident",
+      "output_ref": {
+        "preview": "{\"metrics\":{\"cost\":11,\"cost_budget\":12,\"latency\":98,\"step_budget\":9,\"steps\":8},\"policy_version\":\"legacy\",\"terminal\":{\"co...(truncated)",
+        "redacted": false,
+        "sha256": "5c53b1af9a114c60129c6ae5a125f50938c407ade08dd7956b833f49fb2d35dc",
+        "size_bytes": 236
+      },
+      "parent_span_id": null,
+      "span_id": "trace-2026080207-span-0000",
+      "start_seq": 1,
+      "status": "ok",
+      "trace_id": "trace-2026080207"
+    },
+    {
+      "attributes": {},
+      "end_seq": 3,
+      "error": {
+        "message": "primary latency 80 exceeded timeout 30",
+        "type": "PrimaryTimeout"
+      },
+      "input_ref": {
+        "preview": "{\"attempt\":0,\"timeout\":30}",
+        "redacted": false,
+        "sha256": "0179a8cbd5fe2f1168b992b52c95cf458242d6c9f46449abdd21e12b6ca5915e",
+        "size_bytes": 26
+      },
+      "kind": "tool",
+      "name": "provider.primary.attempt.0",
+      "output_ref": null,
+      "parent_span_id": "trace-2026080207-span-0000",
+      "span_id": "trace-2026080207-span-0001",
+      "start_seq": 2,
+      "status": "error",
+      "trace_id": "trace-2026080207"
+    },
+    {
+      "attributes": {},
+      "end_seq": 5,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"delay\":5}",
+        "redacted": false,
+        "sha256": "4f51f146c49bdba4ef38eead4be8cf9d88fa293c9b39eaf87ecac87d2e4ecb8b",
+        "size_bytes": 11
+      },
+      "kind": "agent",
+      "name": "recovery.retry_backoff",
+      "output_ref": {
+        "preview": "{\"next_attempt\":1}",
+        "redacted": false,
+        "sha256": "956021c026c36f008ac149ef7abc07a7a84941aa0f9d89f68427bc6778739e09",
+        "size_bytes": 18
+      },
+      "parent_span_id": "trace-2026080207-span-0000",
+      "span_id": "trace-2026080207-span-0002",
+      "start_seq": 4,
+      "status": "ok",
+      "trace_id": "trace-2026080207"
+    },
+    {
+      "attributes": {},
+      "end_seq": 7,
+      "error": {
+        "message": "primary latency 80 exceeded timeout 30",
+        "type": "PrimaryTimeout"
+      },
+      "input_ref": {
+        "preview": "{\"attempt\":1,\"timeout\":30}",
+        "redacted": false,
+        "sha256": "8cea3290d245c8129d430afe8bddbce76c40f07020a73042f5011bfc12cb2eb3",
+        "size_bytes": 26
+      },
+      "kind": "tool",
+      "name": "provider.primary.attempt.1",
+      "output_ref": null,
+      "parent_span_id": "trace-2026080207-span-0000",
+      "span_id": "trace-2026080207-span-0003",
+      "start_seq": 6,
+      "status": "error",
+      "trace_id": "trace-2026080207"
+    },
+    {
+      "attributes": {},
+      "end_seq": 9,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"route\":\"secondary\",\"variant\":\"borderline_tokens\"}",
+        "redacted": false,
+        "sha256": "c9b1f4fb51d5f947716bc0ca640737dd4d8672149e17afe4153856e6dfa057c2",
+        "size_bytes": 51
+      },
+      "kind": "tool",
+      "name": "provider.secondary.stale",
+      "output_ref": {
+        "preview": "{\"tokens\":[3,4,5,6],\"value\":100}",
+        "redacted": false,
+        "sha256": "b41b81c4e8b0625e9dc0a3915560585c2f47dd247d354e34885848a400b17cca",
+        "size_bytes": 32
+      },
+      "parent_span_id": "trace-2026080207-span-0000",
+      "span_id": "trace-2026080207-span-0004",
+      "start_seq": 8,
+      "status": "ok",
+      "trace_id": "trace-2026080207"
+    },
+    {
+      "attributes": {},
+      "end_seq": 11,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"known_failure_slice\":\"borderline_tokens\"}",
+        "redacted": false,
+        "sha256": "81994e380a59715c0343ec32e1c90b5c3e68dc45b186644759ec5b5aecd2e738",
+        "size_bytes": 43
+      },
+      "kind": "model",
+      "name": "quality.narrow_judge",
+      "output_ref": {
+        "preview": "{\"strict_quality\":false,\"verdict\":\"accept\"}",
+        "redacted": false,
+        "sha256": "79516ef3a7d7897e488d2061ffb1128152fea8e96b672a0bf4f138e7f556b162",
+        "size_bytes": 43
+      },
+      "parent_span_id": "trace-2026080207-span-0000",
+      "span_id": "trace-2026080207-span-0005",
+      "start_seq": 10,
+      "status": "ok",
+      "trace_id": "trace-2026080207"
+    },
+    {
+      "attributes": {},
+      "end_seq": 13,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"fingerprint\":\"stale-fallback\",\"index\":0}",
+        "redacted": false,
+        "sha256": "a92452e1a8231f940306c128155f07ac6f34bcbb5ccadf6c664645bb44e9e1aa",
+        "size_bytes": 42
+      },
+      "kind": "model",
+      "name": "agent.verify.0",
+      "output_ref": {
+        "preview": "{\"consistent\":false,\"same_fingerprint\":true}",
+        "redacted": false,
+        "sha256": "63cea5f2f892838dd0d54aa86afc7a60b59496c93ac1548d85917bed271ee02f",
+        "size_bytes": 44
+      },
+      "parent_span_id": "trace-2026080207-span-0000",
+      "span_id": "trace-2026080207-span-0006",
+      "start_seq": 12,
+      "status": "ok",
+      "trace_id": "trace-2026080207"
+    },
+    {
+      "attributes": {},
+      "end_seq": 15,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"fingerprint\":\"stale-fallback\",\"index\":1}",
+        "redacted": false,
+        "sha256": "8dac1b8e69bec45f32e893cf284ad6cd46987791750dfd162928a95671368108",
+        "size_bytes": 42
+      },
+      "kind": "model",
+      "name": "agent.verify.1",
+      "output_ref": {
+        "preview": "{\"consistent\":false,\"same_fingerprint\":true}",
+        "redacted": false,
+        "sha256": "63cea5f2f892838dd0d54aa86afc7a60b59496c93ac1548d85917bed271ee02f",
+        "size_bytes": 44
+      },
+      "parent_span_id": "trace-2026080207-span-0000",
+      "span_id": "trace-2026080207-span-0007",
+      "start_seq": 14,
+      "status": "ok",
+      "trace_id": "trace-2026080207"
+    },
+    {
+      "attributes": {},
+      "end_seq": 17,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"fingerprint\":\"stale-fallback\",\"index\":2}",
+        "redacted": false,
+        "sha256": "1fa3767125c9ee8956800484ecb1387fab66318decfcea57a987d49ba0552fa9",
+        "size_bytes": 42
+      },
+      "kind": "model",
+      "name": "agent.verify.2",
+      "output_ref": {
+        "preview": "{\"consistent\":false,\"same_fingerprint\":true}",
+        "redacted": false,
+        "sha256": "63cea5f2f892838dd0d54aa86afc7a60b59496c93ac1548d85917bed271ee02f",
+        "size_bytes": 44
+      },
+      "parent_span_id": "trace-2026080207-span-0000",
+      "span_id": "trace-2026080207-span-0008",
+      "start_seq": 16,
+      "status": "ok",
+      "trace_id": "trace-2026080207"
+    },
+    {
+      "attributes": {},
+      "end_seq": 19,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"blocked_routes\":[]}",
+        "redacted": false,
+        "sha256": "312a8aaac1d5e629886aa947e00656d33ad84748c3d399f45c078cd378c5ca9a",
+        "size_bytes": 21
+      },
+      "kind": "agent",
+      "name": "recovery.replan_same_route",
+      "output_ref": {
+        "preview": "{\"selected_route\":\"secondary\"}",
+        "redacted": false,
+        "sha256": "5294a35d51248b7ffcc4d209126d472416465bf5d444118064e66d26f2a89da8",
+        "size_bytes": 30
+      },
+      "parent_span_id": "trace-2026080207-span-0000",
+      "span_id": "trace-2026080207-span-0009",
+      "start_seq": 18,
+      "status": "ok",
+      "trace_id": "trace-2026080207"
+    },
+    {
+      "attributes": {},
+      "end_seq": 21,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"fingerprint\":\"stale-fallback\"}",
+        "redacted": false,
+        "sha256": "e1d7700c58bffb75188acc2c785ee552fc97bdade1159734681b091a0358fd3f",
+        "size_bytes": 32
+      },
+      "kind": "tool",
+      "name": "provider.secondary.reentry",
+      "output_ref": {
+        "preview": "{\"tokens\":[3,4,5,6],\"value\":100}",
+        "redacted": false,
+        "sha256": "b41b81c4e8b0625e9dc0a3915560585c2f47dd247d354e34885848a400b17cca",
+        "size_bytes": 32
+      },
+      "parent_span_id": "trace-2026080207-span-0000",
+      "span_id": "trace-2026080207-span-0010",
+      "start_seq": 20,
+      "status": "ok",
+      "trace_id": "trace-2026080207"
+    },
+    {
+      "attributes": {},
+      "end_seq": 23,
+      "error": {
+        "message": "cost ceiling blocks final_synthesis: 13>12",
+        "type": "BudgetCeilingExceeded"
+      },
+      "input_ref": {
+        "preview": "{\"cost_before\":11,\"next_cost\":2}",
+        "redacted": false,
+        "sha256": "8453f415d1704a3e2f4b2369ca917f9a5db46e3379e02f8f8f837a235d3c52f7",
+        "size_bytes": 32
+      },
+      "kind": "agent",
+      "name": "budget.final_synthesis",
+      "output_ref": null,
+      "parent_span_id": "trace-2026080207-span-0000",
+      "span_id": "trace-2026080207-span-0011",
+      "start_seq": 22,
+      "status": "error",
+      "trace_id": "trace-2026080207"
+    }
+  ],
+  "trace_id": "trace-2026080207"
+}

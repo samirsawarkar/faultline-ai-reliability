@@ -1,0 +1,350 @@
+{
+  "INC-25-001": {
+    "after_outcome": {
+      "metrics": {
+        "cost": 11,
+        "cost_budget": 12,
+        "latency": 94,
+        "step_budget": 9,
+        "steps": 6
+      },
+      "regression": {
+        "color": "green",
+        "passed": true,
+        "predicate": "correct answer is visible, no wrong answer is visible, cost <= 12, and steps <= 9",
+        "test_id": "R25-001-correct-within-cascade-envelope",
+        "trace_refs": [
+          "trace-2026080207-span-0005",
+          "trace-2026080207-span-0006",
+          "trace-2026080207-span-0007",
+          "trace-2026080207-span-0008"
+        ]
+      },
+      "terminal": {
+        "correct_answer_returned": true,
+        "status": "recovered_correct",
+        "visible_answer": true,
+        "wrong_visible_answer": false
+      },
+      "trace_digest": "241054bff3c6c8146a228bd3af416ca1318aa6616d22dd09ffcfbbb75f100017"
+    },
+    "before_outcome": {
+      "metrics": {
+        "cost": 11,
+        "cost_budget": 12,
+        "latency": 98,
+        "step_budget": 9,
+        "steps": 8
+      },
+      "regression": {
+        "color": "red",
+        "passed": false,
+        "predicate": "correct answer is visible, no wrong answer is visible, cost <= 12, and steps <= 9",
+        "test_id": "R25-001-correct-within-cascade-envelope",
+        "trace_refs": [
+          "trace-2026080207-span-0005",
+          "trace-2026080207-span-0010",
+          "trace-2026080207-span-0011"
+        ]
+      },
+      "terminal": {
+        "correct_answer_returned": false,
+        "status": "contained_cost_ceiling",
+        "visible_answer": false,
+        "wrong_visible_answer": false
+      },
+      "trace_digest": "1e15a90d23a9ae6bec3b033fddf4d2cdfeb2af02ddd00e79ff01561d7c0bbe36"
+    },
+    "contributing_factors": [
+      "The secondary provider shared stale context with the failed primary path.",
+      "M6 had no route-diversity fence and selected the same provider/fingerprint.",
+      "The budget envelope contained the blast radius but reserved no path to a correct answer."
+    ],
+    "corrective_actions": [
+      "Apply an exact deterministic token check before fallback content may re-enter synthesis.",
+      "Quarantine the rejected provider/fingerprint for the request.",
+      "Require repetition recovery to choose an independent trusted route."
+    ],
+    "detection": "The Day-23 trace linked a narrow-judge accept on strictly bad token context to three repeated verifications, same-provider re-entry, and the terminal cost-ceiling error.",
+    "fixed_timeline": [
+      {
+        "at": 30,
+        "detail": "The primary call exceeded its 30-unit timeout.",
+        "event": "primary_timeout_1",
+        "span_refs": [
+          "trace-2026080207-span-0001"
+        ]
+      },
+      {
+        "at": 65,
+        "detail": "The primary call exceeded its 30-unit timeout.",
+        "event": "primary_timeout_2",
+        "span_refs": [
+          "trace-2026080207-span-0003"
+        ]
+      },
+      {
+        "at": 77,
+        "detail": "The secondary preserved the value but shifted the context tokens.",
+        "event": "stale_fallback_returned",
+        "span_refs": [
+          "trace-2026080207-span-0004"
+        ]
+      },
+      {
+        "at": 81,
+        "detail": "Exact token comparison quarantined the stale response.",
+        "event": "strict_guard_reject",
+        "span_refs": [
+          "trace-2026080207-span-0005"
+        ]
+      },
+      {
+        "at": 89,
+        "detail": "Route diversity selected an independent exact response.",
+        "event": "independent_route_correct",
+        "span_refs": [
+          "trace-2026080207-span-0006",
+          "trace-2026080207-span-0007"
+        ]
+      },
+      {
+        "at": 94,
+        "detail": "The corrected path synthesized within both ceilings.",
+        "event": "correct_answer_returned",
+        "span_refs": [
+          "trace-2026080207-span-0008"
+        ]
+      }
+    ],
+    "impact": "The canonical request returned no correct answer. Recovery consumed 11/12 cost units and 98 virtual ms; M5 contained the wrong fallback before synthesis, so this was lost service rather than a visible wrong answer.",
+    "incident_id": "INC-25-001",
+    "regression_predicate": "correct answer is visible, no wrong answer is visible, cost <= 12, and steps <= 9",
+    "regression_test_id": "R25-001-correct-within-cascade-envelope",
+    "replay_summary": {
+      "after_stable": true,
+      "before_stable": true,
+      "cross_process_stable": true,
+      "repetitions_per_version": 20,
+      "replay_verified_fix": true
+    },
+    "root_cause": "The controller treated a narrow judge as sufficient inside its documented token-order failure slice, so corrupted fallback context remained eligible for recovery.",
+    "seed": 2026080207,
+    "slug": "stale-fallback-reentry",
+    "source_artifact": "day23/evidence/cascade_trace.json",
+    "source_evidence": {
+      "artifact": "day23/evidence/incident_skeleton.json",
+      "matched": true,
+      "seed": 2026080207,
+      "source_incident_id": "cascade-2026080207-1.0.0",
+      "terminal_event": "E09",
+      "trace_digest": "43e5f00f758a61e1b80f7b75fb69c4b7a993ca51a04668fdbd8c3f92a450e40e"
+    },
+    "timeline": [
+      {
+        "at": 30,
+        "detail": "The primary call exceeded its 30-unit timeout.",
+        "event": "primary_timeout_1",
+        "span_refs": [
+          "trace-2026080207-span-0001"
+        ]
+      },
+      {
+        "at": 65,
+        "detail": "The primary call exceeded its 30-unit timeout.",
+        "event": "primary_timeout_2",
+        "span_refs": [
+          "trace-2026080207-span-0003"
+        ]
+      },
+      {
+        "at": 77,
+        "detail": "The secondary preserved the value but shifted the context tokens.",
+        "event": "stale_fallback_returned",
+        "span_refs": [
+          "trace-2026080207-span-0004"
+        ]
+      },
+      {
+        "at": 81,
+        "detail": "The narrow judge accepted content in its known failure slice.",
+        "event": "judge_false_accept",
+        "span_refs": [
+          "trace-2026080207-span-0005"
+        ]
+      },
+      {
+        "at": 90,
+        "detail": "Three checks repeated without changing evidence or route.",
+        "event": "verification_repeated",
+        "span_refs": [
+          "trace-2026080207-span-0006",
+          "trace-2026080207-span-0007",
+          "trace-2026080207-span-0008"
+        ]
+      },
+      {
+        "at": 98,
+        "detail": "Replan selected the same secondary and identical fingerprint.",
+        "event": "same_route_reentry",
+        "span_refs": [
+          "trace-2026080207-span-0009",
+          "trace-2026080207-span-0010"
+        ]
+      },
+      {
+        "at": 98,
+        "detail": "Final synthesis would cost 13/12 and was blocked.",
+        "event": "cost_ceiling_abort",
+        "span_refs": [
+          "trace-2026080207-span-0011"
+        ]
+      }
+    ],
+    "title": "Stale fallback crossed the quality gate and re-entered recovery",
+    "trace_artifacts": {
+      "after": "stale-fallback-reentry-after-trace.json",
+      "before": "stale-fallback-reentry-before-trace.json"
+    }
+  },
+  "INC-25-002": {
+    "after_outcome": {
+      "metrics": {
+        "cost": 2,
+        "cost_budget": 2,
+        "latency": 45,
+        "latency_budget": 45,
+        "steps": 2
+      },
+      "regression": {
+        "color": "green",
+        "passed": true,
+        "predicate": "correct answer is visible, no wrong answer is visible, cost <= 2, and latency <= 45",
+        "test_id": "R25-002-correct-by-user-deadline",
+        "trace_refs": [
+          "trace-2026080301-span-0001",
+          "trace-2026080301-span-0002",
+          "trace-2026080301-span-0003",
+          "trace-2026080301-span-0004"
+        ]
+      },
+      "terminal": {
+        "correct_answer_returned": true,
+        "status": "recovered_correct",
+        "visible_answer": true,
+        "wrong_visible_answer": false
+      },
+      "trace_digest": "588e27aa9452afde307d0753787cba058c1772fef6f84d7f55169674ead142f9"
+    },
+    "before_outcome": {
+      "metrics": {
+        "cost": 2,
+        "cost_budget": 2,
+        "latency": 45,
+        "latency_budget": 45,
+        "steps": 2
+      },
+      "regression": {
+        "color": "red",
+        "passed": false,
+        "predicate": "correct answer is visible, no wrong answer is visible, cost <= 2, and latency <= 45",
+        "test_id": "R25-002-correct-by-user-deadline",
+        "trace_refs": [
+          "trace-2026080301-span-0001",
+          "trace-2026080301-span-0002"
+        ]
+      },
+      "terminal": {
+        "correct_answer_returned": false,
+        "status": "latency_budget_abort",
+        "visible_answer": false,
+        "wrong_visible_answer": false
+      },
+      "trace_digest": "3569f91f7fbd5e717f511b51f7b1d6dded3af57f16b6ef9c39c8c4a62f630454"
+    },
+    "contributing_factors": [
+      "The policy checked the latency ceiling after choosing a serial retry.",
+      "The request was an idempotent read, but the policy did not exploit safe overlap.",
+      "Aggregate budget reporting initially obscured whether cost or latency stopped recovery."
+    ],
+    "corrective_actions": [
+      "Run a feasibility check before selecting recovery.",
+      "For idempotent reads, launch one bounded hedge at virtual time 20.",
+      "Keep the existing two-call cost ceiling and cancel outstanding work after the first valid answer."
+    ],
+    "detection": "The Day-24 attack separated 105 latency-budget aborts from 65 cost-budget aborts. The trace shows that waiting for the full 30-unit timeout left too little time for the 20-unit retry.",
+    "fixed_timeline": [
+      {
+        "at": 20,
+        "detail": "A second idempotent read started before the primary timeout.",
+        "event": "bounded_hedge_started",
+        "span_refs": [
+          "trace-2026080301-span-0001",
+          "trace-2026080301-span-0002"
+        ]
+      },
+      {
+        "at": 30,
+        "detail": "The initial idempotent read timed out.",
+        "event": "primary_timeout",
+        "span_refs": [
+          "trace-2026080301-span-0003"
+        ]
+      },
+      {
+        "at": 45,
+        "detail": "The bounded hedge returned a correct answer at the deadline.",
+        "event": "hedged_retry_correct",
+        "span_refs": [
+          "trace-2026080301-span-0004"
+        ]
+      }
+    ],
+    "impact": "The selected transient request had a recoverable second attempt, but the serial policy produced no answer by the 45-unit deadline. In the Day-24 tight-budget attack, all 105 transient cases followed this latency-abort path.",
+    "incident_id": "INC-25-002",
+    "regression_predicate": "correct answer is visible, no wrong answer is visible, cost <= 2, and latency <= 45",
+    "regression_test_id": "R25-002-correct-by-user-deadline",
+    "replay_summary": {
+      "after_stable": true,
+      "before_stable": true,
+      "cross_process_stable": true,
+      "repetitions_per_version": 20,
+      "replay_verified_fix": true
+    },
+    "root_cause": "The recovery schedule was deadline-infeasible: it launched the retry only after the primary timeout even though 30 + 20 exceeded the 45-unit user deadline.",
+    "seed": 2026080301,
+    "slug": "serial-retry-misses-deadline",
+    "source_artifact": "day24/evidence/winner_attack.json",
+    "source_evidence": {
+      "artifact": "day24/evidence/winner_attack.json",
+      "attack": "tight_budgets",
+      "latency_budget": 45.0,
+      "latency_budget_abort_count": 105,
+      "matched": true,
+      "seed": 2026080301
+    },
+    "timeline": [
+      {
+        "at": 30,
+        "detail": "The initial idempotent read timed out.",
+        "event": "primary_timeout",
+        "span_refs": [
+          "trace-2026080301-span-0001"
+        ]
+      },
+      {
+        "at": 45,
+        "detail": "The recoverable retry could not finish by the user deadline.",
+        "event": "latency_budget_abort",
+        "span_refs": [
+          "trace-2026080301-span-0002"
+        ]
+      }
+    ],
+    "title": "A recoverable transient fault missed the user deadline",
+    "trace_artifacts": {
+      "after": "serial-retry-misses-deadline-after-trace.json",
+      "before": "serial-retry-misses-deadline-before-trace.json"
+    }
+  }
+}

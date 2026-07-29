@@ -1,0 +1,16 @@
+{
+  "checks": {
+    "dataset_version_matches": true,
+    "fresh": true,
+    "full_result_matches": true,
+    "result_id_matches": true
+  },
+  "command": "python day26/scripts/verify_eval.py",
+  "dataset_version": "de5068d574cae9fd",
+  "overall_f1": 0.842105,
+  "passed": true,
+  "result_id": "66ac42d8d4433e5c",
+  "sample_count": 17,
+  "source_artifact": "day13/evidence/eval_result.json",
+  "split": "test"
+}

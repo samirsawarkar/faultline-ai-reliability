@@ -1,0 +1,325 @@
+{
+  "INC-25-001": {
+    "after": {
+      "metrics": {
+        "cost": 11,
+        "cost_budget": 12,
+        "latency": 94,
+        "step_budget": 9,
+        "steps": 6
+      },
+      "policy_version": "fixed",
+      "regression": {
+        "color": "green",
+        "passed": true,
+        "predicate": "correct answer is visible, no wrong answer is visible, cost <= 12, and steps <= 9",
+        "test_id": "R25-001-correct-within-cascade-envelope",
+        "trace_refs": [
+          "trace-2026080207-span-0005",
+          "trace-2026080207-span-0006",
+          "trace-2026080207-span-0007",
+          "trace-2026080207-span-0008"
+        ]
+      },
+      "run_digest": "a47f6f15cbe698d7e098fd0a1b6ebdbbfed173771db1a73c5505ca0f7d64e5e1",
+      "stability": {
+        "all_traces_complete": true,
+        "repetitions": 20,
+        "stable": true,
+        "unique_regression_colors": [
+          "green"
+        ],
+        "unique_run_digests": [
+          "a47f6f15cbe698d7e098fd0a1b6ebdbbfed173771db1a73c5505ca0f7d64e5e1"
+        ],
+        "unique_trace_digests": [
+          "241054bff3c6c8146a228bd3af416ca1318aa6616d22dd09ffcfbbb75f100017"
+        ]
+      },
+      "terminal": {
+        "correct_answer_returned": true,
+        "status": "recovered_correct",
+        "visible_answer": true,
+        "wrong_visible_answer": false
+      },
+      "trace_digest": "241054bff3c6c8146a228bd3af416ca1318aa6616d22dd09ffcfbbb75f100017"
+    },
+    "before": {
+      "metrics": {
+        "cost": 11,
+        "cost_budget": 12,
+        "latency": 98,
+        "step_budget": 9,
+        "steps": 8
+      },
+      "policy_version": "legacy",
+      "regression": {
+        "color": "red",
+        "passed": false,
+        "predicate": "correct answer is visible, no wrong answer is visible, cost <= 12, and steps <= 9",
+        "test_id": "R25-001-correct-within-cascade-envelope",
+        "trace_refs": [
+          "trace-2026080207-span-0005",
+          "trace-2026080207-span-0010",
+          "trace-2026080207-span-0011"
+        ]
+      },
+      "run_digest": "14ca8b434cb0f84d45caae08adc55d0d26c1044f9e483106011d8772220eee0e",
+      "stability": {
+        "all_traces_complete": true,
+        "repetitions": 20,
+        "stable": true,
+        "unique_regression_colors": [
+          "red"
+        ],
+        "unique_run_digests": [
+          "14ca8b434cb0f84d45caae08adc55d0d26c1044f9e483106011d8772220eee0e"
+        ],
+        "unique_trace_digests": [
+          "1e15a90d23a9ae6bec3b033fddf4d2cdfeb2af02ddd00e79ff01561d7c0bbe36"
+        ]
+      },
+      "terminal": {
+        "correct_answer_returned": false,
+        "status": "contained_cost_ceiling",
+        "visible_answer": false,
+        "wrong_visible_answer": false
+      },
+      "trace_digest": "1e15a90d23a9ae6bec3b033fddf4d2cdfeb2af02ddd00e79ff01561d7c0bbe36"
+    },
+    "config_digest": "5a0fbd0636bc0d4f9f0ad4312f1f1d6d62a5f7ce4f3f1dac2120266e0afbf934",
+    "cross_process": {
+      "fixed": {
+        "runs": [
+          {
+            "python_hash_seed": 0,
+            "regression_color": "green",
+            "run_digest": "a47f6f15cbe698d7e098fd0a1b6ebdbbfed173771db1a73c5505ca0f7d64e5e1",
+            "trace_digest": "241054bff3c6c8146a228bd3af416ca1318aa6616d22dd09ffcfbbb75f100017"
+          },
+          {
+            "python_hash_seed": 1,
+            "regression_color": "green",
+            "run_digest": "a47f6f15cbe698d7e098fd0a1b6ebdbbfed173771db1a73c5505ca0f7d64e5e1",
+            "trace_digest": "241054bff3c6c8146a228bd3af416ca1318aa6616d22dd09ffcfbbb75f100017"
+          },
+          {
+            "python_hash_seed": 7,
+            "regression_color": "green",
+            "run_digest": "a47f6f15cbe698d7e098fd0a1b6ebdbbfed173771db1a73c5505ca0f7d64e5e1",
+            "trace_digest": "241054bff3c6c8146a228bd3af416ca1318aa6616d22dd09ffcfbbb75f100017"
+          },
+          {
+            "python_hash_seed": 99,
+            "regression_color": "green",
+            "run_digest": "a47f6f15cbe698d7e098fd0a1b6ebdbbfed173771db1a73c5505ca0f7d64e5e1",
+            "trace_digest": "241054bff3c6c8146a228bd3af416ca1318aa6616d22dd09ffcfbbb75f100017"
+          }
+        ],
+        "stable": true
+      },
+      "legacy": {
+        "runs": [
+          {
+            "python_hash_seed": 0,
+            "regression_color": "red",
+            "run_digest": "14ca8b434cb0f84d45caae08adc55d0d26c1044f9e483106011d8772220eee0e",
+            "trace_digest": "1e15a90d23a9ae6bec3b033fddf4d2cdfeb2af02ddd00e79ff01561d7c0bbe36"
+          },
+          {
+            "python_hash_seed": 1,
+            "regression_color": "red",
+            "run_digest": "14ca8b434cb0f84d45caae08adc55d0d26c1044f9e483106011d8772220eee0e",
+            "trace_digest": "1e15a90d23a9ae6bec3b033fddf4d2cdfeb2af02ddd00e79ff01561d7c0bbe36"
+          },
+          {
+            "python_hash_seed": 7,
+            "regression_color": "red",
+            "run_digest": "14ca8b434cb0f84d45caae08adc55d0d26c1044f9e483106011d8772220eee0e",
+            "trace_digest": "1e15a90d23a9ae6bec3b033fddf4d2cdfeb2af02ddd00e79ff01561d7c0bbe36"
+          },
+          {
+            "python_hash_seed": 99,
+            "regression_color": "red",
+            "run_digest": "14ca8b434cb0f84d45caae08adc55d0d26c1044f9e483106011d8772220eee0e",
+            "trace_digest": "1e15a90d23a9ae6bec3b033fddf4d2cdfeb2af02ddd00e79ff01561d7c0bbe36"
+          }
+        ],
+        "stable": true
+      }
+    },
+    "flip_checks": {
+      "after_is_green": true,
+      "before_is_red": true,
+      "post_fix_stays_green": true,
+      "same_config": true,
+      "same_regression_test": true,
+      "same_seed": true
+    },
+    "incident_id": "INC-25-001",
+    "regression_test_id": "R25-001-correct-within-cascade-envelope",
+    "replay_verified_fix": true,
+    "seed": 2026080207
+  },
+  "INC-25-002": {
+    "after": {
+      "metrics": {
+        "cost": 2,
+        "cost_budget": 2,
+        "latency": 45,
+        "latency_budget": 45,
+        "steps": 2
+      },
+      "policy_version": "fixed",
+      "regression": {
+        "color": "green",
+        "passed": true,
+        "predicate": "correct answer is visible, no wrong answer is visible, cost <= 2, and latency <= 45",
+        "test_id": "R25-002-correct-by-user-deadline",
+        "trace_refs": [
+          "trace-2026080301-span-0001",
+          "trace-2026080301-span-0002",
+          "trace-2026080301-span-0003",
+          "trace-2026080301-span-0004"
+        ]
+      },
+      "run_digest": "a22bb4902c37ecaa4bbadc54b75c1eccbdb33d4927e8a4f08dd130285de72992",
+      "stability": {
+        "all_traces_complete": true,
+        "repetitions": 20,
+        "stable": true,
+        "unique_regression_colors": [
+          "green"
+        ],
+        "unique_run_digests": [
+          "a22bb4902c37ecaa4bbadc54b75c1eccbdb33d4927e8a4f08dd130285de72992"
+        ],
+        "unique_trace_digests": [
+          "588e27aa9452afde307d0753787cba058c1772fef6f84d7f55169674ead142f9"
+        ]
+      },
+      "terminal": {
+        "correct_answer_returned": true,
+        "status": "recovered_correct",
+        "visible_answer": true,
+        "wrong_visible_answer": false
+      },
+      "trace_digest": "588e27aa9452afde307d0753787cba058c1772fef6f84d7f55169674ead142f9"
+    },
+    "before": {
+      "metrics": {
+        "cost": 2,
+        "cost_budget": 2,
+        "latency": 45,
+        "latency_budget": 45,
+        "steps": 2
+      },
+      "policy_version": "legacy",
+      "regression": {
+        "color": "red",
+        "passed": false,
+        "predicate": "correct answer is visible, no wrong answer is visible, cost <= 2, and latency <= 45",
+        "test_id": "R25-002-correct-by-user-deadline",
+        "trace_refs": [
+          "trace-2026080301-span-0001",
+          "trace-2026080301-span-0002"
+        ]
+      },
+      "run_digest": "f0fa7292743c1d5d907cbc0ff2f67a16a374b319dd6fd2af2bc3ef0c6de9d79b",
+      "stability": {
+        "all_traces_complete": true,
+        "repetitions": 20,
+        "stable": true,
+        "unique_regression_colors": [
+          "red"
+        ],
+        "unique_run_digests": [
+          "f0fa7292743c1d5d907cbc0ff2f67a16a374b319dd6fd2af2bc3ef0c6de9d79b"
+        ],
+        "unique_trace_digests": [
+          "3569f91f7fbd5e717f511b51f7b1d6dded3af57f16b6ef9c39c8c4a62f630454"
+        ]
+      },
+      "terminal": {
+        "correct_answer_returned": false,
+        "status": "latency_budget_abort",
+        "visible_answer": false,
+        "wrong_visible_answer": false
+      },
+      "trace_digest": "3569f91f7fbd5e717f511b51f7b1d6dded3af57f16b6ef9c39c8c4a62f630454"
+    },
+    "config_digest": "5a0fbd0636bc0d4f9f0ad4312f1f1d6d62a5f7ce4f3f1dac2120266e0afbf934",
+    "cross_process": {
+      "fixed": {
+        "runs": [
+          {
+            "python_hash_seed": 0,
+            "regression_color": "green",
+            "run_digest": "a22bb4902c37ecaa4bbadc54b75c1eccbdb33d4927e8a4f08dd130285de72992",
+            "trace_digest": "588e27aa9452afde307d0753787cba058c1772fef6f84d7f55169674ead142f9"
+          },
+          {
+            "python_hash_seed": 1,
+            "regression_color": "green",
+            "run_digest": "a22bb4902c37ecaa4bbadc54b75c1eccbdb33d4927e8a4f08dd130285de72992",
+            "trace_digest": "588e27aa9452afde307d0753787cba058c1772fef6f84d7f55169674ead142f9"
+          },
+          {
+            "python_hash_seed": 7,
+            "regression_color": "green",
+            "run_digest": "a22bb4902c37ecaa4bbadc54b75c1eccbdb33d4927e8a4f08dd130285de72992",
+            "trace_digest": "588e27aa9452afde307d0753787cba058c1772fef6f84d7f55169674ead142f9"
+          },
+          {
+            "python_hash_seed": 99,
+            "regression_color": "green",
+            "run_digest": "a22bb4902c37ecaa4bbadc54b75c1eccbdb33d4927e8a4f08dd130285de72992",
+            "trace_digest": "588e27aa9452afde307d0753787cba058c1772fef6f84d7f55169674ead142f9"
+          }
+        ],
+        "stable": true
+      },
+      "legacy": {
+        "runs": [
+          {
+            "python_hash_seed": 0,
+            "regression_color": "red",
+            "run_digest": "f0fa7292743c1d5d907cbc0ff2f67a16a374b319dd6fd2af2bc3ef0c6de9d79b",
+            "trace_digest": "3569f91f7fbd5e717f511b51f7b1d6dded3af57f16b6ef9c39c8c4a62f630454"
+          },
+          {
+            "python_hash_seed": 1,
+            "regression_color": "red",
+            "run_digest": "f0fa7292743c1d5d907cbc0ff2f67a16a374b319dd6fd2af2bc3ef0c6de9d79b",
+            "trace_digest": "3569f91f7fbd5e717f511b51f7b1d6dded3af57f16b6ef9c39c8c4a62f630454"
+          },
+          {
+            "python_hash_seed": 7,
+            "regression_color": "red",
+            "run_digest": "f0fa7292743c1d5d907cbc0ff2f67a16a374b319dd6fd2af2bc3ef0c6de9d79b",
+            "trace_digest": "3569f91f7fbd5e717f511b51f7b1d6dded3af57f16b6ef9c39c8c4a62f630454"
+          },
+          {
+            "python_hash_seed": 99,
+            "regression_color": "red",
+            "run_digest": "f0fa7292743c1d5d907cbc0ff2f67a16a374b319dd6fd2af2bc3ef0c6de9d79b",
+            "trace_digest": "3569f91f7fbd5e717f511b51f7b1d6dded3af57f16b6ef9c39c8c4a62f630454"
+          }
+        ],
+        "stable": true
+      }
+    },
+    "flip_checks": {
+      "after_is_green": true,
+      "before_is_red": true,
+      "post_fix_stays_green": true,
+      "same_config": true,
+      "same_regression_test": true,
+      "same_seed": true
+    },
+    "incident_id": "INC-25-002",
+    "regression_test_id": "R25-002-correct-by-user-deadline",
+    "replay_verified_fix": true,
+    "seed": 2026080301
+  }
+}

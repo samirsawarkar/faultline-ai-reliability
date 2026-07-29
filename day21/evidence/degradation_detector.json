@@ -1,0 +1,150 @@
+{
+  "all_false_negatives_surfaced": true,
+  "by_variant": {
+    "borderline_extra": {
+      "alerts": 10,
+      "bad": 10,
+      "misses": 0,
+      "n": 10
+    },
+    "borderline_tokens": {
+      "alerts": 0,
+      "bad": 10,
+      "misses": 10,
+      "n": 10
+    },
+    "clear_accept": {
+      "alerts": 0,
+      "bad": 0,
+      "misses": 0,
+      "n": 10
+    },
+    "clear_reject": {
+      "alerts": 10,
+      "bad": 10,
+      "misses": 0,
+      "n": 10
+    }
+  },
+  "confusion": {
+    "fn": 10,
+    "fp": 0,
+    "tn": 10,
+    "tp": 20
+  },
+  "false_negatives": [
+    {
+      "judge_label": "accept",
+      "request_index": 6,
+      "seed": 2026073106,
+      "strict_quality_score": 2,
+      "variant": "borderline_tokens"
+    },
+    {
+      "judge_label": "accept",
+      "request_index": 18,
+      "seed": 2026073118,
+      "strict_quality_score": 2,
+      "variant": "borderline_tokens"
+    },
+    {
+      "judge_label": "accept",
+      "request_index": 30,
+      "seed": 2026073130,
+      "strict_quality_score": 2,
+      "variant": "borderline_tokens"
+    },
+    {
+      "judge_label": "accept",
+      "request_index": 42,
+      "seed": 2026073142,
+      "strict_quality_score": 2,
+      "variant": "borderline_tokens"
+    },
+    {
+      "judge_label": "accept",
+      "request_index": 54,
+      "seed": 2026073154,
+      "strict_quality_score": 2,
+      "variant": "borderline_tokens"
+    },
+    {
+      "judge_label": "accept",
+      "request_index": 66,
+      "seed": 2026073166,
+      "strict_quality_score": 2,
+      "variant": "borderline_tokens"
+    },
+    {
+      "judge_label": "accept",
+      "request_index": 78,
+      "seed": 2026073178,
+      "strict_quality_score": 2,
+      "variant": "borderline_tokens"
+    },
+    {
+      "judge_label": "accept",
+      "request_index": 90,
+      "seed": 2026073190,
+      "strict_quality_score": 2,
+      "variant": "borderline_tokens"
+    },
+    {
+      "judge_label": "accept",
+      "request_index": 102,
+      "seed": 2026073202,
+      "strict_quality_score": 2,
+      "variant": "borderline_tokens"
+    },
+    {
+      "judge_label": "accept",
+      "request_index": 114,
+      "seed": 2026073214,
+      "strict_quality_score": 2,
+      "variant": "borderline_tokens"
+    }
+  ],
+  "ground_truth": "Day-16 strict human rubric (not the judge)",
+  "judge_acceptance": {
+    "count": 20,
+    "n": 40,
+    "rate": 0.5,
+    "wilson_ci95": [
+      0.352,
+      0.648
+    ]
+  },
+  "n": 40,
+  "policy": {
+    "forbidden_from_core_success_scoring": true,
+    "human_ceiling_kappa": 0.8,
+    "judge_contributes_to_core_success": false,
+    "judge_vs_human_kappa": 0.5,
+    "known_failure_slices": [
+      "borderline_tokens"
+    ],
+    "mode": "pointwise_only",
+    "scope": "narrow fallback-quality for F3 drift_value / F5 context_drift only",
+    "validated_for_standalone_use": false,
+    "validation_set_size": 24
+  },
+  "population": "fallback answers only",
+  "precision": {
+    "count": 20,
+    "n": 20,
+    "rate": 1.0,
+    "wilson_ci95": [
+      0.8389,
+      1.0
+    ]
+  },
+  "recall": {
+    "count": 20,
+    "n": 30,
+    "rate": 0.6667,
+    "wilson_ci95": [
+      0.4878,
+      0.8077
+    ]
+  }
+}

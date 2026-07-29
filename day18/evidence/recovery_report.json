@@ -89,8 +89,8 @@
     "mcnemar": {
       "b": 0,
       "c": 6,
-      "chi2_p_value": 0.041226833337163676,
-      "chi2_statistic": 4.166666666666667,
+      "chi2_p_value": 0.0412268333371636,
+      "chi2_statistic": 4.16666666666667,
       "continuity_correction": true,
       "exact_p_value": 0.03125,
       "n_discordant": 6,
@@ -134,8 +134,8 @@
     "mcnemar": {
       "b": 0,
       "c": 6,
-      "chi2_p_value": 0.041226833337163676,
-      "chi2_statistic": 4.166666666666667,
+      "chi2_p_value": 0.0412268333371636,
+      "chi2_statistic": 4.16666666666667,
       "continuity_correction": true,
       "exact_p_value": 0.03125,
       "n_discordant": 6,

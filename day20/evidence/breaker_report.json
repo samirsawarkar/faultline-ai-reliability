@@ -55,7 +55,7 @@
     "mcnemar_answered_naive_vs_breaker_fb": {
       "b": 0,
       "c": 20,
-      "chi2_p_value": 2.151786437812016e-05,
+      "chi2_p_value": 2.15178643781202e-05,
       "chi2_statistic": 18.05,
       "continuity_correction": true,
       "exact_p_value": 1.9073486328125e-06,

@@ -1,201 +1,69 @@
-name: CI
+name: Research CI
 
-# Every push and PR runs the full gate on three Python versions. Determinism
-# claims are only credible if a machine re-proves them on every commit, so the
-# determinism experiment and the over-budget attack run here too, not just the
-# unit tests.
 on:
   push:
     branches: [main]
+    tags: ["v*-rc*"]
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
-  test:
-    name: gate (py${{ matrix.python-version }})
+  tests:
+    name: full tests (Python ${{ matrix.python-version }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.9", "3.11", "3.12"]
+        python-version: ["3.9.19", "3.11.9", "3.12.4"]
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out the exact commit
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+      - name: Install pinned Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install pinned dependencies
+      - name: Install the resolved dependency lock
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          python -m pip install pip==26.0.1
+          python -m pip install -r requirements.txt
 
-      - name: Day 1 — determinism + oracle tests (stdlib)
-        run: cd day01 && python -m pytest tests/ -v
+      - name: Run every isolated day suite
+        run: make PY=python test
 
-      - name: Day 1 — cross-process / cross-hashseed determinism proof
-        run: cd day01 && python scripts/experiment_determinism.py
+  research-reproduction:
+    name: frozen eval + fast experiments + README traceability
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the exact commit
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - name: Day 1 — enforced oracle hand-check
-        run: cd day01 && python scripts/handcheck.py
+      - name: Install pinned Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12.4"
 
-      - name: Day 2 — contracts + termination tests
-        run: cd day02 && python -m pytest tests/ -v
-
-      - name: Day 2 — forced over-budget termination attack
-        run: cd day02 && python scripts/experiment_budget.py
-
-      - name: Day 3 — baseline + Wilson + reproducibility tests
-        run: cd day03 && python -m pytest tests/ -v
-
-      - name: Day 3 — baseline reproduces byte-for-byte from committed config
+      - name: Install the resolved dependency lock
         run: |
-          python day03/scripts/build_baseline.py
-          git diff --exit-code -- day03/evidence/baseline.json day03/evidence/success_vs_hops.svg
+          python -m pip install pip==26.0.1
+          python -m pip install -r requirements.txt
 
-      - name: Day 3 — mislabeled-input attack
-        run: cd day03 && python scripts/attack_mislabeled.py
+      - name: Run the CI-sized research reproduction
+        run: make PY=python reproduce-fast
 
-      - name: Day 4 — span / tracer / redaction + forced-failure gate
-        run: cd day04 && python -m pytest tests/ -v
+      - name: Require byte-identical committed evidence
+        run: git diff --exit-code -- day07/evidence day21/evidence day25/evidence day26/evidence
 
-      - name: Day 4 — traces reproduce byte-for-byte (100-run failure report)
-        run: |
-          python day04/scripts/make_traces.py
-          git diff --exit-code -- day04/evidence/
+  clean-container:
+    name: digest-pinned clean-container reproduction
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the exact commit
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - name: Day 5 — store + viewer + reconstruction attack
-        run: cd day05 && python -m pytest tests/ -v
-
-      - name: Day 5 — viewer/SVG/attack evidence reproduces byte-for-byte
-        run: |
-          python day05/scripts/make_evidence.py
-          # timing is wall-clock (excluded); trace.db is git-ignored
-          git diff --exit-code -- day05/evidence/failed_run.svg \
-            day05/evidence/timeline_failed.txt \
-            day05/evidence/attack_report.json \
-            day05/evidence/incident_narrative.md
-
-      - name: Day 6 — replay bundle + boundary report
-        run: cd day06 && python -m pytest tests/ -v
-
-      - name: Day 6 — replay bundle + report reproduce byte-for-byte
-        run: |
-          python day06/scripts/make_evidence.py
-          # environment.json is runtime-specific (excluded)
-          git diff --exit-code -- day06/evidence/bundle_simulator.json \
-            day06/evidence/replay_simulator.json \
-            day06/evidence/replay_report.json
-
-      - name: Day 7 — hop sweep + Q1 measurement + observability gate
-        run: cd day07 && python -m pytest tests/ -v
-
-      - name: Day 7 — Q1 results + figure reproduce byte-for-byte
-        run: |
-          python day07/scripts/run_q1.py
-          git diff --exit-code -- day07/evidence/
-
-      - name: Day 8 — fault spec + triggers + boundary + injection integrity
-        run: cd day08 && python -m pytest tests/ -v
-
-      - name: Day 8 — injector evidence reproduces byte-for-byte (identical triggers, no leakage)
-        run: |
-          python day08/scripts/make_evidence.py
-          git diff --exit-code -- day08/evidence/
-
-      - name: Day 9 — F1/F2 detectors + scoring against injection truth
-        run: cd day09 && python -m pytest tests/ -v
-
-      - name: Day 9 — detector sweep + scored runs reproduce byte-for-byte
-        run: |
-          python day09/scripts/make_evidence.py
-          git diff --exit-code -- day09/evidence/
-
-      - name: Day 10 — F3/F4 contracts, classifier boundary + false-negative analysis
-        run: cd day10 && python -m pytest tests/ -v
-
-      - name: Day 10 — contract report + false negatives reproduce byte-for-byte
-        run: |
-          python day10/scripts/make_evidence.py
-          git diff --exit-code -- day10/evidence/
-
-      - name: Day 11 — F5/F6 spectrum, deterministic-vs-semantic map + Q2 hypothesis
-        run: cd day11 && python -m pytest tests/ -v
-
-      - name: Day 11 — spectrum map + Q2 hypothesis reproduce byte-for-byte
-        run: |
-          python day11/scripts/make_evidence.py
-          git diff --exit-code -- day11/evidence/
-
-      - name: Day 12 — fault catalog + gallery + reproducibility/integrity audit
-        run: cd day12 && python -m pytest tests/ -v
-
-      - name: Day 12 — catalog, gallery + audit reproduce byte-for-byte
-        run: |
-          python day12/scripts/make_evidence.py
-          git diff --exit-code -- day12/evidence/
-
-      - name: Day 13 — versioned dataset, eval runner + leakage attacks
-        run: cd day13 && python -m pytest tests/ -v
-
-      - name: Day 13 — dataset manifest, splits, eval + leakage report reproduce byte-for-byte
-        run: |
-          python day13/scripts/make_evidence.py
-          git diff --exit-code -- day13/evidence/
-
-      - name: Day 14 — verified intervals, McNemar + paired comparison
-        run: cd day14 && python -m pytest tests/ -v
-
-      - name: Day 14 — stats verification + paired comparison reproduce byte-for-byte
-        run: |
-          python day14/scripts/make_evidence.py
-          git diff --exit-code -- day14/evidence/
-
-      - name: Day 15 — Q2 per-class confusion, intervals + FP/FN investigation
-        run: cd day15 && python -m pytest tests/ -v
-
-      - name: Day 15 — Q2 results, failures + traces reproduce byte-for-byte
-        run: |
-          python day15/scripts/make_evidence.py
-          git diff --exit-code -- day15/evidence/
-
-      - name: Day 16 — narrow LLM judge validation (agreement, bias, slices)
-        run: cd day16 && python -m pytest tests/ -v
-
-      - name: Day 16 — judge rubric, validation set + agreement report reproduce byte-for-byte
-        run: |
-          python day16/scripts/make_evidence.py
-          git diff --exit-code -- day16/evidence/
-
-      - name: Day 17 — subgroup analysis, reversal detection + measurement gate
-        run: cd day17 && python -m pytest tests/ -v
-
-      - name: Day 17 — subgroup report + evaluation audit reproduce byte-for-byte
-        run: |
-          python day17/scripts/make_evidence.py
-          git diff --exit-code -- day17/evidence/
-
-      - name: Day 18 — bounded recovery (repair-retry, timeout/backoff/jitter)
-        run: cd day18 && python -m pytest tests/ -v
-
-      - name: Day 18 — recovery report + traces reproduce byte-for-byte
-        run: |
-          python day18/scripts/make_evidence.py
-          git diff --exit-code -- day18/evidence/
-
-      - name: Day 19 — retry crossover (sweep, ceilings, storm)
-        run: cd day19 && python -m pytest tests/ -v
-
-      - name: Day 19 — retry sweep + crossover curve reproduce byte-for-byte
-        run: |
-          python day19/scripts/make_evidence.py
-          git diff --exit-code -- day19/evidence/
-
-      - name: Day 20 — circuit breaker + fallback (states, provenance, attacks)
-        run: cd day20 && python -m pytest tests/ -v
-
-      - name: Day 20 — breaker report + state diagram + traces reproduce byte-for-byte
-        run: |
-          python day20/scripts/make_evidence.py
-          git diff --exit-code -- day20/evidence/
+      - name: Build; the Dockerfile runs the full reproduction
+        run: docker build --pull --tag faultline:0.26.0-rc1 .

@@ -1,0 +1,592 @@
+{
+  "ceilings": {
+    "all_bounds_hold": true,
+    "attack": "100-action non-terminating plan",
+    "checks": {
+      "cost_cost_le_budget": true,
+      "cost_count_le_ceiling": true,
+      "cost_status": "cost_ceiling",
+      "step_cost_le_budget": true,
+      "step_count_le_ceiling": true,
+      "step_status": "step_ceiling"
+    },
+    "cost_ceiling": {
+      "completed": false,
+      "cost": 5,
+      "latency": 50,
+      "status": "cost_ceiling",
+      "steps": 5
+    },
+    "step_ceiling": {
+      "completed": false,
+      "cost": 6,
+      "latency": 60,
+      "status": "step_ceiling",
+      "steps": 6
+    }
+  },
+  "recovery_induced_harms": {
+    "all_harms_surfaced": true,
+    "all_mechanisms_measured": true,
+    "by_mechanism": {
+      "M1_repair_retry": {
+        "all_surfaced": true,
+        "by_type": {
+          "wasted_repair_budget": 6
+        },
+        "count": 6,
+        "examples": [
+          {
+            "cost": 4,
+            "fault": "F1",
+            "latency": 54,
+            "request_index": 3,
+            "seed": 2026080103,
+            "status": "exhausted_attempts",
+            "type": "wasted_repair_budget",
+            "variant": "persistent"
+          },
+          {
+            "cost": 4,
+            "fault": "F1",
+            "latency": 54,
+            "request_index": 7,
+            "seed": 2026080107,
+            "status": "exhausted_attempts",
+            "type": "wasted_repair_budget",
+            "variant": "persistent"
+          },
+          {
+            "cost": 4,
+            "fault": "F1",
+            "latency": 54,
+            "request_index": 11,
+            "seed": 2026080111,
+            "status": "exhausted_attempts",
+            "type": "wasted_repair_budget",
+            "variant": "persistent"
+          },
+          {
+            "cost": 4,
+            "fault": "F1",
+            "latency": 54,
+            "request_index": 15,
+            "seed": 2026080115,
+            "status": "exhausted_attempts",
+            "type": "wasted_repair_budget",
+            "variant": "persistent"
+          },
+          {
+            "cost": 4,
+            "fault": "F1",
+            "latency": 54,
+            "request_index": 19,
+            "seed": 2026080119,
+            "status": "exhausted_attempts",
+            "type": "wasted_repair_budget",
+            "variant": "persistent"
+          },
+          {
+            "cost": 4,
+            "fault": "F1",
+            "latency": 54,
+            "request_index": 23,
+            "seed": 2026080123,
+            "status": "exhausted_attempts",
+            "type": "wasted_repair_budget",
+            "variant": "persistent"
+          }
+        ]
+      },
+      "M2_timeout_backoff": {
+        "all_surfaced": true,
+        "by_type": {
+          "wasted_timeout_retry_budget": 6
+        },
+        "count": 6,
+        "examples": [
+          {
+            "cost": 4,
+            "fault": "F2",
+            "latency": 155,
+            "request_index": 3,
+            "seed": 2026080203,
+            "status": "exhausted_attempts",
+            "type": "wasted_timeout_retry_budget",
+            "variant": "persistent"
+          },
+          {
+            "cost": 4,
+            "fault": "F2",
+            "latency": 155,
+            "request_index": 7,
+            "seed": 2026080207,
+            "status": "exhausted_attempts",
+            "type": "wasted_timeout_retry_budget",
+            "variant": "persistent"
+          },
+          {
+            "cost": 4,
+            "fault": "F2",
+            "latency": 155,
+            "request_index": 11,
+            "seed": 2026080211,
+            "status": "exhausted_attempts",
+            "type": "wasted_timeout_retry_budget",
+            "variant": "persistent"
+          },
+          {
+            "cost": 4,
+            "fault": "F2",
+            "latency": 155,
+            "request_index": 15,
+            "seed": 2026080215,
+            "status": "exhausted_attempts",
+            "type": "wasted_timeout_retry_budget",
+            "variant": "persistent"
+          },
+          {
+            "cost": 4,
+            "fault": "F2",
+            "latency": 155,
+            "request_index": 19,
+            "seed": 2026080219,
+            "status": "exhausted_attempts",
+            "type": "wasted_timeout_retry_budget",
+            "variant": "persistent"
+          },
+          {
+            "cost": 4,
+            "fault": "F2",
+            "latency": 155,
+            "request_index": 23,
+            "seed": 2026080223,
+            "status": "exhausted_attempts",
+            "type": "wasted_timeout_retry_budget",
+            "variant": "persistent"
+          }
+        ]
+      },
+      "M3_circuit_breaker": {
+        "all_surfaced": true,
+        "by_type": {
+          "false_open_blocked_healthy": 5
+        },
+        "count": 5,
+        "examples": [
+          {
+            "cost": 0,
+            "fault": "F4",
+            "latency": 1,
+            "request_index": 4,
+            "seed": 2026080404,
+            "status": "false_open",
+            "type": "false_open_blocked_healthy",
+            "variant": "legitimate_repeat"
+          },
+          {
+            "cost": 0,
+            "fault": "F4",
+            "latency": 1,
+            "request_index": 8,
+            "seed": 2026080408,
+            "status": "false_open",
+            "type": "false_open_blocked_healthy",
+            "variant": "clean"
+          },
+          {
+            "cost": 0,
+            "fault": "F4",
+            "latency": 1,
+            "request_index": 12,
+            "seed": 2026080412,
+            "status": "false_open",
+            "type": "false_open_blocked_healthy",
+            "variant": "long_legitimate"
+          },
+          {
+            "cost": 0,
+            "fault": "F4",
+            "latency": 1,
+            "request_index": 16,
+            "seed": 2026080416,
+            "status": "false_open",
+            "type": "false_open_blocked_healthy",
+            "variant": "legitimate_repeat"
+          },
+          {
+            "cost": 0,
+            "fault": "F4",
+            "latency": 1,
+            "request_index": 20,
+            "seed": 2026080420,
+            "status": "false_open",
+            "type": "false_open_blocked_healthy",
+            "variant": "clean"
+          }
+        ]
+      },
+      "M4_provider_fallback": {
+        "all_surfaced": true,
+        "by_type": {
+          "silent_fallback_degradation": 6
+        },
+        "count": 6,
+        "examples": [
+          {
+            "cost": 2,
+            "fault": "F4",
+            "latency": 20,
+            "request_index": 3,
+            "seed": 2026080403,
+            "status": "fallback_wrong_answer",
+            "type": "silent_fallback_degradation",
+            "variant": "injected"
+          },
+          {
+            "cost": 2,
+            "fault": "F4",
+            "latency": 20,
+            "request_index": 7,
+            "seed": 2026080407,
+            "status": "fallback_wrong_answer",
+            "type": "silent_fallback_degradation",
+            "variant": "injected"
+          },
+          {
+            "cost": 2,
+            "fault": "F4",
+            "latency": 20,
+            "request_index": 11,
+            "seed": 2026080411,
+            "status": "fallback_wrong_answer",
+            "type": "silent_fallback_degradation",
+            "variant": "injected"
+          },
+          {
+            "cost": 2,
+            "fault": "F4",
+            "latency": 20,
+            "request_index": 15,
+            "seed": 2026080415,
+            "status": "fallback_wrong_answer",
+            "type": "silent_fallback_degradation",
+            "variant": "injected"
+          },
+          {
+            "cost": 2,
+            "fault": "F4",
+            "latency": 20,
+            "request_index": 19,
+            "seed": 2026080419,
+            "status": "fallback_wrong_answer",
+            "type": "silent_fallback_degradation",
+            "variant": "injected"
+          },
+          {
+            "cost": 2,
+            "fault": "F4",
+            "latency": 20,
+            "request_index": 23,
+            "seed": 2026080423,
+            "status": "fallback_wrong_answer",
+            "type": "silent_fallback_degradation",
+            "variant": "injected"
+          }
+        ]
+      },
+      "M5_step_cost_ceilings": {
+        "all_surfaced": true,
+        "by_type": {
+          "premature_step_ceiling": 12
+        },
+        "count": 12,
+        "examples": [
+          {
+            "cost": 6,
+            "fault": "F1",
+            "latency": 60,
+            "request_index": 0,
+            "seed": 2026080100,
+            "status": "step_ceiling",
+            "type": "premature_step_ceiling",
+            "variant": "long_legitimate"
+          },
+          {
+            "cost": 6,
+            "fault": "F1",
+            "latency": 60,
+            "request_index": 12,
+            "seed": 2026080112,
+            "status": "step_ceiling",
+            "type": "premature_step_ceiling",
+            "variant": "long_legitimate"
+          },
+          {
+            "cost": 6,
+            "fault": "F2",
+            "latency": 60,
+            "request_index": 0,
+            "seed": 2026080200,
+            "status": "step_ceiling",
+            "type": "premature_step_ceiling",
+            "variant": "long_legitimate"
+          },
+          {
+            "cost": 6,
+            "fault": "F2",
+            "latency": 60,
+            "request_index": 12,
+            "seed": 2026080212,
+            "status": "step_ceiling",
+            "type": "premature_step_ceiling",
+            "variant": "long_legitimate"
+          },
+          {
+            "cost": 6,
+            "fault": "F3",
+            "latency": 60,
+            "request_index": 0,
+            "seed": 2026080300,
+            "status": "step_ceiling",
+            "type": "premature_step_ceiling",
+            "variant": "long_legitimate"
+          },
+          {
+            "cost": 6,
+            "fault": "F3",
+            "latency": 60,
+            "request_index": 12,
+            "seed": 2026080312,
+            "status": "step_ceiling",
+            "type": "premature_step_ceiling",
+            "variant": "long_legitimate"
+          },
+          {
+            "cost": 6,
+            "fault": "F4",
+            "latency": 60,
+            "request_index": 0,
+            "seed": 2026080400,
+            "status": "step_ceiling",
+            "type": "premature_step_ceiling",
+            "variant": "long_legitimate"
+          },
+          {
+            "cost": 6,
+            "fault": "F4",
+            "latency": 60,
+            "request_index": 12,
+            "seed": 2026080412,
+            "status": "step_ceiling",
+            "type": "premature_step_ceiling",
+            "variant": "long_legitimate"
+          },
+          {
+            "cost": 6,
+            "fault": "F5",
+            "latency": 60,
+            "request_index": 0,
+            "seed": 2026080500,
+            "status": "step_ceiling",
+            "type": "premature_step_ceiling",
+            "variant": "long_legitimate"
+          },
+          {
+            "cost": 6,
+            "fault": "F5",
+            "latency": 60,
+            "request_index": 12,
+            "seed": 2026080512,
+            "status": "step_ceiling",
+            "type": "premature_step_ceiling",
+            "variant": "long_legitimate"
+          },
+          {
+            "cost": 6,
+            "fault": "F6",
+            "latency": 60,
+            "request_index": 0,
+            "seed": 2026080600,
+            "status": "step_ceiling",
+            "type": "premature_step_ceiling",
+            "variant": "long_legitimate"
+          },
+          {
+            "cost": 6,
+            "fault": "F6",
+            "latency": 60,
+            "request_index": 12,
+            "seed": 2026080612,
+            "status": "step_ceiling",
+            "type": "premature_step_ceiling",
+            "variant": "long_legitimate"
+          }
+        ]
+      },
+      "M6_repetition_recovery": {
+        "all_surfaced": true,
+        "by_type": {
+          "false_repetition_positive": 12
+        },
+        "count": 12,
+        "examples": [
+          {
+            "cost": 3,
+            "fault": "F1",
+            "latency": 30,
+            "request_index": 4,
+            "seed": 2026080104,
+            "status": "repetition_aborted",
+            "type": "false_repetition_positive",
+            "variant": "legitimate_repeat"
+          },
+          {
+            "cost": 3,
+            "fault": "F1",
+            "latency": 30,
+            "request_index": 16,
+            "seed": 2026080116,
+            "status": "repetition_aborted",
+            "type": "false_repetition_positive",
+            "variant": "legitimate_repeat"
+          },
+          {
+            "cost": 3,
+            "fault": "F2",
+            "latency": 30,
+            "request_index": 4,
+            "seed": 2026080204,
+            "status": "repetition_aborted",
+            "type": "false_repetition_positive",
+            "variant": "legitimate_repeat"
+          },
+          {
+            "cost": 3,
+            "fault": "F2",
+            "latency": 30,
+            "request_index": 16,
+            "seed": 2026080216,
+            "status": "repetition_aborted",
+            "type": "false_repetition_positive",
+            "variant": "legitimate_repeat"
+          },
+          {
+            "cost": 3,
+            "fault": "F3",
+            "latency": 30,
+            "request_index": 4,
+            "seed": 2026080304,
+            "status": "repetition_aborted",
+            "type": "false_repetition_positive",
+            "variant": "legitimate_repeat"
+          },
+          {
+            "cost": 3,
+            "fault": "F3",
+            "latency": 30,
+            "request_index": 16,
+            "seed": 2026080316,
+            "status": "repetition_aborted",
+            "type": "false_repetition_positive",
+            "variant": "legitimate_repeat"
+          },
+          {
+            "cost": 3,
+            "fault": "F4",
+            "latency": 30,
+            "request_index": 4,
+            "seed": 2026080404,
+            "status": "repetition_aborted",
+            "type": "false_repetition_positive",
+            "variant": "legitimate_repeat"
+          },
+          {
+            "cost": 3,
+            "fault": "F4",
+            "latency": 30,
+            "request_index": 16,
+            "seed": 2026080416,
+            "status": "repetition_aborted",
+            "type": "false_repetition_positive",
+            "variant": "legitimate_repeat"
+          },
+          {
+            "cost": 3,
+            "fault": "F5",
+            "latency": 30,
+            "request_index": 4,
+            "seed": 2026080504,
+            "status": "repetition_aborted",
+            "type": "false_repetition_positive",
+            "variant": "legitimate_repeat"
+          },
+          {
+            "cost": 3,
+            "fault": "F5",
+            "latency": 30,
+            "request_index": 16,
+            "seed": 2026080516,
+            "status": "repetition_aborted",
+            "type": "false_repetition_positive",
+            "variant": "legitimate_repeat"
+          },
+          {
+            "cost": 3,
+            "fault": "F6",
+            "latency": 30,
+            "request_index": 4,
+            "seed": 2026080604,
+            "status": "repetition_aborted",
+            "type": "false_repetition_positive",
+            "variant": "legitimate_repeat"
+          },
+          {
+            "cost": 3,
+            "fault": "F6",
+            "latency": 30,
+            "request_index": 16,
+            "seed": 2026080616,
+            "status": "repetition_aborted",
+            "type": "false_repetition_positive",
+            "variant": "legitimate_repeat"
+          }
+        ]
+      }
+    },
+    "cell_total_reconciles": true,
+    "total": 47
+  },
+  "repetition": {
+    "false_positive_surfaced": true,
+    "legitimate_repeat_control": {
+      "completed": false,
+      "cost": 3,
+      "latency": 30,
+      "repetitions_detected": 1,
+      "replans": 0,
+      "status": "repetition_aborted",
+      "steps": 3
+    },
+    "persistent_repetition": {
+      "completed": false,
+      "cost": 6,
+      "latency": 60,
+      "repetitions_detected": 2,
+      "replans": 1,
+      "status": "repetition_aborted",
+      "steps": 6
+    },
+    "persistent_terminates_bounded": true,
+    "transient_recovers": true,
+    "transient_repetition": {
+      "completed": true,
+      "cost": 6,
+      "latency": 60,
+      "repetitions_detected": 1,
+      "replans": 1,
+      "status": "completed",
+      "steps": 6
+    }
+  }
+}

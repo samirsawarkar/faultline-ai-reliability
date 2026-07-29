@@ -1,0 +1,307 @@
+{
+  "comparison": {
+    "effects": {
+      "availability_gain": 0.3333,
+      "strict_quality_given_answered_change": -0.25,
+      "strict_quality_service_rate_change": 0.0833
+    },
+    "fallback_enabled": {
+      "availability": {
+        "count": 120,
+        "n": 120,
+        "rate": 1.0,
+        "wilson_ci95": [
+          0.969,
+          1.0
+        ]
+      },
+      "fallback_quality": {
+        "fallback_answers": 40,
+        "flagged_degraded": {
+          "count": 0,
+          "n": 40,
+          "rate": 0.0,
+          "wilson_ci95": [
+            0.0,
+            0.0876
+          ]
+        },
+        "silently_degraded": {
+          "count": 30,
+          "n": 40,
+          "rate": 0.75,
+          "wilson_ci95": [
+            0.5981,
+            0.8581
+          ]
+        },
+        "strictly_acceptable": {
+          "count": 10,
+          "n": 40,
+          "rate": 0.25,
+          "wilson_ci95": [
+            0.1419,
+            0.4019
+          ]
+        }
+      },
+      "oracle_correctness_given_answered": {
+        "count": 110,
+        "n": 120,
+        "rate": 0.9167,
+        "wilson_ci95": [
+          0.8534,
+          0.9541
+        ]
+      },
+      "oracle_service_pass_rate": {
+        "count": 110,
+        "n": 120,
+        "rate": 0.9167,
+        "wilson_ci95": [
+          0.8534,
+          0.9541
+        ]
+      },
+      "provenance": {
+        "complete": {
+          "count": 120,
+          "n": 120,
+          "rate": 1.0,
+          "wilson_ci95": [
+            0.969,
+            1.0
+          ]
+        },
+        "consistent": {
+          "count": 120,
+          "n": 120,
+          "rate": 1.0,
+          "wilson_ci95": [
+            0.969,
+            1.0
+          ]
+        },
+        "fallback_rate": {
+          "count": 40,
+          "n": 120,
+          "rate": 0.3333,
+          "wilson_ci95": [
+            0.2553,
+            0.4217
+          ]
+        }
+      },
+      "requests": 120,
+      "strict_quality_given_answered": {
+        "count": 90,
+        "n": 120,
+        "rate": 0.75,
+        "wilson_ci95": [
+          0.6656,
+          0.8189
+        ]
+      },
+      "strict_quality_service_rate": {
+        "count": 90,
+        "n": 120,
+        "rate": 0.75,
+        "wilson_ci95": [
+          0.6656,
+          0.8189
+        ]
+      }
+    },
+    "paired_tests": {
+      "availability_primary_vs_fallback_enabled": {
+        "b": 0,
+        "c": 40,
+        "chi2_p_value": 6.98439306152216e-10,
+        "chi2_statistic": 38.025,
+        "continuity_correction": true,
+        "exact_p_value": 1.81898940354586e-12,
+        "n_discordant": 40,
+        "p_value": 6.98439306152216e-10,
+        "recommended": "chi2",
+        "significant_at_0.05": true,
+        "table": {
+          "a_only": 0,
+          "b_only": 40,
+          "both_correct": 80,
+          "both_wrong": 0,
+          "discordant": 40,
+          "n": 120
+        }
+      },
+      "expected_primary_vs_fallback_quality_on_outage_slice": {
+        "b": 30,
+        "c": 0,
+        "chi2_p_value": 1.1924366854417e-07,
+        "chi2_statistic": 28.0333333333333,
+        "continuity_correction": true,
+        "exact_p_value": 1.86264514923096e-09,
+        "n_discordant": 30,
+        "p_value": 1.1924366854417e-07,
+        "recommended": "chi2",
+        "significant_at_0.05": true,
+        "table": {
+          "a_only": 30,
+          "b_only": 0,
+          "both_correct": 10,
+          "both_wrong": 0,
+          "discordant": 30,
+          "n": 40
+        }
+      },
+      "strict_service_primary_vs_fallback_enabled": {
+        "b": 0,
+        "c": 10,
+        "chi2_p_value": 0.00442652585791983,
+        "chi2_statistic": 8.1,
+        "continuity_correction": true,
+        "exact_p_value": 0.001953125,
+        "n_discordant": 10,
+        "p_value": 0.001953125,
+        "recommended": "exact",
+        "significant_at_0.05": true,
+        "table": {
+          "a_only": 0,
+          "b_only": 10,
+          "both_correct": 80,
+          "both_wrong": 30,
+          "discordant": 10,
+          "n": 120
+        }
+      }
+    },
+    "primary_only": {
+      "availability": {
+        "count": 80,
+        "n": 120,
+        "rate": 0.6667,
+        "wilson_ci95": [
+          0.5783,
+          0.7447
+        ]
+      },
+      "fallback_quality": {
+        "fallback_answers": 0,
+        "flagged_degraded": {
+          "count": 0,
+          "n": 0,
+          "rate": null,
+          "wilson_ci95": [
+            0.0,
+            1.0
+          ]
+        },
+        "silently_degraded": {
+          "count": 0,
+          "n": 0,
+          "rate": null,
+          "wilson_ci95": [
+            0.0,
+            1.0
+          ]
+        },
+        "strictly_acceptable": {
+          "count": 0,
+          "n": 0,
+          "rate": null,
+          "wilson_ci95": [
+            0.0,
+            1.0
+          ]
+        }
+      },
+      "oracle_correctness_given_answered": {
+        "count": 80,
+        "n": 80,
+        "rate": 1.0,
+        "wilson_ci95": [
+          0.9542,
+          1.0
+        ]
+      },
+      "oracle_service_pass_rate": {
+        "count": 80,
+        "n": 120,
+        "rate": 0.6667,
+        "wilson_ci95": [
+          0.5783,
+          0.7447
+        ]
+      },
+      "provenance": {
+        "complete": {
+          "count": 120,
+          "n": 120,
+          "rate": 1.0,
+          "wilson_ci95": [
+            0.969,
+            1.0
+          ]
+        },
+        "consistent": {
+          "count": 120,
+          "n": 120,
+          "rate": 1.0,
+          "wilson_ci95": [
+            0.969,
+            1.0
+          ]
+        },
+        "fallback_rate": {
+          "count": 0,
+          "n": 120,
+          "rate": 0.0,
+          "wilson_ci95": [
+            0.0,
+            0.031
+          ]
+        }
+      },
+      "requests": 120,
+      "strict_quality_given_answered": {
+        "count": 80,
+        "n": 80,
+        "rate": 1.0,
+        "wilson_ci95": [
+          0.9542,
+          1.0
+        ]
+      },
+      "strict_quality_service_rate": {
+        "count": 80,
+        "n": 120,
+        "rate": 0.6667,
+        "wilson_ci95": [
+          0.5783,
+          0.7447
+        ]
+      }
+    }
+  },
+  "fail_condition_guard": {
+    "all_detector_false_negatives_surfaced": true,
+    "availability_reported": true,
+    "fallback_quality_measured": true,
+    "judge_used_for_core_scoring": false,
+    "passed": true,
+    "quality_and_availability_reported_together": true
+  },
+  "metric_definitions": {
+    "availability": "answered / all requests",
+    "oracle_correctness_given_answered": "Day-1 oracle passes / answered",
+    "provenance_complete": "served_by, is_fallback, is_degraded, answered all present",
+    "silently_degraded": "fallback answer fails strict quality while route-level is_degraded is false",
+    "strict_quality_given_answered": "Day-16 strict human-rubric acceptable / answered",
+    "strict_quality_service_rate": "strict human-rubric acceptable / all requests; unanswered counts as not useful"
+  },
+  "params": {
+    "fallback_quality_slices": "clear_accept, clear_reject, borderline_tokens, borderline_extra",
+    "n": 120,
+    "primary_outage_rule": "request_index % 3 == 0",
+    "seed_base": 2026073100
+  }
+}

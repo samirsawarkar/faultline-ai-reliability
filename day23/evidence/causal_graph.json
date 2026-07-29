@@ -1,0 +1,174 @@
+{
+  "audit": {
+    "all_nodes_observed": true,
+    "all_nodes_trace_referenced": true,
+    "edge_count": 8,
+    "node_count": 9,
+    "single_chain": true
+  },
+  "config_digest": "939e2343e9f989713e332e7c404256e908f01e12c0d7b0746707817711560b26",
+  "edges": [
+    {
+      "cause": "E01",
+      "edge_id": "E01-E02",
+      "effect": "E02",
+      "relation": "timeout triggers retry"
+    },
+    {
+      "cause": "E02",
+      "edge_id": "E02-E03",
+      "effect": "E03",
+      "relation": "second failure opens breaker"
+    },
+    {
+      "cause": "E03",
+      "edge_id": "E03-E04",
+      "effect": "E04",
+      "relation": "open state routes fallback"
+    },
+    {
+      "cause": "E04",
+      "edge_id": "E04-E05",
+      "effect": "E05",
+      "relation": "secondary serves correlated stale context"
+    },
+    {
+      "cause": "E05",
+      "edge_id": "E05-E06",
+      "effect": "E06",
+      "relation": "semantic drift crosses judge blind spot"
+    },
+    {
+      "cause": "E06",
+      "edge_id": "E06-E07",
+      "effect": "E07",
+      "relation": "accepted drift reaches verification"
+    },
+    {
+      "cause": "E07",
+      "edge_id": "E07-E08",
+      "effect": "E08",
+      "relation": "repetition triggers replan"
+    },
+    {
+      "cause": "E08",
+      "edge_id": "E08-E09",
+      "effect": "E09",
+      "relation": "re-entry exhausts remaining cost"
+    }
+  ],
+  "graph_digest": "aad26801834c6a64154b8ae5fc68e03f413afcc1481a038019d37f4a762db805",
+  "graph_version": "1.0.0",
+  "incident_id": "cascade-2026080207-1.0.0",
+  "nodes": [
+    {
+      "category": "initiating_fault",
+      "component": "primary_provider",
+      "detail": "Seeded F2 latency exceeds the primary timeout.",
+      "id": "E01",
+      "label": "primary_latency_spike",
+      "observed": true,
+      "trace_span_refs": [
+        "trace-2026080207-span-0001",
+        "trace-2026080207-span-0003"
+      ]
+    },
+    {
+      "category": "recovery_side_effect",
+      "component": "retry_controller",
+      "detail": "M2 converts one timeout into a second failing primary call.",
+      "id": "E02",
+      "label": "retry_amplification",
+      "observed": true,
+      "trace_span_refs": [
+        "trace-2026080207-span-0002",
+        "trace-2026080207-span-0004",
+        "trace-2026080207-span-0005"
+      ]
+    },
+    {
+      "category": "recovery_transition",
+      "component": "circuit_breaker",
+      "detail": "The second timeout satisfies the 2-of-2 breaker threshold.",
+      "id": "E03",
+      "label": "breaker_open",
+      "observed": true,
+      "trace_span_refs": [
+        "trace-2026080207-span-0006"
+      ]
+    },
+    {
+      "category": "recovery_transition",
+      "component": "fallback_router",
+      "detail": "The open breaker sends the request to the secondary provider.",
+      "id": "E04",
+      "label": "fallback_routed",
+      "observed": true,
+      "trace_span_refs": [
+        "trace-2026080207-span-0007"
+      ]
+    },
+    {
+      "category": "propagated_fault",
+      "component": "secondary_provider",
+      "detail": "The correlated secondary preserves the headline value but shifts context tokens.",
+      "id": "E05",
+      "label": "stale_fallback_context",
+      "observed": true,
+      "trace_span_refs": [
+        "trace-2026080207-span-0008"
+      ]
+    },
+    {
+      "category": "detection_failure",
+      "component": "quality_gate",
+      "detail": "The known token-order blind spot accepts a strictly bad fallback.",
+      "id": "E06",
+      "label": "judge_false_accept",
+      "observed": true,
+      "trace_span_refs": [
+        "trace-2026080207-span-0009"
+      ]
+    },
+    {
+      "category": "propagated_fault",
+      "component": "agent_controller",
+      "detail": "Accepted drift causes the agent to repeat the same failed verification.",
+      "id": "E07",
+      "label": "verification_repetition",
+      "observed": true,
+      "trace_span_refs": [
+        "trace-2026080207-span-0010",
+        "trace-2026080207-span-0011",
+        "trace-2026080207-span-0012"
+      ]
+    },
+    {
+      "category": "recovery_side_effect",
+      "component": "repetition_recovery",
+      "detail": "M6 replans into the same correlated secondary and consumes the remaining envelope.",
+      "id": "E08",
+      "label": "replan_reenters_fallback",
+      "observed": true,
+      "trace_span_refs": [
+        "trace-2026080207-span-0013",
+        "trace-2026080207-span-0014"
+      ]
+    },
+    {
+      "category": "terminal_containment",
+      "component": "global_budget",
+      "detail": "M5 refuses final synthesis before cost can exceed the configured ceiling.",
+      "id": "E09",
+      "label": "cost_ceiling_abort",
+      "observed": true,
+      "trace_span_refs": [
+        "trace-2026080207-span-0015"
+      ]
+    }
+  ],
+  "root_cause": "E01",
+  "seed": 2026080207,
+  "terminal_event": "E09",
+  "trace_digest": "43e5f00f758a61e1b80f7b75fb69c4b7a993ca51a04668fdbd8c3f92a450e40e"
+}

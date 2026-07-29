@@ -156,12 +156,12 @@
     "mcnemar": {
       "b": 0,
       "c": 69,
-      "chi2_p_value": 2.695184636965591e-16,
-      "chi2_statistic": 67.01449275362319,
+      "chi2_p_value": 2.69518463696556e-16,
+      "chi2_statistic": 67.0144927536232,
       "continuity_correction": true,
-      "exact_p_value": 3.3881317890172014e-21,
+      "exact_p_value": 3.3881317890172e-21,
       "n_discordant": 69,
-      "p_value": 2.695184636965591e-16,
+      "p_value": 2.69518463696556e-16,
       "recommended": "chi2",
       "significant_at_0.05": true,
       "table": {

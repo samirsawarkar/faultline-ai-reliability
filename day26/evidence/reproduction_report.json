@@ -1,0 +1,674 @@
+{
+  "checkpoint_26": {
+    "checkpoint": 26,
+    "checks": {
+      "clean_container_reproduction_green": true,
+      "dependencies_versions_and_seeds_pinned": true,
+      "dockerfile_contract_valid": true,
+      "fast_experiment_subset_green": true,
+      "frozen_eval_green": true,
+      "make_fast_tests_green": true,
+      "make_full_tests_green": true,
+      "research_ci_contract_green": true,
+      "results_first_readme_traceable": true
+    },
+    "fail_condition_triggered": false,
+    "mission": "Make evidence self-explanatory, one-command runnable and continuously checked.",
+    "passed": true,
+    "release_candidate": "v0.26.0-rc1"
+  },
+  "ci_contract": {
+    "checks": {
+      "checkout_sha_pinned": true,
+      "clean_container_build_runs": true,
+      "eval_and_fast_experiments_run": true,
+      "evidence_diff_checked": true,
+      "full_tests_run": true,
+      "python_patch_matrix_pinned": true,
+      "setup_python_sha_pinned": true
+    },
+    "passed": true
+  },
+  "container_contract": {
+    "checks": {
+      "base_tag_and_digest_match_pins": true,
+      "full_reproduction_runs_at_build": true,
+      "git_excluded_from_context": true,
+      "hash_seed_fixed": true,
+      "make_version_matches_pins": true,
+      "non_root_runtime": true,
+      "pip_version_matches_pins": true,
+      "venv_excluded_from_context": true
+    },
+    "passed": true
+  },
+  "container_verification": {
+    "attestation": {
+      "eval_green": true,
+      "eval_result_id": "66ac42d8d4433e5c",
+      "fast_experiments_green": true,
+      "passed": true,
+      "readme_traceability_green": true,
+      "test_count": 417,
+      "tests_green": true
+    },
+    "base": "python:3.12.4-slim-bookworm@sha256:a3e58f9399353be051735f09be0316bfdeab571a5c6a24fd78b92df85bcb2d85",
+    "command": "make container-reproduce",
+    "image": "faultline:0.26.0-rc1",
+    "passed": true
+  },
+  "eval_verification": {
+    "checks": {
+      "dataset_version_matches": true,
+      "fresh": true,
+      "full_result_matches": true,
+      "result_id_matches": true
+    },
+    "command": "python day26/scripts/verify_eval.py",
+    "dataset_version": "de5068d574cae9fd",
+    "overall_f1": 0.842105,
+    "passed": true,
+    "result_id": "66ac42d8d4433e5c",
+    "sample_count": 17,
+    "source_artifact": "day13/evidence/eval_result.json",
+    "split": "test"
+  },
+  "fast_experiment_report": {
+    "experiments": [
+      {
+        "after_digest": "3fb62bb1c44c1bc712f5e2b627d9fc88e1424c3ff173a4c1a713267d16320056",
+        "artifact_count": 4,
+        "before_digest": "3fb62bb1c44c1bc712f5e2b627d9fc88e1424c3ff173a4c1a713267d16320056",
+        "byte_identical": true,
+        "command_succeeded": true,
+        "evidence_directory": "day07/evidence",
+        "name": "tool_hops",
+        "passed": true,
+        "script": "day07/scripts/run_q1.py"
+      },
+      {
+        "after_digest": "52d08b0cc45b693864511432ac4468219c35865575c5cc0857026cb4448723e4",
+        "artifact_count": 4,
+        "before_digest": "52d08b0cc45b693864511432ac4468219c35865575c5cc0857026cb4448723e4",
+        "byte_identical": true,
+        "command_succeeded": true,
+        "evidence_directory": "day21/evidence",
+        "name": "fallback_quality",
+        "passed": true,
+        "script": "day21/scripts/make_evidence.py"
+      },
+      {
+        "after_digest": "8831107c94fb1438cbac267b25774a34eb42763a23fffa02ceadd172971256ac",
+        "artifact_count": 11,
+        "before_digest": "8831107c94fb1438cbac267b25774a34eb42763a23fffa02ceadd172971256ac",
+        "byte_identical": true,
+        "command_succeeded": true,
+        "evidence_directory": "day25/evidence",
+        "name": "postmortem_replay",
+        "passed": true,
+        "script": "day25/scripts/make_evidence.py"
+      }
+    ],
+    "passed": true,
+    "profile": "fast",
+    "python_hash_seed": 0
+  },
+  "fast_test_report": {
+    "collected": 93,
+    "day_range": [
+      1,
+      26
+    ],
+    "passed": 93,
+    "passed_all": true,
+    "profile": "fast",
+    "python_hash_seed": 0,
+    "suites": [
+      {
+        "day": 1,
+        "passed": true,
+        "suite": "day01/tests/",
+        "test_count": 11
+      },
+      {
+        "day": 4,
+        "passed": true,
+        "suite": "day04/tests/",
+        "test_count": 19
+      },
+      {
+        "day": 13,
+        "passed": true,
+        "suite": "day13/tests/",
+        "test_count": 14
+      },
+      {
+        "day": 21,
+        "passed": true,
+        "suite": "day21/tests/",
+        "test_count": 13
+      },
+      {
+        "day": 25,
+        "passed": true,
+        "suite": "day25/tests/",
+        "test_count": 19
+      },
+      {
+        "day": 26,
+        "passed": true,
+        "suite": "day26/tests/",
+        "test_count": 17
+      }
+    ]
+  },
+  "pins_audit": {
+    "checks": {
+      "actions_pinned_to_full_sha": true,
+      "base_image_digest_pinned": true,
+      "ci_python_patch_versions_pinned": true,
+      "container_python_pinned": true,
+      "dependencies_match_lock": true,
+      "release_candidate_named": true,
+      "schema_version_pinned": true,
+      "seeds_explicit": true
+    },
+    "passed": true,
+    "pins": {
+      "actions": {
+        "checkout": {
+          "release": "v4.2.2",
+          "sha": "11bd71901bbe5b1630ceea73d27597364c9af683"
+        },
+        "setup_python": {
+          "release": "v5.6.0",
+          "sha": "a26af69be951a213d495a4c3e4e4022e16d87065"
+        }
+      },
+      "container": {
+        "base_digest": "sha256:a3e58f9399353be051735f09be0316bfdeab571a5c6a24fd78b92df85bcb2d85",
+        "base_tag": "python:3.12.4-slim-bookworm",
+        "pip": "26.0.1",
+        "registry_source": "https://hub.docker.com/v2/namespaces/library/repositories/python/tags/3.12.4-slim-bookworm"
+      },
+      "dependencies": {
+        "Pygments": "2.20.0",
+        "annotated-types": "0.7.0",
+        "exceptiongroup": "1.3.1",
+        "iniconfig": "2.1.0",
+        "packaging": "26.2",
+        "pluggy": "1.6.0",
+        "pydantic": "2.13.4",
+        "pydantic-core": "2.46.4",
+        "pytest": "8.4.2",
+        "tomli": "2.4.1",
+        "typing-extensions": "4.16.0",
+        "typing-inspection": "0.4.2"
+      },
+      "os_dependencies": {
+        "make": "4.3-4.1"
+      },
+      "python": {
+        "ci": [
+          "3.9.19",
+          "3.11.9",
+          "3.12.4"
+        ],
+        "container": "3.12.4"
+      },
+      "release_candidate": "v0.26.0-rc1",
+      "schema_version": "1.0.0",
+      "seeds": {
+        "day03_baseline_master": 20260714,
+        "day07_q1_master": 20260717,
+        "day21_q4_base": 2026073100,
+        "day23_cascade": 2026080207,
+        "day24_q5_base": 2026080300,
+        "day25_incidents": [
+          2026080207,
+          2026080301
+        ],
+        "python_hash_seeds": [
+          0,
+          1,
+          7,
+          99
+        ]
+      }
+    },
+    "requirements": {
+      "Pygments": "2.20.0",
+      "annotated-types": "0.7.0",
+      "exceptiongroup": "1.3.1",
+      "iniconfig": "2.1.0",
+      "packaging": "26.2",
+      "pluggy": "1.6.0",
+      "pydantic": "2.13.4",
+      "pydantic-core": "2.46.4",
+      "pytest": "8.4.2",
+      "tomli": "2.4.1",
+      "typing-extensions": "4.16.0",
+      "typing-inspection": "0.4.2"
+    }
+  },
+  "readme_traceability": {
+    "checks": {
+      "every_manifest_claim_passes": true,
+      "no_unregistered_result_rows": true,
+      "results_first": true
+    },
+    "claims": [
+      {
+        "command": "make day07-q1",
+        "command_target_present": true,
+        "generator": "day07/scripts/run_q1.py",
+        "generator_exists": true,
+        "id": "tool_hops",
+        "passed": true,
+        "readme_result": "Measured success 0.818 versus naive 0.91833; first interval separation at 3 hops",
+        "result_present": true,
+        "values": [
+          {
+            "actual": 0.818,
+            "artifact": "day07/evidence/investigation.json",
+            "artifact_exists": true,
+            "json_pointer": "/measured",
+            "matches": true,
+            "rendered": "0.818",
+            "rendered_in_result": true,
+            "value": 0.818
+          },
+          {
+            "actual": 0.91833,
+            "artifact": "day07/evidence/investigation.json",
+            "artifact_exists": true,
+            "json_pointer": "/naive",
+            "matches": true,
+            "rendered": "0.91833",
+            "rendered_in_result": true,
+            "value": 0.91833
+          },
+          {
+            "actual": 3,
+            "artifact": "day07/evidence/investigation.json",
+            "artifact_exists": true,
+            "json_pointer": "/divergence_hop",
+            "matches": true,
+            "rendered": "3",
+            "rendered_in_result": true,
+            "value": 3
+          }
+        ]
+      },
+      {
+        "command": "make day13-evidence",
+        "command_target_present": true,
+        "generator": "day13/scripts/make_evidence.py",
+        "generator_exists": true,
+        "id": "frozen_eval",
+        "passed": true,
+        "readme_result": "Frozen test evaluation: F1 0.842105 over 17 samples",
+        "result_present": true,
+        "values": [
+          {
+            "actual": 0.842105,
+            "artifact": "day13/evidence/eval_result.json",
+            "artifact_exists": true,
+            "json_pointer": "/overall/f1",
+            "matches": true,
+            "rendered": "0.842105",
+            "rendered_in_result": true,
+            "value": 0.842105
+          },
+          {
+            "actual": 17,
+            "artifact": "day13/evidence/eval_result.json",
+            "artifact_exists": true,
+            "json_pointer": "/sample_count",
+            "matches": true,
+            "rendered": "17",
+            "rendered_in_result": true,
+            "value": 17
+          }
+        ]
+      },
+      {
+        "command": "make day21-q4",
+        "command_target_present": true,
+        "generator": "day21/scripts/make_evidence.py",
+        "generator_exists": true,
+        "id": "fallback_quality",
+        "passed": true,
+        "readme_result": "Availability 0.6667 \u2192 1.0 while strict quality among answers 1.0 \u2192 0.75",
+        "result_present": true,
+        "values": [
+          {
+            "actual": 0.6667,
+            "artifact": "day21/evidence/availability_quality_comparison.json",
+            "artifact_exists": true,
+            "json_pointer": "/comparison/primary_only/availability/rate",
+            "matches": true,
+            "rendered": "0.6667",
+            "rendered_in_result": true,
+            "value": 0.6667
+          },
+          {
+            "actual": 1.0,
+            "artifact": "day21/evidence/availability_quality_comparison.json",
+            "artifact_exists": true,
+            "json_pointer": "/comparison/fallback_enabled/availability/rate",
+            "matches": true,
+            "rendered": "1.0",
+            "rendered_in_result": true,
+            "value": 1.0
+          },
+          {
+            "actual": 1.0,
+            "artifact": "day21/evidence/availability_quality_comparison.json",
+            "artifact_exists": true,
+            "json_pointer": "/comparison/primary_only/strict_quality_given_answered/rate",
+            "matches": true,
+            "rendered": "1.0",
+            "rendered_in_result": true,
+            "value": 1.0
+          },
+          {
+            "actual": 0.75,
+            "artifact": "day21/evidence/availability_quality_comparison.json",
+            "artifact_exists": true,
+            "json_pointer": "/comparison/fallback_enabled/strict_quality_given_answered/rate",
+            "matches": true,
+            "rendered": "0.75",
+            "rendered_in_result": true,
+            "value": 0.75
+          }
+        ]
+      },
+      {
+        "command": "make day24-q5",
+        "command_target_present": true,
+        "generator": "day24/scripts/make_evidence.py",
+        "generator_exists": true,
+        "id": "q5_policy",
+        "passed": true,
+        "readme_result": "Reference P4: success 0.9325, mean cost 1.4656, p95 latency 50.0",
+        "result_present": true,
+        "values": [
+          {
+            "actual": 0.9325,
+            "artifact": "day24/evidence/policy_comparison.json",
+            "artifact_exists": true,
+            "json_pointer": "/policy_metrics/P4_selective_guarded/user_visible_correct_success/rate",
+            "matches": true,
+            "rendered": "0.9325",
+            "rendered_in_result": true,
+            "value": 0.9325
+          },
+          {
+            "actual": 1.4656,
+            "artifact": "day24/evidence/policy_comparison.json",
+            "artifact_exists": true,
+            "json_pointer": "/policy_metrics/P4_selective_guarded/mean_cost/value",
+            "matches": true,
+            "rendered": "1.4656",
+            "rendered_in_result": true,
+            "value": 1.4656
+          },
+          {
+            "actual": 50.0,
+            "artifact": "day24/evidence/policy_comparison.json",
+            "artifact_exists": true,
+            "json_pointer": "/policy_metrics/P4_selective_guarded/p95_latency/value",
+            "matches": true,
+            "rendered": "50.0",
+            "rendered_in_result": true,
+            "value": 50.0
+          }
+        ]
+      },
+      {
+        "command": "make day25-postmortems",
+        "command_target_present": true,
+        "generator": "day25/scripts/make_evidence.py",
+        "generator_exists": true,
+        "id": "postmortems",
+        "passed": true,
+        "readme_result": "2 incidents replay red \u2192 green; Checkpoint 25 passes",
+        "result_present": true,
+        "values": [
+          {
+            "actual": 2,
+            "artifact": "day25/evidence/checkpoint_25.json",
+            "artifact_exists": true,
+            "json_pointer": "/incident_count",
+            "matches": true,
+            "rendered": "2",
+            "rendered_in_result": true,
+            "value": 2
+          },
+          {
+            "actual": 25,
+            "artifact": "day25/evidence/checkpoint_25.json",
+            "artifact_exists": true,
+            "json_pointer": "/checkpoint",
+            "matches": true,
+            "rendered": "25",
+            "rendered_in_result": true,
+            "value": 25
+          }
+        ]
+      },
+      {
+        "command": "make reproduce",
+        "command_target_present": true,
+        "generator": "day26/scripts/run_test_gate.py",
+        "generator_exists": true,
+        "id": "tests",
+        "passed": true,
+        "readme_result": "417 tests collected and passed",
+        "result_present": true,
+        "values": [
+          {
+            "actual": 417,
+            "artifact": "day26/evidence/test_report.json",
+            "artifact_exists": true,
+            "json_pointer": "/collected",
+            "matches": true,
+            "rendered": "417",
+            "rendered_in_result": true,
+            "value": 417
+          },
+          {
+            "actual": 417,
+            "artifact": "day26/evidence/test_report.json",
+            "artifact_exists": true,
+            "json_pointer": "/passed",
+            "matches": true,
+            "rendered": "417",
+            "rendered_in_result": true,
+            "value": 417
+          }
+        ]
+      }
+    ],
+    "passed": true,
+    "readme": "README.md",
+    "result_rows": [
+      "Measured success 0.818 versus naive 0.91833; first interval separation at 3 hops",
+      "Frozen test evaluation: F1 0.842105 over 17 samples",
+      "Availability 0.6667 \u2192 1.0 while strict quality among answers 1.0 \u2192 0.75",
+      "Reference P4: success 0.9325, mean cost 1.4656, p95 latency 50.0",
+      "2 incidents replay red \u2192 green; Checkpoint 25 passes",
+      "417 tests collected and passed"
+    ]
+  },
+  "test_report": {
+    "collected": 417,
+    "day_range": [
+      1,
+      26
+    ],
+    "passed": 417,
+    "passed_all": true,
+    "profile": "full",
+    "python_hash_seed": 0,
+    "suites": [
+      {
+        "day": 1,
+        "passed": true,
+        "suite": "day01/tests/",
+        "test_count": 11
+      },
+      {
+        "day": 2,
+        "passed": true,
+        "suite": "day02/tests/",
+        "test_count": 22
+      },
+      {
+        "day": 3,
+        "passed": true,
+        "suite": "day03/tests/",
+        "test_count": 19
+      },
+      {
+        "day": 4,
+        "passed": true,
+        "suite": "day04/tests/",
+        "test_count": 19
+      },
+      {
+        "day": 5,
+        "passed": true,
+        "suite": "day05/tests/",
+        "test_count": 13
+      },
+      {
+        "day": 6,
+        "passed": true,
+        "suite": "day06/tests/",
+        "test_count": 11
+      },
+      {
+        "day": 7,
+        "passed": true,
+        "suite": "day07/tests/",
+        "test_count": 18
+      },
+      {
+        "day": 8,
+        "passed": true,
+        "suite": "day08/tests/",
+        "test_count": 45
+      },
+      {
+        "day": 9,
+        "passed": true,
+        "suite": "day09/tests/",
+        "test_count": 22
+      },
+      {
+        "day": 10,
+        "passed": true,
+        "suite": "day10/tests/",
+        "test_count": 18
+      },
+      {
+        "day": 11,
+        "passed": true,
+        "suite": "day11/tests/",
+        "test_count": 12
+      },
+      {
+        "day": 12,
+        "passed": true,
+        "suite": "day12/tests/",
+        "test_count": 12
+      },
+      {
+        "day": 13,
+        "passed": true,
+        "suite": "day13/tests/",
+        "test_count": 14
+      },
+      {
+        "day": 14,
+        "passed": true,
+        "suite": "day14/tests/",
+        "test_count": 25
+      },
+      {
+        "day": 15,
+        "passed": true,
+        "suite": "day15/tests/",
+        "test_count": 8
+      },
+      {
+        "day": 16,
+        "passed": true,
+        "suite": "day16/tests/",
+        "test_count": 12
+      },
+      {
+        "day": 17,
+        "passed": true,
+        "suite": "day17/tests/",
+        "test_count": 11
+      },
+      {
+        "day": 18,
+        "passed": true,
+        "suite": "day18/tests/",
+        "test_count": 10
+      },
+      {
+        "day": 19,
+        "passed": true,
+        "suite": "day19/tests/",
+        "test_count": 8
+      },
+      {
+        "day": 20,
+        "passed": true,
+        "suite": "day20/tests/",
+        "test_count": 9
+      },
+      {
+        "day": 21,
+        "passed": true,
+        "suite": "day21/tests/",
+        "test_count": 13
+      },
+      {
+        "day": 22,
+        "passed": true,
+        "suite": "day22/tests/",
+        "test_count": 17
+      },
+      {
+        "day": 23,
+        "passed": true,
+        "suite": "day23/tests/",
+        "test_count": 15
+      },
+      {
+        "day": 24,
+        "passed": true,
+        "suite": "day24/tests/",
+        "test_count": 17
+      },
+      {
+        "day": 25,
+        "passed": true,
+        "suite": "day25/tests/",
+        "test_count": 19
+      },
+      {
+        "day": 26,
+        "passed": true,
+        "suite": "day26/tests/",
+        "test_count": 17
+      }
+    ]
+  }
+}

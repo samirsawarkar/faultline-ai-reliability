@@ -1,0 +1,311 @@
+{
+  "attacks": {
+    "tight_budgets": {
+      "config": {
+        "fallback_clear_wrong_rate": 0.25,
+        "fallback_exact_rate": 0.55,
+        "fallback_guard": "strict_simulator_oracle",
+        "latency_scale": 1.0,
+        "n": 400,
+        "name": "tight_budgets",
+        "per_request_cost_budget": 2.0,
+        "per_request_latency_budget": 45.0,
+        "persistent_share_given_fault": 0.4,
+        "primary_fault_rate": 0.4,
+        "retryability_signal": "simulator_truth",
+        "seed_base": 2026080300
+      },
+      "metrics": {
+        "contained": {
+          "count": 170,
+          "n": 400,
+          "rate": 0.425,
+          "wilson_ci95": [
+            0.3775,
+            0.4739
+          ]
+        },
+        "mean_cost": {
+          "bootstrap_ci95": [
+            1.375,
+            1.475
+          ],
+          "value": 1.425
+        },
+        "mean_latency": 24.875,
+        "n": 400,
+        "p95_latency": {
+          "bootstrap_ci95": [
+            45.0,
+            45.0
+          ],
+          "value": 45.0
+        },
+        "policy": "P4_selective_guarded",
+        "statuses": {
+          "cost_budget_abort": 65,
+          "latency_budget_abort": 105,
+          "primary_success": 230
+        },
+        "success_per_100_latency": {
+          "bootstrap_ci95": [
+            1.9718,
+            2.6609
+          ],
+          "value": 2.3116
+        },
+        "success_per_cost": {
+          "bootstrap_ci95": [
+            0.3559,
+            0.4545
+          ],
+          "value": 0.4035
+        },
+        "user_visible_correct_success": {
+          "count": 230,
+          "n": 400,
+          "rate": 0.575,
+          "wilson_ci95": [
+            0.5261,
+            0.6225
+          ]
+        },
+        "visible_answer": {
+          "count": 230,
+          "n": 400,
+          "rate": 0.575,
+          "wilson_ci95": [
+            0.5261,
+            0.6225
+          ]
+        },
+        "wrong_visible_answer": {
+          "count": 0,
+          "n": 400,
+          "rate": 0.0,
+          "wilson_ci95": [
+            0.0,
+            0.0095
+          ]
+        }
+      },
+      "paired_vs_base_operating_condition": {
+        "baseline": "P4_selective_guarded",
+        "candidate": "P4_selective_guarded",
+        "mean_cost_delta": {
+          "paired_bootstrap_ci95": [
+            -0.0494,
+            -0.0319
+          ],
+          "value": -0.0406
+        },
+        "mean_latency_delta": {
+          "paired_bootstrap_ci95": [
+            -1.6875,
+            -1.2625
+          ],
+          "value": -1.475
+        },
+        "n": 400,
+        "same_seed_population": true,
+        "success_mcnemar": {
+          "b": 143,
+          "c": 0,
+          "chi2_p_value": 1.60329370140181e-32,
+          "chi2_statistic": 141.006993006993,
+          "continuity_correction": true,
+          "exact_p_value": 1.79366203433577e-43,
+          "n_discordant": 143,
+          "p_value": 1.60329370140181e-32,
+          "recommended": "chi2",
+          "significant_at_0.05": true,
+          "table": {
+            "a_only": 143,
+            "b_only": 0,
+            "both_correct": 230,
+            "both_wrong": 27,
+            "discordant": 143,
+            "n": 400
+          }
+        },
+        "success_per_100_latency_delta": {
+          "paired_bootstrap_ci95": [
+            -1.3267,
+            -1.1143
+          ],
+          "value": -1.2273
+        },
+        "success_per_cost_delta": {
+          "paired_bootstrap_ci95": [
+            -0.2588,
+            -0.2058
+          ],
+          "value": -0.2327
+        },
+        "success_rate_delta": -0.3575
+      },
+      "recommendation_survives": false,
+      "threshold_checks": {
+        "mean_cost_upper_bound": true,
+        "p95_latency_upper_bound": true,
+        "success_lower_bound": false,
+        "wrong_answer_upper_bound": true
+      }
+    },
+    "worse_severity": {
+      "config": {
+        "fallback_clear_wrong_rate": 0.3,
+        "fallback_exact_rate": 0.35,
+        "fallback_guard": "strict_simulator_oracle",
+        "latency_scale": 1.6,
+        "n": 400,
+        "name": "worse_severity",
+        "per_request_cost_budget": 5.0,
+        "per_request_latency_budget": 120.0,
+        "persistent_share_given_fault": 0.7,
+        "primary_fault_rate": 0.65,
+        "retryability_signal": "simulator_truth",
+        "seed_base": 2026080300
+      },
+      "metrics": {
+        "contained": {
+          "count": 122,
+          "n": 400,
+          "rate": 0.305,
+          "wilson_ci95": [
+            0.2619,
+            0.3518
+          ]
+        },
+        "mean_cost": {
+          "bootstrap_ci95": [
+            1.6863,
+            1.7975
+          ],
+          "value": 1.7419
+        },
+        "mean_latency": 54.128,
+        "n": 400,
+        "p95_latency": {
+          "bootstrap_ci95": [
+            80.0,
+            80.0
+          ],
+          "value": 80.0
+        },
+        "policy": "P4_selective_guarded",
+        "statuses": {
+          "guarded_fallback_correct": 45,
+          "guarded_fallback_rejected": 122,
+          "primary_success": 145,
+          "selective_retry_recovered": 88
+        },
+        "success_per_100_latency": {
+          "bootstrap_ci95": [
+            1.1576,
+            1.42
+          ],
+          "value": 1.284
+        },
+        "success_per_cost": {
+          "bootstrap_ci95": [
+            0.3663,
+            0.4357
+          ],
+          "value": 0.399
+        },
+        "user_visible_correct_success": {
+          "count": 278,
+          "n": 400,
+          "rate": 0.695,
+          "wilson_ci95": [
+            0.6482,
+            0.7381
+          ]
+        },
+        "visible_answer": {
+          "count": 278,
+          "n": 400,
+          "rate": 0.695,
+          "wilson_ci95": [
+            0.6482,
+            0.7381
+          ]
+        },
+        "wrong_visible_answer": {
+          "count": 0,
+          "n": 400,
+          "rate": 0.0,
+          "wilson_ci95": [
+            0.0,
+            0.0095
+          ]
+        }
+      },
+      "paired_vs_base_operating_condition": {
+        "baseline": "P4_selective_guarded",
+        "candidate": "P4_selective_guarded",
+        "mean_cost_delta": {
+          "paired_bootstrap_ci95": [
+            0.2313,
+            0.32
+          ],
+          "value": 0.2762
+        },
+        "mean_latency_delta": {
+          "paired_bootstrap_ci95": [
+            25.552,
+            29.88
+          ],
+          "value": 27.778
+        },
+        "n": 400,
+        "same_seed_population": true,
+        "success_mcnemar": {
+          "b": 95,
+          "c": 0,
+          "chi2_p_value": 5.20169461186232e-22,
+          "chi2_statistic": 93.0105263157895,
+          "continuity_correction": true,
+          "exact_p_value": 5.04870979341448e-29,
+          "n_discordant": 95,
+          "p_value": 5.20169461186232e-22,
+          "recommended": "chi2",
+          "significant_at_0.05": true,
+          "table": {
+            "a_only": 95,
+            "b_only": 0,
+            "both_correct": 278,
+            "both_wrong": 27,
+            "discordant": 95,
+            "n": 400
+          }
+        },
+        "success_per_100_latency_delta": {
+          "paired_bootstrap_ci95": [
+            -2.518,
+            -2.0304
+          ],
+          "value": -2.2549
+        },
+        "success_per_cost_delta": {
+          "paired_bootstrap_ci95": [
+            -0.2726,
+            -0.2047
+          ],
+          "value": -0.2373
+        },
+        "success_rate_delta": -0.2375
+      },
+      "recommendation_survives": false,
+      "threshold_checks": {
+        "mean_cost_upper_bound": false,
+        "p95_latency_upper_bound": true,
+        "success_lower_bound": false,
+        "wrong_answer_upper_bound": true
+      }
+    }
+  },
+  "boundary_finding": "The base recommendation is conditional: higher persistence/correlation breaks the success floor, while tighter per-request budgets suppress recoverable answers. Re-run selection when either operating envelope changes.",
+  "winner_under_attack": "P4_selective_guarded"
+}

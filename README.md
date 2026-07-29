@@ -1,249 +1,133 @@
 # FAULTLINE
 
-**A reproducible workbench for measuring where document-grounded AI systems break — built in public, one disciplined day at a time.**
+**A reproducible research workbench for finding where document-grounded AI
+systems fail—and testing whether recovery actually improves the user outcome.**
 
 [![CI](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/python-3.9%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/tests-319%20passing-brightgreen.svg)](#quickstart)
+[![Tests](https://img.shields.io/badge/tests-417%20passing-brightgreen.svg)](day26/evidence/test_report.json)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
----
+## Results
 
-## The thesis
+<!-- RESULTS:START -->
+| Question | Result | Evidence and generating script | Reproduce |
+|---|---|---|---|
+| When does required tool depth break the naive reliability model? | **Measured success 0.818 versus naive 0.91833; first interval separation at 3 hops** | [result](day07/evidence/investigation.json) · [script](day07/scripts/run_q1.py) | `make day07-q1` |
+| Does the frozen detector evaluation reproduce? | **Frozen test evaluation: F1 0.842105 over 17 samples** | [result](day13/evidence/eval_result.json) · [script](day13/scripts/make_evidence.py) | `make day13-evidence` |
+| Does fallback preserve availability without preserving quality? | **Availability 0.6667 → 1.0 while strict quality among answers 1.0 → 0.75** | [result](day21/evidence/availability_quality_comparison.json) · [script](day21/scripts/make_evidence.py) | `make day21-q4` |
+| Which reference cascade policy wins on correct success, cost, and latency? | **Reference P4: success 0.9325, mean cost 1.4656, p95 latency 50.0** | [result](day24/evidence/policy_comparison.json) · [script](day24/scripts/make_evidence.py) | `make day24-q5` |
+| Do incident fixes fail before and stay fixed afterward? | **2 incidents replay red → green; Checkpoint 25 passes** | [result](day25/evidence/checkpoint_25.json) · [script](day25/scripts/make_evidence.py) | `make day25-postmortems` |
+| Does the complete repository gate pass? | **417 tests collected and passed** | [result](day26/evidence/test_report.json) · [script](day26/scripts/run_test_gate.py) | `make reproduce` |
+<!-- RESULTS:END -->
 
-AI systems that answer from documents fail along **predictable faultlines** —
-they return a plausible answer while citing the wrong source, no source, or a
-source that never contained the fact — and today those failures are graded by
-*eyeballing*, which is neither reproducible nor honest.
+Every result cell above is executable metadata, not hand-maintained prose.
+[The traceability manifest](day26/readme_claims.json) binds each displayed number
+to a JSON pointer, source artifact, generator, and command. CI fails when any
+value drifts or a result row lacks a registration.
 
-FAULTLINE replaces the eyeball with a **seeded, deterministic environment** and a
-**required-source oracle**: the same seed builds the same corpus and questions
-bit-for-bit on any machine, and a pure-function oracle counts an answer as
-passing only when it is both *correct* **and** *grounded* in the one document
-that actually holds the fact. Because the ruler cannot drift and the judge cannot
-be bargained with, every number FAULTLINE reports is exactly reproducible — the
-precondition for trusting any claim that one system is more grounded than another.
+## Method
 
-## Why this repo exists
+FAULTLINE uses seeded simulators, an oracle that keeps correctness separate from
+schema validity, complete failure traces, paired experiments, uncertainty
+intervals, and replay-verified incident fixes.
 
-This is an **AI reliability engineering** portfolio built as a 50-day arc. Each
-day is a small, self-contained, fully-owned increment that holds itself to the
-standards below — not a demo, but a specimen you could put under a microscope.
+The research loop is:
 
-### Reliability standards this repo holds itself to
-
-| Standard | How it shows up |
-| --- | --- |
-| **Determinism as a gate** | Seeded RNG only; no wall-clock, no hash-order iteration. Same seed → byte-identical output, re-proven in CI across 3 Python versions and multiple processes. |
-| **An honest oracle** | Correctness is a *pure function*, not a judgment call. A right answer with a wrong/absent citation does **not** pass. |
-| **Typed contracts** | Every agent boundary is a Pydantic model with `extra="forbid"`; malformed input becomes a structured outcome, never an escaped exception. |
-| **Bounded execution** | The agent loop cannot hang — termination is structural (a step cap in the loop shape), not a hoped-for timeout. |
-| **Two-layer judging** | Schema validity (is it well-formed?) is kept separate from semantic correctness (is it right?). Both are required; neither is sufficient. |
-| **Failures leave a record** | Every risky operation is a span written at entry and closed in `finally`; a crash cannot escape without a complete error span (re-proven over 100 forced failures). |
-| **Redaction at the trace layer** | Spans store leak-free payload references; secrets are masked even inside captured error messages — the injected secret never reaches a committed trace. |
-| **Reconstructable under data loss** | Runs persist in an indexed SQLite store; a stranger reconstructs the failure from the viewer alone, and it still names the root cause after fields or whole spans are deleted. |
-| **Claims never exceed evidence** | Replay separates playback from re-execution: captured simulator runs replay *and* re-execute byte-identically, while a real-provider stand-in is reported as playback-only — the reproducibility boundary is documented, not overstated. |
-| **Every number has an interval** | Success rates carry Wilson 95% CIs, and claims like "naive compounding is wrong" are made precise as the first hop where the naive and measured intervals are disjoint (n=3) — never a bare point estimate. |
-| **Evidence, not assertions** | Every claim ships a committed, regenerable artifact under `dayN/evidence/`. |
-| **Decision logs** | Every non-obvious choice is recorded with its *why* and its *reversal cost* (`DECISIONS.md`, globally numbered D-001…). |
-| **Green CI** | Unit tests **and** the determinism proof **and** the fault attack run on every push. |
-
-## The 50-day arc
-
-| Day | Focus | Status | Key artifacts |
-| --- | --- | --- | --- |
-| **[01](day01/)** | Deterministic environment + required-source oracle | ✅ Done | seeded corpus, `oracle_check`, cross-process determinism proof |
-| **[02](day02/)** | Bounded, deterministic single agent + typed contracts | ✅ Done | reason→tool→observe loop, 3 typed tools, forced over-budget attack |
-| **[03](day03/)** | The zero point: baseline across difficulty tiers | ✅ Done | seeded batch runner, Wilson intervals, success-vs-hops figure, reproducibility gate |
-| **[04](day04/)** | Tracing: linked spans that survive failures | ✅ Done | entry-written/`finally`-closed spans, redaction policy, 100-run forced-failure gate |
-| **[05](day05/)** | Reconstruct a failed run in minutes | ✅ Done | indexed SQLite trace store, timeline viewer, SVG snapshot, deletion-survival attack |
-| **[06](day06/)** | Exact replay + reproducibility boundary | ✅ Done | replay bundle, deterministic replay harness, playback-vs-reexecution difference report |
-| **[07](day07/)** | Q1 — reliability vs required tool hops | ✅ Done | hop-count sweep, per-step accounting, measured-vs-naive curve with Wilson CIs, Checkpoint 7 |
-| **[08](day08/)** | Reproducible fault injection + independent ground truth | ✅ Done | 10-field fault spec, deterministic triggers, out-of-band truth log, cross-seed integrity attack (0 leaks) |
-| **[09](day09/)** | F1/F2 fault families + deterministic detectors, scored vs truth | ✅ Done | schema + latency-budget detectors, severity sweep with precision/recall against the injection log, fault cards |
-| **[10](day10/)** | F3/F4 — schema-valid wrong data vs explicit provider errors | ✅ Done | correctness oracle, semantic invariant, mixed classifier, false-negative analysis (40% of wrong-data escapes), circuit-breaker signal |
-| **[11](day11/)** | F5/F6 — completing the six-fault spectrum | ✅ Done | context corruption (semantic) + loop exhaustion (deterministic), F1–F6 deterministic-vs-semantic map, committed Q2 split hypothesis |
-| **[12](day12/)** | Fault catalog + gallery | ✅ Done | six complete fault cards (trigger/trace/detector/recovery/metric), gallery (JSON/MD/HTML), reproducibility + ground-truth integrity audit, taxonomy by producing component |
-| **[13](day13/)** | Evaluation harness + versioned dataset | ✅ Done | content-addressed dataset version, deterministic stratified splits, immutable oracle-grounded eval results, contamination + stale-reuse attacks, dataset card |
-| **[14](day14/)** | Intervals + paired statistical design | ✅ Done | verified Wilson + bootstrap intervals, McNemar's paired test (exact + chi-square), independent verification, plain-English interpretation guide |
-| **[15](day15/)** | Q2 — detection accuracy per fault | ✅ Done | per-class confusion matrices with Wilson CIs, deterministic/semantic groups, every FP/FN traced (0 FP, 10 FN: 4 semantic escapes + 6 threshold), micro-vs-macro |
-| **[16](day16/)** | Validate a narrow LLM judge | ✅ Done | narrow fallback-quality rubric, blinded human labels, Cohen's κ vs inter-rater ceiling, positional-bias + failure-slice report, judge card forbidding core-success scoring |
-| **[17](day17/)** | Subgroup analysis + measurement gate | ✅ Done | slice by fault/severity/hops/outcome, min-sample + Holm discipline, Simpson's-paradox reversal detector, audit that fails if any contradiction is ignored |
-| **[18](day18/)** | M1/M2 — bounded recovery | ✅ Done | schema repair-retry + timeout/backoff/jitter inside a validated budget (attempts/cost/latency), idempotency ledger (side-effect-once), paired McNemar (recovery helps, p=0.031) |
-| **[19](day19/)** | Q3 — retry crossover | ✅ Done | retry sweep with success-per-cost + p95/p99 tail (Wilson + bootstrap CIs), correlated-failure retry storm, recommended budget capped by cost/tail ceilings (K=3 indep, K=2 correlated), crossover curve |
-| **[20](day20/)** | M3/M4 — circuit breaker + fallback | ✅ Done | CLOSED/OPEN/HALF_OPEN breaker with fully-traced transitions, provider fallback with provenance, false-open/flapping/degraded attacks, paired availability study (0.67→1.0, McNemar p≈2e-6), state diagram |
-| 21–50 | Silent fallback degradation, cascade, and hardening | 🔜 Planned | building on the frozen days above |
-
-> The arc is deliberately cumulative: Day 2's agent runs against Day 1's frozen
-> environment, and later days inject faults into this fully-owned baseline. That
-> coupling is exactly why FAULTLINE is **one monorepo**, not fifty fragments.
-
-## Repository map
-
-```
-faultline-ai-reliability/
-├── day01/                 deterministic env + oracle (stdlib only)
-│   ├── faultline/        env.py (generator), oracle.py (the judge)
-│   ├── scripts/          determinism + hand-check experiments
-│   ├── tests/            the Day-1 gate (11 tests)
-│   ├── evidence/         digests, determinism report, sample env
-│   └── THESIS / MEASUREMENT / DECISIONS / LEARN.md
-├── day02/                 bounded single agent + Pydantic contracts
-│   ├── faultline_agent/  contracts, tools, agent loop, verdict
-│   ├── scripts/          over-budget attack, structured run, validity-vs-correctness
-│   ├── tests/            the Day-2 gate (22 tests)
-│   ├── evidence/         budget termination, sample run, schema-vs-semantic
-│   └── README / DECISIONS / LEARN / MARKET.md
-├── day03/                 the zero point: reproducible baseline across tiers
-│   ├── faultline_baseline/  config, tiers, accounting, Wilson stats, runner, SVG
-│   ├── scripts/          build_baseline, attack_mislabeled
-│   ├── tests/            the reproducibility gate (19 tests)
-│   ├── evidence/         baseline.json, success_vs_hops.svg, mislabel_attack.json
-│   └── README / DECISIONS / LEARN-wilson / CHECKPOINT-3.md
-├── day04/                 tracing: linked spans that survive failures (stdlib only)
-│   ├── faultline_trace/  schema, tracer, redaction, audit, instrumented pipeline
-│   ├── scripts/          make_traces (example traces + 100-run failure report)
-│   ├── tests/            the forced-failure gate (19 tests)
-│   ├── evidence/         trace_normal.json, trace_failed.json, forced_failure_report.json
-│   └── README / SPAN_SCHEMA / REDACTION / DECISIONS / LEARN-otel / REFLECTION.md
-├── day05/                 SQLite trace store + timeline viewer (stdlib only)
-│   ├── faultline_store/  store+indices, reconstruct, terminal viewer, SVG, attack
-│   ├── scripts/          build_store, timeline (CLI), make_evidence
-│   ├── tests/            store/reconstruct/attack gate (13 tests)
-│   ├── evidence/         failed_run.svg, timeline_failed.txt, attack_report.json, incident_narrative.md
-│   └── README / LEARN-sqlite / DECISIONS / REFLECTION.md
-├── day06/                 replay bundle + deterministic replay harness (stdlib only)
-│   ├── faultline_replay/ bundle, providers (record/replay), capture, replay, diff, report
-│   ├── scripts/          make_evidence, replay_demo (CLI)
-│   ├── tests/            exact-replay + boundary + guards gate (11 tests)
-│   ├── evidence/         bundle_simulator.json, replay_simulator.json, replay_report.json
-│   └── README / LIMITATIONS / LEARN-reproducibility / DECISIONS / REFLECTION.md
-├── day07/                 Q1: reliability vs required tool hops (stdlib only)
-│   ├── faultline_hops/   simulator, sweep+accounting, stats (Wilson), model, figure, observability
-│   ├── scripts/          run_q1 (results + figure + investigation)
-│   ├── tests/            sweep/stats/model/observability gate (18 tests)
-│   ├── evidence/         q1_results.json, measured_vs_naive.svg, investigation.json
-│   └── CHECKPOINT-7 / LEARN-compounding / DECISIONS / REFLECTION.md
-├── day08/                 reproducible fault injection + independent ground truth (stdlib only)
-│   ├── faultline_inject/ spec (10 fields), triggers, faults, truth log, boundary, integrity
-│   ├── scripts/          make_evidence (spec + integrity report + labelled fault trace)
-│   ├── tests/            spec/triggers/boundary/integrity gate (45 tests)
-│   ├── evidence/         injector_spec.json, integrity_report.json, fault_trace.json
-│   └── CHECKPOINT-8 / LEARN-chaos / DECISIONS / REFLECTION.md
-├── day09/                 F1/F2 fault families + detectors, scored vs truth (stdlib only)
-│   ├── faultline_detect/ schema, latency, detectors, injectors, runner, score, experiment, cards
-│   ├── scripts/          make_evidence (fault cards + detector sweep + scored runs + traces)
-│   ├── tests/            schema/detectors/score/experiment gate (22 tests)
-│   ├── evidence/         fault_cards.json, detector_sweep.json, scored_runs.json, trace_f1/f2.json
-│   └── CHECKPOINT-9 / LEARN-validation-latency / DECISIONS / REFLECTION.md
-├── day10/                F3/F4 — schema-valid wrong vs provider errors (stdlib only)
-│   ├── faultline_contracts/ oracle, corruptions, invariant+classifier, breaker, runner, score
-│   ├── scripts/          make_evidence (cards + contract report + false negatives + traces)
-│   ├── tests/            oracle/corruption/classifier/score gate (18 tests)
-│   ├── evidence/         contract_report.json, false_negatives.json, classifier_boundaries.json, trace_f3/f4.json
-│   └── CHECKPOINT-10 / LEARN-semantic-invariants / DECISIONS / REFLECTION.md
-├── day11/                F5/F6 — completing the six-fault spectrum (stdlib only)
-│   ├── faultline_spectrum/ task/loop, F5/F6 injectors, detectors, runner, score, spectrum_map
-│   ├── scripts/          make_evidence (map + Q2 hypothesis + escape examples + traces)
-│   ├── tests/            task/detectors/score/map gate (12 tests)
-│   ├── evidence/         deterministic_vs_semantic_map.json, q2_split_hypothesis.json, escape_examples.json, trace_f5/f6.json
-│   └── CHECKPOINT-11 / LEARN-context-termination / DECISIONS / REFLECTION.md
-├── day12/                fault catalog + gallery (stdlib only)
-│   ├── faultline_catalog/ cards, catalog, traces, gallery, taxonomy, audit
-│   ├── scripts/          make_evidence (catalog + gallery + audit + taxonomy + traces)
-│   ├── tests/            catalog/audit gate (12 tests)
-│   ├── evidence/         catalog.json, GALLERY.md, catalog.html, audit_report.json, taxonomy.json, traces/F1-F6.json
-│   └── CHECKPOINT-12 / LEARN-taxonomy / DECISIONS / REFLECTION.md
-├── day13/                evaluation harness + versioned dataset (stdlib only)
-│   ├── faultline_eval/   dataset (versioned+splits), predict, runner, leakage, card
-│   ├── scripts/          eval.py (reproducible command), make_evidence
-│   ├── tests/            dataset/eval/leakage gate (14 tests)
-│   ├── evidence/         manifest.json, splits.json, eval_result.json, leakage_report.json, DATASET_CARD.md
-│   └── CHECKPOINT-13 / LEARN-eval-infra / DECISIONS / REFLECTION.md
-├── day14/                intervals + paired statistical design (stdlib only)
-│   ├── faultline_stats/  mathfns, intervals (Wilson+bootstrap), paired (McNemar), verify, interpret
-│   ├── scripts/          make_evidence (verification + edge cases + paired comparison)
-│   ├── tests/            intervals/paired/verify gate (25 tests)
-│   ├── evidence/         stats_verification.json, edge_cases.json, paired_comparison.json, INTERPRETATION.md
-│   └── CHECKPOINT-14 / LEARN-paired-bootstrap / DECISIONS / REFLECTION.md
-├── day15/                Q2 — detection accuracy per fault (stdlib only)
-│   ├── faultline_q2/     q2 (per-class confusion + CIs + groups), investigate, tables
-│   ├── scripts/          make_evidence (Q2 results + failures + traces)
-│   ├── tests/            per-class + no-hiding + trace gate (8 tests)
-│   ├── evidence/         q2_results.json, q2_failures.json, Q2_FINDINGS.md, traces/<id>.json
-│   └── CHECKPOINT-15 / LEARN-imbalanced-metrics / DECISIONS / REFLECTION.md
-├── day16/                validate a narrow LLM judge (stdlib only)
-│   ├── faultline_judge/  rubric, validation_set, judge adapter, agreement, report, card
-│   ├── scripts/          make_evidence (rubric + validation set + agreement report + card)
-│   ├── tests/            rubric/agreement + verdict/forbid gate (12 tests)
-│   ├── evidence/         judge_rubric.md, validation_set.json, agreement_report.json, JUDGE_CARD.md
-│   └── CHECKPOINT-16 / LEARN-judge-reliability / DECISIONS / REFLECTION.md
-├── day17/                subgroup analysis + measurement gate (stdlib only)
-│   ├── faultline_subgroups/ gate, subgroups, reversal (Simpson), analysis, report, audit
-│   ├── scripts/          make_evidence (subgroup report + evaluation audit + findings)
-│   ├── tests/            slicer/gate + reversal/audit gate (11 tests)
-│   ├── evidence/         subgroup_report.json, evaluation_audit.json, SUBGROUP_FINDINGS.md
-│   └── CHECKPOINT-17 / LEARN-simpson / DECISIONS / REFLECTION.md
-├── day18/                bounded recovery — M1 repair-retry + M2 timeout (stdlib only)
-│   ├── faultline_recovery/ policy, engine, idempotency, repair (M1), timeout (M2), experiment
-│   ├── scripts/          make_evidence (recovery report + Day-4 recovery traces)
-│   ├── tests/            bounded/budgeted/idempotent + paired gate (10 tests)
-│   ├── evidence/         recovery_report.json, recovery_traces.json
-│   └── CHECKPOINT-18 / LEARN-idempotency / DECISIONS / REFLECTION.md
-├── day19/                Q3 — retry crossover (stdlib only)
-│   ├── faultline_retry/  sweep (cost+tail), crossover (+ceilings), figure, report
-│   ├── scripts/          make_evidence (sweep + crossover + SVG curve + Q3 conclusion)
-│   ├── tests/            sweep/ceiling + fail-condition guard (8 tests)
-│   ├── evidence/         retry_sweep.json, crossover.json, crossover_curve.svg, q3_conclusion.json
-│   └── CHECKPOINT-19 / LEARN-retry-amplification / DECISIONS / REFLECTION.md
-├── day20/                M3/M4 — circuit breaker + fallback (stdlib only)
-│   ├── faultline_breaker/ breaker (states+transitions), fallback (provenance), runner, experiment, diagram
-│   ├── scripts/          make_evidence (breaker report + state SVG + traced run)
-│   ├── tests/            state-transition + provenance + attacks gate (9 tests)
-│   ├── evidence/         breaker_report.json, state_diagram.svg, transitions_trace.json
-│   └── CHECKPOINT-20 / LEARN-breaker-degradation / DECISIONS / REFLECTION.md
-├── .github/workflows/    CI: tests + determinism proof + fault attacks
-├── requirements.txt      pinned deps (pydantic, pytest)
-└── Makefile              make venv && make test
+```text
+question → frozen seeds/config → paired experiment → result artifact
+         → attack → trace-linked fix → red/green replay → CI
 ```
 
-Each day carries its own README and a **mastery gate** — you should be able to
-*explain*, *build*, *debug*, *measure*, and *defend* everything in it.
+The important boundary is user-visible correctness. Availability, containment,
+and a plausible answer are recorded separately and never promoted to success.
 
-## Quickstart
+## One-command reproduction
+
+From a checkout with Python available:
 
 ```bash
-# Day 1 is standard-library only:
-cd day01 && python3 -m pytest tests/ -q          # 11 tests
-
-# Day 2 adds pydantic — from the repo root:
-make venv                                        # .venv from pinned deps
-make test                                        # full gate: 319 tests, day01–day20
-
-# Re-prove the headline claims yourself:
-make determinism      # Day 1: byte-identical env across processes/hashseeds
-make attack           # Day 2: forced over-budget task → clean INCOMPLETE
-make day04-traces      # Day 4: 100 forced failures → all complete error spans
-make day05-evidence    # Day 5: reconstruct a failed run; survive deletions
-make day06-replay      # Day 6: capture, replay exactly, report the boundary
-make day07-q1          # Day 7: measure reliability vs hops; naive falsified at n=3
-make day08-inject      # Day 8: inject faults across seeds; identical triggers, 0 label leaks
-make day09-detect      # Day 9: sweep severity; score F1/F2 detectors vs injection truth
-make day10-contracts  # Day 10: F3/F4; which wrong values escape contract validation
-make day11-spectrum   # Day 11: F5/F6; deterministic-vs-semantic map + Q2 hypothesis
-make day12-catalog    # Day 12: fault catalog + gallery + reproducibility/integrity audit
-make day13-eval       # Day 13: run the versioned, leakage-resistant eval (test split)
-make day14-stats      # Day 14: verify intervals + McNemar; run the paired comparison
-make day15-q2         # Day 15: Q2 per-class confusion + intervals; investigate every FP/FN
-make day16-judge      # Day 16: validate the narrow LLM judge (agreement, bias, slices)
-make day17-subgroups  # Day 17: subgroup analysis + reversal search + measurement gate
-make day18-recovery   # Day 18: bounded repair-retry + timeout/backoff/jitter; paired McNemar
-make day19-retry      # Day 19: retry sweep + crossover; recommended budget under cost/tail ceilings
-make day20-breaker    # Day 20: circuit breaker + fallback; traced transitions + availability study
+make venv
+make reproduce
 ```
 
-Requires Python ≥ 3.9. Days 1 and 4–20 need no third-party packages; Days 2–3
-need `pydantic` v2 (see `requirements.txt`).
+`make reproduce` runs every isolated test suite, re-executes the frozen
+evaluation, regenerates a fast representative experiment subset, verifies
+byte-identical evidence, audits every results-table number, and writes
+[Checkpoint 26](day26/evidence/CHECKPOINT-26.md).
+
+For the pinned clean-room build:
+
+```bash
+make container-reproduce
+```
+
+The [Dockerfile](Dockerfile) pins its Python base by tag and multi-architecture
+digest, installs the fully resolved [dependency lock](requirements.txt), runs the
+full reproduction while building, then exposes the fast gate as its default
+command.
+
+The CI-sized host command is:
+
+```bash
+make reproduce-fast
+```
+
+## Reproducibility contract
+
+- Runtime, package, build-action, image-digest, and seed pins live in
+  [pins.json](day26/pins.json).
+- Every dependency is an exact equality in [requirements.txt](requirements.txt);
+  compatible ranges are rejected.
+- Every headline result links to both its machine-readable artifact and
+  generating script.
+- Experiments use explicit seeds and a fixed Python hash seed.
+- The fast subset regenerates tool-hop, fallback-quality, and postmortem evidence
+  and compares hashes before and after.
+- CI runs the full tests across the pinned Python patch matrix, the frozen
+  evaluation and fast experiments, the README audit, and the clean Docker build.
+- Release readiness is executable in
+  [reproduction_report.json](day26/evidence/reproduction_report.json).
+
+## Research modules
+
+| Module | Focus | Entry evidence |
+|---|---|---|
+| [Day 01](day01/) | deterministic environment and oracle | [evidence](day01/evidence/) |
+| [Day 02](day02/) | bounded agent and typed contracts | [evidence](day02/evidence/) |
+| [Day 03](day03/) | baseline across difficulty tiers | [evidence](day03/evidence/) |
+| [Day 04](day04/) | complete failure tracing | [evidence](day04/evidence/) |
+| [Day 05](day05/) | incident reconstruction | [evidence](day05/evidence/) |
+| [Day 06](day06/) | exact replay boundary | [evidence](day06/evidence/) |
+| [Day 07](day07/) | reliability versus tool hops | [evidence](day07/evidence/) |
+| [Day 08](day08/) | reproducible fault injection | [evidence](day08/evidence/) |
+| [Day 09](day09/) | schema and latency detectors | [evidence](day09/evidence/) |
+| [Day 10](day10/) | wrong data versus provider errors | [evidence](day10/evidence/) |
+| [Day 11](day11/) | semantic corruption and loops | [evidence](day11/evidence/) |
+| [Day 12](day12/) | fault catalog | [evidence](day12/evidence/) |
+| [Day 13](day13/) | versioned evaluation | [evidence](day13/evidence/) |
+| [Day 14](day14/) | intervals and paired tests | [evidence](day14/evidence/) |
+| [Day 15](day15/) | per-fault detection accuracy | [evidence](day15/evidence/) |
+| [Day 16](day16/) | narrow judge validation | [evidence](day16/evidence/) |
+| [Day 17](day17/) | subgroup measurement | [evidence](day17/evidence/) |
+| [Day 18](day18/) | bounded repair and retry | [evidence](day18/evidence/) |
+| [Day 19](day19/) | retry crossover | [evidence](day19/evidence/) |
+| [Day 20](day20/) | breaker and fallback | [evidence](day20/evidence/) |
+| [Day 21](day21/) | fallback availability versus quality | [evidence](day21/evidence/) |
+| [Day 22](day22/) | recovery mechanism matrix | [evidence](day22/evidence/) |
+| [Day 23](day23/) | cross-component cascade | [evidence](day23/evidence/) |
+| [Day 24](day24/) | multi-objective policy choice | [evidence](day24/evidence/) |
+| [Day 25](day25/) | replay-verified postmortems | [evidence](day25/evidence/) |
+| [Day 26](day26/) | self-explaining reproducibility | [evidence](day26/evidence/) |
+
+Each module carries its own question, method, tests, evidence, decision log, and
+mastery gate. Start with the results table; descend into a module only when you
+need its assumptions or failure analysis.
+
+## Release candidate
+
+The intended release-candidate name and every input needed to reproduce it are
+declared in [pins.json](day26/pins.json). The tag is created only after the clean
+container attestation and Checkpoint 26 are green.
 
 ## License
 

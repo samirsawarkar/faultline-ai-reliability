@@ -1,0 +1,127 @@
+{
+  "seed": 2026080301,
+  "span_count": 5,
+  "spans": [
+    {
+      "attributes": {
+        "regression_test_id": "R25-002-correct-by-user-deadline"
+      },
+      "end_seq": 10,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"incident_id\":\"INC-25-002\",\"policy_version\":\"fixed\"}",
+        "redacted": false,
+        "sha256": "e85b33b443947370a5dd78df9dd6997ef0b9e026615e3c1c48b26b3a3f1c0aef",
+        "size_bytes": 53
+      },
+      "kind": "agent",
+      "name": "postmortem.incident",
+      "output_ref": {
+        "preview": "{\"metrics\":{\"cost\":2,\"cost_budget\":2,\"latency\":45,\"latency_budget\":45,\"steps\":2},\"policy_version\":\"fixed\",\"terminal\":{\"c...(truncated)",
+        "redacted": false,
+        "sha256": "f275f465af2666a2af3aff872218dd10ce0762366faedc7e4caa7fb6d02909a9",
+        "size_bytes": 230
+      },
+      "parent_span_id": null,
+      "span_id": "trace-2026080301-span-0000",
+      "start_seq": 1,
+      "status": "ok",
+      "trace_id": "trace-2026080301"
+    },
+    {
+      "attributes": {},
+      "end_seq": 3,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"deadline\":45,\"idempotent_read\":true,\"serial_finish\":50}",
+        "redacted": false,
+        "sha256": "2c9786ebb5e7484a3da6f38ce000588684a7885a16cc45becb1fce79936c3c92",
+        "size_bytes": 57
+      },
+      "kind": "agent",
+      "name": "recovery.deadline_feasibility",
+      "output_ref": {
+        "preview": "{\"selected\":\"bounded_hedge\",\"serial_feasible\":false}",
+        "redacted": false,
+        "sha256": "a0ba0506414dd98ef342aa96cfc9f7b455687bebf4f21987aff0e26ff43567f5",
+        "size_bytes": 52
+      },
+      "parent_span_id": "trace-2026080301-span-0000",
+      "span_id": "trace-2026080301-span-0001",
+      "start_seq": 2,
+      "status": "ok",
+      "trace_id": "trace-2026080301"
+    },
+    {
+      "attributes": {},
+      "end_seq": 5,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"start_at\":20}",
+        "redacted": false,
+        "sha256": "623e7c743c75f8a58dec8941a56b4ac24f17870a5b5da9b51008b721076d59ba",
+        "size_bytes": 15
+      },
+      "kind": "agent",
+      "name": "recovery.hedge_scheduled",
+      "output_ref": {
+        "preview": "{\"attempt_limit\":2,\"cancel_loser\":true}",
+        "redacted": false,
+        "sha256": "0e748e2ebf82259396847cafb6c614697723cc972966fdcf9b6b94deaa5b5211",
+        "size_bytes": 39
+      },
+      "parent_span_id": "trace-2026080301-span-0000",
+      "span_id": "trace-2026080301-span-0002",
+      "start_seq": 4,
+      "status": "ok",
+      "trace_id": "trace-2026080301"
+    },
+    {
+      "attributes": {},
+      "end_seq": 7,
+      "error": {
+        "message": "primary latency exceeded timeout 30",
+        "type": "PrimaryTimeout"
+      },
+      "input_ref": {
+        "preview": "{\"fault\":\"transient_latency\",\"timeout\":30}",
+        "redacted": false,
+        "sha256": "3153f2476f9604476c3e72cc47c7c56923a98bae5cc6d50418db8ba66e0536a0",
+        "size_bytes": 42
+      },
+      "kind": "tool",
+      "name": "provider.primary",
+      "output_ref": null,
+      "parent_span_id": "trace-2026080301-span-0000",
+      "span_id": "trace-2026080301-span-0003",
+      "start_seq": 6,
+      "status": "error",
+      "trace_id": "trace-2026080301"
+    },
+    {
+      "attributes": {},
+      "end_seq": 9,
+      "error": null,
+      "input_ref": {
+        "preview": "{\"complete_at\":45,\"start_at\":20}",
+        "redacted": false,
+        "sha256": "5b2acabcd649d13e458e1b1be221f5711f81081a5512ebc3899a90aec55f7389",
+        "size_bytes": 32
+      },
+      "kind": "tool",
+      "name": "provider.hedged_retry",
+      "output_ref": {
+        "preview": "{\"answer\":\"***REDACTED***\",\"cancelled_outstanding_calls\":0}",
+        "redacted": true,
+        "sha256": "bcc0eb08a0d8565a7546be9999989346f5042f88b7dd11b82e7a8d0fc3aaf9dc",
+        "size_bytes": 59
+      },
+      "parent_span_id": "trace-2026080301-span-0000",
+      "span_id": "trace-2026080301-span-0004",
+      "start_seq": 8,
+      "status": "ok",
+      "trace_id": "trace-2026080301"
+    }
+  ],
+  "trace_id": "trace-2026080301"
+}
