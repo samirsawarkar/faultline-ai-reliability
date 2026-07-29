@@ -1,0 +1,22 @@
+FAULTLINE DAY 27 COLD-START TRANSCRIPT
+source: REPRODUCE.md COLD-START block
+transport: documented FAULTLINE_REPOSITORY_URL override
+starting state: fresh empty temporary directory
+reader questions before execution: 0
+operator interventions during execution: 0
+
+$ /bin/sh -eu -c '<REPRODUCE.md COLD-START block>'
+Cloning into 'faultline-ai-reliability'...
+sh day27/scripts/cold_reproduce.sh
+docker preflight: PASS
+clean image build: PASS
+headline tool_hops: Measured success 0.818 versus naive 0.91833; first interval separation at 3 hops
+headline frozen_eval: Frozen test evaluation: F1 0.842105 over 17 samples
+headline fallback_quality: Availability 0.6667 → 1.0 while strict quality among answers 1.0 → 0.75
+headline q5_policy: Reference P4: success 0.9325, mean cost 1.4656, p95 latency 50.0
+headline postmortems: 2 incidents replay red → green; Checkpoint 25 passes
+headline tests: 433 tests collected and passed
+reader questions: 0
+operator improvisations: 0
+cold reproduction: PASS
+[exit 0]

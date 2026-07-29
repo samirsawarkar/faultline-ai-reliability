@@ -1,10 +1,10 @@
 {
-  "collected": 417,
+  "collected": 433,
   "day_range": [
     1,
-    26
+    27
   ],
-  "passed": 417,
+  "passed": 433,
   "passed_all": true,
   "profile": "full",
   "python_hash_seed": 0,
@@ -164,6 +164,12 @@
       "passed": true,
       "suite": "day26/tests/",
       "test_count": 17
+    },
+    {
+      "day": 27,
+      "passed": true,
+      "suite": "day27/tests/",
+      "test_count": 16
     }
   ]
 }

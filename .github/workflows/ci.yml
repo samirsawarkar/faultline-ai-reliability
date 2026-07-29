@@ -56,7 +56,7 @@ jobs:
         run: make PY=python reproduce-fast
 
       - name: Require byte-identical committed evidence
-        run: git diff --exit-code -- day07/evidence day21/evidence day25/evidence day26/evidence
+        run: git diff --exit-code -- day07/evidence day21/evidence day25/evidence day26/evidence day27/evidence
 
   clean-container:
     name: digest-pinned clean-container reproduction
@@ -66,4 +66,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Build; the Dockerfile runs the full reproduction
-        run: docker build --pull --tag faultline:0.26.0-rc1 .
+        run: docker build --pull --tag faultline:0.27.0-rc1 .
+
+      - name: Reproduce every headline inside the clean image
+        run: docker run --rm --entrypoint python faultline:0.27.0-rc1 day27/scripts/reproduce_headlines.py

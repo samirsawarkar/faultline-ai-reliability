@@ -1,0 +1,23 @@
+{
+  "cold_context": true,
+  "execution": {
+    "blocker": "Platform approval for repository-controlled host Docker access was denied before clone/build execution.",
+    "exit_code": null,
+    "headline_results_matched": null,
+    "status": "blocked_external_approval"
+  },
+  "operator_improvisations": 0,
+  "prerequisites": {
+    "docker_client": "29.6.2",
+    "docker_server": "29.5.2",
+    "docker_server_platform": "linux/arm64",
+    "git": "2.50.1",
+    "make": "3.81",
+    "passed": true
+  },
+  "reader_questions": 0,
+  "requested": true,
+  "schema_version": "1.0.0",
+  "used_only_reproduce_document": true,
+  "workspace_modified": false
+}

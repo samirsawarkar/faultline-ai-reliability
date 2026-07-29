@@ -128,19 +128,19 @@
       "command": "make reproduce",
       "generator": "day26/scripts/run_test_gate.py",
       "id": "tests",
-      "readme_result": "417 tests collected and passed",
+      "readme_result": "433 tests collected and passed",
       "values": [
         {
           "artifact": "day26/evidence/test_report.json",
           "json_pointer": "/collected",
-          "rendered": "417",
-          "value": 417
+          "rendered": "433",
+          "value": 433
         },
         {
           "artifact": "day26/evidence/test_report.json",
           "json_pointer": "/passed",
-          "rendered": "417",
-          "value": 417
+          "rendered": "433",
+          "value": 433
         }
       ]
     }

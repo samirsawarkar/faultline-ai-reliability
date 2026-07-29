@@ -1,0 +1,16 @@
+{
+  "clone_directory": "faultline-ai-reliability",
+  "document": "REPRODUCE.md",
+  "image": "faultline:0.27.0-rc1",
+  "minimums": {
+    "cpu_cores": 2,
+    "docker_memory_gib": 4,
+    "docker_storage_gib": 5,
+    "git": "2.39",
+    "make": "3.81"
+  },
+  "release_revision": "v0.27.0-rc1",
+  "repository_url": "https://github.com/samirsawarkar/faultline-ai-reliability.git",
+  "schema_version": "1.0.0",
+  "transcript_schema_version": "1.0.0"
+}

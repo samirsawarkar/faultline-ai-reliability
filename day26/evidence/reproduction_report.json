@@ -49,7 +49,7 @@
       "fast_experiments_green": true,
       "passed": true,
       "readme_traceability_green": true,
-      "test_count": 417,
+      "test_count": 433,
       "tests_green": true
     },
     "base": "python:3.12.4-slim-bookworm@sha256:a3e58f9399353be051735f09be0316bfdeab571a5c6a24fd78b92df85bcb2d85",
@@ -114,12 +114,12 @@
     "python_hash_seed": 0
   },
   "fast_test_report": {
-    "collected": 93,
+    "collected": 109,
     "day_range": [
       1,
-      26
+      27
     ],
-    "passed": 93,
+    "passed": 109,
     "passed_all": true,
     "profile": "fast",
     "python_hash_seed": 0,
@@ -159,6 +159,12 @@
         "passed": true,
         "suite": "day26/tests/",
         "test_count": 17
+      },
+      {
+        "day": 27,
+        "passed": true,
+        "suite": "day27/tests/",
+        "test_count": 16
       }
     ]
   },
@@ -465,28 +471,28 @@
         "generator_exists": true,
         "id": "tests",
         "passed": true,
-        "readme_result": "417 tests collected and passed",
+        "readme_result": "433 tests collected and passed",
         "result_present": true,
         "values": [
           {
-            "actual": 417,
+            "actual": 433,
             "artifact": "day26/evidence/test_report.json",
             "artifact_exists": true,
             "json_pointer": "/collected",
             "matches": true,
-            "rendered": "417",
+            "rendered": "433",
             "rendered_in_result": true,
-            "value": 417
+            "value": 433
           },
           {
-            "actual": 417,
+            "actual": 433,
             "artifact": "day26/evidence/test_report.json",
             "artifact_exists": true,
             "json_pointer": "/passed",
             "matches": true,
-            "rendered": "417",
+            "rendered": "433",
             "rendered_in_result": true,
-            "value": 417
+            "value": 433
           }
         ]
       }
@@ -499,16 +505,16 @@
       "Availability 0.6667 \u2192 1.0 while strict quality among answers 1.0 \u2192 0.75",
       "Reference P4: success 0.9325, mean cost 1.4656, p95 latency 50.0",
       "2 incidents replay red \u2192 green; Checkpoint 25 passes",
-      "417 tests collected and passed"
+      "433 tests collected and passed"
     ]
   },
   "test_report": {
-    "collected": 417,
+    "collected": 433,
     "day_range": [
       1,
-      26
+      27
     ],
-    "passed": 417,
+    "passed": 433,
     "passed_all": true,
     "profile": "full",
     "python_hash_seed": 0,
@@ -668,6 +674,12 @@
         "passed": true,
         "suite": "day26/tests/",
         "test_count": 17
+      },
+      {
+        "day": 27,
+        "passed": true,
+        "suite": "day27/tests/",
+        "test_count": 16
       }
     ]
   }

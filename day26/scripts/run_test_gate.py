@@ -10,8 +10,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-FAST_DAYS = (1, 4, 13, 21, 25, 26)
-FULL_DAYS = tuple(range(1, 27))
+FAST_DAYS = (1, 4, 13, 21, 25, 26, 27)
+FULL_DAYS = tuple(range(1, 28))
 
 
 def _dump(path: Path, value) -> None:

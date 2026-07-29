@@ -4,7 +4,7 @@
 systems fail—and testing whether recovery actually improves the user outcome.**
 
 [![CI](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml)
-[![Tests](https://img.shields.io/badge/tests-417%20passing-brightgreen.svg)](day26/evidence/test_report.json)
+[![Tests](https://img.shields.io/badge/tests-433%20passing-brightgreen.svg)](day26/evidence/test_report.json)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ## Results
@@ -17,7 +17,7 @@ systems fail—and testing whether recovery actually improves the user outcome.*
 | Does fallback preserve availability without preserving quality? | **Availability 0.6667 → 1.0 while strict quality among answers 1.0 → 0.75** | [result](day21/evidence/availability_quality_comparison.json) · [script](day21/scripts/make_evidence.py) | `make day21-q4` |
 | Which reference cascade policy wins on correct success, cost, and latency? | **Reference P4: success 0.9325, mean cost 1.4656, p95 latency 50.0** | [result](day24/evidence/policy_comparison.json) · [script](day24/scripts/make_evidence.py) | `make day24-q5` |
 | Do incident fixes fail before and stay fixed afterward? | **2 incidents replay red → green; Checkpoint 25 passes** | [result](day25/evidence/checkpoint_25.json) · [script](day25/scripts/make_evidence.py) | `make day25-postmortems` |
-| Does the complete repository gate pass? | **417 tests collected and passed** | [result](day26/evidence/test_report.json) · [script](day26/scripts/run_test_gate.py) | `make reproduce` |
+| Does the complete repository gate pass? | **433 tests collected and passed** | [result](day26/evidence/test_report.json) · [script](day26/scripts/run_test_gate.py) | `make reproduce` |
 <!-- RESULTS:END -->
 
 Every result cell above is executable metadata, not hand-maintained prose.
@@ -42,6 +42,11 @@ The important boundary is user-visible correctness. Availability, containment,
 and a plausible answer are recorded separately and never promoted to success.
 
 ## One-command reproduction
+
+Cold readers should start with [REPRODUCE.md](REPRODUCE.md). It contains the
+complete public clone command, exact release revision, host requirements,
+expected numbers, and failure actions; its command block is executed verbatim by
+the Day 27 cold-start test.
 
 From a checkout with Python available:
 
@@ -118,6 +123,7 @@ make reproduce-fast
 | [Day 24](day24/) | multi-objective policy choice | [evidence](day24/evidence/) |
 | [Day 25](day25/) | replay-verified postmortems | [evidence](day25/evidence/) |
 | [Day 26](day26/) | self-explaining reproducibility | [evidence](day26/evidence/) |
+| [Day 27](day27/) | assumption-free cold-reader reproduction | [evidence](day27/evidence/) |
 
 Each module carries its own question, method, tests, evidence, decision log, and
 mastery gate. Start with the results table; descend into a module only when you
@@ -125,9 +131,10 @@ need its assumptions or failure analysis.
 
 ## Release candidate
 
-The intended release-candidate name and every input needed to reproduce it are
-declared in [pins.json](day26/pins.json). The tag is created only after the clean
-container attestation and Checkpoint 26 are green.
+Environment identities remain declared in [pins.json](day26/pins.json). The
+cold-reader revision and public source are declared in
+[protocol.json](day27/protocol.json). `v0.27.0-rc1` is tagged only after the clean
+container, exact headline output, and Checkpoint 27 are green.
 
 ## License
 

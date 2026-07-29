@@ -32,7 +32,7 @@ def test_fast_experiment_subset_is_byte_identical():
 
 def test_fast_profile_includes_tests_eval_and_recent_incidents():
     source = (ROOT / "day26/scripts/run_test_gate.py").read_text()
-    assert "FAST_DAYS = (1, 4, 13, 21, 25, 26)" in source
+    assert "FAST_DAYS = (1, 4, 13, 21, 25, 26, 27)" in source
 
 
 def test_aggregate_report_passes_before_outer_container_attestation():

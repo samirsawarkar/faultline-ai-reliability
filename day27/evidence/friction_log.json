@@ -1,0 +1,84 @@
+{
+  "entries": [
+    {
+      "ambiguity": "A reader could not know which revision was evidence-bearing.",
+      "defect_id": "F27-001",
+      "resolution": "Pin the clone command to v0.27.0-rc1 and explicitly forbid switching to main when the tag is unavailable.",
+      "status": "resolved",
+      "verification": "The document audit requires the exact --branch revision and the cold clone checks out that tag."
+    },
+    {
+      "ambiguity": "The host-Python route depended on whichever python3 happened to be installed.",
+      "defect_id": "F27-002",
+      "resolution": "Use Docker as the sole cold path; no host Python, venv, or package installation appears in the executable block.",
+      "status": "resolved",
+      "verification": "The document audit rejects pip, venv, and host-Python bootstrap commands."
+    },
+    {
+      "ambiguity": "Having the Docker client did not prove that its daemon was reachable.",
+      "defect_id": "F27-003",
+      "resolution": "Require docker version before cloning and repeat the daemon preflight inside make cold-reproduce.",
+      "status": "resolved",
+      "verification": "The final transcript records docker preflight: PASS before image construction."
+    },
+    {
+      "ambiguity": "The original one-command result said green without printing the reproduced headline numbers.",
+      "defect_id": "F27-004",
+      "resolution": "Print all six registered README result strings and require an exact expected terminal block.",
+      "status": "resolved",
+      "verification": "The cold-start report checks every expected line and the transcript contains all six."
+    },
+    {
+      "ambiguity": "Required compute, memory, storage, network, and supported host boundaries were unstated.",
+      "defect_id": "F27-005",
+      "resolution": "Document the tested architectures, minimum 2 CPU/4 GiB/5 GiB envelope, registry access, and WSL2 boundary.",
+      "status": "resolved",
+      "verification": "The document audit treats every requirement token as mandatory."
+    },
+    {
+      "ambiguity": "A mirror or local cold test would otherwise require silently editing the public clone URL.",
+      "defect_id": "F27-006",
+      "resolution": "Define FAULTLINE_REPOSITORY_URL in the copied block with the public URL as its default.",
+      "status": "resolved",
+      "verification": "The cold simulation uses the documented override and executes the block byte-for-byte."
+    },
+    {
+      "ambiguity": "A partial clone could tempt a reader to repair state differently from another reader.",
+      "defect_id": "F27-007",
+      "resolution": "Require an empty parent directory and instruct readers to restart in a new one after clone or build-state failures.",
+      "status": "resolved",
+      "verification": "The harness creates a new temporary directory and confirms a fresh .git checkout."
+    },
+    {
+      "ambiguity": "Failure recovery invited unpinned image or package substitutions.",
+      "defect_id": "F27-008",
+      "resolution": "Provide symptom-specific stop/retry actions and explicitly prohibit changing evidence or dependency pins.",
+      "status": "resolved",
+      "verification": "The troubleshooting audit requires tag, daemon, storage, registry, number-drift, and destination cases."
+    },
+    {
+      "ambiguity": "Detached-HEAD advice and container layer IDs obscured the stable result lines in the transcript.",
+      "defect_id": "F27-009",
+      "resolution": "Disable detached-HEAD advice and capture clean-build diagnostics unless the build fails.",
+      "status": "resolved",
+      "verification": "The final successful transcript contains stable clone, preflight, build, headline, and exit lines only."
+    },
+    {
+      "ambiguity": "A maintainer snapshot test assumed Git existed inside the deliberately Git-free runtime image.",
+      "defect_id": "F27-010",
+      "resolution": "Keep the real snapshot/clone integration in the outer cold harness and unit-test only its NUL-safe file-list boundary inside the image.",
+      "status": "resolved",
+      "verification": "The outer transcript proves the fresh tagged clone; the clean image needs no undocumented Git installation."
+    },
+    {
+      "ambiguity": "Registered Make targets defaulted to a host .venv that is intentionally absent inside the clean image.",
+      "defect_id": "F27-011",
+      "resolution": "Bind every internal headline-generator Make invocation to sys.executable, the Python interpreter supplied by the pinned image.",
+      "status": "resolved",
+      "verification": "The reader still runs only make cold-reproduce; the final clean transcript regenerates all five research families without a host environment."
+    }
+  ],
+  "final_operator_improvisations": 0,
+  "final_reader_questions": 0,
+  "schema_version": "1.0.0"
+}

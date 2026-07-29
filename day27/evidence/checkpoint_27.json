@@ -1,0 +1,13 @@
+{
+  "checkpoint": 27,
+  "checks": {
+    "cold_clone_transcript_green": true,
+    "friction_log_resolved": true,
+    "independent_peer_attempt_requested": true,
+    "no_undocumented_local_knowledge_required": true,
+    "reproduce_document_assumption_free": true
+  },
+  "fail_condition_triggered": false,
+  "mission": "Prove a cold reader can reproduce headline results without undocumented knowledge.",
+  "passed": true
+}

@@ -1,0 +1,15 @@
+{
+  "all_expected_lines_observed": true,
+  "document": "REPRODUCE.md",
+  "document_block_executed_verbatim": true,
+  "document_block_sha256": "f6ec1a4e527d12bfde59d5cf586b53afbfe99e834e8c5ff30990708e0a2fc7bd",
+  "exit_code": 0,
+  "fresh_clone_created": true,
+  "operator_improvisations": 0,
+  "passed": true,
+  "reader_questions": 0,
+  "release_revision": "v0.27.0-rc1",
+  "schema_version": "1.0.0",
+  "source_transport": "documented_repository_url_override",
+  "workspace_removed_after_run": true
+}
