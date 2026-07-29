@@ -9,7 +9,7 @@ from faultline_cold_repro import (
 def test_every_friction_defect_is_resolved_and_verified():
     audit = audit_friction()
     assert audit["passed"]
-    assert len(audit["report"]["entries"]) == 11
+    assert len(audit["report"]["entries"]) == 12
 
 
 def test_independent_peer_attempt_is_requested_and_honestly_recorded():

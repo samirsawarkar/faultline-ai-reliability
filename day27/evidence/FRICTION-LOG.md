@@ -16,6 +16,7 @@ not as a reader failure.
 | F27-009 | volatile Git advice and image layer IDs obscured results | suppress success-path builder detail and detached-HEAD advice | final transcript contains stable checkpoints only |
 | F27-010 | an outer snapshot test assumed Git existed inside the image | keep clone integration outside; unit-test its parsing boundary inside | clean image needs no hidden Git install |
 | F27-011 | generator Make targets expected a host `.venv` inside the image | bind internal targets to the pinned image interpreter | all five generator families run from the copied command |
+| F27-012 | shallow cloning an annotated tag emitted a misleading tag-object warning | use a direct commit tag for the reproduction identity | exact-tag clone is warning-free |
 
 Final reader questions: **0**.
 

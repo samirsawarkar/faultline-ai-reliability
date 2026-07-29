@@ -76,6 +76,13 @@
       "resolution": "Bind every internal headline-generator Make invocation to sys.executable, the Python interpreter supplied by the pinned image.",
       "status": "resolved",
       "verification": "The reader still runs only make cold-reproduce; the final clean transcript regenerates all five research families without a host environment."
+    },
+    {
+      "ambiguity": "A shallow clone of the annotated local release tag emitted a misleading warning that the tag object was not a commit.",
+      "defect_id": "F27-012",
+      "resolution": "Use a direct commit tag for the unambiguous shallow-clone reproduction identity.",
+      "status": "resolved",
+      "verification": "The final exact-tag clone resolves v0.27.0-rc1 without warning and retains the same commit identity."
     }
   ],
   "final_operator_improvisations": 0,
