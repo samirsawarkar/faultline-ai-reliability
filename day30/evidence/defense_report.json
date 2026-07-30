@@ -1,0 +1,606 @@
+{
+  "all_evidence_verified": true,
+  "baseline_failed_questions": [
+    "D30-Q01",
+    "D30-Q02",
+    "D30-Q03",
+    "D30-Q04",
+    "D30-Q05",
+    "D30-Q06",
+    "D30-Q07",
+    "D30-Q08",
+    "D30-Q09",
+    "D30-Q10"
+  ],
+  "core_decision_count": 10,
+  "final_failed_questions": [],
+  "passed": true,
+  "question_count": 10,
+  "recording": {
+    "human_proficiency_claimed": false,
+    "manifest_path": "day30/evidence/defense_recording.json",
+    "path": "day30/evidence/mock-defense.m4a",
+    "present": true,
+    "synthetic_narration": true,
+    "valid": true
+  },
+  "red_to_green": true,
+  "results": [
+    {
+      "baseline": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": false,
+          "evidence": false,
+          "limitation": false,
+          "reversal": false
+        },
+        "max_score": 5,
+        "missing": [
+          "decision",
+          "evidence",
+          "limitation",
+          "reversal"
+        ],
+        "passed": false,
+        "score": 1,
+        "word_count": 13
+      },
+      "core_decision": "Measure end-to-end depth and conditional per-hop reliability instead of assuming exchangeable hops.",
+      "evidence": [
+        {
+          "actual": 0.288,
+          "artifact": "day07/evidence/q1_results.json",
+          "expected": 0.288,
+          "passed": true,
+          "pointer": "/curve/7/measured"
+        },
+        {
+          "actual": 0.796765,
+          "artifact": "day07/evidence/q1_results.json",
+          "expected": 0.796765,
+          "passed": true,
+          "pointer": "/curve/7/naive"
+        }
+      ],
+      "evidence_verified": true,
+      "final": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": true,
+          "evidence": true,
+          "limitation": true,
+          "reversal": true
+        },
+        "max_score": 5,
+        "missing": [],
+        "passed": true,
+        "score": 5,
+        "word_count": 82
+      },
+      "id": "D30-Q01",
+      "repair": "Added the decision threshold, the hop-8 contrast, sparse-tail caveat, and a measurable reversal trigger.",
+      "title": "Why not multiply single-hop reliability?",
+      "weak_concept": "model-form uncertainty"
+    },
+    {
+      "baseline": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": false,
+          "evidence": false,
+          "limitation": false,
+          "reversal": false
+        },
+        "max_score": 5,
+        "missing": [
+          "decision",
+          "evidence",
+          "limitation",
+          "reversal"
+        ],
+        "passed": false,
+        "score": 1,
+        "word_count": 12
+      },
+      "core_decision": "Keep fault-family confusion and every false negative visible instead of relying on an aggregate detector score.",
+      "evidence": [
+        {
+          "actual": 0.615385,
+          "artifact": "day15/evidence/q2_results.json",
+          "expected": 0.615385,
+          "passed": true,
+          "pointer": "/full_labelled_set/overall_micro/recall"
+        },
+        {
+          "actual": 10,
+          "artifact": "day15/evidence/q2_results.json",
+          "expected": 10,
+          "passed": true,
+          "pointer": "/full_labelled_set/no_hiding/total_false_negatives"
+        }
+      ],
+      "evidence_verified": true,
+      "final": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": true,
+          "evidence": true,
+          "limitation": true,
+          "reversal": true
+        },
+        "max_score": 5,
+        "missing": [],
+        "passed": true,
+        "score": 5,
+        "word_count": 84
+      },
+      "id": "D30-Q02",
+      "repair": "Replaced an aggregate-score objection with the exact miss taxonomy, decision cost, dataset limit, and promotion gate.",
+      "title": "Why inspect detector misses instead of reporting F1?",
+      "weak_concept": "slice-aware detector validation"
+    },
+    {
+      "baseline": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": false,
+          "evidence": false,
+          "limitation": false,
+          "reversal": false
+        },
+        "max_score": 5,
+        "missing": [
+          "decision",
+          "evidence",
+          "limitation",
+          "reversal"
+        ],
+        "passed": false,
+        "score": 1,
+        "word_count": 14
+      },
+      "core_decision": "Use the narrow semantic judge only as advisory signal outside its known failure slice.",
+      "evidence": [
+        {
+          "actual": 0.5,
+          "artifact": "day16/evidence/agreement_report.json",
+          "expected": 0.5,
+          "passed": true,
+          "pointer": "/judge_vs_human/cohen_kappa"
+        },
+        {
+          "actual": 0.0,
+          "artifact": "day16/evidence/agreement_report.json",
+          "expected": 0.0,
+          "passed": true,
+          "pointer": "/per_slice_agreement/borderline_tokens/agreement"
+        }
+      ],
+      "evidence_verified": true,
+      "final": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": true,
+          "evidence": true,
+          "limitation": true,
+          "reversal": true
+        },
+        "max_score": 5,
+        "missing": [],
+        "passed": true,
+        "score": 5,
+        "word_count": 87
+      },
+      "id": "D30-Q03",
+      "repair": "Added independent-label logic, exact agreement and failure-slice evidence, the coverage tradeoff, and a promotion criterion.",
+      "title": "Why exclude the semantic judge from core success?",
+      "weak_concept": "judge-label independence"
+    },
+    {
+      "baseline": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": false,
+          "evidence": false,
+          "limitation": false,
+          "reversal": false
+        },
+        "max_score": 5,
+        "missing": [
+          "decision",
+          "evidence",
+          "limitation",
+          "reversal"
+        ],
+        "passed": false,
+        "score": 1,
+        "word_count": 8
+      },
+      "core_decision": "Set retry ceilings from the measured fault regime rather than a universal retry count.",
+      "evidence": [
+        {
+          "actual": 0.76,
+          "artifact": "day19/evidence/retry_sweep.json",
+          "expected": 0.76,
+          "passed": true,
+          "pointer": "/independent/2/success_rate"
+        },
+        {
+          "actual": 2.37,
+          "artifact": "day19/evidence/retry_sweep.json",
+          "expected": 2.37,
+          "passed": true,
+          "pointer": "/correlated/2/amplification"
+        }
+      ],
+      "evidence_verified": true,
+      "final": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": true,
+          "evidence": true,
+          "limitation": true,
+          "reversal": true
+        },
+        "max_score": 5,
+        "missing": [],
+        "passed": true,
+        "score": 5,
+        "word_count": 91
+      },
+      "id": "D30-Q04",
+      "repair": "Made the amplification mechanism, both operating points, containment tradeoff, and live reversal rule explicit.",
+      "title": "Why do retry caps change under correlation?",
+      "weak_concept": "retry amplification under correlated faults"
+    },
+    {
+      "baseline": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": false,
+          "evidence": false,
+          "limitation": false,
+          "reversal": false
+        },
+        "max_score": 5,
+        "missing": [
+          "decision",
+          "evidence",
+          "limitation",
+          "reversal"
+        ],
+        "passed": false,
+        "score": 1,
+        "word_count": 11
+      },
+      "core_decision": "Measure fallback availability, strict answer quality, and provenance as separate outcomes.",
+      "evidence": [
+        {
+          "actual": 1.0,
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "expected": 1.0,
+          "passed": true,
+          "pointer": "/comparison/fallback_enabled/availability/rate"
+        },
+        {
+          "actual": 0.75,
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "expected": 0.75,
+          "passed": true,
+          "pointer": "/comparison/fallback_enabled/strict_quality_given_answered/rate"
+        }
+      ],
+      "evidence_verified": true,
+      "final": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": true,
+          "evidence": true,
+          "limitation": true,
+          "reversal": true
+        },
+        "max_score": 5,
+        "missing": [],
+        "passed": true,
+        "score": 5,
+        "word_count": 85
+      },
+      "id": "D30-Q05",
+      "repair": "Added paired availability-quality evidence, provenance, the abstention cost, and the exact deployment gate.",
+      "title": "Why is availability not the fallback outcome?",
+      "weak_concept": "availability-quality separation"
+    },
+    {
+      "baseline": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": false,
+          "evidence": false,
+          "limitation": false,
+          "reversal": false
+        },
+        "max_score": 5,
+        "missing": [
+          "decision",
+          "evidence",
+          "limitation",
+          "reversal"
+        ],
+        "passed": false,
+        "score": 1,
+        "word_count": 8
+      },
+      "core_decision": "Apply global ceilings before narrow recovery and quality validation instead of enabling every mechanism.",
+      "evidence": [
+        {
+          "actual": 47,
+          "artifact": "day22/evidence/six_mechanism_matrix.json",
+          "expected": 47,
+          "passed": true,
+          "pointer": "/recovery_induced_harm_audit/total"
+        }
+      ],
+      "evidence_verified": true,
+      "final": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": true,
+          "evidence": true,
+          "limitation": true,
+          "reversal": true
+        },
+        "max_score": 5,
+        "missing": [],
+        "passed": true,
+        "score": 5,
+        "word_count": 83
+      },
+      "id": "D30-Q06",
+      "repair": "Named the measured induced-harm count, explicit order, containment cost, population, and change-control rule.",
+      "title": "Why compose recovery in a fixed order?",
+      "weak_concept": "recovery policy composition"
+    },
+    {
+      "baseline": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": false,
+          "evidence": false,
+          "limitation": false,
+          "reversal": false
+        },
+        "max_score": 5,
+        "missing": [
+          "decision",
+          "evidence",
+          "limitation",
+          "reversal"
+        ],
+        "passed": false,
+        "score": 1,
+        "word_count": 13
+      },
+      "core_decision": "Reject policies on outcome, wrong-answer, cost, and latency bounds before comparing efficiency.",
+      "evidence": [
+        {
+          "actual": 0.095,
+          "artifact": "day24/evidence/policy_comparison.json",
+          "expected": 0.095,
+          "passed": true,
+          "pointer": "/selection/paired_dominance_vs_other_eligible/P1_bounded_retry/success_rate_delta"
+        },
+        {
+          "actual": 0.0485,
+          "artifact": "day24/evidence/policy_comparison.json",
+          "expected": 0.0485,
+          "passed": true,
+          "pointer": "/selection/paired_dominance_vs_other_eligible/P1_bounded_retry/success_per_cost_delta/value"
+        }
+      ],
+      "evidence_verified": true,
+      "final": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": true,
+          "evidence": true,
+          "limitation": true,
+          "reversal": true
+        },
+        "max_score": 5,
+        "missing": [],
+        "passed": true,
+        "score": 5,
+        "word_count": 93
+      },
+      "id": "D30-Q07",
+      "repair": "Replaced a preference claim with four constraint gates, paired uncertainty, the ranking tradeoff, and governance needed to reverse it.",
+      "title": "Why constrain before optimizing efficiency?",
+      "weak_concept": "multi-objective decision governance"
+    },
+    {
+      "baseline": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": false,
+          "evidence": false,
+          "limitation": false,
+          "reversal": false
+        },
+        "max_score": 5,
+        "missing": [
+          "decision",
+          "evidence",
+          "limitation",
+          "reversal"
+        ],
+        "passed": false,
+        "score": 1,
+        "word_count": 13
+      },
+      "core_decision": "Recommend P4 only inside the base envelope and label its oracle signals as non-deployable upper bounds.",
+      "evidence": [
+        {
+          "actual": 0.9325,
+          "artifact": "day24/evidence/policy_comparison.json",
+          "expected": 0.9325,
+          "passed": true,
+          "pointer": "/policy_metrics/P4_selective_guarded/user_visible_correct_success/rate"
+        },
+        {
+          "actual": 0.575,
+          "artifact": "day24/evidence/winner_attack.json",
+          "expected": 0.575,
+          "passed": true,
+          "pointer": "/attacks/tight_budgets/metrics/user_visible_correct_success/rate"
+        }
+      ],
+      "evidence_verified": true,
+      "final": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": true,
+          "evidence": true,
+          "limitation": true,
+          "reversal": true
+        },
+        "max_score": 5,
+        "missing": [],
+        "passed": true,
+        "score": 5,
+        "word_count": 90
+      },
+      "id": "D30-Q08",
+      "repair": "Named both privileged oracle signals, all three operating outcomes, the design-target boundary, and the production promotion test.",
+      "title": "Why call the winning policy only an upper bound?",
+      "weak_concept": "external validity of an oracle-assisted policy"
+    },
+    {
+      "baseline": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": false,
+          "evidence": false,
+          "limitation": false,
+          "reversal": false
+        },
+        "max_score": 5,
+        "missing": [
+          "decision",
+          "evidence",
+          "limitation",
+          "reversal"
+        ],
+        "passed": false,
+        "score": 1,
+        "word_count": 11
+      },
+      "core_decision": "Use intervention-informed simulator causality while refusing causal claims from production trace order alone.",
+      "evidence": [
+        {
+          "actual": 20,
+          "artifact": "day23/evidence/replay_stability.json",
+          "expected": 20,
+          "passed": true,
+          "pointer": "/repetitions"
+        },
+        {
+          "actual": true,
+          "artifact": "day23/evidence/replay_stability.json",
+          "expected": true,
+          "passed": true,
+          "pointer": "/reproducible_from_one_seed_and_config"
+        }
+      ],
+      "evidence_verified": true,
+      "final": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": true,
+          "evidence": true,
+          "limitation": true,
+          "reversal": true
+        },
+        "max_score": 5,
+        "missing": [],
+        "passed": true,
+        "score": 5,
+        "word_count": 85
+      },
+      "id": "D30-Q09",
+      "repair": "Conceded the valid objection, narrowed the causal claim, supplied intervention and replay evidence, and defined transfer evidence.",
+      "title": "Why call the cascade causal?",
+      "weak_concept": "causal identification versus trace chronology"
+    },
+    {
+      "baseline": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": false,
+          "evidence": false,
+          "limitation": false,
+          "reversal": false
+        },
+        "max_score": 5,
+        "missing": [
+          "decision",
+          "evidence",
+          "limitation",
+          "reversal"
+        ],
+        "passed": false,
+        "score": 1,
+        "word_count": 13
+      },
+      "core_decision": "Require the same seed, configuration, test predicate, and complete trace to flip red to green and remain stable.",
+      "evidence": [
+        {
+          "actual": 20,
+          "artifact": "day25/evidence/red_green_replay.json",
+          "expected": 20,
+          "passed": true,
+          "pointer": "/INC-25-001/after/stability/repetitions"
+        },
+        {
+          "actual": 11,
+          "artifact": "day25/evidence/red_green_replay.json",
+          "expected": 11,
+          "passed": true,
+          "pointer": "/INC-25-001/after/metrics/cost"
+        }
+      ],
+      "evidence_verified": true,
+      "final": {
+        "criteria": {
+          "closed_book_surface": true,
+          "decision": true,
+          "evidence": true,
+          "limitation": true,
+          "reversal": true
+        },
+        "max_score": 5,
+        "missing": [],
+        "passed": true,
+        "score": 5,
+        "word_count": 91
+      },
+      "id": "D30-Q10",
+      "repair": "Specified invariant controls, stable red-to-green evidence, unchanged cost, the narrow guarantee, and concrete reopen conditions.",
+      "title": "What proves a fix stays fixed?",
+      "weak_concept": "counterfactual integrity in regression evidence"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "transcript": {
+    "path": "day30/evidence/mock-defense-transcript.md",
+    "sha256": "2fd786033a34eacb365b196adbc877d7f034fe3736f9516ff95f0c4f892e100c",
+    "word_count": 1204
+  },
+  "weakest_answer": {
+    "baseline_score": 1,
+    "concept": "model-form uncertainty",
+    "final_score": 5,
+    "id": "D30-Q01",
+    "repair": "Added the decision threshold, the hop-8 contrast, sparse-tail caveat, and a measurable reversal trigger."
+  }
+}

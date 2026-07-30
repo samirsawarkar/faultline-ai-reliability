@@ -1,0 +1,14 @@
+{
+  "audio_bytes": 3316928,
+  "audio_sha256": "b1a6733049daf29fe07a7ada270be5e98bf88a7bea4b2953cb386058d499a1a2",
+  "caveat": "The recording proves the prepared answers can be delivered aloud; it does not prove the author's unaided oral proficiency.",
+  "duration_seconds": 402.628,
+  "format": "MPEG-4 audio / AAC mono",
+  "human_participant": false,
+  "question_source_sha256": "80dee83f700418014d253e76fcb205b6104e9f7862ddf003b24be517b8d6a635",
+  "schema_version": "1.0.0",
+  "speech_rate_words_per_minute": 230,
+  "synthetic_narration": true,
+  "transcript_sha256": "2fd786033a34eacb365b196adbc877d7f034fe3736f9516ff95f0c4f892e100c",
+  "voice": "macOS system default"
+}

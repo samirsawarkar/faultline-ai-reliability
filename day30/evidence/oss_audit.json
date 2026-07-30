@@ -1,0 +1,26 @@
+{
+  "contribution_count": 1,
+  "entries": [
+    {
+      "checks": {
+        "issue_request_matches_patch": true,
+        "opened_has_url": true,
+        "packet_complete": true,
+        "scope_is_bounded": true,
+        "status_valid": true,
+        "upstream_issue_named": true,
+        "validation_named": true
+      },
+      "contribution_url": null,
+      "id": "OSS-01",
+      "passed": true,
+      "repository": "openai/evals",
+      "status": "prepared"
+    }
+  ],
+  "external_contribution_complete": false,
+  "opened_or_merged_count": 0,
+  "packets_passed": true,
+  "prepared_count": 1,
+  "schema_version": "1.0.0"
+}

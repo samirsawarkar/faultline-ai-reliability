@@ -13,6 +13,8 @@ systems fail—and testing whether recovery actually improves the user outcome.*
 2. Read the [one-page case study](day29/CASE-STUDY.md).
 3. Open the [Q1–Q5 technical article](day28/ARTICLE.md) only when you need the
    full evidence argument.
+4. Use the [staff-level defense](day30/DEFENSE.md) to challenge every core
+   decision and limitation.
 
 The short path shows one complete chain—run → fault → trace → recover → replay—
 and states both what FAULTLINE proved and what remains unproven in production.
@@ -136,6 +138,7 @@ make reproduce-fast
 | [Day 27](day27/) | assumption-free cold-reader reproduction | [evidence](day27/evidence/) |
 | [Day 28](day28/) | findings-first Q1–Q5 publication and claim audit | [evidence](day28/evidence/) |
 | [Day 29](day29/) | three-minute demo, one-page case study, comprehension gate | [evidence](day29/evidence/) |
+| [Day 30](day30/) | spoken defense, expert outreach, OSS contribution, launch gate | [evidence](day30/evidence/) |
 
 Each module carries its own question, method, tests, evidence, decision log, and
 mastery gate. Start with the results table; descend into a module only when you

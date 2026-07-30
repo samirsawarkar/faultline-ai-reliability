@@ -1,0 +1,63 @@
+{
+  "audit": {
+    "checks": {
+      "eight_tailored_messages": true,
+      "every_core_decision_defended": true,
+      "first_72_hours_scheduled": true,
+      "human_proficiency_caveat": true,
+      "one_or_two_oss_contributions": false,
+      "oss_has_no_unmeasured_scope": true,
+      "recorded_mock_defense": true,
+      "selective_outreach_has_receipts": false,
+      "weak_answers_repaired": true
+    },
+    "defense": {
+      "questions": 10,
+      "recording": {
+        "human_proficiency_claimed": false,
+        "manifest_path": "day30/evidence/defense_recording.json",
+        "path": "day30/evidence/mock-defense.m4a",
+        "present": true,
+        "synthetic_narration": true,
+        "valid": true
+      },
+      "weakest_answer": {
+        "baseline_score": 1,
+        "concept": "model-form uncertainty",
+        "final_score": 5,
+        "id": "D30-Q01",
+        "repair": "Added the decision threshold, the hop-8 contrast, sparse-tail caveat, and a measurable reversal trigger."
+      }
+    },
+    "external_actions_pending": [
+      "selective_outreach_has_receipts",
+      "one_or_two_oss_contributions"
+    ],
+    "launch_plan": {
+      "checks": {
+        "gates_named": true,
+        "metrics_cover_outcome_cost_latency": true,
+        "owners_named": true,
+        "rollback_named": true,
+        "three_windows": true
+      },
+      "passed": true
+    },
+    "oss": {
+      "opened_or_merged": 0,
+      "packets": 1
+    },
+    "outreach": {
+      "minimum_selective_sends": 2,
+      "sent": 0,
+      "targets": 8
+    },
+    "passed": false,
+    "schema_version": "1.0.0"
+  },
+  "fail_condition": "A core decision or limitation cannot be defended without reading code.",
+  "fail_condition_triggered": false,
+  "mission": "Defend every core decision aloud and put the evidence in front of relevant experts.",
+  "passed": false,
+  "schema_version": "1.0.0"
+}
