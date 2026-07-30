@@ -1763,66 +1763,79 @@
     "day07/evidence/q1_results.json": {
       "committed_at_head": true,
       "git_blob_at_head": "ecbb634337d1ceb829ac07e6863613740e1f74ff",
+      "provenance_method": "git_head",
       "sha256": "67e07292e80c5cd30dbb7bfbf9beaf8eb5249a08329413527c6c745a32b7aa71"
     },
     "day15/evidence/q2_results.json": {
       "committed_at_head": true,
       "git_blob_at_head": "2308a6aa569613708e7d2db4a41180c73e3579ce",
+      "provenance_method": "git_head",
       "sha256": "3274f05d958e04cf2fd988556daab44c05f37c21b84a1b2ec75eb5b0ad737516"
     },
     "day16/evidence/agreement_report.json": {
       "committed_at_head": true,
       "git_blob_at_head": "874b20b1fcf4cafb882b90cb38165cd49a0a14e3",
+      "provenance_method": "git_head",
       "sha256": "4ef6211b034f32318c6dcad108b87b175d8d95ae9b5fcc7cab650f198c7aa017"
     },
     "day17/evidence/subgroup_report.json": {
       "committed_at_head": true,
       "git_blob_at_head": "81944d4c93aa49b881f9bd7ed89815b5187c710b",
+      "provenance_method": "git_head",
       "sha256": "e36ae983c2569c9602586198962ceb1de754a0a978217bf9191d9fc5de082f61"
     },
     "day19/evidence/crossover.json": {
       "committed_at_head": true,
       "git_blob_at_head": "7733ee16f33b592e925c8403320da0cab3930511",
+      "provenance_method": "git_head",
       "sha256": "1b2237715ed89545ee55fc5d33185f9b725c31e528fbfd36ce3c8bf30b9da074"
     },
     "day19/evidence/q3_conclusion.json": {
       "committed_at_head": true,
       "git_blob_at_head": "4f3e77118ce0d496dab9983ac09151719fc4c74a",
+      "provenance_method": "git_head",
       "sha256": "fd643c333b41b9ccaeaceb7d8ff6d1fc9bde7a55799ba072f443f2a33f6791e0"
     },
     "day19/evidence/retry_sweep.json": {
       "committed_at_head": true,
       "git_blob_at_head": "6479c2911fe85dc23e0e0048a4dcd2fdcd272fab",
+      "provenance_method": "git_head",
       "sha256": "7f34cfab8c02492db201e988e723414403c8fb59e4994d0dd16fcc8d16dcdc2f"
     },
     "day21/evidence/availability_quality_comparison.json": {
       "committed_at_head": true,
       "git_blob_at_head": "06641fed690e48ab1cea01d46dd080cc763eed52",
+      "provenance_method": "git_head",
       "sha256": "60dc11cfd405c7cc010dfb613d495c04ebe0d77a31a8d1c4bf25014a669d6cff"
     },
     "day21/evidence/degradation_detector.json": {
       "committed_at_head": true,
       "git_blob_at_head": "1df0656ab50b6f8a58615166eee72c8fa7fe8586",
+      "provenance_method": "git_head",
       "sha256": "de90a8c92f05de1c8e4345d18caaacf1fd8709b878257d4877731a38868eb704"
     },
     "day24/evidence/paired_statistics.json": {
       "committed_at_head": true,
       "git_blob_at_head": "d9d4375286f26ca4c966641c799e7b2d67e0e59b",
+      "provenance_method": "git_head",
       "sha256": "7d9ef18cc374f2ab6f941b5e9761fa82737abb70d82432346cf5c5ce9379ffc8"
     },
     "day24/evidence/policy_comparison.json": {
       "committed_at_head": true,
       "git_blob_at_head": "c61b063c99e20d130f6bb4e004116e2355386eb4",
+      "provenance_method": "git_head",
       "sha256": "93a912c4c4b079b0d560ea83fb30096356eee958a9b65eb5f50c74bf4418933a"
     },
     "day24/evidence/q5_recommendation.json": {
       "committed_at_head": true,
       "git_blob_at_head": "216bca0df1ed16958e0d148031f7e1967aff7509",
+      "provenance_method": "git_head",
       "sha256": "307f1d314f23f407437d43be49228eaeb4534073f5736bd808e6900880f052ec"
     },
     "day24/evidence/winner_attack.json": {
       "committed_at_head": true,
       "git_blob_at_head": "f7dab53863a1b01360736696051513dfd927951b",
+      "provenance_method": "git_head",
       "sha256": "64c8787058160f0ea6f1909bd42f7bfec13bba9afe9359fd41d497018a65678a"
     }
   }

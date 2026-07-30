@@ -116,7 +116,10 @@ inexpensive.
 The full gate is slower than unit tests because it regenerates evidence and
 checks drift. CI therefore has two paths: a host-side research reproduction for
 fast feedback and a digest-pinned clean-container reproduction for release
-confidence. Both have explicit timeouts; superseded runs are cancelled.
+confidence. The host proves each source byte stream matches its Git blob at
+`HEAD`; because `.git` is intentionally excluded from the image, the container
+verifies those same bytes against the committed Git-backed publication
+manifest. Both paths have explicit timeouts; superseded runs are cancelled.
 
 ## Extension points
 
