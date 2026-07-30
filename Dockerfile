@@ -14,7 +14,9 @@ ENV LANG=C.UTF-8 \
 WORKDIR /workspace
 
 RUN apt-get update \
-    && apt-get install --yes --no-install-recommends make=4.3-4.1 \
+    && apt-get install --yes --no-install-recommends \
+        git=1:2.39.5-0+deb12u3 \
+        make=4.3-4.1 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN python -m pip install --no-cache-dir "pip==${PIP_VERSION}"

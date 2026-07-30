@@ -7,13 +7,27 @@ systems fail—and testing whether recovery actually improves the user outcome.*
 [![Tests](https://img.shields.io/badge/tests-433%20passing-brightgreen.svg)](day26/evidence/test_report.json)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
+## Start here
+
+**Hiring or evaluating this work?** Read the
+[one-minute engineering brief](HIRING-MANAGER.md), then inspect the
+[architecture and decision boundaries](ARCHITECTURE.md). Together they show the
+problem, the measurable outcomes, the system design, the tradeoffs, and the
+claims this repository deliberately does not make.
+
+**Reproducing or reviewing the research?** Follow
+[REPRODUCE.md](REPRODUCE.md). Every headline below is bound to a committed JSON
+value and generating command; CI rejects drift.
+
 ## Three-minute staff-engineer path
 
 1. Watch or run the [2:45 incident demo](day29/DEMO.md).
 2. Read the [one-page case study](day29/CASE-STUDY.md).
-3. Open the [Q1–Q5 technical article](day28/ARTICLE.md) only when you need the
+3. Inspect the [system architecture](ARCHITECTURE.md) and its reliability
+   invariants.
+4. Open the [Q1–Q5 technical article](day28/ARTICLE.md) only when you need the
    full evidence argument.
-4. Use the [staff-level defense](day30/DEFENSE.md) to challenge every core
+5. Use the [staff-level defense](day30/DEFENSE.md) to challenge every core
    decision and limitation.
 
 The short path shows one complete chain—run → fault → trace → recover → replay—
@@ -150,6 +164,13 @@ Environment identities remain declared in [pins.json](day26/pins.json). The
 cold-reader revision and public source are declared in
 [protocol.json](day27/protocol.json). `v0.27.0-rc1` is tagged only after the clean
 container, exact headline output, and Checkpoint 27 are green.
+
+## Engineering standards
+
+[Architecture](ARCHITECTURE.md) ·
+[Contributing](CONTRIBUTING.md) ·
+[Security](SECURITY.md) ·
+[Reproduction](REPRODUCE.md)
 
 ## License
 

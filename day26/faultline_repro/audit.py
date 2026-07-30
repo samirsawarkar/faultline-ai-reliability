@@ -162,6 +162,9 @@ def audit_container_contract() -> Dict[str, Any]:
         "make_version_matches_pins": (
             f"make={pins['os_dependencies']['make']}" in dockerfile
         ),
+        "git_version_matches_pins": (
+            f"git={pins['os_dependencies']['git']}" in dockerfile
+        ),
         "full_reproduction_runs_at_build": "RUN make PY=python reproduce" in dockerfile,
         "non_root_runtime": "USER faultline" in dockerfile,
         "hash_seed_fixed": "PYTHONHASHSEED=0" in dockerfile,
@@ -191,5 +194,9 @@ def audit_ci_contract() -> Dict[str, Any]:
         ),
         "clean_container_build_runs": "docker build" in workflow,
         "evidence_diff_checked": "git diff --exit-code" in workflow,
+        "duplicate_runs_cancelled": (
+            "cancel-in-progress: true" in workflow
+        ),
+        "every_job_has_timeout": workflow.count("timeout-minutes:") == 3,
     }
     return {"checks": checks, "passed": all(checks.values())}

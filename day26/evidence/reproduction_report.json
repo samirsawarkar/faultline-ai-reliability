@@ -21,7 +21,9 @@
     "checks": {
       "checkout_sha_pinned": true,
       "clean_container_build_runs": true,
+      "duplicate_runs_cancelled": true,
       "eval_and_fast_experiments_run": true,
+      "every_job_has_timeout": true,
       "evidence_diff_checked": true,
       "full_tests_run": true,
       "python_patch_matrix_pinned": true,
@@ -34,6 +36,7 @@
       "base_tag_and_digest_match_pins": true,
       "full_reproduction_runs_at_build": true,
       "git_excluded_from_context": true,
+      "git_version_matches_pins": true,
       "hash_seed_fixed": true,
       "make_version_matches_pins": true,
       "non_root_runtime": true,
@@ -183,12 +186,12 @@
     "pins": {
       "actions": {
         "checkout": {
-          "release": "v4.2.2",
-          "sha": "11bd71901bbe5b1630ceea73d27597364c9af683"
+          "release": "v7.0.1",
+          "sha": "3d3c42e5aac5ba805825da76410c181273ba90b1"
         },
         "setup_python": {
-          "release": "v5.6.0",
-          "sha": "a26af69be951a213d495a4c3e4e4022e16d87065"
+          "release": "v7.0.0",
+          "sha": "5fda3b95a4ea91299a34e894583c3862153e4b97"
         }
       },
       "container": {
@@ -212,6 +215,7 @@
         "typing-inspection": "0.4.2"
       },
       "os_dependencies": {
+        "git": "1:2.39.5-0+deb12u3",
         "make": "4.3-4.1"
       },
       "python": {
