@@ -1,0 +1,82 @@
+{
+  "figure_count": 5,
+  "figures": [
+    {
+      "filename": "day28/evidence/figures/figure-1-depth-reliability.svg",
+      "id": "figure-1",
+      "sha256": "b635ddf6b13abee6c20b3296e5760ef7cbf9b478e665f70be19e181d0c48916b",
+      "sources": [
+        "day07/evidence/q1_results.json"
+      ]
+    },
+    {
+      "filename": "day28/evidence/figures/figure-2-detector-recall.svg",
+      "id": "figure-2",
+      "sha256": "e9713be72bddc1c625537b3c9629cc0857a36452e81f611387ad9b4e07eed105",
+      "sources": [
+        "day15/evidence/q2_results.json"
+      ]
+    },
+    {
+      "filename": "day28/evidence/figures/figure-3-retry-crossover.svg",
+      "id": "figure-3",
+      "sha256": "fbade4c4819fc7cc0b4e596028aff2ac44428a2edd7fe74d203233bdbaf67acd",
+      "sources": [
+        "day19/evidence/retry_sweep.json",
+        "day19/evidence/crossover.json"
+      ]
+    },
+    {
+      "filename": "day28/evidence/figures/figure-4-fallback-quality.svg",
+      "id": "figure-4",
+      "sha256": "a27d0e716812b3519f6b2fc5aad4f9c3492b8764a4275e09b150ec962811cfd7",
+      "sources": [
+        "day21/evidence/availability_quality_comparison.json",
+        "day21/evidence/degradation_detector.json"
+      ]
+    },
+    {
+      "filename": "day28/evidence/figures/figure-5-policy-frontier.svg",
+      "id": "figure-5",
+      "sha256": "89dae67348c3be5fbc27475b22323ae9304858700ea227e9a16b9f4843be4964",
+      "sources": [
+        "day24/evidence/policy_comparison.json",
+        "day24/evidence/winner_attack.json"
+      ]
+    }
+  ],
+  "source_inventory": {
+    "day07/evidence/q1_results.json": {
+      "git_blob_at_head": "ecbb634337d1ceb829ac07e6863613740e1f74ff",
+      "sha256": "67e07292e80c5cd30dbb7bfbf9beaf8eb5249a08329413527c6c745a32b7aa71"
+    },
+    "day15/evidence/q2_results.json": {
+      "git_blob_at_head": "2308a6aa569613708e7d2db4a41180c73e3579ce",
+      "sha256": "3274f05d958e04cf2fd988556daab44c05f37c21b84a1b2ec75eb5b0ad737516"
+    },
+    "day19/evidence/crossover.json": {
+      "git_blob_at_head": "7733ee16f33b592e925c8403320da0cab3930511",
+      "sha256": "1b2237715ed89545ee55fc5d33185f9b725c31e528fbfd36ce3c8bf30b9da074"
+    },
+    "day19/evidence/retry_sweep.json": {
+      "git_blob_at_head": "6479c2911fe85dc23e0e0048a4dcd2fdcd272fab",
+      "sha256": "7f34cfab8c02492db201e988e723414403c8fb59e4994d0dd16fcc8d16dcdc2f"
+    },
+    "day21/evidence/availability_quality_comparison.json": {
+      "git_blob_at_head": "06641fed690e48ab1cea01d46dd080cc763eed52",
+      "sha256": "60dc11cfd405c7cc010dfb613d495c04ebe0d77a31a8d1c4bf25014a669d6cff"
+    },
+    "day21/evidence/degradation_detector.json": {
+      "git_blob_at_head": "1df0656ab50b6f8a58615166eee72c8fa7fe8586",
+      "sha256": "de90a8c92f05de1c8e4345d18caaacf1fd8709b878257d4877731a38868eb704"
+    },
+    "day24/evidence/policy_comparison.json": {
+      "git_blob_at_head": "c61b063c99e20d130f6bb4e004116e2355386eb4",
+      "sha256": "93a912c4c4b079b0d560ea83fb30096356eee958a9b65eb5f50c74bf4418933a"
+    },
+    "day24/evidence/winner_attack.json": {
+      "git_blob_at_head": "f7dab53863a1b01360736696051513dfd927951b",
+      "sha256": "64c8787058160f0ea6f1909bd42f7bfec13bba9afe9359fd41d497018a65678a"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
+<title id="title">Aggregate detector accuracy hides family-level misses</title>
+<desc id="desc">Recall by fault family on the full labelled set; intervals are 95% Wilson.</desc>
+<metadata>{&quot;figure&quot;: &quot;figure-2&quot;, &quot;sources&quot;: [&quot;day15/evidence/q2_results.json&quot;]}</metadata>
+<style>
+text{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;fill:#17212B} .title{font-size:25px;font-weight:700}.subtitle{font-size:14px;fill:#5E6B77}.axis{font-size:12px;fill:#5E6B77}.label{font-size:13px}.small{font-size:11px;fill:#5E6B77}.value{font-size:12px;font-weight:700}.note{font-size:12px;font-weight:600}.grid{stroke:#DCE3E8;stroke-width:1}.axisline{stroke:#8B98A3;stroke-width:1.2}
+</style>
+<rect width="960" height="560" fill="#FBFCFD"/>
+<text x="64" y="48" class="title">Aggregate detector accuracy hides family-level misses</text>
+<text x="64" y="73" class="subtitle">Recall by fault family on the full labelled set; intervals are 95% Wilson.</text>
+<line x1="262.0" y1="112" x2="262.0" y2="438" class="grid"/>
+<text x="262.0" y="462" text-anchor="middle" class="axis">0.00</text>
+<line x1="414.0" y1="112" x2="414.0" y2="438" class="grid"/>
+<text x="414.0" y="462" text-anchor="middle" class="axis">0.25</text>
+<line x1="566.0" y1="112" x2="566.0" y2="438" class="grid"/>
+<text x="566.0" y="462" text-anchor="middle" class="axis">0.50</text>
+<line x1="718.0" y1="112" x2="718.0" y2="438" class="grid"/>
+<text x="718.0" y="462" text-anchor="middle" class="axis">0.75</text>
+<line x1="870.0" y1="112" x2="870.0" y2="438" class="grid"/>
+<text x="870.0" y="462" text-anchor="middle" class="axis">1.00</text>
+<text x="70" y="139" class="label">F1 · structured output</text>
+<line x1="444.4" y1="135" x2="811.1" y2="135" stroke="#7554A3" stroke-width="5" stroke-linecap="round"/>
+<circle cx="667.3" cy="135" r="7" fill="#7554A3"/>
+<text x="680.3" y="139" class="value">0.67</text>
+<text x="70" y="191" class="label">F2 · latency</text>
+<line x1="320.9" y1="187" x2="687.6" y2="187" stroke="#146C94" stroke-width="5" stroke-linecap="round"/>
+<circle cx="464.7" cy="187" r="7" fill="#146C94"/>
+<text x="477.7" y="191" class="value">0.33</text>
+<text x="70" y="243" class="label">F3 · schema/value drift</text>
+<line x1="353.2" y1="239" x2="778.8" y2="239" stroke="#7554A3" stroke-width="5" stroke-linecap="round"/>
+<circle cx="566.0" cy="239" r="7" fill="#7554A3"/>
+<text x="579.0" y="243" class="value">0.50</text>
+<text x="70" y="295" class="label">F4 · provider error</text>
+<line x1="470.2" y1="291" x2="870.0" y2="291" stroke="#146C94" stroke-width="5" stroke-linecap="round"/>
+<circle cx="870.0" cy="291" r="7" fill="#146C94"/>
+<text x="883.0" y="295" class="value">1.00</text>
+<text x="70" y="347" class="label">F5 · context corruption</text>
+<line x1="353.2" y1="343" x2="778.8" y2="343" stroke="#7554A3" stroke-width="5" stroke-linecap="round"/>
+<circle cx="566.0" cy="343" r="7" fill="#7554A3"/>
+<text x="579.0" y="347" class="value">0.50</text>
+<text x="70" y="399" class="label">F6 · loop exhaustion</text>
+<line x1="572.1" y1="395" x2="870.0" y2="395" stroke="#146C94" stroke-width="5" stroke-linecap="round"/>
+<circle cx="870.0" cy="395" r="7" fill="#146C94"/>
+<text x="883.0" y="399" class="value">1.00</text>
+<text x="566" y="490" class="small">Group: </text>
+<circle cx="615" cy="486" r="5" fill="#146C94"/><text x="627" y="490" class="small">deterministic</text>
+<circle cx="725" cy="486" r="5" fill="#7554A3"/><text x="737" y="490" class="small">semantic</text>
+<rect x="67" y="476" width="425" height="36" rx="5" fill="#FAE8C8"/>
+<text x="80" y="499" class="note">10 misses: 6 threshold-reducible · 4 semantic escapes</text>
+<text x="64" y="550" class="small">Source: day15/evidence/q2_results.json</text>
+</svg>

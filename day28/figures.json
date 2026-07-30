@@ -1,0 +1,380 @@
+{
+  "figures": [
+    {
+      "id": "figure-1",
+      "filename": "figure-1-depth-reliability.svg",
+      "title": "Depth breaks the constant-hop reliability model",
+      "caption": "Figure 1. Required tool depth exposes a non-constant reliability process. Across 500 seeded trials at each depth, the measured curve first excludes naive p\u2081\u207f at hop 3 (0.818, 95% CI 0.781797\u20130.849354, versus 0.91833); at hop 8 it is 0.288 versus 0.796765. The result is specific to the configured decay simulator, and intervals widen at deep hops as fewer runs reach later steps.",
+      "sources": [
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "pointers": [
+            "/config/trials",
+            "/first_divergence_hop",
+            "/curve/2/measured",
+            "/curve/2/measured_ci95",
+            "/curve/2/naive",
+            "/curve/7/measured",
+            "/curve/7/naive"
+          ]
+        }
+      ],
+      "bindings": [
+        {
+          "token": "500",
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/config/trials"
+        },
+        {
+          "token": "3",
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/first_divergence_hop"
+        },
+        {
+          "token": "0.818",
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/curve/2/measured",
+          "format": ".3f"
+        },
+        {
+          "token": "0.781797",
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/curve/2/measured_ci95/0",
+          "format": ".6f"
+        },
+        {
+          "token": "0.849354",
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/curve/2/measured_ci95/1",
+          "format": ".6f"
+        },
+        {
+          "token": "0.91833",
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/curve/2/naive",
+          "format": ".5f"
+        },
+        {
+          "token": "0.288",
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/curve/7/measured",
+          "format": ".3f"
+        },
+        {
+          "token": "8",
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/curve/7/hops"
+        },
+        {
+          "token": "0.796765",
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/curve/7/naive",
+          "format": ".6f"
+        }
+      ]
+    },
+    {
+      "id": "figure-2",
+      "filename": "figure-2-detector-recall.svg",
+      "title": "Aggregate detector accuracy hides family-level misses",
+      "caption": "Figure 2. On the 44-example labelled set, detector precision was 1.0 but micro recall was 0.615385. The six family intervals are wide and overlapping; the informative evidence is the miss audit: all 10 false negatives were surfaced, with 6 threshold-reducible cases and 4 irreducible semantic escapes. The plot is descriptive and does not establish that one fault group is superior.",
+      "sources": [
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "pointers": [
+            "/full_labelled_set/n_samples",
+            "/full_labelled_set/overall_micro/precision",
+            "/full_labelled_set/overall_micro/recall",
+            "/full_labelled_set/no_hiding/total_false_negatives",
+            "/full_labelled_set/no_hiding/fn_taxonomy"
+          ]
+        }
+      ],
+      "bindings": [
+        {
+          "token": "44",
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/n_samples"
+        },
+        {
+          "token": "1.0",
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/overall_micro/precision",
+          "format": ".1f"
+        },
+        {
+          "token": "0.615385",
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/overall_micro/recall",
+          "format": ".6f"
+        },
+        {
+          "token": "10",
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/no_hiding/total_false_negatives"
+        },
+        {
+          "token": "6",
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/no_hiding/fn_taxonomy/threshold_reducible"
+        },
+        {
+          "token": "4",
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/no_hiding/fn_taxonomy/irreducible_semantic_escape"
+        }
+      ]
+    },
+    {
+      "id": "figure-3",
+      "filename": "figure-3-retry-crossover.svg",
+      "title": "Correlation moves the retry ceiling left",
+      "caption": "Figure 3. Each retry scenario used 200 shared seeds. Under independent faults, K=3 achieved 0.76 success at 1.9\u00d7 attempt amplification and p99 latency 76.0; under correlated faults, the last acceptable point was K=2, with 0.365 success at 1.735\u00d7 and p99 53.4. These recommendations enforce the configured 2.0\u00d7 amplification and 120-unit p99 ceilings; they are not universal retry constants.",
+      "sources": [
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointers": [
+            "/params/N",
+            "/ceilings",
+            "/independent/2",
+            "/correlated/1"
+          ]
+        },
+        {
+          "artifact": "day19/evidence/crossover.json",
+          "pointers": [
+            "/independent/recommended_max_attempts",
+            "/correlated/recommended_max_attempts"
+          ]
+        }
+      ],
+      "bindings": [
+        {
+          "token": "200",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/params/N"
+        },
+        {
+          "token": "3",
+          "artifact": "day19/evidence/crossover.json",
+          "pointer": "/independent/recommended_max_attempts"
+        },
+        {
+          "token": "0.76",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/independent/2/success_rate",
+          "format": ".2f"
+        },
+        {
+          "token": "1.9",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/independent/2/amplification",
+          "format": ".1f"
+        },
+        {
+          "token": "76.0",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/independent/2/p99_latency",
+          "format": ".1f"
+        },
+        {
+          "token": "2",
+          "artifact": "day19/evidence/crossover.json",
+          "pointer": "/correlated/recommended_max_attempts"
+        },
+        {
+          "token": "0.365",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/correlated/1/success_rate",
+          "format": ".3f"
+        },
+        {
+          "token": "1.735",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/correlated/1/amplification",
+          "format": ".3f"
+        },
+        {
+          "token": "53.4",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/correlated/1/p99_latency",
+          "format": ".1f"
+        },
+        {
+          "token": "2.0",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/ceilings/cost_ceiling_amplification",
+          "format": ".1f"
+        },
+        {
+          "token": "120",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/ceilings/p99_latency_budget"
+        }
+      ]
+    },
+    {
+      "id": "figure-4",
+      "filename": "figure-4-fallback-quality.svg",
+      "title": "Fallback closes the availability gap, not the quality gap",
+      "caption": "Figure 4. Across 120 paired requests with 40 scheduled primary outages, fallback raised availability from 0.6667 to 1.0 while strict quality among answered requests fell from 1.0 to 0.75. Of the 40 fallback answers, 30 were silently degraded. The advisory detector recalled 0.6667 of degraded fallback answers and missed all 10 borderline-token cases, so it was not used for core success scoring.",
+      "sources": [
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointers": [
+            "/params/n",
+            "/comparison/primary_only/availability/rate",
+            "/comparison/fallback_enabled/availability/rate",
+            "/comparison/primary_only/strict_quality_given_answered/rate",
+            "/comparison/fallback_enabled/strict_quality_given_answered/rate",
+            "/comparison/fallback_enabled/fallback_quality"
+          ]
+        },
+        {
+          "artifact": "day21/evidence/degradation_detector.json",
+          "pointers": [
+            "/recall/rate",
+            "/confusion/fn",
+            "/policy/forbidden_from_core_success_scoring"
+          ]
+        }
+      ],
+      "bindings": [
+        {
+          "token": "120",
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/params/n"
+        },
+        {
+          "token": "40",
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/fallback_enabled/fallback_quality/fallback_answers"
+        },
+        {
+          "token": "0.6667",
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/primary_only/availability/rate",
+          "format": ".4f"
+        },
+        {
+          "token": "1.0",
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/fallback_enabled/availability/rate",
+          "format": ".1f"
+        },
+        {
+          "token": "1.0",
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/primary_only/strict_quality_given_answered/rate",
+          "format": ".1f"
+        },
+        {
+          "token": "0.75",
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/fallback_enabled/strict_quality_given_answered/rate",
+          "format": ".2f"
+        },
+        {
+          "token": "30",
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/fallback_enabled/fallback_quality/silently_degraded/count"
+        },
+        {
+          "token": "0.6667",
+          "artifact": "day21/evidence/degradation_detector.json",
+          "pointer": "/recall/rate",
+          "format": ".4f"
+        },
+        {
+          "token": "10",
+          "artifact": "day21/evidence/degradation_detector.json",
+          "pointer": "/confusion/fn"
+        }
+      ]
+    },
+    {
+      "id": "figure-5",
+      "filename": "figure-5-policy-frontier.svg",
+      "title": "The base winner is efficient\u2014and conditional",
+      "caption": "Figure 5. Over 400 shared seeds, P4 selective guarded was the base-envelope winner: correct success 0.9325 (95% CI 0.9036\u20130.9532), mean cost 1.4656 (bootstrap 95% CI 1.41\u20131.5212), and p95 latency 50.0. Its correct-success rate fell to 0.695 under worse severity and 0.575 under tight budgets. P4 is a reference upper bound because retryability and fallback quality came from simulator truth and a strict simulator oracle.",
+      "sources": [
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointers": [
+            "/config/n",
+            "/selection/winner",
+            "/policy_metrics/P4_selective_guarded"
+          ]
+        },
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointers": [
+            "/attacks/worse_severity/metrics/user_visible_correct_success/rate",
+            "/attacks/tight_budgets/metrics/user_visible_correct_success/rate"
+          ]
+        }
+      ],
+      "bindings": [
+        {
+          "token": "400",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/config/n"
+        },
+        {
+          "token": "0.9325",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics/P4_selective_guarded/user_visible_correct_success/rate",
+          "format": ".4f"
+        },
+        {
+          "token": "0.9036",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics/P4_selective_guarded/user_visible_correct_success/wilson_ci95/0",
+          "format": ".4f"
+        },
+        {
+          "token": "0.9532",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics/P4_selective_guarded/user_visible_correct_success/wilson_ci95/1",
+          "format": ".4f"
+        },
+        {
+          "token": "1.4656",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics/P4_selective_guarded/mean_cost/value",
+          "format": ".4f"
+        },
+        {
+          "token": "1.41",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics/P4_selective_guarded/mean_cost/bootstrap_ci95/0",
+          "format": ".2f"
+        },
+        {
+          "token": "1.5212",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics/P4_selective_guarded/mean_cost/bootstrap_ci95/1",
+          "format": ".4f"
+        },
+        {
+          "token": "50.0",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics/P4_selective_guarded/p95_latency/value",
+          "format": ".1f"
+        },
+        {
+          "token": "0.695",
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointer": "/attacks/worse_severity/metrics/user_visible_correct_success/rate",
+          "format": ".3f"
+        },
+        {
+          "token": "0.575",
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointer": "/attacks/tight_budgets/metrics/user_visible_correct_success/rate",
+          "format": ".3f"
+        }
+      ]
+    }
+  ]
+}

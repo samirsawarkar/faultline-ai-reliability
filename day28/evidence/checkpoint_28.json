@@ -1,0 +1,25 @@
+{
+  "checkpoint": 28,
+  "checks": {
+    "all_substantive_prose_registered": true,
+    "every_claim_traced_to_committed_result": true,
+    "every_finding_has_honest_limitation": true,
+    "fail_condition_not_triggered": true,
+    "figures_regenerated": true,
+    "four_to_five_source_linked_figures": true,
+    "publication_ready_article": true,
+    "q1_to_q5_findings_first": true,
+    "standalone_captions": true
+  },
+  "claim_count": 29,
+  "fail_condition_triggered": false,
+  "figure_count": 5,
+  "limitation_count": 8,
+  "mission": "Convert Q1-Q5 into one rigorous, findings-first technical argument.",
+  "passed": true,
+  "required_evidence": [
+    "publication-ready article",
+    "4-5 figures",
+    "claim-to-result audit"
+  ]
+}

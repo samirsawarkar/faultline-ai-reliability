@@ -1,0 +1,1227 @@
+{
+  "limitations": [
+    {
+      "id": "L01",
+      "text": "All outcome rates come from seeded simulators or frozen synthetic evaluation sets; their intervals describe repeated draws inside those configured populations, not model-form error or production shift.",
+      "sources": [
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/config"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/dataset_version"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/params"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/params"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/config"
+        }
+      ],
+      "bindings": []
+    },
+    {
+      "id": "L02",
+      "text": "For Q1, the naive prediction remains inside the measured interval at hops 1 and 2, and only 187 runs reached hop 8 in the conditional per-hop estimate; the headline begins at hop 3, not hop 1.",
+      "sources": [
+        {
+          "artifact": "day17/evidence/subgroup_report.json",
+          "pointer": "/hops/headline_contradictions"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/per_hop_reliability/7/reached"
+        }
+      ],
+      "bindings": [
+        {
+          "token": "1",
+          "artifact": "day17/evidence/subgroup_report.json",
+          "pointer": "/hops/headline_contradictions/0/hops"
+        },
+        {
+          "token": "2",
+          "artifact": "day17/evidence/subgroup_report.json",
+          "pointer": "/hops/headline_contradictions/1/hops"
+        },
+        {
+          "token": "187",
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/per_hop_reliability/7/reached"
+        },
+        {
+          "token": "8",
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/per_hop_reliability/7/hop"
+        },
+        {
+          "token": "3",
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/first_divergence_hop"
+        }
+      ]
+    },
+    {
+      "id": "L03",
+      "text": "For Q2, the labelled set has 44 examples, group confidence intervals overlap, most fault-by-severity cells are below five samples, and no contradiction survives Holm correction; the data locate misses but do not prove group superiority.",
+      "sources": [
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set"
+        },
+        {
+          "artifact": "day17/evidence/subgroup_report.json",
+          "pointer": "/known_limitations"
+        },
+        {
+          "artifact": "day17/evidence/subgroup_report.json",
+          "pointer": "/significant_contradictions"
+        }
+      ],
+      "bindings": [
+        {
+          "token": "44",
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/n_samples"
+        }
+      ]
+    },
+    {
+      "id": "L04",
+      "text": "The narrow semantic judge is deterministic and simulated, was tested on 24 examples, reached kappa 0.5 against the human label, and had zero agreement on the borderline-token slice; it is not validated for standalone or core-success scoring.",
+      "sources": [
+        {
+          "artifact": "day16/evidence/agreement_report.json",
+          "pointer": ""
+        }
+      ],
+      "bindings": [
+        {
+          "token": "24",
+          "artifact": "day16/evidence/agreement_report.json",
+          "pointer": "/validation_set_size"
+        },
+        {
+          "token": "0.5",
+          "artifact": "day16/evidence/agreement_report.json",
+          "pointer": "/judge_vs_human/cohen_kappa",
+          "format": ".1f"
+        }
+      ]
+    },
+    {
+      "id": "L05",
+      "text": "Q3 uses a configured retry-storm simulator, virtual latency, and decision ceilings of 2.0\u00d7 attempt amplification and 120 latency units; its retry caps are operating-envelope decisions, not constants of nature.",
+      "sources": [
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/ceilings"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/params"
+        }
+      ],
+      "bindings": [
+        {
+          "token": "2.0",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/ceilings/cost_ceiling_amplification",
+          "format": ".1f"
+        },
+        {
+          "token": "120",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/ceilings/p99_latency_budget"
+        }
+      ]
+    },
+    {
+      "id": "L06",
+      "text": "Q4 schedules every third primary request to fail and scores fallback quality with a strict human rubric and oracle-backed labels; its degradation rate and detector recall are properties of that constructed mix.",
+      "sources": [
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/params"
+        },
+        {
+          "artifact": "day21/evidence/degradation_detector.json",
+          "pointer": "/ground_truth"
+        }
+      ],
+      "bindings": []
+    },
+    {
+      "id": "L07",
+      "text": "Q5 gives P4 a perfect transient-versus-persistent retryability signal and a strict simulator-oracle fallback guard; both stress attacks break at least one selection threshold, so P4 is a reference upper bound rather than a deployment claim.",
+      "sources": [
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/config"
+        },
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointer": "/attacks"
+        },
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": "/model_caveats"
+        }
+      ],
+      "bindings": []
+    },
+    {
+      "id": "L08",
+      "text": "The five studies share definitions and an evidence discipline but not one common experimental population; this article synthesizes mechanisms and decision rules, not a pooled causal effect.",
+      "sources": [
+        {
+          "artifact": "day17/evidence/subgroup_report.json",
+          "pointer": "/known_limitations/2"
+        },
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": "/model_caveats/2"
+        }
+      ],
+      "bindings": []
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "kind": "synthesis",
+      "text": "The five experiments support one bounded conclusion: recovery is reliable only when it improves user-visible correctness without violating explicit cost and latency limits; availability, detector aggregate scores, and raw retry success are incomplete on their own.",
+      "sources": [
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/finding"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/q2_findings"
+        },
+        {
+          "artifact": "day19/evidence/q3_conclusion.json",
+          "pointer": "/statement"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/effects"
+        },
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": "/tradeoff"
+        }
+      ],
+      "bindings": [],
+      "limitations": [
+        "L01",
+        "L08"
+      ]
+    },
+    {
+      "id": "C02",
+      "kind": "finding",
+      "text": "Q1 \u2014 The single-hop estimate was 0.972, yet at eight required hops measured end-to-end success was 0.288 (95% CI 0.250043\u20130.329189) versus the naive constant-hop prediction of 0.796765. The naive prediction first left the measured interval at hop 3. ([Q1 result](../day07/evidence/q1_results.json))",
+      "sources": [
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": ""
+        }
+      ],
+      "bindings": [
+        {
+          "token": "0.972",
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/single_hop_reliability/p1",
+          "format": ".3f"
+        },
+        {
+          "token": "0.288",
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/curve/7/measured",
+          "format": ".3f"
+        },
+        {
+          "token": "0.250043",
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/curve/7/measured_ci95/0",
+          "format": ".6f"
+        },
+        {
+          "token": "0.329189",
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/curve/7/measured_ci95/1",
+          "format": ".6f"
+        },
+        {
+          "token": "0.796765",
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/curve/7/naive",
+          "format": ".6f"
+        },
+        {
+          "token": "3",
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/first_divergence_hop"
+        }
+      ],
+      "limitations": [
+        "L01",
+        "L02"
+      ]
+    },
+    {
+      "id": "C03",
+      "kind": "finding",
+      "text": "Q2 \u2014 On 44 labelled examples, the detector produced zero false positives and 10 false negatives: precision 1.0, recall 0.615385, and F1 0.761905. 6 misses were threshold-reducible; 4 were semantic escapes that deterministic checks could not close. ([Q2 result](../day15/evidence/q2_results.json))",
+      "sources": [
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set"
+        }
+      ],
+      "bindings": [
+        {
+          "token": "44",
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/n_samples"
+        },
+        {
+          "token": "10",
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/overall_micro/fn"
+        },
+        {
+          "token": "1.0",
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/overall_micro/precision",
+          "format": ".1f"
+        },
+        {
+          "token": "0.615385",
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/overall_micro/recall",
+          "format": ".6f"
+        },
+        {
+          "token": "0.761905",
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/overall_micro/f1",
+          "format": ".6f"
+        },
+        {
+          "token": "6",
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/no_hiding/fn_taxonomy/threshold_reducible",
+          "format": ""
+        },
+        {
+          "token": "4",
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/no_hiding/fn_taxonomy/irreducible_semantic_escape",
+          "format": ""
+        }
+      ],
+      "limitations": [
+        "L01",
+        "L03"
+      ]
+    },
+    {
+      "id": "C04",
+      "kind": "finding",
+      "text": "The advisory semantic judge did not close that gap: on its 24-example validation set it reached raw agreement 0.75 and kappa 0.5 against the human label, with 6 false accepts and zero agreement on the borderline-token slice. The committed verdict forbids standalone and core-success use. ([judge validation](../day16/evidence/agreement_report.json))",
+      "sources": [
+        {
+          "artifact": "day16/evidence/agreement_report.json",
+          "pointer": ""
+        }
+      ],
+      "bindings": [
+        {
+          "token": "24",
+          "artifact": "day16/evidence/agreement_report.json",
+          "pointer": "/validation_set_size"
+        },
+        {
+          "token": "0.75",
+          "artifact": "day16/evidence/agreement_report.json",
+          "pointer": "/judge_vs_human/raw_agreement",
+          "format": ".2f"
+        },
+        {
+          "token": "0.5",
+          "artifact": "day16/evidence/agreement_report.json",
+          "pointer": "/judge_vs_human/cohen_kappa",
+          "format": ".1f"
+        },
+        {
+          "token": "6",
+          "artifact": "day16/evidence/agreement_report.json",
+          "pointer": "/judge_vs_human/confusion_judge_vs_human/fp",
+          "format": ""
+        }
+      ],
+      "limitations": [
+        "L01",
+        "L04"
+      ]
+    },
+    {
+      "id": "C05",
+      "kind": "finding",
+      "text": "Q3 \u2014 Under independent failures, the last retry point inside the configured ceilings was K=3: success 0.76, attempt amplification 1.9\u00d7, and p99 latency 76.0. Under correlated failures it moved to K=2: success 0.365, amplification 1.735\u00d7, and p99 53.4. ([Q3 sweep](../day19/evidence/retry_sweep.json))",
+      "sources": [
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": ""
+        },
+        {
+          "artifact": "day19/evidence/crossover.json",
+          "pointer": ""
+        }
+      ],
+      "bindings": [
+        {
+          "token": "3",
+          "artifact": "day19/evidence/crossover.json",
+          "pointer": "/independent/recommended_max_attempts"
+        },
+        {
+          "token": "0.76",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/independent/2/success_rate",
+          "format": ".2f"
+        },
+        {
+          "token": "1.9",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/independent/2/amplification",
+          "format": ".1f"
+        },
+        {
+          "token": "76.0",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/independent/2/p99_latency",
+          "format": ".1f"
+        },
+        {
+          "token": "2",
+          "artifact": "day19/evidence/crossover.json",
+          "pointer": "/correlated/recommended_max_attempts"
+        },
+        {
+          "token": "0.365",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/correlated/1/success_rate",
+          "format": ".3f"
+        },
+        {
+          "token": "1.735",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/correlated/1/amplification",
+          "format": ".3f"
+        },
+        {
+          "token": "53.4",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/correlated/1/p99_latency",
+          "format": ".1f"
+        }
+      ],
+      "limitations": [
+        "L01",
+        "L05"
+      ]
+    },
+    {
+      "id": "C06",
+      "kind": "finding",
+      "text": "At the same K=3, independent and correlated success were 0.76 and 0.415 on shared seeds; the paired McNemar comparison reported p=2.69518463696556e-16. Correlation changed both the outcome and the acceptable policy boundary. ([paired correlation result](../day19/evidence/crossover.json))",
+      "sources": [
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": ""
+        },
+        {
+          "artifact": "day19/evidence/crossover.json",
+          "pointer": "/paired_correlation_effect"
+        }
+      ],
+      "bindings": [
+        {
+          "token": "3",
+          "artifact": "day19/evidence/crossover.json",
+          "pointer": "/paired_correlation_effect/K"
+        },
+        {
+          "token": "0.76",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/independent/2/success_rate",
+          "format": ".2f"
+        },
+        {
+          "token": "0.415",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/correlated/2/success_rate",
+          "format": ".3f"
+        },
+        {
+          "token": "2.69518463696556e-16",
+          "artifact": "day19/evidence/crossover.json",
+          "pointer": "/paired_correlation_effect/mcnemar/p_value",
+          "format": ".14e"
+        }
+      ],
+      "limitations": [
+        "L01",
+        "L05"
+      ]
+    },
+    {
+      "id": "C07",
+      "kind": "finding",
+      "text": "Q4 \u2014 On 120 paired requests, fallback increased availability from 0.6667 to 1.0 while strict quality among answered requests fell from 1.0 to 0.75. Strict service pass still rose from 0.6667 to 0.75, which is why availability and correctness must be read together rather than substituted for one another. ([Q4 comparison](../day21/evidence/availability_quality_comparison.json))",
+      "sources": [
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": ""
+        }
+      ],
+      "bindings": [
+        {
+          "token": "120",
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/params/n"
+        },
+        {
+          "token": "0.6667",
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/primary_only/availability/rate",
+          "format": ".4f"
+        },
+        {
+          "token": "1.0",
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/fallback_enabled/availability/rate",
+          "format": ".1f"
+        },
+        {
+          "token": "1.0",
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/primary_only/strict_quality_given_answered/rate",
+          "format": ".1f"
+        },
+        {
+          "token": "0.75",
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/fallback_enabled/strict_quality_given_answered/rate",
+          "format": ".2f"
+        }
+      ],
+      "limitations": [
+        "L01",
+        "L04",
+        "L06"
+      ]
+    },
+    {
+      "id": "C08",
+      "kind": "finding",
+      "text": "The fallback slice contained 40 answers: 10 strictly acceptable and 30 silently degraded. The advisory detector found 20 of the 30 degraded answers, for recall 0.6667 (95% CI 0.4878\u20130.8077), and every miss came from the known borderline-token slice. ([degradation detector](../day21/evidence/degradation_detector.json))",
+      "sources": [
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/fallback_enabled/fallback_quality"
+        },
+        {
+          "artifact": "day21/evidence/degradation_detector.json",
+          "pointer": ""
+        }
+      ],
+      "bindings": [
+        {
+          "token": "40",
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/fallback_enabled/fallback_quality/fallback_answers"
+        },
+        {
+          "token": "10",
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/fallback_enabled/fallback_quality/strictly_acceptable/count"
+        },
+        {
+          "token": "30",
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/fallback_enabled/fallback_quality/silently_degraded/count"
+        },
+        {
+          "token": "20",
+          "artifact": "day21/evidence/degradation_detector.json",
+          "pointer": "/confusion/tp"
+        },
+        {
+          "token": "0.6667",
+          "artifact": "day21/evidence/degradation_detector.json",
+          "pointer": "/recall/rate",
+          "format": ".4f"
+        },
+        {
+          "token": "0.4878",
+          "artifact": "day21/evidence/degradation_detector.json",
+          "pointer": "/recall/wilson_ci95/0",
+          "format": ".4f"
+        },
+        {
+          "token": "0.8077",
+          "artifact": "day21/evidence/degradation_detector.json",
+          "pointer": "/recall/wilson_ci95/1",
+          "format": ".4f"
+        }
+      ],
+      "limitations": [
+        "L01",
+        "L04",
+        "L06"
+      ]
+    },
+    {
+      "id": "C09",
+      "kind": "finding",
+      "text": "Q5 \u2014 The constraint-first screen required a success-interval lower bound of 0.78, wrong-answer upper bound of 0.02, mean-cost upper bound of 1.75, and p95-latency upper bound of 80. Only P1 bounded retry and P4 selective guarded were eligible. ([policy selection](../day24/evidence/policy_comparison.json))",
+      "sources": [
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/selection"
+        }
+      ],
+      "bindings": [
+        {
+          "token": "0.78",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/selection/thresholds/min_success_ci_lower",
+          "format": ".2f"
+        },
+        {
+          "token": "0.02",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/selection/thresholds/max_wrong_ci_upper",
+          "format": ".2f"
+        },
+        {
+          "token": "1.75",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/selection/thresholds/max_mean_cost_ci_upper",
+          "format": ".2f"
+        },
+        {
+          "token": "80",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/selection/thresholds/max_p95_latency_ci_upper",
+          "format": ".0f"
+        }
+      ],
+      "limitations": [
+        "L01",
+        "L07"
+      ]
+    },
+    {
+      "id": "C10",
+      "kind": "finding",
+      "text": "Inside the base envelope, P4 delivered 0.9325 correct success (95% CI 0.9036\u20130.9532), mean cost 1.4656 (bootstrap 95% CI 1.41\u20131.5212), and p95 latency 50.0. It had no observed wrong visible answers, whose Wilson upper bound was 0.0095. ([P4 metrics](../day24/evidence/policy_comparison.json))",
+      "sources": [
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics/P4_selective_guarded"
+        }
+      ],
+      "bindings": [
+        {
+          "token": "0.9325",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics/P4_selective_guarded/user_visible_correct_success/rate",
+          "format": ".4f"
+        },
+        {
+          "token": "0.9036",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics/P4_selective_guarded/user_visible_correct_success/wilson_ci95/0",
+          "format": ".4f"
+        },
+        {
+          "token": "0.9532",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics/P4_selective_guarded/user_visible_correct_success/wilson_ci95/1",
+          "format": ".4f"
+        },
+        {
+          "token": "1.4656",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics/P4_selective_guarded/mean_cost/value",
+          "format": ".4f"
+        },
+        {
+          "token": "1.41",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics/P4_selective_guarded/mean_cost/bootstrap_ci95/0",
+          "format": ".2f"
+        },
+        {
+          "token": "1.5212",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics/P4_selective_guarded/mean_cost/bootstrap_ci95/1",
+          "format": ".4f"
+        },
+        {
+          "token": "50.0",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics/P4_selective_guarded/p95_latency/value",
+          "format": ".1f"
+        },
+        {
+          "token": "0.0095",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics/P4_selective_guarded/wrong_visible_answer/wilson_ci95/1",
+          "format": ".4f"
+        }
+      ],
+      "limitations": [
+        "L01",
+        "L07"
+      ]
+    },
+    {
+      "id": "C11",
+      "kind": "finding",
+      "text": "Against the other eligible policy, P1, P4 gained 0.095 correct-success rate; McNemar p=1.94670606018067e-09. Its success-per-cost advantage was 0.0485 (paired bootstrap 95% CI 0.0319\u20130.0664), and its success-per-100-latency advantage was 0.6939 (0.5544\u20130.8367). ([paired policy statistics](../day24/evidence/paired_statistics.json))",
+      "sources": [
+        {
+          "artifact": "day24/evidence/paired_statistics.json",
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry"
+        }
+      ],
+      "bindings": [
+        {
+          "token": "0.095",
+          "artifact": "day24/evidence/paired_statistics.json",
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry/success_rate_delta",
+          "format": ".3f"
+        },
+        {
+          "token": "1.94670606018067e-09",
+          "artifact": "day24/evidence/paired_statistics.json",
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry/success_mcnemar/p_value",
+          "format": ".14e"
+        },
+        {
+          "token": "0.0485",
+          "artifact": "day24/evidence/paired_statistics.json",
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry/success_per_cost_delta/value",
+          "format": ".4f"
+        },
+        {
+          "token": "0.0319",
+          "artifact": "day24/evidence/paired_statistics.json",
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry/success_per_cost_delta/paired_bootstrap_ci95/0",
+          "format": ".4f"
+        },
+        {
+          "token": "0.0664",
+          "artifact": "day24/evidence/paired_statistics.json",
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry/success_per_cost_delta/paired_bootstrap_ci95/1",
+          "format": ".4f"
+        },
+        {
+          "token": "0.6939",
+          "artifact": "day24/evidence/paired_statistics.json",
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry/success_per_100_latency_delta/value",
+          "format": ".4f"
+        },
+        {
+          "token": "0.5544",
+          "artifact": "day24/evidence/paired_statistics.json",
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry/success_per_100_latency_delta/paired_bootstrap_ci95/0",
+          "format": ".4f"
+        },
+        {
+          "token": "0.8367",
+          "artifact": "day24/evidence/paired_statistics.json",
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry/success_per_100_latency_delta/paired_bootstrap_ci95/1",
+          "format": ".4f"
+        }
+      ],
+      "limitations": [
+        "L01",
+        "L07"
+      ]
+    },
+    {
+      "id": "C12",
+      "kind": "finding",
+      "text": "The base winner did not survive either attack: correct success fell to 0.695 under worse severity, with the success and mean-cost thresholds failing, and to 0.575 under tight budgets, with the success threshold failing. ([winner attack](../day24/evidence/winner_attack.json))",
+      "sources": [
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointer": "/attacks"
+        }
+      ],
+      "bindings": [
+        {
+          "token": "0.695",
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointer": "/attacks/worse_severity/metrics/user_visible_correct_success/rate",
+          "format": ".3f"
+        },
+        {
+          "token": "0.575",
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointer": "/attacks/tight_budgets/metrics/user_visible_correct_success/rate",
+          "format": ".3f"
+        }
+      ],
+      "limitations": [
+        "L01",
+        "L07"
+      ]
+    },
+    {
+      "id": "C13",
+      "kind": "recommendation",
+      "text": "Taken together, the experiments favor a selective recovery policy with four properties: route only faults that are plausibly recoverable, cap attempts and per-request budgets, gate fallback on answer quality, and preserve provenance so fallback behavior remains measurable.",
+      "sources": [
+        {
+          "artifact": "day19/evidence/q3_conclusion.json",
+          "pointer": ""
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/metric_definitions"
+        },
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": "/tradeoff"
+        }
+      ],
+      "bindings": [],
+      "limitations": [
+        "L01",
+        "L04",
+        "L05",
+        "L06",
+        "L07",
+        "L08"
+      ]
+    },
+    {
+      "id": "C14",
+      "kind": "method",
+      "text": "The evidence base consists of 500 seeded trials per Q1 depth, 44 labelled Q2 examples, 200 shared seeds per Q3 retry scenario, 120 paired Q4 requests, and 400 shared Q5 policy seeds. Each experiment keeps availability, correctness, cost, and latency as separate fields rather than collapsing them into one score.",
+      "sources": [
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/config/trials"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/n_samples"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/params/N"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/params/n"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/config/n"
+        }
+      ],
+      "bindings": [
+        {
+          "token": "500",
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/config/trials"
+        },
+        {
+          "token": "44",
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/n_samples"
+        },
+        {
+          "token": "200",
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/params/N"
+        },
+        {
+          "token": "120",
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/params/n"
+        },
+        {
+          "token": "400",
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/config/n"
+        }
+      ],
+      "limitations": []
+    },
+    {
+      "id": "C15",
+      "kind": "method",
+      "text": "Proportions are reported with Wilson intervals; policy cost and latency summaries use deterministic paired bootstrap intervals; same-seed binary outcomes use McNemar comparisons. Policy selection applies uncertainty-aware eligibility thresholds before comparing efficiency, so a fast or cheap policy cannot win after failing correctness or wrong-answer constraints.",
+      "sources": [
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/paired_tests"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/selection"
+        },
+        {
+          "artifact": "day24/evidence/paired_statistics.json",
+          "pointer": "/paired_dominance_vs_other_eligible"
+        }
+      ],
+      "bindings": [],
+      "limitations": []
+    },
+    {
+      "id": "C16",
+      "kind": "synthesis",
+      "text": "The defensible product claim is therefore conditional, not universal: within a measured operating envelope, selective and quality-gated recovery can improve correct user-visible success per unit cost and latency; outside that envelope, the policy must be re-measured rather than trusted by analogy.",
+      "sources": [
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": "/statement"
+        },
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointer": "/boundary_finding"
+        }
+      ],
+      "bindings": [],
+      "limitations": [
+        "L01",
+        "L07",
+        "L08"
+      ]
+    },
+    {
+      "id": "C17",
+      "kind": "synthesis",
+      "text": "An AI system can remain \u201cup\u201d while returning worse answers. It can detect many faults while missing the ones that matter. It can recover more requests while spending too much time and money to be useful. The argument below treats those as measurement problems: define the user-visible outcome, preserve paired evidence, enforce ceilings, and publish the boundary where a recommendation stops working.",
+      "sources": [
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/no_hiding"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/ceilings"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/effects"
+        },
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointer": "/boundary_finding"
+        }
+      ],
+      "bindings": [],
+      "limitations": [
+        "L01",
+        "L08"
+      ]
+    },
+    {
+      "id": "C18",
+      "kind": "synthesis",
+      "text": "The result is not one universal recovery recipe. It is a sequence of five falsifiable findings, each paired with the limitation that prevents it from becoming a stronger claim than the evidence supports.",
+      "sources": [
+        {
+          "artifact": "day17/evidence/subgroup_report.json",
+          "pointer": "/known_limitations"
+        },
+        {
+          "artifact": "day19/evidence/q3_conclusion.json",
+          "pointer": "/statement"
+        },
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": "/model_caveats"
+        }
+      ],
+      "bindings": [],
+      "limitations": [
+        "L01",
+        "L02",
+        "L03",
+        "L04",
+        "L05",
+        "L06",
+        "L07",
+        "L08"
+      ]
+    },
+    {
+      "id": "C19",
+      "kind": "finding",
+      "text": "The corrected curve multiplies the measured conditional reliability at each reached hop. It nearly follows the observed curve because it admits the fact the naive model suppresses: later hops are not exchangeable with the first.",
+      "sources": [
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/curve"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/per_hop_reliability"
+        }
+      ],
+      "bindings": [],
+      "limitations": [
+        "L01",
+        "L02"
+      ]
+    },
+    {
+      "id": "C20",
+      "kind": "recommendation",
+      "text": "This changes the engineering question. \u201cWhat is detector accuracy?\u201d is too coarse. The useful questions are which fault family escaped, whether a threshold can close it, and whether the proposed semantic mechanism has itself been validated on that slice.",
+      "sources": [
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/no_hiding"
+        },
+        {
+          "artifact": "day16/evidence/agreement_report.json",
+          "pointer": "/per_slice_agreement"
+        },
+        {
+          "artifact": "day17/evidence/subgroup_report.json",
+          "pointer": "/detection"
+        }
+      ],
+      "bindings": [],
+      "limitations": [
+        "L03",
+        "L04"
+      ]
+    },
+    {
+      "id": "C21",
+      "kind": "finding",
+      "text": "The crossover is the operational point: a retry can recover an independent transient fault, but during a shared outage it adds work to the same impaired component. A ceiling makes that difference enforceable.",
+      "sources": [
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": ""
+        },
+        {
+          "artifact": "day19/evidence/crossover.json",
+          "pointer": "/fail_condition_guard"
+        }
+      ],
+      "bindings": [],
+      "limitations": [
+        "L01",
+        "L05"
+      ]
+    },
+    {
+      "id": "C22",
+      "kind": "finding",
+      "text": "This is the central warning. A route-level dashboard sees a complete answer stream. The quality measurement sees that three quarters of fallback answers failed the strict rubric, and the detector sees only two thirds of those failures.",
+      "sources": [
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/fallback_enabled"
+        },
+        {
+          "artifact": "day21/evidence/degradation_detector.json",
+          "pointer": "/recall"
+        }
+      ],
+      "bindings": [],
+      "limitations": [
+        "L01",
+        "L04",
+        "L06"
+      ]
+    },
+    {
+      "id": "C23",
+      "kind": "recommendation",
+      "text": "The winning point is therefore useful for a design target, not as a deployment promise. Its advantage explains what to build; its attacks define what must be measured before trust can transfer.",
+      "sources": [
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": ""
+        },
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointer": ""
+        }
+      ],
+      "bindings": [],
+      "limitations": [
+        "L01",
+        "L07",
+        "L08"
+      ]
+    },
+    {
+      "id": "C24",
+      "kind": "method",
+      "text": "The experimental unit is the seed. Policies being compared receive the same seed whenever the question is causal at the request level. This converts run-to-run heterogeneity from noise into matched evidence and makes the discordant outcomes inspectable.",
+      "sources": [
+        {
+          "artifact": "day19/evidence/crossover.json",
+          "pointer": "/paired_correlation_effect"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/paired_tests"
+        },
+        {
+          "artifact": "day24/evidence/paired_statistics.json",
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry/same_seed_population"
+        }
+      ],
+      "bindings": [],
+      "limitations": []
+    },
+    {
+      "id": "C25",
+      "kind": "method",
+      "text": "The core outcome is strict user-visible service success: an answer exists, passes the correctness or quality ground truth, and remains inside the defined budget. Availability, answered quality, wrong visible answers, cost, tail latency, detector decisions, and provenance are retained as separate measures. No semantic judge contributes to the oracle label.",
+      "sources": [
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/metric_definitions"
+        },
+        {
+          "artifact": "day21/evidence/degradation_detector.json",
+          "pointer": "/policy"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/fail_condition_guard"
+        }
+      ],
+      "bindings": [],
+      "limitations": []
+    },
+    {
+      "id": "C26",
+      "kind": "synthesis",
+      "text": "That composition follows from the failure chain. Depth creates more opportunities for non-exchangeable failure. Detection separates structurally visible faults from semantic escapes but cannot validate itself. Retries help the transient slice until correlation makes them amplify load. Fallback fills availability holes while creating a second quality distribution. A policy can combine those mechanisms only after correctness, wrong-answer risk, cost, and latency become explicit constraints.",
+      "sources": [
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/finding"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/q2_findings"
+        },
+        {
+          "artifact": "day19/evidence/q3_conclusion.json",
+          "pointer": "/statement"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/effects"
+        },
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": "/tradeoff"
+        }
+      ],
+      "bindings": [],
+      "limitations": [
+        "L01",
+        "L04",
+        "L05",
+        "L06",
+        "L07",
+        "L08"
+      ]
+    },
+    {
+      "id": "C27",
+      "kind": "recommendation",
+      "text": "The order matters:",
+      "sources": [
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/selection"
+        },
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointer": "/attacks"
+        }
+      ],
+      "bindings": [],
+      "limitations": [
+        "L01",
+        "L07",
+        "L08"
+      ]
+    },
+    {
+      "id": "C28",
+      "kind": "synthesis",
+      "text": "This is deliberately stricter than \u201cmore requests recovered.\u201d It treats containment and abstention as possible correct outcomes when the alternative is a wrong visible answer, while still charging their availability cost.",
+      "sources": [
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics"
+        },
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": "/tradeoff"
+        }
+      ],
+      "bindings": [],
+      "limitations": [
+        "L01",
+        "L07",
+        "L08"
+      ]
+    },
+    {
+      "id": "C29",
+      "kind": "synthesis",
+      "text": "That wording is narrower than a promise of \u201cself-healing AI,\u201d and more useful. It names the outcome, the comparison, the budget, the uncertainty, and the boundary that invalidates the recommendation. A recovery system earns trust by surviving that entire sentence.",
+      "sources": [
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": ""
+        },
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointer": "/boundary_finding"
+        }
+      ],
+      "bindings": [],
+      "limitations": [
+        "L01",
+        "L07",
+        "L08"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1829 @@
+{
+  "article": "day28/ARTICLE.md",
+  "checks": {
+    "all_claims_registered_once": true,
+    "all_numeric_bindings_resolve": true,
+    "all_substantive_prose_registered": true,
+    "claim_text_matches_article": true,
+    "every_finding_has_limitation": true,
+    "every_finding_has_source": true,
+    "every_numeric_token_bound": true,
+    "figures_source_linked": true,
+    "findings_first": true,
+    "four_to_five_figures": true,
+    "limitations_explicit": true,
+    "source_results_committed": true,
+    "standalone_captions_present": true
+  },
+  "claim_count": 29,
+  "claims": {
+    "C01": {
+      "bindings": [],
+      "kind": "synthesis",
+      "limitations": [
+        "L01",
+        "L08"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/finding"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/q2_findings"
+        },
+        {
+          "artifact": "day19/evidence/q3_conclusion.json",
+          "pointer": "/statement"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/effects"
+        },
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": "/tradeoff"
+        }
+      ]
+    },
+    "C02": {
+      "bindings": [
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "format": ".3f",
+          "matched": true,
+          "pointer": "/single_hop_reliability/p1",
+          "resolved": "0.972",
+          "token": "0.972"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "format": ".3f",
+          "matched": true,
+          "pointer": "/curve/7/measured",
+          "resolved": "0.288",
+          "token": "0.288"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "format": ".6f",
+          "matched": true,
+          "pointer": "/curve/7/measured_ci95/0",
+          "resolved": "0.250043",
+          "token": "0.250043"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "format": ".6f",
+          "matched": true,
+          "pointer": "/curve/7/measured_ci95/1",
+          "resolved": "0.329189",
+          "token": "0.329189"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "format": ".6f",
+          "matched": true,
+          "pointer": "/curve/7/naive",
+          "resolved": "0.796765",
+          "token": "0.796765"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "matched": true,
+          "pointer": "/first_divergence_hop",
+          "resolved": "3",
+          "token": "3"
+        }
+      ],
+      "kind": "finding",
+      "limitations": [
+        "L01",
+        "L02"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": ""
+        }
+      ]
+    },
+    "C03": {
+      "bindings": [
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "matched": true,
+          "pointer": "/full_labelled_set/n_samples",
+          "resolved": "44",
+          "token": "44"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "matched": true,
+          "pointer": "/full_labelled_set/overall_micro/fn",
+          "resolved": "10",
+          "token": "10"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "format": ".1f",
+          "matched": true,
+          "pointer": "/full_labelled_set/overall_micro/precision",
+          "resolved": "1.0",
+          "token": "1.0"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "format": ".6f",
+          "matched": true,
+          "pointer": "/full_labelled_set/overall_micro/recall",
+          "resolved": "0.615385",
+          "token": "0.615385"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "format": ".6f",
+          "matched": true,
+          "pointer": "/full_labelled_set/overall_micro/f1",
+          "resolved": "0.761905",
+          "token": "0.761905"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "format": "",
+          "matched": true,
+          "pointer": "/full_labelled_set/no_hiding/fn_taxonomy/threshold_reducible",
+          "resolved": "6",
+          "token": "6"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "format": "",
+          "matched": true,
+          "pointer": "/full_labelled_set/no_hiding/fn_taxonomy/irreducible_semantic_escape",
+          "resolved": "4",
+          "token": "4"
+        }
+      ],
+      "kind": "finding",
+      "limitations": [
+        "L01",
+        "L03"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set"
+        }
+      ]
+    },
+    "C04": {
+      "bindings": [
+        {
+          "artifact": "day16/evidence/agreement_report.json",
+          "matched": true,
+          "pointer": "/validation_set_size",
+          "resolved": "24",
+          "token": "24"
+        },
+        {
+          "artifact": "day16/evidence/agreement_report.json",
+          "format": ".2f",
+          "matched": true,
+          "pointer": "/judge_vs_human/raw_agreement",
+          "resolved": "0.75",
+          "token": "0.75"
+        },
+        {
+          "artifact": "day16/evidence/agreement_report.json",
+          "format": ".1f",
+          "matched": true,
+          "pointer": "/judge_vs_human/cohen_kappa",
+          "resolved": "0.5",
+          "token": "0.5"
+        },
+        {
+          "artifact": "day16/evidence/agreement_report.json",
+          "format": "",
+          "matched": true,
+          "pointer": "/judge_vs_human/confusion_judge_vs_human/fp",
+          "resolved": "6",
+          "token": "6"
+        }
+      ],
+      "kind": "finding",
+      "limitations": [
+        "L01",
+        "L04"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day16/evidence/agreement_report.json",
+          "pointer": ""
+        }
+      ]
+    },
+    "C05": {
+      "bindings": [
+        {
+          "artifact": "day19/evidence/crossover.json",
+          "matched": true,
+          "pointer": "/independent/recommended_max_attempts",
+          "resolved": "3",
+          "token": "3"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "format": ".2f",
+          "matched": true,
+          "pointer": "/independent/2/success_rate",
+          "resolved": "0.76",
+          "token": "0.76"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "format": ".1f",
+          "matched": true,
+          "pointer": "/independent/2/amplification",
+          "resolved": "1.9",
+          "token": "1.9"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "format": ".1f",
+          "matched": true,
+          "pointer": "/independent/2/p99_latency",
+          "resolved": "76.0",
+          "token": "76.0"
+        },
+        {
+          "artifact": "day19/evidence/crossover.json",
+          "matched": true,
+          "pointer": "/correlated/recommended_max_attempts",
+          "resolved": "2",
+          "token": "2"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "format": ".3f",
+          "matched": true,
+          "pointer": "/correlated/1/success_rate",
+          "resolved": "0.365",
+          "token": "0.365"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "format": ".3f",
+          "matched": true,
+          "pointer": "/correlated/1/amplification",
+          "resolved": "1.735",
+          "token": "1.735"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "format": ".1f",
+          "matched": true,
+          "pointer": "/correlated/1/p99_latency",
+          "resolved": "53.4",
+          "token": "53.4"
+        }
+      ],
+      "kind": "finding",
+      "limitations": [
+        "L01",
+        "L05"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": ""
+        },
+        {
+          "artifact": "day19/evidence/crossover.json",
+          "pointer": ""
+        }
+      ]
+    },
+    "C06": {
+      "bindings": [
+        {
+          "artifact": "day19/evidence/crossover.json",
+          "matched": true,
+          "pointer": "/paired_correlation_effect/K",
+          "resolved": "3",
+          "token": "3"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "format": ".2f",
+          "matched": true,
+          "pointer": "/independent/2/success_rate",
+          "resolved": "0.76",
+          "token": "0.76"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "format": ".3f",
+          "matched": true,
+          "pointer": "/correlated/2/success_rate",
+          "resolved": "0.415",
+          "token": "0.415"
+        },
+        {
+          "artifact": "day19/evidence/crossover.json",
+          "format": ".14e",
+          "matched": true,
+          "pointer": "/paired_correlation_effect/mcnemar/p_value",
+          "resolved": "2.69518463696556e-16",
+          "token": "2.69518463696556e-16"
+        }
+      ],
+      "kind": "finding",
+      "limitations": [
+        "L01",
+        "L05"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": ""
+        },
+        {
+          "artifact": "day19/evidence/crossover.json",
+          "pointer": "/paired_correlation_effect"
+        }
+      ]
+    },
+    "C07": {
+      "bindings": [
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "matched": true,
+          "pointer": "/params/n",
+          "resolved": "120",
+          "token": "120"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/comparison/primary_only/availability/rate",
+          "resolved": "0.6667",
+          "token": "0.6667"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "format": ".1f",
+          "matched": true,
+          "pointer": "/comparison/fallback_enabled/availability/rate",
+          "resolved": "1.0",
+          "token": "1.0"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "format": ".1f",
+          "matched": true,
+          "pointer": "/comparison/primary_only/strict_quality_given_answered/rate",
+          "resolved": "1.0",
+          "token": "1.0"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "format": ".2f",
+          "matched": true,
+          "pointer": "/comparison/fallback_enabled/strict_quality_given_answered/rate",
+          "resolved": "0.75",
+          "token": "0.75"
+        }
+      ],
+      "kind": "finding",
+      "limitations": [
+        "L01",
+        "L04",
+        "L06"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": ""
+        }
+      ]
+    },
+    "C08": {
+      "bindings": [
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "matched": true,
+          "pointer": "/comparison/fallback_enabled/fallback_quality/fallback_answers",
+          "resolved": "40",
+          "token": "40"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "matched": true,
+          "pointer": "/comparison/fallback_enabled/fallback_quality/strictly_acceptable/count",
+          "resolved": "10",
+          "token": "10"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "matched": true,
+          "pointer": "/comparison/fallback_enabled/fallback_quality/silently_degraded/count",
+          "resolved": "30",
+          "token": "30"
+        },
+        {
+          "artifact": "day21/evidence/degradation_detector.json",
+          "matched": true,
+          "pointer": "/confusion/tp",
+          "resolved": "20",
+          "token": "20"
+        },
+        {
+          "artifact": "day21/evidence/degradation_detector.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/recall/rate",
+          "resolved": "0.6667",
+          "token": "0.6667"
+        },
+        {
+          "artifact": "day21/evidence/degradation_detector.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/recall/wilson_ci95/0",
+          "resolved": "0.4878",
+          "token": "0.4878"
+        },
+        {
+          "artifact": "day21/evidence/degradation_detector.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/recall/wilson_ci95/1",
+          "resolved": "0.8077",
+          "token": "0.8077"
+        }
+      ],
+      "kind": "finding",
+      "limitations": [
+        "L01",
+        "L04",
+        "L06"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/fallback_enabled/fallback_quality"
+        },
+        {
+          "artifact": "day21/evidence/degradation_detector.json",
+          "pointer": ""
+        }
+      ]
+    },
+    "C09": {
+      "bindings": [
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "format": ".2f",
+          "matched": true,
+          "pointer": "/selection/thresholds/min_success_ci_lower",
+          "resolved": "0.78",
+          "token": "0.78"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "format": ".2f",
+          "matched": true,
+          "pointer": "/selection/thresholds/max_wrong_ci_upper",
+          "resolved": "0.02",
+          "token": "0.02"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "format": ".2f",
+          "matched": true,
+          "pointer": "/selection/thresholds/max_mean_cost_ci_upper",
+          "resolved": "1.75",
+          "token": "1.75"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "format": ".0f",
+          "matched": true,
+          "pointer": "/selection/thresholds/max_p95_latency_ci_upper",
+          "resolved": "80",
+          "token": "80"
+        }
+      ],
+      "kind": "finding",
+      "limitations": [
+        "L01",
+        "L07"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/selection"
+        }
+      ]
+    },
+    "C10": {
+      "bindings": [
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/policy_metrics/P4_selective_guarded/user_visible_correct_success/rate",
+          "resolved": "0.9325",
+          "token": "0.9325"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/policy_metrics/P4_selective_guarded/user_visible_correct_success/wilson_ci95/0",
+          "resolved": "0.9036",
+          "token": "0.9036"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/policy_metrics/P4_selective_guarded/user_visible_correct_success/wilson_ci95/1",
+          "resolved": "0.9532",
+          "token": "0.9532"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/policy_metrics/P4_selective_guarded/mean_cost/value",
+          "resolved": "1.4656",
+          "token": "1.4656"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "format": ".2f",
+          "matched": true,
+          "pointer": "/policy_metrics/P4_selective_guarded/mean_cost/bootstrap_ci95/0",
+          "resolved": "1.41",
+          "token": "1.41"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/policy_metrics/P4_selective_guarded/mean_cost/bootstrap_ci95/1",
+          "resolved": "1.5212",
+          "token": "1.5212"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "format": ".1f",
+          "matched": true,
+          "pointer": "/policy_metrics/P4_selective_guarded/p95_latency/value",
+          "resolved": "50.0",
+          "token": "50.0"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/policy_metrics/P4_selective_guarded/wrong_visible_answer/wilson_ci95/1",
+          "resolved": "0.0095",
+          "token": "0.0095"
+        }
+      ],
+      "kind": "finding",
+      "limitations": [
+        "L01",
+        "L07"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics/P4_selective_guarded"
+        }
+      ]
+    },
+    "C11": {
+      "bindings": [
+        {
+          "artifact": "day24/evidence/paired_statistics.json",
+          "format": ".3f",
+          "matched": true,
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry/success_rate_delta",
+          "resolved": "0.095",
+          "token": "0.095"
+        },
+        {
+          "artifact": "day24/evidence/paired_statistics.json",
+          "format": ".14e",
+          "matched": true,
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry/success_mcnemar/p_value",
+          "resolved": "1.94670606018067e-09",
+          "token": "1.94670606018067e-09"
+        },
+        {
+          "artifact": "day24/evidence/paired_statistics.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry/success_per_cost_delta/value",
+          "resolved": "0.0485",
+          "token": "0.0485"
+        },
+        {
+          "artifact": "day24/evidence/paired_statistics.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry/success_per_cost_delta/paired_bootstrap_ci95/0",
+          "resolved": "0.0319",
+          "token": "0.0319"
+        },
+        {
+          "artifact": "day24/evidence/paired_statistics.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry/success_per_cost_delta/paired_bootstrap_ci95/1",
+          "resolved": "0.0664",
+          "token": "0.0664"
+        },
+        {
+          "artifact": "day24/evidence/paired_statistics.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry/success_per_100_latency_delta/value",
+          "resolved": "0.6939",
+          "token": "0.6939"
+        },
+        {
+          "artifact": "day24/evidence/paired_statistics.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry/success_per_100_latency_delta/paired_bootstrap_ci95/0",
+          "resolved": "0.5544",
+          "token": "0.5544"
+        },
+        {
+          "artifact": "day24/evidence/paired_statistics.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry/success_per_100_latency_delta/paired_bootstrap_ci95/1",
+          "resolved": "0.8367",
+          "token": "0.8367"
+        }
+      ],
+      "kind": "finding",
+      "limitations": [
+        "L01",
+        "L07"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day24/evidence/paired_statistics.json",
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry"
+        }
+      ]
+    },
+    "C12": {
+      "bindings": [
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "format": ".3f",
+          "matched": true,
+          "pointer": "/attacks/worse_severity/metrics/user_visible_correct_success/rate",
+          "resolved": "0.695",
+          "token": "0.695"
+        },
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "format": ".3f",
+          "matched": true,
+          "pointer": "/attacks/tight_budgets/metrics/user_visible_correct_success/rate",
+          "resolved": "0.575",
+          "token": "0.575"
+        }
+      ],
+      "kind": "finding",
+      "limitations": [
+        "L01",
+        "L07"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointer": "/attacks"
+        }
+      ]
+    },
+    "C13": {
+      "bindings": [],
+      "kind": "recommendation",
+      "limitations": [
+        "L01",
+        "L04",
+        "L05",
+        "L06",
+        "L07",
+        "L08"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day19/evidence/q3_conclusion.json",
+          "pointer": ""
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/metric_definitions"
+        },
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": "/tradeoff"
+        }
+      ]
+    },
+    "C14": {
+      "bindings": [
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "matched": true,
+          "pointer": "/config/trials",
+          "resolved": "500",
+          "token": "500"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "matched": true,
+          "pointer": "/full_labelled_set/n_samples",
+          "resolved": "44",
+          "token": "44"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "matched": true,
+          "pointer": "/params/N",
+          "resolved": "200",
+          "token": "200"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "matched": true,
+          "pointer": "/params/n",
+          "resolved": "120",
+          "token": "120"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "matched": true,
+          "pointer": "/config/n",
+          "resolved": "400",
+          "token": "400"
+        }
+      ],
+      "kind": "method",
+      "limitations": [],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/config/trials"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/n_samples"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/params/N"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/params/n"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/config/n"
+        }
+      ]
+    },
+    "C15": {
+      "bindings": [],
+      "kind": "method",
+      "limitations": [],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/paired_tests"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/selection"
+        },
+        {
+          "artifact": "day24/evidence/paired_statistics.json",
+          "pointer": "/paired_dominance_vs_other_eligible"
+        }
+      ]
+    },
+    "C16": {
+      "bindings": [],
+      "kind": "synthesis",
+      "limitations": [
+        "L01",
+        "L07",
+        "L08"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": "/statement"
+        },
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointer": "/boundary_finding"
+        }
+      ]
+    },
+    "C17": {
+      "bindings": [],
+      "kind": "synthesis",
+      "limitations": [
+        "L01",
+        "L08"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/no_hiding"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/ceilings"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/effects"
+        },
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointer": "/boundary_finding"
+        }
+      ]
+    },
+    "C18": {
+      "bindings": [],
+      "kind": "synthesis",
+      "limitations": [
+        "L01",
+        "L02",
+        "L03",
+        "L04",
+        "L05",
+        "L06",
+        "L07",
+        "L08"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day17/evidence/subgroup_report.json",
+          "pointer": "/known_limitations"
+        },
+        {
+          "artifact": "day19/evidence/q3_conclusion.json",
+          "pointer": "/statement"
+        },
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": "/model_caveats"
+        }
+      ]
+    },
+    "C19": {
+      "bindings": [],
+      "kind": "finding",
+      "limitations": [
+        "L01",
+        "L02"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/curve"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/per_hop_reliability"
+        }
+      ]
+    },
+    "C20": {
+      "bindings": [],
+      "kind": "recommendation",
+      "limitations": [
+        "L03",
+        "L04"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/no_hiding"
+        },
+        {
+          "artifact": "day16/evidence/agreement_report.json",
+          "pointer": "/per_slice_agreement"
+        },
+        {
+          "artifact": "day17/evidence/subgroup_report.json",
+          "pointer": "/detection"
+        }
+      ]
+    },
+    "C21": {
+      "bindings": [],
+      "kind": "finding",
+      "limitations": [
+        "L01",
+        "L05"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": ""
+        },
+        {
+          "artifact": "day19/evidence/crossover.json",
+          "pointer": "/fail_condition_guard"
+        }
+      ]
+    },
+    "C22": {
+      "bindings": [],
+      "kind": "finding",
+      "limitations": [
+        "L01",
+        "L04",
+        "L06"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/fallback_enabled"
+        },
+        {
+          "artifact": "day21/evidence/degradation_detector.json",
+          "pointer": "/recall"
+        }
+      ]
+    },
+    "C23": {
+      "bindings": [],
+      "kind": "recommendation",
+      "limitations": [
+        "L01",
+        "L07",
+        "L08"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": ""
+        },
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointer": ""
+        }
+      ]
+    },
+    "C24": {
+      "bindings": [],
+      "kind": "method",
+      "limitations": [],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day19/evidence/crossover.json",
+          "pointer": "/paired_correlation_effect"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/paired_tests"
+        },
+        {
+          "artifact": "day24/evidence/paired_statistics.json",
+          "pointer": "/paired_dominance_vs_other_eligible/P1_bounded_retry/same_seed_population"
+        }
+      ]
+    },
+    "C25": {
+      "bindings": [],
+      "kind": "method",
+      "limitations": [],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/metric_definitions"
+        },
+        {
+          "artifact": "day21/evidence/degradation_detector.json",
+          "pointer": "/policy"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/fail_condition_guard"
+        }
+      ]
+    },
+    "C26": {
+      "bindings": [],
+      "kind": "synthesis",
+      "limitations": [
+        "L01",
+        "L04",
+        "L05",
+        "L06",
+        "L07",
+        "L08"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/finding"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/q2_findings"
+        },
+        {
+          "artifact": "day19/evidence/q3_conclusion.json",
+          "pointer": "/statement"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/effects"
+        },
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": "/tradeoff"
+        }
+      ]
+    },
+    "C27": {
+      "bindings": [],
+      "kind": "recommendation",
+      "limitations": [
+        "L01",
+        "L07",
+        "L08"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/selection"
+        },
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointer": "/attacks"
+        }
+      ]
+    },
+    "C28": {
+      "bindings": [],
+      "kind": "synthesis",
+      "limitations": [
+        "L01",
+        "L07",
+        "L08"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics"
+        },
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": "/tradeoff"
+        }
+      ]
+    },
+    "C29": {
+      "bindings": [],
+      "kind": "synthesis",
+      "limitations": [
+        "L01",
+        "L07",
+        "L08"
+      ],
+      "matched": true,
+      "sources": [
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": ""
+        },
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointer": "/boundary_finding"
+        }
+      ]
+    }
+  },
+  "errors": [],
+  "figure_count": 5,
+  "figures": {
+    "figure-1": {
+      "bindings": [
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "matched": true,
+          "pointer": "/config/trials",
+          "resolved": "500",
+          "token": "500"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "matched": true,
+          "pointer": "/first_divergence_hop",
+          "resolved": "3",
+          "token": "3"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "format": ".3f",
+          "matched": true,
+          "pointer": "/curve/2/measured",
+          "resolved": "0.818",
+          "token": "0.818"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "format": ".6f",
+          "matched": true,
+          "pointer": "/curve/2/measured_ci95/0",
+          "resolved": "0.781797",
+          "token": "0.781797"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "format": ".6f",
+          "matched": true,
+          "pointer": "/curve/2/measured_ci95/1",
+          "resolved": "0.849354",
+          "token": "0.849354"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "format": ".5f",
+          "matched": true,
+          "pointer": "/curve/2/naive",
+          "resolved": "0.91833",
+          "token": "0.91833"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "format": ".3f",
+          "matched": true,
+          "pointer": "/curve/7/measured",
+          "resolved": "0.288",
+          "token": "0.288"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "matched": true,
+          "pointer": "/curve/7/hops",
+          "resolved": "8",
+          "token": "8"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "format": ".6f",
+          "matched": true,
+          "pointer": "/curve/7/naive",
+          "resolved": "0.796765",
+          "token": "0.796765"
+        }
+      ],
+      "sha256": "b635ddf6b13abee6c20b3296e5760ef7cbf9b478e665f70be19e181d0c48916b",
+      "sources": [
+        "day07/evidence/q1_results.json"
+      ]
+    },
+    "figure-2": {
+      "bindings": [
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "matched": true,
+          "pointer": "/full_labelled_set/n_samples",
+          "resolved": "44",
+          "token": "44"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "format": ".1f",
+          "matched": true,
+          "pointer": "/full_labelled_set/overall_micro/precision",
+          "resolved": "1.0",
+          "token": "1.0"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "format": ".6f",
+          "matched": true,
+          "pointer": "/full_labelled_set/overall_micro/recall",
+          "resolved": "0.615385",
+          "token": "0.615385"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "matched": true,
+          "pointer": "/full_labelled_set/no_hiding/total_false_negatives",
+          "resolved": "10",
+          "token": "10"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "matched": true,
+          "pointer": "/full_labelled_set/no_hiding/fn_taxonomy/threshold_reducible",
+          "resolved": "6",
+          "token": "6"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "matched": true,
+          "pointer": "/full_labelled_set/no_hiding/fn_taxonomy/irreducible_semantic_escape",
+          "resolved": "4",
+          "token": "4"
+        }
+      ],
+      "sha256": "e9713be72bddc1c625537b3c9629cc0857a36452e81f611387ad9b4e07eed105",
+      "sources": [
+        "day15/evidence/q2_results.json"
+      ]
+    },
+    "figure-3": {
+      "bindings": [
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "matched": true,
+          "pointer": "/params/N",
+          "resolved": "200",
+          "token": "200"
+        },
+        {
+          "artifact": "day19/evidence/crossover.json",
+          "matched": true,
+          "pointer": "/independent/recommended_max_attempts",
+          "resolved": "3",
+          "token": "3"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "format": ".2f",
+          "matched": true,
+          "pointer": "/independent/2/success_rate",
+          "resolved": "0.76",
+          "token": "0.76"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "format": ".1f",
+          "matched": true,
+          "pointer": "/independent/2/amplification",
+          "resolved": "1.9",
+          "token": "1.9"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "format": ".1f",
+          "matched": true,
+          "pointer": "/independent/2/p99_latency",
+          "resolved": "76.0",
+          "token": "76.0"
+        },
+        {
+          "artifact": "day19/evidence/crossover.json",
+          "matched": true,
+          "pointer": "/correlated/recommended_max_attempts",
+          "resolved": "2",
+          "token": "2"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "format": ".3f",
+          "matched": true,
+          "pointer": "/correlated/1/success_rate",
+          "resolved": "0.365",
+          "token": "0.365"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "format": ".3f",
+          "matched": true,
+          "pointer": "/correlated/1/amplification",
+          "resolved": "1.735",
+          "token": "1.735"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "format": ".1f",
+          "matched": true,
+          "pointer": "/correlated/1/p99_latency",
+          "resolved": "53.4",
+          "token": "53.4"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "format": ".1f",
+          "matched": true,
+          "pointer": "/ceilings/cost_ceiling_amplification",
+          "resolved": "2.0",
+          "token": "2.0"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "matched": true,
+          "pointer": "/ceilings/p99_latency_budget",
+          "resolved": "120",
+          "token": "120"
+        }
+      ],
+      "sha256": "fbade4c4819fc7cc0b4e596028aff2ac44428a2edd7fe74d203233bdbaf67acd",
+      "sources": [
+        "day19/evidence/crossover.json",
+        "day19/evidence/retry_sweep.json"
+      ]
+    },
+    "figure-4": {
+      "bindings": [
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "matched": true,
+          "pointer": "/params/n",
+          "resolved": "120",
+          "token": "120"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "matched": true,
+          "pointer": "/comparison/fallback_enabled/fallback_quality/fallback_answers",
+          "resolved": "40",
+          "token": "40"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/comparison/primary_only/availability/rate",
+          "resolved": "0.6667",
+          "token": "0.6667"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "format": ".1f",
+          "matched": true,
+          "pointer": "/comparison/fallback_enabled/availability/rate",
+          "resolved": "1.0",
+          "token": "1.0"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "format": ".1f",
+          "matched": true,
+          "pointer": "/comparison/primary_only/strict_quality_given_answered/rate",
+          "resolved": "1.0",
+          "token": "1.0"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "format": ".2f",
+          "matched": true,
+          "pointer": "/comparison/fallback_enabled/strict_quality_given_answered/rate",
+          "resolved": "0.75",
+          "token": "0.75"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "matched": true,
+          "pointer": "/comparison/fallback_enabled/fallback_quality/silently_degraded/count",
+          "resolved": "30",
+          "token": "30"
+        },
+        {
+          "artifact": "day21/evidence/degradation_detector.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/recall/rate",
+          "resolved": "0.6667",
+          "token": "0.6667"
+        },
+        {
+          "artifact": "day21/evidence/degradation_detector.json",
+          "matched": true,
+          "pointer": "/confusion/fn",
+          "resolved": "10",
+          "token": "10"
+        }
+      ],
+      "sha256": "a27d0e716812b3519f6b2fc5aad4f9c3492b8764a4275e09b150ec962811cfd7",
+      "sources": [
+        "day21/evidence/availability_quality_comparison.json",
+        "day21/evidence/degradation_detector.json"
+      ]
+    },
+    "figure-5": {
+      "bindings": [
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "matched": true,
+          "pointer": "/config/n",
+          "resolved": "400",
+          "token": "400"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/policy_metrics/P4_selective_guarded/user_visible_correct_success/rate",
+          "resolved": "0.9325",
+          "token": "0.9325"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/policy_metrics/P4_selective_guarded/user_visible_correct_success/wilson_ci95/0",
+          "resolved": "0.9036",
+          "token": "0.9036"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/policy_metrics/P4_selective_guarded/user_visible_correct_success/wilson_ci95/1",
+          "resolved": "0.9532",
+          "token": "0.9532"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/policy_metrics/P4_selective_guarded/mean_cost/value",
+          "resolved": "1.4656",
+          "token": "1.4656"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "format": ".2f",
+          "matched": true,
+          "pointer": "/policy_metrics/P4_selective_guarded/mean_cost/bootstrap_ci95/0",
+          "resolved": "1.41",
+          "token": "1.41"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "format": ".4f",
+          "matched": true,
+          "pointer": "/policy_metrics/P4_selective_guarded/mean_cost/bootstrap_ci95/1",
+          "resolved": "1.5212",
+          "token": "1.5212"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "format": ".1f",
+          "matched": true,
+          "pointer": "/policy_metrics/P4_selective_guarded/p95_latency/value",
+          "resolved": "50.0",
+          "token": "50.0"
+        },
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "format": ".3f",
+          "matched": true,
+          "pointer": "/attacks/worse_severity/metrics/user_visible_correct_success/rate",
+          "resolved": "0.695",
+          "token": "0.695"
+        },
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "format": ".3f",
+          "matched": true,
+          "pointer": "/attacks/tight_budgets/metrics/user_visible_correct_success/rate",
+          "resolved": "0.575",
+          "token": "0.575"
+        }
+      ],
+      "sha256": "89dae67348c3be5fbc27475b22323ae9304858700ea227e9a16b9f4843be4964",
+      "sources": [
+        "day24/evidence/policy_comparison.json",
+        "day24/evidence/winner_attack.json"
+      ]
+    }
+  },
+  "limitation_count": 8,
+  "limitations": {
+    "L01": {
+      "bindings": [],
+      "published": true,
+      "sources": [
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/config"
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/dataset_version"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/params"
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/params"
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/config"
+        }
+      ]
+    },
+    "L02": {
+      "bindings": [
+        {
+          "artifact": "day17/evidence/subgroup_report.json",
+          "matched": true,
+          "pointer": "/hops/headline_contradictions/0/hops",
+          "resolved": "1",
+          "token": "1"
+        },
+        {
+          "artifact": "day17/evidence/subgroup_report.json",
+          "matched": true,
+          "pointer": "/hops/headline_contradictions/1/hops",
+          "resolved": "2",
+          "token": "2"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "matched": true,
+          "pointer": "/per_hop_reliability/7/reached",
+          "resolved": "187",
+          "token": "187"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "matched": true,
+          "pointer": "/per_hop_reliability/7/hop",
+          "resolved": "8",
+          "token": "8"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "matched": true,
+          "pointer": "/first_divergence_hop",
+          "resolved": "3",
+          "token": "3"
+        }
+      ],
+      "published": true,
+      "sources": [
+        {
+          "artifact": "day17/evidence/subgroup_report.json",
+          "pointer": "/hops/headline_contradictions"
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/per_hop_reliability/7/reached"
+        }
+      ]
+    },
+    "L03": {
+      "bindings": [
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "matched": true,
+          "pointer": "/full_labelled_set/n_samples",
+          "resolved": "44",
+          "token": "44"
+        }
+      ],
+      "published": true,
+      "sources": [
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set"
+        },
+        {
+          "artifact": "day17/evidence/subgroup_report.json",
+          "pointer": "/known_limitations"
+        },
+        {
+          "artifact": "day17/evidence/subgroup_report.json",
+          "pointer": "/significant_contradictions"
+        }
+      ]
+    },
+    "L04": {
+      "bindings": [
+        {
+          "artifact": "day16/evidence/agreement_report.json",
+          "matched": true,
+          "pointer": "/validation_set_size",
+          "resolved": "24",
+          "token": "24"
+        },
+        {
+          "artifact": "day16/evidence/agreement_report.json",
+          "format": ".1f",
+          "matched": true,
+          "pointer": "/judge_vs_human/cohen_kappa",
+          "resolved": "0.5",
+          "token": "0.5"
+        }
+      ],
+      "published": true,
+      "sources": [
+        {
+          "artifact": "day16/evidence/agreement_report.json",
+          "pointer": ""
+        }
+      ]
+    },
+    "L05": {
+      "bindings": [
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "format": ".1f",
+          "matched": true,
+          "pointer": "/ceilings/cost_ceiling_amplification",
+          "resolved": "2.0",
+          "token": "2.0"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "matched": true,
+          "pointer": "/ceilings/p99_latency_budget",
+          "resolved": "120",
+          "token": "120"
+        }
+      ],
+      "published": true,
+      "sources": [
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/ceilings"
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/params"
+        }
+      ]
+    },
+    "L06": {
+      "bindings": [],
+      "published": true,
+      "sources": [
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/params"
+        },
+        {
+          "artifact": "day21/evidence/degradation_detector.json",
+          "pointer": "/ground_truth"
+        }
+      ]
+    },
+    "L07": {
+      "bindings": [],
+      "published": true,
+      "sources": [
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/config"
+        },
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointer": "/attacks"
+        },
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": "/model_caveats"
+        }
+      ]
+    },
+    "L08": {
+      "bindings": [],
+      "published": true,
+      "sources": [
+        {
+          "artifact": "day17/evidence/subgroup_report.json",
+          "pointer": "/known_limitations/2"
+        },
+        {
+          "artifact": "day24/evidence/q5_recommendation.json",
+          "pointer": "/model_caveats/2"
+        }
+      ]
+    }
+  },
+  "passed": true,
+  "publication_artifacts": {
+    "article_sha256": "53b6ff1eef8571a08d71fee71a29e374ce6202ec15cf27a5a6f3dee17485d653",
+    "caption_sheet_sha256": "c6f0f40b2d9cf760a4d7f5caffb224110c0aee626c8afb532602794be2ef145a",
+    "claim_ledger_sha256": "095df998ce4e72eff0469e5accc2ea2e4cb6d272768cfaecc2afd3e761f96af4",
+    "figure_spec_sha256": "74636dfc049282118430435ab787a137b4733ccfc5a4059959d9ba880f0d970d"
+  },
+  "sources": {
+    "day07/evidence/q1_results.json": {
+      "committed_at_head": true,
+      "git_blob_at_head": "ecbb634337d1ceb829ac07e6863613740e1f74ff",
+      "sha256": "67e07292e80c5cd30dbb7bfbf9beaf8eb5249a08329413527c6c745a32b7aa71"
+    },
+    "day15/evidence/q2_results.json": {
+      "committed_at_head": true,
+      "git_blob_at_head": "2308a6aa569613708e7d2db4a41180c73e3579ce",
+      "sha256": "3274f05d958e04cf2fd988556daab44c05f37c21b84a1b2ec75eb5b0ad737516"
+    },
+    "day16/evidence/agreement_report.json": {
+      "committed_at_head": true,
+      "git_blob_at_head": "874b20b1fcf4cafb882b90cb38165cd49a0a14e3",
+      "sha256": "4ef6211b034f32318c6dcad108b87b175d8d95ae9b5fcc7cab650f198c7aa017"
+    },
+    "day17/evidence/subgroup_report.json": {
+      "committed_at_head": true,
+      "git_blob_at_head": "81944d4c93aa49b881f9bd7ed89815b5187c710b",
+      "sha256": "e36ae983c2569c9602586198962ceb1de754a0a978217bf9191d9fc5de082f61"
+    },
+    "day19/evidence/crossover.json": {
+      "committed_at_head": true,
+      "git_blob_at_head": "7733ee16f33b592e925c8403320da0cab3930511",
+      "sha256": "1b2237715ed89545ee55fc5d33185f9b725c31e528fbfd36ce3c8bf30b9da074"
+    },
+    "day19/evidence/q3_conclusion.json": {
+      "committed_at_head": true,
+      "git_blob_at_head": "4f3e77118ce0d496dab9983ac09151719fc4c74a",
+      "sha256": "fd643c333b41b9ccaeaceb7d8ff6d1fc9bde7a55799ba072f443f2a33f6791e0"
+    },
+    "day19/evidence/retry_sweep.json": {
+      "committed_at_head": true,
+      "git_blob_at_head": "6479c2911fe85dc23e0e0048a4dcd2fdcd272fab",
+      "sha256": "7f34cfab8c02492db201e988e723414403c8fb59e4994d0dd16fcc8d16dcdc2f"
+    },
+    "day21/evidence/availability_quality_comparison.json": {
+      "committed_at_head": true,
+      "git_blob_at_head": "06641fed690e48ab1cea01d46dd080cc763eed52",
+      "sha256": "60dc11cfd405c7cc010dfb613d495c04ebe0d77a31a8d1c4bf25014a669d6cff"
+    },
+    "day21/evidence/degradation_detector.json": {
+      "committed_at_head": true,
+      "git_blob_at_head": "1df0656ab50b6f8a58615166eee72c8fa7fe8586",
+      "sha256": "de90a8c92f05de1c8e4345d18caaacf1fd8709b878257d4877731a38868eb704"
+    },
+    "day24/evidence/paired_statistics.json": {
+      "committed_at_head": true,
+      "git_blob_at_head": "d9d4375286f26ca4c966641c799e7b2d67e0e59b",
+      "sha256": "7d9ef18cc374f2ab6f941b5e9761fa82737abb70d82432346cf5c5ce9379ffc8"
+    },
+    "day24/evidence/policy_comparison.json": {
+      "committed_at_head": true,
+      "git_blob_at_head": "c61b063c99e20d130f6bb4e004116e2355386eb4",
+      "sha256": "93a912c4c4b079b0d560ea83fb30096356eee958a9b65eb5f50c74bf4418933a"
+    },
+    "day24/evidence/q5_recommendation.json": {
+      "committed_at_head": true,
+      "git_blob_at_head": "216bca0df1ed16958e0d148031f7e1967aff7509",
+      "sha256": "307f1d314f23f407437d43be49228eaeb4534073f5736bd808e6900880f052ec"
+    },
+    "day24/evidence/winner_attack.json": {
+      "committed_at_head": true,
+      "git_blob_at_head": "f7dab53863a1b01360736696051513dfd927951b",
+      "sha256": "64c8787058160f0ea6f1909bd42f7bfec13bba9afe9359fd41d497018a65678a"
+    }
+  }
+}

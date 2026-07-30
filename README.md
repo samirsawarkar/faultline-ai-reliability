@@ -124,6 +124,7 @@ make reproduce-fast
 | [Day 25](day25/) | replay-verified postmortems | [evidence](day25/evidence/) |
 | [Day 26](day26/) | self-explaining reproducibility | [evidence](day26/evidence/) |
 | [Day 27](day27/) | assumption-free cold-reader reproduction | [evidence](day27/evidence/) |
+| [Day 28](day28/) | findings-first Q1–Q5 publication and claim audit | [evidence](day28/evidence/) |
 
 Each module carries its own question, method, tests, evidence, decision log, and
 mastery gate. Start with the results table; descend into a module only when you
