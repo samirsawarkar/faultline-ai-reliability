@@ -1,0 +1,22 @@
+{
+  "case_study_words": 337,
+  "checkpoint": 29,
+  "demo_duration_seconds": 165,
+  "fail_condition_triggered": false,
+  "gates": {
+    "claim_boundary_honest": true,
+    "cold_viewer_comprehension": true,
+    "coordinated_publication_bundle": true,
+    "dead_weight_removed": true,
+    "one_page_four_layer_case_study": true,
+    "under_five_minute_demo": true
+  },
+  "mission": "Help a busy staff engineer understand the evidence in under three minutes.",
+  "passed": true,
+  "required_evidence": [
+    "under-five-minute demo",
+    "one-page case study",
+    "Checkpoint 29"
+  ],
+  "verified_number_count": 5
+}

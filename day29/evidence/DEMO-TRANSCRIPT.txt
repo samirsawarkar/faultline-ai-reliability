@@ -1,0 +1,32 @@
+FAULTLINE — run → fault → trace → recover → replay
+Planned narrated duration: 165 seconds
+
+[00:00] RUN — Replay one seeded cascade with the legacy policy.
+  incident=INC-25-001
+  seed=2026080207
+  test=R25-001-correct-within-cascade-envelope
+  SAY: Start with one fixed incident, seed, configuration, and user-visible regression. The test requires a correct visible answer, no wrong visible answer, and both resource ceilings to hold.
+
+[00:24] FAULT — Recovery fails after fallback, not at the first timeout.
+  primary → timeout → retry → timeout
+  secondary → stale tokens → narrow judge accepts
+  terminal=contained_cost_ceiling · regression=RED
+  SAY: Two primary attempts time out. Fallback preserves the headline value but shifts the context tokens. The narrow judge accepts its known failure slice, verification repeats, the same route re-enters, and the final synthesis is contained by the cost ceiling.
+
+[00:58] TRACE — The trace turns a vague failure into a causal chain.
+  spans=12
+  errors_complete=True
+  unresolved_refs=0
+  SAY: Every error span is complete and every regression reference resolves. The trace links the false accept to repeated verification, same-route re-entry, and the terminal ceiling. The root cause is policy authority inside a documented judge blind spot, not an unexplained model error.
+
+[01:34] RECOVER — Change eligibility and routing, then run the same incident.
+  exact token guard → reject stale fallback
+  quarantine fingerprint → require route diversity
+  terminal=recovered_correct · regression=GREEN
+  SAY: The fix performs an exact token check, quarantines the rejected provider and fingerprint, and requires a trusted route with independent context. The same user-visible regression is now green.
+
+[02:12] REPLAY — Prove the change, then state the boundary.
+  legacy=20× RED
+  fixed=20× GREEN
+  same seed + config + regression · replay_verified=True
+  SAY: Across repeated executions, legacy stays red and fixed stays green under the same seed, configuration, and regression test. FAULTLINE proved this corrective control for one seeded simulator incident. It did not prove real providers are independent in production.

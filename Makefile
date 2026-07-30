@@ -8,13 +8,13 @@
 # repo works even when checked out under a directory whose name contains spaces.
 PY ?= ./.venv/bin/python
 
-.PHONY: help venv test test-day01 test-day02 test-day03 test-day04 test-day05 test-day06 test-day07 test-day08 test-day09 test-day10 test-day11 test-day12 test-day13 test-day14 test-day15 test-day16 test-day17 test-day18 test-day19 test-day20 test-day21 test-day22 test-day23 test-day24 test-day25 test-day26 test-day27 test-day28 determinism attack \
+.PHONY: help venv test test-day01 test-day02 test-day03 test-day04 test-day05 test-day06 test-day07 test-day08 test-day09 test-day10 test-day11 test-day12 test-day13 test-day14 test-day15 test-day16 test-day17 test-day18 test-day19 test-day20 test-day21 test-day22 test-day23 test-day24 test-day25 test-day26 test-day27 test-day28 test-day29 determinism attack \
         day03-baseline day03-attack day04-traces day05-evidence day06-replay day07-q1 day08-inject day09-detect day10-contracts day11-spectrum day12-catalog day13-eval day13-evidence day14-stats day15-q2 day16-judge day17-subgroups day18-recovery day19-retry day20-breaker day21-q4 day22-matrix day23-cascade day24-q5 day25-postmortems \
-        test-report test-fast-report eval-verify experiment-fast readme-audit day26-evidence cold-reproduce day27-audit day27-evidence day28-publication reproduce reproduce-fast container-reproduce release-check evidence clean
+        test-report test-fast-report eval-verify experiment-fast readme-audit day26-evidence cold-reproduce day27-audit day27-evidence day28-publication day29-demo day29-evidence reproduce reproduce-fast container-reproduce release-check evidence clean
 
 help:
 	@echo "make venv          create .venv and install pinned deps"
-	@echo "make test          run the full gate (day01 … day28)"
+	@echo "make test          run the full gate (day01 … day29)"
 	@echo "make reproduce     full tests + eval + fast experiments + README audit"
 	@echo "make reproduce-fast CI-sized tests + eval + deterministic experiments"
 	@echo "make container-reproduce build and attest the pinned clean image"
@@ -49,6 +49,8 @@ help:
 	@echo "make day26-evidence assemble traceability + reproduction checkpoint"
 	@echo "make day27-evidence assemble cold-reader Checkpoint 27"
 	@echo "make day28-publication regenerate article figures + claim audit"
+	@echo "make day29-demo    run the compact staff-engineer incident demo"
+	@echo "make day29-evidence regenerate recording, comprehension audit + checkpoint"
 	@echo "make evidence      regenerate all committed evidence artifacts"
 	@echo "make clean         remove caches"
 
@@ -57,7 +59,7 @@ venv:
 	$(PY) -m pip install pip==26.0.1
 	$(PY) -m pip install -r requirements.txt
 
-test: test-day01 test-day02 test-day03 test-day04 test-day05 test-day06 test-day07 test-day08 test-day09 test-day10 test-day11 test-day12 test-day13 test-day14 test-day15 test-day16 test-day17 test-day18 test-day19 test-day20 test-day21 test-day22 test-day23 test-day24 test-day25 test-day26 test-day27 test-day28
+test: test-day01 test-day02 test-day03 test-day04 test-day05 test-day06 test-day07 test-day08 test-day09 test-day10 test-day11 test-day12 test-day13 test-day14 test-day15 test-day16 test-day17 test-day18 test-day19 test-day20 test-day21 test-day22 test-day23 test-day24 test-day25 test-day26 test-day27 test-day28 test-day29
 
 test-day01:
 	$(PY) -m pytest day01/tests/ -q
@@ -142,6 +144,9 @@ test-day27:
 
 test-day28:
 	$(PY) -m pytest day28/tests/ -q
+
+test-day29:
+	$(PY) -m pytest day29/tests/ -q
 
 determinism:
 	$(PY) day01/scripts/experiment_determinism.py
@@ -251,13 +256,19 @@ day27-evidence:
 day28-publication:
 	$(PY) day28/scripts/make_evidence.py
 
+day29-demo:
+	$(PY) day29/scripts/run_demo.py
+
+day29-evidence:
+	$(PY) day29/scripts/make_evidence.py
+
 cold-reproduce:
 	sh day27/scripts/cold_reproduce.sh
 
-reproduce: test-day28 day28-publication test-report eval-verify experiment-fast readme-audit day27-audit
+reproduce: test-day28 test-day29 day28-publication day29-evidence test-report eval-verify experiment-fast readme-audit day27-audit
 	$(PY) day26/scripts/make_evidence.py --allow-missing-container
 
-reproduce-fast: test-day28 day28-publication test-fast-report eval-verify experiment-fast readme-audit day27-audit
+reproduce-fast: test-day28 test-day29 day28-publication day29-evidence test-fast-report eval-verify experiment-fast readme-audit day27-audit
 	$(PY) day26/scripts/make_evidence.py --allow-missing-container
 
 container-reproduce:
@@ -297,6 +308,7 @@ evidence:
 	$(PY) day26/scripts/make_evidence.py
 	$(PY) day27/scripts/make_evidence.py
 	$(PY) day28/scripts/make_evidence.py
+	$(PY) day29/scripts/make_evidence.py
 
 clean:
 	find . -type d -name __pycache__ -prune -exec rm -rf {} +

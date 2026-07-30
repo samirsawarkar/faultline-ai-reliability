@@ -7,6 +7,16 @@ systems fail—and testing whether recovery actually improves the user outcome.*
 [![Tests](https://img.shields.io/badge/tests-433%20passing-brightgreen.svg)](day26/evidence/test_report.json)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
+## Three-minute staff-engineer path
+
+1. Watch or run the [2:45 incident demo](day29/DEMO.md).
+2. Read the [one-page case study](day29/CASE-STUDY.md).
+3. Open the [Q1–Q5 technical article](day28/ARTICLE.md) only when you need the
+   full evidence argument.
+
+The short path shows one complete chain—run → fault → trace → recover → replay—
+and states both what FAULTLINE proved and what remains unproven in production.
+
 ## Results
 
 <!-- RESULTS:START -->
@@ -125,6 +135,7 @@ make reproduce-fast
 | [Day 26](day26/) | self-explaining reproducibility | [evidence](day26/evidence/) |
 | [Day 27](day27/) | assumption-free cold-reader reproduction | [evidence](day27/evidence/) |
 | [Day 28](day28/) | findings-first Q1–Q5 publication and claim audit | [evidence](day28/evidence/) |
+| [Day 29](day29/) | three-minute demo, one-page case study, comprehension gate | [evidence](day29/evidence/) |
 
 Each module carries its own question, method, tests, evidence, decision log, and
 mastery gate. Start with the results table; descend into a module only when you

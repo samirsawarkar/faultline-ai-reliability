@@ -1,0 +1,311 @@
+{
+  "case_study": {
+    "estimated_read_seconds": 113,
+    "five_numbers": {
+      "declared_count": 5,
+      "errors": [],
+      "exactly_five": true,
+      "passed": true,
+      "records": [
+        {
+          "artifact": "day25/evidence/red_green_replay.json",
+          "id": "N1",
+          "label": "replay seed",
+          "matched": true,
+          "pointer": "/INC-25-001/seed",
+          "resolved": "2026080207",
+          "token": "2026080207"
+        },
+        {
+          "artifact": "day25/evidence/red_green_replay.json",
+          "id": "N2",
+          "label": "legacy terminal latency",
+          "matched": true,
+          "pointer": "/INC-25-001/before/metrics/latency",
+          "resolved": "98",
+          "token": "98"
+        },
+        {
+          "artifact": "day25/evidence/red_green_replay.json",
+          "id": "N3",
+          "label": "fixed terminal latency",
+          "matched": true,
+          "pointer": "/INC-25-001/after/metrics/latency",
+          "resolved": "94",
+          "token": "94"
+        },
+        {
+          "artifact": "day25/evidence/red_green_replay.json",
+          "id": "N4",
+          "label": "fixed cost",
+          "matched": true,
+          "pointer": "/INC-25-001/after/metrics/cost",
+          "resolved": "11",
+          "token": "11"
+        },
+        {
+          "artifact": "day25/evidence/red_green_replay.json",
+          "id": "N5",
+          "label": "repetitions per policy version",
+          "matched": true,
+          "pointer": "/INC-25-001/after/stability/repetitions",
+          "resolved": "20",
+          "token": "20"
+        }
+      ]
+    },
+    "layer_headings": [
+      "## Layer 1 \u00b7 Decision",
+      "## Layer 2 \u00b7 Incident",
+      "## Layer 3 \u00b7 Evidence",
+      "## Layer 4 \u00b7 Boundary"
+    ],
+    "sha256": "40695772efd1a89471eb886fc3ef2a5e2d493b5f0053d89b47404d3f7e4715b0",
+    "word_count": 337
+  },
+  "checks": {
+    "case_study_exactly_five_verified_numbers": true,
+    "case_study_exactly_four_layers": true,
+    "case_study_one_page_word_budget": true,
+    "case_study_under_three_minute_read": true,
+    "cold_viewer_can_state_proof": true,
+    "dead_weight_attack_red_to_green": true,
+    "demo_sequence_complete": true,
+    "demo_under_five_minutes": true,
+    "demo_under_three_minutes": true,
+    "human_test_caveat_explicit": true,
+    "live_after_green": true,
+    "live_before_red": true,
+    "live_run_matches_committed_day25": true,
+    "live_traces_complete": true,
+    "publication_bundle_complete": true,
+    "recording_duration_matches": true,
+    "replay_verified": true,
+    "same_seed_config_test": true
+  },
+  "comprehension": {
+    "baseline": {
+      "answer": "",
+      "checks": {
+        "all_required_concepts_present": false,
+        "proof_statement_extractable": false,
+        "under_three_minute_reading_proxy": false,
+        "within_word_budget": false
+      },
+      "concepts": {
+        "after": {
+          "alternatives": [
+            "green after exact fallback validation",
+            "fixed recovery remained green"
+          ],
+          "passed": false
+        },
+        "before": {
+          "alternatives": [
+            "red with legacy recovery",
+            "legacy recovery remained red"
+          ],
+          "passed": false
+        },
+        "boundary": {
+          "alternatives": [
+            "does not establish provider independence in production",
+            "did not prove real providers are independent in production"
+          ],
+          "passed": false
+        },
+        "controlled_comparison": {
+          "alternatives": [
+            "same seed, configuration, and regression test",
+            "same seed, config, and regression test"
+          ],
+          "passed": false
+        },
+        "fix": {
+          "alternatives": [
+            "quarantine, and route-diverse recovery",
+            "quarantine and route diversity"
+          ],
+          "passed": false
+        },
+        "scope": {
+          "alternatives": [
+            "one seeded simulator incident",
+            "a seeded simulator incident"
+          ],
+          "passed": false
+        }
+      },
+      "estimated_read_seconds": 197,
+      "material": "evidence/cold-viewer-baseline.md",
+      "passed": false,
+      "word_count": 591
+    },
+    "cold_viewer_can_state_what_faultline_proved": true,
+    "dead_weight_removed": {
+      "baseline_failed": true,
+      "final_passed": true,
+      "reading_seconds": 89,
+      "words": 269
+    },
+    "final": {
+      "answer": "In one seeded simulator incident, the same seed, configuration, and regression test stayed red with legacy recovery and green after exact fallback validation, quarantine, and route-diverse recovery; this does not establish provider independence in production.",
+      "checks": {
+        "all_required_concepts_present": true,
+        "proof_statement_extractable": true,
+        "under_three_minute_reading_proxy": true,
+        "within_word_budget": true
+      },
+      "concepts": {
+        "after": {
+          "alternatives": [
+            "green after exact fallback validation",
+            "fixed recovery remained green"
+          ],
+          "passed": true
+        },
+        "before": {
+          "alternatives": [
+            "red with legacy recovery",
+            "legacy recovery remained red"
+          ],
+          "passed": true
+        },
+        "boundary": {
+          "alternatives": [
+            "does not establish provider independence in production",
+            "did not prove real providers are independent in production"
+          ],
+          "passed": true
+        },
+        "controlled_comparison": {
+          "alternatives": [
+            "same seed, configuration, and regression test",
+            "same seed, config, and regression test"
+          ],
+          "passed": true
+        },
+        "fix": {
+          "alternatives": [
+            "quarantine, and route-diverse recovery",
+            "quarantine and route diversity"
+          ],
+          "passed": true
+        },
+        "scope": {
+          "alternatives": [
+            "one seeded simulator incident",
+            "a seeded simulator incident"
+          ],
+          "passed": true
+        }
+      },
+      "estimated_read_seconds": 108,
+      "material": "DEMO.md",
+      "passed": true,
+      "word_count": 322
+    },
+    "human_participant": false,
+    "method": "deterministic cold-viewer structural proxy",
+    "method_caveat": "This verifies that a context-free reader surface exposes a concise, rubric-complete proof statement; it is not an empirical human usability study.",
+    "passed": true,
+    "rubric": {
+      "max_reading_seconds": 180,
+      "max_words": 520,
+      "question": "What did FAULTLINE prove?",
+      "reading_words_per_minute": 180,
+      "required_concepts": [
+        {
+          "alternatives": [
+            "one seeded simulator incident",
+            "a seeded simulator incident"
+          ],
+          "id": "scope"
+        },
+        {
+          "alternatives": [
+            "same seed, configuration, and regression test",
+            "same seed, config, and regression test"
+          ],
+          "id": "controlled_comparison"
+        },
+        {
+          "alternatives": [
+            "red with legacy recovery",
+            "legacy recovery remained red"
+          ],
+          "id": "before"
+        },
+        {
+          "alternatives": [
+            "green after exact fallback validation",
+            "fixed recovery remained green"
+          ],
+          "id": "after"
+        },
+        {
+          "alternatives": [
+            "quarantine, and route-diverse recovery",
+            "quarantine and route diversity"
+          ],
+          "id": "fix"
+        },
+        {
+          "alternatives": [
+            "does not establish provider independence in production",
+            "did not prove real providers are independent in production"
+          ],
+          "id": "boundary"
+        }
+      ]
+    }
+  },
+  "demo": {
+    "cast_sha256": "ed63530627f5e6e51b5dcd5c6d731e067d2a3d6f4a6e80680b29dfe6f3d17aaa",
+    "frame_order": [
+      "RUN",
+      "FAULT",
+      "TRACE",
+      "RECOVER",
+      "REPLAY"
+    ],
+    "planned_duration_seconds": 165,
+    "transcript_sha256": "bee9b4cc409562472d27ba76ad0ccdc600d2f5933e84b39c51a94981e41b0ae0"
+  },
+  "errors": [],
+  "passed": true,
+  "publication_bundle": {
+    "artifacts": [
+      {
+        "exists": true,
+        "path": "README.md",
+        "role": "repository",
+        "sha256": "7d1f9e9b76196ef08997f8ded2341b440bae27939ac1c9c62a61f483eca50977"
+      },
+      {
+        "exists": true,
+        "path": "day28/ARTICLE.md",
+        "role": "article",
+        "sha256": "53b6ff1eef8571a08d71fee71a29e374ce6202ec15cf27a5a6f3dee17485d653"
+      },
+      {
+        "exists": true,
+        "path": "day29/DEMO.md",
+        "role": "demo",
+        "sha256": "b6742bd9ead478b8603156a24921fcc435d8d25144dee9b6cf5e21213ff3ba1b"
+      },
+      {
+        "exists": true,
+        "path": "day29/CASE-STUDY.md",
+        "role": "case_study",
+        "sha256": "40695772efd1a89471eb886fc3ef2a5e2d493b5f0053d89b47404d3f7e4715b0"
+      }
+    ],
+    "checks": {
+      "one_coordinated_bundle": true,
+      "repo_article_demo_case_study_present": true,
+      "root_readme_has_three_minute_path": true
+    },
+    "passed": true
+  }
+}

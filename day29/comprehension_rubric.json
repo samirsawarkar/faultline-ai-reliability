@@ -1,0 +1,50 @@
+{
+  "question": "What did FAULTLINE prove?",
+  "reading_words_per_minute": 180,
+  "max_reading_seconds": 180,
+  "max_words": 520,
+  "required_concepts": [
+    {
+      "id": "scope",
+      "alternatives": [
+        "one seeded simulator incident",
+        "a seeded simulator incident"
+      ]
+    },
+    {
+      "id": "controlled_comparison",
+      "alternatives": [
+        "same seed, configuration, and regression test",
+        "same seed, config, and regression test"
+      ]
+    },
+    {
+      "id": "before",
+      "alternatives": [
+        "red with legacy recovery",
+        "legacy recovery remained red"
+      ]
+    },
+    {
+      "id": "after",
+      "alternatives": [
+        "green after exact fallback validation",
+        "fixed recovery remained green"
+      ]
+    },
+    {
+      "id": "fix",
+      "alternatives": [
+        "quarantine, and route-diverse recovery",
+        "quarantine and route diversity"
+      ]
+    },
+    {
+      "id": "boundary",
+      "alternatives": [
+        "does not establish provider independence in production",
+        "did not prove real providers are independent in production"
+      ]
+    }
+  ]
+}

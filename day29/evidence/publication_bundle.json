@@ -1,0 +1,34 @@
+{
+  "artifacts": [
+    {
+      "exists": true,
+      "path": "README.md",
+      "role": "repository",
+      "sha256": "7d1f9e9b76196ef08997f8ded2341b440bae27939ac1c9c62a61f483eca50977"
+    },
+    {
+      "exists": true,
+      "path": "day28/ARTICLE.md",
+      "role": "article",
+      "sha256": "53b6ff1eef8571a08d71fee71a29e374ce6202ec15cf27a5a6f3dee17485d653"
+    },
+    {
+      "exists": true,
+      "path": "day29/DEMO.md",
+      "role": "demo",
+      "sha256": "b6742bd9ead478b8603156a24921fcc435d8d25144dee9b6cf5e21213ff3ba1b"
+    },
+    {
+      "exists": true,
+      "path": "day29/CASE-STUDY.md",
+      "role": "case_study",
+      "sha256": "40695772efd1a89471eb886fc3ef2a5e2d493b5f0053d89b47404d3f7e4715b0"
+    }
+  ],
+  "checks": {
+    "one_coordinated_bundle": true,
+    "repo_article_demo_case_study_present": true,
+    "root_readme_has_three_minute_path": true
+  },
+  "passed": true
+}

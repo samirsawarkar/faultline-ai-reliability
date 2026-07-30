@@ -1,0 +1,105 @@
+{
+  "committed_day25_match": {
+    "after_run_digest": true,
+    "after_trace_digest": true,
+    "before_run_digest": true,
+    "before_trace_digest": true
+  },
+  "demo_id": "faultline-stale-fallback-red-green",
+  "frame_order": [
+    "RUN",
+    "FAULT",
+    "TRACE",
+    "RECOVER",
+    "REPLAY"
+  ],
+  "frames": [
+    {
+      "at_seconds": 0,
+      "headline": "Replay one seeded cascade with the legacy policy.",
+      "label": "RUN",
+      "narration": "Start with one fixed incident, seed, configuration, and user-visible regression. The test requires a correct visible answer, no wrong visible answer, and both resource ceilings to hold.",
+      "screen": [
+        "incident=INC-25-001",
+        "seed=2026080207",
+        "test=R25-001-correct-within-cascade-envelope"
+      ]
+    },
+    {
+      "at_seconds": 24,
+      "headline": "Recovery fails after fallback, not at the first timeout.",
+      "label": "FAULT",
+      "narration": "Two primary attempts time out. Fallback preserves the headline value but shifts the context tokens. The narrow judge accepts its known failure slice, verification repeats, the same route re-enters, and the final synthesis is contained by the cost ceiling.",
+      "screen": [
+        "primary \u2192 timeout \u2192 retry \u2192 timeout",
+        "secondary \u2192 stale tokens \u2192 narrow judge accepts",
+        "terminal=contained_cost_ceiling \u00b7 regression=RED"
+      ]
+    },
+    {
+      "at_seconds": 58,
+      "headline": "The trace turns a vague failure into a causal chain.",
+      "label": "TRACE",
+      "narration": "Every error span is complete and every regression reference resolves. The trace links the false accept to repeated verification, same-route re-entry, and the terminal ceiling. The root cause is policy authority inside a documented judge blind spot, not an unexplained model error.",
+      "screen": [
+        "spans=12",
+        "errors_complete=True",
+        "unresolved_refs=0"
+      ]
+    },
+    {
+      "at_seconds": 94,
+      "headline": "Change eligibility and routing, then run the same incident.",
+      "label": "RECOVER",
+      "narration": "The fix performs an exact token check, quarantines the rejected provider and fingerprint, and requires a trusted route with independent context. The same user-visible regression is now green.",
+      "screen": [
+        "exact token guard \u2192 reject stale fallback",
+        "quarantine fingerprint \u2192 require route diversity",
+        "terminal=recovered_correct \u00b7 regression=GREEN"
+      ]
+    },
+    {
+      "at_seconds": 132,
+      "headline": "Prove the change, then state the boundary.",
+      "label": "REPLAY",
+      "narration": "Across repeated executions, legacy stays red and fixed stays green under the same seed, configuration, and regression test. FAULTLINE proved this corrective control for one seeded simulator incident. It did not prove real providers are independent in production.",
+      "screen": [
+        "legacy=20\u00d7 RED",
+        "fixed=20\u00d7 GREEN",
+        "same seed + config + regression \u00b7 replay_verified=True"
+      ]
+    }
+  ],
+  "incident_id": "INC-25-001",
+  "live_execution": {
+    "after": {
+      "color": "green",
+      "run_digest": "a47f6f15cbe698d7e098fd0a1b6ebdbbfed173771db1a73c5505ca0f7d64e5e1",
+      "terminal": "recovered_correct",
+      "trace_complete": true,
+      "trace_digest": "241054bff3c6c8146a228bd3af416ca1318aa6616d22dd09ffcfbbb75f100017"
+    },
+    "before": {
+      "color": "red",
+      "run_digest": "14ca8b434cb0f84d45caae08adc55d0d26c1044f9e483106011d8772220eee0e",
+      "terminal": "contained_cost_ceiling",
+      "trace_complete": true,
+      "trace_digest": "1e15a90d23a9ae6bec3b033fddf4d2cdfeb2af02ddd00e79ff01561d7c0bbe36"
+    },
+    "config_digest": "5a0fbd0636bc0d4f9f0ad4312f1f1d6d62a5f7ce4f3f1dac2120266e0afbf934",
+    "regression_test_id": "R25-001-correct-within-cascade-envelope",
+    "replay_verified": true,
+    "same_config": true,
+    "same_regression_test": true,
+    "same_seed": true,
+    "seed": 2026080207
+  },
+  "planned_duration_seconds": 165,
+  "sources": [
+    "day25/evidence/red_green_replay.json",
+    "day25/evidence/stale-fallback-reentry-before-trace.json",
+    "day25/evidence/stale-fallback-reentry-after-trace.json"
+  ],
+  "under_five_minutes": true,
+  "under_three_minutes": true
+}

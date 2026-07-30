@@ -1,0 +1,177 @@
+{
+  "baseline": {
+    "answer": "",
+    "checks": {
+      "all_required_concepts_present": false,
+      "proof_statement_extractable": false,
+      "under_three_minute_reading_proxy": false,
+      "within_word_budget": false
+    },
+    "concepts": {
+      "after": {
+        "alternatives": [
+          "green after exact fallback validation",
+          "fixed recovery remained green"
+        ],
+        "passed": false
+      },
+      "before": {
+        "alternatives": [
+          "red with legacy recovery",
+          "legacy recovery remained red"
+        ],
+        "passed": false
+      },
+      "boundary": {
+        "alternatives": [
+          "does not establish provider independence in production",
+          "did not prove real providers are independent in production"
+        ],
+        "passed": false
+      },
+      "controlled_comparison": {
+        "alternatives": [
+          "same seed, configuration, and regression test",
+          "same seed, config, and regression test"
+        ],
+        "passed": false
+      },
+      "fix": {
+        "alternatives": [
+          "quarantine, and route-diverse recovery",
+          "quarantine and route diversity"
+        ],
+        "passed": false
+      },
+      "scope": {
+        "alternatives": [
+          "one seeded simulator incident",
+          "a seeded simulator incident"
+        ],
+        "passed": false
+      }
+    },
+    "estimated_read_seconds": 197,
+    "material": "evidence/cold-viewer-baseline.md",
+    "passed": false,
+    "word_count": 591
+  },
+  "cold_viewer_can_state_what_faultline_proved": true,
+  "dead_weight_removed": {
+    "baseline_failed": true,
+    "final_passed": true,
+    "reading_seconds": 89,
+    "words": 269
+  },
+  "final": {
+    "answer": "In one seeded simulator incident, the same seed, configuration, and regression test stayed red with legacy recovery and green after exact fallback validation, quarantine, and route-diverse recovery; this does not establish provider independence in production.",
+    "checks": {
+      "all_required_concepts_present": true,
+      "proof_statement_extractable": true,
+      "under_three_minute_reading_proxy": true,
+      "within_word_budget": true
+    },
+    "concepts": {
+      "after": {
+        "alternatives": [
+          "green after exact fallback validation",
+          "fixed recovery remained green"
+        ],
+        "passed": true
+      },
+      "before": {
+        "alternatives": [
+          "red with legacy recovery",
+          "legacy recovery remained red"
+        ],
+        "passed": true
+      },
+      "boundary": {
+        "alternatives": [
+          "does not establish provider independence in production",
+          "did not prove real providers are independent in production"
+        ],
+        "passed": true
+      },
+      "controlled_comparison": {
+        "alternatives": [
+          "same seed, configuration, and regression test",
+          "same seed, config, and regression test"
+        ],
+        "passed": true
+      },
+      "fix": {
+        "alternatives": [
+          "quarantine, and route-diverse recovery",
+          "quarantine and route diversity"
+        ],
+        "passed": true
+      },
+      "scope": {
+        "alternatives": [
+          "one seeded simulator incident",
+          "a seeded simulator incident"
+        ],
+        "passed": true
+      }
+    },
+    "estimated_read_seconds": 108,
+    "material": "DEMO.md",
+    "passed": true,
+    "word_count": 322
+  },
+  "human_participant": false,
+  "method": "deterministic cold-viewer structural proxy",
+  "method_caveat": "This verifies that a context-free reader surface exposes a concise, rubric-complete proof statement; it is not an empirical human usability study.",
+  "passed": true,
+  "rubric": {
+    "max_reading_seconds": 180,
+    "max_words": 520,
+    "question": "What did FAULTLINE prove?",
+    "reading_words_per_minute": 180,
+    "required_concepts": [
+      {
+        "alternatives": [
+          "one seeded simulator incident",
+          "a seeded simulator incident"
+        ],
+        "id": "scope"
+      },
+      {
+        "alternatives": [
+          "same seed, configuration, and regression test",
+          "same seed, config, and regression test"
+        ],
+        "id": "controlled_comparison"
+      },
+      {
+        "alternatives": [
+          "red with legacy recovery",
+          "legacy recovery remained red"
+        ],
+        "id": "before"
+      },
+      {
+        "alternatives": [
+          "green after exact fallback validation",
+          "fixed recovery remained green"
+        ],
+        "id": "after"
+      },
+      {
+        "alternatives": [
+          "quarantine, and route-diverse recovery",
+          "quarantine and route diversity"
+        ],
+        "id": "fix"
+      },
+      {
+        "alternatives": [
+          "does not establish provider independence in production",
+          "did not prove real providers are independent in production"
+        ],
+        "id": "boundary"
+      }
+    ]
+  }
+}
