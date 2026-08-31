@@ -23,7 +23,7 @@ Phase 2 change is wrong.
 **Phase 2 is a new tree, built fresh:**
 
 ```
-faultline/          new importable package — the instruments
+faultline_p2/       new importable package — the instruments (see D5)
 projects/p01..p12/  the experiments
 reports/            the deliverables
 MEC.md HYPOTHESES.md AMENDMENTS.md
@@ -72,6 +72,26 @@ without `--confirm`. It appends every call to an append-only ledger and hard-sto
 sweep the moment the project cap is reached. The stop rule stops being discipline and
 becomes an exception.
 
+**D5 · The Phase 2 import package is `faultline_p2`, not `faultline`.**
+`day01/faultline/` already exists, and `day01/tests/test_oracle.py` does
+`sys.path.insert(0, day01)` then `import faultline`. A second root-level package
+named `faultline` would shadow it — in either direction, depending on which test
+ran first and what landed in `sys.modules`. Days would go red, or worse, Phase 2
+would silently import the day01 module and nobody would notice. The distribution
+installs as `faultline-phase2`; the import name is `faultline_p2`, matching the
+repo's existing `faultline_agent` / `faultline_stats` / `faultline_store`
+convention. This overrides the `faultline/` layout sketched in plan §8, which §0
+leaves amendable.
+
+**D6 · The Phase 2 corpus builder is new code, not a copy.**
+`build_env(seed, n_entities, n_distractors)` has no hop concept — multi-hop tiers
+live in day03's `TierSpec` (EASY 1-3 / MEDIUM 4-6 / HARD 6-8) and day07's
+`faultline_hops`. The MEC defines different tiers again: T1=1 hop, T2=3, T3=5. So
+`build_env` and `oracle_check` are copied verbatim and hash-pinned, and the
+300-scenario T1/T2/T3 corpus is **composed on top of them** as new code.
+`build_env` itself is never modified — its determinism contract is the foundation
+everything else stands on.
+
 ---
 
 ## 2. Week 0 — freeze the contract
@@ -99,15 +119,15 @@ One module, one job. Each is independently testable with no network.
 
 | Module | Owns | Notes |
 |---|---|---|
-| `faultline/env/` | corpus generation, scenario tiers, dataset manifests | copied from day01, hash-pinned |
-| `faultline/oracle/` | `oracle_check` — the pass condition | copied from day01, hash-pinned, **pure function, never an LLM** |
-| `faultline/agent/` | bounded reason→tool→observe loop, step cap 8, 3 typed tools, LiteLLM call | Pydantic v2 `extra="forbid"` at every boundary |
-| `faultline/trace/` | span emission and the run store | P2 adds an OTel sink here later |
-| `faultline/stats/` | Wilson, McNemar, seeded bootstrap, pass^k | pure, no I/O, property-tested |
-| `faultline/cost/` | price table, estimator, append-only ledger, cap enforcement | D4 lives here |
-| `faultline/sweep/` | the one runner every project calls | `--dry-run` / `--confirm` |
-| `faultline/judge/` | binary evaluators, added at P5 | frozen after P5 |
-| `faultline/attribute/` | retriever-vs-generator ablation, added at P12 | |
+| `faultline_p2/env/` | corpus generation, scenario tiers, dataset manifests | `build_env` copied + hash-pinned; the T1/T2/T3 corpus is new code on top (D6) |
+| `faultline_p2/oracle/` | `oracle_check` — the pass condition | copied from day01, hash-pinned, **pure function, never an LLM** |
+| `faultline_p2/agent/` | bounded reason→tool→observe loop, step cap 8, 3 typed tools, LiteLLM call | Pydantic v2 `extra="forbid"` at every boundary |
+| `faultline_p2/trace/` | span emission and the run store | P2 adds an OTel sink here later |
+| `faultline_p2/stats/` | Wilson, McNemar, seeded bootstrap, pass^k | pure, no I/O, property-tested |
+| `faultline_p2/cost/` | price table, estimator, append-only ledger, cap enforcement | D4 lives here |
+| `faultline_p2/sweep/` | the one runner every project calls | `--dry-run` / `--confirm` |
+| `faultline_p2/judge/` | binary evaluators, added at P5 | frozen after P5 |
+| `faultline_p2/attribute/` | retriever-vs-generator ablation, added at P12 | |
 
 `faultline/stats/` gets built and tested in week 0 alongside the skeleton — it is pure
 and free, and every project depends on it.
