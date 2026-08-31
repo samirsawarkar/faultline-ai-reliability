@@ -1,6 +1,8 @@
 """Tests for faultline_p2.env.corpus."""
+import re
 import subprocess
 import sys
+from collections import Counter
 
 from faultline_p2.env.corpus import Corpus, build_corpus
 
@@ -27,7 +29,6 @@ def test_adversarial_chain_test():
     Assert no token remaining in prompt resolves uniquely to hop[N].required_source.
     And for every multi-hop scenario: assert the final hop's prompt alone cannot identify its document.
     """
-    import re
     corpus = build_corpus(seed=42)
     doc_by_id = {d["id"]: d for d in corpus.documents}
 
@@ -85,16 +86,65 @@ def test_chain_dependency_test():
             )
 
 
-def test_document_reuse_bound():
-    """Document reuse bound: no document anchors more than 3 scenarios' final hop."""
-    from collections import Counter
+def test_any_hop_document_reuse_bound():
+    """Any-hop reuse bound: no fact document is used in any hop more than 5 times across all 350 scenarios."""
     corpus = build_corpus(seed=42)
-    final_doc_counts = Counter(s.required_source for s in corpus.scenarios)
-    max_reuse = max(final_doc_counts.values())
-    assert max_reuse <= 3, (
-        f"Document reuse bound exceeded: max final-hop reuse is {max_reuse} > 3. "
-        f"Top reused docs: {final_doc_counts.most_common(5)}"
+    all_hop_counts = Counter()
+    for s in corpus.scenarios:
+        for hop in s.question_chain:
+            all_hop_counts[hop.required_source] += 1
+
+    max_any_hop = max(all_hop_counts.values())
+    assert max_any_hop <= 5, (
+        f"Any-hop reuse bound exceeded: max reuse is {max_any_hop} > 5. "
+        f"Top reused docs: {all_hop_counts.most_common(5)}"
     )
+
+    final_doc_counts = Counter(s.required_source for s in corpus.scenarios)
+    max_final = max(final_doc_counts.values())
+    assert max_final <= 3, f"Final-hop reuse bound exceeded: max {max_final} > 3"
+
+
+def test_traversal_sources_present_and_sound():
+    """traversal_sources lists all required fact and link documents in exact sequential traversal order."""
+    corpus = build_corpus(seed=42)
+    expected_lengths = {"T1": 1, "T2": 5, "T3": 9}
+
+    for s in corpus.scenarios:
+        assert len(s.traversal_sources) == expected_lengths[s.tier], (
+            f"Scenario {s.scenario_id} ({s.tier}) traversal_sources length mismatch: "
+            f"{len(s.traversal_sources)} != {expected_lengths[s.tier]}"
+        )
+        # Verify required_sources matches fact docs in traversal_sources in order
+        fact_sources_in_traversal = [src for src in s.traversal_sources if src.startswith("doc-")]
+        assert fact_sources_in_traversal == s.required_sources, (
+            f"Scenario {s.scenario_id} fact docs in traversal order mismatch required_sources"
+        )
+        assert s.required_source == s.traversal_sources[-1]
+
+
+def test_link_doc_ids_opaque_and_content_addressed():
+    """Link document IDs and titles must be opaque/content-addressed without leaking scenario ID or hop position."""
+    corpus = build_corpus(seed=42)
+    link_docs = [d for d in corpus.documents if d["id"].startswith("link-")]
+    assert len(link_docs) == 804, f"Expected 804 unique link documents, got {len(link_docs)}"
+
+    for doc in link_docs:
+        # Must not contain scenario prefixes or hop positions
+        assert not re.search(r"s-\d|r-\d|hop|tier|step", doc["id"], re.I), (
+            f"Link document id leaks metadata: {doc['id']}"
+        )
+        assert not re.search(r"s-\d|r-\d|hop|tier|step", doc["title"], re.I), (
+            f"Link document title leaks metadata: {doc['title']}"
+        )
+
+
+def test_corpus_document_ids_unique():
+    """All documents in the corpus store must have strictly unique document IDs."""
+    corpus = build_corpus(seed=42)
+    doc_ids = [d["id"] for d in corpus.documents]
+    assert len(doc_ids) == len(set(doc_ids)), f"Duplicate document IDs detected in corpus.documents ({len(doc_ids)} vs {len(set(doc_ids))})"
+    assert len(corpus.documents) == 1164, f"Expected exactly 1164 unique documents, got {len(corpus.documents)}"
 
 
 def test_corpus_scenario_counts_and_tiers():
@@ -111,7 +161,7 @@ def test_corpus_scenario_counts_and_tiers():
     assert len(standard) == 200
     assert len(reserved) == 150
 
-    assert corpus.tier_counts == {"T1": 67, "T2": 67, "T3": 216}  # 66 std + 150 res = 216 T3
+    assert corpus.tier_counts == {"T1": 67, "T2": 67, "T3": 216}
 
     tier_hops = {"T1": 1, "T2": 3, "T3": 5}
     for s in corpus.scenarios:
@@ -131,7 +181,6 @@ def test_corpus_scenario_uniqueness():
     prompt_answer_pairs = [(s.prompt, s.final_answer) for s in corpus.scenarios]
     assert len(prompt_answer_pairs) == len(set(prompt_answer_pairs)), "Duplicate (prompt, final_answer) detected"
 
-    # Also verify standard pool and reserved pool have zero scenario overlap
     std_prompts = {s.prompt for s in corpus.scenarios if s.pool == "standard"}
     res_prompts = {s.prompt for s in corpus.scenarios if s.pool == "reserved"}
     assert std_prompts.isdisjoint(res_prompts), "Standard and reserved pools share scenarios"
@@ -143,17 +192,14 @@ def test_corpus_required_sources_resolvable_and_unique():
     fact_doc_ids = {d["id"] for d in corpus.documents if d["id"].startswith("doc-") and not d["title"].startswith("Analyst memo")}
 
     for s in corpus.scenarios:
-        # Every required source must resolve to a valid document in the corpus
         for req_src in s.required_sources:
             assert req_src in doc_by_id, f"Required source {req_src} not found in corpus docs"
 
         for hop in s.question_chain:
-            # The required source doc must contain the answer token
             target_doc = doc_by_id[hop.required_source]
             assert hop.answer in target_doc["text"], (
                 f"Hop {hop.hop_index} answer {hop.answer} not in doc {hop.required_source}"
             )
-            # Other FACT documents must not contain the unique coined token
             other_fact_docs_with_answer = [
                 d["id"] for d in corpus.documents if d["id"] in fact_doc_ids and d["id"] != hop.required_source and hop.answer in d["text"]
             ]
@@ -161,7 +207,6 @@ def test_corpus_required_sources_resolvable_and_unique():
                 f"Answer {hop.answer} leaked into non-required fact docs: {other_fact_docs_with_answer}"
             )
 
-        # Final answer token must be globally unique to its required source within its scenario document environment
         final_hop = s.question_chain[-1]
         scenario_docs = [doc_by_id[doc_id] for doc_id in s.document_ids]
         scenario_docs_with_final = [d["id"] for d in scenario_docs if final_hop.answer in d["text"]]

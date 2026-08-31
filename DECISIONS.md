@@ -16,10 +16,14 @@ Append-only. Date · id · decision · why · reversal cost.
 
 ---
 
-### 2026-08-31 · D-002 · Link layer documents for genuine multi-hop sequential traversal
+### 2026-08-31 · D-002 · Link layer documents, opaque IDs, traversal sources, and bounded reuse
 
-**Decision.** Introduce Phase-2-owned link layer documents (`link-{scenario_id}-hop{N}`) composed on top of frozen `build_env` to map intermediate answer tokens to subsequent entity names. In `Scenario`, `required_sources` lists the 5 distinct fact documents in traversal order, with `required_source` set to the final hop's fact document.
+**Decision.**
+1. Introduce Phase-2-owned link layer documents with content-addressed opaque IDs (`link-{hashlib.sha256(text)[:12]}`) composed on top of frozen `build_env` to map intermediate answer tokens to subsequent entity names without metadata leakage (no scenario IDs or hop positions in document IDs or titles).
+2. Maintain `traversal_sources` listing all required fact and link documents in exact sequential traversal order (1 for T1, 5 for T2, 9 for T3) for retrieval failure attribution (P12).
+3. Preserve `required_sources` (fact documents: 1 for T1, 3 for T2, 5 for T3) and `required_source` (final hop fact document) so the oracle ground-truth condition remains unambiguous.
+4. Scale entity universe to 300 entities (150 standard pool, 150 reserved hard pool) to enforce a strict any-hop document reuse bound $\le 5$ across all 1,348 fact hop-slots.
 
-**Why.** `build_env` generates isolated fact documents with unique coined tokens and no cross-entity references. Without a link layer, intermediate prompts are forced to either name the next entity or leak its unique attributes (short-circuiting the retrieval chain). Link documents provide the bridge: hop $N$'s prompt refers only to hop $N-1$'s answer token, requiring the model to retrieve the link document to discover the next entity's identity, then retrieve that entity's fact document. This ensures genuine sequential retrieval depth while keeping the oracle ground-truth condition well-defined on the final fact document.
+**Why.** `build_env` generates isolated fact documents with unique coined tokens and no cross-entity references. Without a link layer, intermediate prompts are forced to either name the next entity or leak its unique attributes (short-circuiting the retrieval chain). Link documents provide the bridge: hop $N$'s prompt refers only to hop $N-1$'s answer token, requiring the model to retrieve the link document to discover the next entity's identity, then retrieve that entity's fact document. Opaque IDs prevent models from bypassing traversal via ID pattern matching. Scaling entities to 300 guarantees low scenario correlation across hops while staying within deterministic bounds.
 
-**Reversal cost.** Low; link documents are deterministically generated and self-contained within Phase 2.
+**Reversal cost.** Low; link documents and traversal structures are deterministically generated and self-contained within Phase 2.
