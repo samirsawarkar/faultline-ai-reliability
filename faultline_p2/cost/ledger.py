@@ -10,6 +10,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 _STRICT = ConfigDict(extra="forbid")
 
+# TODO: Read caps dynamically from MEC.md once MEC is frozen
 # Per-project budget caps from MEC and PHASE2-PLAN.md
 DEFAULT_PROJECT_CAPS: Dict[str, float] = {
     "p00_preflight": 0.50,
@@ -98,11 +99,15 @@ def estimate(
         raise ValueError("cached_prefix_fraction must be in [0.0, 1.0]")
 
     pricing = price_table.get_rung(rung)
-    cached_rate = (
-        pricing.cached_input_price_per_m
-        if pricing.cached_input_price_per_m is not None
-        else (pricing.input_price_per_m * 0.5)
-    )
+    if cached_prefix_fraction > 0.0:
+        if pricing.cached_input_price_per_m is None:
+            raise ValueError(
+                f"Cached prefix pricing not defined for rung '{rung}'. "
+                f"Cannot estimate cached cost without explicit pricing."
+            )
+        cached_rate = pricing.cached_input_price_per_m
+    else:
+        cached_rate = 0.0
 
     uncached_in = in_tokens * (1.0 - cached_prefix_fraction)
     cached_in = in_tokens * cached_prefix_fraction

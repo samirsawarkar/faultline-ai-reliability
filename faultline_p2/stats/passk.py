@@ -11,7 +11,9 @@ from typing import Sequence
 def pass_hat_k(per_scenario_trials: Sequence[Sequence[bool]], k: int) -> float:
     """Empirical pass^k: fraction of scenarios where all k trials passed.
 
-    Averaged across scenarios (tau-bench / Yao et al. 2024).
+    Note: This evaluates the first k trials (scenario_trials[:k]) directly for exactly
+    k executed trials (e.g. k=3 with 3 trials). It does not perform combinatorial
+    subset-averaging over larger trial sets (N > k).
     """
     if not per_scenario_trials:
         return 0.0

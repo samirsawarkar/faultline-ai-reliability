@@ -59,6 +59,28 @@ def test_estimate_hand_computed_arithmetic(sample_price_table):
     assert est == 0.17
 
 
+def test_estimate_raises_when_cached_pricing_missing():
+    table_without_cache = PriceTable(
+        rungs={
+            "R1": RungPricing(
+                model_name="test-model",
+                input_price_per_m=0.10,
+                output_price_per_m=0.40,
+                cached_input_price_per_m=None,  # No cached price
+            )
+        }
+    )
+    with pytest.raises(ValueError, match="Cached prefix pricing not defined"):
+        estimate(
+            n_runs=10,
+            in_tokens=1000,
+            out_tokens=500,
+            rung="R1",
+            price_table=table_without_cache,
+            cached_prefix_fraction=0.5,
+        )
+
+
 def test_no_confirm_performs_zero_calls(tmp_path, sample_price_table):
     ledger_path = tmp_path / "ledger.jsonl"
     ledger = CostLedger(ledger_path=ledger_path, project_caps={"p01_baseline": 2.0})
