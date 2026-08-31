@@ -301,3 +301,19 @@ evidence:
 clean:
 	find . -type d -name __pycache__ -prune -exec rm -rf {} +
 	find . -type d -name .pytest_cache -prune -exec rm -rf {} +
+
+# Phase 2 developer entry points
+.PHONY: phase2-install phase2-test phase2-corpus phase2-preflight
+
+phase2-install:
+	$(PY) -m pip install -e .
+
+phase2-test:
+	$(PY) -m pytest tests/phase2 -q
+
+phase2-corpus:
+	$(PY) -m faultline_p2.env.corpus
+
+phase2-preflight:
+	$(PY) -m projects.p00_preflight.run $(ARGS)
+
