@@ -92,6 +92,14 @@ live in day03's `TierSpec` (EASY 1-3 / MEDIUM 4-6 / HARD 6-8) and day07's
 `build_env` itself is never modified — its determinism contract is the foundation
 everything else stands on.
 
+**D7 · The corpus is 350 scenarios, not 300.**
+P3 needs n=200 and P6 needs n=150 hard, and they must be disjoint or the P3
+hard-subset freeze means nothing. 200 standard (67 T1 / 67 T2 / 66 T3) plus a
+150-scenario reserved T3 hard pool. The corpus is free to generate; there was no
+reason to be 50 short. Per-tier n≈67 gives a Wilson interval near ±11 pp, so H1
+is declared as detectable only for large gaps — stated up front in P3's results,
+not discovered afterwards.
+
 ---
 
 ## 2. Week 0 — freeze the contract
