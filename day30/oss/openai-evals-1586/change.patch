@@ -1,0 +1,6 @@
+diff --git a/README.md b/README.md
+--- a/README.md
++++ b/README.md
+@@
+-If you don't want to contribute new evals, but simply want to run them locally, you can install the evals package via pip:
++If you want to run pre-built evals locally, you can install the evals package via pip; clone the repository and use the editable install above when developing custom evals:

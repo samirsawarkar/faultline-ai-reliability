@@ -1,0 +1,280 @@
+{
+  "schema_version": "1.0.0",
+  "questions": [
+    {
+      "id": "D30-Q01",
+      "title": "Why not multiply single-hop reliability?",
+      "core_decision": "Measure end-to-end depth and conditional per-hop reliability instead of assuming exchangeable hops.",
+      "question": "Your first-hop success is 0.972. Why is p to the n not a sufficient planning model?",
+      "initial_answer": "Because later tool calls can be harder, so I measured the complete workflow.",
+      "repaired_answer": "I rejected the exchangeable-hop assumption because the measured end-to-end process diverged materially: at eight required hops success was 0.288 while p to the n predicted 0.796765, and the naive curve first left the measured interval at hop 3. The tradeoff is more instrumentation and conditional estimates, with fewer runs reaching deep hops. This is a configured decay simulator, not a production rate. I would reverse the planning model only after production per-hop conditional reliability shows stable exchangeability across depth and task slices.",
+      "repair": "Added the decision threshold, the hop-8 contrast, sparse-tail caveat, and a measurable reversal trigger.",
+      "weak_concept": "model-form uncertainty",
+      "required_terms": {
+        "decision": ["exchangeable-hop assumption", "conditional reliability"],
+        "evidence": ["0.288", "0.796765", "hop 3"],
+        "limitation": ["configured decay simulator", "fewer runs"],
+        "reversal": ["reverse", "production"]
+      },
+      "evidence": [
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/curve/7/measured",
+          "expected": 0.288
+        },
+        {
+          "artifact": "day07/evidence/q1_results.json",
+          "pointer": "/curve/7/naive",
+          "expected": 0.796765
+        }
+      ]
+    },
+    {
+      "id": "D30-Q02",
+      "title": "Why inspect detector misses instead of reporting F1?",
+      "core_decision": "Keep fault-family confusion and every false negative visible instead of relying on an aggregate detector score.",
+      "question": "Precision is perfect. Why not ship the detector and tune it later?",
+      "initial_answer": "The aggregate score hides semantic misses, so the detector should stay advisory.",
+      "repaired_answer": "Perfect precision did not make the detector safe: on 44 labelled examples recall was 0.615385 and all 10 false negatives mattered. Six misses were threshold-reducible, but four were semantic escapes, so one threshold could not close the gap. The tradeoff is abstention and extra review on ambiguous cases. This is a small synthetic labelled set with wide slice intervals, not a production guarantee. I would promote the detector only after a larger target-population evaluation preserves false-negative visibility and meets a predeclared per-slice recall floor.",
+      "repair": "Replaced an aggregate-score objection with the exact miss taxonomy, decision cost, dataset limit, and promotion gate.",
+      "weak_concept": "slice-aware detector validation",
+      "required_terms": {
+        "decision": ["false negatives", "threshold"],
+        "evidence": ["44", "0.615385", "10"],
+        "limitation": ["small synthetic labelled set", "wide"],
+        "reversal": ["promote", "target-population"]
+      },
+      "evidence": [
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/overall_micro/recall",
+          "expected": 0.615385
+        },
+        {
+          "artifact": "day15/evidence/q2_results.json",
+          "pointer": "/full_labelled_set/no_hiding/total_false_negatives",
+          "expected": 10
+        }
+      ]
+    },
+    {
+      "id": "D30-Q03",
+      "title": "Why exclude the semantic judge from core success?",
+      "core_decision": "Use the narrow semantic judge only as advisory signal outside its known failure slice.",
+      "question": "A semantic judge catches failures deterministic checks miss. Why forbid it from the success label?",
+      "initial_answer": "The judge is useful but imperfect, so I kept the oracle as ground truth.",
+      "repaired_answer": "The judge cannot validate itself. On 24 examples it reached raw agreement 0.75 and kappa 0.5, produced six false accepts, and had zero agreement on the borderline-token slice. I therefore use it only as an advisory signal outside that slice and never in core success scoring. The tradeoff is lower automated coverage in exchange for label independence. The validation set is small and synthetic. I would reverse the exclusion only after independent human labels show calibrated per-slice performance, including the current failure slice, at a predeclared threshold.",
+      "repair": "Added independent-label logic, exact agreement and failure-slice evidence, the coverage tradeoff, and a promotion criterion.",
+      "weak_concept": "judge-label independence",
+      "required_terms": {
+        "decision": ["advisory signal", "core success"],
+        "evidence": ["24", "kappa 0.5", "zero agreement"],
+        "limitation": ["small and synthetic", "coverage"],
+        "reversal": ["reverse", "independent human labels"]
+      },
+      "evidence": [
+        {
+          "artifact": "day16/evidence/agreement_report.json",
+          "pointer": "/judge_vs_human/cohen_kappa",
+          "expected": 0.5
+        },
+        {
+          "artifact": "day16/evidence/agreement_report.json",
+          "pointer": "/per_slice_agreement/borderline_tokens/agreement",
+          "expected": 0.0
+        }
+      ]
+    },
+    {
+      "id": "D30-Q04",
+      "title": "Why do retry caps change under correlation?",
+      "core_decision": "Set retry ceilings from the measured fault regime rather than a universal retry count.",
+      "question": "If three attempts work under independent faults, why not keep three during an outage?",
+      "initial_answer": "Retries amplify correlated outages, so I cap them.",
+      "repaired_answer": "A retry targets another draw; correlation removes that benefit while retaining the work. Under independent faults the last point inside the configured ceilings was K equals 3, with success 0.76 and 1.9 times amplification. Under correlated faults it moved to K equals 2; K equals 3 amplified attempts 2.37 times for only 0.415 success. The tradeoff is giving up some recoverable requests to protect the shared system. These are virtual-latency simulator ceilings. I would raise the cap only when live correlation and marginal-success measurements stay inside explicit amplification and tail-latency budgets.",
+      "repair": "Made the amplification mechanism, both operating points, containment tradeoff, and live reversal rule explicit.",
+      "weak_concept": "retry amplification under correlated faults",
+      "required_terms": {
+        "decision": ["correlation", "cap"],
+        "evidence": ["0.76", "1.9", "2.37", "0.415"],
+        "limitation": ["virtual-latency simulator", "ceilings"],
+        "reversal": ["raise", "live correlation"]
+      },
+      "evidence": [
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/independent/2/success_rate",
+          "expected": 0.76
+        },
+        {
+          "artifact": "day19/evidence/retry_sweep.json",
+          "pointer": "/correlated/2/amplification",
+          "expected": 2.37
+        }
+      ]
+    },
+    {
+      "id": "D30-Q05",
+      "title": "Why is availability not the fallback outcome?",
+      "core_decision": "Measure fallback availability, strict answer quality, and provenance as separate outcomes.",
+      "question": "Fallback reached 100 percent availability. What more does an operator need?",
+      "initial_answer": "Availability can hide bad answers, so quality must also be measured.",
+      "repaired_answer": "The operator needs the user outcome and the route provenance. Across 120 paired requests, fallback raised availability from 0.6667 to 1.0 while strict quality among answered requests fell from 1.0 to 0.75; 30 of 40 fallback answers were silently degraded. The tradeoff is that quality gates may reject an answer and lower visible availability. The outage schedule and answer mix are constructed simulator conditions. I would relax a gate only after production-labelled fallback slices show the resulting wrong-answer bound remains inside the declared risk budget.",
+      "repair": "Added paired availability-quality evidence, provenance, the abstention cost, and the exact deployment gate.",
+      "weak_concept": "availability-quality separation",
+      "required_terms": {
+        "decision": ["user outcome", "route provenance"],
+        "evidence": ["0.6667", "1.0", "0.75", "30 of 40"],
+        "limitation": ["constructed simulator", "answer mix"],
+        "reversal": ["relax", "production-labelled"]
+      },
+      "evidence": [
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/fallback_enabled/availability/rate",
+          "expected": 1.0
+        },
+        {
+          "artifact": "day21/evidence/availability_quality_comparison.json",
+          "pointer": "/comparison/fallback_enabled/strict_quality_given_answered/rate",
+          "expected": 0.75
+        }
+      ]
+    },
+    {
+      "id": "D30-Q06",
+      "title": "Why compose recovery in a fixed order?",
+      "core_decision": "Apply global ceilings before narrow recovery and quality validation instead of enabling every mechanism.",
+      "question": "Why not enable all six recovery mechanisms and let each handle its own fault?",
+      "initial_answer": "Mechanisms interact, so composition needs ordering and ceilings.",
+      "repaired_answer": "Recovery mechanisms create faults of their own. The six-mechanism matrix enumerated 47 induced harms, including wrong available answers, false opens, and premature ceilings. I therefore compose an outer step-and-cost envelope, then detection, narrow recovery, quality validation, and finally success, containment, or escalation. The tradeoff is more contained requests when evidence is insufficient. The matrix uses 24 paired synthetic seeds per cell, not production traffic. I would change the order only after paired mechanism-by-fault evidence measures every newly induced failure under the new composition.",
+      "repair": "Named the measured induced-harm count, explicit order, containment cost, population, and change-control rule.",
+      "weak_concept": "recovery policy composition",
+      "required_terms": {
+        "decision": ["outer step-and-cost envelope", "quality validation"],
+        "evidence": ["47 induced harms", "24 paired synthetic seeds"],
+        "limitation": ["not production traffic", "contained"],
+        "reversal": ["change the order", "every newly induced failure"]
+      },
+      "evidence": [
+        {
+          "artifact": "day22/evidence/six_mechanism_matrix.json",
+          "pointer": "/recovery_induced_harm_audit/total",
+          "expected": 47
+        }
+      ]
+    },
+    {
+      "id": "D30-Q07",
+      "title": "Why constrain before optimizing efficiency?",
+      "core_decision": "Reject policies on outcome, wrong-answer, cost, and latency bounds before comparing efficiency.",
+      "question": "Why not choose one weighted utility and optimize it directly?",
+      "initial_answer": "Weights are subjective, so I screened unsafe policies first and then compared efficiency.",
+      "repaired_answer": "No stakeholder supplied a defensible exchange rate between a wrong answer, money, and waiting. I first required the success lower bound, wrong-answer upper bound, mean-cost upper bound, and p95-latency upper bound to pass; only P1 and P4 were eligible. Among them P4 gained 0.095 correct success and its success-per-cost advantage was 0.0485 with a paired 95 percent interval from 0.0319 to 0.0664. The tradeoff is refusing a single convenient rank. This is simulator utility, not production preference. I would use a weighted objective only after accountable stakeholders publish stable weights and loss meanings.",
+      "repair": "Replaced a preference claim with four constraint gates, paired uncertainty, the ranking tradeoff, and governance needed to reverse it.",
+      "weak_concept": "multi-objective decision governance",
+      "required_terms": {
+        "decision": ["first required", "only P1 and P4"],
+        "evidence": ["0.095", "0.0485", "0.0319", "0.0664"],
+        "limitation": ["simulator utility", "single convenient rank"],
+        "reversal": ["weighted objective", "accountable stakeholders"]
+      },
+      "evidence": [
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/selection/paired_dominance_vs_other_eligible/P1_bounded_retry/success_rate_delta",
+          "expected": 0.095
+        },
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/selection/paired_dominance_vs_other_eligible/P1_bounded_retry/success_per_cost_delta/value",
+          "expected": 0.0485
+        }
+      ]
+    },
+    {
+      "id": "D30-Q08",
+      "title": "Why call the winning policy only an upper bound?",
+      "core_decision": "Recommend P4 only inside the base envelope and label its oracle signals as non-deployable upper bounds.",
+      "question": "P4 wins cost and latency efficiency. Why not recommend it for production?",
+      "initial_answer": "P4 won the base experiment, but production differs and stress tests were worse.",
+      "repaired_answer": "P4 is a reference upper bound because it receives simulator-truth retryability and a strict simulator-oracle fallback guard. In the base envelope it reached 0.9325 correct success at mean cost 1.4656 and p95 latency 50.0, but success fell to 0.695 under worse severity and 0.575 under tight budgets. The tradeoff is a useful design target without a deployment promise. The synthetic oracle removes classifier errors that production must pay for. I would recommend deployment only after replacing both oracle signals with measured components and rerunning the paired selection and stress attacks.",
+      "repair": "Named both privileged oracle signals, all three operating outcomes, the design-target boundary, and the production promotion test.",
+      "weak_concept": "external validity of an oracle-assisted policy",
+      "required_terms": {
+        "decision": ["reference upper bound", "deployment promise"],
+        "evidence": ["0.9325", "1.4656", "50.0", "0.695", "0.575"],
+        "limitation": ["synthetic oracle", "classifier errors"],
+        "reversal": ["recommend deployment", "measured components"]
+      },
+      "evidence": [
+        {
+          "artifact": "day24/evidence/policy_comparison.json",
+          "pointer": "/policy_metrics/P4_selective_guarded/user_visible_correct_success/rate",
+          "expected": 0.9325
+        },
+        {
+          "artifact": "day24/evidence/winner_attack.json",
+          "pointer": "/attacks/tight_budgets/metrics/user_visible_correct_success/rate",
+          "expected": 0.575
+        }
+      ]
+    },
+    {
+      "id": "D30-Q09",
+      "title": "Why call the cascade causal?",
+      "core_decision": "Use intervention-informed simulator causality while refusing causal claims from production trace order alone.",
+      "question": "Your trace is just temporal order. How can you call the cascade causal?",
+      "initial_answer": "The simulator controls the initiating fault and reproduces the same chain.",
+      "repaired_answer": "The production objection is correct: temporal order alone is not causality. The narrower claim is intervention-informed simulator causality. One serialized seed, 2026080207, and one full configuration inject only the primary latency fault; the expected labelled chain and trace digest repeat across 20 runs. The tradeoff is strong reproducibility inside a controlled model rather than broad realism. Hidden production confounders and route dependence remain unmeasured. I would transfer the causal claim only after targeted interventions or natural experiments break and restore the same links in production.",
+      "repair": "Conceded the valid objection, narrowed the causal claim, supplied intervention and replay evidence, and defined transfer evidence.",
+      "weak_concept": "causal identification versus trace chronology",
+      "required_terms": {
+        "decision": ["intervention-informed simulator causality", "temporal order alone"],
+        "evidence": ["2026080207", "20 runs", "trace digest"],
+        "limitation": ["production confounders", "controlled model"],
+        "reversal": ["transfer", "targeted interventions"]
+      },
+      "evidence": [
+        {
+          "artifact": "day23/evidence/replay_stability.json",
+          "pointer": "/repetitions",
+          "expected": 20
+        },
+        {
+          "artifact": "day23/evidence/replay_stability.json",
+          "pointer": "/reproducible_from_one_seed_and_config",
+          "expected": true
+        }
+      ]
+    },
+    {
+      "id": "D30-Q10",
+      "title": "What proves a fix stays fixed?",
+      "core_decision": "Require the same seed, configuration, test predicate, and complete trace to flip red to green and remain stable.",
+      "question": "A before-and-after demo can be staged. What makes your postmortem fix credible?",
+      "initial_answer": "The same incident is replayed before and after, and regression tests stay green.",
+      "repaired_answer": "The intervention is the policy version; the seed, configuration, regression ID, predicate, and trace assertions stay fixed. For incident INC-25-001, legacy recovery remained red and the fixed policy green across 20 repetitions; latency changed from 98 to 94 while cost remained 11. The tradeoff is a narrow regression guarantee, not proof against every future incident. The route-diversity assumption is still simulated and may fail operationally. I would reopen the incident if a production replay changes the digest, violates the original predicate, or shows the supposedly independent route shares a failure domain.",
+      "repair": "Specified invariant controls, stable red-to-green evidence, unchanged cost, the narrow guarantee, and concrete reopen conditions.",
+      "weak_concept": "counterfactual integrity in regression evidence",
+      "required_terms": {
+        "decision": ["policy version", "predicate"],
+        "evidence": ["20 repetitions", "98", "94", "11"],
+        "limitation": ["narrow regression guarantee", "simulated"],
+        "reversal": ["reopen", "failure domain"]
+      },
+      "evidence": [
+        {
+          "artifact": "day25/evidence/red_green_replay.json",
+          "pointer": "/INC-25-001/after/stability/repetitions",
+          "expected": 20
+        },
+        {
+          "artifact": "day25/evidence/red_green_replay.json",
+          "pointer": "/INC-25-001/after/metrics/cost",
+          "expected": 11
+        }
+      ]
+    }
+  ]
+}

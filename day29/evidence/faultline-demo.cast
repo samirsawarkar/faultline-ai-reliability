@@ -1,0 +1,7 @@
+{"env": {"SHELL": "/bin/sh", "TERM": "xterm-256color"}, "height": 28, "timestamp": 0, "title": "FAULTLINE: run to replay in under three minutes", "version": 2, "width": 100}
+[0.0, "o", "\r\n\u001b[1;36mRUN\u001b[0m  Replay one seeded cascade with the legacy policy.\r\n  incident=INC-25-001\r\n  seed=2026080207\r\n  test=R25-001-correct-within-cascade-envelope\r\n"]
+[24.0, "o", "\r\n\u001b[1;36mFAULT\u001b[0m  Recovery fails after fallback, not at the first timeout.\r\n  primary \u2192 timeout \u2192 retry \u2192 timeout\r\n  secondary \u2192 stale tokens \u2192 narrow judge accepts\r\n  terminal=contained_cost_ceiling \u00b7 regression=RED\r\n"]
+[58.0, "o", "\r\n\u001b[1;36mTRACE\u001b[0m  The trace turns a vague failure into a causal chain.\r\n  spans=12\r\n  errors_complete=True\r\n  unresolved_refs=0\r\n"]
+[94.0, "o", "\r\n\u001b[1;36mRECOVER\u001b[0m  Change eligibility and routing, then run the same incident.\r\n  exact token guard \u2192 reject stale fallback\r\n  quarantine fingerprint \u2192 require route diversity\r\n  terminal=recovered_correct \u00b7 regression=GREEN\r\n"]
+[132.0, "o", "\r\n\u001b[1;36mREPLAY\u001b[0m  Prove the change, then state the boundary.\r\n  legacy=20\u00d7 RED\r\n  fixed=20\u00d7 GREEN\r\n  same seed + config + regression \u00b7 replay_verified=True\r\n"]
+[165.0, "o", "\r\n\u001b[1;32mPROOF: same incident, red \u2192 green; production independence remains unproven.\u001b[0m\r\n"]

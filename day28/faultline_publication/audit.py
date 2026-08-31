@@ -9,10 +9,10 @@ from .evidence import (
     DAY,
     FIGURES,
     ROOT,
-    committed_blob,
     load_json,
     resolve_pointer,
     sha256_file,
+    source_identity,
 )
 
 CLAIM_RE = re.compile(r"<!-- CLAIM:(C\d{2}) -->\n([^\n]+(?:\n(?!\n)[^\n]+)*)")
@@ -72,13 +72,14 @@ def _audit_sources(paths: Iterable[str]) -> Tuple[Dict[str, Any], List[str]]:
         if not path.is_file():
             errors.append(f"missing source artifact: {artifact}")
             continue
-        blob = committed_blob(artifact)
+        identity = source_identity(artifact)
         records[artifact] = {
             "sha256": sha256_file(path),
-            "git_blob_at_head": blob,
-            "committed_at_head": blob is not None,
+            "git_blob_at_head": identity["git_blob_at_head"],
+            "committed_at_head": identity["verified"],
+            "provenance_method": identity["provenance_method"],
         }
-        if blob is None:
+        if not identity["verified"]:
             errors.append(f"source is not committed at HEAD: {artifact}")
     return records, errors
 

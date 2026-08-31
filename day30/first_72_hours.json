@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "launch_time": "T0 after repository publication",
+  "windows": [
+    {
+      "hours": "0-24",
+      "owner": "repository owner",
+      "actions": [
+        "verify the public clone-to-number path from a clean checkout",
+        "watch CI and reproduction failures",
+        "record every comprehension question without debating it"
+      ],
+      "metrics": [
+        "correct_service_success",
+        "mean_cost",
+        "p95_latency",
+        "cold_reader_completion",
+        "reproduction_failures"
+      ],
+      "exit_gate": "one independent clone reaches the headline number with zero undocumented improvisations",
+      "rollback": "withdraw the launch link and fix the first undocumented assumption before additional outreach"
+    },
+    {
+      "hours": "24-48",
+      "owner": "repository owner",
+      "actions": [
+        "send only the two highest-fit reviewed outreach messages",
+        "answer questions with result links and limitations",
+        "open the approved documentation contribution"
+      ],
+      "metrics": [
+        "correct_service_success",
+        "mean_cost",
+        "p95_latency",
+        "durable_outreach_receipts",
+        "oss_review_signal"
+      ],
+      "exit_gate": "two durable expert receipts and one OSS contribution URL exist",
+      "rollback": "stop additional outreach if either message is judged off-topic or any linked claim fails its audit"
+    },
+    {
+      "hours": "48-72",
+      "owner": "repository owner",
+      "actions": [
+        "cluster expert objections by evidence, scope, and usability",
+        "re-run the affected checkpoint before changing claims",
+        "publish a 72-hour learning note with keep, change, and stop decisions"
+      ],
+      "metrics": [
+        "correct_service_success",
+        "mean_cost",
+        "p95_latency",
+        "challenged_claims",
+        "checkpoint_regressions"
+      ],
+      "exit_gate": "every substantive objection has an owner, evidence link, and disposition",
+      "rollback": "retract or narrow any claim whose committed result no longer supports its wording"
+    }
+  ]
+}

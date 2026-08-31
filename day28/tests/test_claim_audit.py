@@ -8,7 +8,8 @@ from faultline_publication.audit import (
     _unbound_numeric_tokens,
     audit_publication,
 )
-from faultline_publication.evidence import DAY, ROOT, load_json
+from faultline_publication import evidence
+from faultline_publication.evidence import DAY, EVIDENCE, ROOT, load_json
 
 CLAIM_SPEC = load_json(DAY / "claims.json")
 CLAIMS_WITH_BINDINGS = [
@@ -39,6 +40,23 @@ def test_all_sources_are_committed_results_at_head():
     audit = audit_publication()
     assert audit["sources"]
     assert all(source["committed_at_head"] for source in audit["sources"].values())
+    methods = {
+        source["provenance_method"] for source in audit["sources"].values()
+    }
+    expected = "git_head" if (ROOT / ".git").exists() else "committed_manifest"
+    assert methods == {expected}
+
+
+def test_clean_image_can_verify_sources_from_committed_manifest(monkeypatch):
+    artifact = "day07/evidence/q1_results.json"
+    recorded = load_json(EVIDENCE / "claim_audit.json")["sources"][artifact]
+    monkeypatch.setattr(evidence, "_git_source_identity", lambda artifact: None)
+    identity = evidence.source_identity(artifact)
+    assert identity == {
+        "git_blob_at_head": recorded["git_blob_at_head"],
+        "provenance_method": "committed_manifest",
+        "verified": True,
+    }
 
 
 def test_publication_bundle_has_content_hashes():

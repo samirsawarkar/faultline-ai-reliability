@@ -1,0 +1,41 @@
+{
+  "case_study": "day29/CASE-STUDY.md",
+  "layer_count": 4,
+  "verified_numbers": [
+    {
+      "id": "N1",
+      "label": "replay seed",
+      "token": "2026080207",
+      "artifact": "day25/evidence/red_green_replay.json",
+      "pointer": "/INC-25-001/seed"
+    },
+    {
+      "id": "N2",
+      "label": "legacy terminal latency",
+      "token": "98",
+      "artifact": "day25/evidence/red_green_replay.json",
+      "pointer": "/INC-25-001/before/metrics/latency"
+    },
+    {
+      "id": "N3",
+      "label": "fixed terminal latency",
+      "token": "94",
+      "artifact": "day25/evidence/red_green_replay.json",
+      "pointer": "/INC-25-001/after/metrics/latency"
+    },
+    {
+      "id": "N4",
+      "label": "fixed cost",
+      "token": "11",
+      "artifact": "day25/evidence/red_green_replay.json",
+      "pointer": "/INC-25-001/after/metrics/cost"
+    },
+    {
+      "id": "N5",
+      "label": "repetitions per policy version",
+      "token": "20",
+      "artifact": "day25/evidence/red_green_replay.json",
+      "pointer": "/INC-25-001/after/stability/repetitions"
+    }
+  ]
+}

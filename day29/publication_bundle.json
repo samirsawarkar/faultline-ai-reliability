@@ -1,0 +1,21 @@
+{
+  "release_message": "FAULTLINE proves recovery by replaying the same failure red-to-green, while keeping the simulator and production boundary explicit.",
+  "artifacts": [
+    {
+      "role": "repository",
+      "path": "README.md"
+    },
+    {
+      "role": "article",
+      "path": "day28/ARTICLE.md"
+    },
+    {
+      "role": "demo",
+      "path": "day29/DEMO.md"
+    },
+    {
+      "role": "case_study",
+      "path": "day29/CASE-STUDY.md"
+    }
+  ]
+}

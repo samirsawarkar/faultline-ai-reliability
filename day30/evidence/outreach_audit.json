@@ -1,0 +1,164 @@
+{
+  "all_tailored": true,
+  "audits": [
+    {
+      "channel": "maintainer discussion",
+      "checks": {
+        "concise": true,
+        "evidence_link_present": true,
+        "evidence_number_verified": true,
+        "limitation_present": true,
+        "not_claimed_sent": true,
+        "public_target_named": true,
+        "specific_ask_present": true,
+        "tailored_hook_present": true
+      },
+      "evidence_actual": 30,
+      "id": "OUT-01",
+      "passed": true,
+      "status": "draft",
+      "target": "OpenTelemetry GenAI Semantic Conventions",
+      "word_count": 95
+    },
+    {
+      "channel": "maintainer discussion",
+      "checks": {
+        "concise": true,
+        "evidence_link_present": true,
+        "evidence_number_verified": true,
+        "limitation_present": true,
+        "not_claimed_sent": true,
+        "public_target_named": true,
+        "specific_ask_present": true,
+        "tailored_hook_present": true
+      },
+      "evidence_actual": 20,
+      "id": "OUT-02",
+      "passed": true,
+      "status": "draft",
+      "target": "Arize Phoenix",
+      "word_count": 93
+    },
+    {
+      "channel": "maintainer discussion",
+      "checks": {
+        "concise": true,
+        "evidence_link_present": true,
+        "evidence_number_verified": true,
+        "limitation_present": true,
+        "not_claimed_sent": true,
+        "public_target_named": true,
+        "specific_ask_present": true,
+        "tailored_hook_present": true
+      },
+      "evidence_actual": 0.75,
+      "id": "OUT-03",
+      "passed": true,
+      "status": "draft",
+      "target": "Langfuse",
+      "word_count": 90
+    },
+    {
+      "channel": "maintainer discussion",
+      "checks": {
+        "concise": true,
+        "evidence_link_present": true,
+        "evidence_number_verified": true,
+        "limitation_present": true,
+        "not_claimed_sent": true,
+        "public_target_named": true,
+        "specific_ask_present": true,
+        "tailored_hook_present": true
+      },
+      "evidence_actual": 47,
+      "id": "OUT-04",
+      "passed": true,
+      "status": "draft",
+      "target": "LangGraph",
+      "word_count": 86
+    },
+    {
+      "channel": "maintainer issue or discussion",
+      "checks": {
+        "concise": true,
+        "evidence_link_present": true,
+        "evidence_number_verified": true,
+        "limitation_present": true,
+        "not_claimed_sent": true,
+        "public_target_named": true,
+        "specific_ask_present": true,
+        "tailored_hook_present": true
+      },
+      "evidence_actual": 2.37,
+      "id": "OUT-05",
+      "passed": true,
+      "status": "draft",
+      "target": "PydanticAI",
+      "word_count": 91
+    },
+    {
+      "channel": "maintainer discussion",
+      "checks": {
+        "concise": true,
+        "evidence_link_present": true,
+        "evidence_number_verified": true,
+        "limitation_present": true,
+        "not_claimed_sent": true,
+        "public_target_named": true,
+        "specific_ask_present": true,
+        "tailored_hook_present": true
+      },
+      "evidence_actual": 0.5,
+      "id": "OUT-06",
+      "passed": true,
+      "status": "draft",
+      "target": "Ragas",
+      "word_count": 85
+    },
+    {
+      "channel": "maintainer issue or discussion",
+      "checks": {
+        "concise": true,
+        "evidence_link_present": true,
+        "evidence_number_verified": true,
+        "limitation_present": true,
+        "not_claimed_sent": true,
+        "public_target_named": true,
+        "specific_ask_present": true,
+        "tailored_hook_present": true
+      },
+      "evidence_actual": 1.9,
+      "id": "OUT-07",
+      "passed": true,
+      "status": "draft",
+      "target": "Tenacity",
+      "word_count": 90
+    },
+    {
+      "channel": "issue and documentation pull request",
+      "checks": {
+        "concise": true,
+        "evidence_link_present": true,
+        "evidence_number_verified": true,
+        "limitation_present": true,
+        "not_claimed_sent": true,
+        "public_target_named": true,
+        "specific_ask_present": true,
+        "tailored_hook_present": true
+      },
+      "evidence_actual": 44,
+      "id": "OUT-08",
+      "passed": true,
+      "status": "draft",
+      "target": "OpenAI Evals",
+      "word_count": 87
+    }
+  ],
+  "durable_sent_urls": [],
+  "external_delivery_complete": false,
+  "message_count": 8,
+  "passed": true,
+  "schema_version": "1.0.0",
+  "sent_count": 0,
+  "target_count": 8
+}

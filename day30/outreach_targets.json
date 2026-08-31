@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0.0",
+  "minimum_selective_sends": 2,
+  "targets": [
+    {
+      "id": "OUT-01",
+      "target": "OpenTelemetry GenAI Semantic Conventions",
+      "target_url": "https://github.com/open-telemetry/semantic-conventions-genai",
+      "channel": "maintainer discussion",
+      "status": "draft",
+      "sent_url": null,
+      "ask": "review the provenance vocabulary",
+      "tailored_terms": ["route provenance", "semantic conventions", "fallback"],
+      "evidence": {
+        "artifact": "day21/evidence/availability_quality_comparison.json",
+        "pointer": "/comparison/fallback_enabled/fallback_quality/silently_degraded/count",
+        "expected": 30,
+        "display": 30
+      },
+      "message": "OpenTelemetry GenAI Semantic Conventions maintainers — I built a seeded reliability study where fallback made availability look healthy while 30 of 40 fallback answers were silently degraded. The useful trace fields were route provenance, recovery mechanism, quality verdict, budget state, and the link from recovery to the initiating fault. The evidence is synthetic, so I am not proposing a standard from one simulator. Would you review the provenance vocabulary and tell me which parts already map cleanly to current semantic conventions, and which should remain application attributes? The short incident and trace path are here: https://github.com/samirsawarkar/faultline-ai-reliability/blob/codex/day29-evidence-briefing/day29/CASE-STUDY.md"
+    },
+    {
+      "id": "OUT-02",
+      "target": "Arize Phoenix",
+      "target_url": "https://github.com/Arize-ai/phoenix/discussions",
+      "channel": "maintainer discussion",
+      "status": "draft",
+      "sent_url": null,
+      "ask": "review the replay pattern",
+      "tailored_terms": ["trace replay", "span", "evaluation"],
+      "evidence": {
+        "artifact": "day25/evidence/red_green_replay.json",
+        "pointer": "/INC-25-001/after/stability/repetitions",
+        "expected": 20,
+        "display": 20
+      },
+      "message": "Arize Phoenix maintainers — FAULTLINE turns one traced incident into a before/after evaluation: the same seed, configuration, regression predicate, and span assertions remain fixed while the policy version changes. The trace replay stays red under legacy recovery and green under the fix across 20 repetitions. This is simulator evidence, not a claim about production route independence. Would you review the replay pattern as a possible compact Phoenix example: trace selection, evaluation assertion, policy comparison, then stability replay? I am looking for guidance before proposing docs or code. The two-minute evidence path is here: https://github.com/samirsawarkar/faultline-ai-reliability/blob/codex/day29-evidence-briefing/day29/DEMO.md"
+    },
+    {
+      "id": "OUT-03",
+      "target": "Langfuse",
+      "target_url": "https://github.com/langfuse/langfuse/discussions",
+      "channel": "maintainer discussion",
+      "status": "draft",
+      "sent_url": null,
+      "ask": "review the dashboard counterexample",
+      "tailored_terms": ["trace", "score", "fallback"],
+      "evidence": {
+        "artifact": "day21/evidence/availability_quality_comparison.json",
+        "pointer": "/comparison/fallback_enabled/strict_quality_given_answered/rate",
+        "expected": 0.75,
+        "display": 0.75
+      },
+      "message": "Langfuse maintainers — I have a compact counterexample for trace dashboards: fallback lifted request availability to 1.0, but strict quality among answered requests fell to 0.75. The trace remains useful only when route provenance and a separately validated quality score travel with the response. The population is constructed and synthetic, so the rates should not be generalized. Would you review the dashboard counterexample and say whether a small public recipe should model availability, quality, and fallback provenance as three distinct fields? The audited article and source results are linked here: https://github.com/samirsawarkar/faultline-ai-reliability/blob/codex/day29-evidence-briefing/day28/ARTICLE.md"
+    },
+    {
+      "id": "OUT-04",
+      "target": "LangGraph",
+      "target_url": "https://github.com/langchain-ai/langgraph/discussions",
+      "channel": "maintainer discussion",
+      "status": "draft",
+      "sent_url": null,
+      "ask": "review the bounded-recovery example",
+      "tailored_terms": ["graph", "repetition", "step-and-cost"],
+      "evidence": {
+        "artifact": "day22/evidence/six_mechanism_matrix.json",
+        "pointer": "/recovery_induced_harm_audit/total",
+        "expected": 47,
+        "display": 47
+      },
+      "message": "LangGraph maintainers — a six-mechanism fault matrix exposed 47 recovery-induced harms, including false repetition positives, premature ceilings, and wrong fallback answers. The composition that survived review was an outer step-and-cost envelope, then detection, narrow recovery, quality validation, and explicit success, containment, or escalation. This comes from paired synthetic graph runs, not production workloads. Would you review the bounded-recovery example and advise whether its assertions fit a LangGraph testing guide: shared seeds, per-node budgets, repetition recovery, and separately measured induced failures? The mechanism matrix is summarized here: https://github.com/samirsawarkar/faultline-ai-reliability/blob/codex/day29-evidence-briefing/day22/README.md"
+    },
+    {
+      "id": "OUT-05",
+      "target": "PydanticAI",
+      "target_url": "https://github.com/pydantic/pydantic-ai/issues",
+      "channel": "maintainer issue or discussion",
+      "status": "draft",
+      "sent_url": null,
+      "ask": "review the ceiling contract",
+      "tailored_terms": ["tool calls", "cost ceiling", "repetition"],
+      "evidence": {
+        "artifact": "day19/evidence/retry_sweep.json",
+        "pointer": "/correlated/2/amplification",
+        "expected": 2.37,
+        "display": 2.37
+      },
+      "message": "PydanticAI maintainers — FAULTLINE’s recovery experiments treat tool calls as budgeted actions, not an unbounded loop. In the correlated-fault slice, three attempts produced 2.37 times attempt amplification, so the policy checks the next step and cost ceiling before execution and allows only one repetition replan. The numbers come from a virtual-latency simulator, not deployed agents. Would you review the ceiling contract and say whether a focused example would help users distinguish usage limits, retry limits, and repetition recovery? I would wait for maintainer direction before opening a patch. Evidence and limitations: https://github.com/samirsawarkar/faultline-ai-reliability/blob/codex/day29-evidence-briefing/day28/ARTICLE.md"
+    },
+    {
+      "id": "OUT-06",
+      "target": "Ragas",
+      "target_url": "https://github.com/vibrantlabsai/ragas/discussions",
+      "channel": "maintainer discussion",
+      "status": "draft",
+      "sent_url": null,
+      "ask": "review the judge-validation checklist",
+      "tailored_terms": ["judge", "slice", "agreement"],
+      "evidence": {
+        "artifact": "day16/evidence/agreement_report.json",
+        "pointer": "/judge_vs_human/cohen_kappa",
+        "expected": 0.5,
+        "display": 0.5
+      },
+      "message": "Ragas maintainers — I validated a narrow deterministic judge before using it on fallback answers. It reached kappa 0.5 against human labels, yet agreement was zero on one borderline-token slice; the judge therefore stayed advisory and outside core success. The validation set has only 24 synthetic examples, so this is a reporting pattern rather than a benchmark claim. Would you review the judge-validation checklist: independent labels, per-slice agreement, false-accept audit, positional-bias test, and an explicit forbidden-use verdict? The complete caveat and result binding are here: https://github.com/samirsawarkar/faultline-ai-reliability/blob/codex/day29-evidence-briefing/day28/ARTICLE.md"
+    },
+    {
+      "id": "OUT-07",
+      "target": "Tenacity",
+      "target_url": "https://github.com/jd/tenacity/issues",
+      "channel": "maintainer issue or discussion",
+      "status": "draft",
+      "sent_url": null,
+      "ask": "review the retry-budget note",
+      "tailored_terms": ["retry", "correlated", "amplification"],
+      "evidence": {
+        "artifact": "day19/evidence/retry_sweep.json",
+        "pointer": "/independent/2/amplification",
+        "expected": 1.9,
+        "display": 1.9
+      },
+      "message": "Tenacity maintainers — a paired retry experiment gives a concise operational warning: the last acceptable independent-fault point was three attempts at 1.9 times amplification, but correlated faults moved the cap to two because the same retry work hit the impaired component. These are simulator-specific ceilings, not recommended library defaults. Would you review the retry-budget note and advise whether a small documentation contribution about attempt amplification, shared-outage correlation, and global latency budgets would fit Tenacity’s scope? I would keep it framework-neutral and make no policy prescription. Evidence and uncertainty are here: https://github.com/samirsawarkar/faultline-ai-reliability/blob/codex/day29-evidence-briefing/day19/README.md"
+    },
+    {
+      "id": "OUT-08",
+      "target": "OpenAI Evals",
+      "target_url": "https://github.com/openai/evals/issues/1586",
+      "channel": "issue and documentation pull request",
+      "status": "draft",
+      "sent_url": null,
+      "ask": "review the installation clarification",
+      "tailored_terms": ["pre-built evals", "custom evals", "editable install"],
+      "evidence": {
+        "artifact": "day15/evidence/q2_results.json",
+        "pointer": "/full_labelled_set/n_samples",
+        "expected": 44,
+        "display": 44
+      },
+      "message": "OpenAI Evals maintainers — while packaging FAULTLINE’s 44-example detector evaluation for cold reproduction, I hit the ambiguity described in issue 1586: the README’s pip guidance says “do not contribute,” while the real distinction is running pre-built evals versus developing custom evals from an editable install. I prepared the requested one-sentence clarification against the current README and no behavior change. The FAULTLINE dataset is synthetic and is not part of the proposed patch. Would you review the installation clarification if I open the one-line documentation PR? Reproduction context: https://github.com/samirsawarkar/faultline-ai-reliability/blob/codex/day29-evidence-briefing/REPRODUCE.md"
+    }
+  ]
+}

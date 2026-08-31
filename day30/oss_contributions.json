@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "contributions": [
+    {
+      "id": "OSS-01",
+      "repository": "openai/evals",
+      "upstream_issue": "https://github.com/openai/evals/issues/1586",
+      "upstream_blob_sha": "b6d57c76ee5b1361834b415ffbb63bb9c5f3ff68",
+      "title": "docs: clarify installation path for pre-built and custom evals",
+      "status": "prepared",
+      "contribution_url": null,
+      "lines_changed": 2,
+      "issue_match": true,
+      "validation": "Patch applies to the current README blob and changes documentation only.",
+      "packet_files": [
+        "day30/oss/openai-evals-1586/README.md",
+        "day30/oss/openai-evals-1586/change.patch",
+        "day30/oss/openai-evals-1586/PR.md"
+      ]
+    }
+  ]
+}
