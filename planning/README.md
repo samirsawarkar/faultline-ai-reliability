@@ -13,6 +13,7 @@ planning/
     AGENT-RULES.md     standing rules · read at the start of EVERY session
     WEEK0.md           the Week 0 work order · the first thing that gets built
     WEEK0-FIX.md       corrective order after the Week 0 review
+    WEEK1.md           the agent harness, built offline
 ```
 
 ## Which file, when
@@ -22,6 +23,7 @@ planning/
 | Start any session, no exceptions | `agent/AGENT-RULES.md` |
 | Build the foundation (first work of Phase 2) | `agent/WEEK0.md` |
 | Fix what the Week 0 review rejected | `agent/WEEK0-FIX.md` |
+| Build the agent harness (no API needed) | `agent/WEEK1.md` |
 | Ask "what is this project for, what is its gate" | `cto/PHASE2-BUILD.md` §4 |
 | Ask "why is it built this way" | `cto/PHASE2-BUILD.md` §1 (D1-D6) |
 | Ask "why measure this at all", or touch statistics | `cto/PHASE2-PLAN.md` §2, §3, §5 |
