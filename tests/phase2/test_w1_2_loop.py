@@ -12,7 +12,7 @@ def get_task():
 def test_termination_answer_produced():
     model = StubModel(explicit_responses=[ModelResponse(answer="42", cited_sources=["doc-0001"])])
     outcome = run_agent(get_task(), get_env(), model, step_cap=8)
-    assert outcome.status == OutcomeStatus.SOLVED
+    assert outcome.status == OutcomeStatus.ANSWERED
     assert outcome.answer == "42"
 
 def test_termination_step_cap():

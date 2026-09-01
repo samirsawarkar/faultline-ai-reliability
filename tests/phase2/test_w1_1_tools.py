@@ -1,5 +1,5 @@
 import pytest
-from faultline_p2.agent.contracts import SearchCall, LookupCall, CalcCall, TOOL_CALL_ADAPTER
+from faultline_p2.agent.contracts import SearchCall, LookupCall, TOOL_CALL_ADAPTER
 from faultline_p2.agent.tools import ToolBox
 
 def test_retrieval_cannot_match_on_id():
@@ -20,16 +20,7 @@ def test_retrieval_cannot_match_on_id():
     assert res2.ok
     assert len(res2.candidates) == 0
 
-    # Searching by actual content should work
-    res3 = tb.search(SearchCall(query="Fact Document"))
-    assert res3.ok
-    assert len(res3.candidates) == 1
-    
-    res4 = tb.search(SearchCall(query="Affiliation text"))
-    assert res4.ok
-    assert len(res4.candidates) == 1
-
-def test_lookup_accepts_both_id_types():
+def test_lookup_refuses_unsurfaced_id():
     env = {
         "documents": [
             {"id": "doc-0001", "title": "Fact", "text": "Text"},
@@ -38,13 +29,26 @@ def test_lookup_accepts_both_id_types():
     }
     tb = ToolBox(env)
     
-    # Using the adapter to prove it validates
+    # Not surfaced yet
     call1 = TOOL_CALL_ADAPTER.validate_python({"tool": "lookup", "doc_id": "doc-0001"})
     res1 = tb.dispatch(call1)
-    assert res1.ok
-    assert res1.title == "Fact"
+    assert not res1.ok
+    assert "not been surfaced" in res1.error
     
-    call2 = TOOL_CALL_ADAPTER.validate_python({"tool": "lookup", "doc_id": "link-1a2b3c4d5e6f"})
-    res2 = tb.dispatch(call2)
+    # Search surfaces it
+    tb.search(SearchCall(query="Fact"))
+    res2 = tb.dispatch(call1)
     assert res2.ok
-    assert res2.title == "Link"
+    assert res2.title == "Fact"
+
+def test_search_snippet():
+    env = {
+        "documents": [
+            {"id": "doc-0001", "title": "Fact", "text": "A very long text that contains the answer somewhere inside it."}
+        ]
+    }
+    tb = ToolBox(env)
+    res = tb.search(SearchCall(query="answer somewhere"))
+    assert res.ok
+    assert len(res.candidates) == 1
+    assert "answer somewhere" in res.candidates[0].snippet

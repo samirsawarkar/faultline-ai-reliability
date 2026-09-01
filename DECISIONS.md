@@ -27,3 +27,9 @@ Append-only. Date · id · decision · why · reversal cost.
 **Why.** `build_env` generates isolated fact documents with unique coined tokens and no cross-entity references. Without a link layer, intermediate prompts are forced to either name the next entity or leak its unique attributes (short-circuiting the retrieval chain). Link documents provide the bridge: hop $N$'s prompt refers only to hop $N-1$'s answer token, requiring the model to retrieve the link document to discover the next entity's identity, then retrieve that entity's fact document. Opaque IDs prevent models from bypassing traversal via ID pattern matching. Scaling entities to 300 guarantees low scenario correlation across hops while staying within deterministic bounds.
 
 **Reversal cost.** Low; link documents and traversal structures are deterministically generated and self-contained within Phase 2.
+
+## D-003 · Search Snippet Bound
+**Date:** 2026-09-01
+**Context:** AMENDMENTS.md A-002 requires search to return a snippet to reduce steps, but bounded so it cannot dump the corpus.
+**Decision:** Snippets are 500 characters. If the match is in the text, it centers a 500-char window on the first occurrence of the query. Otherwise, it returns the first 500 chars of the text.
+**Consequences:** One search surfaces the required fact for single-hop scenarios or immediate link records, reducing token volume and steps, but 500 chars is <10% of typical document sizes so it prevents full corpus dumping via generic searches.

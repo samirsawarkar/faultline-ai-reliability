@@ -1,32 +1,55 @@
-from typing import Dict, Any, List
+import time
+import json
+import tiktoken
+from typing import Dict, Any, List, Optional
 from .contracts import (
     ScenarioTask, AgentOutcome, OutcomeStatus, AgentStep, 
     TOOL_CALL_ADAPTER, ToolCall, ToolResult
 )
 from .tools import ToolBox
 from .model import ModelInterface, ModelResponse
+from faultline_p2.trace.store import TraceStore
+
+def count_tokens(messages: List[Dict[str, Any]]) -> int:
+    enc = tiktoken.get_encoding("cl100k_base")
+    return len(enc.encode(json.dumps(messages)))
 
 def run_agent(
     task: ScenarioTask, 
     env: Dict[str, Any], 
     model: ModelInterface, 
-    step_cap: int = 8
+    step_cap: int = 12,
+    trace_store: Optional[TraceStore] = None,
+    run_id: Optional[str] = None
 ) -> AgentOutcome:
     toolbox = ToolBox(env)
     
-    # We maintain messages to send to the model
-    # System prompt will be added here
     messages = [
-        {"role": "system", "content": "SYSTEM PROMPT"},
+        {"role": "system", "content": "You are a fact-finding agent..."},
         {"role": "user", "content": task.prompt}
     ]
     
     trace: List[AgentStep] = []
     
+    model_name = getattr(model, "model_name", "stub")
+    provider = getattr(model, "provider", "local")
+    version = getattr(model, "version", "1.0")
+    
     for step_idx in range(1, step_cap + 1):
+        prompt_tokens = count_tokens(messages)
+        start_time = time.time()
+        
         try:
             response = model.generate(messages)
         except Exception as e:
+            latency = (time.time() - start_time) * 1000
+            if trace_store and run_id:
+                trace_store.log_span(
+                    run_id=run_id, scenario_id=task.task_id, tier=task.tier, step_index=step_idx,
+                    model_name=model_name, provider=provider, model_version=version,
+                    prompt_tokens=prompt_tokens, completion_tokens=0, latency_ms=latency,
+                    termination_reason=OutcomeStatus.MODEL_FAILURE.value
+                )
             return AgentOutcome(
                 task_id=task.task_id,
                 status=OutcomeStatus.MODEL_FAILURE,
@@ -36,20 +59,36 @@ def run_agent(
                 trace=trace
             )
             
+        latency = (time.time() - start_time) * 1000
+        completion_tokens = count_tokens([response.model_dump(exclude_none=True)])
+        
         if response.answer is not None:
-            # Answer produced
+            trace.append(AgentStep(index=step_idx, thought=response.thought, action_type="answer"))
+            if trace_store and run_id:
+                trace_store.log_span(
+                    run_id=run_id, scenario_id=task.task_id, tier=task.tier, step_index=step_idx,
+                    model_name=model_name, provider=provider, model_version=version,
+                    tool_name="answer", prompt_tokens=prompt_tokens, completion_tokens=completion_tokens,
+                    latency_ms=latency, termination_reason=OutcomeStatus.ANSWERED.value
+                )
             return AgentOutcome(
                 task_id=task.task_id,
-                status=OutcomeStatus.SOLVED,
+                status=OutcomeStatus.ANSWERED,
                 answer=response.answer,
                 cited_sources=response.cited_sources,
-                steps_used=step_idx - 1,
+                steps_used=step_idx,
                 step_cap=step_cap,
                 trace=trace
             )
             
         if response.tool_call is None:
-            # Malformed output (no answer and no tool call)
+            if trace_store and run_id:
+                trace_store.log_span(
+                    run_id=run_id, scenario_id=task.task_id, tier=task.tier, step_index=step_idx,
+                    model_name=model_name, provider=provider, model_version=version,
+                    prompt_tokens=prompt_tokens, completion_tokens=completion_tokens, latency_ms=latency,
+                    termination_reason=OutcomeStatus.MALFORMED.value
+                )
             return AgentOutcome(
                 task_id=task.task_id,
                 status=OutcomeStatus.MALFORMED,
@@ -59,10 +98,16 @@ def run_agent(
                 trace=trace
             )
             
-        # Parse and execute tool call
         try:
             call_obj = TOOL_CALL_ADAPTER.validate_python(response.tool_call)
         except Exception as e:
+            if trace_store and run_id:
+                trace_store.log_span(
+                    run_id=run_id, scenario_id=task.task_id, tier=task.tier, step_index=step_idx,
+                    model_name=model_name, provider=provider, model_version=version,
+                    prompt_tokens=prompt_tokens, completion_tokens=completion_tokens, latency_ms=latency,
+                    termination_reason=OutcomeStatus.MALFORMED.value
+                )
             return AgentOutcome(
                 task_id=task.task_id,
                 status=OutcomeStatus.MALFORMED,
@@ -75,7 +120,13 @@ def run_agent(
         try:
             result = toolbox.dispatch(call_obj)
         except Exception as e:
-            # Tool error
+            if trace_store and run_id:
+                trace_store.log_span(
+                    run_id=run_id, scenario_id=task.task_id, tier=task.tier, step_index=step_idx,
+                    model_name=model_name, provider=provider, model_version=version,
+                    tool_name=call_obj.tool, prompt_tokens=prompt_tokens, completion_tokens=completion_tokens,
+                    latency_ms=latency, termination_reason=OutcomeStatus.TOOL_ERROR.value
+                )
             return AgentOutcome(
                 task_id=task.task_id,
                 status=OutcomeStatus.TOOL_ERROR,
@@ -85,16 +136,18 @@ def run_agent(
                 trace=trace
             )
             
-        # Add to trace
         trace.append(AgentStep(
-            index=step_idx,
-            thought=response.thought,
-            tool_call=call_obj,
-            observation=result,
-            action_type="tool"
+            index=step_idx, thought=response.thought, tool_call=call_obj, observation=result, action_type="tool"
         ))
         
-        # Append to messages for next turn
+        if trace_store and run_id:
+            trace_store.log_span(
+                run_id=run_id, scenario_id=task.task_id, tier=task.tier, step_index=step_idx,
+                model_name=model_name, provider=provider, model_version=version,
+                tool_name=call_obj.tool, prompt_tokens=prompt_tokens, completion_tokens=completion_tokens,
+                latency_ms=latency, termination_reason=None
+            )
+        
         messages.append({
             "role": "assistant",
             "content": response.thought,
@@ -105,6 +158,14 @@ def run_agent(
             "content": result.model_dump_json()
         })
         
+    # step cap
+    if trace_store and run_id:
+        trace_store.log_span(
+            run_id=run_id, scenario_id=task.task_id, tier=task.tier, step_index=step_cap,
+            model_name=model_name, provider=provider, model_version=version,
+            prompt_tokens=prompt_tokens, completion_tokens=completion_tokens, latency_ms=latency,
+            termination_reason=OutcomeStatus.STEP_CAP.value
+        )
     return AgentOutcome(
         task_id=task.task_id,
         status=OutcomeStatus.STEP_CAP,

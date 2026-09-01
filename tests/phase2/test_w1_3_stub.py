@@ -24,7 +24,7 @@ def test_all_350_scenarios_offline(monkeypatch):
     for sc in corpus.scenarios:
         task = ScenarioTask(task_id=sc.scenario_id, prompt=sc.prompt)
         outcome = run_agent(task, env, model, step_cap=8)
-        assert outcome.status == OutcomeStatus.SOLVED
+        assert outcome.status == OutcomeStatus.ANSWERED
         assert outcome.answer == sc.final_answer
         assert sc.required_source in outcome.cited_sources
         success_count += 1
@@ -40,14 +40,14 @@ def test_stub_behaviors():
     # Correct but wrong citation
     model_wrong_cite = StubModel(behavior="correct_wrong_citation", scenarios=[sc])
     out1 = run_agent(task, env, model_wrong_cite, step_cap=8)
-    assert out1.status == OutcomeStatus.SOLVED
+    assert out1.status == OutcomeStatus.ANSWERED
     assert out1.answer == sc.final_answer
     assert sc.required_source not in out1.cited_sources
     
     # Wrong answer
     model_wrong_ans = StubModel(behavior="wrong_answer", scenarios=[sc])
     out2 = run_agent(task, env, model_wrong_ans, step_cap=8)
-    assert out2.status == OutcomeStatus.SOLVED
+    assert out2.status == OutcomeStatus.ANSWERED
     assert out2.answer != sc.final_answer
     
     # Malformed

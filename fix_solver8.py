@@ -1,58 +1,12 @@
-import urllib.request
 import re
-import json
-from typing import Optional, Dict, Any, List, Protocol
-from pydantic import BaseModel, Field
 
-class ModelResponse(BaseModel):
-    thought: str = ""
-    tool_call: Optional[Dict[str, Any]] = None
-    answer: Optional[str] = None
-    cited_sources: List[str] = Field(default_factory=list)
+with open("faultline_p2/agent/model.py", "r") as f:
+    code = f.read()
 
-class ModelInterface(Protocol):
-    def generate(self, messages: List[Dict[str, Any]]) -> ModelResponse:
-        ...
+start_idx = code.find('if self.behavior == "solver":')
+end_idx = code.find('if self.behavior == "hard_failure":')
 
-class LiteLLMModel(ModelInterface):
-    def __init__(self, model_name: str, provider: str, version: str):
-        self.model_name = model_name
-        self.provider = provider
-        self.version = version
-
-    def generate(self, messages: List[Dict[str, Any]]) -> ModelResponse:
-        import litellm
-        # X3: Implement the seam properly but never invoke it.
-        # We raise BEFORE dispatching, but we can return the kwargs if we are in a test mode,
-        # or we just raise the kwargs as an exception to assert them in test.
-        kwargs = {
-            "model": self.model_name,
-            "messages": messages,
-            "temperature": 0.0,
-            "max_tokens": 2048,
-        }
-        raise RuntimeError("LiteLLM Seam Not Invoked", kwargs)
-
-class StubModel(ModelInterface):
-    def __init__(self, behavior: str = "correct", scenarios: Optional[List[Any]] = None, explicit_responses: Optional[List[ModelResponse]] = None):
-        self.behavior = behavior
-        self.scenarios = scenarios or []
-        self.explicit_responses = explicit_responses
-        self.idx = 0
-        
-    def generate(self, messages: List[Dict[str, Any]]) -> ModelResponse:
-        def urlopen_stub(*args, **kwargs):
-            raise RuntimeError("Outbound network blocked")
-        urllib.request.urlopen = urlopen_stub
-        
-        if self.explicit_responses is not None:
-            if self.idx >= len(self.explicit_responses):
-                raise RuntimeError("StubModel exhausted")
-            resp = self.explicit_responses[self.idx]
-            self.idx += 1
-            return resp
-
-        if self.behavior == "solver":
+new_logic = """if self.behavior == "solver":
             # X2 Solver Stub
             # It traverses honestly using tool results. 
             # When multiple valid links exist (due to corpus ambiguity), it peeks at traversal_sources to pick the right one,
@@ -62,11 +16,9 @@ class StubModel(ModelInterface):
             
             if len(messages) == 2:
                 prompt = messages[1]["content"]
-                step1 = re.split(r'Step \d+: ', prompt)
-                step1 = step1[1] if len(step1) > 1 else prompt
-                m1 = re.search(r"What is the .*? of (.*?)\?", step1)
-                m2 = re.search(r"In which district is (.*?) headquartered\?", step1)
-                m3 = re.search(r"Which firm is the external auditor of (.*?)\?", step1)
+                m1 = re.search(r"What is the .*? of (.*?)\?", prompt)
+                m2 = re.search(r"In which district is (.*?) headquartered\?", prompt)
+                m3 = re.search(r"Which firm is the external auditor of (.*?)\?", prompt)
                 ent = None
                 if m1: ent = m1.group(1)
                 elif m2: ent = m2.group(1)
@@ -127,29 +79,9 @@ class StubModel(ModelInterface):
                                             
             return ModelResponse(answer="Solver failed to parse", cited_sources=[])
 
-        if self.behavior == "hard_failure":
-            raise RuntimeError("Simulated hard failure")
-            
-        if self.behavior == "malformed":
-            return ModelResponse(thought="This is malformed, no tool, no answer")
-            
-        if self.behavior == "step_cap":
-            return ModelResponse(tool_call={"tool": "search", "query": "looping"})
-            
-        user_msg = next((m["content"] for m in messages if m["role"] == "user"), "")
-        scenario = next((s for s in self.scenarios if s.prompt == user_msg), None)
-        
-        if not scenario:
-            return ModelResponse(answer="Unknown scenario", cited_sources=[])
+        """
 
-        if self.behavior == "correct":
-            return ModelResponse(answer=scenario.final_answer, cited_sources=[scenario.required_source])
-            
-        if self.behavior == "correct_wrong_citation":
-            link_doc = next((d for d in scenario.traversal_sources if d.startswith("link-")), "doc-9999")
-            return ModelResponse(answer=scenario.final_answer, cited_sources=[link_doc])
-            
-        if self.behavior == "wrong_answer":
-            return ModelResponse(answer="Wrong Answer", cited_sources=[scenario.required_source])
+code = code[:start_idx] + new_logic + code[end_idx:]
 
-        return ModelResponse(answer="Unhandled behavior", cited_sources=[])
+with open("faultline_p2/agent/model.py", "w") as f:
+    f.write(code)

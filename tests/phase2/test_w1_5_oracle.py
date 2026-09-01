@@ -18,7 +18,7 @@ def test_oracle_wiring_correct_but_wrong_citation_fails():
     model = StubModel(behavior="correct_wrong_citation", scenarios=[t2_sc])
     outcome = run_agent(task, env, model, step_cap=8)
     
-    assert outcome.status == OutcomeStatus.SOLVED
+    assert outcome.status == OutcomeStatus.ANSWERED
     assert outcome.answer == t2_sc.final_answer
     
     # ensure citation is wrong (e.g. it's a link doc)

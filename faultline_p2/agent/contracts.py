@@ -10,10 +10,8 @@ from pydantic import (
 )
 from typing_extensions import Annotated, Literal
 
-# Modified to allow Phase 2 link documents
 DOC_ID_PATTERN = r"^(doc-\d{4}|link-[a-f0-9]{12})$"
 _STRICT = ConfigDict(extra="forbid")
-
 
 class ToolName(str, Enum):
     SEARCH = "search"
@@ -46,6 +44,7 @@ class Candidate(BaseModel):
     doc_id: str = Field(pattern=DOC_ID_PATTERN)
     title: str
     score: float = Field(ge=0.0)
+    snippet: str = Field(max_length=500) # Added snippet
 
 class SearchResult(BaseModel):
     model_config = _STRICT
@@ -80,6 +79,7 @@ class ScenarioTask(BaseModel):
     model_config = _STRICT
     task_id: str = Field(min_length=1)
     prompt: str = Field(min_length=1)
+    tier: str = ""
 
 class AgentStep(BaseModel):
     model_config = _STRICT
@@ -90,7 +90,7 @@ class AgentStep(BaseModel):
     action_type: str # "tool" or "answer"
 
 class OutcomeStatus(str, Enum):
-    SOLVED = "solved"
+    ANSWERED = "answered" # Renamed from SOLVED as per X5
     INCOMPLETE = "incomplete"
     INVALID = "invalid"
     STEP_CAP = "step_cap"
@@ -113,10 +113,10 @@ class AgentOutcome(BaseModel):
     def _invariants(self) -> "AgentOutcome":
         if self.steps_used > self.step_cap:
             raise ValueError("steps_used cannot exceed step_cap")
-        if self.status is OutcomeStatus.SOLVED and self.answer is None:
-            raise ValueError("a SOLVED outcome must carry an answer")
-        if self.status is not OutcomeStatus.SOLVED and self.answer is not None:
-            raise ValueError("a non-SOLVED outcome must not carry an answer")
+        if self.status is OutcomeStatus.ANSWERED and self.answer is None:
+            raise ValueError("an ANSWERED outcome must carry an answer")
+        if self.status is not OutcomeStatus.ANSWERED and self.answer is not None:
+            raise ValueError("a non-ANSWERED outcome must not carry an answer")
         if len(self.trace) != self.steps_used:
             raise ValueError("trace length must equal steps_used")
         return self
