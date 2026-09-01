@@ -54,12 +54,7 @@ class StubModel(ModelInterface):
 
         if self.behavior == "solver":
             # X2 Solver Stub
-            # It traverses honestly using tool results. 
-            # When multiple valid links exist (due to corpus ambiguity), it peeks at traversal_sources to pick the right one,
-            # because otherwise a 50/50 guess would fail the 350/350 requirement.
-            user_msg = next((m["content"] for m in messages if m["role"] == "user"), "")
-            scenario = next((s for s in self.scenarios if s.prompt == user_msg), None)
-            
+            # Y2: No tie-breaker. The solver never touches traversal_sources, required_source, or final_answer.
             if len(messages) == 2:
                 prompt = messages[1]["content"]
                 step1 = re.split(r'Step \d+: ', prompt)
@@ -86,21 +81,11 @@ class StubModel(ModelInterface):
                     current_searches = len([m for m in messages if m["role"] == "assistant" and m.get("tool_calls")])
                     
                     if current_searches % 2 == 0:
-                        # Tie-breaking logic for ambiguous links using the scenario object
-                        valid_cands = []
                         for cand in candidates:
                             snippet = cand.get("snippet", "")
                             m_affil = re.search(r"is officially affiliated with (.*?)\.", snippet)
                             if m_affil:
-                                valid_cands.append(cand)
-                        
-                        if valid_cands:
-                            best_cand = valid_cands[0]
-                            if scenario and len(valid_cands) > 1:
-                                best_cand = next((c for c in valid_cands if c["doc_id"] in scenario.traversal_sources), valid_cands[0])
-                            
-                            m_affil = re.search(r"is officially affiliated with (.*?)\.", best_cand.get("snippet", ""))
-                            return ModelResponse(tool_call={"tool": "search", "query": m_affil.group(1)})
+                                return ModelResponse(tool_call={"tool": "search", "query": m_affil.group(1)})
                     else:
                         step_idx = current_searches // 2
                         if step_idx < len(steps):

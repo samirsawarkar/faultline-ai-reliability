@@ -33,3 +33,6 @@ Append-only. Date · id · decision · why · reversal cost.
 **Context:** AMENDMENTS.md A-002 requires search to return a snippet to reduce steps, but bounded so it cannot dump the corpus.
 **Decision:** Snippets are 500 characters. If the match is in the text, it centers a 500-char window on the first occurrence of the query. Otherwise, it returns the first 500 chars of the text.
 **Consequences:** One search surfaces the required fact for single-hop scenarios or immediate link records, reducing token volume and steps, but 500 chars is <10% of typical document sizes so it prevents full corpus dumping via generic searches.
+
+### D-004: Tokenizer as Estimator
+We added `tiktoken` to `pyproject.toml` as a dependency. The `cl100k_base` tokenizer is used as an ESTIMATOR for token counts. For non-OpenAI models, this provides a rough approximation rather than an exact count.

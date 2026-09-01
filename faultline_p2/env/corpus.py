@@ -314,6 +314,8 @@ def build_corpus(seed: int = 42) -> Corpus:
     rng_standard = random.Random((seed * 1_000_003 + 100_000) & 0x7FFFFFFFFFFFFFFF)
     rng_reserved = random.Random((seed * 1_000_003 + 200_000) & 0x7FFFFFFFFFFFFFFF)
 
+    used_outbound_attrs = {e: set() for e in entity_names}
+
     scenarios: List[Scenario] = []
     tier_counts = {"T1": 0, "T2": 0, "T3": 0}
     link_documents: List[Dict[str, Any]] = []
@@ -396,7 +398,17 @@ def build_corpus(seed: int = 42) -> Corpus:
     for chain_idx in t2_std_chains_idx:
         seq += 1
         chain_ents = [standard_entities[i] for i in chain_idx]
-        target_attrs = [rng_standard.choice(attr_keys) for _ in range(3)]
+        target_attrs = []
+        for i, ent in enumerate(chain_ents):
+            if i < len(chain_ents) - 1:
+                avail = [a for a in attr_keys if a not in used_outbound_attrs[ent]]
+                if not avail:
+                    raise RuntimeError(f"No available attributes left for {ent} (any-hop non-final reuse limit exceeded)")
+                attr = rng_standard.choice(avail)
+                used_outbound_attrs[ent].add(attr)
+                target_attrs.append(attr)
+            else:
+                target_attrs.append(rng_standard.choice(attr_keys))
         sc = _build_multihop_scenario(
             scenario_id=f"s-{seq:04d}",
             tier="T2",
@@ -415,7 +427,17 @@ def build_corpus(seed: int = 42) -> Corpus:
     for chain_idx in t3_std_chains_idx:
         seq += 1
         chain_ents = [standard_entities[i] for i in chain_idx]
-        target_attrs = [rng_standard.choice(attr_keys) for _ in range(5)]
+        target_attrs = []
+        for i, ent in enumerate(chain_ents):
+            if i < len(chain_ents) - 1:
+                avail = [a for a in attr_keys if a not in used_outbound_attrs[ent]]
+                if not avail:
+                    raise RuntimeError(f"No available attributes left for {ent} (any-hop non-final reuse limit exceeded)")
+                attr = rng_standard.choice(avail)
+                used_outbound_attrs[ent].add(attr)
+                target_attrs.append(attr)
+            else:
+                target_attrs.append(rng_standard.choice(attr_keys))
         sc = _build_multihop_scenario(
             scenario_id=f"s-{seq:04d}",
             tier="T3",
@@ -434,7 +456,17 @@ def build_corpus(seed: int = 42) -> Corpus:
     for chain_idx in t3_res_chains_idx:
         seq += 1
         chain_ents = [reserved_entities[i] for i in chain_idx]
-        target_attrs = [rng_reserved.choice(attr_keys) for _ in range(5)]
+        target_attrs = []
+        for i, ent in enumerate(chain_ents):
+            if i < len(chain_ents) - 1:
+                avail = [a for a in attr_keys if a not in used_outbound_attrs[ent]]
+                if not avail:
+                    raise RuntimeError(f"No available attributes left for {ent} (any-hop non-final reuse limit exceeded)")
+                attr = rng_reserved.choice(avail)
+                used_outbound_attrs[ent].add(attr)
+                target_attrs.append(attr)
+            else:
+                target_attrs.append(rng_reserved.choice(attr_keys))
         sc = _build_multihop_scenario(
             scenario_id=f"r-{seq:04d}",
             tier="T3",

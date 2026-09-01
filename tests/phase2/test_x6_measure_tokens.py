@@ -7,7 +7,7 @@ from faultline_p2.agent.contracts import ScenarioTask, OutcomeStatus
 def test_measure_tokens():
     corpus = build_corpus()
     env = {"documents": corpus.documents}
-    model = StubModel(behavior="solver", scenarios=corpus.scenarios)
+    model = StubModel(behavior="solver")
     
     tier_tokens = {"T1": {"prompt": 0, "completion": 0, "runs": 0}, 
                    "T2": {"prompt": 0, "completion": 0, "runs": 0}, 

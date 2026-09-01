@@ -9,6 +9,7 @@ description = "FAULTLINE Phase 2 — Real model reliability laboratory"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "tiktoken",
     "pydantic>=2.13",
     "litellm==1.98.0",
     "pytest>=8.0",

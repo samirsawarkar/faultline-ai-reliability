@@ -127,7 +127,7 @@ def test_link_doc_ids_opaque_and_content_addressed():
     """Link document IDs and titles must be opaque/content-addressed without leaking scenario ID or hop position."""
     corpus = build_corpus(seed=42)
     link_docs = [d for d in corpus.documents if d["id"].startswith("link-")]
-    assert len(link_docs) == 804, f"Expected 804 unique link documents, got {len(link_docs)}"
+    assert len(link_docs) == 998, f"Expected 998 unique link documents, got {len(link_docs)}"
 
     for doc in link_docs:
         # Must not contain scenario prefixes or hop positions
@@ -144,7 +144,7 @@ def test_corpus_document_ids_unique():
     corpus = build_corpus(seed=42)
     doc_ids = [d["id"] for d in corpus.documents]
     assert len(doc_ids) == len(set(doc_ids)), f"Duplicate document IDs detected in corpus.documents ({len(doc_ids)} vs {len(set(doc_ids))})"
-    assert len(corpus.documents) == 1164, f"Expected exactly 1164 unique documents, got {len(corpus.documents)}"
+    assert len(corpus.documents) == 1358, f"Expected exactly 1358 unique documents, got {len(corpus.documents)}"
 
 
 def test_corpus_scenario_counts_and_tiers():

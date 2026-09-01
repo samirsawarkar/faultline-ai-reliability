@@ -8,12 +8,13 @@ from faultline_p2.oracle._day01_oracle import oracle_check
 def test_solver_all_scenarios():
     corpus = build_corpus()
     env = {"documents": corpus.documents}
-    model = StubModel(behavior="solver", scenarios=corpus.scenarios)
+    model = StubModel(behavior="solver")
     
     tier_steps = {"T1": [], "T2": [], "T3": []}
     tier_tokens = {"T1": {"prompt": 0, "completion": 0}, "T2": {"prompt": 0, "completion": 0}, "T3": {"prompt": 0, "completion": 0}}
     total_tool_calls = 0
     
+    assert not model.scenarios, 'Solver must not have access to scenarios array'
     for sc in corpus.scenarios:
         task = ScenarioTask(task_id=sc.scenario_id, prompt=sc.prompt, tier=sc.tier)
         outcome = run_agent(task, env, model, step_cap=12)
