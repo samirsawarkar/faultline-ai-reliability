@@ -14,6 +14,7 @@ planning/
     WEEK0.md           the Week 0 work order · the first thing that gets built
     WEEK0-FIX.md       corrective order after the Week 0 review
     WEEK1.md           the agent harness, built offline
+    WEEK1-FIX.md       corrective order after the Week 1 review
 ```
 
 ## Which file, when
