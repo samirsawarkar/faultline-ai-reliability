@@ -2,3 +2,6 @@
 __pycache__/
 *.pyc
 .pytest_cache/
+projects/p01_baseline/ledger.jsonl
+projects/p01_baseline/sweep_output.json
+projects/p01_baseline/trace.db
