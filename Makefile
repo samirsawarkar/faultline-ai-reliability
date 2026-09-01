@@ -345,3 +345,6 @@ phase2-corpus:
 phase2-preflight:
 	$(PY) -m projects.p00_preflight.run $(ARGS)
 
+
+p01:
+	.venv/bin/python projects/p01_baseline/run.py --confirm

@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "model": "stub",
+    "corpus_hash": "84e6ff590704aa94d10912f8002716b14c7436080e1a3270b53f9385dc728efc",
+    "reference": "MEC v1.0 + A-001/A-002"
+  },
+  "pass@1": {
+    "score": 1.0,
+    "wilson_ci": [
+      0.9630065017930143,
+      1.0
+    ]
+  },
+  "tiers": {
+    "T1": {
+      "n": 33,
+      "pass_rate": 1.0,
+      "wilson_ci": [
+        0.8957300024575479,
+        1.0
+      ],
+      "avg_steps": 2.0,
+      "avg_tokens": {
+        "prompt": 586,
+        "completion": 57
+      }
+    },
+    "T2": {
+      "n": 34,
+      "pass_rate": 1.0,
+      "wilson_ci": [
+        0.8984854458466762,
+        1.0
+      ],
+      "avg_steps": 6.0,
+      "avg_tokens": {
+        "prompt": 6539,
+        "completion": 183
+      }
+    },
+    "T3": {
+      "n": 33,
+      "pass_rate": 1.0,
+      "wilson_ci": [
+        0.8957300024575479,
+        1.0
+      ],
+      "avg_steps": 10.0,
+      "avg_tokens": {
+        "prompt": 18630,
+        "completion": 309
+      }
+    }
+  }
+}
