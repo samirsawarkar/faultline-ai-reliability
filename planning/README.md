@@ -6,6 +6,7 @@ work described in this folder.
 
 ```
 planning/
+  START-HERE.md        plain-English map of the whole project — read this first
   cto/                 written by the owner — decisions, contracts, why
     PHASE2-PLAN.md     the research contract: what is measured and why
     PHASE2-BUILD.md    the build order, build decisions D1-D6, project briefs
@@ -21,6 +22,7 @@ planning/
 
 | You are about to… | Read |
 |---|---|
+| Understand what any letter or number means | `START-HERE.md` |
 | Start any session, no exceptions | `agent/AGENT-RULES.md` |
 | Build the foundation (first work of Phase 2) | `agent/WEEK0.md` |
 | Fix what the Week 0 review rejected | `agent/WEEK0-FIX.md` |
