@@ -1,0 +1,158 @@
+\section{02 --- The Reliability Problem}
+
+\subsection{Why ``The AI Responded Successfully'' is a Dangerous Lie}
+In traditional software engineering, an HTTP 200 OK from an idempotent API generally indicates successful computation. In document-grounded AI systems, an HTTP 200 OK indicates only that the transport layer did not sever the connection.
+
+Consider the real execution path of a multi-hop agent tasked with answering an enterprise question (e.g., verifying compliance across multiple regulatory documents):
+\begin{center}
+\begin{tikzpicture}[
+  node distance=0.6cm and 0.8cm,
+  flowbox/.style={draw=primary, fill=lightbg, rounded corners=3pt, font=\small\sffamily, align=center, inner sep=5pt, minimum width=1.8cm},
+  arrow/.style={-{Latex[length=2.5mm]}, line width=1pt, color=primary}
+]
+\node[flowbox] (req) {User\\Request};
+\node[flowbox, right=of req] (mod1) {Model\\Step 1};
+\node[flowbox, right=of mod1] (tool1) {Search\\Tool};
+\node[flowbox, right=of tool1] (ret1) {Retrieved\\Docs};
+\node[flowbox, right=of ret1] (mod2) {Model\\Step 2};
+\node[flowbox, right=of mod2] (ans) {Final\\Answer};
+
+\draw[arrow] (req) -- (mod1);
+\draw[arrow] (mod1) -- (tool1);
+\draw[arrow] (tool1) -- (ret1);
+\draw[arrow] (ret1) -- (mod2);
+\draw[arrow] (mod2) -- (ans);
+\end{tikzpicture}
+\end{center}
+
+At every stage of this graph, silent failure modes emerge that leave zero signature in traditional APM tools:
+\begin{enumerate}
+    \item \textbf{Wrong Answer from Valid Output:} The model generates syntactically valid JSON conforming perfectly to the schema, but hallucinates a factual claim.
+    \item \textbf{Correct Answer from Hallucinated / Wrong Source:} The model guesses the right token (e.g., ``London'') by sheer prior probability, but cites an unrelated document. In regulated audit contexts, this is a severe failure of provenance.
+    \item \textbf{Correct Source with Incomplete Coverage:} A multi-hop query requires citing both Document A (linking Entity X to Y) and Document B (stating the attribute of Y). The agent cites only Document B. The answer appears grounded, but the inference chain is unverifiable.
+    \item \textbf{Stale Retrieval Fallback:} A vector database replica experiences replication lag, returning a version of a policy from 6 months ago. The generation is faithful to the retrieved chunk, but the user receives invalid guidance.
+    \item \textbf{Retry Amplification (Storms):} When a tool endpoint slows down, naive retry logic sends three additional requests per step. Across a 6-step agent run, 18 requests hit an already degraded service, transforming a transient hiccup into a cascading system-wide outage.
+    \item \textbf{Fallback Silent Degradation:} When a frontier model times out, a fallback router automatically diverts traffic to a fast, cheap model. The cheap model completes the task without error, but lacks the reasoning capacity for multi-hop synthesis, producing a plausible-sounding hallucination.
+    \item \textbf{Context Window Poisoning:} A distractor document contains adversarial instructions or conflicting entity attributes. The model's context is corrupted, causing subsequent tool queries to pursue irrelevant paths until the step budget is exhausted.
+    \item \textbf{Budget Exhaustion:} An automated recovery loop successfully repairs a malformed tool call on attempt 3, but the cumulative latency breaches the SLA (e.g., exceeding 5,000ms), causing downstream client disconnects.
+\end{enumerate}
+
+\subsection{The Three-Tier Correctness Model}
+To bring engineering precision to reliability discussions, FAULTLINE defines and measures three distinct, non-fungible tiers of system health:
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  box/.style={draw=primary, rounded corners=4pt, line width=1pt, text width=0.28\textwidth, align=center, inner sep=8pt},
+  flow/.style={-{Latex[length=3mm]}, line width=1.5pt, color=secondary}
+]
+\node[box, fill=blue!5] (op) {
+  \textbf{\color{primary}Tier 1: Operational Success}\\
+  \footnotesize
+  HTTP 200 OK $\cdot$ Latency $<T$ $\cdot$ No uncaught exceptions $\cdot$ Response non-empty.\\
+  \textit{Metric: Infrastructure Availability}
+};
+
+\node[box, fill=warning!10, right=0.8cm of op] (sem) {
+  \textbf{\color{warning!80!black}Tier 2: Semantic Correctness}\\
+  \footnotesize
+  Plausible phrasing $\cdot$ Tone valid $\cdot$ High semantic similarity $\cdot$ General coherence.\\
+  \textit{Metric: Advisory Judge Score}
+};
+
+\node[box, fill=success!10, right=0.8cm of sem] (vis) {
+  \textbf{\color{success!80!black}Tier 3: User-Visible Correctness}\\
+  \footnotesize
+  Exact factual truth $\cdot$ Provenance valid $\cdot$ All required sources cited $\cdot$ Within SLA/budget.\\
+  \textit{Metric: Strict Grounded Oracle Pass}
+};
+
+\draw[flow] (op) -- node[above, font=\scriptsize\bfseries\sffamily] {Does NOT imply} (sem);
+\draw[flow] (sem) -- node[above, font=\scriptsize\bfseries\sffamily] {Does NOT imply} (vis);
+\end{tikzpicture}
+\caption{The Three Tiers of Reliability. Conventional systems measure Tier 1 and assume Tier 3. FAULTLINE measures all three independently and forbids promoting Tier 1 or Tier 2 to Tier 3.}
+\end{figure}
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{lp{0.28\textwidth}p{0.25\textwidth}X}
+\toprule
+\textbf{Dimension} & \textbf{Operational Success} & \textbf{Semantic Correctness} & \textbf{User-Visible Correctness} \\
+\midrule
+\textbf{What it tests} & Process completion and transport health. & Text fluency, semantic proximity, absence of toxicity. & Ground-truth factual accuracy, complete citation provenance, budget compliance. \\
+\addlinespace
+\textbf{Evaluator} & APM / Gateway / HTTP status. & LLM-as-a-Judge / Embedding distance. & Pure-function Programmatic Oracle. \\
+\addlinespace
+\textbf{Failure Signature} & HTTP 500, Gateway Timeout, OOM Crash. & Fluff, generic non-answers, hallucination with high confidence. & Missing required link citation, incorrect final entity token, budget breach. \\
+\addlinespace
+\textbf{Can it be gamed?} & Yes: catch all exceptions and return a friendly error message. & Yes: models exploit judge verbosity bias and polite phrasing. & No: deterministic exact string and source set matching. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\vspace{12pt}
+\section{03 --- FAULTLINE in One Diagram}
+
+The entire FAULTLINE architecture is organized into four strictly segregated operational zones: \textbf{The Observed System}, \textbf{Injected Failure}, \textbf{Measurement System}, and \textbf{The Decision Engine}.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  scale=0.92, every node/.style={transform shape},
+  zone/.style={draw=rulecolor, rounded corners=6pt, line width=1pt, inner sep=10pt},
+  nodebox/.style={draw=primary, fill=white, rounded corners=3pt, font=\footnotesize\sffamily, align=center, inner sep=5pt, line width=0.8pt},
+  faultbox/.style={draw=accent, fill=accent!10, rounded corners=3pt, font=\footnotesize\bfseries\sffamily, align=center, inner sep=5pt, line width=0.8pt},
+  measbox/.style={draw=secondary, fill=secondary!10, rounded corners=3pt, font=\footnotesize\sffamily, align=center, inner sep=5pt, line width=0.8pt},
+  decbox/.style={draw=success, fill=success!10, rounded corners=3pt, font=\footnotesize\bfseries\sffamily, align=center, inner sep=5pt, line width=0.8pt},
+  arrow/.style={-{Latex[length=2.5mm]}, line width=1pt, color=primary},
+  faultarrow/.style={-{Latex[length=2.5mm]}, line width=1pt, dashed, color=accent},
+  measarrow/.style={-{Latex[length=2.5mm]}, line width=1pt, color=secondary}
+]
+
+% Zone 1: Observed System
+\node[nodebox, text width=2.4cm] (env) at (0, 7) {\textbf{Seeded Environment}\\Corpus (1,164 docs)\\Link-layer records};
+\node[nodebox, text width=2.4cm] (agent) at (0, 4.8) {\textbf{Bounded Agent}\\Reason $\to$ Tool $\to$ Obs\\Pydantic v2 contracts};
+\node[nodebox, text width=2.4cm] (tools) at (0, 2.6) {\textbf{ToolBox}\\Search $\cdot$ Lookup $\cdot$ Calc\\Snippet bounding};
+\node[nodebox, text width=2.4cm] (policy) at (0, 0.4) {\textbf{Recovery Policy}\\Retry $\cdot$ Breaker $\cdot$ Fallback\\Ceiling enforcement};
+
+% Zone 2: Injected Failure
+\node[faultbox, text width=2.6cm] (injector) at (4.5, 4.8) {\textbf{Fault Injector}\\F1: Schema Corruption\\F2: Timeout / Latency\\F3: Schema-valid Wrong\\F4: Provider Outage\\F5: Context Corruption\\F6: Loop Exhaustion};
+
+% Zone 3: Measurement System
+\node[measbox, text width=2.6cm] (trace) at (9, 7) {\textbf{Complete Traces}\\Linked SQLite Spans\\OTel GenAI semconv\\Parent-child hierarchy};
+\node[measbox, text width=2.6cm] (oracle) at (9, 4.8) {\textbf{Strict Oracle}\\Pure function check\\$\bullet$ \code{answer\_ok}\\$\bullet$ \code{sources\_ok}};
+\node[measbox, text width=2.6cm] (detect) at (9, 2.6) {\textbf{Detector System}\\Deterministic checks\\Miss slice auditing\\Advisory Judge ($\kappa=0.5$)};
+\node[measbox, text width=2.6cm] (stats) at (9, 0.4) {\textbf{Statistical Engine}\\Wilson 95\% CIs\\Paired McNemar\\10,000 Bootstrap};
+
+% Zone 4: Decision Engine
+\node[decbox, text width=3.2cm] (decision) at (4.5, -2.0) {\textbf{Reliability Decision Framework}\\Constraint-first eligibility screen\\Cost/Latency frontier comparison\\Attack the winner under stress\\Fail-closed publication audit};
+
+% Background Zone Groupings
+\begin{scope}[on background layer]
+  \node[zone, fill=blue!3, fit=(env)(agent)(tools)(policy), label={[font=\small\bfseries\color{primary}, anchor=north west]north west:\textbf{ZONE 1: OBSERVED SYSTEM}}] (z1) {};
+  \node[zone, fill=accent!3, fit=(injector), label={[font=\small\bfseries\color{accent}, anchor=north west]north west:\textbf{ZONE 2: INJECTED FAILURE}}] (z2) {};
+  \node[zone, fill=secondary!3, fit=(trace)(oracle)(detect)(stats), label={[font=\small\bfseries\color{secondary}, anchor=north west]north west:\textbf{ZONE 3: MEASUREMENT}}] (z3) {};
+  \node[zone, fill=success!3, fit=(decision), label={[font=\small\bfseries\color{success!80!black}, anchor=north west]north west:\textbf{ZONE 4: DECISION ENGINE}}] (z4) {};
+\end{scope}
+
+% Connections
+\draw[arrow] (env) -- (agent);
+\draw[arrow] (agent) -- (tools);
+\draw[arrow] (tools) -- (policy);
+
+\draw[faultarrow] (injector) -- node[above, font=\scriptsize\color{accent}] {Intercept tool/model} (agent);
+\draw[faultarrow] (injector) -- (tools);
+
+\draw[measarrow] (agent) -- (trace);
+\draw[measarrow] (policy) -- (trace);
+\draw[measarrow] (agent) -- (oracle);
+\draw[measarrow] (trace) -- (detect);
+\draw[measarrow] (oracle) -- (stats);
+\draw[measarrow] (detect) -- (stats);
+
+\draw[arrow, line width=1.5pt, color=success!80!black] (stats) |- (decision);
+\draw[arrow, line width=1.5pt, color=success!80!black] (policy) |- (decision);
+
+\end{tikzpicture}
+\caption{FAULTLINE System Architecture. The experimental workbench enforces strict physical and logical boundaries: the Injected Failure system creates reproducible degradation, the Observed System executes bounded recovery policies, the Measurement System scores outcomes without relying on LLM self-evaluation, and the Decision Engine filters policies through constraint-first Pareto frontiers.}
+\end{figure}

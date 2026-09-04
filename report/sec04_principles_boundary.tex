@@ -1,0 +1,126 @@
+\section{04 --- Design Principles}
+
+FAULTLINE is governed by ten non-negotiable engineering laws. Each principle was instituted in response to concrete failure modes in AI measurement and evaluation:
+
+\subsection{The Ten Engineering Laws of FAULTLINE}
+
+\begin{enumerate}
+    \item \textbf{Determinism before measurement.}
+    \begin{itemize}
+        \item \textit{Why it exists:} An experimental effect cannot be isolated if the underlying test environment drifts between runs. Stochastic testbeds confound model behavior with environment churn.
+        \item \textit{Implementation:} Seeded generation (\code{seed=42}) for all 1,164 corpus documents, link records, queries, and fault schedules. Fixed Python hash seed (\code{PYTHONHASHSEED=0}).
+        \item \textit{Failure prevented:} Falsely attributing an accuracy gain to a prompt tweak when it was caused by a different retrieval set.
+    \end{itemize}
+
+    \item \textbf{Oracle before agent complexity.}
+    \begin{itemize}
+        \item \textit{Why it exists:} Building a complex agent before establishing an infallible pass/fail ground truth leads to grading the agent on subjective, shifting criteria.
+        \item \textit{Implementation:} The programmatic oracle (\code{oracle\_check}) was frozen and hash-pinned on Day 1 (\code{dc5eef1c...}) before any multi-step agent code was written.
+        \item \textit{Failure prevented:} Moving the goalposts by modifying the evaluation standard to flatter agent performance.
+    \end{itemize}
+
+    \item \textbf{Failure modes before metrics.}
+    \begin{itemize}
+        \item \textit{Why it exists:} Defining a metric before understanding the failure modes produces vanity scores (e.g., aggregate accuracy) that conceal catastrophic operational edge cases.
+        \item \textit{Implementation:} Formal taxonomy of six distinct fault families (F1--F6) and their physical propagation mechanisms cataloged prior to metric aggregation.
+        \item \textit{Failure prevented:} High aggregate F1 scores concealing silent semantic escapes and data corruption.
+    \end{itemize}
+
+    \item \textbf{Correctness before availability.}
+    \begin{itemize}
+        \item \textit{Why it exists:} A system that returns a wrong answer quickly is worse than a system that explicitly declares failure or abstains.
+        \item \textit{Implementation:} The primary success metric is \code{grounded\_pass\_rate} (exact answer AND required source citation). Availability is tracked as a secondary operational measure.
+        \item \textit{Failure prevented:} Promoting a fallback policy that achieves 100\% uptime by returning 75\% degraded answers.
+    \end{itemize}
+
+    \item \textbf{Aligned populations before A/B comparison.}
+    \begin{itemize}
+        \item \textit{Why it exists:} Unpaired evaluations introduce scenario variance that overwhelms the true treatment effect.
+        \item \textit{Implementation:} Policies evaluated in competition receive the exact same sequence of scenario seeds, input tokens, and fault schedules.
+        \item \textit{Failure prevented:} Believing Policy B is superior to Policy A simply because Policy B drew an easier sample of queries.
+    \end{itemize}
+
+    \item \textbf{Uncertainty before strong claims.}
+    \begin{itemize}
+        \item \textit{Why it exists:} Point estimates in AI benchmarks create false precision; an 82\% score over 50 samples is statistically indistinguishable from 75\%.
+        \item \textit{Implementation:} Every binomial proportion is bounded by a 95\% Wilson score interval; all cost and latency differences report 10,000-resample paired bootstrap intervals.
+        \item \textit{Failure prevented:} Declaring victory on overlapping confidence intervals; differences below power thresholds are explicitly classified as \textbf{INCONCLUSIVE}.
+    \end{itemize}
+
+    \item \textbf{Replay before trusting recovery.}
+    \begin{itemize}
+        \item \textit{Why it exists:} A bug fix that cannot be reproduced deterministically in a regression test will regress under future changes.
+        \item \textit{Implementation:} The Day 25 red$\to$green contract requires the identical incident configuration to fail deterministically on legacy code and pass across 20 repeated executions on fixed code.
+        \item \textit{Failure prevented:} ``Flapping'' fixes that pass once due to stochastic luck but fail under production load.
+    \end{itemize}
+
+    \item \textbf{Attack the winner.}
+    \begin{itemize}
+        \item \textit{Why it exists:} A recovery policy optimized for baseline conditions often harbors severe fragility under tail-risk stress.
+        \item \textit{Implementation:} The winning Q5 cascade policy was immediately attacked under worse severity, correlated outages, and tight resource budgets.
+        \item \textit{Failure prevented:} Shipping an ostensibly optimal recovery policy that triggers catastrophic failure under adverse operating conditions.
+    \end{itemize}
+
+    \item \textbf{Preserve limitations.}
+    \begin{itemize}
+        \item \textit{Why it exists:} Engineering claims that conceal their boundary conditions are dangerous when adopted by downstream teams.
+        \item \textit{Implementation:} Every registered publication claim is permanently linked to an explicit limitation (L01--L08) in \code{claim\_audit.json}. CI breaks if a claim is published without its caveat.
+        \item \textit{Failure prevented:} Overgeneralizing synthetic workbench conclusions to production enterprise environments.
+    \end{itemize}
+
+    \item \textbf{Reproduce the evidence path.}
+    \begin{itemize}
+        \item \textit{Why it exists:} A research paper or engineering report whose figures cannot be traced backward to raw bytes is unscientific.
+        \item \textit{Implementation:} JSON pointers bind every number in the README and article directly to committed JSON artifacts and one-line \code{make} targets.
+        \item \textit{Failure prevented:} Data drift, manual transcript errors, and unfalsifiable marketing claims.
+    \end{itemize}
+\end{enumerate}
+
+\vspace{12pt}
+\section{05 --- System Boundary}
+
+To establish technical credibility, a reliability system must define what it is \textbf{not} with the same rigor as what it is. Overclaiming scope is an immediate disqualifier for staff-level engineering work.
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{p{0.46\textwidth}|p{0.48\textwidth}}
+\toprule
+\textbf{\large\color{primary}WHAT FAULTLINE IS} & \textbf{\large\color{accent}WHAT FAULTLINE IS NOT} \\
+\midrule
+\textbf{A Reproducible Reliability Workbench} \newline
+A controlled experimental testbed to inject component faults and measure recovery dynamics. & 
+\textbf{A Production Observability SaaS} \newline
+Not a multi-tenant monitoring platform, telemetry collector, or Datadog/Langfuse competitor. \\
+\addlinespace
+\textbf{A Controlled Multi-Hop AI Workload} \newline
+A standardized reasoning task (1 to 5 hops) over synthetic documents designed for causal attribution. & 
+\textbf{A Universal AI Benchmark} \newline
+Not an MMLU, GSM8K, or general reasoning benchmark claiming to evaluate overall model intelligence. \\
+\addlinespace
+\textbf{A Fault Injection and Stress Engine} \newline
+Deterministic software simulating transport, schema, context, and control-loop degradations. & 
+\textbf{A Model Training / Fine-Tuning System} \newline
+Does not train weights, optimize LoRAs, or modify underlying neural network parameters. \\
+\addlinespace
+\textbf{A Principled Multi-Objective Policy Harness} \newline
+Evaluates recovery tradeoffs across correct success, wrong-answer risk, cost, and latency. & 
+\textbf{A General-Purpose Agent Framework} \newline
+Not an AutoGen, CrewAI, or LangChain framework meant for building production end-user applications. \\
+\addlinespace
+\textbf{A Rigorous Statistical Measurement System} \newline
+Enforces Wilson intervals, McNemar tests, paired bootstraps, and pre-registered hypotheses. & 
+\textbf{A Claim That All Models Are Reliable} \newline
+Explicitly proves that model reliability degrades under tool hops and correlated provider outages. \\
+\addlinespace
+\textbf{An Evidence-Audited Repository} \newline
+Every published number resolves to a committed JSON blob and generating script verified in CI. & 
+\textbf{A Live Production Deployment} \newline
+Operates in synthetic and local test environments; live enterprise traffic remains future work. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{The Simulation-to-Production Boundary}
+\begin{dangerbox}
+\textbf{Honest Boundary Notice:} All outcome rates reported in Phase 1 derive from seeded simulators, synthetic document corpora, and frozen evaluation sets. While the failure mechanisms (retry storms, schema corruption, fallback degradation) reflect genuine distributed systems phenomena, the numerical rates do not transfer directly to production without empirical calibration against real user traffic distributions and live model endpoints.
+\end{dangerbox}

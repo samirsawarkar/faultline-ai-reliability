@@ -1,0 +1,133 @@
+\section{01 --- Executive Summary}
+
+\subsection{What is FAULTLINE?}
+\textbf{FAULTLINE} is an open-source, reproducible research workbench and testing harness designed to evaluate where document-grounded AI systems (e.g., multi-hop Retrieval-Augmented Generation agents) fail, and to experimentally measure whether automated recovery mechanisms actually improve user-visible outcomes or merely create the illusion of availability.
+
+Rather than treating Large Language Models (LLMs) as opaque oracles to be evaluated via aggregate leaderboard scores, FAULTLINE approaches generative AI systems as distributed, stateful software systems subject to cascading component faults: schema corruption, transport timeouts, provider rate limits, context window poisoning, tool execution loops, and stale retrievals. 
+
+\subsection{What Problem Does It Solve?}
+Modern AI production dashboards frequently report ``99.9\% availability'' based on HTTP 200 return codes and non-empty responses. However, \textbf{operational availability is not semantic correctness}. When a primary model call times out and an automated fallback returns an ungrounded or outdated answer, the system registers a green status indicator while delivering a wrong or hallucinated answer to the end user. 
+
+FAULTLINE eliminates this blind spot. It decouples operational availability from semantic correctness, bounds recovery attempts with strict cost and latency ceilings, validates answers against a deterministic programmatic oracle, and ensures that any claimed reliability gain is backed by a reproducible, audit-locked chain of evidence.
+
+\subsection{Why Does This Problem Matter?}
+As enterprises integrate LLM agents into mission-critical workflows---financial compliance, healthcare decision support, legal discovery, and autonomous operations---uncontrolled failure modes carry severe liability. Naive architectural assumptions (such as assuming multi-step agent reliability follows a simple compounding of single-step accuracy, $P(\text{task}) = p^n$) collapse in practice. Without empirical measurement of error propagation, correlation during outages, and recovery degradation, organizations risk deploying costly retry storms that amplify outages, or silent fallbacks that corrupt business data.
+
+\subsection{What Did We Actually Build?}
+Over two major architectural phases, the repository implements:
+\begin{enumerate}
+    \item \textbf{A Seeded, Deterministic Multi-Hop World:} A synthetic document corpus (1,164 documents, 350 scenarios across three difficulty tiers: 1-hop T1, 3-hop T2, 5-hop T3) with unique coined tokens and an opaque link-layer that prevents shortcutting.
+    \item \textbf{A Pure-Function Ground-Truth Oracle:} A byte-pinned programmatic oracle that checks both answer correctness and exact citation of required source documents without using an LLM.
+    \item \textbf{A Bounded Multi-Step Agent:} A reason $\to$ tool $\to$ observe execution engine with typed Pydantic v2 contracts (\code{extra="forbid"}), bounded steps (amended to 12), and three typed tools (\code{search}, \code{lookup}, \code{calc}).
+    \item \textbf{A Six-Family Fault Injection Engine:} Reproducible, deterministic injectors simulating structured-output corruption (F1), latency/timeouts (F2), schema drift/wrong data (F3), provider outages (F4), context corruption (F5), and loop exhaustion (F6), with independent out-of-band ground-truth labeling.
+    \item \textbf{Complete Span Observability \& OTel GenAI Exporter:} Gapless SQLite trace recording capturing error spans that survive process crashes, coupled with an OpenTelemetry GenAI semantic conventions (v1.29.0) exporter verified via conformance tests.
+    \item \textbf{A Multi-Mechanism Recovery Matrix:} Implementations of bounded retries (M1), timeout/backoff (M2), circuit breakers (M3), provider fallbacks (M4), structural step/cost ceilings (M5), and repetition recovery (M6).
+    \item \textbf{Rigorous Statistical Testing Harness:} Pre-registered Wilson score confidence intervals, McNemar paired tests, and 10,000-resample paired bootstrap intervals.
+    \item \textbf{Google SRE Multi-Burn-Rate Alerting Engine:} Multi-window multi-burn-rate alerting tracking error budget consumption in SQLite traces.
+    \item \textbf{Deterministic Runtime Authorization Policy:} Zero-detector structural policy preventing compromised models from invoking unallowlisted tools.
+\end{enumerate}
+
+\subsection{What Did We Measure?}
+Across five foundational research questions (Q1--Q5), FAULTLINE measured:
+\begin{itemize}
+    \item \textbf{Q1 (Tool Depth):} End-to-end multi-hop reliability diverges from naive compounding ($p^n$) starting at depth 3 ($0.818$ measured vs $0.918$ naive; falling to $0.288$ vs $0.797$ at 8 hops) because later hops are non-exchangeable.
+    \item \textbf{Q2 (Detection Misses):} Aggregate F1 ($0.762$) obscured 10 false negatives on 44 samples; 4 were semantic escapes that deterministic checks could not close. An LLM judge reached only $\kappa = 0.5$ agreement and was relegated to advisory status.
+    \item \textbf{Q3 (Retry Crossover):} Under independent faults, optimal retry cap is $K=3$ ($76\%$ success, $1.9\times$ amplification). Under correlated failures, it drops to $K=2$; keeping $K=3$ inflates attempts to $2.37\times$ for only $41.5\%$ success.
+    \item \textbf{Q4 (Fallback Quality):} Fallback restored availability from $0.667$ to $1.0$, but strict answer quality plunged from $1.0$ to $0.75$, with $75\%$ of fallback answers silently degraded.
+    \item \textbf{Q5 (Policy Frontier):} A selective guarded policy (P4) achieved $0.9325$ correct success at $1.4656$ cost and $50.0$ p95 latency, beating simple retry by $+9.5\%$ correct success, but collapsed under stress attacks to $0.695$ and $0.575$.
+\end{itemize}
+
+\subsection{What Did We Learn?}
+Automated recovery cannot be evaluated in isolation. A retry policy that succeeds under isolated faults becomes a destructive amplifier during shared provider outages. Fallback mechanisms often buy availability at the direct expense of semantic truth. Most importantly, \textbf{evaluators cannot validate themselves}---semantic judges have blind spots on borderline outputs and must never hold autonomous authority over core success labels.
+
+\subsection{What Remains Incomplete?}
+FAULTLINE operates under an explicit, uncompromised honesty contract. While Phase 1 is 100\% validated and sealed, \textbf{Phase 2 live-model API sweeps remain unrun}. The model ladder (R1--R6) has completed zero-spend preflight probes but has not executed paid sweeps across the 350-scenario corpus (\$0.00 spent of the \$150 budget). Human open coding for Phase 2 failure taxonomy (P4) remains pending. Every claim in this document is labeled as either \STATUSVALIDATED, \STATUSCOMPLETED, or \STATUSDECIDED.
+
+\subsection{What Makes This Project Technically Interesting?}
+FAULTLINE rejects the industry trend of prompt engineering and subjective leaderboard ranking. It treats AI reliability as a disciplined systems engineering problem: pairing identical seeds, computing confidence intervals on discordant pairs, compiling byte-for-byte replayable regression bundles, and enforcing fail-closed CI gates where missing provenance breaks the build.
+
+\begin{callout}[primary]{Staff-Level Engineering Takeaway}
+``Reliability is not the presence of a recovery mechanism, nor a high availability metric. Reliability is the verified outcome that recovery improves correct user-visible results within explicit latency and budget bounds, preserves provenance, and fails closed when evidence is insufficient.''
+\end{callout}
+
+% ------------------------------------------------------------------------------
+\subsection{The Project Status Model}
+To maintain absolute credibility, this technical report enforces a five-tier status model across all systems, components, and experiments:
+\begin{center}
+\begin{tabularx}{\textwidth}{lp{0.25\textwidth}X}
+\toprule
+\textbf{Status Indicator} & \textbf{Formal Definition} & \textbf{Evidence Requirement} \\
+\midrule
+\STATUSCOMPLETED & Code implemented and merged & Code exists in repository, passes static checks. \\
+\STATUSVALIDATED & Empirically proven by tests/experiments & Reproducible test suite, committed JSON artifact, seed-locked. \\
+\STATUSPARTIAL & Implementation or evidence incomplete & Core logic written; edge cases or full sweeps missing. \\
+\STATUSDECIDED & Formally decided and pre-registered & Documented in ADR/MEC/amendments; implementation/spend pending. \\
+\STATUSFUTURE & Theoretical proposal & Identified on roadmap; no code or contract written. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+% ------------------------------------------------------------------------------
+\subsection{The Three Enemies of AI Reliability}
+FAULTLINE is engineered specifically to eliminate three systemic pathologies that infect modern AI engineering:
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  enemybox/.style={draw=accent, fill=accent!5, rounded corners=4pt, line width=1pt, text width=0.28\textwidth, align=left, inner sep=8pt},
+  arrowstyle/.style={-{Latex[length=3mm]}, line width=1.5pt, color=primary}
+]
+\node[enemybox] (e1) at (-5.3, 0) {
+  \textbf{\color{accent}1. MEASUREMENT LIES}\\[0.15cm]
+  \footnotesize
+  $\bullet$ Conflating 200 OK with correctness.\\
+  $\bullet$ Dashboard shows 99\% uptime while 25\% of answers are wrong.\\
+  $\bullet$ Hiding false negatives behind aggregate F1 scores.\\
+  $\bullet$ Relying on self-grading LLM judges.
+};
+
+\node[enemybox] (e2) at (0, 0) {
+  \textbf{\color{accent}2. REPRODUCIBILITY LIES}\\[0.15cm]
+  \footnotesize
+  $\bullet$ Numbers published without seeds.\\
+  $\bullet$ Uncontrolled environment drift.\\
+  $\bullet$ Cherry-picked benchmark prompts.\\
+  $\bullet$ Results that disappear on cold clone.\\
+  $\bullet$ CI gates that test syntax, not drift.
+};
+
+\node[enemybox] (e3) at (5.3, 0) {
+  \textbf{\color{accent}3. COMMUNICATION LIES}\\[0.15cm]
+  \footnotesize
+  $\bullet$ Marketing ``self-healing agents''.\\
+  $\bullet$ Claiming production validity from synthetic runs.\\
+  $\bullet$ Hiding failed recovery stress tests.\\
+  $\bullet$ Claiming full completion when live sweeps are unrun.
+};
+
+\node[draw=success, fill=success!10, rounded corners=4pt, line width=1pt, text width=0.94\textwidth, align=center, inner sep=6pt] (sol) at (0, -2.4) {
+  \textbf{\color{success!80!black}THE FAULTLINE DISCIPLINE}\\
+  \footnotesize
+  Deterministic programmatic oracle $\cdot$ Linked SQLite complete-span traces $\cdot$ Seed-matched paired experiments $\cdot$ Wilson confidence intervals $\cdot$ Multi-burn-rate budget ceilings $\cdot$ Fail-closed publication audit
+};
+
+\draw[arrowstyle] (e1.south) -- (-5.3, -1.9);
+\draw[arrowstyle] (e2.south) -- (0, -1.9);
+\draw[arrowstyle] (e3.south) -- (5.3, -1.9);
+\end{tikzpicture}
+\caption{The Three Enemies of AI Reliability and the Architectural Counters Built into FAULTLINE.}
+\end{figure}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{p{0.18\textwidth}p{0.25\textwidth}p{0.27\textwidth}X}
+\toprule
+\textbf{The Enemy} & \textbf{Concrete AI System Failure} & \textbf{Why Dashboards Miss It} & \textbf{FAULTLINE Countermeasure} \\
+\midrule
+\textbf{1. Measurement Lies} & Primary model times out; fallback model returns an obsolete answer from cache. & Gateway logs HTTP 200; latency is low; response is non-empty. & Evaluates exact token matches and required source document IDs via \code{oracle\_check}. \\
+\addlinespace
+\textbf{2. Reproducibility Lies} & A paper claims 85\% multi-hop accuracy, but rerunning code yields 62\% due to temperature drift and prompt churn. & Unpinned dependencies, non-seeded samplers, non-deterministic retrieval indices. & Frozen seeds (\code{42}), hash-pinned environment, pinned dependencies, \code{make cold-reproduce}. \\
+\addlinespace
+\textbf{3. Communication Lies} & Team deploys a retry loop, claiming ``transient errors solved,'' but causes a retry storm that exhausts provider tokens. & Success metric reports eventual resolved queries; ignores cost and latency inflation. & Multi-objective constraints: reject policies where attempt amplification $>2.0\times$ or p99 $>120$ units. \\
+\bottomrule
+\end{tabularx}
+\end{center}

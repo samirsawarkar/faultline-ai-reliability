@@ -1,0 +1,110 @@
+\section{23 --- What Failed: Engineering Failures and Corrections}
+
+A core credential of a staff reliability engineer is the ability to diagnose, disclose, and remediate internal system failures without defensiveness. FAULTLINE experienced several major engineering failures during development:
+
+\subsection{1. The Step-Cap Disaster (Amendment A-002)}
+\begin{itemize}
+    \item \textbf{What Happened:} Under Master Experiment Contract MEC v1.0, the agent step cap was set to \code{step\_cap = 8}. During dress rehearsal testing, it was discovered that \textbf{283 of 350 scenarios (80.9\%), including the entire 150-scenario P6 reserved pool, were mathematically unsolvable by construction at any price}.
+    \item \textbf{Root Cause:} The execution plan carried \code{step\_cap = 8} forward from early Phase 1 single-hop experiments without re-deriving it against the Phase 2 link-layer corpus. A T3 scenario requires traversing 5 fact documents and 4 link documents ($9\text{ total retrievals}$). Under the Day 2 tool contract, each retrieval required two turns (\code{search} to find the document, then \code{lookup} to read it). A T3 scenario required at least $9 \times 2 = 18\text{ steps}$ plus $1\text{ answer step} = 19\text{ steps}$. Capping execution at 8 steps guaranteed that every model would fail $100\%$ of T2 and T3 scenarios.
+    \item \textbf{How Detected:} Preflight multi-hop trace solver tests failed with \code{STEP\_CAP\_EXCEEDED} on all multi-hop runs.
+    \item \textbf{Correction (Amendment A-002):} 
+    \begin{enumerate}
+        \item The \code{search} tool contract was amended to return a bounded 500-character snippet centered on the match, reducing retrieval from 2 steps to 1 step per hop.
+        \item The step cap was expanded from \textbf{8 to 12}, leaving a 2-step safety margin for T3 scenarios ($9\text{ searches} + 1\text{ answer} = 10\text{ minimum steps}$).
+    \end{enumerate}
+    \item \textbf{Verification:} \code{tests/phase2/test\_x2\_solver.py} verified that all 350 scenarios are solvable within 12 steps, achieving 100\% task pass rate under ideal solver execution.
+\end{itemize}
+
+\subsection{2. The Borderline Blind Spot in Semantic Evaluation}
+\begin{itemize}
+    \item \textbf{What Happened:} An advisory LLM judge deployed on Day 16 failed to detect subtle entity corruptions in fallback answers, achieving $\kappa = 0.000$ agreement on borderline tokens.
+    \item \textbf{Root Cause:} The LLM judge evaluated answer fluency and plausible phrasing rather than exact token grounding, giving high confidence to hallucinated tokens that matched expected syntax.
+    \item \textbf{Correction:} Complete architectural quarantine. The LLM judge was stripped of all ground-truth authority and barred from contributing to the core success oracle.
+\end{itemize}
+
+\subsection{3. The Correlated Retry Storm}
+\begin{itemize}
+    \item \textbf{What Happened:} Applying an independent retry policy ($K=3$) during an injected provider outage caused attempt amplification to surge to $2.37\times$, increasing p99 latency to 142ms and exhausting provider token quotas while recovering only $5\%$ additional queries.
+    \item \textbf{Correction:} Enforced dynamic backoff ceilings and reduced the maximum retry cap to $K=2$ when outage correlation is detected, adding circuit breakers to shed unrecoverable load.
+\end{itemize}
+
+\subsection{4. The Collapse of the ``Winning'' Policy Under Stress}
+\begin{itemize}
+    \item \textbf{What Happened:} Policy P4 (Selective Guarded), which won the Q5 baseline Pareto frontier with $0.9325$ success, collapsed to $0.6950$ success under increased fault severity and $0.5750$ under tight resource budgets, failing its own operational SLA.
+    \item \textbf{Correction:} Rather than marketing P4 as an unconditional solution, FAULTLINE re-classified P4 as an \textbf{operating-envelope reference upper bound}, establishing that no recovery policy can be deployed without active runtime monitoring of its operating envelope.
+\end{itemize}
+
+% ==============================================================================
+\vspace{12pt}
+\section{24 --- Limitations}
+
+In accordance with scientific integrity, the findings in this report are bounded by the following explicit limitations:
+
+\begin{enumerate}
+    \item \textbf{L01 · External Validity:} All outcome rates derive from seeded simulators, synthetic document corpora, and frozen evaluation sets. Confidence intervals reflect repeated draws from configured experimental populations, not real-world distribution shifts or live commercial API behavior.
+    \item \textbf{L02 · Q1 Depth Boundary:} Naive compounding ($p_1^n$) remains inside the 95\% Wilson confidence interval at depths 1 and 2. The statistical divergence begins at hop 3.
+    \item \textbf{L03 · Q2 Sample Power:} The Q2 labelled evaluation set consists of 44 samples. While sufficient to locate specific miss mechanisms (4 semantic escapes), sub-slice cell counts are small and intervals overlap across fault families.
+    \item \textbf{L04 · Judge Validity:} The semantic judge was evaluated on 24 human-labelled traces, reached $\kappa=0.50$, and exhibited zero agreement on borderline tokens. It is not validated for standalone scoring.
+    \item \textbf{L05 · Retry Parameterization:} Q3 retry crossover points ($K=2$ vs $K=3$) reflect configured virtual latency and attempt amplification ceilings ($2.0\times$); they are policy decisions, not universal constants of nature.
+    \item \textbf{L06 · Fallback Population Mix:} Q4 scheduled exactly 1 in 3 primary requests to fail. The observed 75\% degradation rate reflects the configured capability differential between primary and secondary models.
+    \item \textbf{L07 · Policy Reference Bound:} Policy P4 received idealized simulator signals for retryability and oracle fallback validation. It represents a theoretical upper bound rather than a production guarantee.
+    \item \textbf{L08 · Synthesis Scope:} The five studies share rigorous definitions, shared seeds, and evidence discipline, but evaluate different configured populations. They demonstrate general systems principles, not a pooled causal effect.
+\end{enumerate}
+
+% ==============================================================================
+\vspace{12pt}
+\section{25 --- Threat Model: Failure of the Measurement System}
+
+Reliability engineering requires testing the testbed itself: \textbf{``What could make FAULTLINE lie?''}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  scale=0.92,
+  box/.style={draw=primary, fill=white, rounded corners=3pt, font=\small\sffamily, align=center, inner sep=6pt, line width=0.8pt},
+  threat/.style={draw=accent, fill=accent!10, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt, line width=1pt},
+  defense/.style={draw=success, fill=success!10, rounded corners=3pt, font=\small\sffamily, align=center, inner sep=6pt, line width=1pt},
+  arrow/.style={-{Latex[length=2.5mm]}, line width=1pt, color=primary}
+]
+\node[threat] (t1) at (0, 3) {Measurement Failure 1:\\Broken / Drifting Oracle};
+\node[defense] (d1) at (7, 3) {Mitigation:\\Hash-pinned copy (\code{dc5eef...}) in CI.};
+
+\node[threat] (t2) at (0, 1.5) {Measurement Failure 2:\\Ground-Truth Leakage};
+\node[defense] (d2) at (7, 1.5) {Mitigation:\\Out-of-band injection logging.};
+
+\node[threat] (t3) at (0, 0) {Measurement Failure 3:\\Unpaired Seed Variance};
+\node[defense] (d3) at (7, 0) {Mitigation:\\Shared seed sequence across policies.};
+
+\node[threat] (t4) at (0, -1.5) {Measurement Failure 4:\\Flaky Evaluation CI};
+\node[defense] (d4) at (7, -1.5) {Mitigation:\\Frozen deterministic stubs; Docker pins.};
+
+\node[threat] (t5) at (0, -3) {Measurement Failure 5:\\Manual Claim Drift};
+\node[defense] (d5) at (7, -3) {Mitigation:\\JSON pointer claim audit in CI.};
+
+\draw[arrow, color=accent] (t1) -- (d1);
+\draw[arrow, color=accent] (t2) -- (d2);
+\draw[arrow, color=accent] (t3) -- (d3);
+\draw[arrow, color=accent] (t4) -- (d4);
+\draw[arrow, color=accent] (t5) -- (d5);
+\end{tikzpicture}
+\caption{Measurement System Threat Model and Architectural Mitigations.}
+\end{figure}
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{lp{0.35\textwidth}X}
+\toprule
+\textbf{Measurement Failure Mode} & \textbf{How It Distorts Reality} & \textbf{FAULTLINE Enforcement Mechanism} \\
+\midrule
+\textbf{Broken Oracle} & Bug in oracle check awards false passes to corrupt answers. & SHA-256 hash enforcement; unit property tests on oracle. \\
+\addlinespace
+\textbf{Label Leakage} & Detector reads fault metadata from the data payload. & Day 12 audit tests assert zero fault tokens in observable spans. \\
+\addlinespace
+\textbf{Selection Bias} & Comparing policies on different sets of easy/hard queries. & Identical master seed and scenario sequence across all arms. \\
+\addlinespace
+\textbf{Flaky CI Gates} & Non-deterministic network calls make tests intermittently fail. & Pinned Docker container; offline stubs for test reproduction. \\
+\addlinespace
+\textbf{Prose Drift} & README text claims 95\% while code results show 85\%. & \code{day28/faultline\_publication/audit.py} fails build on text drift. \\
+\bottomrule
+\end{tabularx}
+\end{center}

@@ -1,0 +1,162 @@
+\section{06 --- Deterministic Environment}
+
+\subsection{The Seeded Multi-Hop World}
+To test reliability rigorously, the testbed must eliminate confounding environmental variance. If two agent runs receive different documents, slightly modified questions, or different distractors, any observed difference in outcome cannot be causally attributed to the recovery policy.
+
+FAULTLINE builds a fully deterministic, self-contained world:
+\begin{center}
+\begin{tikzpicture}[
+  node distance=0.5cm and 0.6cm,
+  flowbox/.style={draw=primary, fill=lightbg, rounded corners=3pt, font=\footnotesize\sffamily, align=center, inner sep=5pt},
+  arrow/.style={-{Latex[length=2.5mm]}, line width=1pt, color=primary}
+]
+\node[flowbox] (seed) {\textbf{Master Seed}\\(\code{seed=42})};
+\node[flowbox, right=of seed] (gen) {\textbf{Corpus Generator}\\1,164 Documents\\Link Layer};
+\node[flowbox, right=of gen] (scen) {\textbf{Scenario Pool}\\350 Scenarios\\T1, T2, T3 Tiers};
+\node[flowbox, right=of scen] (orc) {\textbf{Oracle Ground Truth}\\Exact Answer Token\\Required Sources};
+\node[flowbox, right=of orc] (eval) {\textbf{Agent Execution}\\Reason $\to$ Tool\\$\to$ Outcome};
+
+\draw[arrow] (seed) -- (gen);
+\draw[arrow] (gen) -- (scen);
+\draw[arrow] (scen) -- (orc);
+\draw[arrow] (orc) -- (eval);
+\end{tikzpicture}
+\end{center}
+
+\subsubsection{Corpus Specifications and Link-Layer Mechanics}
+Under Master Experiment Contract (MEC) v1.0 and amendments, the corpus contains \textbf{1,164 unique documents}:
+\begin{itemize}
+    \item \textbf{300 Fact Documents:} Structured records holding factual assertions regarding synthetic entities. Each fact pairs an entity with an attribute and a coined token (e.g., entity \code{E-0142}, attribute \code{auth\_token}, value \code{tok-89f4b1}).
+    \item \textbf{60 Distractor Documents:} Lexically similar documents containing plausible but ungrounded tokens designed to test retriever precision.
+    \item \textbf{804 Link Documents (69.1\% of store):} Content-addressed bridge documents introduced in Phase 2 (\code{DECISIONS.md} D-002).
+\end{itemize}
+
+\begin{callout}[secondary]{Why the Link Layer is Mechanically Essential}
+In real-world multi-hop tasks (e.g., traversing database records or medical charts), Hop $N$ is discoverable only via the output of Hop $N-1$. If fact documents contained cross-entity links directly in their text, an agent could bypass intermediate reasoning via naive substring search. 
+
+The link layer generates bridge documents with opaque IDs (\code{link-\{sha256(text)[:12]\}}) mapping the intermediate answer token of Hop $N-1$ to the entity identifier of Hop $N$. Hop $N$'s prompt contains \textit{only} the prior answer token. The agent is structurally compelled to:
+\begin{enumerate}
+    \item Search for the intermediate answer token to retrieve the link document.
+    \item Parse the link document to discover the next entity ID.
+    \item Retrieve the next entity's fact document to extract the subsequent fact token.
+\end{enumerate}
+This ensures that multi-hop complexity reflects genuine sequential reasoning rather than keyword matching shortcuts.
+\end{callout}
+
+\subsection{The ``Same Seed $\to$ Same World'' Guarantee}
+Every aspect of the environment is generated via a deterministic pseudorandom number generator:
+\begin{verbatim}
+    # Deterministic Environment Invariant
+    env = build_corpus(master_seed=42, n_entities=300, n_distractors=60)
+    assert hashlib.sha256(env.serialize()).hexdigest() == \
+        "9d6d7fc7fbfd999d58157e6a88f256fd45aab97b4ea474b1a2852fe143d6a3a8"
+\end{verbatim}
+Given seed \code{42}, any machine on Earth with Python 3.11/3.12 generates the identical 1,164 documents, identical token values, and identical 350 scenario definitions.
+
+\subsection{What Determinism Does NOT Guarantee}
+\begin{dangerbox}
+\textbf{The External Stochastic Model Boundary:} A deterministic software environment does \textbf{not} make an external neural network deterministic. Even with \code{temperature=0.0}, commercial LLM APIs exhibit non-determinism across calls due to floating-point nondeterminism in parallel mixture-of-experts (MoE) routing, GPU cluster dynamic batching, and silent provider model updates. Determinism in FAULTLINE fixes the world, the tools, the budgets, and the fault injections, isolating model variance as the sole uncontrolled variable.
+\end{dangerbox}
+
+% ==============================================================================
+\vspace{12pt}
+\section{07 --- Oracle Design}
+
+\subsection{Why the Oracle is Foundational}
+In many AI evaluation benchmarks, researchers evaluate LLM outputs by passing them to another LLM (``LLM-as-a-Judge''). This introduces catastrophic circularity: the evaluator possesses the same systemic biases, hallucinations, and borderline blindness as the system under test.
+
+FAULTLINE rejects self-grading. The foundation of all reliability claims is a \textbf{pure-function programmatic oracle}:
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  scale=0.9,
+  nodebox/.style={draw=primary, fill=white, rounded corners=3pt, font=\small\sffamily, align=center, inner sep=6pt, line width=0.8pt},
+  gatebox/.style={draw=secondary, fill=secondary!10, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt, line width=0.8pt},
+  resultbox/.style={draw=success, fill=success!15, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt, line width=1pt},
+  failbox/.style={draw=accent, fill=accent!15, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt, line width=1pt},
+  arrow/.style={-{Latex[length=2.5mm]}, line width=1pt, color=primary}
+]
+\node[nodebox] (agent_out) at (0, 0) {Agent Output\\Trajectory};
+
+\node[gatebox] (check_ans) at (4.5, 1.5) {Condition 1: Answer Check\\$\code{normalized(output)} == \code{oracle.expected\_answer}$};
+\node[gatebox] (check_src) at (4.5, -1.5) {Condition 2: Provenance Check\\$\code{oracle.required\_sources} \subseteq \code{agent.cited\_sources}$};
+
+\node[resultbox] (pass) at (9.5, 0) {ORACLE PASS\\(Strict Grounded Success)};
+\node[failbox] (fail) at (4.5, -3.8) {ORACLE FAIL\\(Operational failure, hallucination, or ungrounded)};
+
+\draw[arrow] (agent_out) |- (check_ans);
+\draw[arrow] (agent_out) |- (check_src);
+
+\draw[arrow] (check_ans) -| node[above, font=\scriptsize] {YES} (pass);
+\draw[arrow] (check_src) -| node[below, font=\scriptsize] {YES} (pass);
+
+\draw[arrow, color=accent] (check_ans) -- node[right, font=\scriptsize] {NO} (fail);
+\draw[arrow, color=accent] (check_src) -- node[right, font=\scriptsize] {NO} (fail);
+\end{tikzpicture}
+\caption{The Dual-Gate Programmatic Oracle. Success requires simultaneous satisfaction of exact token correctness AND complete source provenance.}
+\end{figure}
+
+\subsection{The Dual-Gate Pass Condition}
+A task execution passes the oracle if and only if:
+\[
+\text{PASS} \iff (\text{answer\_ok} == \text{True}) \land (\text{sources\_ok} == \text{True})
+\]
+\begin{enumerate}
+    \item \textbf{\code{answer\_ok}:} The final extracted entity token matches the deterministic answer key byte-for-byte (case-folded and whitespace-normalized).
+    \item \textbf{\code{sources\_ok}:} The agent's structured citation list contains the exact document IDs holding the required factual links. For a 3-hop task (T2), this requires citing 3 fact documents and 2 link documents in the traversal chain.
+\end{enumerate}
+
+\subsection{The Hash-Pinned Enforcement Contract}
+In Phase 2, the Day 1 oracle implementation was copied into \code{faultline\_p2/oracle/\_day01\_oracle.py}. To guarantee that no subsequent refactoring or optimization altered the evaluation standard, the copy is locked via SHA-256 hash enforcement in CI:
+\begin{verbatim}
+    # tests/phase2/test_frozen_copies.py
+    DAY01_ORACLE_SHA = "dc5eef1c64d6f2ba8e802d88bab1af90eaaa6bc778271d78525baba737d2be5f"
+    assert sha256(faultline_p2/oracle/_day01_oracle.py) == DAY01_ORACLE_SHA
+\end{verbatim}
+If an engineer modifies the oracle to accommodate agent idiosyncrasies, CI fails immediately. The oracle is immutable.
+
+% ==============================================================================
+\vspace{12pt}
+\section{08 --- The Controlled Agent}
+
+\subsection{The Minimal Reason $\to$ Tool $\to$ Observe Loop}
+To study failure propagation and recovery rigorously, the agent itself must be minimal and transparent. Complex agent architectures (e.g., multi-agent debate, autonomous self-reflection) introduce hundreds of confounding variables.
+
+The FAULTLINE agent is a bounded, single-agent execution loop:
+\begin{center}
+\begin{tikzpicture}[
+  scale=0.92,
+  node distance=0.8cm,
+  box/.style={draw=primary, fill=lightbg, rounded corners=3pt, font=\small\sffamily, align=center, inner sep=6pt, line width=0.8pt},
+  arrow/.style={-{Latex[length=2.5mm]}, line width=1.2pt, color=primary}
+]
+\node[box] (reason) {1. REASON\\Generate Thought + Typed Tool Intent};
+\node[box, right=of reason] (call) {2. EXECUTE TOOL\\Dispatch to ToolBox via Policy Envelope};
+\node[box, right=of call] (obs) {3. OBSERVE\\Receive Structured Tool Observation};
+\node[box, below=1.2cm of call] (term) {4. TERMINAL EVALUATION\\Emit Final Answer OR Check Step Cap};
+
+\draw[arrow] (reason) -- (call);
+\draw[arrow] (call) -- (obs);
+\draw[arrow] (obs) |- (term);
+\draw[arrow] (term) -| node[left, font=\scriptsize] {If step $< \text{Cap}$} (reason);
+\end{tikzpicture}
+\end{center}
+
+\subsection{Typed Pydantic Contracts}
+Every interface boundary inside the agent is enforced by Pydantic v2 with \code{extra="forbid"}. Any unmapped argument, unexpected payload attribute, or malformed schema triggers an immediate validation error rather than being silently ignored.
+
+\subsection{The Three Typed Tools}
+The agent interacts with the world through exactly three typed tools:
+\begin{enumerate}
+    \item \code{search(query: str) -> List[SearchResult]}: Performs exact and fuzzy lexical matching over the document store. Crucially, under Amendment \textbf{A-002} and Decision \textbf{D-003}, search returns a \textbf{bounded 500-character snippet} centered on the match, allowing the agent to read context in a single turn without dumping the entire document into context.
+    \item \code{lookup(doc\_id: str) -> Document}: Resolves the full text of a specific document ID. Under \textbf{A-002}, lookup is strictly restricted to documents previously surfaced by a \code{search} in the same run, preventing brute-force enumeration of document IDs.
+    \item \code{calc(expression: str) -> float}: A deterministic arithmetic evaluator for multi-hop quantity synthesis.
+\end{enumerate}
+
+\subsection{Step Budgets and Why the Agent is Small}
+In Phase 1, the step cap was set to 8. In Phase 2, Amendment \textbf{A-002} expanded the step cap to \textbf{12} after mathematical verification proved that T3 scenarios (5 fact hops + 4 link hops = 9 retrievals) required at least 10 steps.
+
+\begin{callout}[primary]{The Agent is the Test Subject, Not the Product}
+FAULTLINE deliberately avoids complex agent scaffolding. The agent exists solely as a standardized, transparent workload to be placed under stress. All engineering complexity in FAULTLINE resides in the \textbf{measurement, fault injection, and recovery evaluation systems}.
+\end{callout}

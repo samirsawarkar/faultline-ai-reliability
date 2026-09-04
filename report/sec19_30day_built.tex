@@ -1,0 +1,128 @@
+\section{19 --- The 30-Day Engineering Journey}
+
+The 30-day progression was executed in four disciplined phases:
+
+\begin{center}
+\begin{tikzpicture}[
+  scale=0.92,
+  phasebox/.style={draw=primary, fill=white, rounded corners=3pt, font=\footnotesize\sffamily, align=center, inner sep=5pt, line width=0.8pt},
+  arrow/.style={-{Latex[length=2.5mm]}, line width=1.2pt, color=primary}
+]
+\node[phasebox, fill=blue!5] (pa) {\textbf{Phase A: Days 01--07}\\Measurement Foundations\\Seeded World $\cdot$ Oracle $\cdot$ Tracing $\cdot$ Q1 Depth};
+\node[phasebox, fill=teal!5, right=0.6cm of pa] (pb) {\textbf{Phase B: Days 08--17}\\Statistical \& Causal Discipline\\Faults F1--F6 $\cdot$ Detectors $\cdot$ Q2 $\cdot$ Judge Validation};
+\node[phasebox, fill=warning!5, below=0.8cm of pa] (pc) {\textbf{Phase C: Days 18--25}\\Operational Recovery\\Retries $\cdot$ Breakers $\cdot$ Fallback $\cdot$ Q3--Q5 $\cdot$ Postmortems};
+\node[phasebox, fill=success!5, right=0.6cm of pc] (pd) {\textbf{Phase D: Days 26--30}\\Evidence Operations\\Docker $\cdot$ Cold Reproduction $\cdot$ Article $\cdot$ Defense};
+
+\draw[arrow] (pa) -- (pb);
+\draw[arrow] (pb) |- (pc);
+\draw[arrow] (pc) -- (pd);
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+\scriptsize
+\begin{longtable}{lp{0.20\textwidth}p{0.25\textwidth}p{0.25\textwidth}l}
+\toprule
+\textbf{Day} & \textbf{Core Objective} & \textbf{Engineering Deliverable} & \textbf{Key Learning / Finding} & \textbf{Status} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Day} & \textbf{Core Objective} & \textbf{Engineering Deliverable} & \textbf{Key Learning / Finding} & \textbf{Status} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{\textit{Continued on next page\dots}} \\
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+
+\textbf{01} & Lock thesis; deterministic oracle & \code{build\_env}, \code{oracle\_check}, SHA pinned & Oracle must check both answer AND required source IDs. & \STATUSVALIDATED \\
+\textbf{02} & Minimal bounded agent & Reason-tool-observe loop; typed contracts & Pydantic \code{extra="forbid"} traps schema bugs at boundary. & \STATUSVALIDATED \\
+\textbf{03} & Zero-point baseline across tiers & Difficulty tiers (EASY, MED, HARD); metrics & Multi-hop complexity causes non-linear step escalation. & \STATUSVALIDATED \\
+\textbf{04} & Complete failure tracing & SQLite linked spans; error span survivability & Spans must survive process termination and unhandled crashes. & \STATUSVALIDATED \\
+\textbf{05} & Timeline incident reconstruction & SQLite indexer; timeline forensic viewer & Stranger can reconstruct failure in $<5$ minutes from traces. & \STATUSVALIDATED \\
+\textbf{06} & Exact replay boundary & Replay bundles; byte-for-byte replay & External commercial APIs cannot guarantee bit-exact replay. & \STATUSVALIDATED \\
+\textbf{07} & Q1: Reliability vs tool hops & Multi-hop depth sweep ($n=1\dots8$); Wilson CIs & Naive $p_1^n$ diverges at hop 3; measured 0.288 vs 0.797 naive. & \STATUSVALIDATED \\
+\midrule
+\textbf{08} & Reproducible fault injection & Independent out-of-band ground-truth log & Injector must not leak ground truth into agent observable context. & \STATUSVALIDATED \\
+\textbf{09} & F1/F2 fault families + detectors & Structured corruption (F1); latency (F2) & Deterministic syntax checks achieve perfect recall on transport. & \STATUSVALIDATED \\
+\textbf{10} & F3/F4 fault families & Schema-valid wrong data (F3); provider error (F4) & Schema validity does not imply data correctness. & \STATUSVALIDATED \\
+\textbf{11} & F5/F6 fault families & Context corruption (F5); loop exhaustion (F6) & Semantic corruption requires invariant evaluation, not syntax. & \STATUSVALIDATED \\
+\textbf{12} & Unified fault catalog \& gallery & Six normalized fault cards; taxonomy & Grouping faults by producing component clarifies mitigation. & \STATUSVALIDATED \\
+\textbf{13} & Versioned evaluation harness & Content-addressed dataset manifests; splits & Test splits must be read once to prevent train-set snooping. & \STATUSVALIDATED \\
+\textbf{14} & Paired statistical testing & Wilson CIs; McNemar test; 10k bootstrap & Pairing on identical seeds eliminates scenario variance noise. & \STATUSVALIDATED \\
+\textbf{15} & Q2: Detector accuracy per fault & Confusion matrices; miss slice audit & F1 $0.762$ hid 10 false negatives (4 semantic escapes). & \STATUSVALIDATED \\
+\textbf{16} & Validate narrow LLM judge & 24 human-labelled traces; Cohen's kappa & Judge reached $\kappa=0.50$ (0\% on borderline tokens); quarantined. & \STATUSVALIDATED \\
+\textbf{17} & Subgroup analysis \& Simpson check & Multi-slice evaluation (fault $\times$ severity $\times$ tier) & Reversals occur when aggregating across disparate fault severities. & \STATUSVALIDATED \\
+\midrule
+\textbf{18} & Bounded repair \& retry (M1, M2) & Bounded repair loop; timeout backoff & Retries must have explicit attempt, latency, and cost ceilings. & \STATUSVALIDATED \\
+\textbf{19} & Q3: Retry crossover sweep & Sweep $K=0\dots5$ under independent vs correlated & Optimal cap drops from $K=3$ to $K=2$ under failure correlation. & \STATUSVALIDATED \\
+\textbf{20} & Breaker \& fallback (M3, M4) & Three-state circuit breaker; secondary route & Fallback restores availability but introduces unverified answers. & \STATUSVALIDATED \\
+\textbf{21} & Q4: Fallback quality degradation & 120 paired requests; primary outage schedule & Availability rose $0.667 \to 1.0$; answer quality fell $1.0 \to 0.75$. & \STATUSVALIDATED \\
+\textbf{22} & 36-cell recovery matrix & 6 mechanisms $\times$ 6 faults; 47 induced harms & Recovery mechanisms induce 47 new harms (false opens, loops). & \STATUSVALIDATED \\
+\textbf{23} & Cross-component cascade & Seeded multi-hop cascade scenario & Primary timeout cascades into stale fallback and budget breach. & \STATUSVALIDATED \\
+\textbf{24} & Q5: Multi-objective policy choice & 5 candidate policies; constraint-first Pareto & P4 winner ($0.9325$ success, $1.465$ cost); fails under stress attacks. & \STATUSVALIDATED \\
+\textbf{25} & Replay-verified postmortems & INC-25-001 \& INC-25-002; red$\to$green tests & Postmortem fix verified: flips red to green across 20 repetitions. & \STATUSVALIDATED \\
+\midrule
+\textbf{26} & Self-explaining reproducibility & \code{readme\_claims.json}; \code{make reproduce} & Every README number bound to committed JSON pointer in CI. & \STATUSVALIDATED \\
+\textbf{27} & Cold-reader reproduction gate & Pinned Docker image; public clone test & Stranger clones repo and reproduces headline results with 0 errors. & \STATUSVALIDATED \\
+\textbf{28} & Publication bundle \& audit & \code{day28/ARTICLE.md}; \code{claim\_audit.py} & All 29 registered claims verified against source files and limits. & \STATUSVALIDATED \\
+\textbf{29} & 3-minute demo \& case study & 2:45 terminal recording (\code{.cast}); case study & Narrative compression must preserve underlying proof boundaries. & \STATUSVALIDATED \\
+\textbf{30} & Defense guide \& launch gate & 10 skeptical staff Q\&As; launch checklist & Reliability engineer must defend tradeoffs, limits, and reversals. & \STATUSVALIDATED \\
+\end{longtable}
+\end{center}
+
+% ==============================================================================
+\vspace{12pt}
+\section{20 --- What Was Actually Built}
+
+To separate completed engineering artifacts from speculative proposals, the table below catalogs all major repository components, their implementation location, operational status, and verification evidence:
+
+\begin{center}
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\code}[1]{{\scriptsize\ttfamily\nolinkurl{#1}}}
+\begin{longtable}{p{0.17\textwidth}p{0.24\textwidth}p{0.12\textwidth}p{0.22\textwidth}p{0.19\textwidth}}
+\toprule
+\textbf{Component} & \textbf{System Purpose} & \textbf{Status} & \textbf{Committed Evidence} & \textbf{Repository Location} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Component} & \textbf{System Purpose} & \textbf{Status} & \textbf{Committed Evidence} & \textbf{Repository Location} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{\textit{Continued on next page\dots}} \\
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+
+\textbf{Deterministic Corpus} & Generates 1,164 docs, 350 scenarios with link layer & \STATUSVALIDATED & Content hash verified; max reuse $\le 5$ & \code{faultline\_p2/env/corpus.py} \\
+\textbf{Pure-Function Oracle} & Evaluates exact answer token and required source IDs & \STATUSVALIDATED & Hash-pinned copy (\code{dc5eef...}); 0 drift & \code{faultline\_p2/oracle/} \\
+\textbf{Bounded Agent Loop} & Executes reason-tool-observe; 12-step cap; typed tools & \STATUSVALIDATED & Tested across 350 scenarios in \code{test\_x2} & \code{faultline\_p2/agent/agent.py} \\
+\textbf{Tool Contracts} & Search (500-char snippet), Lookup (scoped), Calc & \STATUSVALIDATED & Pydantic v2 \code{extra="forbid"} & \code{faultline\_p2/agent/tools.py} \\
+\textbf{Fault Injector} & Deterministic injection of F1--F6 with out-of-band truth & \STATUSVALIDATED & Catalog gallery and trace tests & \code{day12/faultline\_catalog/} \\
+\textbf{SQLite Trace Store} & Crash-surviving span storage with foreign keys & \STATUSVALIDATED & \code{trace.db} schema tests & \code{faultline\_p2/trace/store.py} \\
+\textbf{OTel GenAI Exporter} & Emits traces to SemConv v1.29.0 OTLP JSON & \STATUSVALIDATED & 100\% schema match; 0 drift (P02) & \code{faultline\_p2/otel/exporter.py} \\
+\textbf{SRE Alert Evaluator} & Multi-window multi-burn-rate evaluator ($15\times$ fast burn) & \STATUSVALIDATED & \code{INC-20260904-01} drill writeup & \code{faultline\_p2/slo/evaluator.py} \\
+\textbf{Resilient Model Wrapper} & Client-side retry, timeout, circuit breaker & \STATUSVALIDATED & $+76\%$ gain at 30\% faults (P15) & \code{faultline\_p2/resilience/} \\
+\textbf{Runtime Policy Layer} & Zero-detector authorization under hostile model & \STATUSVALIDATED & 1,000/1,000 hostile denied; 0 FP (P16) & \code{faultline\_p2/policy/} \\
+\textbf{Statistical Engine} & Wilson intervals, McNemar test, paired bootstrap & \STATUSVALIDATED & Validated on Day 14 golden fixtures & \code{faultline\_p2/stats/} \\
+\textbf{Cost Ledger \& Enforcer} & Price table, budget ceilings, dry-run gate & \STATUSVALIDATED & Hard-stop on cap; ledger audit & \code{faultline\_p2/cost/ledger.py} \\
+\textbf{Sweep Runner} & Standard runner reading MEC caps; \code{--confirm} & \STATUSVALIDATED & Unit tests in \code{test\_cost\_and\_sweep} & \code{faultline\_p2/sweep/runner.py} \\
+\textbf{Preflight Probe} & Live verification of R1--R6 price, version, temp-0 & \STATUSVALIDATED & \code{preflight.json} (2026-09-04) & \code{projects/p00\_preflight/} \\
+\midrule
+\textbf{Real Model Baseline (P1)} & Live sweep on R2 model across 100 scenarios & \STATUSDECIDED & Blocked on API keys (\$0.125 est) & \code{projects/p01\_baseline/} \\
+\textbf{Grounding Zero Point (P3)} & Live sweep across R2 + R6 ($n=200$); hard set hash & \STATUSDECIDED & Pre-registered H1; unrun & \code{projects/p03\_grounding/} \\
+\textbf{Human Open Coding (P4)} & Manual coding of 150 real traces into failure taxonomy & \STATUSDECIDED & Pre-registered H2; owner task & \code{projects/p04\_taxonomy/} \\
+\textbf{Judge Validation (P5)} & Multi-judge Cohen's kappa on human taxonomy & \STATUSDECIDED & Pre-registered H3; unrun & \code{projects/p05\_judge/} \\
+\textbf{Pass\^{}k Decay Sweep (P6)} & 2,700 runs across R1--R6 on 150 hard scenarios & \STATUSDECIDED & Pre-registered H4/H5; \$45 cap & \code{projects/p06\_passk/} \\
+\textbf{Provider Variance (P7)} & Same model across 3 endpoints (AWS, DeepSeek, etc.) & \STATUSDECIDED & Pre-registered H6; unrun & \code{projects/p07\_provider/} \\
+\textbf{MCPTox Security (P8)} & Bounded agent vs published MCPTox ASR & \STATUSDECIDED & Pre-registered H7; unrun & \code{projects/p08\_mcptox/} \\
+\textbf{Failure Attribution (P12)} & Retriever vs generator ablation for grounding & \STATUSDECIDED & Pre-registered H8; unrun & \code{projects/p12\_attribution/} \\
+\end{longtable}
+\endgroup
+\end{center}

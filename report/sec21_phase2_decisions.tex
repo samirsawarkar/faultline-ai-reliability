@@ -1,0 +1,109 @@
+\section{21 --- Phase 2: Decision Record and Current State}
+
+\subsection{The Purpose and Mandate of Phase 2}
+Phase 1 proved the fundamental dynamics of AI reliability (tool-depth decay, retry crossover under correlation, silent fallback degradation, and constraint-first cascade selection) using controlled, seeded simulators. 
+
+\textbf{Phase 2 was launched to transition FAULTLINE from synthetic simulators to real, commercial LLM APIs} across a multi-tiered model ladder (R1--R6: Qwen 3.7 Flash, Qwen 3.8 Flash, DeepSeek v4 Pro, GPT-5.6 Luna, GLM 5.3 Flash), measuring empirical token costs, provider variances, real prompt injection susceptibility, and live cascading routers.
+
+\subsection{Current Operational State: The No-Key Phase is Closed}
+To prevent undisciplined budget burn, Phase 2 instituted a strict architectural rule: \textbf{Build and test all instruments, contracts, resilience layers, and observability pipelines at \$0 cost before executing any paid API sweeps}.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  scale=0.9,
+  statebox/.style={draw=primary, fill=lightbg, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt, line width=0.8pt},
+  flow/.style={-{Latex[length=2.5mm]}, line width=1.5pt, color=secondary}
+]
+\node[statebox, fill=success!15] (comp) {\STATUSCOMPLETED\\All Software Instruments\\\& Contracts Frozen};
+\node[statebox, fill=secondary!15, right=0.8cm of comp] (val) {\STATUSVALIDATED\\No-Key Phase Closed\\P00, P02, P13, P15, P16};
+\node[statebox, fill=purple!15, right=0.8cm of val] (dec) {\STATUSDECIDED\\Hypotheses H1--H8\\MEC v1.2 Locked};
+\node[statebox, fill=warning!15, below=1cm of comp] (inc) {\textbf{\color{warning!80!black}CURRENT STOPPING POINT}\\Paid Model Sweeps\\Pending Key Provisioning};
+\node[statebox, fill=blue!10, right=0.8cm of inc] (next) {\textbf{\color{primary}NEXT EXPERIMENT}\\Preflight Key Probe\\$\to$ P1 Real Baseline};
+
+\draw[flow] (comp) -- (val);
+\draw[flow] (val) -- (dec);
+\draw[flow] (dec) |- (inc);
+\draw[flow] (inc) -- (next);
+\end{tikzpicture}
+\caption{Phase 2 Execution Pipeline. The \$0 No-Key Phase is 100\% complete. Live sweeps remain unrun pending API key provisioning.}
+\end{figure}
+
+\subsubsection{What Was Completed in Phase 2 (\$0 Spent)}
+\begin{enumerate}
+    \item \textbf{Master Experiment Contract (MEC v1.2):} Complete research specification governing corpus hash, agent contracts, oracle enforcement, metrics, and budget caps (\$150 hard ceiling).
+    \item \textbf{Pre-Registered Hypotheses (H1--H8):} Pre-registered in Git with explicit falsification conditions before any data was gathered.
+    \item \textbf{Clean-Room Stats Library (\code{faultline\_p2.stats}):} Independent, zero-dependency statistical library verified against Day 14 golden fixtures.
+    \item \textbf{350-Scenario Corpus with Link Layer:} 1,164 documents generated deterministically; link layer mapping intermediate tokens to next entities without keyword leakage.
+    \item \textbf{OpenTelemetry SemConv v1.29.0 Exporter (P02):} Complete OTLP JSON trace exporter passing 100\% schema conformance tests.
+    \item \textbf{Google SRE Multi-Burn-Rate Alerting (P13):} Complete multi-window burn-rate evaluator tracking error budget consumption, verified in drill \code{INC-20260904-01}.
+    \item \textbf{Agent Resilience Engine (P15):} Three-state circuit breaker, backoff retry, and load-shedding fake endpoint achieving $+76\%$ pass rate recovery under 30\% faults.
+    \item \textbf{Zero-Detector Runtime Policy (P16):} Deterministic authorization layer blocking 1,000/1,000 hostile tool calls with zero false positives over 2,004 legitimate operations.
+    \item \textbf{Preflight Probe (P00):} Zero-cost dress rehearsal executed on 2026-09-04 verifying LiteLLM 1.98.0 compatibility, price tables, and temperature-0 determinism across all 6 rungs.
+\end{enumerate}
+
+\subsubsection{What Remains Incomplete (Blocked on API Keys)}
+\begin{itemize}
+    \item \textbf{Live Model Execution:} Zero paid sweeps have been executed against commercial APIs. \$0.00 has been spent of the \$150 budget.
+    \item \textbf{Projects P1, P3, P6, P7, P8, P9, P10, P11, P12:} All code harnesses, runners, and ledger enforcers exist and pass stub tests, but await live API credentials.
+    \item \textbf{Project P4 (Human Open Coding):} Awaiting manual qualitative coding of 150 real traces by the principal engineer. Model-generated taxonomy is explicitly forbidden by contract.
+\end{itemize}
+
+\subsection{Pre-Registered Hypotheses Status Matrix}
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{llp{0.38\textwidth}Xl}
+\toprule
+\textbf{ID} & \textbf{Proj} & \textbf{Pre-Registered Hypothesis} & \textbf{Explicit Falsification Condition} & \textbf{Status} \\
+\midrule
+\textbf{H1} & P3 & Real-model grounded pass rate on T3 is below simulator baseline. & Wilson CIs overlap, or real $\ge$ simulator. & \STATUSDECIDED \\
+\textbf{H2} & P4 & $\ge 2$ discovered failure modes are absent from injected F1--F6 catalog. & Every observed failure maps cleanly onto F1--F6. & \STATUSDECIDED \\
+\textbf{H3} & P5 & Cheap judge (R2) reaches $\kappa \ge 0.70$ against human labels on $\ge 3$ of 5 modes. & Measured $\kappa$ falls below 0.70 threshold. & \STATUSDECIDED \\
+\textbf{H4} & \textbf{P6} & \textbf{Measured $pass^3$ exceeds naive $(pass@1)^3$ for $\ge 4$ of 6 rungs.} & Wilson CI of measured contains naive point. & \STATUSDECIDED \\
+\textbf{H5} & P6 & Deviation from naive compounding is larger for cheap rungs than frontier. & Rank correlation across ladder is null or reversed. & \STATUSDECIDED \\
+\textbf{H6} & P7 & Same model across 2+ endpoints produces disjoint grounded pass rates. & Wilson CIs overlap across all endpoint pairs. & \STATUSDECIDED \\
+\textbf{H7} & P8 & Bounded + typed contracts reduce Attack Success Rate (ASR) vs published MCPTox. & ASR CI overlaps or exceeds published band. & \STATUSDECIDED \\
+\textbf{H8} & P12 & Document retrieval owns $>50\%$ of multi-hop grounding failures. & Attribution CI excludes 50\% on generator side. & \STATUSDECIDED \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+% ==============================================================================
+\vspace{12pt}
+\section{22 --- Key Engineering Decisions (ADR Log)}
+
+\begin{center}
+\scriptsize
+\begin{longtable}{lp{0.20\textwidth}p{0.22\textwidth}p{0.22\textwidth}l}
+\toprule
+\textbf{ID} & \textbf{Context \& Problem} & \textbf{Chosen Architectural Decision} & \textbf{Engineering Tradeoff \& Why} & \textbf{Reversal Trigger} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{ID} & \textbf{Context \& Problem} & \textbf{Chosen Architectural Decision} & \textbf{Engineering Tradeoff \& Why} & \textbf{Reversal Trigger} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{\textit{Continued on next page\dots}} \\
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+
+\textbf{D1} & Phase 2 needs Day 1 oracle, but days are frozen. & Copy oracle verbatim into \code{faultline\_p2}; lock with SHA-256 test. & Duplicates code, but guarantees zero regression drift in frozen Phase 1. & Oracle spec itself requires version bump. \\
+\textbf{D2} & Real model sweeps risk rapid budget exhaustion. & Execute Week 0 preflight probe across all rungs before any spend. & Delays execution by 1 week, but catches dead models and broken APIs for \$0. & Preflight probe passes 100\% on all rungs. \\
+\textbf{D3} & OTel exporter was scheduled in weeks 1--2. & Move P2 OTel exporter after Publication \#1. & Deferring telemetry exporter frees 2 weeks for high-risk P4 open coding. & Customer requires OTel spans as hard gate. \\
+\textbf{D4} & Paid sweeps risk uncontained cost overruns. & Enforce budget caps in code runner with mandatory \code{--confirm}. & Adds CLI friction, but converts discipline into an unbypassable exception. & Enterprise billing provides hard automated quotas. \\
+\textbf{D5} & Root import shadowing between Phase 1 and Phase 2. & Name Phase 2 import package \code{faultline\_p2}, not \code{faultline}. & Slight naming asymmetry, but prevents silent shadowing in \code{sys.modules}. & Phase 1 days are migrated to legacy sub-package. \\
+\textbf{D6} & Day 1 \code{build\_env} has no multi-hop link concept. & Compose 350-scenario corpus on top of \code{build\_env} without editing it. & Preserves Day 1 determinism contract while enabling multi-hop chaining. & Native graph database replaces synthetic corpus. \\
+\textbf{D7} & P3 and P6 required overlapping test scenarios. & Expand corpus from 300 to 350 scenarios (150 reserved hard pool). & Generates 50 extra scenarios, but guarantees disjoint test sets for H4. & Power calculations prove $n=100$ sufficient. \\
+\midrule
+\textbf{D-001} & Legacy stats tests coupled to Day 14 fixtures. & Implement clean-room \code{faultline\_p2.stats} verified on golden JSON. & Rewrites math utils, but removes legacy harness coupling completely. & Numerical discrepancy detected vs Day 14. \\
+\textbf{D-002} & Fact documents had no cross-entity links. & Introduce content-addressed link documents with opaque IDs. & Increases store to 1,164 docs, but prevents keyword shortcutting. & Multi-hop task redesigned around single long doc. \\
+\textbf{D-003} & Multi-step search was dumping full documents. & Limit search returns to 500-character bounded snippets. & Truncates context, but reduces token consumption by $>80\%$ per turn. & Agent reasoning fails due to context truncation. \\
+\textbf{D-004} & Token usage needed tracking without provider calls. & Pin \code{cl100k\_base} tokenizer as token count estimator. & Approximate for non-OpenAI models, but provides uniform offline baseline. & Provider returns exact token counts in response. \\
+\midrule
+\textbf{A-001} & System prompt was left unset at freeze. & Author and freeze system prompt hash (\code{87c764...}) in MEC v1.1. & Single post-freeze authoring step; frozen permanently thereafter. & System prompt proves defective in P1. \\
+\textbf{A-002} & \textbf{T2/T3 scenarios were unsolvable by construction.} & \textbf{Increase step cap 8 $\to$ 12; search returns snippets directly.} & \textbf{See Section 23 for full postmortem. Essential fix for 283 scenarios.} & $>10\%$ of T3 runs abort on step cap. \\
+\end{longtable}
+\end{center}
