@@ -4,19 +4,19 @@
 The 30-day progression was executed in four disciplined phases:
 
 \begin{center}
-\resizebox{0.95\textwidth}{!}{%
+\resizebox{0.98\textwidth}{!}{%
 \begin{tikzpicture}[
-  scale=0.92,
-  phasebox/.style={draw=primary, fill=white, rounded corners=3pt, font=\footnotesize\sffamily, align=center, inner sep=5pt, line width=0.8pt},
+  node distance=0.4cm,
+  phasebox/.style={draw=primary, fill=white, rounded corners=3pt, font=\footnotesize\sffamily, align=center, inner sep=5pt, line width=0.8pt, minimum height=1.3cm},
   arrow/.style={-{Latex[length=2.5mm]}, line width=1.2pt, color=primary}
 ]
-\node[phasebox, fill=blue!5] (pa) {\textbf{Phase A: Days 01--07}\\Measurement Foundations\\Seeded World $\cdot$ Oracle $\cdot$ Tracing $\cdot$ Q1 Depth};
-\node[phasebox, fill=teal!5, right=0.6cm of pa] (pb) {\textbf{Phase B: Days 08--17}\\Statistical \& Causal Discipline\\Faults F1--F6 $\cdot$ Detectors $\cdot$ Q2 $\cdot$ Judge Validation};
-\node[phasebox, fill=warning!5, below=0.8cm of pa] (pc) {\textbf{Phase C: Days 18--25}\\Operational Recovery\\Retries $\cdot$ Breakers $\cdot$ Fallback $\cdot$ Q3--Q5 $\cdot$ Postmortems};
-\node[phasebox, fill=success!5, right=0.6cm of pc] (pd) {\textbf{Phase D: Days 26--30}\\Evidence Operations\\Docker $\cdot$ Cold Reproduction $\cdot$ Article $\cdot$ Defense};
+\node[phasebox, fill=blue!5] (pa) {\textbf{Phase A: Days 01--07}\\Measurement Foundations\\{\scriptsize Seeded World $\cdot$ Oracle $\cdot$ Tracing $\cdot$ Q1}};
+\node[phasebox, fill=teal!5, right=of pa] (pb) {\textbf{Phase B: Days 08--17}\\Statistical \& Causal Discipline\\{\scriptsize Faults F1--F6 $\cdot$ Detectors $\cdot$ Q2 $\cdot$ Judge}};
+\node[phasebox, fill=warning!5, right=of pb] (pc) {\textbf{Phase C: Days 18--25}\\Operational Recovery\\{\scriptsize Retries $\cdot$ Breakers $\cdot$ Fallback $\cdot$ Q3--Q5}};
+\node[phasebox, fill=success!5, right=of pc] (pd) {\textbf{Phase D: Days 26--30}\\Evidence Operations\\{\scriptsize Docker $\cdot$ Cold Repro $\cdot$ Audit $\cdot$ Defense}};
 
 \draw[arrow] (pa) -- (pb);
-\draw[arrow] (pb) |- (pc);
+\draw[arrow] (pb) -- (pc);
 \draw[arrow] (pc) -- (pd);
 \end{tikzpicture}%
 }
@@ -88,7 +88,7 @@ To separate completed engineering artifacts from speculative proposals, the tabl
 \small
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\code}[1]{{\scriptsize\ttfamily\nolinkurl{#1}}}
-\begin{longtable}{>{\raggedright\arraybackslash}p{0.21\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.11\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.17\textwidth}}
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.21\textwidth}>{\raggedright\arraybackslash}p{0.17\textwidth}}
 \toprule
 \textbf{Component} & \textbf{System Purpose} & \textbf{Status} & \textbf{Committed Evidence} & \textbf{Repository Location} \\
 \midrule

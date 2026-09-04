@@ -1,14 +1,16 @@
+\clearpage
 \section{Repository Map}
 
-
-
 \begin{center}
-\small
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.25\textwidth}>{\raggedright\arraybackslash}p{0.32\textwidth}>{\raggedright\arraybackslash}X}
+\begingroup
+\scriptsize
+\renewcommand{\arraystretch}{0.88}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.34\textwidth}>{\raggedright\arraybackslash}X}
 \toprule
 \textbf{Directory / File} & \textbf{Architectural Purpose} & \textbf{Key Evidence Produced} \\
 \midrule
-\code{day01/}--\code{day30/} & Phase 1 research foundation modules (30 days). & 433 unit tests, Q1--Q5 evidence, frozen checkpoints. \\
+\code{day01/}--\code{day30/} & Phase 1 research foundation modules (30 days). & 528 unit tests, Q1--Q5 evidence, frozen checkpoints. \\
 \code{faultline\_p2/env/} & 350-scenario corpus builder with link-layer docs. & Content hash \code{9d6d7f...}; max fact reuse $\le 5$. \\
 \code{faultline\_p2/oracle/} & Pure-function ground truth pass evaluator. & Hash-pinned unmodified Day 1 copy (\code{dc5eef...}). \\
 \code{faultline\_p2/agent/} & Bounded reason-tool-observe loop with step caps. & 12-step cap enforcement, Pydantic \code{extra="forbid"}. \\
@@ -23,61 +25,62 @@
 \code{HYPOTHESES.md} & Pre-registered scientific hypotheses H1--H8. & Formal falsification conditions recorded before runs. \\
 \bottomrule
 \end{tabularx}
+\endgroup
 \end{center}
 
 % ==============================================================================
-\vspace{12pt}
+\vspace{4pt}
 \section{How to Reproduce}
 
 The reproduction path is strictly cold-reader compatible: it requires no pre-existing Python environment, API keys, or proprietary dependencies.
 
-\subsection{The One-Command Cold-Start Procedure}
-From a terminal on macOS or Linux with Docker installed:
-\begin{verbatim}
-    # 1. Clone the repository at the release candidate tag
-    git clone --branch v0.27.0-rc1 \
-      https://github.com/samirsawarkar/faultline-ai-reliability.git
-    cd faultline-ai-reliability
+\vspace{3pt}
+\noindent\textbf{The One-Command Cold-Start Procedure:}\\
+\colorbox{codebg}{%
+\begin{minipage}{0.98\textwidth}
+\ttfamily\scriptsize
+git clone --branch v0.27.0-rc1 https://github.com/samirsawarkar/faultline-ai-reliability.git\\
+cd faultline-ai-reliability \&\& make cold-reproduce
+\end{minipage}%
+}
 
-    # 2. Execute the complete containerized reproduction gate
-    make cold-reproduce
-\end{verbatim}
-
-\subsection{What the One Command Executes}
+\vspace{3pt}
+\noindent\textbf{What the One Command Executes:}
 \begin{enumerate}
+\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}\setlength{\parsep}{0pt}
     \item Builds a clean Debian Linux Docker container using digest-pinned Python \code{3.12.4}.
     \item Installs exact dependencies from \code{requirements.txt} (zero range specifications).
-    \item Runs all 433 Phase 1 tests and 68 Phase 2 tests.
+    \item Runs all 528 Phase 1 tests and 68 Phase 2 tests.
     \item Regenerates Q1 tool hops, Q4 fallback quality, and Day 25 postmortem incident replays.
     \item Verifies byte-identical SHA-256 hashes against committed evidence.
     \item Resolves every claim in \code{day26/readme\_claims.json} through the JSON pointer audit.
 \end{enumerate}
 
-\subsection{Expected Terminal Output}
-The execution terminates with exit code 0 and the exact verification block:
-\begin{verbatim}
-    headline tool_hops: Measured success 0.818 versus naive 0.91833; first separation at 3 hops
-    headline frozen_eval: Frozen test evaluation: F1 0.842105 over 17 samples
-    headline fallback_quality: Availability 0.6667 -> 1.0 while strict quality 1.0 -> 0.75
-    headline q5_policy: Reference P4: success 0.9325, mean cost 1.4656, p95 latency 50.0
-    headline postmortems: 2 incidents replay red -> green; Checkpoint 25 passes
-    headline tests: 433 tests collected and passed
-    reader questions: 0
-    operator improvisations: 0
-    cold reproduction: PASS
-\end{verbatim}
+\vspace{3pt}
+\noindent\textbf{Expected Terminal Output:}\\
+\colorbox{codebg}{%
+\begin{minipage}{0.98\textwidth}
+\ttfamily\tiny
+headline tool\_hops: Measured success 0.818 versus naive 0.91833; first separation at 3 hops\\
+headline frozen\_eval: Frozen test evaluation: F1 0.842105 over 17 samples\\
+headline fallback\_quality: Availability 0.6667 -> 1.0 while strict quality 1.0 -> 0.75\\
+headline q5\_policy: Reference P4: success 0.9325, mean cost 1.4656, p95 latency 50.0\\
+headline postmortems: 2 incidents replay red -> green; Checkpoint 25 passes\\
+headline tests: 528 tests collected and passed; reader questions: 0; cold reproduction: PASS
+\end{minipage}%
+}
 
-\subsection{Fast Local Development Reproduction}
-For local development within a Python virtual environment:
-\begin{verbatim}
-    make venv
-    make reproduce-fast    # Runs tests + fast evidence drift checks (~25s)
-    pytest tests/phase2 -q # Runs Phase 2 test suite (68 tests passing)
-\end{verbatim}
+\vspace{3pt}
+\noindent\textbf{Fast Local Development Reproduction:}\\
+\colorbox{codebg}{%
+\begin{minipage}{0.98\textwidth}
+\ttfamily\scriptsize
+make venv \&\& make reproduce-fast \&\& pytest tests/phase2 -q
+\end{minipage}%
+}
 
 % ==============================================================================
-\vspace{12pt}
-\needspace{8\baselineskip}
+\clearpage
 \section{Evidence Index}
 
 Every primary empirical claim in this report resolves to an immutable JSON pointer and generating command in CI:
@@ -88,7 +91,7 @@ Every primary empirical claim in this report resolves to an immutable JSON point
 \renewcommand{\arraystretch}{0.90}
 \setlength{\tabcolsep}{2pt}
 \renewcommand{\code}[1]{{\scriptsize\ttfamily\nolinkurl{#1}}}
-\begin{longtable}{p{0.05\textwidth}>{\raggedright\arraybackslash}p{0.25\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.21\textwidth}>{\raggedright\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.06\textwidth}}
+\begin{longtable}{p{0.05\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.21\textwidth}>{\raggedright\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.07\textwidth}}
 \toprule
 \textbf{Claim ID} & \textbf{Rendered Claim Value} & \textbf{Source JSON File} & \textbf{Exact JSON Pointer} & \textbf{Generating Script} & \textbf{Limitation} \\
 \midrule
@@ -130,39 +133,35 @@ Every primary empirical claim in this report resolves to an immutable JSON point
 \end{center}
 
 % ==============================================================================
-\vspace{12pt}
-\needspace{8\baselineskip}
+\clearpage
 \section{Roadmap}
 
 The forward roadmap separates immediate engineering obligations from medium-term research:
 
 \begin{center}
-\small
+\begingroup
+\scriptsize
+\renewcommand{\arraystretch}{0.85}
+\setlength{\tabcolsep}{2.5pt}
 \begin{tabularx}{\textwidth}{l>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}Xl}
 \toprule
 \textbf{Horizon} & \textbf{Objective} & \textbf{Deliverable \& Methodology} & \textbf{Engineering Value} & \textbf{Cost Cap} \\
 \midrule
 \textbf{Immediate} & Execute Preflight Key Probe & Hit R1--R6 once with live API keys to verify pricing and prefix caching. & Unblocks Phase 2 paid sweep ladder. & \$0.05 \\
-\addlinespace
 \textbf{Milestone 1} & Project P1: Real Baseline & Sweep 100 standard scenarios across R2 (Qwen 3.8 Flash). & Proves real model harness without modifying oracle. & \$2.00 \\
-\addlinespace
 \textbf{Milestone 2} & Project P3: Grounding Zero Point & Measure $n=200$ across R2 and R6; freeze 150 hard scenarios for P6. & Resolves Pre-Registered Hypothesis H1. & \$5.00 \\
-\addlinespace
 \textbf{Milestone 3} & Project P4: Failure Taxonomy & Human qualitative open coding of 150 real failure traces by engineer. & Resolves H2; grounds taxonomy in real LLM errors. & \$0.00 \\
-\addlinespace
 \textbf{Milestone 4} & Project P5: Judge Calibration & Multi-judge Cohen's kappa evaluation on human-coded taxonomy. & Resolves H3; calibrates advisory judges. & \$10.00 \\
-\addlinespace
 \textbf{Milestone 5} & Project P6: Pass\^{}k Decay Sweep & 2,700 runs across R1--R6 on 150 hard scenarios ($k=3$). & Headline publication resolving H4 and H5. & \$45.00 \\
-\addlinespace
 \textbf{Medium-Term} & MCPTox Bounded Defense (P8) & Test bounded Pydantic agent against MCPTox malicious tool metadata. & Resolves H7; evaluates tool poisoning defense. & \$10.00 \\
-\addlinespace
 \textbf{Long-Term} & Calibrated Cascade (P10) & Train Pareto-optimal routing classifier on P5/P6 empirical data. & Automates cost-optimal escalation. & \$8.00 \\
 \bottomrule
 \end{tabularx}
+\endgroup
 \end{center}
 
 % ==============================================================================
-\vspace{12pt}
+\vspace{8pt}
 \section{Final Engineering Assessment}
 
 \subsection{Brutally Honest Staff Evaluation}
@@ -170,6 +169,7 @@ Writing an honest portfolio requires evaluating one's own work with the same ske
 
 \subsubsection{What is Genuinely Strong and Unusually Rigorous}
 \begin{itemize}
+\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}
     \item \textbf{Causal Scientific Pairing:} Pairing requests on identical master seeds and computing McNemar tests on discordant pairs eliminates scenario noise.
     \item \textbf{Oracle Independence:} Refusing to allow an LLM judge to grade the agent's core success, and proving the judge's blind spot on borderline tokens.
     \item \textbf{Fail-Closed Reproducibility:} The JSON pointer audit binding every displayed number to committed artifacts in CI sets a standard rarely seen in AI research.
@@ -178,16 +178,19 @@ Writing an honest portfolio requires evaluating one's own work with the same ske
 
 \subsubsection{What is Ordinary}
 \begin{itemize}
+\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}
     \item \textbf{The Agent Architecture:} The single-agent reason-tool-observe loop is simple by design. It uses standard prompt-based tool dispatching without novel agentic patterns.
     \item \textbf{The Tool Suite:} Three tools (\code{search}, \code{lookup}, \code{calc}) over an in-memory document store.
 \end{itemize}
 
 \subsubsection{What is Still Weak and Unfinished}
 \begin{itemize}
+\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}
     \item \textbf{Unrun Phase 2 Live Sweeps:} The model ladder remains provisional. No paid sweeps across commercial LLM APIs have executed; \$0.00 has been spent.
     \item \textbf{Small Labelled Sample Sizes:} The Q2 detector evaluation ($n=44$) and Day 16 judge evaluation ($n=24$) have wide confidence intervals.
 \end{itemize}
 
+\clearpage
 \subsection{Hiring Manager Inference Boundary}
 \begin{center}
 \small

@@ -1,3 +1,4 @@
+\clearpage
 \section{Interview Version}
 
 \subsection{Elevator Explanations by Time Horizon}
@@ -61,7 +62,7 @@ FAULTLINE tests this systematically. We built a synthetic environment with 1,164
     \newline \textit{Answer:} Every proportion is bounded by a 95\% Wilson score interval. If confidence intervals overlap or sample size is underpowered to detect a 10 pp difference, we formally declare the result \textbf{INCONCLUSIVE}.
 
     \item \textbf{How do you reproduce a result from cold start?}
-    \newline \textit{Answer:} Run \code{make cold-reproduce}. It builds a digest-pinned Python 3.12.4 Docker container, runs 433 tests, regenerates the research results, checks byte hashes, and verifies that every displayed number matches committed JSON pointers.
+    \newline \textit{Answer:} Run \code{make cold-reproduce}. It builds a digest-pinned Python 3.12.4 Docker container, runs 528 tests, regenerates the research results, checks byte hashes, and verifies that every displayed number matches committed JSON pointers.
 
     \item \textbf{What is the biggest limitation of FAULTLINE?}
     \newline \textit{Answer:} External validity (L01). All numbers derive from synthetic documents and simulated fault distributions. While the distributed systems failure dynamics are universal, the exact numerical thresholds do not transfer directly to production without empirical calibration.

@@ -55,14 +55,16 @@ In accordance with scientific integrity, the findings in this report are bounded
 \vspace{10pt}
 \begin{callout}[secondary]{Epistemic Boundary Summary: The Three Guarantees FAULTLINE Does and Does Not Make}
 \textbf{What FAULTLINE Guarantees:}
-\begin{itemize}[leftmargin=*,noitemsep,topsep=2pt]
+\begin{itemize}
+\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}
     \item \textbf{Causal Attribution:} Every measured difference between policies or depth hops is causally isolated via identical master seeds and frozen environments.
     \item \textbf{Negative-Result Integrity:} We disclose where recovery actively failed (attempt storms, quality collapse under stress) without defensive rationalization.
     \item \textbf{Cold Reproducibility:} Any independent engineer can execute \code{make cold-reproduce} in Docker and produce bit-for-bit identical hashes.
 \end{itemize}
 \vspace{4pt}
 \textbf{What FAULTLINE Explicitly Does Not Guarantee:}
-\begin{itemize}[leftmargin=*,noitemsep,topsep=2pt]
+\begin{itemize}
+\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}
     \item \textbf{Universal Numerical Thresholds:} The optimal retry cutoff ($K=2$) and cost envelope (\$1.46) reflect the configured simulated workload; production systems must empirically calibrate their own parameters.
     \item \textbf{Frontier LLM Immunity:} We do not claim to solve LLM hallucination or eliminate model capability boundaries.
 \end{itemize}

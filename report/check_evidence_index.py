@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Check that all rows in the Evidence Index resolve to real files, pointers, and commands."""
+import glob
 import json
 import os
 import re
+import subprocess
 import sys
 
 
@@ -140,12 +142,63 @@ def main():
 
         print(f"[PASS] {claim_id:4s} | {json_file} -> {pointer} = {val_str} ({script_disp})")
 
+    failures += check_test_counts(repo_root)
+
     if failures > 0:
         print(f"\nCompleted with {failures} FAILURES.")
         sys.exit(1)
     else:
-        print(f"\nAll {len(rows)} evidence rows VERIFIED successfully.")
+        print(f"\nAll {len(rows)} evidence rows and test counts VERIFIED successfully.")
         sys.exit(0)
+
+
+def check_test_counts(repo_root):
+    """Verify that test counts declared in LaTeX match live pytest collection totals."""
+    py = os.path.join(repo_root, ".venv", "bin", "python")
+    cmd = [py if os.path.exists(py) else sys.executable, "-m", "pytest"]
+
+    p1_dirs = sorted(glob.glob(os.path.join(repo_root, "day*", "tests")))
+    out_p1 = subprocess.check_output(cmd + p1_dirs + ["-q", "--collect-only"], text=True)
+    m1 = re.search(r"(\d+)\s+tests?\s+collected", out_p1.splitlines()[-1])
+    real_p1 = int(m1.group(1)) if m1 else None
+
+    out_p2 = subprocess.check_output(cmd + [os.path.join(repo_root, "tests", "phase2"), "-q", "--collect-only"], text=True)
+    m2 = re.search(r"(\d+)\s+tests?\s+collected", out_p2.splitlines()[-1])
+    real_p2 = int(m2.group(1)) if m2 else None
+
+    if not real_p1 or not real_p2:
+        print("[FAIL] Could not collect live test counts from pytest", file=sys.stderr)
+        return 1
+
+    checks = [
+        ("report/main.tex", r"(\d+)/\d+\s+Unit/Integration Tests Passing", real_p1, "Phase 1 unit tests"),
+        ("report/main.tex", r"(\d+)/\d+\s+Phase 2 Tests Passing", real_p2, "Phase 2 tests"),
+        ("report/sec29_repo_reproduce_index.tex", r"(\d+)\s+unit tests,\s+Q1--Q5 evidence", real_p1, "Phase 1 repository map"),
+        ("report/sec29_repo_reproduce_index.tex", r"Runs all\s+(\d+)\s+Phase 1 tests", real_p1, "Phase 1 reproduction"),
+        ("report/sec29_repo_reproduce_index.tex", r"Runs all \d+ Phase 1 tests and\s+(\d+)\s+Phase 2 tests", real_p2, "Phase 2 reproduction"),
+        ("report/sec29_repo_reproduce_index.tex", r"headline tests:\s+(\d+)\s+tests collected", real_p1, "Phase 1 headline output"),
+        ("report/sec28_interview_version.tex", r"runs\s+(\d+)\s+tests,\s+regenerates", real_p1, "Phase 1 interview answer"),
+    ]
+
+    print("\nChecking test counts asserted in LaTeX against live repository...")
+    failures = 0
+    for rel_path, pattern, real_val, label in checks:
+        full_path = os.path.join(repo_root, rel_path)
+        with open(full_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        m = re.search(pattern, content)
+        if not m:
+            print(f"[FAIL] {rel_path}: Pattern '{pattern}' not found for {label}")
+            failures += 1
+            continue
+        asserted = int(m.group(1))
+        if asserted != real_val:
+            print(f"[FAIL] {rel_path}: Asserted {asserted} != real {real_val} ({label})")
+            failures += 1
+        else:
+            print(f"[PASS] {rel_path} | {label}: {asserted} == live {real_val}")
+
+    return failures
 
 
 if __name__ == "__main__":
