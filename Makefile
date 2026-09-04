@@ -331,7 +331,7 @@ clean:
 	find . -type d -name .pytest_cache -prune -exec rm -rf {} +
 
 # Phase 2 developer entry points
-.PHONY: phase2-install phase2-test phase2-corpus phase2-preflight p01 p13 p15 p16
+.PHONY: phase2-install phase2-test phase2-corpus phase2-preflight p01 p02 p13 p15 p16
 
 phase2-install:
 	$(PY) -m pip install -e .
@@ -348,6 +348,9 @@ phase2-preflight:
 
 p01:
 	.venv/bin/python projects/p01_baseline/run.py
+
+p02:
+	.venv/bin/python projects/p02_otel_exporter/run.py
 
 p13:
 	.venv/bin/python projects/p13_slo_incident/run.py
