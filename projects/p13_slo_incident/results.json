@@ -1,0 +1,215 @@
+{
+  "metadata": {
+    "project": "p13_slo_incident",
+    "seed": 42,
+    "compliance_period_days": 30,
+    "target_slo": 0.95,
+    "error_budget": 0.05
+  },
+  "phases": {
+    "healthy": {
+      "service": "faultline-fact-finding-agent",
+      "compliance_period_hours": 720.0,
+      "run_id": "4a15a9bd-0a65-49ec-b137-53a2948a7dc1",
+      "slos": {
+        "grounded_pass_rate": {
+          "name": "Grounded Pass Rate",
+          "target": 0.95,
+          "error_budget": 0.05,
+          "sli_metrics": {
+            "total_scenarios": 40,
+            "passed_scenarios": 40,
+            "pass_rate": 1.0,
+            "error_rate": 0.0,
+            "run_id": "4a15a9bd-0a65-49ec-b137-53a2948a7dc1"
+          },
+          "burn_rate": 0.0,
+          "fast_burn_fired": false,
+          "slow_burn_fired": false,
+          "severity": "ok",
+          "short_window_budget_consumed_pct": 0.0,
+          "long_window_budget_consumed_pct": 0.0,
+          "message": "[OK] SLO 'grounded_pass_rate' Healthy. Burn rate 0.0x is within budget (consumed 0.0% in 1.0h)."
+        },
+        "agent_error_rate": {
+          "name": "Agent Infrastructure Error Rate",
+          "target": 0.99,
+          "error_budget": 0.01,
+          "sli_metrics": {
+            "total_scenarios": 40,
+            "error_scenarios": 0,
+            "error_rate": 0.0,
+            "availability_rate": 1.0,
+            "run_id": "4a15a9bd-0a65-49ec-b137-53a2948a7dc1"
+          },
+          "burn_rate": 0.0,
+          "fast_burn_fired": false,
+          "slow_burn_fired": false,
+          "severity": "ok",
+          "short_window_budget_consumed_pct": 0.0,
+          "long_window_budget_consumed_pct": 0.0,
+          "message": "[OK] SLO 'agent_error_rate' Healthy. Burn rate 0.0x is within budget (consumed 0.0% in 1.0h)."
+        },
+        "step_latency_p95": {
+          "name": "Step Execution Latency P95",
+          "target": 0.95,
+          "error_budget": 0.05,
+          "sli_metrics": {
+            "total_spans": 232,
+            "p50_ms": 0.02,
+            "p95_ms": 0.08,
+            "threshold_ms": 1000.0,
+            "slow_spans": 0,
+            "error_rate": 0.0,
+            "success_rate": 1.0,
+            "run_id": "4a15a9bd-0a65-49ec-b137-53a2948a7dc1"
+          },
+          "burn_rate": 0.0,
+          "fast_burn_fired": false,
+          "slow_burn_fired": false,
+          "severity": "ok",
+          "short_window_budget_consumed_pct": 0.0,
+          "long_window_budget_consumed_pct": 0.0,
+          "message": "[OK] SLO 'step_latency_p95' Healthy. Burn rate 0.0x is within budget (consumed 0.0% in 1.0h)."
+        }
+      },
+      "overall_status": "ok"
+    },
+    "incident": {
+      "service": "faultline-fact-finding-agent",
+      "compliance_period_hours": 720.0,
+      "run_id": "7100a845-493a-43a4-8efe-a75da082e8a9",
+      "slos": {
+        "grounded_pass_rate": {
+          "name": "Grounded Pass Rate",
+          "target": 0.95,
+          "error_budget": 0.05,
+          "sli_metrics": {
+            "total_scenarios": 40,
+            "passed_scenarios": 10,
+            "pass_rate": 0.25,
+            "error_rate": 0.75,
+            "run_id": "7100a845-493a-43a4-8efe-a75da082e8a9"
+          },
+          "burn_rate": 15.0,
+          "fast_burn_fired": true,
+          "slow_burn_fired": true,
+          "severity": "page",
+          "short_window_budget_consumed_pct": 2.0833,
+          "long_window_budget_consumed_pct": 12.5,
+          "message": "[PAGE] SLO 'grounded_pass_rate' Fast-Burn Alert! Burn rate 15.0x >= 14.4x over 1.0h. Consumed 2.0833% budget."
+        },
+        "agent_error_rate": {
+          "name": "Agent Infrastructure Error Rate",
+          "target": 0.99,
+          "error_budget": 0.01,
+          "sli_metrics": {
+            "total_scenarios": 40,
+            "error_scenarios": 0,
+            "error_rate": 0.0,
+            "availability_rate": 1.0,
+            "run_id": "7100a845-493a-43a4-8efe-a75da082e8a9"
+          },
+          "burn_rate": 0.0,
+          "fast_burn_fired": false,
+          "slow_burn_fired": false,
+          "severity": "ok",
+          "short_window_budget_consumed_pct": 0.0,
+          "long_window_budget_consumed_pct": 0.0,
+          "message": "[OK] SLO 'agent_error_rate' Healthy. Burn rate 0.0x is within budget (consumed 0.0% in 1.0h)."
+        },
+        "step_latency_p95": {
+          "name": "Step Execution Latency P95",
+          "target": 0.95,
+          "error_budget": 0.05,
+          "sli_metrics": {
+            "total_spans": 94,
+            "p50_ms": 0.01,
+            "p95_ms": 0.04,
+            "threshold_ms": 1000.0,
+            "slow_spans": 0,
+            "error_rate": 0.0,
+            "success_rate": 1.0,
+            "run_id": "7100a845-493a-43a4-8efe-a75da082e8a9"
+          },
+          "burn_rate": 0.0,
+          "fast_burn_fired": false,
+          "slow_burn_fired": false,
+          "severity": "ok",
+          "short_window_budget_consumed_pct": 0.0,
+          "long_window_budget_consumed_pct": 0.0,
+          "message": "[OK] SLO 'step_latency_p95' Healthy. Burn rate 0.0x is within budget (consumed 0.0% in 1.0h)."
+        }
+      },
+      "overall_status": "page"
+    },
+    "recovery": {
+      "service": "faultline-fact-finding-agent",
+      "compliance_period_hours": 720.0,
+      "run_id": "23af4b08-b6f3-416c-a39f-75f8b7118f47",
+      "slos": {
+        "grounded_pass_rate": {
+          "name": "Grounded Pass Rate",
+          "target": 0.95,
+          "error_budget": 0.05,
+          "sli_metrics": {
+            "total_scenarios": 40,
+            "passed_scenarios": 40,
+            "pass_rate": 1.0,
+            "error_rate": 0.0,
+            "run_id": "23af4b08-b6f3-416c-a39f-75f8b7118f47"
+          },
+          "burn_rate": 0.0,
+          "fast_burn_fired": false,
+          "slow_burn_fired": false,
+          "severity": "ok",
+          "short_window_budget_consumed_pct": 0.0,
+          "long_window_budget_consumed_pct": 0.0,
+          "message": "[OK] SLO 'grounded_pass_rate' Healthy. Burn rate 0.0x is within budget (consumed 0.0% in 1.0h)."
+        },
+        "agent_error_rate": {
+          "name": "Agent Infrastructure Error Rate",
+          "target": 0.99,
+          "error_budget": 0.01,
+          "sli_metrics": {
+            "total_scenarios": 40,
+            "error_scenarios": 0,
+            "error_rate": 0.0,
+            "availability_rate": 1.0,
+            "run_id": "23af4b08-b6f3-416c-a39f-75f8b7118f47"
+          },
+          "burn_rate": 0.0,
+          "fast_burn_fired": false,
+          "slow_burn_fired": false,
+          "severity": "ok",
+          "short_window_budget_consumed_pct": 0.0,
+          "long_window_budget_consumed_pct": 0.0,
+          "message": "[OK] SLO 'agent_error_rate' Healthy. Burn rate 0.0x is within budget (consumed 0.0% in 1.0h)."
+        },
+        "step_latency_p95": {
+          "name": "Step Execution Latency P95",
+          "target": 0.95,
+          "error_budget": 0.05,
+          "sli_metrics": {
+            "total_spans": 232,
+            "p50_ms": 0.01,
+            "p95_ms": 0.02,
+            "threshold_ms": 1000.0,
+            "slow_spans": 0,
+            "error_rate": 0.0,
+            "success_rate": 1.0,
+            "run_id": "23af4b08-b6f3-416c-a39f-75f8b7118f47"
+          },
+          "burn_rate": 0.0,
+          "fast_burn_fired": false,
+          "slow_burn_fired": false,
+          "severity": "ok",
+          "short_window_budget_consumed_pct": 0.0,
+          "long_window_budget_consumed_pct": 0.0,
+          "message": "[OK] SLO 'step_latency_p95' Healthy. Burn rate 0.0x is within budget (consumed 0.0% in 1.0h)."
+        }
+      },
+      "overall_status": "ok"
+    }
+  }
+}

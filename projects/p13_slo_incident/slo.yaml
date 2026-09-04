@@ -1,0 +1,125 @@
+# Service Level Objectives (SLO) Specification for FAULTLINE Production Agent
+# Google SRE Multiwindow Multi-Burn-Rate alerting architecture.
+
+service: faultline-fact-finding-agent
+compliance_period_days: 30
+compliance_period_hours: 720
+
+slos:
+  - id: grounded_pass_rate
+    name: Grounded Pass Rate
+    description: >
+      Proportion of completed scenario requests where the agent answers accurately
+      with valid citations verified by the deterministic ground-truth oracle.
+    sli_type: correctness
+    sli_query: >
+      SELECT 
+        COUNT(DISTINCT scenario_id) as total_scenarios,
+        SUM(CASE WHEN MAX_verdict = 1 THEN 1 ELSE 0 END) as good_scenarios
+      FROM (
+        SELECT scenario_id, MAX(COALESCE(verdict, 0)) as MAX_verdict
+        FROM spans
+        WHERE run_id = :run_id
+        GROUP BY scenario_id
+      );
+    target: 0.950
+    error_budget: 0.050
+    windows:
+      short_window_hours: 1
+      long_window_hours: 6
+    alert_rules:
+      fast_burn:
+        name: FastBurn-GroundedPassRate-Page
+        severity: page
+        window_hours: 1
+        burn_rate_threshold: 14.4
+        budget_consumed_percent: 2.0
+      slow_burn:
+        name: SlowBurn-GroundedPassRate-Ticket
+        severity: ticket
+        window_hours: 6
+        burn_rate_threshold: 6.0
+        budget_consumed_percent: 5.0
+    rationale: >
+      Target is 95.0% grounded pass rate. Multi-hop document retrieval across complex corporate
+      corpora permits occasional minor citation misses on peripheral evidence, but business
+      stakeholders rely on grounded answers for automated decision systems. A 5.0% error budget
+      provides headroom for harmless phrasing ambiguity while instantly trapping catastrophic
+      hallucinations or link traversal breakages. Pass rates below 95% violate user safety.
+
+  - id: agent_error_rate
+    name: Agent Infrastructure Error Rate
+    description: >
+      Proportion of scenario executions ending in unhandled exceptions, malformed envelopes,
+      or tool dispatch crashes (MODEL_FAILURE, TOOL_ERROR, MALFORMED).
+    sli_type: availability
+    sli_query: >
+      SELECT 
+        COUNT(DISTINCT scenario_id) as total_scenarios,
+        SUM(CASE WHEN is_failed = 1 THEN 1 ELSE 0 END) as failed_scenarios
+      FROM (
+        SELECT scenario_id,
+          MAX(CASE WHEN termination_reason IN ('MODEL_FAILURE', 'TOOL_ERROR', 'MALFORMED') THEN 1 ELSE 0 END) as is_failed
+        FROM spans
+        WHERE run_id = :run_id
+        GROUP BY scenario_id
+      );
+    target: 0.990
+    error_budget: 0.010
+    windows:
+      short_window_hours: 1
+      long_window_hours: 6
+    alert_rules:
+      fast_burn:
+        name: FastBurn-AgentErrorRate-Page
+        severity: page
+        window_hours: 1
+        burn_rate_threshold: 14.4
+        budget_consumed_percent: 2.0
+      slow_burn:
+        name: SlowBurn-AgentErrorRate-Ticket
+        severity: ticket
+        window_hours: 6
+        burn_rate_threshold: 6.0
+        budget_consumed_percent: 5.0
+    rationale: >
+      Target is 99.0% crash-free availability (<=1.0% infrastructure failure rate). Unhandled
+      protocol crashes, invalid tool arguments, and LLM JSON truncation waste caller compute
+      and terminate without attempting answer generation. A strict 1.0% error budget tolerates
+      rare upstream LLM provider blips while immediately flagging incompatible tool schema
+      deployments or prompt syntax regression.
+
+  - id: step_latency_p95
+    name: Step Execution Latency P95
+    description: >
+      95th percentile duration of individual agent loop steps (LLM generation + tool dispatch).
+    sli_type: latency
+    sli_query: >
+      SELECT latency_ms
+      FROM spans
+      WHERE run_id = :run_id AND latency_ms IS NOT NULL
+      ORDER BY latency_ms ASC;
+    threshold_latency_ms: 1000.0
+    target: 0.950
+    error_budget: 0.050
+    windows:
+      short_window_hours: 1
+      long_window_hours: 6
+    alert_rules:
+      fast_burn:
+        name: FastBurn-StepLatency-Page
+        severity: page
+        window_hours: 1
+        burn_rate_threshold: 14.4
+        budget_consumed_percent: 2.0
+      slow_burn:
+        name: SlowBurn-StepLatency-Ticket
+        severity: ticket
+        window_hours: 6
+        burn_rate_threshold: 6.0
+        budget_consumed_percent: 5.0
+    rationale: >
+      Target is 95.0% of steps completing under 1000ms. An interactive multi-step search agent
+      performs 4-10 steps per scenario. Step latencies above 1000ms compound into >10s user
+      response times, breaching human interactive thresholds. A 5.0% budget absorbs occasional
+      un-cached multi-candidate BM25 search scans without degrading conversational interactive SLA.

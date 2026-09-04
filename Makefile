@@ -348,3 +348,6 @@ phase2-preflight:
 
 p01:
 	.venv/bin/python projects/p01_baseline/run.py
+
+p13:
+	.venv/bin/python projects/p13_slo_incident/run.py
