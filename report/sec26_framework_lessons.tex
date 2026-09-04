@@ -5,28 +5,28 @@ Reliability engineering is not the optimization of a single scalar score. It is 
 \begin{figure}[h!]
 \centering
 \begin{tikzpicture}[
-  scale=0.92,
-  box/.style={draw=primary, fill=white, rounded corners=3pt, font=\small\sffamily, align=center, inner sep=6pt, line width=0.8pt},
+  scale=0.92, every node/.style={transform shape},
+  box/.style={draw=primary, fill=white, rounded corners=3pt, font=\footnotesize\sffamily, align=center, inner sep=5pt, line width=0.8pt},
   flow/.style={-{Latex[length=2.5mm]}, line width=1.2pt, color=secondary}
 ]
-\node[box, fill=blue!5] (ev) at (0, 4) {\textbf{EMPIRICAL EVIDENCE}\\Paired Seed Executions $\cdot$ Linked Traces};
+\node[box, fill=blue!5, text width=9.5cm] (ev) at (0, 0) {\textbf{EMPIRICAL EVIDENCE}\\Paired Seed Executions $\cdot$ Linked Traces};
 
-\node[box, fill=teal!5] (corr) at (-3.5, 2.2) {\textbf{Correctness Gate}\\$\bullet$ Grounded Pass Rate\\$\bullet$ Citation Completeness\\$\bullet$ Zero Hallucinated Tokens};
+\node[box, fill=teal!5, text width=5.6cm, below left=0.6cm and -0.8cm of ev] (corr) {\textbf{Correctness Gate}\\$\bullet$ Grounded Pass Rate\\$\bullet$ Citation Completeness\\$\bullet$ Zero Hallucinated Tokens};
 
-\node[box, fill=warning!5] (ops) at (3.5, 2.2) {\textbf{Operational Gate}\\$\bullet$ p95 / p99 Latency Budget\\$\bullet$ Cost per Resolved Query\\$\bullet$ Attempt Amplification Ceiling};
+\node[box, fill=warning!5, text width=5.6cm, below right=0.6cm and -0.8cm of ev] (ops) {\textbf{Operational Gate}\\$\bullet$ p95 / p99 Latency Budget\\$\bullet$ Cost per Resolved Query\\$\bullet$ Attempt Amplification Ceiling};
 
-\node[box, fill=purple!5] (unc) at (0, 0.4) {\textbf{Uncertainty Quantification}\\$\bullet$ Wilson 95\% Score Bounds\\$\bullet$ 10,000-Resample Bootstrap CIs\\$\bullet$ McNemar Paired Significance};
+\node[box, fill=purple!5, text width=9.5cm, below=0.6cm of $(corr.south)!0.5!(ops.south)$] (unc) {\textbf{Uncertainty Quantification}\\$\bullet$ Wilson 95\% Score Bounds $\cdot$ 10,000-Resample Bootstrap CIs $\cdot$ McNemar Significance};
 
-\node[box, fill=secondary!10] (rep) at (0, -1.2) {\textbf{Reproducibility \& Provenance}\\$\bullet$ Byte-for-Byte Replay Stability\\$\bullet$ Fail-Closed Claim Audit};
+\node[box, fill=secondary!10, text width=9.5cm, below=0.5cm of unc] (rep) {\textbf{Reproducibility \& Provenance}\\$\bullet$ Byte-for-Byte Replay Stability $\cdot$ Fail-Closed Claim Audit};
 
-\node[box, draw=success, fill=success!15, line width=1.2pt] (dec) at (0, -2.8) {\textbf{\color{success!80!black}RELIABILITY DECISION}\\Eligible for Production Deployment $\cdot$ Bounded Envelope};
+\node[box, draw=success, fill=success!15, line width=1.2pt, text width=9.5cm, below=0.5cm of rep] (dec) {\textbf{\color{success!80!black}RELIABILITY DECISION}\\Eligible for Production Deployment $\cdot$ Bounded Envelope};
 
-\draw[flow] (ev) -| (corr);
-\draw[flow] (ev) -| (ops);
-\draw[flow] (corr) |- (unc);
-\draw[flow] (ops) |- (unc);
-\draw[flow] (unc) -- (rep);
-\draw[flow] (rep) -- (dec);
+\draw[flow] (ev.south) -| (corr.north);
+\draw[flow] (ev.south) -| (ops.north);
+\draw[flow] (corr.south) |- (unc.west);
+\draw[flow] (ops.south) |- (unc.east);
+\draw[flow] (unc.south) -- (rep.north);
+\draw[flow] (rep.south) -- (dec.north);
 \end{tikzpicture}
 \caption{The Multi-Dimensional Reliability Decision Framework.}
 \end{figure}

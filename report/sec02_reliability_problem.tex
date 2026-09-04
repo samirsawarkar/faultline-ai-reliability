@@ -98,60 +98,64 @@ The entire FAULTLINE architecture is organized into four strictly segregated ope
 \begin{figure}[h!]
 \centering
 \begin{tikzpicture}[
-  scale=0.92, every node/.style={transform shape},
-  zone/.style={draw=rulecolor, rounded corners=6pt, line width=1pt, inner sep=10pt},
-  nodebox/.style={draw=primary, fill=white, rounded corners=3pt, font=\footnotesize\sffamily, align=center, inner sep=5pt, line width=0.8pt},
-  faultbox/.style={draw=accent, fill=accent!10, rounded corners=3pt, font=\footnotesize\bfseries\sffamily, align=center, inner sep=5pt, line width=0.8pt},
-  measbox/.style={draw=secondary, fill=secondary!10, rounded corners=3pt, font=\footnotesize\sffamily, align=center, inner sep=5pt, line width=0.8pt},
-  decbox/.style={draw=success, fill=success!10, rounded corners=3pt, font=\footnotesize\bfseries\sffamily, align=center, inner sep=5pt, line width=0.8pt},
+  scale=0.86, every node/.style={transform shape},
+  zone/.style={draw=rulecolor, rounded corners=6pt, line width=1pt, inner sep=14pt},
+  nodebox/.style={draw=primary, fill=white, rounded corners=3pt, font=\scriptsize\sffamily, align=center, inner sep=4pt, line width=0.8pt, text width=3.3cm},
+  faultbox/.style={draw=accent, fill=accent!8, rounded corners=3pt, font=\scriptsize\sffamily, align=center, inner sep=4pt, line width=0.8pt, text width=3.8cm},
+  measbox/.style={draw=secondary, fill=secondary!8, rounded corners=3pt, font=\scriptsize\sffamily, align=center, inner sep=4pt, line width=0.8pt, text width=3.5cm},
+  decbox/.style={draw=success, fill=success!10, rounded corners=3pt, font=\scriptsize\sffamily, align=center, inner sep=5pt, line width=0.8pt, text width=11.5cm},
   arrow/.style={-{Latex[length=2.5mm]}, line width=1pt, color=primary},
   faultarrow/.style={-{Latex[length=2.5mm]}, line width=1pt, dashed, color=accent},
   measarrow/.style={-{Latex[length=2.5mm]}, line width=1pt, color=secondary}
 ]
 
-% Zone 1: Observed System
-\node[nodebox, text width=2.4cm] (env) at (0, 7) {\textbf{Seeded Environment}\\Corpus (1,164 docs)\\Link-layer records};
-\node[nodebox, text width=2.4cm] (agent) at (0, 4.8) {\textbf{Bounded Agent}\\Reason $\to$ Tool $\to$ Obs\\Pydantic v2 contracts};
-\node[nodebox, text width=2.4cm] (tools) at (0, 2.6) {\textbf{ToolBox}\\Search $\cdot$ Lookup $\cdot$ Calc\\Snippet bounding};
-\node[nodebox, text width=2.4cm] (policy) at (0, 0.4) {\textbf{Recovery Policy}\\Retry $\cdot$ Breaker $\cdot$ Fallback\\Ceiling enforcement};
+% Zone 2: Injected Failure (Left)
+\node[faultbox] (injector) at (-5.6, 1.2) {\textbf{\color{accent}Fault Injector (F1--F6)}\\F1: Structured Output Corruption\\F2: Virtual Latency / Timeout\\F3: Schema Drift / Wrong Data\\F4: Provider Outage (5xx/429)\\F5: Context Corruption\\F6: Loop Exhaustion Cap};
 
-% Zone 2: Injected Failure
-\node[faultbox, text width=2.6cm] (injector) at (4.5, 4.8) {\textbf{Fault Injector}\\F1: Schema Corruption\\F2: Timeout / Latency\\F3: Schema-valid Wrong\\F4: Provider Outage\\F5: Context Corruption\\F6: Loop Exhaustion};
+% Zone 1: Observed System (Center)
+\node[nodebox] (env) at (-0.3, 4.0) {\textbf{Seeded Environment}\\Corpus (1,164 docs)\\Link-layer records};
+\node[nodebox] (agent) at (-0.3, 2.1) {\textbf{Bounded Agent}\\Reason $\to$ Tool $\to$ Obs\\Pydantic v2 contracts};
+\node[nodebox] (tools) at (-0.3, 0.2) {\textbf{Tool Contracts}\\Search $\cdot$ Lookup $\cdot$ Calc\\Snippet bounding};
+\node[nodebox] (policy) at (-0.3, -1.7) {\textbf{Recovery Policy}\\Retry $\cdot$ Breaker $\cdot$ Fallback\\Ceiling enforcement};
 
-% Zone 3: Measurement System
-\node[measbox, text width=2.6cm] (trace) at (9, 7) {\textbf{Complete Traces}\\Linked SQLite Spans\\OTel GenAI semconv\\Parent-child hierarchy};
-\node[measbox, text width=2.6cm] (oracle) at (9, 4.8) {\textbf{Strict Oracle}\\Pure function check\\$\bullet$ \code{answer\_ok}\\$\bullet$ \code{sources\_ok}};
-\node[measbox, text width=2.6cm] (detect) at (9, 2.6) {\textbf{Detector System}\\Deterministic checks\\Miss slice auditing\\Advisory Judge ($\kappa=0.5$)};
-\node[measbox, text width=2.6cm] (stats) at (9, 0.4) {\textbf{Statistical Engine}\\Wilson 95\% CIs\\Paired McNemar\\10,000 Bootstrap};
+% Zone 3: Measurement System (Right)
+\node[measbox] (trace) at (5.2, 4.0) {\textbf{Complete Traces}\\Linked SQLite Spans\\OTel GenAI semconv};
+\node[measbox] (oracle) at (5.2, 2.1) {\textbf{Strict Oracle}\\Pure function check\\answer\_ok \& sources\_ok};
+\node[measbox] (detect) at (5.2, 0.2) {\textbf{Detector System}\\Deterministic syntax checks\\Advisory Judge ($\kappa=0.5$)};
+\node[measbox] (stats) at (5.2, -1.7) {\textbf{Statistical Engine}\\Wilson 95\% CIs $\cdot$ McNemar\\10,000 Bootstrap};
 
-% Zone 4: Decision Engine
-\node[decbox, text width=3.2cm] (decision) at (4.5, -2.0) {\textbf{Reliability Decision Framework}\\Constraint-first eligibility screen\\Cost/Latency frontier comparison\\Attack the winner under stress\\Fail-closed publication audit};
+% Zone 4: Decision Engine (Bottom)
+\node[decbox] (decision) at (-0.2, -4.2) {\textbf{\color{success!80!black}Reliability Decision Framework}\\Constraint-first eligibility screen $\cdot$ Cost/Latency frontier comparison $\cdot$ Adversarial stress certification};
 
 % Background Zone Groupings
 \begin{scope}[on background layer]
-  \node[zone, fill=blue!3, fit=(env)(agent)(tools)(policy), label={[font=\small\bfseries\color{primary}, anchor=north west]north west:\textbf{ZONE 1: OBSERVED SYSTEM}}] (z1) {};
-  \node[zone, fill=accent!3, fit=(injector), label={[font=\small\bfseries\color{accent}, anchor=north west]north west:\textbf{ZONE 2: INJECTED FAILURE}}] (z2) {};
-  \node[zone, fill=secondary!3, fit=(trace)(oracle)(detect)(stats), label={[font=\small\bfseries\color{secondary}, anchor=north west]north west:\textbf{ZONE 3: MEASUREMENT}}] (z3) {};
-  \node[zone, fill=success!3, fit=(decision), label={[font=\small\bfseries\color{success!80!black}, anchor=north west]north west:\textbf{ZONE 4: DECISION ENGINE}}] (z4) {};
+  \node[zone, fill=accent!3, fit=(injector), label={[font=\scriptsize\bfseries\color{accent}, anchor=north west, xshift=4pt, yshift=-4pt]north west:\textbf{ZONE 2: INJECTED FAILURE}}] (z2) {};
+  \node[zone, fill=blue!3, fit=(env)(policy), label={[font=\scriptsize\bfseries\color{primary}, anchor=north west, xshift=4pt, yshift=-4pt]north west:\textbf{ZONE 1: OBSERVED SYSTEM}}] (z1) {};
+  \node[zone, fill=secondary!3, fit=(trace)(stats), label={[font=\scriptsize\bfseries\color{secondary}, anchor=north west, xshift=4pt, yshift=-4pt]north west:\textbf{ZONE 3: MEASUREMENT SYSTEM}}] (z3) {};
+  \node[zone, fill=success!3, fit=(decision), label={[font=\scriptsize\bfseries\color{success!80!black}, anchor=north west, xshift=4pt, yshift=-4pt]north west:\textbf{ZONE 4: DECISION ENGINE}}] (z4) {};
 \end{scope}
 
-% Connections
+% Internal Zone 1 connections
 \draw[arrow] (env) -- (agent);
 \draw[arrow] (agent) -- (tools);
 \draw[arrow] (tools) -- (policy);
 
-\draw[faultarrow] (injector) -- node[above, font=\scriptsize\color{accent}] {Intercept tool/model} (agent);
-\draw[faultarrow] (injector) -- (tools);
+% Fault injection arrows
+\draw[faultarrow] (injector.east) -- node[above, font=\tiny\bfseries\color{accent}] {Intercept} (agent.west);
+\draw[faultarrow] (injector.south east) -- (tools.west);
 
-\draw[measarrow] (agent) -- (trace);
-\draw[measarrow] (policy) -- (trace);
-\draw[measarrow] (agent) -- (oracle);
-\draw[measarrow] (trace) -- (detect);
-\draw[measarrow] (oracle) -- (stats);
+% Measurement arrows
+\draw[measarrow] (agent.east) to[out=20, in=190] (trace.west);
+\draw[measarrow] (agent.east) -- (oracle.west);
+\draw[measarrow] (tools.east) -- (detect.west);
+\draw[measarrow] (policy.east) -- (stats.west);
+\draw[measarrow] (trace) -- (oracle);
+\draw[measarrow] (oracle) -- (detect);
 \draw[measarrow] (detect) -- (stats);
 
-\draw[arrow, line width=1.5pt, color=success!80!black] (stats) |- (decision);
-\draw[arrow, line width=1.5pt, color=success!80!black] (policy) |- (decision);
+% Decision flow
+\draw[arrow, line width=1.2pt, color=success!80!black] (policy.west) -| ([xshift=-0.5cm]decision.west) -- (decision.west);
+\draw[arrow, line width=1.2pt, color=success!80!black] (stats.east) -| ([xshift=0.5cm]decision.east) -- (decision.east);
 
 \end{tikzpicture}
 \caption{FAULTLINE System Architecture. The experimental workbench enforces strict physical and logical boundaries: the Injected Failure system creates reproducible degradation, the Observed System executes bounded recovery policies, the Measurement System scores outcomes without relying on LLM self-evaluation, and the Decision Engine filters policies through constraint-first Pareto frontiers.}

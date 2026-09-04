@@ -6,33 +6,39 @@ Rather than categorizing AI failures by subjective symptoms (e.g., ``model hallu
 \begin{figure}[h!]
 \centering
 \begin{tikzpicture}[
-  scale=0.88, every node/.style={transform shape},
-  rootbox/.style={draw=primary, fill=primary!10, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt},
-  catbox/.style={draw=secondary, fill=secondary!10, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=5pt},
-  leafbox/.style={draw=accent, fill=accent!5, rounded corners=3pt, font=\scriptsize\sffamily, align=center, inner sep=4pt},
-  arrow/.style={-{Latex[length=2mm]}, line width=1pt, color=secondary}
+  rootbox/.style={draw=primary, fill=primary!10, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=5pt, text width=7.0cm},
+  catbox/.style={draw=secondary, fill=secondary!10, rounded corners=3pt, font=\footnotesize\bfseries\sffamily, align=center, inner sep=4pt, text width=7.4cm},
+  leafbox/.style={draw=accent, fill=accent!5, rounded corners=3pt, font=\scriptsize\sffamily, align=left, inner sep=4pt, text width=7.2cm},
+  arrow/.style={-{Latex[length=2mm]}, line width=1pt, color=secondary},
+  bus/.style={line width=1pt, color=secondary}
 ]
 \node[rootbox] (root) at (0, 0) {FAULTLINE Failure Spectrum};
 
-\node[catbox] (c1) at (-4.2, -1.3) {Provider Boundary\\(Transport and Interface)};
-\node[catbox] (c2) at (4.2, -1.3) {Agent Internal State\\(Data Plane and Control)};
+\node[catbox] (c1) at (-4.2, -1.2) {\textbf{Provider Boundary} (Transport and Interface)};
+\node[catbox] (c2) at (4.2, -1.2) {\textbf{Agent Internal State} (Data Plane and Control)};
 
-\node[leafbox] (f1) at (-6.4, -2.8) {\textbf{F1: Structured Output}\\Corruption (Tool output)};
-\node[leafbox] (f2) at (-4.2, -2.8) {\textbf{F2: Virtual Latency}\\Timeout (Provider net)};
-\node[leafbox] (f4) at (-2.0, -2.8) {\textbf{F4: Provider Outage}\\Error Flag (Provider infra)};
+\node[leafbox, below=0.4cm of c1] (f1) {\textbf{F1: Structured Output Corruption}\\Truncated / invalid syntax at tool output boundary};
+\node[leafbox, below=0.25cm of f1] (f2) {\textbf{F2: Virtual Latency / Timeout}\\Provider transport hang / queue saturation};
+\node[leafbox, below=0.25cm of f2] (f4) {\textbf{F4: Provider Outage / HTTP Error}\\5xx error codes, 429 rate limits, service drop};
 
-\node[leafbox] (f3) at (2.0, -2.8) {\textbf{F3: Schema Drift}\\Wrong Data (Tool data)};
-\node[leafbox] (f5) at (4.2, -2.8) {\textbf{F5: Context Corruption}\\Inconsistency (Context)};
-\node[leafbox] (f6) at (6.4, -2.8) {\textbf{F6: Loop Exhaustion}\\Repetition / Steps (Loop)};
+\node[leafbox, below=0.4cm of c2] (f3) {\textbf{F3: Schema Drift / Wrong Data}\\Syntactically valid payload citing invalid entity};
+\node[leafbox, below=0.25cm of f3] (f5) {\textbf{F5: Context Corruption}\\Distractor injection, conflicting intermediate token};
+\node[leafbox, below=0.25cm of f5] (f6) {\textbf{F6: Loop Exhaustion}\\Query cycle, pagination trap, step limit breach};
 
-\draw[arrow] (root) -- (c1);
-\draw[arrow] (root) -- (c2);
-\draw[arrow] (c1) -- (f1);
-\draw[arrow] (c1) -- (f2);
-\draw[arrow] (c1) -- (f4);
-\draw[arrow] (c2) -- (f3);
-\draw[arrow] (c2) -- (f5);
-\draw[arrow] (c2) -- (f6);
+\draw[arrow] (root.south) -| (c1.north);
+\draw[arrow] (root.south) -| (c2.north);
+
+% Bus lines for c1
+\draw[bus] (c1.south) -- ++(0,-0.2) -| ([xshift=-0.25cm]f1.north west) -- ([xshift=-0.25cm]f4.west);
+\draw[arrow] ([xshift=-0.25cm]f1.west) -- (f1.west);
+\draw[arrow] ([xshift=-0.25cm]f2.west) -- (f2.west);
+\draw[arrow] ([xshift=-0.25cm]f4.west) -- (f4.west);
+
+% Bus lines for c2
+\draw[bus] (c2.south) -- ++(0,-0.2) -| ([xshift=-0.25cm]f3.north west) -- ([xshift=-0.25cm]f6.west);
+\draw[arrow] ([xshift=-0.25cm]f3.west) -- (f3.west);
+\draw[arrow] ([xshift=-0.25cm]f5.west) -- (f5.west);
+\draw[arrow] ([xshift=-0.25cm]f6.west) -- (f6.west);
 \end{tikzpicture}
 \caption{Taxonomy of AI Failure Modes by Producing Component.}
 \end{figure}

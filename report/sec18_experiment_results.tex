@@ -7,7 +7,7 @@ Every experiment in FAULTLINE is documented using an immutable, standardized sci
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.52\textwidth]{fig1_depth.pdf}
+\includegraphics[width=\textwidth,trim=7.4bp 3.6bp 52.0bp 32.4bp,clip]{fig1_depth.pdf}
 \caption{Measured vs Naive Multi-Hop Reliability by Required Tool Depth. The measured curve diverges from the naive $p_1^n$ model at depth 3, collapsing to $0.288$ at 8 hops versus $0.797$ predicted.}
 \end{figure}
 
@@ -36,7 +36,7 @@ Every experiment in FAULTLINE is documented using an immutable, standardized sci
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.52\textwidth]{fig2_detector.pdf}
+\includegraphics[width=\textwidth,trim=61.0bp 3.6bp 53.0bp 32.4bp,clip]{fig2_detector.pdf}
 \caption{Detector Recall and Confidence Intervals by Fault Family. While aggregate precision was 1.0, micro recall was 0.615, concealing 10 false negatives (4 semantic escapes).}
 \end{figure}
 
@@ -66,7 +66,7 @@ Every experiment in FAULTLINE is documented using an immutable, standardized sci
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.52\textwidth]{fig3_retry.pdf}
+\includegraphics[width=\textwidth,trim=8.4bp 3.6bp 52.5bp 32.4bp,clip]{fig3_retry.pdf}
 \caption{Success Rate and Attempt Amplification by Retry Cap ($K$) Under Independent vs Correlated Faults. During correlated outages, $K=3$ amplifies load to $2.37\times$ while buying negligible success.}
 \end{figure}
 
@@ -96,7 +96,7 @@ Every experiment in FAULTLINE is documented using an immutable, standardized sci
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.52\textwidth]{fig4_fallback.pdf}
+\includegraphics[width=\textwidth,trim=61.0bp 3.6bp 47.0bp 32.4bp,clip]{fig4_fallback.pdf}
 \caption{Availability vs Strict Quality Under Primary Provider Outage. Fallback restores availability from 0.667 to 1.0, but strict answer quality drops from 1.0 to 0.75 (30 of 40 fallback answers degraded).}
 \end{figure}
 
@@ -126,7 +126,7 @@ Every experiment in FAULTLINE is documented using an immutable, standardized sci
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.52\textwidth]{fig5_policy.pdf}
+\includegraphics[width=\textwidth,trim=14.4bp 3.6bp 55.0bp 32.4bp,clip]{fig5_policy.pdf}
 \caption{Policy Pareto Frontier: Correct Success vs Mean Cost across 400 Shared Seeds. P4 Selective Guarded is the base-envelope winner, but collapses under stress attacks.}
 \end{figure}
 
