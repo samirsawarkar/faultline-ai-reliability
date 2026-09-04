@@ -33,8 +33,8 @@ invoke_agent (SpanKind.INTERNAL, root)
 
 ## Conformance Testing (Pinned SemConv v1.29.0)
 
-Conformance is not tested by asserting hardcoded strings in test assertions. Instead, the exporter is verified against an independent, pinned OpenTelemetry Semantic Conventions registry schema:
-- **Registry Specification**: `faultline_p2/otel/registry/semconv_v1_29_0.json`
+Conformance is not tested by asserting hardcoded strings in test assertions. Instead, the exporter is verified against a local hand transcription of the OpenTelemetry Semantic Conventions v1.29.0:
+- **Registry Specification**: `faultline_p2/otel/registry/semconv_v1_29_0.json` (hand-transcribed from [open-telemetry/semantic-conventions/docs/gen-ai/gen-ai-spans.md](https://github.com/open-telemetry/semantic-conventions/blob/v1.29.0/docs/gen-ai/gen-ai-spans.md))
 - **SemConv Version**: `1.29.0`
 - **Schema URL**: `https://opentelemetry.io/schemas/1.29.0`
 - **Validation Criteria**:

@@ -13,6 +13,7 @@ dependencies = [
     "pydantic>=2.13",
     "litellm==1.98.0",
     "pytest>=8.0",
+    "jsonschema>=4.26.0",
 ]
 
 [tool.setuptools.packages.find]

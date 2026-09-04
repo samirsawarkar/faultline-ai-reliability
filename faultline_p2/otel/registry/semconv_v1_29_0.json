@@ -1,5 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "provenance": {
+    "source_url": "https://github.com/open-telemetry/semantic-conventions/blob/v1.29.0/docs/gen-ai/gen-ai-spans.md",
+    "semconv_version": "1.29.0",
+    "transcription": true,
+    "transcription_date": "2026-09-04",
+    "transcription_note": "Hand-transcribed in this repository from OpenTelemetry Semantic Conventions v1.29.0 documentation; not fetched or attested directly from upstream registry artifacts.",
+    "verification_pending": "Requires automated fetch and diff against upstream semconv YAML artifacts or cryptographic hash pinning."
+  },
   "semconv_version": "1.29.0",
   "schema_url": "https://opentelemetry.io/schemas/1.29.0",
   "description": "OpenTelemetry Semantic Conventions for Generative AI Operations (v1.29.0)",
