@@ -61,8 +61,8 @@ LADDER_SPEC = {
         "output_price_per_m": 4.40,
     },
     "R6": {
-        "model": "anthropic/claude-3-5-sonnet-20241022",
-        "name": "claude-3-5-sonnet-20241022",
+        "model": "anthropic/claude-sonnet-5",
+        "name": "claude-sonnet-5",
         "input_price_per_m": 3.00,
         "output_price_per_m": 15.00,
     },
