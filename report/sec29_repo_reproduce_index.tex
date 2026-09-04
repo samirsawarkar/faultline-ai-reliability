@@ -4,7 +4,7 @@
 
 \begin{center}
 \small
-\begin{tabularx}{\textwidth}{p{0.25\textwidth}p{0.32\textwidth}X}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.25\textwidth}>{\raggedright\arraybackslash}p{0.32\textwidth}>{\raggedright\arraybackslash}X}
 \toprule
 \textbf{Directory / File} & \textbf{Architectural Purpose} & \textbf{Key Evidence Produced} \\
 \midrule
@@ -76,7 +76,8 @@ For local development within a Python virtual environment:
 \end{verbatim}
 
 % ==============================================================================
-\clearpage
+\vspace{12pt}
+\needspace{8\baselineskip}
 \section{Evidence Index}
 
 Every primary empirical claim in this report resolves to an immutable JSON pointer and generating command in CI:
@@ -87,7 +88,7 @@ Every primary empirical claim in this report resolves to an immutable JSON point
 \renewcommand{\arraystretch}{0.90}
 \setlength{\tabcolsep}{2pt}
 \renewcommand{\code}[1]{{\scriptsize\ttfamily\nolinkurl{#1}}}
-\begin{longtable}{p{0.05\textwidth}p{0.25\textwidth}p{0.23\textwidth}p{0.21\textwidth}p{0.14\textwidth}p{0.06\textwidth}}
+\begin{longtable}{p{0.05\textwidth}>{\raggedright\arraybackslash}p{0.25\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.21\textwidth}>{\raggedright\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.06\textwidth}}
 \toprule
 \textbf{Claim ID} & \textbf{Rendered Claim Value} & \textbf{Source JSON File} & \textbf{Exact JSON Pointer} & \textbf{Generating Script} & \textbf{Limitation} \\
 \midrule
@@ -129,14 +130,15 @@ Every primary empirical claim in this report resolves to an immutable JSON point
 \end{center}
 
 % ==============================================================================
-\clearpage
+\vspace{12pt}
+\needspace{8\baselineskip}
 \section{Roadmap}
 
 The forward roadmap separates immediate engineering obligations from medium-term research:
 
 \begin{center}
 \small
-\begin{tabularx}{\textwidth}{lp{0.22\textwidth}p{0.30\textwidth}Xl}
+\begin{tabularx}{\textwidth}{l>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}Xl}
 \toprule
 \textbf{Horizon} & \textbf{Objective} & \textbf{Deliverable \& Methodology} & \textbf{Engineering Value} & \textbf{Cost Cap} \\
 \midrule
@@ -189,7 +191,7 @@ Writing an honest portfolio requires evaluating one's own work with the same ske
 \subsection{Hiring Manager Inference Boundary}
 \begin{center}
 \small
-\begin{tabularx}{\textwidth}{p{0.48\textwidth}|p{0.48\textwidth}}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X}
 \toprule
 \textbf{\color{primary}WHAT A HIRING MANAGER CAN INFER} & \textbf{\color{accent}WHAT A HIRING MANAGER CANNOT INFER} \\
 \midrule

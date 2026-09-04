@@ -1,3 +1,4 @@
+\clearpage
 \section{What Failed: Engineering Failures and Corrections}
 
 A core credential of a staff reliability engineer is the ability to diagnose, disclose, and remediate internal system failures without defensiveness. FAULTLINE experienced several major engineering failures during development:
@@ -35,8 +36,7 @@ A core credential of a staff reliability engineer is the ability to diagnose, di
 \end{itemize}
 
 % ==============================================================================
-\vspace{12pt}
-\needspace{8\baselineskip}
+\clearpage
 \section{Limitations}
 
 In accordance with scientific integrity, the findings in this report are bounded by the following explicit limitations:
@@ -52,36 +52,53 @@ In accordance with scientific integrity, the findings in this report are bounded
     \item \textbf{L08 · Synthesis Scope:} The five studies share rigorous definitions, shared seeds, and evidence discipline, but evaluate different configured populations. They demonstrate general systems principles, not a pooled causal effect.
 \end{enumerate}
 
+\vspace{10pt}
+\begin{callout}[secondary]{Epistemic Boundary Summary: The Three Guarantees FAULTLINE Does and Does Not Make}
+\textbf{What FAULTLINE Guarantees:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=2pt]
+    \item \textbf{Causal Attribution:} Every measured difference between policies or depth hops is causally isolated via identical master seeds and frozen environments.
+    \item \textbf{Negative-Result Integrity:} We disclose where recovery actively failed (attempt storms, quality collapse under stress) without defensive rationalization.
+    \item \textbf{Cold Reproducibility:} Any independent engineer can execute \code{make cold-reproduce} in Docker and produce bit-for-bit identical hashes.
+\end{itemize}
+\vspace{4pt}
+\textbf{What FAULTLINE Explicitly Does Not Guarantee:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=2pt]
+    \item \textbf{Universal Numerical Thresholds:} The optimal retry cutoff ($K=2$) and cost envelope (\$1.46) reflect the configured simulated workload; production systems must empirically calibrate their own parameters.
+    \item \textbf{Frontier LLM Immunity:} We do not claim to solve LLM hallucination or eliminate model capability boundaries.
+\end{itemize}
+\end{callout}
+
 % ==============================================================================
-\vspace{12pt}
-\needspace{8\baselineskip}
+\clearpage
 \section{Threat Model: Failure of the Measurement System}
 
 Reliability engineering requires testing the testbed itself: \textbf{``What could make FAULTLINE lie?''}
 
 \begin{center}
+\begin{minipage}{\textwidth}
+\centering
 \resizebox{0.92\textwidth}{!}{
 \begin{tikzpicture}[
   scale=0.92,
-  box/.style={draw=primary, fill=white, rounded corners=3pt, font=\small\sffamily, align=center, inner sep=6pt, line width=0.8pt},
-  threat/.style={draw=accent, fill=accent!10, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt, line width=1pt},
-  defense/.style={draw=success, fill=success!10, rounded corners=3pt, font=\small\sffamily, align=center, inner sep=6pt, line width=1pt},
+  box/.style={draw=primary, fill=white, rounded corners=3pt, font=\small\sffamily, align=center, inner sep=5pt, line width=0.8pt},
+  threat/.style={draw=accent, fill=accent!10, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=5pt, line width=1pt},
+  defense/.style={draw=success, fill=success!10, rounded corners=3pt, font=\small\sffamily, align=center, inner sep=5pt, line width=1pt},
   arrow/.style={-{Latex[length=2.5mm]}, line width=1pt, color=primary}
 ]
-\node[threat] (t1) at (0, 3) {Measurement Failure 1:\\Broken / Drifting Oracle};
-\node[defense] (d1) at (7, 3) {Mitigation:\\Hash-pinned copy (\code{dc5eef...}) in CI.};
+\node[threat] (t1) at (0, 2.4) {Measurement Failure 1:\\Broken / Drifting Oracle};
+\node[defense] (d1) at (7, 2.4) {Mitigation:\\Hash-pinned copy (\code{dc5eef...}) in CI.};
 
-\node[threat] (t2) at (0, 1.5) {Measurement Failure 2:\\Ground-Truth Leakage};
-\node[defense] (d2) at (7, 1.5) {Mitigation:\\Out-of-band injection logging.};
+\node[threat] (t2) at (0, 1.2) {Measurement Failure 2:\\Ground-Truth Leakage};
+\node[defense] (d2) at (7, 1.2) {Mitigation:\\Out-of-band injection logging.};
 
 \node[threat] (t3) at (0, 0) {Measurement Failure 3:\\Unpaired Seed Variance};
 \node[defense] (d3) at (7, 0) {Mitigation:\\Shared seed sequence across policies.};
 
-\node[threat] (t4) at (0, -1.5) {Measurement Failure 4:\\Flaky Evaluation CI};
-\node[defense] (d4) at (7, -1.5) {Mitigation:\\Frozen deterministic stubs; Docker pins.};
+\node[threat] (t4) at (0, -1.2) {Measurement Failure 4:\\Flaky Evaluation CI};
+\node[defense] (d4) at (7, -1.2) {Mitigation:\\Frozen deterministic stubs; Docker pins.};
 
-\node[threat] (t5) at (0, -3) {Measurement Failure 5:\\Manual Claim Drift};
-\node[defense] (d5) at (7, -3) {Mitigation:\\JSON pointer claim audit in CI.};
+\node[threat] (t5) at (0, -2.4) {Measurement Failure 5:\\Manual Claim Drift};
+\node[defense] (d5) at (7, -2.4) {Mitigation:\\JSON pointer claim audit in CI.};
 
 \draw[arrow, color=accent] (t1) -- (d1);
 \draw[arrow, color=accent] (t2) -- (d2);
@@ -92,11 +109,12 @@ Reliability engineering requires testing the testbed itself: \textbf{``What coul
 }
 \captionof{figure}{Measurement System Threat Model and Architectural Mitigations.}
 \label{fig:threat_model}
+\end{minipage}
 \end{center}
 
 \begin{center}
 \small
-\begin{tabularx}{\textwidth}{lp{0.35\textwidth}X}
+\begin{tabularx}{\textwidth}{l>{\raggedright\arraybackslash}p{0.35\textwidth}>{\raggedright\arraybackslash}X}
 \toprule
 \textbf{Measurement Failure Mode} & \textbf{How It Distorts Reality} & \textbf{FAULTLINE Enforcement Mechanism} \\
 \midrule

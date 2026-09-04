@@ -58,9 +58,9 @@ def main():
     with open(tex_path, "r", encoding="utf-8") as f:
         content = f.read()
 
-    m = re.search(r"\\section\{31\s*---\s*Evidence Index\}(.*?)\\begin\{longtable\}(.*?)\\end\{longtable\}", content, re.DOTALL)
+    m = re.search(r"\\section\*?\{(?:\d+\s*---\s*)?Evidence Index\}(.*?)\\begin\{longtable\}(.*?)\\end\{longtable\}", content, re.DOTALL)
     if not m:
-        print("Error: Could not locate Section 31 longtable", file=sys.stderr)
+        print("Error: Could not locate Evidence Index longtable", file=sys.stderr)
         sys.exit(1)
 
     table_body = m.group(2)

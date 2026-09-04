@@ -9,21 +9,21 @@ Phase 1 proved the fundamental dynamics of AI reliability (tool-depth decay, ret
 To prevent undisciplined budget burn, Phase 2 instituted a strict architectural rule: \textbf{Build and test all instruments, contracts, resilience layers, and observability pipelines at \$0 cost before executing any paid API sweeps}.
 
 \begin{center}
-\resizebox{0.92\textwidth}{!}{
+\resizebox{0.88\textwidth}{!}{
 \begin{tikzpicture}[
-  scale=0.92,
-  statebox/.style={draw=primary, fill=lightbg, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt, line width=0.8pt, text width=4.5cm},
+  scale=0.88,
+  statebox/.style={draw=primary, fill=lightbg, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=5pt, line width=0.8pt, text width=4.5cm},
   flow/.style={-{Latex[length=2.5mm]}, line width=1.5pt, color=secondary, rounded corners=3pt}
 ]
 \node[statebox, fill=success!15] (comp) {\STATUSCOMPLETED\\All Software Instruments\\\& Contracts Frozen};
 \node[statebox, fill=secondary!15, right=0.8cm of comp] (val) {\STATUSVALIDATED\\No-Key Phase Closed\\P00, P02, P13, P15, P16};
 \node[statebox, fill=purple!15, right=0.8cm of val] (dec) {\STATUSDECIDED\\Hypotheses H1--H8\\MEC v1.2 Locked};
-\node[statebox, fill=warning!15, below=1.2cm of comp] (inc) {\textbf{\color{warning!80!black}CURRENT STOPPING POINT}\\Paid Model Sweeps\\Pending Key Provisioning};
+\node[statebox, fill=warning!15, below=0.9cm of comp] (inc) {\textbf{\color{warning!80!black}CURRENT STOPPING POINT}\\Paid Model Sweeps\\Pending Key Provisioning};
 \node[statebox, fill=blue!10, right=0.8cm of inc] (next) {\textbf{\color{primary}NEXT EXPERIMENT}\\Preflight Key Probe\\$\to$ P1 Real Baseline};
 
 \draw[flow] (comp) -- (val);
 \draw[flow] (val) -- (dec);
-\draw[flow] (dec.south) -- ++(0,-0.55) -| (inc.north);
+\draw[flow] (dec.south) -- ++(0,-0.45) -| (inc.north);
 \draw[flow] (inc) -- (next);
 \end{tikzpicture}
 }
@@ -32,7 +32,7 @@ To prevent undisciplined budget burn, Phase 2 instituted a strict architectural 
 \end{center}
 
 \subsubsection{What Was Completed in Phase 2 (\$0 Spent)}
-\begin{enumerate}
+\begin{enumerate}\setlength{\itemsep}{1.2pt}\setlength{\parsep}{0pt}
     \item \textbf{Master Experiment Contract (MEC v1.2):} Complete research specification governing corpus hash, agent contracts, oracle enforcement, metrics, and budget caps (\$150 hard ceiling).
     \item \textbf{Pre-Registered Hypotheses (H1--H8):} Pre-registered in Git with explicit falsification conditions before any data was gathered.
     \item \textbf{Clean-Room Stats Library (\code{faultline\_p2.stats}):} Independent, zero-dependency statistical library verified against Day 14 golden fixtures.
@@ -45,7 +45,7 @@ To prevent undisciplined budget burn, Phase 2 instituted a strict architectural 
 \end{enumerate}
 
 \subsubsection{What Remains Incomplete (Blocked on API Keys)}
-\begin{itemize}
+\begin{itemize}\setlength{\itemsep}{1.2pt}\setlength{\parsep}{0pt}
     \item \textbf{Live Model Execution:} Zero paid sweeps have been executed against commercial APIs. \$0.00 has been spent of the \$150 budget.
     \item \textbf{Projects P1, P3, P6, P7, P8, P9, P10, P11, P12:} All code harnesses, runners, and ledger enforcers exist and pass stub tests, but await live API credentials.
     \item \textbf{Project P4 (Human Open Coding):} Awaiting manual qualitative coding of 150 real traces by the principal engineer. Model-generated taxonomy is explicitly forbidden by contract.
@@ -54,7 +54,7 @@ To prevent undisciplined budget burn, Phase 2 instituted a strict architectural 
 \subsection{Pre-Registered Hypotheses Status Matrix}
 \begin{center}
 \small
-\begin{tabularx}{\textwidth}{llp{0.38\textwidth}Xl}
+\begin{tabularx}{\textwidth}{ll>{\raggedright\arraybackslash}p{0.38\textwidth}>{\raggedright\arraybackslash}Xl}
 \toprule
 \textbf{ID} & \textbf{Proj} & \textbf{Pre-Registered Hypothesis} & \textbf{Explicit Falsification Condition} & \textbf{Status} \\
 \midrule
@@ -78,8 +78,9 @@ To prevent undisciplined budget burn, Phase 2 instituted a strict architectural 
 \begin{center}
 \begingroup
 \scriptsize
+\renewcommand{\arraystretch}{0.88}
 \setlength{\tabcolsep}{3pt}
-\begin{longtable}{p{0.07\textwidth}p{0.19\textwidth}p{0.23\textwidth}p{0.23\textwidth}p{0.16\textwidth}}
+\begin{longtable}{p{0.07\textwidth}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.16\textwidth}}
 \toprule
 \textbf{ID} & \textbf{Context \& Problem} & \textbf{Chosen Architectural Decision} & \textbf{Engineering Tradeoff \& Why} & \textbf{Reversal Trigger} \\
 \midrule
