@@ -71,13 +71,13 @@ To maintain absolute credibility, this technical report enforces a five-tier sta
 \subsection{The Three Enemies of AI Reliability}
 FAULTLINE is engineered specifically to eliminate three systemic pathologies that infect modern AI engineering:
 
-\begin{figure}[h!]
-\centering
+\begin{center}
+\resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
-  enemybox/.style={draw=accent, fill=accent!5, rounded corners=4pt, line width=1pt, text width=0.28\textwidth, align=left, inner sep=8pt},
+  enemybox/.style={draw=accent, fill=accent!5, rounded corners=4pt, line width=1pt, text width=5.2cm, align=left, inner sep=8pt},
   arrowstyle/.style={-{Latex[length=3mm]}, line width=1.5pt, color=primary}
 ]
-\node[enemybox] (e1) at (-5.3, 0) {
+\node[enemybox] (e1) at (-5.6, 0) {
   \textbf{\color{accent}1. MEASUREMENT LIES}\\[0.15cm]
   \footnotesize
   $\bullet$ Conflating 200 OK with correctness.\\
@@ -96,7 +96,7 @@ FAULTLINE is engineered specifically to eliminate three systemic pathologies tha
   $\bullet$ CI gates that test syntax, not drift.
 };
 
-\node[enemybox] (e3) at (5.3, 0) {
+\node[enemybox] (e3) at (5.6, 0) {
   \textbf{\color{accent}3. COMMUNICATION LIES}\\[0.15cm]
   \footnotesize
   $\bullet$ Marketing ``self-healing agents''.\\
@@ -105,29 +105,32 @@ FAULTLINE is engineered specifically to eliminate three systemic pathologies tha
   $\bullet$ Claiming full completion when live sweeps are unrun.
 };
 
-\node[draw=success, fill=success!10, rounded corners=4pt, line width=1pt, text width=0.94\textwidth, align=center, inner sep=6pt] (sol) at (0, -2.4) {
+\node[draw=success, fill=success!10, rounded corners=4pt, line width=1pt, text width=16.8cm, align=center, inner sep=6pt] (sol) at (0, -2.4) {
   \textbf{\color{success!80!black}THE FAULTLINE DISCIPLINE}\\
   \footnotesize
   Deterministic programmatic oracle $\cdot$ Linked SQLite complete-span traces $\cdot$ Seed-matched paired experiments $\cdot$ Wilson confidence intervals $\cdot$ Multi-burn-rate budget ceilings $\cdot$ Fail-closed publication audit
 };
 
-\draw[arrowstyle] (e1.south) -- (-5.3, -1.9);
+\draw[arrowstyle] (e1.south) -- (-5.6, -1.9);
 \draw[arrowstyle] (e2.south) -- (0, -1.9);
-\draw[arrowstyle] (e3.south) -- (5.3, -1.9);
-\end{tikzpicture}
-\caption{The Three Enemies of AI Reliability and the Architectural Counters Built into FAULTLINE.}
-\end{figure}
+\draw[arrowstyle] (e3.south) -- (5.6, -1.9);
+\end{tikzpicture}%
+}
+\vspace{4pt}
+\captionof{figure}{The Three Enemies of AI Reliability and the Architectural Counters Built into FAULTLINE.}
+\end{center}
 
 \begin{center}
-\begin{tabularx}{\textwidth}{p{0.18\textwidth}p{0.25\textwidth}p{0.27\textwidth}X}
+\small
+\begin{tabularx}{\textwidth}{p{0.15\textwidth}p{0.26\textwidth}p{0.25\textwidth}X}
 \toprule
 \textbf{The Enemy} & \textbf{Concrete AI System Failure} & \textbf{Why Dashboards Miss It} & \textbf{FAULTLINE Countermeasure} \\
 \midrule
-\textbf{1. Measurement Lies} & Primary model times out; fallback model returns an obsolete answer from cache. & Gateway logs HTTP 200; latency is low; response is non-empty. & Evaluates exact token matches and required source document IDs via \code{oracle\_check}. \\
+\textbf{1. Measurement} & Primary model times out; fallback model returns an obsolete answer from cache. & Gateway logs HTTP 200; latency is low; response is non-empty. & Evaluates exact token matches and required source document IDs via \code{oracle\_check}. \\
 \addlinespace
-\textbf{2. Reproducibility Lies} & A paper claims 85\% multi-hop accuracy, but rerunning code yields 62\% due to temperature drift and prompt churn. & Unpinned dependencies, non-seeded samplers, non-deterministic retrieval indices. & Frozen seeds (\code{42}), hash-pinned environment, pinned dependencies, \code{make cold-reproduce}. \\
+\textbf{2. Reproducibility} & A paper claims 85\% multi-hop accuracy, but rerunning code yields 62\% due to temperature drift and prompt churn. & Unpinned dependencies, non-seeded samplers, non-deterministic retrieval indices. & Frozen seeds (\code{42}), hash-pinned environment, pinned dependencies, \code{make cold-reproduce}. \\
 \addlinespace
-\textbf{3. Communication Lies} & Team deploys a retry loop, claiming ``transient errors solved,'' but causes a retry storm that exhausts provider tokens. & Success metric reports eventual resolved queries; ignores cost and latency inflation. & Multi-objective constraints: reject policies where attempt amplification $>2.0\times$ or p99 $>120$ units. \\
+\textbf{3. Communication} & Team deploys a retry loop, claiming ``transient errors solved,'' but causes a retry storm that exhausts provider tokens. & Success metric reports eventual resolved queries; ignores cost and latency inflation. & Multi-objective constraints: reject policies where attempt amplification $>2.0\times$ or p99 $>120$ units. \\
 \bottomrule
 \end{tabularx}
 \end{center}

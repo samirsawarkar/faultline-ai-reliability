@@ -11,19 +11,19 @@ To prevent undisciplined budget burn, Phase 2 instituted a strict architectural 
 \begin{figure}[h!]
 \centering
 \begin{tikzpicture}[
-  scale=0.9,
-  statebox/.style={draw=primary, fill=lightbg, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt, line width=0.8pt},
-  flow/.style={-{Latex[length=2.5mm]}, line width=1.5pt, color=secondary}
+  scale=0.92,
+  statebox/.style={draw=primary, fill=lightbg, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt, line width=0.8pt, text width=4.5cm},
+  flow/.style={-{Latex[length=2.5mm]}, line width=1.5pt, color=secondary, rounded corners=3pt}
 ]
 \node[statebox, fill=success!15] (comp) {\STATUSCOMPLETED\\All Software Instruments\\\& Contracts Frozen};
 \node[statebox, fill=secondary!15, right=0.8cm of comp] (val) {\STATUSVALIDATED\\No-Key Phase Closed\\P00, P02, P13, P15, P16};
 \node[statebox, fill=purple!15, right=0.8cm of val] (dec) {\STATUSDECIDED\\Hypotheses H1--H8\\MEC v1.2 Locked};
-\node[statebox, fill=warning!15, below=1cm of comp] (inc) {\textbf{\color{warning!80!black}CURRENT STOPPING POINT}\\Paid Model Sweeps\\Pending Key Provisioning};
+\node[statebox, fill=warning!15, below=1.2cm of comp] (inc) {\textbf{\color{warning!80!black}CURRENT STOPPING POINT}\\Paid Model Sweeps\\Pending Key Provisioning};
 \node[statebox, fill=blue!10, right=0.8cm of inc] (next) {\textbf{\color{primary}NEXT EXPERIMENT}\\Preflight Key Probe\\$\to$ P1 Real Baseline};
 
 \draw[flow] (comp) -- (val);
 \draw[flow] (val) -- (dec);
-\draw[flow] (dec) |- (inc);
+\draw[flow] (dec.south) -- ++(0,-0.55) -| (inc.north);
 \draw[flow] (inc) -- (next);
 \end{tikzpicture}
 \caption{Phase 2 Execution Pipeline. The \$0 No-Key Phase is 100\% complete. Live sweeps remain unrun pending API key provisioning.}

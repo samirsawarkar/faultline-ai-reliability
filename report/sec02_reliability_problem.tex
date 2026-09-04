@@ -43,32 +43,32 @@ To bring engineering precision to reliability discussions, FAULTLINE defines and
 \begin{figure}[h!]
 \centering
 \begin{tikzpicture}[
-  box/.style={draw=primary, rounded corners=4pt, line width=1pt, text width=0.28\textwidth, align=center, inner sep=8pt},
+  box/.style={draw=primary, rounded corners=4pt, line width=1pt, text width=4.5cm, align=center, inner sep=6pt},
   flow/.style={-{Latex[length=3mm]}, line width=1.5pt, color=secondary}
 ]
 \node[box, fill=blue!5] (op) {
-  \textbf{\color{primary}Tier 1: Operational Success}\\
+  \textbf{\color{primary}Tier 1: Operational Success}\\[2pt]
   \footnotesize
-  HTTP 200 OK $\cdot$ Latency $<T$ $\cdot$ No uncaught exceptions $\cdot$ Response non-empty.\\
+  HTTP 200 OK $\cdot$ Latency $<T$\\No uncaught exceptions\\Response non-empty.\\[2pt]
   \textit{Metric: Infrastructure Availability}
 };
 
-\node[box, fill=warning!10, right=0.8cm of op] (sem) {
-  \textbf{\color{warning!80!black}Tier 2: Semantic Correctness}\\
+\node[box, fill=warning!10, right=1.2cm of op] (sem) {
+  \textbf{\color{warning!80!black}Tier 2: Semantic Correctness}\\[2pt]
   \footnotesize
-  Plausible phrasing $\cdot$ Tone valid $\cdot$ High semantic similarity $\cdot$ General coherence.\\
+  Plausible phrasing $\cdot$ Tone valid\\High semantic similarity\\General coherence.\\[2pt]
   \textit{Metric: Advisory Judge Score}
 };
 
-\node[box, fill=success!10, right=0.8cm of sem] (vis) {
-  \textbf{\color{success!80!black}Tier 3: User-Visible Correctness}\\
+\node[box, fill=success!10, right=1.2cm of sem] (vis) {
+  \textbf{\color{success!80!black}Tier 3: User-Visible Correctness}\\[2pt]
   \footnotesize
-  Exact factual truth $\cdot$ Provenance valid $\cdot$ All required sources cited $\cdot$ Within SLA/budget.\\
+  Exact factual truth $\cdot$ Provenance\\All required sources cited\\Within SLA/budget.\\[2pt]
   \textit{Metric: Strict Grounded Oracle Pass}
 };
 
-\draw[flow] (op) -- node[above, font=\scriptsize\bfseries\sffamily] {Does NOT imply} (sem);
-\draw[flow] (sem) -- node[above, font=\scriptsize\bfseries\sffamily] {Does NOT imply} (vis);
+\draw[flow] (op) -- node[above, font=\scriptsize\bfseries\sffamily, align=center] {Does NOT\\imply} (sem);
+\draw[flow] (sem) -- node[above, font=\scriptsize\bfseries\sffamily, align=center] {Does NOT\\imply} (vis);
 \end{tikzpicture}
 \caption{The Three Tiers of Reliability. Conventional systems measure Tier 1 and assume Tier 3. FAULTLINE measures all three independently and forbids promoting Tier 1 or Tier 2 to Tier 3.}
 \end{figure}
@@ -103,14 +103,14 @@ The entire FAULTLINE architecture is organized into four strictly segregated ope
   nodebox/.style={draw=primary, fill=white, rounded corners=3pt, font=\scriptsize\sffamily, align=center, inner sep=4pt, line width=0.8pt, text width=3.3cm},
   faultbox/.style={draw=accent, fill=accent!8, rounded corners=3pt, font=\scriptsize\sffamily, align=center, inner sep=4pt, line width=0.8pt, text width=3.8cm},
   measbox/.style={draw=secondary, fill=secondary!8, rounded corners=3pt, font=\scriptsize\sffamily, align=center, inner sep=4pt, line width=0.8pt, text width=3.5cm},
-  decbox/.style={draw=success, fill=success!10, rounded corners=3pt, font=\scriptsize\sffamily, align=center, inner sep=5pt, line width=0.8pt, text width=11.5cm},
+  decbox/.style={draw=success, fill=success!10, rounded corners=3pt, font=\scriptsize\sffamily, align=center, inner sep=5pt, line width=0.8pt, text width=13.8cm},
   arrow/.style={-{Latex[length=2.5mm]}, line width=1pt, color=primary},
   faultarrow/.style={-{Latex[length=2.5mm]}, line width=1pt, dashed, color=accent},
   measarrow/.style={-{Latex[length=2.5mm]}, line width=1pt, color=secondary}
 ]
 
 % Zone 2: Injected Failure (Left)
-\node[faultbox] (injector) at (-5.6, 1.2) {\textbf{\color{accent}Fault Injector (F1--F6)}\\F1: Structured Output Corruption\\F2: Virtual Latency / Timeout\\F3: Schema Drift / Wrong Data\\F4: Provider Outage (5xx/429)\\F5: Context Corruption\\F6: Loop Exhaustion Cap};
+\node[faultbox] (injector) at (-6.6, 1.2) {\textbf{\color{accent}Fault Injector (F1--F6)}\\F1: Structured Output Corruption\\F2: Virtual Latency / Timeout\\F3: Schema Drift / Wrong Data\\F4: Provider Outage (5xx/429)\\F5: Context Corruption\\F6: Loop Exhaustion Cap};
 
 % Zone 1: Observed System (Center)
 \node[nodebox] (env) at (-0.3, 4.0) {\textbf{Seeded Environment}\\Corpus (1,164 docs)\\Link-layer records};
@@ -125,7 +125,7 @@ The entire FAULTLINE architecture is organized into four strictly segregated ope
 \node[measbox] (stats) at (5.2, -1.7) {\textbf{Statistical Engine}\\Wilson 95\% CIs $\cdot$ McNemar\\10,000 Bootstrap};
 
 % Zone 4: Decision Engine (Bottom)
-\node[decbox] (decision) at (-0.2, -4.2) {\textbf{\color{success!80!black}Reliability Decision Framework}\\Constraint-first eligibility screen $\cdot$ Cost/Latency frontier comparison $\cdot$ Adversarial stress certification};
+\node[decbox] (decision) at (0.2, -4.2) {\textbf{\color{success!80!black}Reliability Decision Framework}\\Constraint-first eligibility screen $\cdot$ Cost/Latency frontier comparison $\cdot$ Adversarial stress certification};
 
 % Background Zone Groupings
 \begin{scope}[on background layer]
@@ -141,7 +141,7 @@ The entire FAULTLINE architecture is organized into four strictly segregated ope
 \draw[arrow] (tools) -- (policy);
 
 % Fault injection arrows
-\draw[faultarrow] (injector.east) -- node[above, font=\tiny\bfseries\color{accent}] {Intercept} (agent.west);
+\draw[faultarrow] (injector.east) -- node[above, font=\tiny\bfseries\color{accent}, align=center, pos=0.42] {Intercept\\tool/model} (agent.west);
 \draw[faultarrow] (injector.south east) -- (tools.west);
 
 % Measurement arrows

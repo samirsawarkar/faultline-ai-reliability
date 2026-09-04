@@ -9,37 +9,39 @@ FAULTLINE proves that \textbf{unprincipled recovery is actively hazardous}. Ever
 \centering
 \begin{tikzpicture}[
   scale=0.92,
-  node distance=0.8cm and 1cm,
-  box/.style={draw=primary, fill=white, rounded corners=3pt, font=\small\sffamily, align=center, inner sep=6pt, line width=0.8pt},
-  decision/.style={draw=secondary, fill=secondary!10, diamond, aspect=2, font=\footnotesize\bfseries\sffamily, align=center, inner sep=2pt, line width=0.8pt},
-  action/.style={draw=primary, fill=blue!5, rounded corners=3pt, font=\footnotesize\sffamily, align=center, inner sep=5pt, line width=0.8pt},
-  terminal/.style={draw=success, fill=success!15, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt, line width=1pt},
-  contain/.style={draw=accent, fill=accent!15, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt, line width=1pt},
+  box/.style={draw=primary, fill=white, rounded corners=3pt, font=\small\sffamily, align=center, inner sep=6pt, line width=0.8pt, text width=3.8cm},
+  decision/.style={draw=secondary, fill=secondary!10, diamond, aspect=1.8, font=\footnotesize\bfseries\sffamily, align=center, inner sep=3pt, line width=0.8pt, text width=2.2cm},
+  action/.style={draw=primary, fill=blue!5, rounded corners=3pt, font=\footnotesize\sffamily, align=center, inner sep=6pt, line width=0.8pt, text width=2.8cm},
+  terminal/.style={draw=success, fill=success!15, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt, line width=1pt, text width=3.8cm},
+  contain/.style={draw=accent, fill=accent!15, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt, line width=1pt, text width=4.0cm},
   arrow/.style={-{Latex[length=2.5mm]}, line width=1pt, color=primary}
 ]
 \node[box] (req) {Incoming Request\\with Budget Contract};
-\node[box, below=of req] (pri) {Primary Route Execution};
-\node[decision, below=of pri] (det) {Fault\\Detected?};
-\node[decision, right=1.5cm of det] (retryable) {Retryable \&\\Budget OK?};
-\node[action, above=of retryable] (retry) {Bounded Retry\\(Backoff + Jitter)};
-\node[decision, below=of retryable] (fb_ok) {Fallback\\Eligible?};
-\node[action, right=1.2cm of fb_ok] (fb) {Route-Diverse\\Fallback};
-\node[decision, below=of det] (valid) {Strict Oracle\\Valid?};
-\node[terminal, below=1.2cm of valid] (success) {RETURN CORRECT\\VISIBLE ANSWER};
-\node[contain, below=1.2cm of fb_ok] (contain) {FAIL CLOSED / ABSTAIN\\(With Explicit Reason)};
+\node[box, below=0.6cm of req] (pri) {Primary Route Execution};
+\node[decision, below=0.8cm of pri] (det) {Fault\\Detected?};
+\node[decision, right=1.6cm of det] (retryable) {Retryable \&\\Budget OK?};
+\node[action, above=0.6cm of retryable] (retry) {Bounded Retry\\(Backoff + Jitter)};
+\node[decision, below=1.2cm of retryable] (fb_ok) {Fallback\\Eligible?};
+\node[action, right=1.0cm of fb_ok] (fb) {Route-Diverse\\Fallback};
+\node[decision, below=1.2cm of det] (valid) {Strict Oracle\\Valid?};
+\node[terminal, below=0.8cm of valid] (success) {RETURN CORRECT\\VISIBLE ANSWER};
+\node[contain, below=0.8cm of fb_ok] (contain) {FAIL CLOSED / ABSTAIN\\(With Explicit Reason)};
 
 \draw[arrow] (req) -- (pri);
 \draw[arrow] (pri) -- (det);
-\draw[arrow] (det) -- node[above, font=\scriptsize] {YES} (retryable);
-\draw[arrow] (det) -- node[left, font=\scriptsize] {NO} (valid);
-\draw[arrow] (retryable) -- node[left, font=\scriptsize] {YES} (retry);
-\draw[arrow] (retry) |- (pri);
-\draw[arrow] (retryable) -- node[right, font=\scriptsize] {NO} (fb_ok);
-\draw[arrow] (fb_ok) -- node[above, font=\scriptsize] {YES} (fb);
-\draw[arrow] (fb) |- (valid);
-\draw[arrow] (fb_ok) -- node[right, font=\scriptsize] {NO} (contain);
-\draw[arrow] (valid) -- node[left, font=\scriptsize] {YES} (success);
-\draw[arrow] (valid) -| node[above, font=\scriptsize] {NO} (contain);
+\draw[arrow] (det) -- node[above, font=\scriptsize\bfseries] {YES} (retryable);
+\draw[arrow] (det) -- node[left, font=\scriptsize\bfseries] {NO} (valid);
+
+\draw[arrow] (retryable) -- node[left, font=\scriptsize\bfseries] {YES} (retry);
+\draw[arrow] (retry) -- (pri);
+\draw[arrow] (retryable) -- node[left, font=\scriptsize\bfseries, pos=0.3] {NO} (fb_ok);
+
+\draw[arrow] (fb_ok) -- node[above, font=\scriptsize\bfseries] {YES} (fb);
+\draw[arrow] (fb.north) -- ++(0,0.6) -| (valid.north);
+
+\draw[arrow] (fb_ok) -- node[right, font=\scriptsize\bfseries] {NO} (contain);
+\draw[arrow] (valid) -- node[left, font=\scriptsize\bfseries] {YES} (success);
+\draw[arrow] (valid) -- node[above, font=\scriptsize\bfseries] {NO} (contain);
 \end{tikzpicture}
 \caption{The Enforced Recovery Control Path. Budget ceilings and correctness gates take strict priority over raw availability.}
 \end{figure}

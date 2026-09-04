@@ -70,29 +70,25 @@ FAULTLINE rejects self-grading. The foundation of all reliability claims is a \t
 \begin{figure}[h!]
 \centering
 \begin{tikzpicture}[
-  scale=0.9,
   nodebox/.style={draw=primary, fill=white, rounded corners=3pt, font=\small\sffamily, align=center, inner sep=6pt, line width=0.8pt},
   gatebox/.style={draw=secondary, fill=secondary!10, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt, line width=0.8pt},
   resultbox/.style={draw=success, fill=success!15, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt, line width=1pt},
   failbox/.style={draw=accent, fill=accent!15, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt, line width=1pt},
   arrow/.style={-{Latex[length=2.5mm]}, line width=1pt, color=primary}
 ]
-\node[nodebox] (agent_out) at (0, 0) {Agent Output\\Trajectory};
+\node[nodebox, text width=6.0cm] (agent_out) {Agent Output Trajectory\\(Final Answer Token + Cited Source IDs)};
+\node[gatebox, text width=6.6cm, below=0.6cm of agent_out] (check_ans) {Condition 1: Answer Check\\\footnotesize\texttt{normalized(output) == expected\_answer}};
+\node[gatebox, text width=6.6cm, below=0.6cm of check_ans] (check_src) {Condition 2: Provenance Check\\\footnotesize\texttt{required\_sources $\subseteq$ cited\_sources}};
+\node[resultbox, text width=5.6cm, below=0.6cm of check_src] (pass) {ORACLE PASS\\(Strict Grounded Success)};
 
-\node[gatebox] (check_ans) at (4.5, 1.5) {Condition 1: Answer Check\\$\code{normalized(output)} == \code{oracle.expected\_answer}$};
-\node[gatebox] (check_src) at (4.5, -1.5) {Condition 2: Provenance Check\\$\code{oracle.required\_sources} \subseteq \code{agent.cited\_sources}$};
+\node[failbox, text width=4.8cm, right=1.6cm of check_src] (fail) {ORACLE FAIL\\(Operational failure,\\hallucination, or ungrounded)};
 
-\node[resultbox] (pass) at (9.5, 0) {ORACLE PASS\\(Strict Grounded Success)};
-\node[failbox] (fail) at (4.5, -3.8) {ORACLE FAIL\\(Operational failure, hallucination, or ungrounded)};
+\draw[arrow] (agent_out) -- (check_ans);
+\draw[arrow] (check_ans) -- node[right, font=\scriptsize\bfseries\color{success}] {YES} (check_src);
+\draw[arrow] (check_src) -- node[right, font=\scriptsize\bfseries\color{success}] {YES} (pass);
 
-\draw[arrow] (agent_out) |- (check_ans);
-\draw[arrow] (agent_out) |- (check_src);
-
-\draw[arrow] (check_ans) -| node[above, font=\scriptsize] {YES} (pass);
-\draw[arrow] (check_src) -| node[below, font=\scriptsize] {YES} (pass);
-
-\draw[arrow, color=accent] (check_ans) -- node[right, font=\scriptsize] {NO} (fail);
-\draw[arrow, color=accent] (check_src) -- node[right, font=\scriptsize] {NO} (fail);
+\draw[arrow, color=accent] (check_ans.east) -| node[pos=0.25, above, font=\scriptsize\bfseries\color{accent}] {NO} (fail.north);
+\draw[arrow, color=accent] (check_src.east) -- node[above, font=\scriptsize\bfseries\color{accent}] {NO} (fail.west);
 \end{tikzpicture}
 \caption{The Dual-Gate Programmatic Oracle. Success requires simultaneous satisfaction of exact token correctness AND complete source provenance.}
 \end{figure}
