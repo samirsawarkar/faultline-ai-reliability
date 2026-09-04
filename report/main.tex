@@ -73,8 +73,10 @@
 
 % Section Heading Formatting
 \usepackage{titlesec}
+% \needspace stops a section heading stranding at a page foot with one or
+% two lines under it; 5 lines fits the heading, its rule and an opener.
 \titleformat{\section}
-  {\color{primary}\normalfont\Large\bfseries\sffamily}
+  {\needspace{5\baselineskip}\color{primary}\normalfont\Large\bfseries\sffamily}
   {\thesection}{1em}{}
   [\vspace{2pt}{\color{primary}\hrule height 1pt}]
 

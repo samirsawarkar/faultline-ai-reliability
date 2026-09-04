@@ -1,4 +1,3 @@
-\clearpage
 \section{Experiment Results}
 
 Every experiment in FAULTLINE is documented using an immutable, standardized scientific schema. No result is reported without uncertainty bounds, limitations, and explicit reversal criteria.
@@ -7,7 +6,7 @@ Every experiment in FAULTLINE is documented using an immutable, standardized sci
 \subsection{Q1: When Does Tool Depth Break the Naive Reliability Model?}
 
 \begin{center}
-\includegraphics[width=0.72\textwidth,height=3.6cm,keepaspectratio,trim=7.4bp 3.6bp 52.0bp 32.4bp,clip]{fig1_depth.pdf}
+\includegraphics[width=\textwidth,trim=7.4bp 3.6bp 52.0bp 32.4bp,clip]{fig1_depth.pdf}
 \vspace{2pt}
 \captionof{figure}{Measured vs Naive Multi-Hop Reliability by Required Tool Depth. The measured curve diverges from the naive $p_1^n$ model at depth 3, collapsing to $0.288$ at 8 hops versus $0.797$ predicted.}
 \label{fig:q1_depth}
@@ -36,11 +35,10 @@ Every experiment in FAULTLINE is documented using an immutable, standardized sci
 \endgroup
 
 % ------------------------------------------------------------------------------
-\clearpage
 \subsection{Q2: Does an Aggregate Detector Score Conceal Operational Risk?}
 
 \begin{center}
-\includegraphics[width=0.72\textwidth,height=3.8cm,keepaspectratio,trim=61.0bp 3.6bp 53.0bp 32.4bp,clip]{fig2_detector.pdf}
+\includegraphics[width=\textwidth,trim=61.0bp 3.6bp 53.0bp 32.4bp,clip]{fig2_detector.pdf}
 \vspace{2pt}
 \captionof{figure}{Detector Recall and Confidence Intervals by Fault Family. While aggregate precision was 1.0, micro recall was 0.615, concealing 10 false negatives (4 semantic escapes).}
 \label{fig:q2_detector}
@@ -70,11 +68,10 @@ Every experiment in FAULTLINE is documented using an immutable, standardized sci
 \endgroup
 
 % ------------------------------------------------------------------------------
-\clearpage
 \subsection{Q3: Is a Retry Cap Stable Across Fault Structure (Correlation)?}
 
 \begin{center}
-\includegraphics[width=0.72\textwidth,height=3.8cm,keepaspectratio,trim=8.4bp 3.6bp 52.5bp 32.4bp,clip]{fig3_retry.pdf}
+\includegraphics[width=\textwidth,trim=8.4bp 3.6bp 52.5bp 32.4bp,clip]{fig3_retry.pdf}
 \vspace{2pt}
 \captionof{figure}{Success Rate and Attempt Amplification by Retry Cap ($K$) Under Independent vs Correlated Faults. During correlated outages, $K=3$ amplifies load to $2.37\times$ while buying negligible success.}
 \label{fig:q3_retry}
@@ -104,11 +101,10 @@ Every experiment in FAULTLINE is documented using an immutable, standardized sci
 \endgroup
 
 % ------------------------------------------------------------------------------
-\clearpage
 \subsection{Q4: Does Fallback Preserve Availability Without Preserving Quality?}
 
 \begin{center}
-\includegraphics[width=0.72\textwidth,height=3.8cm,keepaspectratio,trim=61.0bp 3.6bp 47.0bp 32.4bp,clip]{fig4_fallback.pdf}
+\includegraphics[width=\textwidth,trim=61.0bp 3.6bp 47.0bp 32.4bp,clip]{fig4_fallback.pdf}
 \vspace{2pt}
 \captionof{figure}{Availability vs Strict Quality Under Primary Provider Outage. Fallback restores availability from 0.667 to 1.0, but strict answer quality drops from 1.0 to 0.75 (30 of 40 fallback answers degraded).}
 \label{fig:q4_fallback}
@@ -138,11 +134,10 @@ Every experiment in FAULTLINE is documented using an immutable, standardized sci
 \endgroup
 
 % ------------------------------------------------------------------------------
-\clearpage
 \subsection{Q5: Which Recovery Policy Wins on Correct Success, Cost, and Latency?}
 
 \begin{center}
-\includegraphics[width=0.72\textwidth,height=3.8cm,keepaspectratio,trim=14.4bp 3.6bp 55.0bp 32.4bp,clip]{fig5_policy.pdf}
+\includegraphics[width=\textwidth,trim=14.4bp 3.6bp 55.0bp 32.4bp,clip]{fig5_policy.pdf}
 \vspace{2pt}
 \captionof{figure}{Policy Pareto Frontier: Correct Success vs Mean Cost across 400 Shared Seeds. P4 Selective Guarded is the base-envelope winner, but collapses under stress attacks.}
 \label{fig:q5_policy}
