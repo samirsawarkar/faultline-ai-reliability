@@ -1,4 +1,4 @@
-\section{21 --- Phase 2: Decision Record and Current State}
+\section{Phase 2: Decision Record and Current State}
 
 \subsection{The Purpose and Mandate of Phase 2}
 Phase 1 proved the fundamental dynamics of AI reliability (tool-depth decay, retry crossover under correlation, silent fallback degradation, and constraint-first cascade selection) using controlled, seeded simulators. 
@@ -8,8 +8,8 @@ Phase 1 proved the fundamental dynamics of AI reliability (tool-depth decay, ret
 \subsection{Current Operational State: The No-Key Phase is Closed}
 To prevent undisciplined budget burn, Phase 2 instituted a strict architectural rule: \textbf{Build and test all instruments, contracts, resilience layers, and observability pipelines at \$0 cost before executing any paid API sweeps}.
 
-\begin{figure}[h!]
-\centering
+\begin{center}
+\resizebox{0.92\textwidth}{!}{
 \begin{tikzpicture}[
   scale=0.92,
   statebox/.style={draw=primary, fill=lightbg, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt, line width=0.8pt, text width=4.5cm},
@@ -26,8 +26,10 @@ To prevent undisciplined budget burn, Phase 2 instituted a strict architectural 
 \draw[flow] (dec.south) -- ++(0,-0.55) -| (inc.north);
 \draw[flow] (inc) -- (next);
 \end{tikzpicture}
-\caption{Phase 2 Execution Pipeline. The \$0 No-Key Phase is 100\% complete. Live sweeps remain unrun pending API key provisioning.}
-\end{figure}
+}
+\captionof{figure}{Phase 2 Execution Pipeline. The \$0 No-Key Phase is 100\% complete. Live sweeps remain unrun pending API key provisioning.}
+\label{fig:phase2_pipeline}
+\end{center}
 
 \subsubsection{What Was Completed in Phase 2 (\$0 Spent)}
 \begin{enumerate}
@@ -70,11 +72,14 @@ To prevent undisciplined budget burn, Phase 2 instituted a strict architectural 
 
 % ==============================================================================
 \vspace{12pt}
-\section{22 --- Key Engineering Decisions (ADR Log)}
+\needspace{8\baselineskip}
+\section{Key Engineering Decisions (ADR Log)}
 
 \begin{center}
+\begingroup
 \scriptsize
-\begin{longtable}{lp{0.20\textwidth}p{0.22\textwidth}p{0.22\textwidth}l}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{0.07\textwidth}p{0.19\textwidth}p{0.23\textwidth}p{0.23\textwidth}p{0.16\textwidth}}
 \toprule
 \textbf{ID} & \textbf{Context \& Problem} & \textbf{Chosen Architectural Decision} & \textbf{Engineering Tradeoff \& Why} & \textbf{Reversal Trigger} \\
 \midrule
@@ -106,4 +111,5 @@ To prevent undisciplined budget burn, Phase 2 instituted a strict architectural 
 \textbf{A-001} & System prompt was left unset at freeze. & Author and freeze system prompt hash (\code{87c764...}) in MEC v1.1. & Single post-freeze authoring step; frozen permanently thereafter. & System prompt proves defective in P1. \\
 \textbf{A-002} & \textbf{T2/T3 scenarios were unsolvable by construction.} & \textbf{Increase step cap 8 $\to$ 12; search returns snippets directly.} & \textbf{See Section 23 for full postmortem. Essential fix for 283 scenarios.} & $>10\%$ of T3 runs abort on step cap. \\
 \end{longtable}
+\endgroup
 \end{center}

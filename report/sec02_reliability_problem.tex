@@ -1,10 +1,11 @@
-\section{02 --- The Reliability Problem}
+\section{The Reliability Problem}
 
 \subsection{Why ``The AI Responded Successfully'' is a Dangerous Lie}
 In traditional software engineering, an HTTP 200 OK from an idempotent API generally indicates successful computation. In document-grounded AI systems, an HTTP 200 OK indicates only that the transport layer did not sever the connection.
 
 Consider the real execution path of a multi-hop agent tasked with answering an enterprise question (e.g., verifying compliance across multiple regulatory documents):
 \begin{center}
+\resizebox{0.95\textwidth}{!}{%
 \begin{tikzpicture}[
   node distance=0.6cm and 0.8cm,
   flowbox/.style={draw=primary, fill=lightbg, rounded corners=3pt, font=\small\sffamily, align=center, inner sep=5pt, minimum width=1.8cm},
@@ -22,7 +23,8 @@ Consider the real execution path of a multi-hop agent tasked with answering an e
 \draw[arrow] (tool1) -- (ret1);
 \draw[arrow] (ret1) -- (mod2);
 \draw[arrow] (mod2) -- (ans);
-\end{tikzpicture}
+\end{tikzpicture}%
+}
 \end{center}
 
 At every stage of this graph, silent failure modes emerge that leave zero signature in traditional APM tools:
@@ -40,8 +42,8 @@ At every stage of this graph, silent failure modes emerge that leave zero signat
 \subsection{The Three-Tier Correctness Model}
 To bring engineering precision to reliability discussions, FAULTLINE defines and measures three distinct, non-fungible tiers of system health:
 
-\begin{figure}[h!]
-\centering
+\begin{center}
+\resizebox{0.95\textwidth}{!}{%
 \begin{tikzpicture}[
   box/.style={draw=primary, rounded corners=4pt, line width=1pt, text width=4.5cm, align=center, inner sep=6pt},
   flow/.style={-{Latex[length=3mm]}, line width=1.5pt, color=secondary}
@@ -69,13 +71,16 @@ To bring engineering precision to reliability discussions, FAULTLINE defines and
 
 \draw[flow] (op) -- node[above, font=\scriptsize\bfseries\sffamily, align=center] {Does NOT\\imply} (sem);
 \draw[flow] (sem) -- node[above, font=\scriptsize\bfseries\sffamily, align=center] {Does NOT\\imply} (vis);
-\end{tikzpicture}
-\caption{The Three Tiers of Reliability. Conventional systems measure Tier 1 and assume Tier 3. FAULTLINE measures all three independently and forbids promoting Tier 1 or Tier 2 to Tier 3.}
-\end{figure}
+\end{tikzpicture}%
+}
+\vspace{0.2em}
+\captionof{figure}{The Three Tiers of Reliability. Conventional systems measure Tier 1 and assume Tier 3. FAULTLINE measures all three independently and forbids promoting Tier 1 or Tier 2 to Tier 3.}
+\label{fig:three_tiers}
+\end{center}
 
 \begin{center}
 \small
-\begin{tabularx}{\textwidth}{lp{0.28\textwidth}p{0.25\textwidth}X}
+\begin{tabularx}{\textwidth}{l>{\raggedright\arraybackslash}p{0.28\textwidth}>{\raggedright\arraybackslash}p{0.25\textwidth}X}
 \toprule
 \textbf{Dimension} & \textbf{Operational Success} & \textbf{Semantic Correctness} & \textbf{User-Visible Correctness} \\
 \midrule
@@ -91,12 +96,12 @@ To bring engineering precision to reliability discussions, FAULTLINE defines and
 \end{center}
 
 \vspace{12pt}
-\section{03 --- FAULTLINE in One Diagram}
+\section{FAULTLINE in One Diagram}
 
 The entire FAULTLINE architecture is organized into four strictly segregated operational zones: \textbf{The Observed System}, \textbf{Injected Failure}, \textbf{Measurement System}, and \textbf{The Decision Engine}.
 
-\begin{figure}[h!]
-\centering
+\begin{center}
+\resizebox{0.95\textwidth}{!}{%
 \begin{tikzpicture}[
   scale=0.86, every node/.style={transform shape},
   zone/.style={draw=rulecolor, rounded corners=6pt, line width=1pt, inner sep=14pt},
@@ -157,6 +162,9 @@ The entire FAULTLINE architecture is organized into four strictly segregated ope
 \draw[arrow, line width=1.2pt, color=success!80!black] (policy.west) -| ([xshift=-0.5cm]decision.west) -- (decision.west);
 \draw[arrow, line width=1.2pt, color=success!80!black] (stats.east) -| ([xshift=0.5cm]decision.east) -- (decision.east);
 
-\end{tikzpicture}
-\caption{FAULTLINE System Architecture. The experimental workbench enforces strict physical and logical boundaries: the Injected Failure system creates reproducible degradation, the Observed System executes bounded recovery policies, the Measurement System scores outcomes without relying on LLM self-evaluation, and the Decision Engine filters policies through constraint-first Pareto frontiers.}
-\end{figure}
+\end{tikzpicture}%
+}
+\vspace{0.2em}
+\captionof{figure}{FAULTLINE System Architecture. The experimental workbench enforces strict physical and logical boundaries: the Injected Failure system creates reproducible degradation, the Observed System executes bounded recovery policies, the Measurement System scores outcomes without relying on LLM self-evaluation, and the Decision Engine filters policies through constraint-first Pareto frontiers.}
+\label{fig:system_arch}
+\end{center}

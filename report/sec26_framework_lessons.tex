@@ -1,9 +1,9 @@
-\section{26 --- The Reliability Decision Framework}
+\section{The Reliability Decision Framework}
 
 Reliability engineering is not the optimization of a single scalar score. It is a disciplined, multi-dimensional decision process that balances correctness, tail latency, cost, and provenance under uncertainty:
 
-\begin{figure}[h!]
-\centering
+\begin{center}
+\resizebox{0.92\textwidth}{!}{
 \begin{tikzpicture}[
   scale=0.92, every node/.style={transform shape},
   box/.style={draw=primary, fill=white, rounded corners=3pt, font=\footnotesize\sffamily, align=center, inner sep=5pt, line width=0.8pt},
@@ -28,8 +28,10 @@ Reliability engineering is not the optimization of a single scalar score. It is 
 \draw[flow] (unc.south) -- (rep.north);
 \draw[flow] (rep.south) -- (dec.north);
 \end{tikzpicture}
-\caption{The Multi-Dimensional Reliability Decision Framework.}
-\end{figure}
+}
+\captionof{figure}{The Multi-Dimensional Reliability Decision Framework.}
+\label{fig:decision_framework}
+\end{center}
 
 \subsection{The Five Decision Gating Rules}
 \begin{enumerate}
@@ -42,7 +44,8 @@ Reliability engineering is not the optimization of a single scalar score. It is 
 
 % ==============================================================================
 \vspace{12pt}
-\section{27 --- What FAULTLINE Taught Me}
+\needspace{8\baselineskip}
+\section{What FAULTLINE Taught Me}
 
 These lessons are not motivational aphorisms; they are hard-won empirical truths derived from debugging distributed AI agent systems:
 

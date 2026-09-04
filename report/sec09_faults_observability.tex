@@ -1,10 +1,10 @@
-\section{09 --- Failure Taxonomy}
+\section{Failure Taxonomy}
 
 \subsection{The Component-Based Taxonomy}
 Rather than categorizing AI failures by subjective symptoms (e.g., ``model hallucinated''), FAULTLINE organizes failures by the \textbf{producing system component} where the defect originates:
 
-\begin{figure}[h!]
-\centering
+\begin{center}
+\resizebox{0.95\textwidth}{!}{%
 \begin{tikzpicture}[
   rootbox/.style={draw=primary, fill=primary!10, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=5pt, text width=7.0cm},
   catbox/.style={draw=secondary, fill=secondary!10, rounded corners=3pt, font=\footnotesize\bfseries\sffamily, align=center, inner sep=4pt, text width=7.4cm},
@@ -39,29 +39,21 @@ Rather than categorizing AI failures by subjective symptoms (e.g., ``model hallu
 \draw[arrow] ([xshift=-0.25cm]f3.west) -- (f3.west);
 \draw[arrow] ([xshift=-0.25cm]f5.west) -- (f5.west);
 \draw[arrow] ([xshift=-0.25cm]f6.west) -- (f6.west);
-\end{tikzpicture}
-\caption{Taxonomy of AI Failure Modes by Producing Component.}
-\end{figure}
+\end{tikzpicture}%
+}
+\vspace{0.2em}
+\captionof{figure}{Taxonomy of AI Failure Modes by Producing Component.}
+\label{fig:failure_taxonomy}
+\end{center}
 
 \begin{center}
 \begingroup
 \small
 \setlength{\tabcolsep}{3pt}
-\begin{longtable}{p{0.18\textwidth}p{0.18\textwidth}p{0.20\textwidth}p{0.21\textwidth}p{0.17\textwidth}}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}X}
 \toprule
 \textbf{Fault ID \& Component} & \textbf{Physical Trigger} & \textbf{Observable Trace} \newline \textbf{Symptom} & \textbf{User-Visible} \newline \textbf{Consequence} & \textbf{Detection \& Recovery} \\
 \midrule
-\endfirsthead
-\toprule
-\textbf{Fault ID \& Component} & \textbf{Physical Trigger} & \textbf{Observable Trace} \newline \textbf{Symptom} & \textbf{User-Visible} \newline \textbf{Consequence} & \textbf{Detection \& Recovery} \\
-\midrule
-\endhead
-\midrule
-\multicolumn{5}{r}{\textit{Continued on next page\dots}} \\
-\bottomrule
-\endfoot
-\bottomrule
-\endlastfoot
 \textbf{F1: Structured Output} \newline \textit{Tool output boundary} & Truncated JSON, unescaped quotes, key omission. & Pydantic \code{ValidationError} at deserialization. & Unhandled crash or blank error message. & \textbf{Det:} Schema check ($R=1.0$). \newline \textbf{Rec:} M1 Schema repair-retry. \\
 \addlinespace
 \textbf{F2: Latency / Timeout} \newline \textit{Provider transport} & Simulated provider hang, packet drop, slow queue. & Span duration breaches configured latency threshold. & Client disconnect, spinning loader, SLA breach. & \textbf{Det:} Deadline monitor ($R=1.0$). \newline \textbf{Rec:} M2 Timeout + bounded retry. \\
@@ -73,21 +65,24 @@ Rather than categorizing AI failures by subjective symptoms (e.g., ``model hallu
 \textbf{F5: Context Corruption} \newline \textit{Agent memory / context} & Distractor injection, conflicting intermediate token. & Agent generates divergent tool queries unrelated to task. & Confident incorrect answer citing distractor. & \textbf{Det:} Semantic invariant ($R=0.5$). \newline \textbf{Rec:} Context reset / re-ground. \\
 \addlinespace
 \textbf{F6: Loop Exhaustion} \newline \textit{Agent control loop} & Query cycle (searching A $\to$ B $\to$ A), pagination trap. & Consecutive identical tool calls; step count reaches cap. & Silent timeout or partial ungrounded guess. & \textbf{Det:} Cycle counter ($R=1.0$). \newline \textbf{Rec:} M5 Structural step ceiling. \\
-\end{longtable}
+\bottomrule
+\end{tabularx}
 \endgroup
 \end{center}
 
 % ==============================================================================
 \vspace{12pt}
-\section{10 --- Fault Injection}
+\needspace{8\baselineskip}
+\section{Fault Injection}
 
 \subsection{Controlled Deterministic Injection}
 In distributed systems, testing failure handling by waiting for production outages is unacceptable. Testing must be proactive and repeatable.
 
 FAULTLINE injects failures deterministically at runtime:
 \begin{center}
+\resizebox{0.92\textwidth}{!}{%
 \begin{tikzpicture}[
-  node distance=0.6cm and 0.8cm,
+  node distance=0.6cm and 0.9cm,
   box/.style={draw=primary, fill=lightbg, rounded corners=3pt, font=\small\sffamily, align=center, inner sep=6pt},
   fault/.style={draw=accent, fill=accent!10, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt},
   arrow/.style={-{Latex[length=2.5mm]}, line width=1pt, color=primary}
@@ -95,13 +90,14 @@ FAULTLINE injects failures deterministically at runtime:
 \node[box] (call) {Agent Emits\\Tool/Model Call};
 \node[fault, right=of call] (inj) {Fault Injector\\Interception Proxy};
 \node[box, right=of inj] (dest) {Target\\Component};
-\node[fault, below=0.8cm of inj] (log) {Out-of-Band\\Ground Truth Log};
+\node[fault, below=0.9cm of inj] (log) {Out-of-Band\\Ground Truth Log};
 
 \draw[arrow] (call) -- (inj);
 \draw[arrow] (inj) -- node[above, font=\scriptsize] {If healthy} (dest);
 \draw[arrow, color=accent] (inj) -- node[right, font=\scriptsize] {Record injection} (log);
-\draw[arrow, color=accent] (inj) |- node[below, font=\scriptsize] {If faulted: inject F1--F6} (call);
-\end{tikzpicture}
+\draw[arrow, color=accent] (inj.south) -- ++(0,-0.35) -| node[below, pos=0.35, font=\scriptsize] {If faulted: inject F1--F6} (call.south);
+\end{tikzpicture}%
+}
 \end{center}
 
 \subsection{Independent Out-of-Band Ground Truth}
@@ -111,11 +107,13 @@ In FAULTLINE, the injector logs the exact fault type, severity, target step, and
 
 % ==============================================================================
 \vspace{12pt}
-\section{11 --- Observability and Tracing}
+\needspace{8\baselineskip}
+\section{Observability and Tracing}
 
 \subsection{Tracing as Forensic Evidence, Not Dashboard Decoration}
 In distributed AI workflows, debugging requires forensic reconstruction of the entire execution tree:
 \begin{center}
+\resizebox{0.92\textwidth}{!}{%
 \begin{tikzpicture}[
   every node/.style={font=\small\ttfamily},
   box/.style={draw=secondary, fill=white, rounded corners=2pt, align=left, inner sep=4pt}
@@ -128,7 +126,8 @@ In distributed AI workflows, debugging requires forensic reconstruction of the e
 \node[box, draw=accent] (r1) at (2.4, -4.0) {$\llcorner$ Recovery: bounded\_retry [attempt=1, backoff=10ms]};
 \node[box] (t2_ret) at (2.4, -4.8) {$\llcorner$ Tool: lookup("link-7a8f09") [status=OK, dur=18ms]};
 \node[box] (c3) at (0.8, -5.6) {$\llcorner$ Step 3: chat (terminal answer) [status=PASS, cited=2]};
-\end{tikzpicture}
+\end{tikzpicture}%
+}
 \end{center}
 
 \subsection{Crash-Surviving SQLite Spans}
@@ -153,7 +152,8 @@ Project \textbf{P13} integrates Google SRE-style multi-burn-rate alerting over t
 
 % ==============================================================================
 \vspace{12pt}
-\section{12 --- Failure Detection}
+\needspace{8\baselineskip}
+\section{Failure Detection}
 
 \subsection{Detection vs Diagnosis vs Correctness}
 Reliability engineering requires separating four sequential questions:
@@ -168,7 +168,7 @@ Reliability engineering requires separating four sequential questions:
 In Day 15 (Q2), the deterministic detector was evaluated across 44 labelled test runs:
 \begin{center}
 \small
-\begin{tabular}{lcccc}
+\begin{tabularx}{\textwidth}{p{0.36\textwidth}cccc}
 \toprule
 \textbf{Detector Evaluation Slice} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 Score} & \textbf{Miss Breakdown} \\
 \midrule
@@ -176,7 +176,7 @@ Overall Aggregate & \textbf{1.000} & \textbf{0.615} & \textbf{0.762} & 10 False 
 Structural Transport (F1, F2, F4, F6) & 1.000 & 1.000 & 1.000 & 0 False Negatives \\
 Semantic Escapes (F3, F5) & 1.000 & 0.200 & 0.333 & 10 False Negatives \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 \begin{callout}[accent]{The Anatomy of the 10 False Negatives}

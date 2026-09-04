@@ -145,6 +145,24 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{5pt}
 
+% Tighten TOC line spacing so all 33 sections fit on one page
+\makeatletter
+\renewcommand*\l@section[2]{%
+  \ifnum \c@tocdepth >\z@
+    \addpenalty\@secpenalty
+    \vskip 0.18em \@plus\p@
+    \setlength\@tempdima{1.8em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries\small\sffamily
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+    \endgroup
+  \fi}
+\makeatother
+
 \begin{document}
 
 % ==============================================================================
@@ -204,31 +222,18 @@ This document reports on both completed, validated experimental findings (Phase 
 
 % Sections will be included here
 \input{sec01_executive_summary.tex}
-\newpage
 \input{sec02_reliability_problem.tex}
-\newpage
 \input{sec04_principles_boundary.tex}
-\newpage
 \input{sec06_core_architecture.tex}
-\newpage
 \input{sec09_faults_observability.tex}
-\newpage
 \input{sec13_recovery_engineering.tex}
-\newpage
 \input{sec14_methodology_statistics.tex}
-\newpage
 \input{sec18_experiment_results.tex}
-\newpage
 \input{sec19_30day_built.tex}
-\newpage
 \input{sec21_phase2_decisions.tex}
-\newpage
 \input{sec23_failures_limitations.tex}
-\newpage
 \input{sec26_framework_lessons.tex}
-\newpage
 \input{sec28_interview_version.tex}
-\newpage
 \input{sec29_repo_reproduce_index.tex}
 
 \end{document}

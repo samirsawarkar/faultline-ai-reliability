@@ -1,10 +1,11 @@
-\section{06 --- Deterministic Environment}
+\section{Deterministic Environment}
 
 \subsection{The Seeded Multi-Hop World}
 To test reliability rigorously, the testbed must eliminate confounding environmental variance. If two agent runs receive different documents, slightly modified questions, or different distractors, any observed difference in outcome cannot be causally attributed to the recovery policy.
 
 FAULTLINE builds a fully deterministic, self-contained world:
 \begin{center}
+\resizebox{0.95\textwidth}{!}{%
 \begin{tikzpicture}[
   node distance=0.5cm and 0.6cm,
   flowbox/.style={draw=primary, fill=lightbg, rounded corners=3pt, font=\footnotesize\sffamily, align=center, inner sep=5pt},
@@ -20,7 +21,8 @@ FAULTLINE builds a fully deterministic, self-contained world:
 \draw[arrow] (gen) -- (scen);
 \draw[arrow] (scen) -- (orc);
 \draw[arrow] (orc) -- (eval);
-\end{tikzpicture}
+\end{tikzpicture}%
+}
 \end{center}
 
 \subsubsection{Corpus Specifications and Link-Layer Mechanics}
@@ -28,7 +30,7 @@ Under Master Experiment Contract (MEC) v1.0 and amendments, the corpus contains 
 \begin{itemize}
     \item \textbf{300 Fact Documents:} Structured records holding factual assertions regarding synthetic entities. Each fact pairs an entity with an attribute and a coined token (e.g., entity \code{E-0142}, attribute \code{auth\_token}, value \code{tok-89f4b1}).
     \item \textbf{60 Distractor Documents:} Lexically similar documents containing plausible but ungrounded tokens designed to test retriever precision.
-    \item \textbf{804 Link Documents (69.1\% of store):} Content-addressed bridge documents introduced in Phase 2 (\code{DECISIONS.md} D-002).
+    \item \textbf{804 Link Documents (69.1\% of store):} Content-addressed bridge records introduced in Phase 2 (\code{DECISIONS.md}, D-002).
 \end{itemize}
 
 \begin{callout}[secondary]{Why the Link Layer is Mechanically Essential}
@@ -60,15 +62,16 @@ Given seed \code{42}, any machine on Earth with Python 3.11/3.12 generates the i
 
 % ==============================================================================
 \vspace{12pt}
-\section{07 --- Oracle Design}
+\needspace{8\baselineskip}
+\section{Oracle Design}
 
 \subsection{Why the Oracle is Foundational}
 In many AI evaluation benchmarks, researchers evaluate LLM outputs by passing them to another LLM (``LLM-as-a-Judge''). This introduces catastrophic circularity: the evaluator possesses the same systemic biases, hallucinations, and borderline blindness as the system under test.
 
 FAULTLINE rejects self-grading. The foundation of all reliability claims is a \textbf{pure-function programmatic oracle}:
 
-\begin{figure}[h!]
-\centering
+\begin{center}
+\resizebox{0.88\textwidth}{!}{%
 \begin{tikzpicture}[
   nodebox/.style={draw=primary, fill=white, rounded corners=3pt, font=\small\sffamily, align=center, inner sep=6pt, line width=0.8pt},
   gatebox/.style={draw=secondary, fill=secondary!10, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt, line width=0.8pt},
@@ -89,9 +92,12 @@ FAULTLINE rejects self-grading. The foundation of all reliability claims is a \t
 
 \draw[arrow, color=accent] (check_ans.east) -| node[pos=0.25, above, font=\scriptsize\bfseries\color{accent}] {NO} (fail.north);
 \draw[arrow, color=accent] (check_src.east) -- node[above, font=\scriptsize\bfseries\color{accent}] {NO} (fail.west);
-\end{tikzpicture}
-\caption{The Dual-Gate Programmatic Oracle. Success requires simultaneous satisfaction of exact token correctness AND complete source provenance.}
-\end{figure}
+\end{tikzpicture}%
+}
+\vspace{0.2em}
+\captionof{figure}{The Dual-Gate Programmatic Oracle. Success requires simultaneous satisfaction of exact token correctness AND complete source provenance.}
+\label{fig:dual_gate}
+\end{center}
 
 \subsection{The Dual-Gate Pass Condition}
 A task execution passes the oracle if and only if:
@@ -114,13 +120,15 @@ If an engineer modifies the oracle to accommodate agent idiosyncrasies, CI fails
 
 % ==============================================================================
 \vspace{12pt}
-\section{08 --- The Controlled Agent}
+\needspace{8\baselineskip}
+\section{The Controlled Agent}
 
 \subsection{The Minimal Reason $\to$ Tool $\to$ Observe Loop}
 To study failure propagation and recovery rigorously, the agent itself must be minimal and transparent. Complex agent architectures (e.g., multi-agent debate, autonomous self-reflection) introduce hundreds of confounding variables.
 
 The FAULTLINE agent is a bounded, single-agent execution loop:
 \begin{center}
+\resizebox{0.95\textwidth}{!}{%
 \begin{tikzpicture}[
   scale=0.92,
   node distance=0.8cm,
@@ -136,7 +144,8 @@ The FAULTLINE agent is a bounded, single-agent execution loop:
 \draw[arrow] (call) -- (obs);
 \draw[arrow] (obs) |- (term);
 \draw[arrow] (term) -| node[left, font=\scriptsize] {If step $< \text{Cap}$} (reason);
-\end{tikzpicture}
+\end{tikzpicture}%
+}
 \end{center}
 
 \subsection{Typed Pydantic Contracts}

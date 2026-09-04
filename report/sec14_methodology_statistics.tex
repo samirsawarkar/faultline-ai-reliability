@@ -1,8 +1,9 @@
-\section{14 --- Experimental Methodology}
+\section{Experimental Methodology}
 
 \subsection{The Causal Scientific Loop}
 Every experiment in FAULTLINE follows a strict seven-stage pipeline designed to eliminate confounding variables:
 \begin{center}
+\resizebox{0.95\textwidth}{!}{%
 \begin{tikzpicture}[
   scale=0.92,
   node distance=0.5cm and 0.6cm,
@@ -23,7 +24,8 @@ Every experiment in FAULTLINE follows a strict seven-stage pipeline designed to 
 \draw[arrow] (run) -- (out);
 \draw[arrow] (out) -- (unc);
 \draw[arrow] (unc) -- (dec);
-\end{tikzpicture}
+\end{tikzpicture}%
+}
 \end{center}
 
 \subsection{The Unit of Randomization: The Seed}
@@ -31,7 +33,8 @@ In FAULTLINE, the experimental unit is the \textbf{seed}. When Policy A is compa
 
 % ==============================================================================
 \vspace{12pt}
-\section{15 --- Statistical Discipline}
+\needspace{8\baselineskip}
+\section{Statistical Discipline}
 
 FAULTLINE uses only standard, well-characterized statistical estimators. Every mathematical method answers a specific engineering question and carries explicit boundaries:
 
@@ -81,7 +84,8 @@ At $n=200$ paired requests, the testbed achieves $80\%$ power to detect a differ
 
 % ==============================================================================
 \vspace{12pt}
-\section{16 --- LLM-as-a-Judge: Validation and Quarantine}
+\needspace{8\baselineskip}
+\section{LLM-as-a-Judge: Validation and Quarantine}
 
 \subsection{Why Evaluators Cannot Validate Themselves}
 The modern AI industry relies heavily on LLM judges to grade LLMs. However, LLM judges exhibit well-documented pathological failure modes:
@@ -95,7 +99,7 @@ The modern AI industry relies heavily on LLM judges to grade LLMs. However, LLM 
 On Day 16, a narrow LLM judge was evaluated against a golden set of 24 human-annotated traces:
 \begin{center}
 \small
-\begin{tabular}{lccl}
+\begin{tabularx}{\textwidth}{lccX}
 \toprule
 \textbf{Validation Metric} & \textbf{Observed Value} & \textbf{Pre-declared Threshold} & \textbf{Verdict / Failure Mechanism} \\
 \midrule
@@ -105,7 +109,7 @@ False Positives (False Alarms) & 0 / 12 & $\le 1$ & PASSED (Perfect specificity)
 False Negatives (False Accepts) & \textbf{6 / 12} & $\le 1$ & \textbf{FAILED (50\% false acceptance rate)} \\
 Borderline-Token Agreement & \textbf{0.0000} & $\ge 0.70$ & \textbf{CATASTROPHIC BLIND SPOT (0/6 detected)} \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 \begin{dangerbox}
@@ -114,11 +118,13 @@ Borderline-Token Agreement & \textbf{0.0000} & $\ge 0.70$ & \textbf{CATASTROPHIC
 
 % ==============================================================================
 \vspace{12pt}
-\section{17 --- Reproducibility as a Scientific Contract}
+\needspace{8\baselineskip}
+\section{Reproducibility as a Scientific Contract}
 
 \subsection{The Complete Evidence Provenance Chain}
 In FAULTLINE, no number exists without a verifiable, executable provenance chain:
 \begin{center}
+\resizebox{0.95\textwidth}{!}{%
 \begin{tikzpicture}[
   scale=0.9,
   node distance=0.4cm and 0.5cm,
@@ -139,7 +145,8 @@ In FAULTLINE, no number exists without a verifiable, executable provenance chain
 \draw[arrow] (run) -- (json);
 \draw[arrow] (json) -- (audit);
 \draw[arrow] (audit) -- (pub);
-\end{tikzpicture}
+\end{tikzpicture}%
+}
 \end{center}
 
 \subsection{The Five Core Reproducibility Guarantees}

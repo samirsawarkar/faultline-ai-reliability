@@ -1,10 +1,10 @@
-\section{29 --- Repository Map}
+\section{Repository Map}
 
 
 
 \begin{center}
 \small
-\begin{tabularx}{\textwidth}{lp{0.32\textwidth}X}
+\begin{tabularx}{\textwidth}{p{0.25\textwidth}p{0.32\textwidth}X}
 \toprule
 \textbf{Directory / File} & \textbf{Architectural Purpose} & \textbf{Key Evidence Produced} \\
 \midrule
@@ -27,7 +27,7 @@
 
 % ==============================================================================
 \vspace{12pt}
-\section{30 --- How to Reproduce}
+\section{How to Reproduce}
 
 The reproduction path is strictly cold-reader compatible: it requires no pre-existing Python environment, API keys, or proprietary dependencies.
 
@@ -76,17 +76,18 @@ For local development within a Python virtual environment:
 \end{verbatim}
 
 % ==============================================================================
-\vspace{12pt}
-\section{31 --- Evidence Index}
+\clearpage
+\section{Evidence Index}
 
 Every primary empirical claim in this report resolves to an immutable JSON pointer and generating command in CI:
 
 \begin{center}
 \begingroup
 \scriptsize
-\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{0.90}
+\setlength{\tabcolsep}{2pt}
 \renewcommand{\code}[1]{{\scriptsize\ttfamily\nolinkurl{#1}}}
-\begin{longtable}{p{0.05\textwidth}p{0.24\textwidth}p{0.23\textwidth}p{0.21\textwidth}p{0.14\textwidth}p{0.07\textwidth}}
+\begin{longtable}{p{0.05\textwidth}p{0.25\textwidth}p{0.23\textwidth}p{0.21\textwidth}p{0.14\textwidth}p{0.06\textwidth}}
 \toprule
 \textbf{Claim ID} & \textbf{Rendered Claim Value} & \textbf{Source JSON File} & \textbf{Exact JSON Pointer} & \textbf{Generating Script} & \textbf{Limitation} \\
 \midrule
@@ -128,8 +129,8 @@ Every primary empirical claim in this report resolves to an immutable JSON point
 \end{center}
 
 % ==============================================================================
-\vspace{12pt}
-\section{32 --- Roadmap}
+\clearpage
+\section{Roadmap}
 
 The forward roadmap separates immediate engineering obligations from medium-term research:
 
@@ -160,7 +161,7 @@ The forward roadmap separates immediate engineering obligations from medium-term
 
 % ==============================================================================
 \vspace{12pt}
-\section{33 --- Final Engineering Assessment}
+\section{Final Engineering Assessment}
 
 \subsection{Brutally Honest Staff Evaluation}
 Writing an honest portfolio requires evaluating one's own work with the same skepticism an external staff reviewer would apply:

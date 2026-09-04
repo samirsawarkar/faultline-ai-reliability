@@ -1,4 +1,4 @@
-\section{04 --- Design Principles}
+\section{Design Principles}
 
 FAULTLINE is governed by ten non-negotiable engineering laws. Each principle was instituted in response to concrete failure modes in AI measurement and evaluation:
 
@@ -15,7 +15,7 @@ FAULTLINE is governed by ten non-negotiable engineering laws. Each principle was
     \item \textbf{Oracle before agent complexity.}
     \begin{itemize}
         \item \textit{Why it exists:} Building a complex agent before establishing an infallible pass/fail ground truth leads to grading the agent on subjective, shifting criteria.
-        \item \textit{Implementation:} The programmatic oracle (\code{oracle\_check}) was frozen and hash-pinned on Day 1 (\code{dc5eef1c...}) before any multi-step agent code was written.
+        \item \textit{Implementation:} Programmatic oracle \code{oracle\_check} was frozen and hash-pinned on Day 1 (\code{dc5eef1c...}) before agent code was written.
         \item \textit{Failure prevented:} Moving the goalposts by modifying the evaluation standard to flatter agent performance.
     \end{itemize}
 
@@ -77,7 +77,8 @@ FAULTLINE is governed by ten non-negotiable engineering laws. Each principle was
 \end{enumerate}
 
 \vspace{12pt}
-\section{05 --- System Boundary}
+\needspace{8\baselineskip}
+\section{System Boundary}
 
 To establish technical credibility, a reliability system must define what it is \textbf{not} with the same rigor as what it is. Overclaiming scope is an immediate disqualifier for staff-level engineering work.
 
