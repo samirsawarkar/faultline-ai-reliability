@@ -1,3 +1,12 @@
+> [!IMPORTANT]
+> **OPERATIONAL DRILL NOTICE — NOT A LIVE PRODUCTION OUTAGE**
+>
+> This document is an incident response **DRILL** conducted against a deliberately injected degradation using the `StubModel` test harness. The service name (`faultline-fact-finding-agent`), deployment versions (`v2.4.1-rc1`), and on-call responder designations are fictional narrative scaffolding for drill fidelity; no live production system existed or was impacted.
+>
+> **What is real:** The SLI measurements collected in `trace.db`, the Google SRE multiwindow multi-burn-rate arithmetic (15.0x fast-burn rate), the 30-day error budget consumption calculations (2.08% / 10.42%), and the automated alert firing and clearing logic.
+>
+> **What is narrative scaffolding:** The canary promotion event, the human responder timeline, the rollback commands, and the external ticketing references.
+
 # Post-Incident Report: INC-20260904-01
 ## High Burn-Rate Degradation on Agent Grounded Pass Rate & Infrastructure Availability
 

@@ -1,6 +1,6 @@
 # P13: SLO Monitoring, Multi-Burn-Rate Alerting & Incident Response
 
-Implements production-grade SLO tracking and incident response for the FAULTLINE fact-finding agent based on the Google SRE multiwindow multi-burn-rate alerting framework.
+Implements production-grade SLO tracking and incident response for the FAULTLINE fact-finding agent based on the Google SRE multiwindow multi-burn-rate alerting framework. Note: all incident response documentation in `INCIDENT.md` represents an operational drill conducted against a deliberately injected failure using the `StubModel` test harness with real SLI telemetry measured from `trace.db`.
 
 ## Core Components
 - `slo.yaml`: Full SLO definitions (Grounded Pass Rate, Agent Infrastructure Errors, P95 Step Latency) with window durations, target thresholds, error budgets, and architectural rationales.
