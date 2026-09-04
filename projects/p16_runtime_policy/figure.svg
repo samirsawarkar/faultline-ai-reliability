@@ -1,0 +1,96 @@
+<svg width="760" height="520" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg)" rx="12"/>
+
+  <!-- Header -->
+  <text x="380" y="36" font-size="20" font-weight="700" fill="#f8fafc" text-anchor="middle">P16: Runtime Policy Enforcement &amp; False-Positive Cost</text>
+  <text x="380" y="58" font-size="13" fill="#94a3b8" text-anchor="middle">Deterministic Architectural Authorization — No Detector Running</text>
+
+  <!-- Left Card: Hostile Enforcement by Rule -->
+  <g transform="translate(36, 82)">
+    <rect width="400" height="280" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" filter="url(#card-shadow)"/>
+    <text x="20" y="28" font-size="14" font-weight="600" fill="#f8fafc">Adversarial Deny Rate by Policy Rule (n=1,000)</text>
+    <text x="20" y="46" font-size="11" fill="#64748b">100% Attacker-Controlled Hostile Model Calls</text>
+
+    <!-- Y Axis & Baseline -->
+    <line x1="125" y1="65" x2="125" y2="245" stroke="#475569" stroke-width="1"/>
+    <line x1="125" y1="245" x2="370" y2="245" stroke="#475569" stroke-width="1"/>
+    <!-- Row: Allowlist -->
+    <text x="115" y="94" font-size="11" font-weight="500" fill="#cbd5e1" text-anchor="end">Allowlist</text>
+    <rect x="125" y="80" width="200" height="20" rx="3" fill="#ef4444"/>
+    <text x="333" y="94" font-size="11" font-weight="600" fill="#fca5a5">100%</text>
+    <text x="365" y="94" font-size="9" fill="#94a3b8" text-anchor="end">[98.1%, 100.0%]</text>
+    <!-- Row: Doc ID Pattern -->
+    <text x="115" y="130" font-size="11" font-weight="500" fill="#cbd5e1" text-anchor="end">Doc ID Pattern</text>
+    <rect x="125" y="116" width="200" height="20" rx="3" fill="#ef4444"/>
+    <text x="333" y="130" font-size="11" font-weight="600" fill="#fca5a5">100%</text>
+    <text x="365" y="130" font-size="9" fill="#94a3b8" text-anchor="end">[98.1%, 100.0%]</text>
+    <!-- Row: Query Length -->
+    <text x="115" y="166" font-size="11" font-weight="500" fill="#cbd5e1" text-anchor="end">Query Length</text>
+    <rect x="125" y="152" width="200" height="20" rx="3" fill="#ef4444"/>
+    <text x="333" y="166" font-size="11" font-weight="600" fill="#fca5a5">100%</text>
+    <text x="365" y="166" font-size="9" fill="#94a3b8" text-anchor="end">[98.1%, 100.0%]</text>
+    <!-- Row: Budget Cap -->
+    <text x="115" y="202" font-size="11" font-weight="500" fill="#cbd5e1" text-anchor="end">Budget Cap</text>
+    <rect x="125" y="188" width="200" height="20" rx="3" fill="#ef4444"/>
+    <text x="333" y="202" font-size="11" font-weight="600" fill="#fca5a5">100%</text>
+    <text x="365" y="202" font-size="9" fill="#94a3b8" text-anchor="end">[98.1%, 100.0%]</text>
+    <!-- Row: Deny Default -->
+    <text x="115" y="238" font-size="11" font-weight="500" fill="#cbd5e1" text-anchor="end">Deny Default</text>
+    <rect x="125" y="224" width="200" height="20" rx="3" fill="#ef4444"/>
+    <text x="333" y="238" font-size="11" font-weight="600" fill="#fca5a5">100%</text>
+    <text x="365" y="238" font-size="9" fill="#94a3b8" text-anchor="end">[98.1%, 100.0%]</text>
+    <text x="247" y="262" font-size="10" fill="#94a3b8" text-anchor="middle">Denial Rate (100% = Full Block)</text>
+  </g>
+
+  <!-- Right Card: False-Positive Cost on Legitimate Traffic -->
+  <g transform="translate(456, 82)">
+    <rect width="268" height="280" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" filter="url(#card-shadow)"/>
+    <text x="20" y="28" font-size="14" font-weight="600" fill="#f8fafc">False-Positive Cost</text>
+    <text x="20" y="46" font-size="11" fill="#64748b">Legitimate Traffic (Solver Stub)</text>
+
+    <!-- Big Metric Box: FP Rate -->
+    <rect x="20" y="65" width="228" height="85" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="134" y="92" font-size="11" fill="#94a3b8" text-anchor="middle">FALSE-POSITIVE RATE</text>
+    <text x="134" y="125" font-size="28" font-weight="700" fill="#22c55e" text-anchor="middle">0.00%</text>
+    <text x="134" y="142" font-size="10" fill="#64748b" text-anchor="middle">0 / 2,004 calls blocked</text>
+
+    <!-- Details List -->
+    <g transform="translate(20, 168)">
+      <text x="0" y="0" font-size="11" fill="#94a3b8">95% Wilson CI:</text>
+      <text x="228" y="0" font-size="11" font-weight="600" fill="#f8fafc" text-anchor="end">[0.00%, 0.19%]</text>
+
+      <text x="0" y="22" font-size="11" fill="#94a3b8">Calls Tested:</text>
+      <text x="228" y="22" font-size="11" font-weight="600" fill="#f8fafc" text-anchor="end">2,004</text>
+
+      <text x="0" y="44" font-size="11" fill="#94a3b8">Scenarios Run:</text>
+      <text x="228" y="44" font-size="11" font-weight="600" fill="#f8fafc" text-anchor="end">312</text>
+
+      <text x="0" y="66" font-size="11" fill="#94a3b8">Task Pass Rate:</text>
+      <text x="228" y="66" font-size="11" font-weight="600" fill="#22c55e" text-anchor="end">100.0%</text>
+    </g>
+  </g>
+
+  <!-- Bottom Banner: Architectural Guarantee & Scope Notice -->
+  <g transform="translate(36, 380)">
+    <rect width="688" height="110" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" filter="url(#card-shadow)"/>
+    <circle cx="32" cy="36" r="12" fill="#0284c7"/>
+    <text x="32" y="41" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">i</text>
+    <text x="56" y="32" font-size="12" font-weight="700" fill="#38bdf8">ARCHITECTURAL SCOPE &amp; CORE GUARANTEE</text>
+    <text x="56" y="52" font-size="11" fill="#cbd5e1">Runtime policy validates tool calls at execution boundaries — it is NOT a prompt injection detector.</text>
+    <text x="56" y="70" font-size="11" fill="#94a3b8">Authorization holds even when the model is 100% compromised. Tool poisoning is handled in P8;</text>
+    <text x="56" y="88" font-size="11" fill="#94a3b8">adversarial input suites in P9. ZERO forbidden calls reached ToolBox (0 / 1,000 hostile attempts).</text>
+  </g>
+</svg>

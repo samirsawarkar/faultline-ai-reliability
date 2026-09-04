@@ -9,6 +9,7 @@ from .contracts import (
 from .tools import ToolBox
 from .model import ModelInterface, ModelResponse
 from faultline_p2.trace.store import TraceStore
+from faultline_p2.policy import PolicyProtocol
 
 def count_tokens(messages: List[Dict[str, Any]]) -> int:
     enc = tiktoken.get_encoding("cl100k_base")
@@ -21,7 +22,7 @@ def run_agent(
     step_cap: int = 12,
     trace_store: Optional[TraceStore] = None,
     run_id: Optional[str] = None,
-    policy: Optional[Any] = None,
+    policy: Optional[PolicyProtocol] = None,
 ) -> AgentOutcome:
     if policy is None and isinstance(env, dict):
         policy = env.get("policy")

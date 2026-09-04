@@ -331,7 +331,7 @@ clean:
 	find . -type d -name .pytest_cache -prune -exec rm -rf {} +
 
 # Phase 2 developer entry points
-.PHONY: phase2-install phase2-test phase2-corpus phase2-preflight
+.PHONY: phase2-install phase2-test phase2-corpus phase2-preflight p01 p13 p15 p16
 
 phase2-install:
 	$(PY) -m pip install -e .
@@ -354,3 +354,7 @@ p13:
 
 p15:
 	.venv/bin/python projects/p15_resilience/run.py
+
+p16:
+	.venv/bin/python projects/p16_runtime_policy/run.py
+

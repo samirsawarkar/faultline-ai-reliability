@@ -1,7 +1,7 @@
 """Typed policy enforcement decisions."""
 from __future__ import annotations
 from dataclasses import dataclass, field
-from typing import Any, Dict
+from typing import Any, Dict, Optional, Protocol, runtime_checkable
 
 
 @dataclass(frozen=True)
@@ -21,3 +21,17 @@ class PolicyDecision:
             "tool": self.tool,
             "arguments": self.arguments,
         }
+
+
+@runtime_checkable
+class PolicyProtocol(Protocol):
+    """Protocol for runtime authorization policy engines."""
+
+    def evaluate(
+        self,
+        raw_call: Any,
+        run_id: Optional[str] = None,
+        trace_store: Optional[Any] = None,
+    ) -> PolicyDecision:
+        """Evaluate a tool call against policy rules."""
+        ...
