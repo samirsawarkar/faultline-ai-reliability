@@ -1,0 +1,6 @@
+# Decisions for P15 Agent Resilience
+
+- **Seeded Deterministic Jitter**: Randomness in retry backoff can introduce non-reproducible test flakes. We pass an explicit integer seed into `random.Random(seed)` within `RetryPolicy`, ensuring 100% deterministic backoff delays across reproduction runs while properly implementing the jitter formula.
+- **Circuit Breaker Granularity**: Retries absorb transient, isolated errors. The circuit breaker increments its consecutive failure counter only when an operation exhausts all configured retries. This cleanly distinguishes transient provider jitter (which retries resolve) from persistent provider outages (which require tripping the breaker to avoid cascading load).
+- **Zero-Spend Fault Injection**: Rather than purchasing unreliable sandbox endpoints or mocking low-level socket connections, `FaultInjectingEndpoint` implements `ModelInterface` directly. It injects timeouts, HTTP 503s, and HTTP 429s deterministically while passing successful requests to the solver stub.
+- **Cost Quantification**: Resilience is not free. We quantify the explicit trade-off: reliability gains (+44% to +64% task pass rate) require an additional 105% to 232% in token call volume and increased latency due to backoff pauses.

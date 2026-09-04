@@ -1,0 +1,146 @@
+{
+  "metadata": {
+    "project": "p15_resilience",
+    "seed": 42,
+    "sample_size": 200,
+    "max_retries": 3,
+    "backoff": "exponential_with_seeded_jitter",
+    "circuit_breaker": "closed_open_half_open"
+  },
+  "comparisons": [
+    {
+      "failure_rate": 0.0,
+      "n_tasks": 200,
+      "without_resilience": {
+        "passed": 200,
+        "pass_rate": 1.0,
+        "wilson_ci": [
+          0.9812,
+          1.0
+        ],
+        "endpoint_calls": 1196,
+        "avg_latency_ms": 11.06
+      },
+      "with_resilience": {
+        "passed": 200,
+        "pass_rate": 1.0,
+        "wilson_ci": [
+          0.9812,
+          1.0
+        ],
+        "endpoint_calls": 1196,
+        "retried_calls": 0,
+        "avg_latency_ms": 11.13
+      },
+      "cost": {
+        "extra_calls": 0,
+        "extra_calls_percent": 0.0,
+        "extra_latency_per_task_ms": 0.06,
+        "reliability_gain": 0.0
+      }
+    },
+    {
+      "failure_rate": 0.15,
+      "n_tasks": 200,
+      "without_resilience": {
+        "passed": 95,
+        "pass_rate": 0.475,
+        "wilson_ci": [
+          0.4069,
+          0.544
+        ],
+        "endpoint_calls": 759,
+        "avg_latency_ms": 6.78
+      },
+      "with_resilience": {
+        "passed": 200,
+        "pass_rate": 1.0,
+        "wilson_ci": [
+          0.9812,
+          1.0
+        ],
+        "endpoint_calls": 1409,
+        "retried_calls": 213,
+        "avg_latency_ms": 10.42
+      },
+      "cost": {
+        "extra_calls": 650,
+        "extra_calls_percent": 85.64,
+        "extra_latency_per_task_ms": 3.64,
+        "reliability_gain": 0.525
+      }
+    },
+    {
+      "failure_rate": 0.3,
+      "n_tasks": 200,
+      "without_resilience": {
+        "passed": 41,
+        "pass_rate": 0.205,
+        "wilson_ci": [
+          0.1549,
+          0.2663
+        ],
+        "endpoint_calls": 507,
+        "avg_latency_ms": 3.08
+      },
+      "with_resilience": {
+        "passed": 193,
+        "pass_rate": 0.965,
+        "wilson_ci": [
+          0.9295,
+          0.9829
+        ],
+        "endpoint_calls": 1645,
+        "retried_calls": 478,
+        "avg_latency_ms": 11.33
+      },
+      "cost": {
+        "extra_calls": 1138,
+        "extra_calls_percent": 224.46,
+        "extra_latency_per_task_ms": 8.25,
+        "reliability_gain": 0.76
+      }
+    },
+    {
+      "failure_rate": 0.45,
+      "n_tasks": 200,
+      "without_resilience": {
+        "passed": 26,
+        "pass_rate": 0.13,
+        "wilson_ci": [
+          0.0903,
+          0.1837
+        ],
+        "endpoint_calls": 399,
+        "avg_latency_ms": 2.46
+      },
+      "with_resilience": {
+        "passed": 162,
+        "pass_rate": 0.81,
+        "wilson_ci": [
+          0.75,
+          0.8583
+        ],
+        "endpoint_calls": 1790,
+        "retried_calls": 751,
+        "avg_latency_ms": 8.69
+      },
+      "cost": {
+        "extra_calls": 1391,
+        "extra_calls_percent": 348.62,
+        "extra_latency_per_task_ms": 6.23,
+        "reliability_gain": 0.68
+      }
+    }
+  ],
+  "circuit_breaker_proof": {
+    "failure_threshold": 3,
+    "cooldown_seconds": 5.0,
+    "calls_attempted_outage": 15,
+    "calls_reached_endpoint": 3,
+    "fast_fails_shed": 12,
+    "load_reduction_percent": 80.0,
+    "breaker_state_during_outage": "OPEN",
+    "breaker_state_after_recovery": "CLOSED"
+  }
+}

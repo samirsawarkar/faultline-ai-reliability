@@ -351,3 +351,6 @@ p01:
 
 p13:
 	.venv/bin/python projects/p13_slo_incident/run.py
+
+p15:
+	.venv/bin/python projects/p15_resilience/run.py
