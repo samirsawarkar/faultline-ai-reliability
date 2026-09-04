@@ -36,6 +36,14 @@ class TraceStore:
             (val, run_id, scenario_id)
         )
 
+    def log_policy_decision(self, run_id: Optional[str], tool_name: str, allowed: bool, rule: str, reason: str):
+        decision_id = str(uuid.uuid4())
+        now = datetime.datetime.utcnow().isoformat()
+        self.conn.execute("""
+            INSERT INTO policy_decisions (decision_id, run_id, tool_name, allowed, rule, reason, timestamp)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        """, (decision_id, run_id, tool_name, 1 if allowed else 0, rule, reason, now))
+
     def log_span(self, run_id: str, scenario_id: str, tier: str, step_index: int, 
                  model_name: str, provider: str, model_version: str,
                  tool_name: Optional[str] = None, quantization: Optional[str] = None,

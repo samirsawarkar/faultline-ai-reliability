@@ -24,4 +24,14 @@ CREATE TABLE IF NOT EXISTS spans (
     timestamp TEXT,
     verdict INTEGER
 );
+
+CREATE TABLE IF NOT EXISTS policy_decisions (
+    decision_id TEXT PRIMARY KEY,
+    run_id TEXT,
+    tool_name TEXT,
+    allowed INTEGER,
+    rule TEXT,
+    reason TEXT,
+    timestamp TEXT
+);
 """

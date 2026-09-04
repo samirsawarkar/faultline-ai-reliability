@@ -20,8 +20,11 @@ def run_agent(
     model: ModelInterface, 
     step_cap: int = 12,
     trace_store: Optional[TraceStore] = None,
-    run_id: Optional[str] = None
+    run_id: Optional[str] = None,
+    policy: Optional[Any] = None,
 ) -> AgentOutcome:
+    if policy is None and isinstance(env, dict):
+        policy = env.get("policy")
     toolbox = ToolBox(env)
     
     messages = [
@@ -98,6 +101,33 @@ def run_agent(
                 trace=trace
             )
             
+        if policy is not None:
+            decision = policy.evaluate(response.tool_call, run_id=run_id, trace_store=trace_store)
+            if not decision.allowed:
+                trace.append(AgentStep(
+                    index=step_idx,
+                    thought=response.thought,
+                    action_type="policy_denial"
+                ))
+                if trace_store and run_id:
+                    tool_name = response.tool_call.get("tool", "unknown") if isinstance(response.tool_call, dict) else "unknown"
+                    trace_store.log_span(
+                        run_id=run_id, scenario_id=task.task_id, tier=task.tier, step_index=step_idx,
+                        model_name=model_name, provider=provider, model_version=version,
+                        tool_name=tool_name, prompt_tokens=prompt_tokens, completion_tokens=completion_tokens,
+                        latency_ms=latency, termination_reason="policy_denial"
+                    )
+                messages.append({
+                    "role": "assistant",
+                    "content": response.thought,
+                    "tool_calls": [response.tool_call]
+                })
+                messages.append({
+                    "role": "tool",
+                    "content": json.dumps({"error": f"POLICY_DENIED: [{decision.rule}] {decision.reason}"})
+                })
+                continue
+
         try:
             call_obj = TOOL_CALL_ADAPTER.validate_python(response.tool_call)
         except Exception as e:
