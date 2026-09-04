@@ -347,4 +347,4 @@ phase2-preflight:
 
 
 p01:
-	.venv/bin/python projects/p01_baseline/run.py --confirm
+	.venv/bin/python projects/p01_baseline/run.py

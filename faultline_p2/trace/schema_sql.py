@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS spans (
     completion_tokens INTEGER,
     latency_ms REAL,
     termination_reason TEXT,
-    timestamp TEXT
+    timestamp TEXT,
+    verdict INTEGER
 );
 """
