@@ -5,3 +5,5 @@ __pycache__/
 .aes/
 PLAN.md
 CLAUDE.md
+.env
+
