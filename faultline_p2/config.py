@@ -29,16 +29,16 @@ MODEL_LADDER: Dict[str, Dict[str, Any]] = {
         "output_price_per_m": 0.20,
     },
     "R2": {
-        "model": os.getenv("MODEL_R2", "qwen/qwen3.8-flash"),
+        "model": os.getenv("MODEL_R2", "z-ai/glm-5.3-flash"),
+        "name": "glm-5.3-flash",
+        "input_price_per_m": 0.075,
+        "output_price_per_m": 0.25,
+    },
+    "R3": {
+        "model": os.getenv("MODEL_R3", "qwen/qwen3.8-flash"),
         "name": "qwen3.8-flash",
         "input_price_per_m": 0.14,
         "output_price_per_m": 0.28,
-    },
-    "R3": {
-        "model": os.getenv("MODEL_R3", "deepseek/deepseek-v4-pro"),
-        "name": "deepseek-v4-pro",
-        "input_price_per_m": 0.435,
-        "output_price_per_m": 0.87,
     },
     "R4": {
         "model": os.getenv("MODEL_R4", "openai/gpt-5.6-luna"),
@@ -47,14 +47,15 @@ MODEL_LADDER: Dict[str, Dict[str, Any]] = {
         "output_price_per_m": 0.60,
     },
     "R5": {
-        "model": os.getenv("MODEL_R5", "z-ai/glm-5.3-flash"),
-        "name": "glm-5.3-flash",
+        "model": os.getenv("MODEL_R5", "google/gemini-3.7-flash"),
+        "name": "gemini-3.7-flash",
+        # PROVISIONAL: Placeholder estimate until pre-flight measures gemini-3.7-flash
         "input_price_per_m": 0.15,
         "output_price_per_m": 0.50,
     },
     "R6": {
-        "model": os.getenv("MODEL_R6", "google/gemini-3.7-flash"),
-        "name": "gemini-3.7-flash",
+        "model": os.getenv("MODEL_R6", "deepseek/deepseek-v4-pro"),
+        "name": "deepseek-v4-pro",
         "input_price_per_m": 0.435,
         "output_price_per_m": 0.87,
     },
