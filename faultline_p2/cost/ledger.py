@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import threading
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -129,47 +130,52 @@ class CostLedger:
     ) -> None:
         self.ledger_path = Path(ledger_path)
         self.project_caps = project_caps or DEFAULT_PROJECT_CAPS
+        self._lock = threading.RLock()
 
     def record(self, entry: LedgerEntry) -> None:
-        """Append entry to ledger immediately."""
-        self.ledger_path.parent.mkdir(parents=True, exist_ok=True)
-        line = json.dumps(entry.model_dump(), sort_keys=True) + "\n"
-        with open(self.ledger_path, "a", encoding="utf-8") as f:
-            f.write(line)
-            f.flush()
+        """Append entry to ledger immediately with thread-safety."""
+        with self._lock:
+            self.ledger_path.parent.mkdir(parents=True, exist_ok=True)
+            line = json.dumps(entry.model_dump(), sort_keys=True) + "\n"
+            with open(self.ledger_path, "a", encoding="utf-8") as f:
+                f.write(line)
+                f.flush()
 
     def read_entries(self, project: Optional[str] = None) -> List[LedgerEntry]:
-        if not self.ledger_path.exists():
-            return []
-        entries: List[LedgerEntry] = []
-        with open(self.ledger_path, "r", encoding="utf-8") as f:
-            for line in f:
-                line = line.strip()
-                if line:
-                    item = json.loads(line)
-                    if project is None or item.get("project") == project:
-                        entries.append(LedgerEntry(**item))
-        return entries
+        with self._lock:
+            if not self.ledger_path.exists():
+                return []
+            entries: List[LedgerEntry] = []
+            with open(self.ledger_path, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if line:
+                        item = json.loads(line)
+                        if project is None or item.get("project") == project:
+                            entries.append(LedgerEntry(**item))
+            return entries
 
     def spent(self, project: Optional[str] = None) -> float:
-        entries = self.read_entries(project=project)
-        return round(sum(e.usd for e in entries), 6)
+        with self._lock:
+            entries = self.read_entries(project=project)
+            return round(sum(e.usd for e in entries), 6)
 
     def check_cap(self, project: str, additional_usd: float = 0.0) -> float:
         """Check remaining cap for a project. Raises BudgetExceeded if exceeded."""
-        cap = self.project_caps.get(project, 0.0)
-        spent_so_far = self.spent(project=project)
-        total_projected = spent_so_far + additional_usd
-        if total_projected > cap:
-            raise BudgetExceeded(
-                f"Budget cap exceeded for project '{project}': "
-                f"spent ${spent_so_far:.4f} + projected ${additional_usd:.4f} > cap ${cap:.4f}"
-            )
-        # Also check global ceiling
-        global_spent = self.spent() + additional_usd
-        if global_spent > TOTAL_BUDGET_CEILING:
-            raise BudgetExceeded(
-                f"Global budget ceiling exceeded: "
-                f"total ${global_spent:.4f} > ceiling ${TOTAL_BUDGET_CEILING:.4f}"
-            )
-        return round(cap - total_projected, 6)
+        with self._lock:
+            cap = self.project_caps.get(project, 0.0)
+            spent_so_far = self.spent(project=project)
+            total_projected = spent_so_far + additional_usd
+            if total_projected > cap:
+                raise BudgetExceeded(
+                    f"Budget cap exceeded for project '{project}': "
+                    f"spent ${spent_so_far:.4f} + projected ${additional_usd:.4f} > cap ${cap:.4f}"
+                )
+            # Also check global ceiling
+            global_spent = self.spent() + additional_usd
+            if global_spent > TOTAL_BUDGET_CEILING:
+                raise BudgetExceeded(
+                    f"Global budget ceiling exceeded: "
+                    f"total ${global_spent:.4f} > ceiling ${TOTAL_BUDGET_CEILING:.4f}"
+                )
+            return round(cap - total_projected, 6)

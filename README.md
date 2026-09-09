@@ -1,11 +1,27 @@
 # FAULTLINE
 
-**A reproducible research workbench for finding where document-grounded AI
-systems fail—and testing whether recovery actually improves the user outcome.**
+**A reproducible research workbench for finding where document-grounded AI systems fail—and testing whether recovery actually improves the user outcome.**
 
 [![CI](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml)
 [![Tests](https://img.shields.io/badge/tests-433%20passing-brightgreen.svg)](day26/evidence/test_report.json)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+**Phase 1** established the simulation foundations, failure taxonomy, and recovery mechanisms across 30 reproducible days. **Phase 2** measures real-world LLM agent reliability against live model APIs on a canonical 350-scenario multi-hop corpus.
+
+---
+
+### Grounding Zero-Point (Phase 2 / Project P3)
+
+Real agent grounded pass rate on multi-hop document retrieval degrades steeply as required retrieval depth increases: **100.0%** $\to$ **61.2%** $\to$ **7.6%** on R2 (`glm-5.3-flash`), **20.9%** $\to$ **4.5%** $\to$ **0.0%** on R4 (`gpt-5.6-luna`), and **73.1%** $\to$ **26.9%** $\to$ **1.5%** on R6 (`deepseek-v4-pro`).
+
+![Grounding Zero-Point](projects/p03_grounding/figure.svg)
+
+```bash
+pip install -e .
+make p03  # runs P3 Grounding Zero-Point reproduction
+```
+
+---
 
 ## Start here
 

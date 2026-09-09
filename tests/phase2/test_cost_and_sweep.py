@@ -175,3 +175,45 @@ def test_budget_exceeded_halts_and_preserves_partial_results(tmp_path, sample_pr
     assert partial_data["results"][0]["task_id"] == "task-001"
     assert partial_data["results"][1]["task_id"] == "task-002"
     assert partial_data["halted_due_to_budget"] is True
+
+
+def test_concurrent_sweep_execution(tmp_path, sample_price_table):
+    ledger_path = tmp_path / "ledger_concurrent.jsonl"
+    ledger = CostLedger(
+        ledger_path=ledger_path,
+        project_caps={"p01_baseline": 1.00},
+    )
+
+    runner = SweepRunner(
+        project="p01_baseline",
+        price_table=sample_price_table,
+        ledger=ledger,
+        confirmed=True,
+    )
+
+    tasks = [f"task-{i:03d}" for i in range(20)]
+    import time
+
+    def mock_concurrent_endpoint(task):
+        time.sleep(0.01)
+        usage = CallUsage(input_tokens=1_000, output_tokens=100, usd=0.0001)
+        return {"answer": f"ans-{task}"}, True, usage
+
+    output = runner.execute_sweep(
+        tasks=tasks,
+        get_task_id=lambda t: t,
+        call_fn=mock_concurrent_endpoint,
+        in_tokens_est=1_000,
+        out_tokens_est=100,
+        rung="R1",
+        concurrency=5,
+    )
+
+    assert output.completed_tasks == 20
+    assert len(output.results) == 20
+    # Deterministic order preserved:
+    for i, res in enumerate(output.results):
+        assert res.task_id == f"task-{i:03d}"
+
+    entries = ledger.read_entries("p01_baseline")
+    assert len(entries) == 20

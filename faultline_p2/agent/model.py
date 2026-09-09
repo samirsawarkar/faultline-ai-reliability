@@ -1,6 +1,7 @@
 import urllib.request
 import re
 import json
+import time
 from typing import Optional, Dict, Any, List, Protocol
 from pydantic import BaseModel, Field
 
@@ -106,15 +107,28 @@ class LiteLLMModel(ModelInterface):
             },
         ]
 
-        resp = litellm.completion(
-            model=self.model_name,
-            messages=messages,
-            tools=tools,
-            temperature=0.0,
-            max_tokens=2048,
-            num_retries=2,
-            **extra_kwargs,
-        )
+        resp = None
+        max_attempts = 5
+        for attempt in range(max_attempts):
+            try:
+                resp = litellm.completion(
+                    model=self.model_name,
+                    messages=messages,
+                    tools=tools,
+                    temperature=0.0,
+                    max_tokens=2048,
+                    **extra_kwargs,
+                )
+                break
+            except Exception as e:
+                err_str = str(e).lower()
+                is_rate_limit = "429" in err_str or "rate" in err_str or "limit" in err_str or "timeout" in err_str
+                if attempt < max_attempts - 1 and is_rate_limit:
+                    sleep_time = (0.5 * (2 ** attempt)) + (0.1 * attempt)
+                    time.sleep(sleep_time)
+                else:
+                    raise e
+
         msg = resp.choices[0].message
         thought = msg.content or getattr(msg, "reasoning_content", "") or ""
         
