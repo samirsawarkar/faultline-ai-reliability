@@ -1,5 +1,6 @@
 # Decisions for P1 Baseline
 
-- **Cost Estimation vs Actual**: `run.py` assigns $0.0 to the ledger via `CallUsage(usd=0.0)` for the `StubModel` so that the ledger is not incorrectly decremented during the free test run, but estimates still print as if it's the `R2` tier (`deepseek-v4-flash`).
-- **Standard Pool Subset**: The standard pool has 200 scenarios. To meet the 100 scenario requirement and keep an even mix of tiers, we simply took `[:100]` which preserves whatever interleaving `build_corpus` emitted.
-- **Trace DB**: Traces are isolated per-project in `projects/p01_baseline/trace.db`.
+- **Live Spend Execution**: Executed against live endpoint `z-ai/glm-5.3-flash` via AICredits API (`AICREDITS_BASE_URL` with OpenAI compatibility). Real token usage and spend ($0.144 USD total across 100 scenarios) were recorded to `ledger.jsonl`.
+- **Cost Estimation vs Actual**: `run.py` uses dynamic pricing from `.env` and `MODEL_R2`. Real runs calculate and charge exact token-based USD costs to the ledger, well within the $2.00 cap.
+- **Standard Pool Subset**: Seeded sample of 100 standard pool scenarios (33 T1, 34 T2, 33 T3) evaluated under bounded 12-step budget.
+- **Trace DB**: Real-time spans containing step-level tool calls, prompt/completion tokens, and latencies are recorded in `projects/p01_baseline/trace.db`.

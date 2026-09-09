@@ -9,29 +9,154 @@ class ModelResponse(BaseModel):
     tool_call: Optional[Dict[str, Any]] = None
     answer: Optional[str] = None
     cited_sources: List[str] = Field(default_factory=list)
+    raw_tool_call: Optional[Dict[str, Any]] = None
 
 class ModelInterface(Protocol):
     def generate(self, messages: List[Dict[str, Any]]) -> ModelResponse:
         ...
 
 class LiteLLMModel(ModelInterface):
-    def __init__(self, model_name: str, provider: str, version: str):
+    def __init__(self, model_name: str, provider: str, version: str, dry_run: bool = True):
         self.model_name = model_name
         self.provider = provider
         self.version = version
+        self.dry_run = dry_run
 
     def generate(self, messages: List[Dict[str, Any]]) -> ModelResponse:
         import litellm
-        # X3: Implement the seam properly but never invoke it.
-        # We raise BEFORE dispatching, but we can return the kwargs if we are in a test mode,
-        # or we just raise the kwargs as an exception to assert them in test.
+        import os
+        from dotenv import load_dotenv
+        load_dotenv()
+
         kwargs = {
             "model": self.model_name,
             "messages": messages,
             "temperature": 0.0,
             "max_tokens": 2048,
         }
-        raise RuntimeError("LiteLLM Seam Not Invoked", kwargs)
+        if self.dry_run:
+            raise RuntimeError("LiteLLM Seam Not Invoked", kwargs)
+
+        extra_kwargs: Dict[str, Any] = {}
+        api_base = os.getenv("AICREDITS_BASE_URL")
+        api_key = os.getenv("AICREDITS_API_KEY")
+        if api_base:
+            extra_kwargs["api_base"] = api_base
+            extra_kwargs["custom_llm_provider"] = "openai"
+        if api_key:
+            extra_kwargs["api_key"] = api_key
+
+        tools = [
+            {
+                "type": "function",
+                "function": {
+                    "name": "search",
+                    "description": "Search documents by a query string. Returns matching document IDs, titles, and snippets.",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "query": {"type": "string", "description": "Search query string"}
+                        },
+                        "required": ["query"],
+                    },
+                },
+            },
+            {
+                "type": "function",
+                "function": {
+                    "name": "lookup",
+                    "description": "Look up full text of a document by doc_id.",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "doc_id": {"type": "string", "description": "Document ID"}
+                        },
+                        "required": ["doc_id"],
+                    },
+                },
+            },
+            {
+                "type": "function",
+                "function": {
+                    "name": "calc",
+                    "description": "Perform basic integer arithmetic expression (+ - *).",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "expression": {"type": "string", "description": "Arithmetic expression"}
+                        },
+                        "required": ["expression"],
+                    },
+                },
+            },
+            {
+                "type": "function",
+                "function": {
+                    "name": "answer",
+                    "description": "Provide the final answer and cited document ID.",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "answer": {"type": "string", "description": "Final answer"},
+                            "cited_source": {"type": "string", "description": "Document ID containing the fact"}
+                        },
+                        "required": ["answer", "cited_source"],
+                    },
+                },
+            },
+        ]
+
+        resp = litellm.completion(
+            model=self.model_name,
+            messages=messages,
+            tools=tools,
+            temperature=0.0,
+            max_tokens=2048,
+            num_retries=2,
+            **extra_kwargs,
+        )
+        msg = resp.choices[0].message
+        thought = msg.content or getattr(msg, "reasoning_content", "") or ""
+        
+        if getattr(msg, "tool_calls", None) and len(msg.tool_calls) > 0:
+            tc = msg.tool_calls[0]
+            fn_name = tc.function.name
+            try:
+                fn_args = json.loads(tc.function.arguments) if tc.function.arguments else {}
+            except Exception:
+                fn_args = {}
+                
+            raw_tc = tc.model_dump() if hasattr(tc, "model_dump") else (tc if isinstance(tc, dict) else {"id": getattr(tc, "id", "call_0"), "type": "function", "function": {"name": fn_name, "arguments": tc.function.arguments}})
+            
+            if fn_name == "answer":
+                ans = fn_args.get("answer")
+                src = fn_args.get("cited_source") or fn_args.get("doc_id") or ""
+                return ModelResponse(
+                    thought=thought,
+                    answer=str(ans) if ans is not None else "",
+                    cited_sources=[str(src)] if src else [],
+                    raw_tool_call=raw_tc
+                )
+            elif fn_name in ["search", "lookup", "calc"]:
+                return ModelResponse(
+                    thought=thought,
+                    tool_call={"tool": fn_name, **fn_args},
+                    raw_tool_call=raw_tc
+                )
+
+        if msg.content:
+            try:
+                data = json.loads(msg.content.strip())
+                if isinstance(data, dict):
+                    if "answer" in data:
+                        src = data.get("cited_source") or data.get("doc_id") or ""
+                        return ModelResponse(thought=thought, answer=str(data["answer"]), cited_sources=[str(src)] if src else [])
+                    elif "tool" in data:
+                        return ModelResponse(thought=thought, tool_call=data)
+            except Exception:
+                pass
+                
+        return ModelResponse(thought=thought, answer=None, tool_call=None)
 
 class StubModel(ModelInterface):
     def __init__(self, behavior: str = "correct", scenarios: Optional[List[Any]] = None, explicit_responses: Optional[List[ModelResponse]] = None):

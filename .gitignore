@@ -7,3 +7,10 @@ PLAN.md
 CLAUDE.md
 .env
 
+# LaTeX compilation artifacts & temp inspection files
+*.aux
+*.log
+*.out
+*.toc
+report/main.pdf
+report/*.png

@@ -179,15 +179,29 @@ def run_agent(
                 latency_ms=latency, termination_reason=None
             )
         
-        messages.append({
-            "role": "assistant",
-            "content": response.thought,
-            "tool_calls": [response.tool_call]
-        })
-        messages.append({
-            "role": "tool",
-            "content": result.model_dump_json()
-        })
+        if response.raw_tool_call:
+            raw_tc = response.raw_tool_call
+            messages.append({
+                "role": "assistant",
+                "content": response.thought if response.thought else None,
+                "tool_calls": [raw_tc],
+            })
+            messages.append({
+                "role": "tool",
+                "tool_call_id": raw_tc.get("id", f"call_{step_idx}"),
+                "content": result.model_dump_json(),
+            })
+        else:
+            messages.append({
+                "role": "assistant",
+                "content": response.thought,
+                "tool_calls": [response.tool_call],
+            })
+            messages.append({
+                "role": "tool",
+                "tool_call_id": f"call_{step_idx}",
+                "content": result.model_dump_json(),
+            })
         
     # step cap
     if trace_store and run_id:

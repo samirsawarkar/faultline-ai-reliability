@@ -30,19 +30,26 @@ def main():
     sampled = random.Random(42).sample(std_scenarios, 100)
     tasks = [ScenarioTask(task_id=s.scenario_id, prompt=s.prompt, tier=s.tier) for s in sampled]
     
+    import os
+    from dotenv import load_dotenv
+    load_dotenv()
+
     # Cost Ledger & Pricing
+    if args.real:
+        model_name = os.getenv("MODEL_R2", "z-ai/glm-5.3-flash")
+        in_p = float(os.getenv("PRICE_R2_INPUT", "0.075" if "glm" in model_name else "0.14"))
+        out_p = float(os.getenv("PRICE_R2_OUTPUT", "0.25" if "glm" in model_name else "0.28"))
+        model = LiteLLMModel(model_name, "aicredits", "v1", dry_run=False)
+    else:
+        model_name = "stub"
+        in_p = 0.14
+        out_p = 0.28
+        model = StubModel(behavior="solver")
+
     ledger = CostLedger(Path("projects/p01_baseline/ledger.jsonl"))
     price_table = PriceTable(rungs={
-        "R2": RungPricing(model_name="deepseek-v4-flash", input_price_per_m=0.14, output_price_per_m=0.28)
+        "R2": RungPricing(model_name=model_name, input_price_per_m=in_p, output_price_per_m=out_p)
     })
-    
-    # Model selection
-    if args.real:
-        model = LiteLLMModel("deepseek-v4-flash", "deepseek", "v4")
-        model_name = "deepseek-v4-flash"
-    else:
-        model = StubModel(behavior="solver")
-        model_name = "stub"
         
     in_tokens_est = 8565
     out_tokens_est = 183
@@ -180,7 +187,7 @@ def build_results_from_trace(trace_store_or_path, run_id: Optional[str] = None) 
         final_results = {
             "metadata": {
                 "model": model_name,
-                "corpus_hash": "84e6ff590704aa94d10912f8002716b14c7436080e1a3270b53f9385dc728efc",
+                "corpus_hash": build_corpus().content_hash,
                 "reference": "MEC v1.0 + A-001/A-002"
             },
             "pass@1": {
