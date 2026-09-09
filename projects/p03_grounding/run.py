@@ -25,6 +25,7 @@ from faultline_p2.agent.model import LiteLLMModel, StubModel
 from faultline_p2.cost.ledger import CostLedger, PriceTable, RungPricing
 from faultline_p2.env.corpus import build_corpus
 from faultline_p2.oracle._day01_oracle import oracle_check
+from faultline_p2.resilience import CircuitBreaker, ResilientModel, RetryPolicy
 from faultline_p2.stats.intervals import wilson_interval
 from faultline_p2.sweep.runner import CallUsage, SweepRunner
 from faultline_p2.trace.store import TraceStore
@@ -261,10 +262,22 @@ def extract_rung_metrics(conn: sqlite3.Connection, run_id: str, corpus: Any) -> 
     total_pass = sum(1 for s in scenarios if s["passed"] == 1)
     total_n = len(scenarios)
 
+    has_resilience = conn.execute(
+        "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='run_resilience'"
+    ).fetchone()[0] > 0
+    retried_calls = 0
+    if has_resilience:
+        row = conn.execute(
+            "SELECT retried_calls FROM run_resilience WHERE run_id = ?", (run_id,)
+        ).fetchone()
+        if row and row["retried_calls"] is not None:
+            retried_calls = row["retried_calls"]
+
     rung_res = {
         "run_id": run_id,
         "model": model_name,
         "sample_size": total_n,
+        "retried_calls": retried_calls,
         "pass@1": {
             "score": total_pass / total_n if total_n > 0 else 0,
             "wilson_ci": list(wilson_interval(total_pass, total_n)) if total_n > 0 else [0.0, 0.0],
@@ -345,6 +358,7 @@ def build_results_from_trace(
         primary_rung = "R2" if "R2" in rungs_data else (list(rungs_data.keys())[0] if rungs_data else "R2")
         primary_data = rungs_data.get(primary_rung, {})
 
+        total_retries = sum(v.get("retried_calls", 0) for v in rungs_data.values())
         final_results = {
             "metadata": {
                 "project": "P3",
@@ -352,6 +366,7 @@ def build_results_from_trace(
                 "corpus_hash": corpus.content_hash,
                 "manifest_sha256": manifest_sha,
                 "rungs_evaluated": list(rungs_data.keys()),
+                "total_retried_calls": total_retries,
             },
             "pass@1": primary_data.get("pass@1", {"score": 0.0, "wilson_ci": [0.0, 0.0]}),
             "tiers": primary_data.get("tiers", {}),
@@ -427,7 +442,19 @@ def run_single_rung_sweep(
             model_name = os.getenv("MODEL_R2", "z-ai/glm-5.3-flash")
             in_p = float(os.getenv("PRICE_R2_INPUT", "0.075" if "glm" in model_name else "0.14"))
             out_p = float(os.getenv("PRICE_R2_OUTPUT", "0.25" if "glm" in model_name else "0.28"))
-        model = LiteLLMModel(model_name, "aicredits", "v1", dry_run=False)
+        raw_model = LiteLLMModel(model_name, "aicredits", "v1", dry_run=False)
+        retry_policy = RetryPolicy(
+            max_retries=5,
+            initial_backoff_s=2.0,
+            backoff_multiplier=2.0,
+            max_backoff_s=30.0,
+            seed=42,
+        )
+        model = ResilientModel(
+            inner_model=raw_model,
+            retry_policy=retry_policy,
+            circuit_breaker=CircuitBreaker(failure_threshold=5, cooldown_seconds=5.0),
+        )
     else:
         model_name = "stub"
         in_p = 0.075
@@ -495,6 +522,17 @@ def run_single_rung_sweep(
         partial_output_path=Path("projects/p03_grounding/sweep_output.json"),
     )
     trace_store.end_run(sweep_run_id, "completed")
+
+    retried_calls = getattr(model, "retried_calls", 0)
+    with trace_store._lock:
+        trace_store.conn.execute(
+            "CREATE TABLE IF NOT EXISTS run_resilience (run_id TEXT PRIMARY KEY, retried_calls INTEGER, total_attempts INTEGER)"
+        )
+        trace_store.conn.execute(
+            "INSERT OR REPLACE INTO run_resilience (run_id, retried_calls, total_attempts) VALUES (?, ?, ?)",
+            (sweep_run_id, retried_calls, getattr(model, "total_attempts", 0)),
+        )
+    print(f"Rung {rung_name} sweep finished. Total invocations: {getattr(model, 'total_invocations', 0)}, retried calls: {retried_calls}")
     return sweep_run_id
 
 
