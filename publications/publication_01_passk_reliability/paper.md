@@ -1,8 +1,8 @@
 # Failures Did Not Concentrate: A Falsified Pre-Registration and a 48-Point Cost Upset Across 1,350 Audited Multi-Hop Agent Runs
 
 **Samir Sawarkar**  
-*FAULTLINE AI Reliability Engineering & Antigravity Research*  
-`samir@faultline.ai` · `https://github.com/samirsawarkar/faultline-ai-reliability`  
+*FAULTLINE (Independent Research)*  
+`https://github.com/samirsawarkar/faultline-ai-reliability`  
 **Date:** September 2026 · **Evaluation Protocol:** Minimum Evaluation Contract (MEC) v1.3 (Amendment A-003) · **Status:** Pre-Registered & Cryptographically Sealed
 
 ---
@@ -326,6 +326,12 @@ make p06
 # 4. Inspect trace store and recompile statistical results from raw SQLite spans
 .venv/bin/python projects/p06_passk/run.py --recompile
 ```
+
+---
+
+## Acknowledgements
+
+The evaluation harness, synthetic graph generation, and statistical analysis pipelines were implemented with the assistance of an AI coding agent operating under the author's direction. All experimental designs, pre-registrations, hypotheses, manual trace taxonomy codings, and editorial interpretations are the author's sole responsibility.
 
 ---
 

@@ -1,111 +1,142 @@
-# Retry Doesn’t Help The Way You Think: We Ran 1,350 Multi-Hop Agent Trials with Real Money. Here’s What Broke.
+# Failures Did Not Concentrate: A Pre-Registered Agent Hypothesis Failed in Public (And a Cheap Model Won by 48 Points)
 
 **By Samir Sawarkar**  
-*FAULTLINE AI Reliability Engineering · Antigravity Research*  
+*FAULTLINE (Independent Research)*  
 *Full Paper:* [`paper.md`](./paper.md) · *Code & Data:* [`github.com/samirsawarkar/faultline-ai-reliability`](https://github.com/samirsawarkar/faultline-ai-reliability)
 
 ---
 
 ![Overview of the Experiment](./figure_overview.jpg)
 
-In production AI engineering, everyone repeats the same intuition:
+In production AI engineering, retry loops are ubiquitous. When an autonomous tool-use agent fails, the standard prescription is simple: *just retry it three times ($k=3$)*.
 
-> *"If an agent fails, just retry it 3 times ($k=3$). By basic probability, pass rate compounds as $	ext{pass}^k = 1 - (1 - p)^k$."*
+Under basic probability, if failures are independent random events, multi-trial joint reliability decays exponentially:
+$$\text{pass}^k_{\text{naive}} = (\text{pass@1})^k$$
 
-We decided to test this assumption with real money, pre-registered hypotheses, and cryptographically sealed evaluation contracts. 
+However, practitioners and researchers routinely argue that real agent tasks are non-uniform: hard tasks fail consistently, while easy tasks succeed consistently. Under this **failure concentration** thesis, retries should compound far better than independent coin flips:
+$$\text{pass}^k > (\text{pass@1})^k$$
 
-We ran **1,350 multi-turn agent runs** across **150 hard 5-hop knowledge graph scenarios** over 3 foundation model rungs:
-- **R2:** `z-ai/glm-5.3-flash` (Cheap Workhorse)
-- **R4:** `openai/gpt-5.6-luna` (OpenAI Frontier)
-- **R6:** `deepseek/deepseek-v4-pro` (Frontier Anchor)
+On September 1, 2026, before generating a single token of test data, we pre-registered this claim as **Hypothesis H4** under Minimum Evaluation Contract (MEC) v1.0 in `HYPOTHESES.md`:
+> *"Measured $\text{pass}^3$ strictly exceeds naive compounding $(\text{pass@1})^3$ (disjoint Wilson 95% score intervals) for $\ge 4$ of 6 rungs."*
 
-Every run was executed with real tool calls (BM25 search + document lookup), logged into SQLite traces (25,477 spans), and audited down to the cent in an append-only ledger ($23.73 total spend).
+The pre-registration explicitly bound us to publish regardless of outcome:
+> *"Both publish. Which one ships is decided by the data, and that decision is made here, before any of it exists. A clean null on H4 is a result, not a failed experiment."*
 
-Here are the 3 counter-intuitive findings that surprised us.
+Then we spent real money: **1,350 audited multi-hop agent executions** across 150 reserved Tier 3 scenarios (5-hop knowledge graph traversals requiring 9 specific source documents) $\times$ $k=3$ trials across 3 foundation models, audited to the cent in an append-only ledger ($23.73 total spend, 25,477 logged telemetry spans in SQLite).
 
----
+**The result: Hypothesis H4 was FALSIFIED.**
 
-## 1. The Cheap Workhorse Destroyed the Frontier Model (At 1/18th the Cost)
+Failures did not concentrate into an easy task cluster. On the primary workhorse model carrying statistical mass (R2, `z-ai/glm-5.3-flash`, with 34 scenarios passing all three trials), measured joint reliability was $\text{pass}^3 = 22.67\%$ (Wilson 95% CI $[16.70\%, 30.00\%]$) against naive compounding of $25.14\%$ ($0.6311^3$). The ratio was **$0.902\times$**—the model decayed *below* naive compounding, and the naive estimate sits safely inside the confidence interval.
 
-The common wisdom is that frontier reasoning models are required for complex multi-hop tool use. The data showed the exact opposite:
+Only one model exhibited concentration (R4, `openai/gpt-5.6-luna`), where measured $\text{pass}^3 = 2.00\%$ exceeded naive $0.33\%$ ($6.06\times$)—but that concentration rested on exactly **3 scenarios out of 150**. R6 (`deepseek/deepseek-v4-pro`) collapsed at the floor ($0.00\%$ everywhere; all 450 runs terminated at step 1 with `model_failure`).
 
-| Model | Role | Pass@1 (Single Try) | Pass³ (3/3 Consecutive Passes) | Cost per Grounded Answer |
-|---|---|:---:|:---:|:---:|
-| **`glm-5.3-flash`** (R2) | Cheap Workhorse | **63.11%** | **22.67%** | **$0.0147** (~₹1.30) |
-| **`gpt-5.6-luna`** (R4) | Frontier OpenAI | **14.89%** | **2.00%** | **$0.2680** (~₹23.60) |
-| **`deepseek-v4-pro`** (R6) | Frontier Anchor | 0.00% | 0.00% | N/A *(Provider Timeout)* |
+Under both the original pre-registered threshold ($\ge 4$ of 6 rungs) and the evaluated threshold ($\ge 2$ of 3 rungs), **failure concentration failed to hold**.
 
-- **Statistical Significance:** In a paired McNemar test on identical scenarios, `glm-5.3-flash` outperformed `gpt-5.6-luna` by **+20.67 percentage points** ($p = 8.14 	imes 10^{-7}$), formally declared `ADEQUATELY_POWERED` ($\ge 10	ext{pp}$).
-- **Why did this happen?**  
-  `gpt-5.6-luna` over-reasoned. When search queries returned 0 results, it added boolean quotes and complex multi-word filters, creating self-induced search loops that exhausted the 24-step budget (28% capped runs). In contrast, `glm-5.3-flash` adhered strictly to simple keyword queries, moving rapidly through the 5-hop chain in a median of 15 steps (only 4% capped runs).
+While the data refused our pre-registered hypothesis, it revealed four unexpected operational findings.
 
 ---
 
-## 2. Failure Concentration: The Retry Trap ($6.06	imes$)
+## 1. The 48-Point Cost Upset: Budget Model Destroys Frontier Reasoning
 
-Does retrying an agent 3 times actually improve reliability? **It depends entirely on model accuracy.**
+The conventional playbook assumes that complex multi-hop tool use demands expensive frontier reasoning models. The empirical data showed the exact opposite:
 
-- **For the High-Accuracy Model (`glm-5.3-flash` @ 63%):**  
-  Errors behaved roughly like independent coin flips. Naive compounding predicted $0.6311^3 = 25.1\%$, and the model achieved **$22.7\%$**.
-- **For the Weaker Model (`gpt-5.6-luna` @ 15%):**  
-  Naive compounding predicted that passing 3 times in a row should be almost impossible: $0.1489^3 = \mathbf{0.33\%}$.  
-  Yet in reality, the model achieved **$2.00\%$**—a **$6.06	imes$ concentration ratio**!
+| Model Rung | Architecture & Role | Single-Turn Pass@1 (Wilson 95% CI) | Joint Pass³ (3/3 Trials) | Total Spend | Cost per Grounded Answer |
+|---|---|:---:|:---:|:---:|:---:|
+| **R2 (`glm-5.3-flash`)** | Budget Workhorse | **63.11%** [58.56%, 67.44%] | **22.67%** (34/150) | $4.17 | **$0.01468** (~₹1.30) |
+| **R4 (`gpt-5.6-luna`)** | Frontier OpenAI | **14.89%** [11.90%, 18.47%] | **2.00%** (3/150) | $17.97 | **$0.26825** (~₹23.60) |
+| **R6 (`deepseek-v4-pro`)** | Frontier Anchor | **0.00%** [0.00%, 0.85%] | **0.00%** (0/150) | $0.07 | N/A *(Step 1 model failure)* |
+| **Total** | | | | **$23.73** | |
 
-### What does this mean?
-Weak agents do not make random errors. They make **correlated, systematic errors**.  
-They succeed reliably on a narrow, "tractable" subset of tasks (passing all 3 trials easily), but fail catastrophically on the rest. **Retrying a struggling agent on hard tasks is pure waste—it hits the same wall in trial 2 and trial 3.**
+### The Findings:
+- **Descriptive Single-Turn Gap**: On single-turn accuracy ($\text{pass@1}$), R2 outperformed R4 by **48.22 percentage points** ($63.11\%$ vs $14.89\%$) with strictly disjoint Wilson 95% confidence intervals. This 48.22 pp difference is strictly **descriptive**: no hypothesis test was pre-registered or run on $\text{pass@1}$.
+- **Statistically Significant Joint Reliability**: The pre-registered significance test was executed on **joint 3-trial reliability ($\text{pass}^3$)** across the **exact same 150 scenarios**. A paired McNemar test with continuity correction yielded:
+  - Discordant pairs: $b = 34$ (R2 passed all 3, R4 failed), $c = 3$ (R4 passed all 3, R2 failed), both wrong: $113$.
+  - Test statistic: $\chi^2 = 24.3243, p = 8.140458 \times 10^{-7}$ (exact binomial $p = 1.233129 \times 10^{-7}$).
+  - Difference: **$+20.67\text{ percentage points}$**, declared `ADEQUATELY_POWERED` ($\ge 10\text{pp}$).
+- **The Economic Inversion**: R4 cost **$18.3\times$ more per grounded answer** than R2 ($\$0.26825$ vs $\$0.01468$), while achieving less than one-fourth the single-turn accuracy and less than one-tenth the joint 3-trial reliability.
 
----
+### Why did this happen?
+`gpt-5.6-luna` fell into reasoning traps. When BM25 keyword search queries returned zero results, it attempted to "reason" by adding boolean quotes, synonyms, and multi-word filter syntax that BM25 rejected. This produced self-induced search loops that exhausted the 24-step budget in 28.0% of its runs. 
 
-## 3. The 12-Step Trap & Scientific Pre-Registration
-
-Our initial run of this experiment produced an eerie result: **0.00% pass rate across all models**.
-
-Rather than panicking or tweaking prompts in secret, our pre-registered contract (`MEC.md`) caught the problem. We had frozen a step cap of 12 steps. But solving a 5-hop graph requires 9 document lookups and 1 answer step = 10 steps minimum. A cap of 12 left only a 2-step margin for search branching, causing 49% of all runs to choke at step 12.
-
-Under **Amendment A-003**, we transparently raised the cap to 24 steps, ran a $0.20 single-rung probe, and then executed the full 1,350-run sweep. 
-
-**Lesson:** If your benchmark doesn't pre-register harness parameters, you are probably measuring harness artefacts instead of model intelligence.
+In contrast, `glm-5.3-flash` exhibited strict tool discipline: it issued simple single-token keyword queries, followed graph pointers methodically, and completed the 5-hop traversal in a median of 15 steps (hitting the step cap in only 4.0% of runs).
 
 ---
 
-## 4. LLM Judges Are Deceptive Without Code Assertions
+## 2. The Truth About Failure Concentration: Why 6.06× Was Misleading
 
-In Project P5, before running the sweep, we calibrated automated LLM judges (`glm-5.3`) against 200 human-annotated failure traces.
-- Where error signals were clear (HTTP 429 rate limits, step caps, JSON syntax errors), **deterministic Python code assertions achieved perfect agreement ($\kappa = 1.00$)**.
-- When an LLM judge was asked to detect subtle agent looping behavior without code checks, it scored **$\kappa = -0.04$ (worse than random guessing)**.
-- Furthermore, on test splits where an error class was absent ($0$ true positives), standard Cohen's kappa falsely reported $\kappa = 1.00$.
+An earlier draft circulated with the headline: *"6.06x Failure Concentration Ratio Confirmed!"* That framing was an artifact of selective emphasis.
 
-**Takeaway:** Never trust an uncalibrated LLM judge. Use deterministic assertions first, and apply Rogan-Gladen prevalence corrections to any LLM rater.
+Here is what actually happened:
+- For **R4 (`gpt-5.6-luna`)**, single-turn accuracy was so low ($14.89\%$) that naive stochastic compounding predicted almost zero multi-trial passes: $(0.1489)^3 = \mathbf{0.33\%}$. Because 3 scenarios managed to pass all 3 trials ($2.00\%$, Wilson CI $[0.68\%, 5.71\%]$), the ratio was $2.00\% / 0.33\% = \mathbf{6.06\times}$. But that entire "concentration" finding rested on exactly **3 scenarios out of 150**.
+- For **R2 (`glm-5.3-flash`)**, which had real statistical mass ($n=34$ scenarios passing all 3 trials), naive compounding predicted $25.14\%$, and the model achieved **$22.67\%$**. The concentration ratio was **$0.902\times$**—below naive independence.
+
+Across the benchmark, concentration was observed on only **1 of 3 evaluated rungs**. The hypothesis that failures systematically concentrate was falsified. When an agent is genuinely competent at tool use, errors behave much closer to independent stochastic trials than the field assumes.
 
 ---
 
-## Reproduce It in One Command
+## 3. The 12-Step Trap: How Pre-Registration Saved the Benchmark
 
-All 1,350 traces, SQLite telemetry, spend logs, and verification tests are completely open source:
+Our initial execution of Project P6 produced a shocking result: **0.00% pass rate across 1,350 runs**, with $\$0.59$ spent, 662 step-cap terminations, and 646 model failures.
+
+In ad-hoc benchmarking, this is the moment where teams quietly tweak prompts, adjust parameters after the fact, or hide the initial run.
+
+Because our methodology was governed by **Minimum Evaluation Contract (MEC)**, we had pre-registered an explicit trigger in **Amendment A-002**:
+> *If $>10\%$ of Tier 3 runs terminate on the step cap, the step cap must be formally amended and the evaluation re-run.*
+
+In Project P03, we had measured 44.4% step-cap saturation. A 5-hop knowledge graph traversal requires 9 document lookups and 1 answer step = 10 steps minimum. A cap of 12 steps gave the agent a margin of only 2 steps for search branching. Any backtracking hit the wall.
+
+Under **Amendment A-003**, we transparently updated $T_{\max}$ from 12 to 24 steps (MEC v1.3), verified the fix with a single-scenario probe, and re-ran the full 1,350-run sweep. 
+
+Without pre-registered protocol hygiene, a harness defect would have been published as a false model capability ceiling.
+
+---
+
+## 4. LLM Judges Are Fragile: $\kappa = -0.0321$ on Agent Loops
+
+In Project P5, we evaluated automated LLM judges (`glm-5.3`) against 200 human-annotated failure traces:
+- For deterministic, syntactic failure modes (HTTP 429 rate limits, step caps, JSON parse errors), code assertions achieved perfect agreement (**$\kappa = 1.0000$**).
+- When an LLM judge was asked to detect subtle multi-turn search pathologies (`OVERCONSTRAINED_SEARCH_LOOP`), it achieved Cohen's **$\kappa = -0.0321$**—worse than random guessing.
+- On test splits where an error class was absent ($TP=0, FP=0, FN=0, TN=60$), standard Cohen's kappa returned a deceptive **$\kappa = 1.0000$** (observed across 3 of 5 error classes).
+
+**Takeaway:** Never deploy an uncalibrated LLM judge. Deterministic code assertions must run first, and any automated evaluator must be corrected using Rogan-Gladen prevalence estimation.
+
+---
+
+## Reproduce the Full Evaluation
+
+All 1,350 raw execution traces, SQLite telemetry spans, spend ledgers, and 86 passing Phase 2 tests are fully open source:
 
 ```bash
+# 1. Clone repository
 git clone https://github.com/samirsawarkar/faultline-ai-reliability.git
 cd faultline-ai-reliability
 python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+pip install -e .
 
-# Run the test suite (86/86 Phase 2 tests)
-make phase2-test
+# 2. Run the verified Phase 2 test suite (86 passing tests)
+.venv/bin/pytest tests/phase2 -q
 
-# Verify manifest and reproduce sweep metrics
-python projects/p06_passk/run.py --verify-manifest
+# 3. Verify sweep metrics and audit ledger ($23.73 total spend)
+.venv/bin/python projects/p06_passk/run.py --verify-manifest
 ```
+
+---
+
+## Acknowledgements
+
+The evaluation harness, synthetic graph generation, and statistical analysis pipelines were implemented with the assistance of an AI coding agent operating under the author's direction. All experimental designs, pre-registrations, hypotheses, manual trace taxonomy codings, and editorial interpretations are the author's sole responsibility.
 
 ---
 
 ### Social Share Snippet (LinkedIn / X)
 
-> **We ran 1,350 multi-hop agent trials across 150 hard tasks with real money.**
+> **Our pre-registered agent reliability hypothesis just failed in public.**
 > 
-> Three counter-intuitive findings from our pre-registered study:
-> 1. A cheap model (`glm-5.3-flash`) beat `gpt-5.6-luna` by +20.67 pp on 5-hop tool use at 1/18th the cost ($0.014 vs $0.268 per answer).
-> 2. Failure concentration is real ($6.06x): retrying weaker agents on hard tasks is pure waste—they repeat the exact same search loop in all 3 trials.
-> 3. LLM judges score worse than chance ($\kappa = -0.04$) on agent loops without code assertions.
+> Across 1,350 audited multi-hop agent runs ($n=150$ hard tasks $\times$ $k=3$ trials, 25,477 logged spans, $23.73 spent), here is what the data showed:
 > 
-> Read the full open-source paper and reproducible traces: [github.com/samirsawarkar/faultline-ai-reliability](https://github.com/samirsawarkar/faultline-ai-reliability)
+> 1. **Hypothesis H4 was FALSIFIED**: Agent failures did not concentrate into an easy task core. On our primary workhorse model (`glm-5.3-flash`, 34 passes), joint 3-trial reliability was 22.67% vs 25.14% naive compounding (0.902x ratio). The widely cited 6.06x concentration ratio on `gpt-5.6-luna` rested on exactly 3 scenarios out of 150.
+> 2. **A 48-Point Cost Upset**: Budget model `glm-5.3-flash` beat `gpt-5.6-luna` by a descriptive 48.22 pp on single-turn pass rate (63.11% vs 14.89%, disjoint Wilson CIs). On joint 3-trial reliability, a paired McNemar test on the exact same 150 scenarios confirmed a +20.67 pp advantage ($p = 8.14 \times 10^{-7}$) at 18.3x lower cost per grounded answer ($0.0147 vs $0.2683).
+> 3. **The 12-Step Trap**: An initial sweep collapsed to 0.00% across 1,350 runs. Pre-registered trigger Amendment A-002 caught the 12-step cap harness defect and raised it to 24, preventing a test-harness bug from being published as a model failure.
+> 4. **LLM Judge Fragility**: Automated LLM judges scored Cohen's $\kappa = -0.0321$ on multi-hop search loops.
+> 
+> Full paper, raw SQLite traces, and 86 passing tests: https://github.com/samirsawarkar/faultline-ai-reliability

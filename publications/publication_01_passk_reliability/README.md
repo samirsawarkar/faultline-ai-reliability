@@ -1,8 +1,8 @@
 # The Illusion of Compound Independence: Grounding Collapse, Human-in-the-Loop Taxonomy, and Failure Concentration in Multi-Hop AI Agents
 
 **Samir Sawarkar**  
-*FAULTLINE AI Reliability Engineering & Antigravity Research*  
-`samir@faultline.ai` · `https://github.com/samirsawarkar/faultline-ai-reliability`  
+*FAULTLINE (Independent Research)*  
+`https://github.com/samirsawarkar/faultline-ai-reliability`  
 **Date:** September 2026 · **Evaluation Protocol:** MEC v1.3 (Amendment A-003) · **Status:** Pre-Registered & Cryptographically Sealed
 
 ---
@@ -280,6 +280,12 @@ make p06 ARGS="--confirm --real --step-cap 24"
 # 5. Recompile results and publication figures directly from trace.db
 .venv/bin/python projects/p06_passk/run.py --recompile
 ```
+
+---
+
+## Acknowledgements
+
+The evaluation harness, synthetic graph generation, and analysis pipelines were implemented with the assistance of an AI coding agent operating under the author's direction. All experimental designs, pre-registrations, hypotheses, manual trace taxonomy annotations, and editorial interpretations are the author's sole responsibility.
 
 ---
 
