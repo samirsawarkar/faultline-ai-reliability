@@ -1,0 +1,243 @@
+\documentclass[10pt,letterpaper]{article}
+
+% Page Geometry & Spacing
+\usepackage[
+  letterpaper,
+  top=0.7in,
+  bottom=0.7in,
+  left=0.7in,
+  right=0.7in,
+  headheight=19pt,
+  headsep=12pt,
+  footskip=18pt
+]{geometry}
+\setlength{\headheight}{19pt}
+\addtolength{\topmargin}{-5pt}
+
+% Typography & Fonts
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{inconsolata}
+\usepackage{microtype}
+
+% Math
+\usepackage{amsmath,amssymb}
+
+% Colors
+\usepackage{xcolor}
+\definecolor{primary}{RGB}{24, 43, 73}       % Deep Navy
+\definecolor{secondary}{RGB}{43, 84, 126}    % Steel Blue
+\definecolor{accent}{RGB}{200, 50, 40}       % Alert Red
+\definecolor{success}{RGB}{39, 130, 75}      % Muted Green
+\definecolor{warning}{RGB}{210, 110, 20}     % Amber
+\definecolor{darktext}{RGB}{33, 37, 41}      % Charcoal text
+\definecolor{lightbg}{RGB}{248, 249, 250}    % Soft grey
+\definecolor{rulecolor}{RGB}{220, 224, 230}  % Border rule
+\definecolor{codebg}{RGB}{243, 244, 246}     % Code background
+\definecolor{boxbg}{RGB}{246, 248, 251}      % Callout background
+\definecolor{tableheader}{RGB}{234, 239, 245}% Table header fill
+
+% Tables
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{colortbl}
+
+% Floats & Captions
+\usepackage{float}
+\usepackage{caption}
+\captionsetup{font={small,sf},labelfont={bf,color=secondary},skip=6pt}
+\usepackage[section]{placeins}
+\usepackage{needspace}
+
+% Graphics & Figures
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+
+% Headers & Footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{rulecolor}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{rulecolor}\leaders\hrule height \footrulewidth\hfill}}
+\fancyhead[L]{\footnotesize\textcolor{secondary}{\textsf{\textbf{FAULTLINE} $\cdot$ AI Reliability Engineering Case Study}}}
+\fancyhead[R]{\footnotesize\textcolor{secondary}{\textsf{\nouppercase{\leftmark}}}}
+\fancyfoot[L]{\footnotesize\textcolor{secondary}{\textsf{Samir Sawarkar $\cdot$ Portfolio Technical Report}}}
+\fancyfoot[R]{\footnotesize\textcolor{secondary}{\textsf{\thepage}}}
+
+% Section Heading Formatting
+\usepackage{titlesec}
+% \needspace stops a section heading stranding at a page foot with one or
+% two lines under it; 5 lines fits the heading, its rule and an opener.
+\titleformat{\section}
+  {\needspace{5\baselineskip}\color{primary}\normalfont\Large\bfseries\sffamily}
+  {\thesection}{1em}{}
+  [\vspace{2pt}{\color{primary}\hrule height 1pt}]
+
+\titleformat{\subsection}
+  {\color{secondary}\normalfont\large\bfseries\sffamily}
+  {\thesubsection}{0.8em}{}
+
+\titleformat{\subsubsection}
+  {\color{primary}\normalfont\normalsize\bfseries\sffamily}
+  {\thesubsubsection}{0.6em}{}
+
+\titlespacing*{\section}{0pt}{14pt}{6pt}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+\titlespacing*{\subsubsection}{0pt}{8pt}{3pt}
+
+% Hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=secondary,
+  citecolor=secondary,
+  urlcolor=secondary,
+  pdfauthor={Samir Sawarkar},
+  pdftitle={FAULTLINE: Engineering Reliability Under Controlled Failure},
+  pdfsubject={AI Reliability Engineering Case Study},
+  pdfkeywords={AI Reliability, LLM Evaluation, Fault Injection, OpenTelemetry, SRE}
+}
+
+% TikZ
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows.meta,positioning,fit,backgrounds,calc}
+
+% Framing & Callouts
+\usepackage{framed}
+\newenvironment{callout}[2][primary]{%
+  \def\FrameCommand{{\color{#1}\vrule width 3pt}\hspace{8pt}\fboxsep=6pt\colorbox{boxbg}}%
+  \MakeFramed{\advance\hsize-\width \FrameRestore}%
+  \noindent\textbf{\textsf{\textcolor{#1}{#2}}}\par\vspace{3pt}\small
+}{%
+  \endMakeFramed
+}
+
+\newenvironment{dangerbox}[1][accent]{%
+  \def\FrameCommand{{\color{#1}\vrule width 3pt}\hspace{8pt}\fboxsep=6pt\colorbox{accent!5}}%
+  \MakeFramed{\advance\hsize-\width \FrameRestore}%
+  \noindent\textbf{\textsf{\textcolor{#1}{CRITICAL FAILURE MODE / RISK}}}\par\vspace{3pt}\small
+}{%
+  \endMakeFramed
+}
+
+% Status Pills Macros
+\newcommand{\STATUSCOMPLETED}{\colorbox{success!15}{\textcolor{success!80!black}{\scriptsize\bfseries\textsf{COMPLETED}}}}
+\newcommand{\STATUSVALIDATED}{\colorbox{secondary!15}{\textcolor{secondary!90!black}{\scriptsize\bfseries\textsf{VALIDATED}}}}
+\newcommand{\STATUSPARTIAL}{\colorbox{warning!15}{\textcolor{warning!80!black}{\scriptsize\bfseries\textsf{PARTIALLY COMPLETED}}}}
+\newcommand{\STATUSDECIDED}{\colorbox{purple!15}{\textcolor{purple!80!black}{\scriptsize\bfseries\textsf{DECIDED / UNRUN}}}}
+\newcommand{\STATUSFUTURE}{\colorbox{gray!15}{\textcolor{gray!80!black}{\scriptsize\bfseries\textsf{FUTURE PROPOSAL}}}}
+
+% Claim Tag Macros
+\newcommand{\MEASURED}{\colorbox{blue!10}{\textcolor{blue!70!black}{\tiny\bfseries\textsf{MEASURED}}}}
+\newcommand{\DERIVED}{\colorbox{teal!10}{\textcolor{teal!70!black}{\tiny\bfseries\textsf{DERIVED}}}}
+\newcommand{\DESIGN}{\colorbox{purple!10}{\textcolor{purple!70!black}{\tiny\bfseries\textsf{DESIGN DECISION}}}}
+\newcommand{\LIMITATION}{\colorbox{accent!10}{\textcolor{accent!80!black}{\tiny\bfseries\textsf{LIMITATION}}}}
+\newcommand{\OBSERVATION}{\colorbox{yellow!20}{\textcolor{brown!80!black}{\tiny\bfseries\textsf{OBSERVATION}}}}
+
+% Code formatting inline
+\newcommand{\code}[1]{\colorbox{codebg}{\small\texttt{#1}}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+% Tighten TOC line spacing so all 33 sections fit on one page
+\makeatletter
+\renewcommand*\l@section[2]{%
+  \ifnum \c@tocdepth >\z@
+    \addpenalty\@secpenalty
+    \vskip 0.18em \@plus\p@
+    \setlength\@tempdima{1.8em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries\small\sffamily
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+    \endgroup
+  \fi}
+\makeatother
+
+\begin{document}
+
+% ==============================================================================
+% COVER PAGE
+% ==============================================================================
+\begin{titlepage}
+\begin{center}
+\vspace*{1.5cm}
+
+{\Huge\bfseries\color{primary}\textsf{FAULTLINE}}\\[0.4cm]
+{\LARGE\bfseries\color{secondary}\textsf{Engineering Reliability Under Controlled Failure}}\\[0.3cm]
+{\large\textsf{A Reproducible Reliability Workbench for Document-Grounded AI Systems}}\\[0.6cm]
+
+\rule{0.8\textwidth}{1.5pt}
+
+\vfill
+
+\begin{minipage}{0.75\textwidth}
+\small\textsf{
+\textbf{Author:} Samir Sawarkar\\[0.15cm]
+\textbf{Role Focus:} Principal AI Reliability Engineer / ML Systems Evaluator\\[0.15cm]
+\textbf{Repository:} \href{https://github.com/samirsawarkar/faultline-ai-reliability}{\code{samirsawarkar/faultline-ai-reliability}}\\[0.15cm]
+\textbf{Release Reference:} \code{v0.27.0-rc1} (Phase 1 Sealed) $\cdot$ \code{MEC v1.2} (Phase 2)\\[0.15cm]
+\textbf{Test Gate Status:} 528/528 Unit/Integration Tests Passing $\cdot$ 68/68 Phase 2 Tests Passing\\[0.15cm]
+\textbf{Document Version:} 1.0.0 (Definitive Technical Portfolio Edition)\\[0.15cm]
+\textbf{Date:} September 2026\\[0.15cm]
+\textbf{Classification:} Technical Case Study $\cdot$ Engineering Review $\cdot$ Architecture Record
+}
+\end{minipage}
+
+\vfill
+
+\begin{framed}
+\centering\small\sffamily
+\textbf{Core Project Thesis}\\[0.2cm]
+\textit{``A system should be considered reliable only when it improves correct user-visible outcomes under explicit cost and latency constraints, while preserving provenance, exposing uncertainty, and failing closed when evidence no longer supports the claim.''}
+\end{framed}
+
+\vfill
+
+\begin{minipage}{0.9\textwidth}
+\centering\footnotesize\textcolor{secondary}{\textsf{
+\textbf{Notice on Scope \& Honesty:}\\
+This document reports on both completed, validated experimental findings (Phase 1) and explicit architectural decisions, pre-registered hypotheses, and unrun paid model sweeps (Phase 2). All numbers are linked directly to committed JSON artifacts and reproducible scripts. Claims are strictly bounded to the configured experimental populations.
+}}
+\end{minipage}
+
+\vspace*{0.5cm}
+\end{center}
+\end{titlepage}
+
+% ==============================================================================
+% TABLE OF CONTENTS
+% ==============================================================================
+\newpage
+\setcounter{tocdepth}{1}
+\tableofcontents
+\newpage
+
+% Sections will be included here
+\input{sec01_executive_summary.tex}
+\input{sec02_reliability_problem.tex}
+\input{sec04_principles_boundary.tex}
+\input{sec06_core_architecture.tex}
+\input{sec09_faults_observability.tex}
+\input{sec13_recovery_engineering.tex}
+\input{sec14_methodology_statistics.tex}
+\input{sec18_experiment_results.tex}
+\input{sec19_30day_built.tex}
+\input{sec21_phase2_decisions.tex}
+\input{sec23_failures_limitations.tex}
+\input{sec26_framework_lessons.tex}
+\input{sec28_interview_version.tex}
+\input{sec29_repo_reproduce_index.tex}
+
+\end{document}

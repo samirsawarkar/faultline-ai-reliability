@@ -1,0 +1,127 @@
+\section{Recovery Engineering}
+
+\subsection{Recovery as a Policy Decision, Not a Reflex}
+In naive AI agent development, recovery is treated as a reflexive local action: when an API call fails, catch the exception and retry immediately; when a model times out, switch to another model.
+
+FAULTLINE proves that \textbf{unprincipled recovery is actively hazardous}. Every recovery mechanism consumes finite system resources (tokens, latency, API rate limits) and alters the probability distribution of downstream outputs.
+
+\begin{center}
+\resizebox{0.92\textwidth}{!}{%
+\begin{tikzpicture}[
+  box/.style={draw=primary, fill=white, rounded corners=3pt, font=\small\sffamily, align=center, inner sep=5pt, line width=0.8pt, text width=3.8cm},
+  decision/.style={draw=secondary, fill=secondary!10, diamond, aspect=1.8, font=\footnotesize\bfseries\sffamily, align=center, inner sep=2pt, line width=0.8pt, text width=2.0cm},
+  action/.style={draw=primary, fill=blue!5, rounded corners=3pt, font=\footnotesize\sffamily, align=center, inner sep=5pt, line width=0.8pt, text width=3.4cm},
+  terminal/.style={draw=success, fill=success!15, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=5pt, line width=1pt, text width=3.8cm},
+  contain/.style={draw=accent, fill=accent!15, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=5pt, line width=1pt, text width=3.8cm},
+  arrow/.style={-{Latex[length=2.5mm]}, line width=1pt, color=primary}
+]
+
+% Left Column: Execution & Verification
+\node[box] (req) at (0, 0) {Incoming Request\\with Budget Contract};
+\node[box] (pri) at (0, -1.6) {Primary Route Execution};
+\node[decision] (det) at (0, -3.6) {Fault\\Detected?};
+\node[decision] (valid) at (0, -6.0) {Strict Oracle\\Valid?};
+\node[terminal] (success) at (0, -8.4) {RETURN CORRECT\\VISIBLE ANSWER};
+
+% Right Column: Recovery & Fallback
+\node[action] (retry) at (6.2, 0) {Bounded Retry\\(Backoff + Jitter)};
+\node[decision] (retryable) at (6.2, -3.6) {Retryable \&\\Budget OK?};
+\node[decision] (fb_ok) at (6.2, -5.8) {Fallback\\Eligible?};
+\node[action] (fb) at (6.2, -7.4) {Route-Diverse\\Fallback};
+\node[contain] (contain) at (6.2, -8.6) {FAIL CLOSED / ABSTAIN\\(With Explicit Reason)};
+
+% Left column connections
+\draw[arrow] (req) -- (pri);
+\draw[arrow] (pri) -- (det);
+\draw[arrow] (det) -- node[left=4pt, pos=0.5, font=\scriptsize\bfseries] {NO} (valid);
+\draw[arrow] (valid) -- node[left=4pt, pos=0.5, font=\scriptsize\bfseries] {YES} (success);
+
+% Fault to recovery
+\draw[arrow] (det) -- node[above=2pt, pos=0.5, font=\scriptsize\bfseries] {YES} (retryable);
+
+% Retry loop (up and back to primary)
+\draw[arrow] (retryable) -- node[right=4pt, pos=0.5, font=\scriptsize\bfseries] {YES} (retry);
+\draw[arrow] (retry.west) -- ++(-1.6, 0) |- ([xshift=0.5cm]pri.north);
+
+% Fallback flow
+\draw[arrow] (retryable) -- node[right=4pt, pos=0.5, font=\scriptsize\bfseries] {NO} (fb_ok);
+\draw[arrow] (fb_ok) -- node[right=4pt, pos=0.5, font=\scriptsize\bfseries] {YES} (fb);
+\draw[arrow] (fb_ok.east) -- ++(1.2,0) |- node[right=3pt, pos=0.25, font=\scriptsize\bfseries] {NO} (contain.east);
+
+% Fallback output to Oracle (via highway at x=3.5)
+\draw[arrow] (fb.west) -- ++(-1.2,0) |- ([xshift=0.5cm]valid.north);
+
+% Containment on invalid oracle (via highway at x=2.3)
+\draw[arrow] (valid.east) -- ++(1.2,0) |- node[above=2pt, pos=0.15, font=\scriptsize\bfseries] {NO} (contain.west);
+
+\end{tikzpicture}%
+}
+\vspace{0.2em}
+\captionof{figure}{The Enforced Recovery Control Path. Budget ceilings and correctness gates take strict priority over raw availability.}
+\label{fig:recovery_path}
+\end{center}
+
+\subsection{The Six Recovery Mechanisms}
+FAULTLINE implements and evaluates six distinct recovery primitives:
+\begin{enumerate}
+    \item \textbf{M1: Bounded Repair-Retry:} Catches malformed structured outputs (F1) and re-prompts the model with explicit schema error feedback, bounded by an attempt cap ($K \le 3$).
+    \item \textbf{M2: Timeout \& Backoff Policy:} Wraps provider transport calls in explicit latency deadlines with truncated exponential backoff and seeded jitter to avoid thundering herds.
+    \item \textbf{M3: Three-State Circuit Breaker:} Tracks consecutive failures across a rolling window. Trips from \code{CLOSED} to \code{OPEN} after 3 failures, fast-failing outbound calls to protect downstream services, transitioning to \code{HALF\_OPEN} after a cooldown timer.
+    \item \textbf{M4: Provider Fallback:} Diverts execution to an alternate model or provider endpoint when the primary route is tripped or unavailable.
+    \item \textbf{M5: Structural Step \& Cost Ceilings:} Enforces hard, immutable limits on cumulative token cost and execution step counts, deterministically breaking loop traps (F6).
+    \item \textbf{M6: Repetition Recovery \& Context Re-grounding:} Monitors consecutive tool call signatures; when duplicate actions occur, truncates recent conversation history and forces a replan step before aborting.
+\end{enumerate}
+
+\subsection{The 36-Cell Matrix and the Discovery of 47 Induced Harms}
+On Day 22, all 6 recovery mechanisms were evaluated across all 6 fault families over 24 paired seeds per cell (144 requests per mechanism, 864 total requests):
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{lccccc>{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Mechanism} & \textbf{Correct Success} & \textbf{Availability} & \textbf{Contained} & \textbf{Answered Wrong} & \textbf{Mean Cost} & \textbf{Induced Harms} \\
+\midrule
+No Recovery (Baseline) & 0.2500 & 0.6250 & 0.0000 & 0.3750 & 3.2917 & --- \\
+M1 (Repair-Retry) & 0.3333 & 0.5833 & 0.0417 & 0.2500 & 3.5417 & 6 premature aborts on persistent F1. \\
+M2 (Timeout/Backoff) & 0.3333 & 0.7083 & 0.0417 & 0.3750 & 3.5417 & 6 latency ceiling breaches. \\
+M3 (Circuit Breaker) & 0.2153 & 0.5903 & 0.1042 & 0.3750 & 3.0764 & 5 false opens on transient blips. \\
+M4 (Provider Fallback) & 0.3333 & 0.7500 & 0.0000 & 0.4167 & 3.4167 & 6 wrong answers returned via fallback. \\
+M5 (Step/Cost Ceilings) & 0.1667 & 0.5417 & 0.2083 & 0.3750 & 2.4583 & 12 legitimate long tasks terminated. \\
+M6 (Repetition Recovery) & 0.2500 & 0.6250 & 0.1250 & 0.3750 & 2.4583 & 12 legitimate paginations aborted. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{callout}[accent]{The 47 Induced Harms}
+Across the full matrix, the mechanisms induced \textbf{47 distinct new operational harms} that did not exist in the baseline. For example, M4 (Fallback) increased availability by $+12.5\%$, but \textit{increased} wrong answers from $37.5\%$ to $41.7\%$. M5 (Ceilings) reduced cost by $-25.3\%$, but erroneously aborted 12 legitimate multi-hop tasks. Recovery mechanisms are not free: they must be bounded by explicit policy constraints.
+\end{callout}
+
+\subsection{Phase 2 Agent Resilience Architecture (P15)}
+In Phase 2 Project \textbf{P15}, client-side resilience was engineered into a unified wrapper (\code{ResilientModel}) combining circuit breaking, bounded retries, and a pluggable fault-injecting mock endpoint (\$0 API spend). 
+
+Evaluating 200 standard multi-hop scenarios across increasing endpoint failure rates yielded striking empirical gains:
+\begin{center}
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Injected Fault Rate} & \textbf{Baseline Pass Rate} & \textbf{Resilient Pass Rate} & \textbf{95\% Wilson CI} & \textbf{Cost (Extra Calls)} \\
+\midrule
+0\% Faults & 100.0\% & 100.0\% & [98.12\%, 100.0\%] & 0 extra calls (zero overhead) \\
+15\% Faults & 47.5\% & \textbf{100.0\%} (+52.5\%) & [98.12\%, 100.0\%] & 650 retries (+85.6\% calls) \\
+30\% Faults & 20.5\% & \textbf{96.5\%} (+76.0\%) & [92.95\%, 98.29\%] & 1,138 retries (+224.5\% calls) \\
+45\% Faults & 13.0\% & \textbf{81.0\%} (+68.0\%) & [75.00\%, 85.80\%] & 1,391 retries (+274.4\% calls) \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Disjoint Confidence Intervals:} At all non-zero failure rates, the 95\% Wilson intervals between baseline and resilient execution are strictly disjoint. Furthermore, under sustained provider outage, the circuit breaker tripped after 3 consecutive failures and \textbf{shed 80.0\% of downstream calls} (12 of 15 fast-failed without network overhead).
+
+\subsection{Runtime Policy Authorization Enforcement (P16)}
+Project \textbf{P16} addresses model compromise and malicious tool execution:
+\begin{callout}[primary]{Zero-Detector Authorization Invariant}
+\textbf{Guaranteed Security Boundary:} Assuming an adversary achieves complete control over model generation (via prompt injection or hijacked weights), the runtime policy layer deterministically prevents unauthorized tools or traversal sequences from executing. This guarantee operates with \textbf{zero AI detectors running}---relying entirely on structural pre-execution authorization.
+\end{callout}
+Benchmarked against 1,000 hostile tool calls produced by an adversarial stub:
+\begin{itemize}
+    \item \textbf{Adversarial Deny Rate:} \textbf{100.0\%} ($1,000 / 1,000$ denied; 95\% Wilson CI: [99.62\%, 100.0\%]).
+    \item \textbf{Forbidden Operations Reaching ToolBox:} \textbf{EXACTLY ZERO}.
+    \item \textbf{False-Positive Friction on Legitimate Traffic:} Tested across \textbf{2,004 legitimate multi-hop tool calls}, false-positive denials were \textbf{0} (0.0000\%, 95\% Wilson CI: [0.0000\%, 0.1913\%]), with $100\%$ scenario task completion.
+\end{itemize}

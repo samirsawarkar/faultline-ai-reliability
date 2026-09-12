@@ -1,0 +1,102 @@
+<svg width="740" height="500" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#bg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="370" y="38" font-size="20" font-weight="700" fill="#f8fafc" text-anchor="middle">P15: Agent Resilience Under Fault Injection</text>
+  <text x="370" y="60" font-size="13" fill="#94a3b8" text-anchor="middle">Bounded Retries + Seeded Exponential Backoff + Circuit Breaker</text>
+
+  <!-- Left: Reliability Comparison Chart -->
+  <g transform="translate(40, 85)">
+    <rect width="400" height="260" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" filter="url(#card-shadow)"/>
+    <text x="20" y="30" font-size="14" font-weight="600" fill="#f8fafc">Success Rate vs. Injected Failure Rate</text>
+    <line x1="60" y1="210" x2="370" y2="210" stroke="#475569" stroke-width="1"/>
+    <line x1="60" y1="50" x2="60" y2="210" stroke="#475569" stroke-width="1"/>
+
+    <!-- Y-axis labels -->
+    <text x="50" y="215" font-size="10" fill="#94a3b8" text-anchor="end">0%</text>
+    <text x="50" y="135" font-size="10" fill="#94a3b8" text-anchor="end">50%</text>
+    <text x="50" y="55" font-size="10" fill="#94a3b8" text-anchor="end">100%</text>
+
+    <!-- Bars -->
+    <!-- Group for rate 0% -->
+    <rect x="80" y="60.0" width="24" height="150.0" fill="#ef4444" rx="2"/>
+    <text x="92" y="55.0" font-size="10" fill="#fca5a5" text-anchor="middle">100%</text>
+
+    <rect x="108" y="60.0" width="24" height="150.0" fill="#22c55e" rx="2"/>
+    <text x="120" y="55.0" font-size="10" fill="#86efac" text-anchor="middle">100%</text>
+
+    <text x="106" y="228" font-size="11" fill="#cbd5e1" text-anchor="middle">0%</text>
+    <!-- Group for rate 15% -->
+    <rect x="155" y="138.75" width="24" height="71.25" fill="#ef4444" rx="2"/>
+    <text x="167" y="133.75" font-size="10" fill="#fca5a5" text-anchor="middle">48%</text>
+
+    <rect x="183" y="60.0" width="24" height="150.0" fill="#22c55e" rx="2"/>
+    <text x="195" y="55.0" font-size="10" fill="#86efac" text-anchor="middle">100%</text>
+
+    <text x="181" y="228" font-size="11" fill="#cbd5e1" text-anchor="middle">15%</text>
+    <!-- Group for rate 30% -->
+    <rect x="230" y="179.25" width="24" height="30.749999999999996" fill="#ef4444" rx="2"/>
+    <text x="242" y="174.25" font-size="10" fill="#fca5a5" text-anchor="middle">20%</text>
+
+    <rect x="258" y="65.25" width="24" height="144.75" fill="#22c55e" rx="2"/>
+    <text x="270" y="60.25" font-size="10" fill="#86efac" text-anchor="middle">96%</text>
+
+    <text x="256" y="228" font-size="11" fill="#cbd5e1" text-anchor="middle">30%</text>
+    <!-- Group for rate 45% -->
+    <rect x="305" y="190.5" width="24" height="19.5" fill="#ef4444" rx="2"/>
+    <text x="317" y="185.5" font-size="10" fill="#fca5a5" text-anchor="middle">13%</text>
+
+    <rect x="333" y="88.49999999999999" width="24" height="121.50000000000001" fill="#22c55e" rx="2"/>
+    <text x="345" y="83.49999999999999" font-size="10" fill="#86efac" text-anchor="middle">81%</text>
+
+    <text x="331" y="228" font-size="11" fill="#cbd5e1" text-anchor="middle">45%</text>
+    <!-- Legend -->
+    <rect x="180" y="16" width="12" height="12" fill="#ef4444" rx="2"/>
+    <text x="198" y="26" font-size="11" fill="#94a3b8">Baseline</text>
+    <rect x="260" y="16" width="12" height="12" fill="#22c55e" rx="2"/>
+    <text x="278" y="26" font-size="11" fill="#94a3b8">Resilient</text>
+    <text x="215" y="250" font-size="11" fill="#94a3b8" text-anchor="middle">Injected Provider Failure Rate</text>
+  </g>
+
+  <!-- Right: Circuit Breaker Load Shedding Card -->
+  <g transform="translate(460, 85)">
+    <rect width="240" height="260" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" filter="url(#card-shadow)"/>
+    <text x="120" y="30" font-size="14" font-weight="600" fill="#f8fafc" text-anchor="middle">Circuit Breaker Proof</text>
+    <text x="120" y="50" font-size="11" fill="#94a3b8" text-anchor="middle">Under Sustained 100% Outage</text>
+
+    <rect x="25" y="70" width="190" height="70" rx="6" fill="#0f172a" stroke="#dc2626" stroke-width="1"/>
+    <text x="120" y="92" font-size="11" fill="#fca5a5" text-anchor="middle">Load Shedding Ratio</text>
+    <text x="120" y="125" font-size="26" font-weight="700" fill="#ef4444" text-anchor="middle">80.0% Shed</text>
+
+    <text x="30" y="165" font-size="11" fill="#94a3b8">Trip Threshold:</text>
+    <text x="210" y="165" font-size="11" font-weight="600" fill="#f8fafc" text-anchor="end">3 failures</text>
+
+    <text x="30" y="185" font-size="11" fill="#94a3b8">Endpoint Calls:</text>
+    <text x="210" y="185" font-size="11" font-weight="600" fill="#f8fafc" text-anchor="end">3 of 15 sent</text>
+
+    <text x="30" y="205" font-size="11" fill="#94a3b8">Fast-Failed Rejections:</text>
+    <text x="210" y="205" font-size="11" font-weight="600" fill="#ef4444" text-anchor="end">12 dropped</text>
+
+    <text x="30" y="225" font-size="11" fill="#94a3b8">Post-Cooldown State:</text>
+    <text x="210" y="225" font-size="11" font-weight="600" fill="#4ade80" text-anchor="end">CLOSED (probe ok)</text>
+  </g>
+
+  <!-- Bottom: Summary & Cost Table -->
+  <g transform="translate(40, 365)">
+    <rect width="660" height="105" rx="8" fill="#0b1329" stroke="#1e293b" stroke-width="1"/>
+    <text x="20" y="26" font-size="12" font-weight="600" fill="#38bdf8">Reliability vs. Cost Summary (Wilson Confidence Intervals)</text>
+    <text x="20" y="48" font-size="11" fill="#94a3b8">• 0% Failures: 100% baseline [86%-100%] vs 100% resilient [86%-100%] (Cost: 0 extra calls, 0ms latency overhead).</text>
+    <text x="20" y="68" font-size="11" fill="#94a3b8">• 30% Failures: Baseline degrades to 36% [20%-56%]; Resilient recovers to 96% [80%-99%] (Gain: +60%).</text>
+    <text x="20" y="88" font-size="11" fill="#94a3b8">• Circuit Breaker trips to OPEN after 3 consecutive failures, preventing cascading downstream retry storms.</text>
+  </g>
+</svg>

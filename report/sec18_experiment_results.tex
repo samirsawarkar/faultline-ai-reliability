@@ -1,0 +1,169 @@
+\section{Experiment Results}
+
+Every experiment in FAULTLINE is documented using an immutable, standardized scientific schema. No result is reported without uncertainty bounds, limitations, and explicit reversal criteria.
+
+% ------------------------------------------------------------------------------
+\subsection{Q1: When Does Tool Depth Break the Naive Reliability Model?}
+
+\begin{center}
+\includegraphics[width=\textwidth,trim=7.4bp 3.6bp 52.0bp 32.4bp,clip]{fig1_depth.pdf}
+\vspace{2pt}
+\captionof{figure}{Measured vs Naive Multi-Hop Reliability by Required Tool Depth. The measured curve diverges from the naive $p_1^n$ model at depth 3, collapsing to $0.288$ at 8 hops versus $0.797$ predicted.}
+\label{fig:q1_depth}
+\end{center}
+
+\begingroup
+\small
+\begin{itemize}\setlength{\itemsep}{1.2pt}\setlength{\parsep}{0pt}\setlength{\parskip}{0pt}
+    \item \textbf{Question:} Does multi-step agent reliability follow a simple compounding of single-step accuracy ($P(\text{task}) = p_1^n$), or does the conditional probability change across sequential hops?
+    \item \textbf{Hypothesis:} As required tool depth increases, conditional step difficulty increases due to accumulated context noise and error propagation; the measured curve will diverge from $p_1^n$ with disjoint confidence intervals.
+    \item \textbf{Setup:} Seeded environment (\code{seed=42}); tool execution simulator with controlled noise; fixed agent reason-tool-observe loop.
+    \item \textbf{Treatment:} Number of required tool hops varied systematically from $n=1$ to $n=8$.
+    \item \textbf{Population:} 500 seeded trials per depth ($4,000$ total trials).
+    \item \textbf{Metrics:} Single-hop reliability $p_1$, measured end-to-end task success $P(n)$, 95\% Wilson confidence intervals, naive prediction $p_1^n$.
+    \item \textbf{Result:} \MEASURED
+    \begin{itemize}\setlength{\itemsep}{0.8pt}\setlength{\parsep}{0pt}
+        \item Single-hop base success: $p_1 = \mathbf{0.972}$.
+        \item At 3 hops: Measured success was $\mathbf{0.818}$ (95\% CI: $[0.7818, 0.8494]$) vs naive prediction $\mathbf{0.91833}$. \textbf{First interval separation occurs at 3 hops}.
+        \item At 8 hops: Measured success collapsed to $\mathbf{0.288}$ (95\% CI: $[0.2500, 0.3292]$) vs naive prediction $\mathbf{0.796765}$.
+    \end{itemize}
+    \item \textbf{Uncertainty:} The 95\% Wilson intervals strictly exclude the naive prediction for all depths $n \ge 3$.
+    \item \textbf{Interpretation:} Tool hops are non-exchangeable. Error propagation and context accumulation degrade conditional success at later hops ($P(\text{step } k \mid \text{steps } 1 \dots k-1) < p_1$).
+    \item \textbf{What it does NOT prove:} \LIMITATION\ (L02) It does not prove that every production LLM exhibits identical decay rates; it proves that planning assuming $p^n$ is mathematically invalid.
+    \item \textbf{Reversal Condition:} Reverse if production multi-hop workloads show constant conditional success rates across deep traversal chains.
+\end{itemize}
+\endgroup
+
+% ------------------------------------------------------------------------------
+\subsection{Q2: Does an Aggregate Detector Score Conceal Operational Risk?}
+
+\begin{center}
+\includegraphics[width=\textwidth,trim=61.0bp 3.6bp 53.0bp 32.4bp,clip]{fig2_detector.pdf}
+\vspace{2pt}
+\captionof{figure}{Detector Recall and Confidence Intervals by Fault Family. While aggregate precision was 1.0, micro recall was 0.615, concealing 10 false negatives (4 semantic escapes).}
+\label{fig:q2_detector}
+\end{center}
+
+\begingroup
+\small
+\begin{itemize}\setlength{\itemsep}{1.2pt}\setlength{\parsep}{0pt}\setlength{\parskip}{0pt}
+    \item \textbf{Question:} Can high aggregate detector metrics (e.g., F1 $>0.75$) conceal systemic failure modes that escape into user-visible answers?
+    \item \textbf{Hypothesis:} Deterministic schema and latency detectors will achieve near-perfect recall on transport/syntax faults but completely fail on semantic corruption.
+    \item \textbf{Setup:} 44 human-labelled traces covering fault families F1--F6 across severities 1 to 3; out-of-band injection truth.
+    \item \textbf{Treatment:} Application of deterministic multi-fault detector vs injection ground truth.
+    \item \textbf{Population:} 44 labelled test runs.
+    \item \textbf{Metrics:} Micro/Macro Precision, Recall, F1 score, confusion matrices, miss audit.
+    \item \textbf{Result:} \MEASURED
+    \begin{itemize}\setlength{\itemsep}{0.8pt}\setlength{\parsep}{0pt}
+        \item Precision: $\mathbf{1.000}$ (Zero false alarms).
+        \item Recall: $\mathbf{0.615385}$ (10 false negatives out of 26 faulted cases).
+        \item Aggregate F1: $\mathbf{0.761905}$.
+        \item Miss Audit: 6 misses were threshold-reducible; \textbf{4 were semantic escapes} (F3 wrong data, F5 context drift).
+    \end{itemize}
+    \item \textbf{Uncertainty:} Wilson intervals on per-fault recall are wide due to small sample slices ($n=44$).
+    \item \textbf{Interpretation:} High aggregate scores create false security. Evaluators must audit the miss mechanism. Deterministic checks cannot catch subtle semantic corruptions.
+    \item \textbf{What it does NOT prove:} \LIMITATION\ (L03) Does not prove that semantic detectors are impossible; proves deterministic checks require semantic guards.
+    \item \textbf{Reversal Condition:} Reverse if a single unified detector demonstrates $\ge 0.95$ recall across both transport and semantic miss slices.
+\end{itemize}
+\endgroup
+
+% ------------------------------------------------------------------------------
+\subsection{Q3: Is a Retry Cap Stable Across Fault Structure (Correlation)?}
+
+\begin{center}
+\includegraphics[width=\textwidth,trim=8.4bp 3.6bp 52.5bp 32.4bp,clip]{fig3_retry.pdf}
+\vspace{2pt}
+\captionof{figure}{Success Rate and Attempt Amplification by Retry Cap ($K$) Under Independent vs Correlated Faults. During correlated outages, $K=3$ amplifies load to $2.37\times$ while buying negligible success.}
+\label{fig:q3_retry}
+\end{center}
+
+\begingroup
+\small
+\begin{itemize}\setlength{\itemsep}{1.2pt}\setlength{\parsep}{0pt}\setlength{\parskip}{0pt}
+    \item \textbf{Question:} Does the optimal retry budget ($K$) determined under independent transient faults remain optimal during correlated provider outages?
+    \item \textbf{Hypothesis:} When failures are correlated, retries fail repeatedly, amplifying system load and breaching latency ceilings without improving success.
+    \item \textbf{Setup:} 200 shared scenario seeds; virtual latency model; decision ceilings of $2.0\times$ attempt amplification and $120$ latency units.
+    \item \textbf{Treatment:} Varying retry cap $K \in \{0, 1, 2, 3, 4, 5\}$ under independent vs correlated failure regimes.
+    \item \textbf{Population:} 200 paired requests per sweep point ($2,400$ total executions).
+    \item \textbf{Metrics:} Task success, attempt amplification factor, p99 tail latency, McNemar paired p-value.
+    \item \textbf{Result:} \MEASURED
+    \begin{itemize}\setlength{\itemsep}{0.8pt}\setlength{\parsep}{0pt}
+        \item Under independent faults: Optimal cap inside budget ceilings was $\mathbf{K=3}$ (Success $\mathbf{0.760}$, Amplification $\mathbf{1.90\times}$, p99 latency $\mathbf{76.0}$).
+        \item Under correlated faults: Optimal cap inside budget ceilings dropped to $\mathbf{K=2}$ (Success $\mathbf{0.365}$, Amplification $\mathbf{1.735\times}$, p99 latency $\mathbf{53.4}$).
+        \item Setting $K=3$ under correlation caused attempt amplification to spike to $\mathbf{2.37\times}$ (breaching the $2.0\times$ ceiling) for only $\mathbf{0.415}$ success.
+        \item McNemar paired test comparing independent vs correlated success at $K=3$: $p = \mathbf{2.695 \times 10^{-16}}$.
+    \end{itemize}
+    \item \textbf{Uncertainty:} Highly significant paired difference ($p \ll 10^{-6}$) over identical seeds.
+    \item \textbf{Interpretation:} Correlation changes the operational boundary. During an outage, retrying the same dependency amplifies the outage (a retry storm).
+    \item \textbf{What it does NOT prove:} \LIMITATION\ (L05) The exact crossover point ($K=2$ vs $K=3$) is a function of the configured simulator parameters.
+    \item \textbf{Reversal Condition:} Reverse if provider endpoints exhibit zero failure correlation under heavy burst load.
+\end{itemize}
+\endgroup
+
+% ------------------------------------------------------------------------------
+\subsection{Q4: Does Fallback Preserve Availability Without Preserving Quality?}
+
+\begin{center}
+\includegraphics[width=\textwidth,trim=61.0bp 3.6bp 47.0bp 32.4bp,clip]{fig4_fallback.pdf}
+\vspace{2pt}
+\captionof{figure}{Availability vs Strict Quality Under Primary Provider Outage. Fallback restores availability from 0.667 to 1.0, but strict answer quality drops from 1.0 to 0.75 (30 of 40 fallback answers degraded).}
+\label{fig:q4_fallback}
+\end{center}
+
+\begingroup
+\small
+\begin{itemize}\setlength{\itemsep}{1.2pt}\setlength{\parsep}{0pt}\setlength{\parskip}{0pt}
+    \item \textbf{Question:} Does automated fallback to a secondary model preserve service availability at the expense of returning degraded, inaccurate answers?
+    \item \textbf{Hypothesis:} Fallback will achieve 100\% availability on the transport layer while significantly reducing strict semantic answer quality.
+    \item \textbf{Setup:} 120 paired requests; 40 scheduled primary provider outages; fallback to a cheaper, faster secondary model; strict programmatic oracle.
+    \item \textbf{Treatment:} Primary-only routing vs Automated secondary fallback routing.
+    \item \textbf{Population:} 120 paired requests.
+    \item \textbf{Metrics:} Service availability, strict answer quality given answered, overall service pass rate, fallback answer degradation rate.
+    \item \textbf{Result:} \MEASURED
+    \begin{itemize}\setlength{\itemsep}{0.8pt}\setlength{\parsep}{0pt}
+        \item Primary-only baseline: Availability was $\mathbf{0.6667}$ ($80/120$); strict answer quality among answered was $\mathbf{1.000}$ ($80/80$). Overall pass: $\mathbf{0.6667}$.
+        \item Fallback-enabled: Availability rose to $\mathbf{1.000}$ ($120/120$); strict answer quality plunged to $\mathbf{0.7500}$ ($90/120$). Overall pass: $\mathbf{0.7500}$.
+        \item Fallback slice decomposition: Of the 40 fallback answers, \textbf{30 were silently degraded} (75\% degradation rate).
+        \item Advisory detector recall on degraded answers was only $\mathbf{0.6667}$ ($20/30$), missing all 10 borderline-token corruptions.
+    \end{itemize}
+    \item \textbf{Uncertainty:} 95\% Wilson interval on fallback degradation is $[0.598, 0.858]$.
+    \item \textbf{Interpretation:} Fallback trades correctness for availability. A dashboard showing 100\% uptime is actively misleading when 25\% of all served answers are wrong.
+    \item \textbf{What it does NOT prove:} \LIMITATION\ (L06) The $75\%$ degradation rate reflects the configured capability gap between the primary and fallback models.
+    \item \textbf{Reversal Condition:} Reverse if the fallback model possesses identical reasoning capability and knowledge cutoff as the primary model.
+\end{itemize}
+\endgroup
+
+% ------------------------------------------------------------------------------
+\subsection{Q5: Which Recovery Policy Wins on Correct Success, Cost, and Latency?}
+
+\begin{center}
+\includegraphics[width=\textwidth,trim=14.4bp 3.6bp 55.0bp 32.4bp,clip]{fig5_policy.pdf}
+\vspace{2pt}
+\captionof{figure}{Policy Pareto Frontier: Correct Success vs Mean Cost across 400 Shared Seeds. P4 Selective Guarded is the base-envelope winner, but collapses under stress attacks.}
+\label{fig:q5_policy}
+\end{center}
+
+\begingroup
+\small
+\begin{itemize}\setlength{\itemsep}{1.2pt}\setlength{\parsep}{0pt}\setlength{\parskip}{0pt}
+    \item \textbf{Question:} Which recovery cascade policy delivers the highest user-visible correct success within strict cost and tail-latency constraints?
+    \item \textbf{Hypothesis:} A selective guarded policy that retries only transient faults and gates fallback on answer quality will dominate naive retry and blind fallback.
+    \item \textbf{Setup:} 400 shared seeds ($2026080300 \dots 2026080699$); five candidate policies (P0--P4); constraint-first eligibility screen: Success lower bound $\ge 0.78$, Wrong-answer upper bound $\le 0.02$, Mean cost $\le 1.75$, p95 latency $\le 80$.
+    \item \textbf{Treatment:} P0 (No recovery), P1 (Bounded retry), P2 (Unchecked fallback), P3 (Full cascade), P4 (Selective guarded).
+    \item \textbf{Population:} 400 paired requests.
+    \item \textbf{Metrics:} Correct success, wrong visible answers, mean cost, p95 latency, efficiency ratios.
+    \item \textbf{Result:} \MEASURED
+    \begin{itemize}\setlength{\itemsep}{0.8pt}\setlength{\parsep}{0pt}
+        \item P0: Success $0.5750$ (Fails success floor).
+        \item P2: Success $0.8350$, Wrong answers $\mathbf{0.1650}$ (Fails wrong-answer bound $\le 0.02$).
+        \item P3: Success $0.9325$, Mean cost $1.6719$, p95 latency $\mathbf{81.0}$ (Fails latency bound $\le 80$).
+        \item \textbf{P4 Selective Guarded (WINNER):} Correct success $\mathbf{0.9325}$ (95\% CI: $[0.9036, 0.9532]$); Wrong answers $\mathbf{0}$ (Wilson upper bound $\mathbf{0.0095}$); Mean cost $\mathbf{1.4656}$ (Bootstrap 95\% CI: $[1.410, 1.521]$); p95 latency $\mathbf{50.0}$.
+        \item Paired delta vs P1: $+0.0950$ success ($p = 1.95 \times 10^{-9}$); $+0.0485$ success/cost ($[0.0319, 0.0664]$).
+        \item \textbf{Stress Attacks on Winner:} Under worse severity, P4 success dropped to $\mathbf{0.6950}$ (failed); under tight budgets, success dropped to $\mathbf{0.5750}$ (failed).
+    \end{itemize}
+    \item \textbf{Uncertainty:} Paired bootstrap intervals strictly exceed zero against all eligible competitors in baseline conditions.
+    \item \textbf{Interpretation:} P4 is the reference upper bound in the measured base envelope. Its failure under stress proves that no policy can be deployed without runtime envelope monitoring.
+    \item \textbf{What it does NOT prove:} \LIMITATION\ (L07) P4 received an idealized retryability classifier; real-world classifier noise will lower this upper bound.
+    \item \textbf{Reversal Condition:} Reverse if production error classification has $<70\%$ accuracy or if fallback quality cannot be verified at runtime.
+\end{itemize}
+\endgroup

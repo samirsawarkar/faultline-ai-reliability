@@ -1,0 +1,189 @@
+\section{Failure Taxonomy}
+
+\subsection{The Component-Based Taxonomy}
+Rather than categorizing AI failures by subjective symptoms (e.g., ``model hallucinated''), FAULTLINE organizes failures by the \textbf{producing system component} where the defect originates:
+
+\begin{center}
+\resizebox{0.95\textwidth}{!}{%
+\begin{tikzpicture}[
+  rootbox/.style={draw=primary, fill=primary!10, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=5pt, text width=7.0cm},
+  catbox/.style={draw=secondary, fill=secondary!10, rounded corners=3pt, font=\footnotesize\bfseries\sffamily, align=center, inner sep=4pt, text width=7.4cm},
+  leafbox/.style={draw=accent, fill=accent!5, rounded corners=3pt, font=\scriptsize\sffamily, align=left, inner sep=4pt, text width=7.2cm},
+  arrow/.style={-{Latex[length=2mm]}, line width=1pt, color=secondary},
+  bus/.style={line width=1pt, color=secondary}
+]
+\node[rootbox] (root) at (0, 0) {FAULTLINE Failure Spectrum};
+
+\node[catbox] (c1) at (-4.2, -1.2) {\textbf{Provider Boundary} (Transport and Interface)};
+\node[catbox] (c2) at (4.2, -1.2) {\textbf{Agent Internal State} (Data Plane and Control)};
+
+\node[leafbox, below=0.4cm of c1] (f1) {\textbf{F1: Structured Output Corruption}\\Truncated / invalid syntax at tool output boundary};
+\node[leafbox, below=0.25cm of f1] (f2) {\textbf{F2: Virtual Latency / Timeout}\\Provider transport hang / queue saturation};
+\node[leafbox, below=0.25cm of f2] (f4) {\textbf{F4: Provider Outage / HTTP Error}\\5xx error codes, 429 rate limits, service drop};
+
+\node[leafbox, below=0.4cm of c2] (f3) {\textbf{F3: Schema Drift / Wrong Data}\\Syntactically valid payload citing invalid entity};
+\node[leafbox, below=0.25cm of f3] (f5) {\textbf{F5: Context Corruption}\\Distractor injection, conflicting intermediate token};
+\node[leafbox, below=0.25cm of f5] (f6) {\textbf{F6: Loop Exhaustion}\\Query cycle, pagination trap, step limit breach};
+
+\draw[arrow] (root.south) -| (c1.north);
+\draw[arrow] (root.south) -| (c2.north);
+
+% Bus lines for c1
+\draw[bus] (c1.south) -- ++(0,-0.2) -| ([xshift=-0.25cm]f1.north west) -- ([xshift=-0.25cm]f4.west);
+\draw[arrow] ([xshift=-0.25cm]f1.west) -- (f1.west);
+\draw[arrow] ([xshift=-0.25cm]f2.west) -- (f2.west);
+\draw[arrow] ([xshift=-0.25cm]f4.west) -- (f4.west);
+
+% Bus lines for c2
+\draw[bus] (c2.south) -- ++(0,-0.2) -| ([xshift=-0.25cm]f3.north west) -- ([xshift=-0.25cm]f6.west);
+\draw[arrow] ([xshift=-0.25cm]f3.west) -- (f3.west);
+\draw[arrow] ([xshift=-0.25cm]f5.west) -- (f5.west);
+\draw[arrow] ([xshift=-0.25cm]f6.west) -- (f6.west);
+\end{tikzpicture}%
+}
+\vspace{0.2em}
+\captionof{figure}{Taxonomy of AI Failure Modes by Producing Component.}
+\label{fig:failure_taxonomy}
+\end{center}
+
+\begin{center}
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}X}
+\toprule
+\textbf{Fault ID \& Component} & \textbf{Physical Trigger} & \textbf{Observable Trace} \newline \textbf{Symptom} & \textbf{User-Visible} \newline \textbf{Consequence} & \textbf{Detection \& Recovery} \\
+\midrule
+\textbf{F1: Structured Output} \newline \textit{Tool output boundary} & Truncated JSON, unescaped quotes, key omission. & Pydantic \code{ValidationError} at deserialization. & Unhandled crash or blank error message. & \textbf{Det:} Schema check ($R=1.0$). \newline \textbf{Rec:} M1 Schema repair-retry. \\
+\addlinespace
+\textbf{F2: Latency / Timeout} \newline \textit{Provider transport} & Simulated provider hang, packet drop, slow queue. & Span duration breaches configured latency threshold. & Client disconnect, spinning loader, SLA breach. & \textbf{Det:} Deadline monitor ($R=1.0$). \newline \textbf{Rec:} M2 Timeout + bounded retry. \\
+\addlinespace
+\textbf{F3: Schema Drift / Wrong Data} \newline \textit{Tool data plane} & Data format changes; field valid string but wrong entity. & Schema passes; downstream lookup fails to find entity. & Plausible hallucination citing invalid entity. & \textbf{Det:} Invariant check ($R=0.6$). \newline \textbf{Rec:} M6 Replanning / re-search. \\
+\addlinespace
+\textbf{F4: Provider Outage} \newline \textit{Provider infrastructure} & 500 Internal Error, 503 Overloaded, 429 Rate Limit. & Explicit error code returned by HTTP client wrapper. & Immediate query failure; cascade collapse. & \textbf{Det:} Status code check ($R=1.0$). \newline \textbf{Rec:} M3 Breaker + M4 Fallback. \\
+\addlinespace
+\textbf{F5: Context Corruption} \newline \textit{Agent memory / context} & Distractor injection, conflicting intermediate token. & Agent generates divergent tool queries unrelated to task. & Confident incorrect answer citing distractor. & \textbf{Det:} Semantic invariant ($R=0.5$). \newline \textbf{Rec:} Context reset / re-ground. \\
+\addlinespace
+\textbf{F6: Loop Exhaustion} \newline \textit{Agent control loop} & Query cycle (searching A $\to$ B $\to$ A), pagination trap. & Consecutive identical tool calls; step count reaches cap. & Silent timeout or partial ungrounded guess. & \textbf{Det:} Cycle counter ($R=1.0$). \newline \textbf{Rec:} M5 Structural step ceiling. \\
+\bottomrule
+\end{tabularx}
+\endgroup
+\end{center}
+
+% ==============================================================================
+\vspace{12pt}
+\needspace{8\baselineskip}
+\section{Fault Injection}
+
+\subsection{Controlled Deterministic Injection}
+In distributed systems, testing failure handling by waiting for production outages is unacceptable. Testing must be proactive and repeatable.
+
+FAULTLINE injects failures deterministically at runtime:
+\begin{center}
+\resizebox{0.92\textwidth}{!}{%
+\begin{tikzpicture}[
+  node distance=0.6cm and 1.8cm,
+  box/.style={draw=primary, fill=lightbg, rounded corners=3pt, font=\small\sffamily, align=center, inner sep=6pt},
+  fault/.style={draw=accent, fill=accent!10, rounded corners=3pt, font=\small\bfseries\sffamily, align=center, inner sep=6pt},
+  arrow/.style={-{Latex[length=2.5mm]}, line width=1pt, color=primary}
+]
+\node[box] (call) {Agent Emits\\Tool/Model Call};
+\node[fault, right=of call] (inj) {Fault Injector\\Interception Proxy};
+\node[box, right=of inj] (dest) {Target\\Component};
+\node[fault, below=0.9cm of inj] (log) {Out-of-Band\\Ground Truth Log};
+
+\draw[arrow] (call) -- (inj);
+\draw[arrow] (inj) -- node[above, font=\scriptsize] {If healthy} (dest);
+\draw[arrow, color=accent] (inj) -- node[right, font=\scriptsize] {Record injection} (log);
+\draw[arrow, color=accent] (inj.south) -- ++(0,-0.35) -| node[below, pos=0.35, font=\scriptsize] {If faulted: inject F1--F6} (call.south);
+\end{tikzpicture}%
+}
+\end{center}
+
+\subsection{Independent Out-of-Band Ground Truth}
+A foundational vulnerability in evaluation research is \textbf{ground-truth leakage}: if the detector inspects metadata injected into the data payload, the detector achieves an artificially perfect score that collapses in production.
+
+In FAULTLINE, the injector logs the exact fault type, severity, target step, and timestamp to an \textbf{independent out-of-band manifest} (\code{injection\_truth.json}). The detector operates with zero knowledge of this file, inspecting only the observable payload, return codes, and latency spans.
+
+% ==============================================================================
+\vspace{12pt}
+\needspace{8\baselineskip}
+\section{Observability and Tracing}
+
+\subsection{Tracing as Forensic Evidence, Not Dashboard Decoration}
+In distributed AI workflows, debugging requires forensic reconstruction of the entire execution tree:
+\begin{center}
+\resizebox{0.92\textwidth}{!}{%
+\begin{tikzpicture}[
+  every node/.style={font=\small\ttfamily},
+  box/.style={draw=secondary, fill=white, rounded corners=2pt, align=left, inner sep=4pt}
+]
+\node[box] (root) at (0, 0) {Episode: run-4a15a9 (invoke\_agent) [status=COMPLETED]};
+\node[box] (c1) at (0.8, -0.8) {$\llcorner$ Step 1: chat (deepseek-v4-flash) [24ms, in=586, out=42]};
+\node[box] (t1) at (1.6, -1.6) {$\llcorner$ Tool: search("tok-89f4b1") [status=OK, docs=2]};
+\node[box] (c2) at (0.8, -2.4) {$\llcorner$ Step 2: chat (deepseek-v4-flash) [52ms, in=1240, out=38]};
+\node[box] (t2) at (1.6, -3.2) {$\llcorner$ Tool: lookup("link-7a8f09") [status=TIMEOUT (F2), dur=120ms]};
+\node[box, draw=accent] (r1) at (2.4, -4.0) {$\llcorner$ Recovery: bounded\_retry [attempt=1, backoff=10ms]};
+\node[box] (t2_ret) at (2.4, -4.8) {$\llcorner$ Tool: lookup("link-7a8f09") [status=OK, dur=18ms]};
+\node[box] (c3) at (0.8, -5.6) {$\llcorner$ Step 3: chat (terminal answer) [status=PASS, cited=2]};
+\end{tikzpicture}%
+}
+\end{center}
+
+\subsection{Crash-Surviving SQLite Spans}
+Standard in-memory logging libraries lose telemetry when a fatal unhandled exception or OOM event crashes the runtime. FAULTLINE persists spans synchronously to SQLite (\code{trace.db}) with foreign-key linked parent-child spans. When a model call throws a fatal error, the terminating span records \code{OutcomeStatus.MODEL\_FAILURE} before the exception unwinds.
+
+\subsection{OpenTelemetry GenAI Semantic Conventions (P02)}
+To prevent proprietary lock-in, Project \textbf{P02} maps internal SQLite traces into standard \textbf{OpenTelemetry GenAI Semantic Conventions v1.29.0}:
+\begin{itemize}
+    \item Root span: \code{gen\_ai.operation.name = "invoke\_agent"}, \code{gen\_ai.system = "faultline"}.
+    \item Model spans: \code{gen\_ai.operation.name = "chat"}, capturing \code{gen\_ai.request.model}, \code{gen\_ai.usage.input\_tokens}, and \code{gen\_ai.usage.output\_tokens}.
+    \item Tool spans: \code{gen\_ai.operation.name = "execute\_tool"}, capturing \code{gen\_ai.tool.name}.
+\end{itemize}
+\textbf{Conformance Verification:} \code{tests/phase2/test\_otel\_conformance.py} verifies that all 5,392 spans across 350 exported traces achieve \textbf{100.0\% conformance} against the official SemConv v1.29.0 JSON schema with \textbf{zero attribute drift}.
+
+\subsection{Google SRE Multi-Window Multi-Burn-Rate Alerting (P13)}
+Project \textbf{P13} integrates Google SRE-style multi-burn-rate alerting over the \code{trace.db} store:
+\begin{itemize}
+    \item \textbf{SLO Definition:} $95.0\%$ Grounded Pass Rate over a 30-day compliance window ($720\text{ hours}$). Error budget = $5.0\%$.
+    \item \textbf{Fast-Burn Alert (Page):} Triggers when the 1-hour burn rate exceeds $14.4\times$ (consuming $2.08\%$ of monthly budget in 1 hour).
+    \item \textbf{Empirical Drill Result:} During an injected tool protocol failure (\code{INC-20260904-01}), pass rate collapsed from $100\%$ to $25\%$ ($75\%$ error rate). The evaluator detected a \textbf{$15.0\times$ fast-burn rate} within 6 minutes, firing a page alert and documenting recovery after rollback.
+\end{itemize}
+
+% ==============================================================================
+\vspace{12pt}
+\needspace{8\baselineskip}
+\section{Failure Detection}
+
+\subsection{Detection vs Diagnosis vs Correctness}
+Reliability engineering requires separating four sequential questions:
+\begin{enumerate}
+    \item \textbf{Detection:} Did an anomaly or failure occur? (Binary signal).
+    \item \textbf{Diagnosis:} Which component failed and what was the fault class? (F1--F6 attribution).
+    \item \textbf{Correctness Evaluation:} Is the resulting answer accurate and grounded? (Oracle gate).
+    \item \textbf{Recovery Evaluation:} Did the recovery action restore user-visible correctness within budget?
+\end{enumerate}
+
+\subsection{The Q2 Detection Findings: Aggregate Lies}
+In Day 15 (Q2), the deterministic detector was evaluated across 44 labelled test runs:
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{p{0.36\textwidth}cccc}
+\toprule
+\textbf{Detector Evaluation Slice} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 Score} & \textbf{Miss Breakdown} \\
+\midrule
+Overall Aggregate & \textbf{1.000} & \textbf{0.615} & \textbf{0.762} & 10 False Negatives \\
+Structural Transport (F1, F2, F4, F6) & 1.000 & 1.000 & 1.000 & 0 False Negatives \\
+Semantic Escapes (F3, F5) & 1.000 & 0.200 & 0.333 & 10 False Negatives \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{callout}[accent]{The Anatomy of the 10 False Negatives}
+Of the 10 false negatives surfaced in the Q2 audit:
+\begin{itemize}
+    \item \textbf{6 misses were threshold-reducible:} Latency or repetition spikes that sat slightly below hardcoded heuristics.
+    \item \textbf{4 misses were semantic escapes:} Valid tool outputs containing plausible but factually corrupted context that zero deterministic schema checks could detect.
+\end{itemize}
+This finding proves that \textbf{aggregate F1 scores conceal dangerous operational blind spots}.
+\end{callout}

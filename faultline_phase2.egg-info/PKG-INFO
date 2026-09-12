@@ -1,53 +1,23 @@
+Metadata-Version: 2.4
+Name: faultline-phase2
+Version: 0.1.0
+Summary: FAULTLINE Phase 2 — Real model reliability laboratory
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pydantic>=2.13
+Requires-Dist: litellm==1.98.0
+Requires-Dist: pytest>=8.0
+Dynamic: license-file
+
 # FAULTLINE
 
-**A reproducible research workbench for finding where document-grounded AI systems fail—and testing whether recovery actually improves the user outcome.**
+**A reproducible research workbench for finding where document-grounded AI
+systems fail—and testing whether recovery actually improves the user outcome.**
 
 [![CI](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml)
 [![Tests](https://img.shields.io/badge/tests-433%20passing-brightgreen.svg)](day26/evidence/test_report.json)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-
-**Phase 1** established the simulation foundations, failure taxonomy, and recovery mechanisms across 30 reproducible days. **Phase 2** measures real-world LLM agent reliability against live model APIs on a canonical 350-scenario multi-hop corpus.
-
----
-
-### Grounding Zero-Point (Phase 2 / Project P3)
-
-Real agent grounded pass rate on multi-hop document retrieval degrades steeply as required retrieval depth increases: **100.0%** $\to$ **61.2%** $\to$ **7.6%** on R2 (`glm-5.3-flash`), **20.9%** $\to$ **4.5%** $\to$ **0.0%** on R4 (`gpt-5.6-luna`), and **73.1%** $\to$ **26.9%** $\to$ **1.5%** on R6 (`deepseek-v4-pro`).
-
-![Grounding Zero-Point](projects/p03_grounding/figure.svg)
-
-```bash
-pip install -e .
-make p03  # runs P3 Grounding Zero-Point reproduction
-```
-
----
-
-## Start here
-
-**Hiring or evaluating this work?** Read the
-[one-minute engineering brief](HIRING-MANAGER.md), then inspect the
-[architecture and decision boundaries](ARCHITECTURE.md). Together they show the
-problem, the measurable outcomes, the system design, the tradeoffs, and the
-claims this repository deliberately does not make.
-
-**Reproducing or reviewing the research?** Follow
-[REPRODUCE.md](REPRODUCE.md). Every headline below is bound to a committed JSON
-value and generating command; CI rejects drift.
-
-## Three-minute staff-engineer path
-
-1. Watch or run the [2:45 incident demo](day29/DEMO.md).
-2. Read the [one-page case study](day29/CASE-STUDY.md).
-3. Inspect the [system architecture](ARCHITECTURE.md) and its reliability
-   invariants.
-4. Open the [Q1–Q5 technical article](day28/ARTICLE.md) only when you need the
-   full evidence argument.
-5. Use the [staff-level defense](day30/DEFENSE.md) to challenge every core
-   decision and limitation.
-
-The short path shows one complete chain—run → fault → trace → recover → replay—
-and states both what FAULTLINE proved and what remains unproven in production.
 
 ## Results
 
@@ -167,8 +137,6 @@ make reproduce-fast
 | [Day 26](day26/) | self-explaining reproducibility | [evidence](day26/evidence/) |
 | [Day 27](day27/) | assumption-free cold-reader reproduction | [evidence](day27/evidence/) |
 | [Day 28](day28/) | findings-first Q1–Q5 publication and claim audit | [evidence](day28/evidence/) |
-| [Day 29](day29/) | three-minute demo, one-page case study, comprehension gate | [evidence](day29/evidence/) |
-| [Day 30](day30/) | spoken defense, expert outreach, OSS contribution, launch gate | [evidence](day30/evidence/) |
 
 Each module carries its own question, method, tests, evidence, decision log, and
 mastery gate. Start with the results table; descend into a module only when you
@@ -180,13 +148,6 @@ Environment identities remain declared in [pins.json](day26/pins.json). The
 cold-reader revision and public source are declared in
 [protocol.json](day27/protocol.json). `v0.27.0-rc1` is tagged only after the clean
 container, exact headline output, and Checkpoint 27 are green.
-
-## Engineering standards
-
-[Architecture](ARCHITECTURE.md) ·
-[Contributing](CONTRIBUTING.md) ·
-[Security](SECURITY.md) ·
-[Reproduction](REPRODUCE.md)
 
 ## License
 

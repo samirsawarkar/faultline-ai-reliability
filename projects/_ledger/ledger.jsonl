@@ -1,0 +1,6 @@
+{"input_tokens": 44, "output_tokens": 424, "project": "p00_preflight", "run_id": "preflight-R1", "rung": "R1", "timestamp_utc": "2026-09-04T12:33:26Z", "usd": 8.9e-05}
+{"input_tokens": 146, "output_tokens": 70, "project": "p00_preflight", "run_id": "preflight-R2", "rung": "R2", "timestamp_utc": "2026-09-04T12:33:31Z", "usd": 4e-05}
+{"input_tokens": 32, "output_tokens": 6, "project": "p00_preflight", "run_id": "preflight-R3", "rung": "R3", "timestamp_utc": "2026-09-04T12:33:49Z", "usd": 1.9e-05}
+{"input_tokens": 36, "output_tokens": 12, "project": "p00_preflight", "run_id": "preflight-R4", "rung": "R4", "timestamp_utc": "2026-09-04T12:33:54Z", "usd": 2.2e-05}
+{"input_tokens": 48, "output_tokens": 8, "project": "p00_preflight", "run_id": "preflight-R5", "rung": "R5", "timestamp_utc": "2026-09-04T12:33:56Z", "usd": 6e-06}
+{"input_tokens": 32, "output_tokens": 64, "project": "p00_preflight", "run_id": "preflight-R6", "rung": "R6", "timestamp_utc": "2026-09-04T12:34:06Z", "usd": 7e-05}

@@ -1,0 +1,68 @@
+\section{The Reliability Decision Framework}
+
+Reliability engineering is not the optimization of a single scalar score. It is a disciplined, multi-dimensional decision process that balances correctness, tail latency, cost, and provenance under uncertainty:
+
+\begin{center}
+\resizebox{0.92\textwidth}{!}{
+\begin{tikzpicture}[
+  scale=0.92, every node/.style={transform shape},
+  box/.style={draw=primary, fill=white, rounded corners=3pt, font=\footnotesize\sffamily, align=center, inner sep=5pt, line width=0.8pt},
+  flow/.style={-{Latex[length=2.5mm]}, line width=1.2pt, color=secondary}
+]
+\node[box, fill=blue!5, text width=9.5cm] (ev) at (0, 0) {\textbf{EMPIRICAL EVIDENCE}\\Paired Seed Executions $\cdot$ Linked Traces};
+
+\node[box, fill=teal!5, text width=5.6cm, below left=0.6cm and -0.8cm of ev] (corr) {\textbf{Correctness Gate}\\$\bullet$ Grounded Pass Rate\\$\bullet$ Citation Completeness\\$\bullet$ Zero Hallucinated Tokens};
+
+\node[box, fill=warning!5, text width=5.6cm, below right=0.6cm and -0.8cm of ev] (ops) {\textbf{Operational Gate}\\$\bullet$ p95 / p99 Latency Budget\\$\bullet$ Cost per Resolved Query\\$\bullet$ Attempt Amplification Ceiling};
+
+\node[box, fill=purple!5, text width=9.5cm, below=0.6cm of $(corr.south)!0.5!(ops.south)$] (unc) {\textbf{Uncertainty Quantification}\\$\bullet$ Wilson 95\% Score Bounds $\cdot$ 10,000-Resample Bootstrap CIs $\cdot$ McNemar Significance};
+
+\node[box, fill=secondary!10, text width=9.5cm, below=0.5cm of unc] (rep) {\textbf{Reproducibility \& Provenance}\\$\bullet$ Byte-for-Byte Replay Stability $\cdot$ Fail-Closed Claim Audit};
+
+\node[box, draw=success, fill=success!15, line width=1.2pt, text width=9.5cm, below=0.5cm of rep] (dec) {\textbf{\color{success!80!black}RELIABILITY DECISION}\\Eligible for Production Deployment $\cdot$ Bounded Envelope};
+
+\draw[flow] (ev.south) -| (corr.north);
+\draw[flow] (ev.south) -| (ops.north);
+\draw[flow] (corr.south) |- (unc.west);
+\draw[flow] (ops.south) |- (unc.east);
+\draw[flow] (unc.south) -- (rep.north);
+\draw[flow] (rep.south) -- (dec.north);
+\end{tikzpicture}
+}
+\captionof{figure}{The Multi-Dimensional Reliability Decision Framework.}
+\label{fig:decision_framework}
+\end{center}
+
+\subsection{The Five Decision Gating Rules}
+\begin{enumerate}
+    \item \textbf{Rule 1 (Correctness Floor):} The Wilson 95\% confidence interval lower bound for grounded pass rate must exceed the operational threshold ($w_{\text{lower}} \ge 0.78$). A policy with high point success but wide uncertainty is rejected.
+    \item \textbf{Rule 2 (Safety / Wrong-Answer Ceiling):} The Wilson 95\% upper bound on wrong user-visible answers must remain below the risk tolerance ($w_{\text{upper}} \le 0.02$). Returning a wrong answer is strictly penalized over abstaining.
+    \item \textbf{Rule 3 (Tail Latency Ceiling):} The bootstrap 95\% upper bound on p95 latency must remain within the user SLA ($L_{p95} \le 80\text{ units}$).
+    \item \textbf{Rule 4 (Efficiency Pareto Dominance):} Among eligible policies passing Rules 1--3, candidate Policy A is preferred over Policy B if its paired bootstrap differences in success-per-dollar and success-per-second strictly exclude zero.
+    \item \textbf{Rule 5 (Stress Envelope Certification):} The selected policy must undergo adversarial stress injection (worse fault severity, correlated outages, tight budgets). If it fails Rules 1--3 under stress, its production deployment must be gated behind dynamic envelope monitoring.
+\end{enumerate}
+
+% ==============================================================================
+\vspace{12pt}
+\needspace{8\baselineskip}
+\section{What FAULTLINE Taught Me}
+
+These lessons are not motivational aphorisms; they are hard-won empirical truths derived from debugging distributed AI agent systems:
+
+\begin{enumerate}
+    \item \textbf{Dashboards Hide Semantic Failure.} High infrastructure availability is easily achieved by returning empty or degraded answers. An AI observability system that does not evaluate the semantic grounding of the output is a compliance facade.
+    
+    \item \textbf{Deterministic Environments Make Science Possible.} You cannot debug stochastic agent failures in a stochastic environment. By locking the world, documents, and tool contracts with seeds, every observed failure becomes an attributable causal event.
+    
+    \item \textbf{Recovery is Not Synonymous with Reliability.} Adding retries, fallbacks, and circuit breakers often reduces true system reliability by causing retry storms, latency inflation, and the silent delivery of degraded answers.
+    
+    \item \textbf{Evaluators Cannot Validate Themselves.} Using an uncalibrated LLM judge to measure agent hallucinations is circular. Evaluators must be benchmarked against independent human ground truth, and must be quarantined when they exhibit blind spots.
+    
+    \item \textbf{Averages Conceal Catastrophes.} An aggregate accuracy of 85\% can conceal a 0\% success rate on deep multi-hop queries or specific fault families. Reliability engineering requires micro-slicing data across fault types, hop depths, and severities.
+    
+    \item \textbf{Correlation Breaks Independent Architecture.} In a distributed system, assuming component independence during an outage is fatal. When upstream providers degrade, retries multiply load rather than buying success.
+    
+    \item \textbf{Reproducibility is Part of the Result, Not Documentation.} A scientific claim without an executable, containerized reproduction path is merely an anecdote. Research integrity requires proving that a stranger can clone the code and produce the exact same numbers.
+    
+    \item \textbf{Define Failure Before Measuring Success.} If you cannot enumerate the physical failure modes of your agent's tools, memory, and model boundaries, you cannot measure its reliability. System design begins with a failure taxonomy.
+\end{enumerate}

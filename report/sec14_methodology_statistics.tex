@@ -1,0 +1,159 @@
+\section{Experimental Methodology}
+
+\subsection{The Causal Scientific Loop}
+Every experiment in FAULTLINE follows a strict seven-stage pipeline designed to eliminate confounding variables:
+\begin{center}
+\resizebox{0.95\textwidth}{!}{%
+\begin{tikzpicture}[
+  scale=0.92,
+  node distance=0.5cm and 0.6cm,
+  box/.style={draw=primary, fill=lightbg, rounded corners=3pt, font=\scriptsize\sffamily, align=center, inner sep=4pt},
+  arrow/.style={-{Latex[length=2mm]}, line width=1pt, color=primary}
+]
+\node[box] (hyp) {\textbf{1. Pre-Registered}\\\textbf{Hypothesis}\\What will falsify it};
+\node[box, right=of hyp] (pop) {\textbf{2. Controlled}\\\textbf{Population}\\Frozen seeds};
+\node[box, right=of pop] (iv) {\textbf{3. Independent}\\\textbf{Variable}\\The single change};
+\node[box, right=of iv] (run) {\textbf{4. Paired}\\\textbf{Execution}\\Shared seeds};
+\node[box, right=of run] (out) {\textbf{5. Strict}\\\textbf{Outcomes}\\Oracle + metrics};
+\node[box, right=of out] (unc) {\textbf{6. Uncertainty}\\\textbf{Quantification}\\Wilson / Bootstrap};
+\node[box, right=of unc] (dec) {\textbf{7. Policy}\\\textbf{Decision}\\Pass/Fail Gate};
+
+\draw[arrow] (hyp) -- (pop);
+\draw[arrow] (pop) -- (iv);
+\draw[arrow] (iv) -- (run);
+\draw[arrow] (run) -- (out);
+\draw[arrow] (out) -- (unc);
+\draw[arrow] (unc) -- (dec);
+\end{tikzpicture}%
+}
+\end{center}
+
+\subsection{The Unit of Randomization: The Seed}
+In FAULTLINE, the experimental unit is the \textbf{seed}. When Policy A is compared to Policy B, both policies execute against the exact same seed sequence ($2026080300 \dots 2026080699$). This pairs the requests, converting query-to-query difficulty variations from experimental noise into matched observations.
+
+% ==============================================================================
+\vspace{12pt}
+\needspace{8\baselineskip}
+\section{Statistical Discipline}
+
+FAULTLINE uses only standard, well-characterized statistical estimators. Every mathematical method answers a specific engineering question and carries explicit boundaries:
+
+\subsection{The Four Core Statistical Tools}
+
+\begin{enumerate}
+    \item \textbf{Wilson Score Confidence Intervals (Binomial Proportions):}
+    \begin{itemize}
+        \item \textit{Question answered:} What is the true population success rate given $k$ successes in $n$ trials?
+        \item \textit{Why used:} Standard normal approximation intervals ($p \pm 1.96\sqrt{p(1-p)/n}$) collapse near 0 and 1, producing impossible bounds (e.g., upper bound $>1.0$). The Wilson score interval provides asymmetric, coverage-accurate intervals even for small samples and extreme proportions:
+        \[
+        w = \frac{\hat{p} + \frac{z^2}{2n} \pm z \sqrt{\frac{\hat{p}(1-\hat{p})}{n} + \frac{z^2}{4n^2}}}{1 + \frac{z^2}{n}}
+        \]
+        \item \textit{What it cannot prove:} It does not account for model-form uncertainty or non-exchangeable shift in production traffic.
+    \end{itemize}
+
+    \item \textbf{McNemar Paired Test (Same-Seed Binary Comparisons):}
+    \begin{itemize}
+        \item \textit{Question answered:} Did Policy B outperform Policy A on the exact same requests, or is the observed difference sampling noise?
+        \item \textit{Why used:} A two-sample z-test or t-test assumes independent samples. Because FAULTLINE pairs requests on identical seeds, we evaluate only the \textit{discordant pairs} (cases where Policy A failed and Policy B succeeded, or vice versa). When discordant count $b + c < 25$, we compute the exact two-tailed binomial test ($p = 2 \sum_{k=0}^{\min(b,c)} \binom{b+c}{k} 0.5^{b+c}$); above 25, we use the continuity-corrected $\chi^2$ statistic:
+        \[
+        \chi^2 = \frac{(|b - c| - 1)^2}{b + c}
+        \]
+        \item \textit{What it cannot prove:} It proves that a policy difference is statistically significant, not that it is economically worthwhile.
+    \end{itemize}
+
+    \item \textbf{Seeded Paired Bootstrap (Continuous Cost \& Latency Deltas):}
+    \begin{itemize}
+        \item \textit{Question answered:} What is the 95\% confidence interval of the cost and latency differences between two policies?
+        \item \textit{Why used:} Latency and cost distributions are heavily right-skewed and multimodal (due to retries and tool steps), violating normality assumptions. We draw \textbf{10,000 seeded bootstrap resamples} of the paired differences and take the empirical 2.5\% and 97.5\% percentiles.
+        \item \textit{What it cannot prove:} It describes variability within the observed scenario mix; it cannot extrapolate to unseen catastrophic latency tails.
+    \end{itemize}
+
+    \item \textbf{Multi-Trial Consistency ($pass^k$ vs $pass@k$):}
+    \begin{itemize}
+        \item \textit{Question answered:} How reliably does an agent succeed across $k$ consecutive independent attempts on the same task?
+        \item \textit{Why used:} Standard $pass@k$ measures whether \textit{at least one} of $k$ samples succeeds (optimistic diversity metric). In enterprise automation, users need consistency: $pass^k$ (Yao et al., 2024) measures whether \textit{all $k$ runs succeed}.
+        \item \textit{What it cannot prove:} It does not distinguish whether failures are caused by scenario hardness or sampling stochasticity.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Declared Statistical Power and the Inconclusive Rule}
+Under Master Experiment Contract MEC v1.0, power is declared \textbf{before} the experiment runs:
+\begin{callout}[primary]{Pre-Declared Power Contract}
+At $n=200$ paired requests, the testbed achieves $80\%$ power to detect a difference of $\approx 10\text{ percentage points}$ ($\alpha=0.05$). For per-tier evaluations ($n \approx 67$), the Wilson interval half-width is approximately $\pm 11\text{ percentage points}$. Any observed delta below these thresholds is formally recorded as \textbf{INCONCLUSIVE}---never as ``no difference''.
+\end{callout}
+
+% ==============================================================================
+\vspace{12pt}
+\needspace{8\baselineskip}
+\section{LLM-as-a-Judge: Validation and Quarantine}
+
+\subsection{Why Evaluators Cannot Validate Themselves}
+The modern AI industry relies heavily on LLM judges to grade LLMs. However, LLM judges exhibit well-documented pathological failure modes:
+\begin{itemize}
+    \item \textbf{Position Bias:} Preferring whichever document or answer appears first in context.
+    \item \textbf{Verbosity Bias:} Scoring longer, wordy answers higher than concise factual answers.
+    \item \textbf{Borderline Blindness:} Inability to detect subtle entity token corruptions when the surrounding grammatical syntax is flawless.
+\end{itemize}
+
+\subsection{Empirical Validation of the Narrow Judge (Day 16)}
+On Day 16, a narrow LLM judge was evaluated against a golden set of 24 human-annotated traces:
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{lccX}
+\toprule
+\textbf{Validation Metric} & \textbf{Observed Value} & \textbf{Pre-declared Threshold} & \textbf{Verdict / Failure Mechanism} \\
+\midrule
+Raw Agreement & 0.7500 & $\ge 0.85$ & FAILED (6 classification errors) \\
+Cohen's Kappa ($\kappa$) & \textbf{0.5000} & $\ge 0.70$ & \textbf{FAILED (Moderate agreement only)} \\
+False Positives (False Alarms) & 0 / 12 & $\le 1$ & PASSED (Perfect specificity) \\
+False Negatives (False Accepts) & \textbf{6 / 12} & $\le 1$ & \textbf{FAILED (50\% false acceptance rate)} \\
+Borderline-Token Agreement & \textbf{0.0000} & $\ge 0.70$ & \textbf{CATASTROPHIC BLIND SPOT (0/6 detected)} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{dangerbox}
+\textbf{The Architectural Quarantine Decision:} Because the judge reached only $\kappa=0.50$ and exhibited a total blind spot on borderline tokens (approving corrupt fallback answers as long as they sounded professional), \textbf{the LLM judge was permanently quarantined}. It is relegated strictly to an advisory diagnostic signal. Under no circumstances is an LLM judge permitted to generate ground-truth labels or override the programmatic oracle.
+\end{dangerbox}
+
+% ==============================================================================
+\vspace{12pt}
+\needspace{8\baselineskip}
+\section{Reproducibility as a Scientific Contract}
+
+\subsection{The Complete Evidence Provenance Chain}
+In FAULTLINE, no number exists without a verifiable, executable provenance chain:
+\begin{center}
+\resizebox{0.95\textwidth}{!}{%
+\begin{tikzpicture}[
+  scale=0.9,
+  node distance=0.4cm and 0.5cm,
+  box/.style={draw=secondary, fill=white, rounded corners=2pt, font=\scriptsize\sffamily, align=center, inner sep=3pt},
+  arrow/.style={-{Latex[length=2mm]}, line width=0.8pt, color=secondary}
+]
+\node[box] (env) {Runtime Pin\\\code{pins.json}};
+\node[box, right=of env] (code) {Git Hash\\\code{HEAD}};
+\node[box, right=of code] (seed) {Master Seed\\\code{42}};
+\node[box, right=of seed] (run) {Execution\\\code{make dayNN}};
+\node[box, right=of run] (json) {Raw Result\\\code{results.json}};
+\node[box, right=of json] (audit) {JSON Pointer\\\code{readme\_claims.json}};
+\node[box, right=of audit] (pub) {README / PDF\\Rendered Value};
+
+\draw[arrow] (env) -- (code);
+\draw[arrow] (code) -- (seed);
+\draw[arrow] (seed) -- (run);
+\draw[arrow] (run) -- (json);
+\draw[arrow] (json) -- (audit);
+\draw[arrow] (audit) -- (pub);
+\end{tikzpicture}%
+}
+\end{center}
+
+\subsection{The Five Core Reproducibility Guarantees}
+\begin{enumerate}
+    \item \textbf{Pinned Dependency Lock:} Exact equality constraints (\code{==}) in \code{requirements.txt}; compatible ranges (\code{>=}) are forbidden.
+    \item \textbf{Clean-Container Clean-Room Reproduction:} Pinned Debian/Python 3.12.4 Docker base image (\code{Dockerfile}) with multi-architecture digest verification.
+    \item \textbf{One-Command Cold Start:} A reader with zero repository history clones the repo and runs \code{make cold-reproduce}. The build verifies hashes and outputs the exact headline results.
+    \item \textbf{Fail-Closed Claim Auditing:} \code{day28/faultline\_publication/audit.py} parses every registered claim, validates that the source JSON exists, checks that the rendered number matches the float pointer, and verifies that the mandatory limitation is present.
+    \item \textbf{Byte-for-Byte Replay Verification:} Tests verify that re-running experiments yields identical SHA-256 digests across different processes and hash seeds.
+\end{enumerate}

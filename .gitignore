@@ -2,3 +2,15 @@
 __pycache__/
 *.pyc
 .pytest_cache/
+.aes/
+PLAN.md
+CLAUDE.md
+.env
+
+# LaTeX compilation artifacts & temp inspection files
+*.aux
+*.log
+*.out
+*.toc
+report/main.pdf
+report/*.png

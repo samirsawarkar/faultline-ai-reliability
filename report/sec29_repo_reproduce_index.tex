@@ -1,0 +1,211 @@
+\section{Repository Map}
+
+\begin{center}
+\begingroup
+\scriptsize
+\renewcommand{\arraystretch}{0.88}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.34\textwidth}>{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Directory / File} & \textbf{Architectural Purpose} & \textbf{Key Evidence Produced} \\
+\midrule
+\code{day01/}--\code{day30/} & Phase 1 research foundation modules (30 days). & 528 unit tests, Q1--Q5 evidence, frozen checkpoints. \\
+\code{faultline\_p2/env/} & 350-scenario corpus builder with link-layer docs. & Content hash \code{9d6d7f...}; max fact reuse $\le 5$. \\
+\code{faultline\_p2/oracle/} & Pure-function ground truth pass evaluator. & Hash-pinned unmodified Day 1 copy (\code{dc5eef...}). \\
+\code{faultline\_p2/agent/} & Bounded reason-tool-observe loop with step caps. & 12-step cap enforcement, Pydantic \code{extra="forbid"}. \\
+\code{faultline\_p2/trace/} & SQLite persistent span store with foreign keys. & Crash-surviving execution spans in \code{trace.db}. \\
+\code{faultline\_p2/otel/} & OpenTelemetry GenAI SemConv v1.29.0 exporter. & Conformance report: 100\% schema pass, 0 drift. \\
+\code{faultline\_p2/resilience/} & Three-state breaker, retry policy, mock endpoint. & P15: $+76\%$ gain under 30\% faults; 80\% load shed. \\
+\code{faultline\_p2/policy/} & Zero-detector runtime authorization layer. & P16: 1,000/1,000 hostile denied; 0 false alarms. \\
+\code{faultline\_p2/slo/} & Google SRE multi-burn-rate alerting engine. & P13: $15\times$ fast-burn alert; incident drill report. \\
+\code{faultline\_p2/stats/} & Pure-function Wilson, McNemar, Bootstrap library. & Verified continuous agreement with Day 14 fixtures. \\
+\code{projects/p00\_preflight/} & Zero-spend preflight probe across R1--R6 ladder. & \code{preflight.json}: LiteLLM 1.98.0, 6 live rungs. \\
+\code{MEC.md} & Master Experiment Contract v1.2. & Immutable research specification outranking plans. \\
+\code{HYPOTHESES.md} & Pre-registered scientific hypotheses H1--H8. & Formal falsification conditions recorded before runs. \\
+\bottomrule
+\end{tabularx}
+\endgroup
+\end{center}
+
+% ==============================================================================
+\vspace{4pt}
+\section{How to Reproduce}
+
+The reproduction path is strictly cold-reader compatible: it requires no pre-existing Python environment, API keys, or proprietary dependencies.
+
+\vspace{3pt}
+\noindent\textbf{The One-Command Cold-Start Procedure:}\\
+\colorbox{codebg}{%
+\begin{minipage}{0.98\textwidth}
+\ttfamily\scriptsize
+git clone --branch v0.27.0-rc1 https://github.com/samirsawarkar/faultline-ai-reliability.git\\
+cd faultline-ai-reliability \&\& make cold-reproduce
+\end{minipage}%
+}
+
+\vspace{3pt}
+\noindent\textbf{What the One Command Executes:}
+\begin{enumerate}
+\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}\setlength{\parsep}{0pt}
+    \item Builds a clean Debian Linux Docker container using digest-pinned Python \code{3.12.4}.
+    \item Installs exact dependencies from \code{requirements.txt} (zero range specifications).
+    \item Runs all 528 Phase 1 tests and 68 Phase 2 tests.
+    \item Regenerates Q1 tool hops, Q4 fallback quality, and Day 25 postmortem incident replays.
+    \item Verifies byte-identical SHA-256 hashes against committed evidence.
+    \item Resolves every claim in \code{day26/readme\_claims.json} through the JSON pointer audit.
+\end{enumerate}
+
+\vspace{3pt}
+\noindent\textbf{Expected Terminal Output:}\\
+\colorbox{codebg}{%
+\begin{minipage}{0.98\textwidth}
+\ttfamily\tiny
+headline tool\_hops: Measured success 0.818 versus naive 0.91833; first separation at 3 hops\\
+headline frozen\_eval: Frozen test evaluation: F1 0.842105 over 17 samples\\
+headline fallback\_quality: Availability 0.6667 -> 1.0 while strict quality 1.0 -> 0.75\\
+headline q5\_policy: Reference P4: success 0.9325, mean cost 1.4656, p95 latency 50.0\\
+headline postmortems: 2 incidents replay red -> green; Checkpoint 25 passes\\
+headline tests: 528 tests collected and passed; reader questions: 0; cold reproduction: PASS
+\end{minipage}%
+}
+
+\vspace{3pt}
+\noindent\textbf{Fast Local Development Reproduction:}\\
+\colorbox{codebg}{%
+\begin{minipage}{0.98\textwidth}
+\ttfamily\scriptsize
+make venv \&\& make reproduce-fast \&\& pytest tests/phase2 -q
+\end{minipage}%
+}
+
+% ==============================================================================
+\section{Evidence Index}
+
+Every primary empirical claim in this report resolves to an immutable JSON pointer and generating command in CI:
+
+\begin{center}
+\begingroup
+\scriptsize
+\renewcommand{\arraystretch}{0.90}
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\code}[1]{{\scriptsize\ttfamily\nolinkurl{#1}}}
+\begin{longtable}{p{0.05\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.21\textwidth}>{\raggedright\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.07\textwidth}}
+\toprule
+\textbf{Claim ID} & \textbf{Rendered Claim Value} & \textbf{Source JSON File} & \textbf{Exact JSON Pointer} & \textbf{Generating Script} & \textbf{Limitation} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Claim ID} & \textbf{Rendered Claim Value} & \textbf{Source JSON File} & \textbf{Exact JSON Pointer} & \textbf{Generating Script} & \textbf{Limitation} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{6}{r}{\textit{Continued on next page\dots}} \\
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+
+\textbf{C01} & Synthesis: Recovery must improve user outcomes & \code{day28/evidence/claim_audit.json} & \code{/claims/C01/sources} & \code{make} \code{day28-publication} & L01, L08 \\
+\textbf{C02} & Q1: $p_1=0.972$; 8-hop=$0.288$; naive=$0.797$; hop 3 & \code{day07/evidence/q1_results.json} & \code{/curve/7/measured} & \code{day07/scripts/run_q1.py} & L01, L02 \\
+\textbf{C03} & Q2: 44 samples, Prec 1.0, Rec 0.615, 10 FN & \code{day15/evidence/q2_results.json} & \code{/full_labelled_set/overall_micro/recall} & \code{day15/scripts/make_evidence.py} & L01, L03 \\
+\textbf{C04} & Judge: 24 samples, agree 0.75, $\kappa=0.50$, 6 FA & \code{day16/evidence/agreement_report.json} & \code{/judge_vs_human/cohen_kappa} & \code{day16/scripts/make_evidence.py} & L01, L04 \\
+\textbf{C05} & Q3: Indep $K=3$ (0.76, $1.9\times$); Corr $K=2$ (0.365) & \code{day19/evidence/retry_sweep.json} & \code{/correlated/1/success_rate} & \code{day19/scripts/make_evidence.py} & L01, L05 \\
+\textbf{C06} & Q3 Paired: $K=3$ Indep 0.76 vs Corr 0.415, $p=2.69\times 10^{-16}$ & \code{day19/evidence/crossover.json} & \code{/paired_correlation_effect/mcnemar/p_value} & \code{day19/scripts/make_evidence.py} & L01, L05 \\
+\textbf{C07} & Q4: Avail $0.667 \to 1.0$; Quality $1.0 \to 0.75$ & \code{day21/evidence/availability_quality_comparison.json} & \code{/comparison/effects} & \code{day21/scripts/make_evidence.py} & L01, L06 \\
+\textbf{C08} & Q4 Slice: 40 fallback, 30 degraded, det recall 0.667 & \code{day21/evidence/degradation_detector.json} & \code{/recall/rate} & \code{day21/scripts/make_evidence.py} & L01, L06 \\
+\textbf{C09} & Q5 Bounds: Success $\ge 0.78$, Wrong $\le 0.02$, Cost $\le 1.75$ & \code{day24/evidence/policy_comparison.json} & \code{/selection/thresholds} & \code{day24/scripts/make_evidence.py} & L01, L07 \\
+\textbf{C10} & Q5 P4: Success 0.9325, Cost 1.4656, p95 Lat 50.0 & \code{day24/evidence/policy_comparison.json} & \code{/policy_metrics/P4_selective_guarded} & \code{day24/scripts/make_evidence.py} & L01, L07 \\
+\textbf{C11} & Q5 Paired: P4 vs P1 $+0.095$ succ, $p=1.95\times 10^{-9}$ & \code{day24/evidence/paired_statistics.json} & \code{/paired_dominance_vs_other_eligible/P1_bounded_retry/success_mcnemar} & \code{day24/scripts/make_evidence.py} & L01, L07 \\
+\textbf{C12} & Q5 Stress: Worse sev $0.695$; Tight budget $0.575$ & \code{day24/evidence/winner_attack.json} & \code{/attacks/tight_budgets/metrics/user_visible_correct_success/rate} & \code{day24/scripts/make_evidence.py} & L01, L07 \\
+\textbf{C13} & Cascade synthesis: selective, capped, guarded & \code{day24/evidence/q5_recommendation.json} & \code{/tradeoff} & \code{day24/scripts/make_evidence.py} & L01, L07 \\
+\textbf{C14} & Sample sizes: 500 Q1, 44 Q2, 200 Q3, 120 Q4, 400 Q5 & \code{day28/evidence/claim_audit.json} & \code{/claims/C14/bindings} & \code{make} \code{day28-publication} & L01--L08 \\
+\textbf{C15} & Stats methods: Wilson, McNemar, 10k Bootstrap & \code{day14/evidence/stats_verification.json} & \code{/checks} & \code{day14/scripts/make_evidence.py} & L01, L08 \\
+\midrule
+\textbf{P00} & Preflight: 6 rungs live; temp-0 deterministic & \code{projects/p00_preflight/preflight.json} & \code{/live_rungs} & \code{projects/p00_preflight/run.py} & Provisional \\
+\textbf{P02} & OTel Exporter: 350 traces, 5,392 spans, 100\% SemConv & \code{projects/p02_otel_exporter/results.json} & \code{/conformance/passed} & \code{projects/p02_otel_exporter/run.py} & Synthetic \\
+\textbf{P13} & SLO Alert: $15\times$ fast-burn page; 24m incident drill & \code{projects/p13_slo_incident/results.json} & \code{/phases/incident/slos/grounded_pass_rate/burn_rate} & \code{projects/p13_slo_incident/run.py} & Simulated \\
+\textbf{P15} & Resilience: $+76\%$ pass gain at 30\% faults; 80\% shed & \code{projects/p15_resilience/results.json} & \code{/comparisons/2/cost/reliability_gain} & \code{projects/p15_resilience/run.py} & Mock endpoint \\
+\textbf{P16} & Runtime Policy: 1,000/1,000 hostile denied; 0 FP & \code{projects/p16_runtime_policy/results.json} & \code{/adversarial_enforcement/deny_rate} & \code{projects/p16_runtime_policy/run.py} & Hostile stub \\
+\end{longtable}
+\endgroup
+\end{center}
+
+% ==============================================================================
+\section{Roadmap}
+
+The forward roadmap separates immediate engineering obligations from medium-term research:
+
+\begin{center}
+\begingroup
+\scriptsize
+\renewcommand{\arraystretch}{0.85}
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabularx}{\textwidth}{l>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}Xl}
+\toprule
+\textbf{Horizon} & \textbf{Objective} & \textbf{Deliverable \& Methodology} & \textbf{Engineering Value} & \textbf{Cost Cap} \\
+\midrule
+\textbf{Immediate} & Execute Preflight Key Probe & Hit R1--R6 once with live API keys to verify pricing and prefix caching. & Unblocks Phase 2 paid sweep ladder. & \$0.05 \\
+\textbf{Milestone 1} & Project P1: Real Baseline & Sweep 100 standard scenarios across R2 (Qwen 3.8 Flash). & Proves real model harness without modifying oracle. & \$2.00 \\
+\textbf{Milestone 2} & Project P3: Grounding Zero Point & Measure $n=200$ across R2 and R6; freeze 150 hard scenarios for P6. & Resolves Pre-Registered Hypothesis H1. & \$5.00 \\
+\textbf{Milestone 3} & Project P4: Failure Taxonomy & Human qualitative open coding of 150 real failure traces by engineer. & Resolves H2; grounds taxonomy in real LLM errors. & \$0.00 \\
+\textbf{Milestone 4} & Project P5: Judge Calibration & Multi-judge Cohen's kappa evaluation on human-coded taxonomy. & Resolves H3; calibrates advisory judges. & \$10.00 \\
+\textbf{Milestone 5} & Project P6: Pass\^{}k Decay Sweep & 2,700 runs across R1--R6 on 150 hard scenarios ($k=3$). & Headline publication resolving H4 and H5. & \$45.00 \\
+\textbf{Medium-Term} & MCPTox Bounded Defense (P8) & Test bounded Pydantic agent against MCPTox malicious tool metadata. & Resolves H7; evaluates tool poisoning defense. & \$10.00 \\
+\textbf{Long-Term} & Calibrated Cascade (P10) & Train Pareto-optimal routing classifier on P5/P6 empirical data. & Automates cost-optimal escalation. & \$8.00 \\
+\bottomrule
+\end{tabularx}
+\endgroup
+\end{center}
+
+% ==============================================================================
+\vspace{8pt}
+\section{Final Engineering Assessment}
+
+\subsection{Brutally Honest Staff Evaluation}
+Writing an honest portfolio requires evaluating one's own work with the same skepticism an external staff reviewer would apply:
+
+\subsubsection{What is Genuinely Strong and Unusually Rigorous}
+\begin{itemize}
+\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}
+    \item \textbf{Causal Scientific Pairing:} Pairing requests on identical master seeds and computing McNemar tests on discordant pairs eliminates scenario noise.
+    \item \textbf{Oracle Independence:} Refusing to allow an LLM judge to grade the agent's core success, and proving the judge's blind spot on borderline tokens.
+    \item \textbf{Fail-Closed Reproducibility:} The JSON pointer audit binding every displayed number to committed artifacts in CI sets a standard rarely seen in AI research.
+    \item \textbf{Zero-Cost Foundation Phase:} Shipping contracts, link-layer corpus, OTel exporter, SRE alerts, resilience engine, and runtime policy with \$0 spend.
+\end{itemize}
+
+\subsubsection{What is Ordinary}
+\begin{itemize}
+\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}
+    \item \textbf{The Agent Architecture:} The single-agent reason-tool-observe loop is simple by design. It uses standard prompt-based tool dispatching without novel agentic patterns.
+    \item \textbf{The Tool Suite:} Three tools (\code{search}, \code{lookup}, \code{calc}) over an in-memory document store.
+\end{itemize}
+
+\subsubsection{What is Still Weak and Unfinished}
+\begin{itemize}
+\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}
+    \item \textbf{Unrun Phase 2 Live Sweeps:} The model ladder remains provisional. No paid sweeps across commercial LLM APIs have executed; \$0.00 has been spent.
+    \item \textbf{Small Labelled Sample Sizes:} The Q2 detector evaluation ($n=44$) and Day 16 judge evaluation ($n=24$) have wide confidence intervals.
+\end{itemize}
+
+\subsection{Hiring Manager Inference Boundary}
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X}
+\toprule
+\textbf{\color{primary}WHAT A HIRING MANAGER CAN INFER} & \textbf{\color{accent}WHAT A HIRING MANAGER CANNOT INFER} \\
+\midrule
+$\bullet$ The author understands distributed systems failure modes (retry storms, fallback degradation, cascades). & $\bullet$ That the author has solved universal LLM hallucination or fine-tuned frontier models. \\
+\addlinespace
+$\bullet$ The author possesses world-class measurement discipline (Wilson intervals, paired bootstraps, MEC contracts). & $\bullet$ That these exact recovery parameters ($K=2$, \$1.46 cost) apply directly to an uncalibrated enterprise production system. \\
+\addlinespace
+$\bullet$ The author writes production-grade, crash-resilient infrastructure (SQLite spans, OTel SemConv, Pydantic v2). & $\bullet$ That the author has executed large-scale multi-thousand-dollar model sweeps (which remain pending in Phase 2). \\
+\addlinespace
+$\bullet$ The author has the intellectual integrity to disclose failures (Amendment A-002, LLM judge quarantine). & $\bullet$ That synthetic document-grounded benchmarks fully capture the nuances of human conversational ambiguity. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\vspace{0.8cm}
+\begin{callout}[primary]{Concluding Engineering Assertion}
+``FAULTLINE establishes that reliability engineering in generative AI is not a matter of prompting or faith. It is a measurement discipline: define user-visible correctness, isolate failure modes, pair experimental observations, enforce explicit budget ceilings, and publish the boundary where the recommendation stops working.''
+\end{callout}

@@ -1,0 +1,85 @@
+<svg width="920" height="520" viewBox="0 0 920 520" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <style>
+    .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 17px; font-weight: 600; fill: #1a1a1a; }
+    .subtitle { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; fill: #666666; }
+    .axis { stroke: #cccccc; stroke-width: 1; }
+    .grid { stroke: #eeeeee; stroke-dasharray: 4,4; }
+    .label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #333333; }
+    .val { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; font-weight: 600; }
+    .legend { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #555555; }
+    .tag { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 10px; font-weight: 700; }
+  </style>
+  <!-- Title -->
+  <text x="460.0" y="28" class="title" text-anchor="middle">Project P6: Pass^k Decay & Failure Concentration (k=3, n=150 Hard T3)</text>
+  <text x="460.0" y="46" class="subtitle" text-anchor="middle">Comparing Naive Independence (pass@1)³ vs Measured pass³ with Wilson 95% Score Intervals</text>
+  <!-- Y-Axis Grid & Labels (0% to 100%) -->
+  <line x1="60" y1="370.0" x2="880" y2="370.0" class="grid"/>
+  <text x="50" y="374.0" class="label" text-anchor="end">0%</text>
+  <line x1="60" y1="311.0" x2="880" y2="311.0" class="grid"/>
+  <text x="50" y="315.0" class="label" text-anchor="end">20%</text>
+  <line x1="60" y1="252.0" x2="880" y2="252.0" class="grid"/>
+  <text x="50" y="256.0" class="label" text-anchor="end">40%</text>
+  <line x1="60" y1="193.0" x2="880" y2="193.0" class="grid"/>
+  <text x="50" y="197.0" class="label" text-anchor="end">60%</text>
+  <line x1="60" y1="134.0" x2="880" y2="134.0" class="grid"/>
+  <text x="50" y="138.0" class="label" text-anchor="end">80%</text>
+  <line x1="60" y1="75.0" x2="880" y2="75.0" class="grid"/>
+  <text x="50" y="79.0" class="label" text-anchor="end">100%</text>
+  <line x1="60" y1="370" x2="880" y2="370" class="axis"/>
+  <!-- R2 Naive p^3 Bar -->
+  <rect x="148.33333333333334" y="295.837" width="38" height="74.163" fill="#e6550d" rx="3"/>
+  <text x="167.33333333333334" y="289.837" class="val" fill="#e6550d" text-anchor="middle">25.1%</text>
+  <!-- R2 Measured pass^3 Bar -->
+  <rect x="200.33333333333334" y="303.1235" width="38" height="66.87650000000001" fill="#2b6cb0" rx="3"/>
+  <text x="219.33333333333334" y="297.1235" class="val" fill="#2b6cb0" text-anchor="middle">22.7%</text>
+  <!-- R2 Wilson CI Whisker [0.167, 0.300] -->
+  <line x1="219.33333333333334" y1="281.5" x2="219.33333333333334" y2="320.735" stroke="#111111" stroke-width="1.5"/>
+  <line x1="215.33333333333334" y1="281.5" x2="223.33333333333334" y2="281.5" stroke="#111111" stroke-width="1.5"/>
+  <line x1="215.33333333333334" y1="320.735" x2="223.33333333333334" y2="320.735" stroke="#111111" stroke-width="1.5"/>
+  <!-- R2 pass@1 marker -->
+  <line x1="144.33333333333334" y1="183.8255" x2="242.33333333333334" y2="183.8255" stroke="#888888" stroke-dasharray="3,3" stroke-width="1.2"/>
+  <text x="246.33333333333334" y="186.8255" class="legend" text-anchor="start">pass@1=63.1%</text>
+  <text x="193.33333333333334" y="388" class="tag" fill="#666666" text-anchor="middle">i.i.d. Consistent</text>
+  <text x="193.33333333333334" y="404" class="label" font-weight="600" text-anchor="middle">R2 (Cheap Workhorse)</text>
+  <text x="193.33333333333334" y="418" class="legend" text-anchor="middle">glm-5.3-flash</text>
+  <!-- R4 Naive p^3 Bar -->
+  <rect x="415.0" y="369.0265" width="38" height="0.9735" fill="#e6550d" rx="3"/>
+  <text x="434.0" y="363.0265" class="val" fill="#e6550d" text-anchor="middle">0.3%</text>
+  <!-- R4 Measured pass^3 Bar -->
+  <rect x="467.0" y="364.1" width="38" height="5.9" fill="#2b6cb0" rx="3"/>
+  <text x="486.0" y="358.1" class="val" fill="#2b6cb0" text-anchor="middle">2.0%</text>
+  <!-- R4 Wilson CI Whisker [0.007, 0.057] -->
+  <line x1="486.0" y1="353.1555" x2="486.0" y2="367.994" stroke="#111111" stroke-width="1.5"/>
+  <line x1="482.0" y1="353.1555" x2="490.0" y2="353.1555" stroke="#111111" stroke-width="1.5"/>
+  <line x1="482.0" y1="367.994" x2="490.0" y2="367.994" stroke="#111111" stroke-width="1.5"/>
+  <!-- R4 pass@1 marker -->
+  <line x1="411.0" y1="326.0745" x2="509.0" y2="326.0745" stroke="#888888" stroke-dasharray="3,3" stroke-width="1.2"/>
+  <text x="513.0" y="329.0745" class="legend" text-anchor="start">pass@1=14.9%</text>
+  <text x="460.0" y="388" class="tag" fill="#2e7d32" text-anchor="middle">✓ Concentration (CI > p³)</text>
+  <text x="460.0" y="404" class="label" font-weight="600" text-anchor="middle">R4 (OpenAI Frontier)</text>
+  <text x="460.0" y="418" class="legend" text-anchor="middle">gpt-5.6-luna</text>
+  <!-- R6 Naive p^3 Bar -->
+  <rect x="681.6666666666667" y="370.0" width="38" height="0.0" fill="#e6550d" rx="3"/>
+  <text x="700.6666666666667" y="364.0" class="val" fill="#e6550d" text-anchor="middle">0.0%</text>
+  <!-- R6 Measured pass^3 Bar -->
+  <rect x="733.6666666666667" y="370.0" width="38" height="0.0" fill="#2b6cb0" rx="3"/>
+  <text x="752.6666666666667" y="364.0" class="val" fill="#2b6cb0" text-anchor="middle">0.0%</text>
+  <!-- R6 Wilson CI Whisker [0.000, 0.025] -->
+  <line x1="752.6666666666667" y1="362.625" x2="752.6666666666667" y2="370.0" stroke="#111111" stroke-width="1.5"/>
+  <line x1="748.6666666666667" y1="362.625" x2="756.6666666666667" y2="362.625" stroke="#111111" stroke-width="1.5"/>
+  <line x1="748.6666666666667" y1="370.0" x2="756.6666666666667" y2="370.0" stroke="#111111" stroke-width="1.5"/>
+  <!-- R6 pass@1 marker -->
+  <line x1="677.6666666666667" y1="370.0" x2="775.6666666666667" y2="370.0" stroke="#888888" stroke-dasharray="3,3" stroke-width="1.2"/>
+  <text x="779.6666666666667" y="373.0" class="legend" text-anchor="start">pass@1=0.0%</text>
+  <text x="726.6666666666667" y="388" class="tag" fill="#666666" text-anchor="middle">i.i.d. Consistent</text>
+  <text x="726.6666666666667" y="404" class="label" font-weight="600" text-anchor="middle">R6 (Frontier Anchor)</text>
+  <text x="726.6666666666667" y="418" class="legend" text-anchor="middle">deepseek-v4-pro</text>
+  <!-- Legend -->
+  <rect x="100" y="466" width="14" height="12" fill="#e6550d" rx="2"/>
+  <text x="120" y="476" class="legend">Naive Compound Prediction (pass@1)³</text>
+  <rect x="390" y="466" width="14" height="12" fill="#2b6cb0" rx="2"/>
+  <text x="410" y="476" class="legend">Measured pass³ (All 3 Trials Pass, with Wilson 95% CI)</text>
+  <line x1="740" y1="472" x2="765" y2="472" stroke="#888888" stroke-dasharray="3,3" stroke-width="1.5"/>
+  <text x="775" y="476" class="legend">pass@1 Baseline</text>
+</svg>

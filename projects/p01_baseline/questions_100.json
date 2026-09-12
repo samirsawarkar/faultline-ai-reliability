@@ -1,0 +1,1502 @@
+[
+  {
+    "index": 1,
+    "scenario_id": "s-0164",
+    "tier": "T3",
+    "prompt": "Step 1: What is the internal codename of Verdigris Collective? Step 2: The organization holding internal codename from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 4: The organization holding headquarters district from Step 3 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 5: The organization holding headquarters district from Step 4 is affiliated with a partner organization. What is the archival reference of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Alto-4725",
+    "required_source": "doc-0145",
+    "traversal_sources": [
+      "doc-0146",
+      "link-3047ecf0782e",
+      "doc-0147",
+      "link-c40526df09ad",
+      "doc-0148",
+      "link-9e79d1204371",
+      "doc-0149",
+      "link-92a56807736f",
+      "doc-0145"
+    ]
+  },
+  {
+    "index": 2,
+    "scenario_id": "s-0029",
+    "tier": "T1",
+    "prompt": "What is the internal codename of Xebec Systems?",
+    "final_answer": "Kelvin-4459",
+    "required_source": "doc-0091",
+    "traversal_sources": [
+      "doc-0091"
+    ]
+  },
+  {
+    "index": 3,
+    "scenario_id": "s-0007",
+    "tier": "T1",
+    "prompt": "What is the flagship product of Borel Foundry?",
+    "final_answer": "Xeno-4597",
+    "required_source": "doc-0119",
+    "traversal_sources": [
+      "doc-0119"
+    ]
+  },
+  {
+    "index": 4,
+    "scenario_id": "s-0190",
+    "tier": "T3",
+    "prompt": "Step 1: What is the flagship product of Orrery Foundry? Step 2: The organization holding flagship product from Step 1 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 3: The organization holding archival reference from Step 2 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 4: The organization holding headquarters district from Step 3 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 5: The organization holding external auditor from Step 4 is affiliated with a partner organization. What is the flagship product of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Indigo-4632",
+    "required_source": "doc-0126",
+    "traversal_sources": [
+      "doc-0125",
+      "link-004cb5a1564f",
+      "doc-0127",
+      "link-f7159e4d0f27",
+      "doc-0128",
+      "link-398ad3e19480",
+      "doc-0129",
+      "link-00a65888d667",
+      "doc-0126"
+    ]
+  },
+  {
+    "index": 5,
+    "scenario_id": "s-0071",
+    "tier": "T2",
+    "prompt": "Step 1: What is the internal codename of Verdigris Foundry? Step 2: The organization holding internal codename from Step 1 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 3: The organization holding archival reference from Step 2 is affiliated with a partner organization. What is the headquarters district of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Yolk-4198",
+    "required_source": "doc-0039",
+    "traversal_sources": [
+      "doc-0040",
+      "link-2fab5ce0dbf9",
+      "doc-0041",
+      "link-7a0fcbb98df4",
+      "doc-0039"
+    ]
+  },
+  {
+    "index": 6,
+    "scenario_id": "s-0063",
+    "tier": "T1",
+    "prompt": "What is the archival reference of Quill Union?",
+    "final_answer": "Lumen-4685",
+    "required_source": "doc-0137",
+    "traversal_sources": [
+      "doc-0137"
+    ]
+  },
+  {
+    "index": 7,
+    "scenario_id": "s-0058",
+    "tier": "T1",
+    "prompt": "What is the internal codename of Xebec Union?",
+    "final_answer": "Ferro-4654",
+    "required_source": "doc-0130",
+    "traversal_sources": [
+      "doc-0130"
+    ]
+  },
+  {
+    "index": 8,
+    "scenario_id": "s-0036",
+    "tier": "T1",
+    "prompt": "What is the archival reference of Girona Systems?",
+    "final_answer": "Alto-4500",
+    "required_source": "doc-0100",
+    "traversal_sources": [
+      "doc-0100"
+    ]
+  },
+  {
+    "index": 9,
+    "scenario_id": "s-0189",
+    "tier": "T3",
+    "prompt": "Step 1: What is the archival reference of Lodestar Labs? Step 2: The organization holding archival reference from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 4: The organization holding external auditor from Step 3 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 5: The organization holding flagship product from Step 4 is affiliated with a partner organization. What is the archival reference of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Gossamer-4605",
+    "required_source": "doc-0121",
+    "traversal_sources": [
+      "doc-0120",
+      "link-d4234d3a63d1",
+      "doc-0122",
+      "link-eab1b42fe773",
+      "doc-0123",
+      "link-25398632374f",
+      "doc-0124",
+      "link-9f3311139710",
+      "doc-0121"
+    ]
+  },
+  {
+    "index": 10,
+    "scenario_id": "s-0027",
+    "tier": "T1",
+    "prompt": "In which district is Cinder Foundry headquartered?",
+    "final_answer": "Onyx-4438",
+    "required_source": "doc-0087",
+    "traversal_sources": [
+      "doc-0087"
+    ]
+  },
+  {
+    "index": 11,
+    "scenario_id": "s-0174",
+    "tier": "T3",
+    "prompt": "Step 1: In which district is Marrow Foundry headquartered? Step 2: The organization holding headquarters district from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 4: The organization holding archival reference from Step 3 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 5: The organization holding archival reference from Step 4 is affiliated with a partner organization. What is the internal codename of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Kelvin-4234",
+    "required_source": "doc-0046",
+    "traversal_sources": [
+      "doc-0045",
+      "link-179990fd1006",
+      "doc-0047",
+      "link-0f37e43241ec",
+      "doc-0048",
+      "link-94543834d84d",
+      "doc-0049",
+      "link-3c9db21d180f",
+      "doc-0046"
+    ]
+  },
+  {
+    "index": 12,
+    "scenario_id": "s-0140",
+    "tier": "T3",
+    "prompt": "Step 1: In which district is Tamarisk Foundry headquartered? Step 2: The organization holding headquarters district from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 4: The organization holding internal codename from Step 3 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 5: The organization holding external auditor from Step 4 is affiliated with a partner organization. What is the headquarters district of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Drift-4128",
+    "required_source": "doc-0025",
+    "traversal_sources": [
+      "doc-0026",
+      "link-044a691012c9",
+      "doc-0027",
+      "link-a430f86191f7",
+      "doc-0028",
+      "link-1e6b15dc62fc",
+      "doc-0029",
+      "link-869c255a6551",
+      "doc-0025"
+    ]
+  },
+  {
+    "index": 13,
+    "scenario_id": "s-0023",
+    "tier": "T1",
+    "prompt": "In which district is Quill Systems headquartered?",
+    "final_answer": "Onyx-4413",
+    "required_source": "doc-0082",
+    "traversal_sources": [
+      "doc-0082"
+    ]
+  },
+  {
+    "index": 14,
+    "scenario_id": "s-0152",
+    "tier": "T3",
+    "prompt": "Step 1: In which district is Orrery Labs headquartered? Step 2: The organization holding headquarters district from Step 1 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 3: The organization holding internal codename from Step 2 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 4: The organization holding headquarters district from Step 3 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 5: The organization holding flagship product from Step 4 is affiliated with a partner organization. What is the flagship product of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Cobalt-4427",
+    "required_source": "doc-0085",
+    "traversal_sources": [
+      "doc-0086",
+      "link-b80fd2fc9094",
+      "doc-0087",
+      "link-b79057241918",
+      "doc-0088",
+      "link-4bd4457804de",
+      "doc-0089",
+      "link-ca463243f03f",
+      "doc-0085"
+    ]
+  },
+  {
+    "index": 15,
+    "scenario_id": "s-0109",
+    "tier": "T2",
+    "prompt": "Step 1: What is the archival reference of Ironwood Works? Step 2: The organization holding archival reference from Step 1 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 3: The organization holding internal codename from Step 2 is affiliated with a partner organization. What is the flagship product of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Xeno-4022",
+    "required_source": "doc-0004",
+    "traversal_sources": [
+      "doc-0002",
+      "link-86b20ae983e6",
+      "doc-0005",
+      "link-e034d24a9f68",
+      "doc-0004"
+    ]
+  },
+  {
+    "index": 16,
+    "scenario_id": "s-0009",
+    "tier": "T1",
+    "prompt": "In which district is Dovetail Foundry headquartered?",
+    "final_answer": "Talc-4643",
+    "required_source": "doc-0128",
+    "traversal_sources": [
+      "doc-0128"
+    ]
+  },
+  {
+    "index": 17,
+    "scenario_id": "s-0008",
+    "tier": "T1",
+    "prompt": "Which firm is the external auditor of Borel Collective?",
+    "final_answer": "Wisp-4621",
+    "required_source": "doc-0124",
+    "traversal_sources": [
+      "doc-0124"
+    ]
+  },
+  {
+    "index": 18,
+    "scenario_id": "s-0024",
+    "tier": "T1",
+    "prompt": "What is the flagship product of Willow Works?",
+    "final_answer": "Xeno-4422",
+    "required_source": "doc-0084",
+    "traversal_sources": [
+      "doc-0084"
+    ]
+  },
+  {
+    "index": 19,
+    "scenario_id": "s-0056",
+    "tier": "T1",
+    "prompt": "What is the archival reference of Lodestar Union?",
+    "final_answer": "Lumen-4635",
+    "required_source": "doc-0127",
+    "traversal_sources": [
+      "doc-0127"
+    ]
+  },
+  {
+    "index": 20,
+    "scenario_id": "s-0060",
+    "tier": "T1",
+    "prompt": "What is the archival reference of Kestrel Systems?",
+    "final_answer": "Lumen-4660",
+    "required_source": "doc-0132",
+    "traversal_sources": [
+      "doc-0132"
+    ]
+  },
+  {
+    "index": 21,
+    "scenario_id": "s-0130",
+    "tier": "T2",
+    "prompt": "Step 1: Which firm is the external auditor of Zephyr Union? Step 2: The organization holding external auditor from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the headquarters district of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Yolk-4398",
+    "required_source": "doc-0079",
+    "traversal_sources": [
+      "doc-0062",
+      "link-bde0afcbdd04",
+      "doc-0063",
+      "link-1911c6161a2e",
+      "doc-0079"
+    ]
+  },
+  {
+    "index": 22,
+    "scenario_id": "s-0155",
+    "tier": "T3",
+    "prompt": "Step 1: What is the archival reference of Peregrine Collective? Step 2: The organization holding archival reference from Step 1 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 3: The organization holding internal codename from Step 2 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 4: The organization holding external auditor from Step 3 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 5: The organization holding internal codename from Step 4 is affiliated with a partner organization. What is the internal codename of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Ferro-4504",
+    "required_source": "doc-0100",
+    "traversal_sources": [
+      "doc-0101",
+      "link-2de402eaed32",
+      "doc-0102",
+      "link-1ff96a04376a",
+      "doc-0103",
+      "link-7bbd286fbe4a",
+      "doc-0104",
+      "link-9844bf585c4f",
+      "doc-0100"
+    ]
+  },
+  {
+    "index": 23,
+    "scenario_id": "s-0198",
+    "tier": "T3",
+    "prompt": "Step 1: In which district is Nimbus Works headquartered? Step 2: The organization holding headquarters district from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 4: The organization holding archival reference from Step 3 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 5: The organization holding headquarters district from Step 4 is affiliated with a partner organization. What is the flagship product of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Nyx-4087",
+    "required_source": "doc-0017",
+    "traversal_sources": [
+      "doc-0015",
+      "link-0bf4d4a9c455",
+      "doc-0016",
+      "link-0ab7cb23db48",
+      "doc-0018",
+      "link-4387ea3cea95",
+      "doc-0019",
+      "link-34c3226f30ed",
+      "doc-0017"
+    ]
+  },
+  {
+    "index": 24,
+    "scenario_id": "s-0144",
+    "tier": "T3",
+    "prompt": "Step 1: Which firm is the external auditor of Umbra Union? Step 2: The organization holding external auditor from Step 1 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 3: The organization holding headquarters district from Step 2 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 4: The organization holding external auditor from Step 3 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 5: The organization holding external auditor from Step 4 is affiliated with a partner organization. What is the archival reference of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Alto-4225",
+    "required_source": "doc-0045",
+    "traversal_sources": [
+      "doc-0046",
+      "link-7d73d2d48c76",
+      "doc-0047",
+      "link-2e4d0a86989a",
+      "doc-0048",
+      "link-618f865e3526",
+      "doc-0049",
+      "link-6f6e0d0cea64",
+      "doc-0045"
+    ]
+  },
+  {
+    "index": 25,
+    "scenario_id": "s-0051",
+    "tier": "T1",
+    "prompt": "In which district is Verdigris Labs headquartered?",
+    "final_answer": "Jade-4608",
+    "required_source": "doc-0121",
+    "traversal_sources": [
+      "doc-0121"
+    ]
+  },
+  {
+    "index": 26,
+    "scenario_id": "s-0167",
+    "tier": "T3",
+    "prompt": "Step 1: In which district is Halcyon Systems headquartered? Step 2: The organization holding headquarters district from Step 1 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 3: The organization holding external auditor from Step 2 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 4: The organization holding archival reference from Step 3 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 5: The organization holding headquarters district from Step 4 is affiliated with a partner organization. What is the archival reference of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Gossamer-4055",
+    "required_source": "doc-0011",
+    "traversal_sources": [
+      "doc-0010",
+      "link-0ac57f810111",
+      "doc-0012",
+      "link-f65a4518a28d",
+      "doc-0013",
+      "link-b608beac454f",
+      "doc-0014",
+      "link-d7dcde595266",
+      "doc-0011"
+    ]
+  },
+  {
+    "index": 27,
+    "scenario_id": "s-0192",
+    "tier": "T3",
+    "prompt": "Step 1: Which firm is the external auditor of Juniper Foundry? Step 2: The organization holding external auditor from Step 1 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 3: The organization holding archival reference from Step 2 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 4: The organization holding external auditor from Step 3 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 5: The organization holding flagship product from Step 4 is affiliated with a partner organization. What is the external auditor of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Helix-4681",
+    "required_source": "doc-0136",
+    "traversal_sources": [
+      "doc-0135",
+      "link-4b0ade0dd49d",
+      "doc-0137",
+      "link-38e06a84213c",
+      "doc-0138",
+      "link-90f25eadd879",
+      "doc-0139",
+      "link-c9f2e134a5ef",
+      "doc-0136"
+    ]
+  },
+  {
+    "index": 28,
+    "scenario_id": "s-0108",
+    "tier": "T2",
+    "prompt": "Step 1: What is the internal codename of Umbra Labs? Step 2: The organization holding internal codename from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the internal codename of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Ultra-4019",
+    "required_source": "doc-0003",
+    "traversal_sources": [
+      "doc-0000",
+      "link-86d344abb242",
+      "doc-0001",
+      "link-fe8b9a317c48",
+      "doc-0003"
+    ]
+  },
+  {
+    "index": 29,
+    "scenario_id": "s-0057",
+    "tier": "T1",
+    "prompt": "What is the flagship product of Dovetail Systems?",
+    "final_answer": "Xeno-4647",
+    "required_source": "doc-0129",
+    "traversal_sources": [
+      "doc-0129"
+    ]
+  },
+  {
+    "index": 30,
+    "scenario_id": "s-0115",
+    "tier": "T2",
+    "prompt": "Step 1: In which district is Ember Works headquartered? Step 2: The organization holding headquarters district from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the external auditor of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Rune-4116",
+    "required_source": "doc-0023",
+    "traversal_sources": [
+      "doc-0021",
+      "link-22481b01ab93",
+      "doc-0022",
+      "link-75ca9e40a838",
+      "doc-0023"
+    ]
+  },
+  {
+    "index": 31,
+    "scenario_id": "s-0151",
+    "tier": "T3",
+    "prompt": "Step 1: Which firm is the external auditor of Peregrine Systems? Step 2: The organization holding external auditor from Step 1 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 3: The organization holding headquarters district from Step 2 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 4: The organization holding flagship product from Step 3 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 5: The organization holding headquarters district from Step 4 is affiliated with a partner organization. What is the flagship product of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Cobalt-4402",
+    "required_source": "doc-0080",
+    "traversal_sources": [
+      "doc-0081",
+      "link-0c5a5d6b36ad",
+      "doc-0082",
+      "link-f81424cb281c",
+      "doc-0083",
+      "link-a894be001fb2",
+      "doc-0084",
+      "link-2aa0ddd21b77",
+      "doc-0080"
+    ]
+  },
+  {
+    "index": 32,
+    "scenario_id": "s-0072",
+    "tier": "T2",
+    "prompt": "Step 1: Which firm is the external auditor of Xebec Works? Step 2: The organization holding external auditor from Step 1 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 3: The organization holding external auditor from Step 2 is affiliated with a partner organization. What is the archival reference of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Lumen-4210",
+    "required_source": "doc-0042",
+    "traversal_sources": [
+      "doc-0043",
+      "link-deea5ea66f83",
+      "doc-0044",
+      "link-ec7e00ee17c2",
+      "doc-0042"
+    ]
+  },
+  {
+    "index": 33,
+    "scenario_id": "s-0002",
+    "tier": "T1",
+    "prompt": "What is the internal codename of Zephyr Systems?",
+    "final_answer": "Ultra-4519",
+    "required_source": "doc-0103",
+    "traversal_sources": [
+      "doc-0103"
+    ]
+  },
+  {
+    "index": 34,
+    "scenario_id": "s-0041",
+    "tier": "T1",
+    "prompt": "Which firm is the external auditor of Borel Systems?",
+    "final_answer": "Mica-4536",
+    "required_source": "doc-0107",
+    "traversal_sources": [
+      "doc-0107"
+    ]
+  },
+  {
+    "index": 35,
+    "scenario_id": "s-0186",
+    "tier": "T3",
+    "prompt": "Step 1: What is the archival reference of Fathom Labs? Step 2: The organization holding archival reference from Step 1 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 3: The organization holding headquarters district from Step 2 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 4: The organization holding internal codename from Step 3 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 5: The organization holding external auditor from Step 4 is affiliated with a partner organization. What is the flagship product of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Indigo-4532",
+    "required_source": "doc-0106",
+    "traversal_sources": [
+      "doc-0105",
+      "link-965d009888df",
+      "doc-0107",
+      "link-904bb7a68fe5",
+      "doc-0108",
+      "link-0917bf6851e5",
+      "doc-0109",
+      "link-15d1ea24a378",
+      "doc-0106"
+    ]
+  },
+  {
+    "index": 36,
+    "scenario_id": "s-0088",
+    "tier": "T2",
+    "prompt": "Step 1: Which firm is the external auditor of Peregrine Works? Step 2: The organization holding external auditor from Step 1 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 3: The organization holding internal codename from Step 2 is affiliated with a partner organization. What is the flagship product of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Nyx-4462",
+    "required_source": "doc-0092",
+    "traversal_sources": [
+      "doc-0090",
+      "link-64e879553609",
+      "doc-0091",
+      "link-02b3b88cc055",
+      "doc-0092"
+    ]
+  },
+  {
+    "index": 37,
+    "scenario_id": "s-0169",
+    "tier": "T3",
+    "prompt": "Step 1: Which firm is the external auditor of Kestrel Foundry? Step 2: The organization holding external auditor from Step 1 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 3: The organization holding internal codename from Step 2 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 4: The organization holding external auditor from Step 3 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 5: The organization holding flagship product from Step 4 is affiliated with a partner organization. What is the archival reference of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Gossamer-4105",
+    "required_source": "doc-0021",
+    "traversal_sources": [
+      "doc-0020",
+      "link-7ccd12c32fdc",
+      "doc-0022",
+      "link-151c30586795",
+      "doc-0023",
+      "link-025935fe9a65",
+      "doc-0024",
+      "link-75e0ed0cd2e2",
+      "doc-0021"
+    ]
+  },
+  {
+    "index": 38,
+    "scenario_id": "s-0040",
+    "tier": "T1",
+    "prompt": "What is the internal codename of Solace Systems?",
+    "final_answer": "Kelvin-4534",
+    "required_source": "doc-0106",
+    "traversal_sources": [
+      "doc-0106"
+    ]
+  },
+  {
+    "index": 39,
+    "scenario_id": "s-0182",
+    "tier": "T3",
+    "prompt": "Step 1: What is the flagship product of Willow Foundry? Step 2: The organization holding flagship product from Step 1 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 3: The organization holding headquarters district from Step 2 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 4: The organization holding internal codename from Step 3 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 5: The organization holding archival reference from Step 4 is affiliated with a partner organization. What is the internal codename of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Kelvin-4434",
+    "required_source": "doc-0086",
+    "traversal_sources": [
+      "doc-0085",
+      "link-38aa6b373504",
+      "doc-0087",
+      "link-486e33315580",
+      "doc-0088",
+      "link-ae188bcc6080",
+      "doc-0089",
+      "link-c5d68ea55af7",
+      "doc-0086"
+    ]
+  },
+  {
+    "index": 40,
+    "scenario_id": "s-0087",
+    "tier": "T2",
+    "prompt": "Step 1: What is the archival reference of Solace Works? Step 2: The organization holding archival reference from Step 1 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 3: The organization holding headquarters district from Step 2 is affiliated with a partner organization. What is the external auditor of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Mica-4436",
+    "required_source": "doc-0087",
+    "traversal_sources": [
+      "doc-0088",
+      "link-a55f05abfe7d",
+      "doc-0089",
+      "link-8c52507b82f0",
+      "doc-0087"
+    ]
+  },
+  {
+    "index": 41,
+    "scenario_id": "s-0191",
+    "tier": "T3",
+    "prompt": "Step 1: What is the archival reference of Xebec Union? Step 2: The organization holding archival reference from Step 1 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 3: The organization holding headquarters district from Step 2 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 4: The organization holding external auditor from Step 3 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 5: The organization holding headquarters district from Step 4 is affiliated with a partner organization. What is the internal codename of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Kelvin-4659",
+    "required_source": "doc-0131",
+    "traversal_sources": [
+      "doc-0130",
+      "link-1ba4484fe620",
+      "doc-0132",
+      "link-fab41244585c",
+      "doc-0133",
+      "link-02da14669841",
+      "doc-0134",
+      "link-27ee08b3042c",
+      "doc-0131"
+    ]
+  },
+  {
+    "index": 42,
+    "scenario_id": "s-0183",
+    "tier": "T3",
+    "prompt": "Step 1: What is the archival reference of Peregrine Works? Step 2: The organization holding archival reference from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 4: The organization holding archival reference from Step 3 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 5: The organization holding external auditor from Step 4 is affiliated with a partner organization. What is the headquarters district of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Jade-4458",
+    "required_source": "doc-0091",
+    "traversal_sources": [
+      "doc-0090",
+      "link-b90c13879518",
+      "doc-0092",
+      "link-811496467995",
+      "doc-0093",
+      "link-37b676f6807f",
+      "doc-0094",
+      "link-416052316116",
+      "doc-0091"
+    ]
+  },
+  {
+    "index": 43,
+    "scenario_id": "s-0098",
+    "tier": "T2",
+    "prompt": "Step 1: Which firm is the external auditor of Lodestar Labs? Step 2: The organization holding external auditor from Step 1 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 3: The organization holding archival reference from Step 2 is affiliated with a partner organization. What is the flagship product of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Nyx-4612",
+    "required_source": "doc-0122",
+    "traversal_sources": [
+      "doc-0120",
+      "link-6c4d3b165a45",
+      "doc-0121",
+      "link-800671e27ca1",
+      "doc-0122"
+    ]
+  },
+  {
+    "index": 44,
+    "scenario_id": "s-0025",
+    "tier": "T1",
+    "prompt": "What is the flagship product of Willow Foundry?",
+    "final_answer": "Cobalt-4427",
+    "required_source": "doc-0085",
+    "traversal_sources": [
+      "doc-0085"
+    ]
+  },
+  {
+    "index": 45,
+    "scenario_id": "s-0092",
+    "tier": "T2",
+    "prompt": "Step 1: What is the archival reference of Zephyr Systems? Step 2: The organization holding archival reference from Step 1 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 3: The organization holding archival reference from Step 2 is affiliated with a partner organization. What is the external auditor of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Mica-4511",
+    "required_source": "doc-0102",
+    "traversal_sources": [
+      "doc-0103",
+      "link-08652480c27a",
+      "doc-0104",
+      "link-2858991639b2",
+      "doc-0102"
+    ]
+  },
+  {
+    "index": 46,
+    "scenario_id": "s-0089",
+    "tier": "T2",
+    "prompt": "Step 1: In which district is Girona Labs headquartered? Step 2: The organization holding headquarters district from Step 1 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 3: The organization holding archival reference from Step 2 is affiliated with a partner organization. What is the headquarters district of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Talc-4468",
+    "required_source": "doc-0093",
+    "traversal_sources": [
+      "doc-0094",
+      "link-51610c6d785f",
+      "doc-0095",
+      "link-a945fe8425de",
+      "doc-0093"
+    ]
+  },
+  {
+    "index": 47,
+    "scenario_id": "s-0068",
+    "tier": "T2",
+    "prompt": "Step 1: What is the archival reference of Umbra Systems? Step 2: The organization holding archival reference from Step 1 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 3: The organization holding external auditor from Step 2 is affiliated with a partner organization. What is the external auditor of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Mica-4161",
+    "required_source": "doc-0032",
+    "traversal_sources": [
+      "doc-0030",
+      "link-aae8fe28a7d8",
+      "doc-0031",
+      "link-68d3e3f387d2",
+      "doc-0032"
+    ]
+  },
+  {
+    "index": 48,
+    "scenario_id": "s-0012",
+    "tier": "T1",
+    "prompt": "What is the archival reference of Yarrow Collective?",
+    "final_answer": "Vellum-4695",
+    "required_source": "doc-0139",
+    "traversal_sources": [
+      "doc-0139"
+    ]
+  },
+  {
+    "index": 49,
+    "scenario_id": "s-0118",
+    "tier": "T2",
+    "prompt": "Step 1: In which district is Umbra Systems headquartered? Step 2: The organization holding headquarters district from Step 1 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 3: The organization holding archival reference from Step 2 is affiliated with a partner organization. What is the headquarters district of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Yolk-4173",
+    "required_source": "doc-0034",
+    "traversal_sources": [
+      "doc-0030",
+      "link-6852974804ff",
+      "doc-0031",
+      "link-a11b03eadda5",
+      "doc-0034"
+    ]
+  },
+  {
+    "index": 50,
+    "scenario_id": "s-0138",
+    "tier": "T3",
+    "prompt": "Step 1: What is the internal codename of Orrery Systems? Step 2: The organization holding internal codename from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 4: The organization holding external auditor from Step 3 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 5: The organization holding flagship product from Step 4 is affiliated with a partner organization. What is the flagship product of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Cobalt-4077",
+    "required_source": "doc-0015",
+    "traversal_sources": [
+      "doc-0016",
+      "link-02d8e20f3a8b",
+      "doc-0017",
+      "link-3f40f998fb98",
+      "doc-0018",
+      "link-b8684a80ba92",
+      "doc-0019",
+      "link-91545edd4a5e",
+      "doc-0015"
+    ]
+  },
+  {
+    "index": 51,
+    "scenario_id": "s-0032",
+    "tier": "T1",
+    "prompt": "What is the flagship product of Dovetail Union?",
+    "final_answer": "Cobalt-4477",
+    "required_source": "doc-0095",
+    "traversal_sources": [
+      "doc-0095"
+    ]
+  },
+  {
+    "index": 52,
+    "scenario_id": "s-0097",
+    "tier": "T2",
+    "prompt": "Step 1: In which district is Fathom Union headquartered? Step 2: The organization holding headquarters district from Step 1 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 3: The organization holding headquarters district from Step 2 is affiliated with a partner organization. What is the internal codename of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Prism-4589",
+    "required_source": "doc-0117",
+    "traversal_sources": [
+      "doc-0118",
+      "link-0f2aab6d4f44",
+      "doc-0119",
+      "link-65d0fcd5aab8",
+      "doc-0117"
+    ]
+  },
+  {
+    "index": 53,
+    "scenario_id": "s-0021",
+    "tier": "T1",
+    "prompt": "Which firm is the external auditor of Ember Union?",
+    "final_answer": "Basalt-4401",
+    "required_source": "doc-0080",
+    "traversal_sources": [
+      "doc-0080"
+    ]
+  },
+  {
+    "index": 54,
+    "scenario_id": "s-0142",
+    "tier": "T3",
+    "prompt": "Step 1: What is the internal codename of Ironwood Collective? Step 2: The organization holding internal codename from Step 1 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 3: The organization holding archival reference from Step 2 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 4: The organization holding internal codename from Step 3 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 5: The organization holding archival reference from Step 4 is affiliated with a partner organization. What is the external auditor of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Basalt-4176",
+    "required_source": "doc-0035",
+    "traversal_sources": [
+      "doc-0036",
+      "link-41048504c3b9",
+      "doc-0037",
+      "link-aeb9def6bc0c",
+      "doc-0038",
+      "link-a65e74a90cfc",
+      "doc-0039",
+      "link-c8b159b24c79",
+      "doc-0035"
+    ]
+  },
+  {
+    "index": 55,
+    "scenario_id": "s-0076",
+    "tier": "T2",
+    "prompt": "Step 1: What is the archival reference of Halcyon Union? Step 2: The organization holding archival reference from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the flagship product of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Xeno-4272",
+    "required_source": "doc-0054",
+    "traversal_sources": [
+      "doc-0055",
+      "link-212dc1b10967",
+      "doc-0056",
+      "link-7789bd74bcb1",
+      "doc-0054"
+    ]
+  },
+  {
+    "index": 56,
+    "scenario_id": "s-0093",
+    "tier": "T2",
+    "prompt": "Step 1: What is the internal codename of Fathom Labs? Step 2: The organization holding internal codename from Step 1 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 3: The organization holding internal codename from Step 2 is affiliated with a partner organization. What is the external auditor of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Mica-4536",
+    "required_source": "doc-0107",
+    "traversal_sources": [
+      "doc-0105",
+      "link-7e813974d259",
+      "doc-0106",
+      "link-d1f4400ed6f7",
+      "doc-0107"
+    ]
+  },
+  {
+    "index": 57,
+    "scenario_id": "s-0050",
+    "tier": "T1",
+    "prompt": "What is the internal codename of Lodestar Labs?",
+    "final_answer": "Ferro-4604",
+    "required_source": "doc-0120",
+    "traversal_sources": [
+      "doc-0120"
+    ]
+  },
+  {
+    "index": 58,
+    "scenario_id": "s-0018",
+    "tier": "T1",
+    "prompt": "What is the internal codename of Aster Systems?",
+    "final_answer": "Kelvin-4384",
+    "required_source": "doc-0076",
+    "traversal_sources": [
+      "doc-0076"
+    ]
+  },
+  {
+    "index": 59,
+    "scenario_id": "s-0153",
+    "tier": "T3",
+    "prompt": "Step 1: What is the archival reference of Xebec Systems? Step 2: The organization holding archival reference from Step 1 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 3: The organization holding headquarters district from Step 2 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 4: The organization holding internal codename from Step 3 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 5: The organization holding flagship product from Step 4 is affiliated with a partner organization. What is the internal codename of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Ferro-4454",
+    "required_source": "doc-0090",
+    "traversal_sources": [
+      "doc-0091",
+      "link-caa060464754",
+      "doc-0092",
+      "link-66cd3e310452",
+      "doc-0093",
+      "link-45a9f8803777",
+      "doc-0094",
+      "link-974ee0b287bb",
+      "doc-0090"
+    ]
+  },
+  {
+    "index": 60,
+    "scenario_id": "s-0059",
+    "tier": "T1",
+    "prompt": "What is the internal codename of Lodestar Collective?",
+    "final_answer": "Kelvin-4659",
+    "required_source": "doc-0131",
+    "traversal_sources": [
+      "doc-0131"
+    ]
+  },
+  {
+    "index": 61,
+    "scenario_id": "s-0075",
+    "tier": "T2",
+    "prompt": "Step 1: What is the archival reference of Kestrel Works? Step 2: The organization holding archival reference from Step 1 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 3: The organization holding headquarters district from Step 2 is affiliated with a partner organization. What is the headquarters district of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Onyx-4263",
+    "required_source": "doc-0052",
+    "traversal_sources": [
+      "doc-0051",
+      "link-0d887218546a",
+      "doc-0053",
+      "link-41902cbf17cf",
+      "doc-0052"
+    ]
+  },
+  {
+    "index": 62,
+    "scenario_id": "s-0148",
+    "tier": "T3",
+    "prompt": "Step 1: Which firm is the external auditor of Ironwood Systems? Step 2: The organization holding external auditor from Step 1 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 3: The organization holding internal codename from Step 2 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 4: The organization holding headquarters district from Step 3 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 5: The organization holding headquarters district from Step 4 is affiliated with a partner organization. What is the external auditor of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Basalt-4326",
+    "required_source": "doc-0065",
+    "traversal_sources": [
+      "doc-0066",
+      "link-e2acda14e459",
+      "doc-0067",
+      "link-524b9bf1f9a8",
+      "doc-0068",
+      "link-109793a21adf",
+      "doc-0069",
+      "link-9d6309e62129",
+      "doc-0065"
+    ]
+  },
+  {
+    "index": 63,
+    "scenario_id": "s-0181",
+    "tier": "T3",
+    "prompt": "Step 1: In which district is Ember Union headquartered? Step 2: The organization holding headquarters district from Step 1 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 3: The organization holding internal codename from Step 2 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 4: The organization holding headquarters district from Step 3 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 5: The organization holding internal codename from Step 4 is affiliated with a partner organization. What is the headquarters district of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Jade-4408",
+    "required_source": "doc-0081",
+    "traversal_sources": [
+      "doc-0080",
+      "link-03cbc735408f",
+      "doc-0082",
+      "link-c2cd3c350406",
+      "doc-0083",
+      "link-ec5a7488e233",
+      "doc-0084",
+      "link-b9bb81f6a0f3",
+      "doc-0081"
+    ]
+  },
+  {
+    "index": 64,
+    "scenario_id": "s-0026",
+    "tier": "T1",
+    "prompt": "Which firm is the external auditor of Orrery Labs?",
+    "final_answer": "Helix-4431",
+    "required_source": "doc-0086",
+    "traversal_sources": [
+      "doc-0086"
+    ]
+  },
+  {
+    "index": 65,
+    "scenario_id": "s-0158",
+    "tier": "T3",
+    "prompt": "Step 1: What is the internal codename of Quill Collective? Step 2: The organization holding internal codename from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 4: The organization holding external auditor from Step 3 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 5: The organization holding flagship product from Step 4 is affiliated with a partner organization. What is the flagship product of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Cobalt-4577",
+    "required_source": "doc-0115",
+    "traversal_sources": [
+      "doc-0116",
+      "link-49cd6f1c2ee0",
+      "doc-0117",
+      "link-fb6f2b73fb21",
+      "doc-0118",
+      "link-69c1268f76be",
+      "doc-0119",
+      "link-649864b4d4d9",
+      "doc-0115"
+    ]
+  },
+  {
+    "index": 66,
+    "scenario_id": "s-0200",
+    "tier": "T3",
+    "prompt": "Step 1: In which district is Lodestar Foundry headquartered? Step 2: The organization holding headquarters district from Step 1 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 3: The organization holding internal codename from Step 2 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 4: The organization holding headquarters district from Step 3 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 5: The organization holding internal codename from Step 4 is affiliated with a partner organization. What is the flagship product of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Nyx-4137",
+    "required_source": "doc-0027",
+    "traversal_sources": [
+      "doc-0025",
+      "link-80883685ee2e",
+      "doc-0026",
+      "link-3cd88b35d4c5",
+      "doc-0028",
+      "link-52887e68e631",
+      "doc-0029",
+      "link-937ecd197944",
+      "doc-0027"
+    ]
+  },
+  {
+    "index": 67,
+    "scenario_id": "s-0117",
+    "tier": "T2",
+    "prompt": "Step 1: What is the internal codename of Zephyr Labs? Step 2: The organization holding internal codename from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the flagship product of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Sable-4142",
+    "required_source": "doc-0028",
+    "traversal_sources": [
+      "doc-0027",
+      "link-fc2f0f6ef205",
+      "doc-0029",
+      "link-86a039169519",
+      "doc-0028"
+    ]
+  },
+  {
+    "index": 68,
+    "scenario_id": "s-0094",
+    "tier": "T2",
+    "prompt": "Step 1: What is the internal codename of Marrow Works? Step 2: The organization holding internal codename from Step 1 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 3: The organization holding external auditor from Step 2 is affiliated with a partner organization. What is the external auditor of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Rune-4541",
+    "required_source": "doc-0108",
+    "traversal_sources": [
+      "doc-0109",
+      "link-b41cfcea5421",
+      "doc-0110",
+      "link-e4c73386060a",
+      "doc-0108"
+    ]
+  },
+  {
+    "index": 69,
+    "scenario_id": "s-0042",
+    "tier": "T1",
+    "prompt": "In which district is Halcyon Foundry headquartered?",
+    "final_answer": "Talc-4543",
+    "required_source": "doc-0108",
+    "traversal_sources": [
+      "doc-0108"
+    ]
+  },
+  {
+    "index": 70,
+    "scenario_id": "s-0095",
+    "tier": "T2",
+    "prompt": "Step 1: Which firm is the external auditor of Tamarisk Systems? Step 2: The organization holding external auditor from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the archival reference of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Lumen-4560",
+    "required_source": "doc-0112",
+    "traversal_sources": [
+      "doc-0111",
+      "link-4ae00271afa3",
+      "doc-0113",
+      "link-c8aa96118e98",
+      "doc-0112"
+    ]
+  },
+  {
+    "index": 71,
+    "scenario_id": "s-0091",
+    "tier": "T2",
+    "prompt": "Step 1: What is the flagship product of Girona Systems? Step 2: The organization holding flagship product from Step 1 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 3: The organization holding external auditor from Step 2 is affiliated with a partner organization. What is the external auditor of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Wisp-4496",
+    "required_source": "doc-0099",
+    "traversal_sources": [
+      "doc-0100",
+      "link-5d28e615c98e",
+      "doc-0101",
+      "link-42d1baf01a5f",
+      "doc-0099"
+    ]
+  },
+  {
+    "index": 72,
+    "scenario_id": "s-0054",
+    "tier": "T1",
+    "prompt": "What is the internal codename of Orrery Foundry?",
+    "final_answer": "Ferro-4629",
+    "required_source": "doc-0125",
+    "traversal_sources": [
+      "doc-0125"
+    ]
+  },
+  {
+    "index": 73,
+    "scenario_id": "s-0069",
+    "tier": "T2",
+    "prompt": "Step 1: What is the internal codename of Verdigris Works? Step 2: The organization holding internal codename from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the external auditor of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Rune-4166",
+    "required_source": "doc-0033",
+    "traversal_sources": [
+      "doc-0034",
+      "link-7252ad2352e1",
+      "doc-0035",
+      "link-823b31208f42",
+      "doc-0033"
+    ]
+  },
+  {
+    "index": 74,
+    "scenario_id": "s-0090",
+    "tier": "T2",
+    "prompt": "Step 1: Which firm is the external auditor of Nimbus Foundry? Step 2: The organization holding external auditor from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the flagship product of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Nyx-4487",
+    "required_source": "doc-0097",
+    "traversal_sources": [
+      "doc-0096",
+      "link-6212785bdd36",
+      "doc-0098",
+      "link-96126bb7c15d",
+      "doc-0097"
+    ]
+  },
+  {
+    "index": 75,
+    "scenario_id": "s-0120",
+    "tier": "T2",
+    "prompt": "Step 1: What is the archival reference of Dovetail Collective? Step 2: The organization holding archival reference from Step 1 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 3: The organization holding external auditor from Step 2 is affiliated with a partner organization. What is the headquarters district of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Talc-4218",
+    "required_source": "doc-0043",
+    "traversal_sources": [
+      "doc-0035",
+      "link-818532f17139",
+      "doc-0036",
+      "link-689f8480fdcb",
+      "doc-0043"
+    ]
+  },
+  {
+    "index": 76,
+    "scenario_id": "s-0165",
+    "tier": "T3",
+    "prompt": "Step 1: Which firm is the external auditor of Umbra Labs? Step 2: The organization holding external auditor from Step 1 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 3: The organization holding internal codename from Step 2 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 4: The organization holding external auditor from Step 3 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 5: The organization holding internal codename from Step 4 is affiliated with a partner organization. What is the external auditor of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Helix-4006",
+    "required_source": "doc-0001",
+    "traversal_sources": [
+      "doc-0000",
+      "link-792332d0e1e3",
+      "doc-0002",
+      "link-6dc69e9fce9d",
+      "doc-0003",
+      "link-e847f44975ef",
+      "doc-0004",
+      "link-c0e26d87ada6",
+      "doc-0001"
+    ]
+  },
+  {
+    "index": 77,
+    "scenario_id": "s-0083",
+    "tier": "T2",
+    "prompt": "Step 1: What is the archival reference of Ember Foundry? Step 2: The organization holding archival reference from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the flagship product of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Nyx-4387",
+    "required_source": "doc-0077",
+    "traversal_sources": [
+      "doc-0075",
+      "link-0cf3ab90ccae",
+      "doc-0076",
+      "link-56d0acc568c6",
+      "doc-0077"
+    ]
+  },
+  {
+    "index": 78,
+    "scenario_id": "s-0010",
+    "tier": "T1",
+    "prompt": "In which district is Kestrel Union headquartered?",
+    "final_answer": "Talc-4668",
+    "required_source": "doc-0133",
+    "traversal_sources": [
+      "doc-0133"
+    ]
+  },
+  {
+    "index": 79,
+    "scenario_id": "s-0078",
+    "tier": "T2",
+    "prompt": "Step 1: What is the flagship product of Dovetail Works? Step 2: The organization holding flagship product from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the flagship product of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Nyx-4312",
+    "required_source": "doc-0062",
+    "traversal_sources": [
+      "doc-0060",
+      "link-b084634ab001",
+      "doc-0061",
+      "link-9b62cced81cf",
+      "doc-0062"
+    ]
+  },
+  {
+    "index": 80,
+    "scenario_id": "s-0082",
+    "tier": "T2",
+    "prompt": "Step 1: What is the archival reference of Quill Labs? Step 2: The organization holding archival reference from Step 1 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 3: The organization holding headquarters district from Step 2 is affiliated with a partner organization. What is the headquarters district of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Onyx-4363",
+    "required_source": "doc-0072",
+    "traversal_sources": [
+      "doc-0073",
+      "link-b7ad28b9c782",
+      "doc-0074",
+      "link-4d81f0e9cbc4",
+      "doc-0072"
+    ]
+  },
+  {
+    "index": 81,
+    "scenario_id": "s-0022",
+    "tier": "T1",
+    "prompt": "What is the flagship product of Peregrine Systems?",
+    "final_answer": "Indigo-4407",
+    "required_source": "doc-0081",
+    "traversal_sources": [
+      "doc-0081"
+    ]
+  },
+  {
+    "index": 82,
+    "scenario_id": "s-0128",
+    "tier": "T2",
+    "prompt": "Step 1: In which district is Riven Systems headquartered? Step 2: The organization holding headquarters district from Step 1 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 3: The organization holding internal codename from Step 2 is affiliated with a partner organization. What is the archival reference of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Quartz-4365",
+    "required_source": "doc-0073",
+    "traversal_sources": [
+      "doc-0056",
+      "link-f89cf601f649",
+      "doc-0057",
+      "link-df85012c3c80",
+      "doc-0073"
+    ]
+  },
+  {
+    "index": 83,
+    "scenario_id": "s-0133",
+    "tier": "T2",
+    "prompt": "Step 1: What is the flagship product of Juniper Collective? Step 2: The organization holding flagship product from Step 1 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 3: The organization holding headquarters district from Step 2 is affiliated with a partner organization. What is the external auditor of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Wisp-4446",
+    "required_source": "doc-0089",
+    "traversal_sources": [
+      "doc-0070",
+      "link-39b9e4c682ee",
+      "doc-0071",
+      "link-0b7ada127329",
+      "doc-0089"
+    ]
+  },
+  {
+    "index": 84,
+    "scenario_id": "s-0150",
+    "tier": "T3",
+    "prompt": "Step 1: What is the internal codename of Aster Systems? Step 2: The organization holding internal codename from Step 1 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 3: The organization holding external auditor from Step 2 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 4: The organization holding flagship product from Step 3 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 5: The organization holding flagship product from Step 4 is affiliated with a partner organization. What is the flagship product of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Cobalt-4377",
+    "required_source": "doc-0075",
+    "traversal_sources": [
+      "doc-0076",
+      "link-80a056f9b5b1",
+      "doc-0077",
+      "link-4f1e895d6c29",
+      "doc-0078",
+      "link-2f40d35dc28e",
+      "doc-0079",
+      "link-d265eb403517",
+      "doc-0075"
+    ]
+  },
+  {
+    "index": 85,
+    "scenario_id": "s-0139",
+    "tier": "T3",
+    "prompt": "Step 1: What is the internal codename of Ember Works? Step 2: The organization holding internal codename from Step 1 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 3: The organization holding archival reference from Step 2 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 4: The organization holding archival reference from Step 3 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 5: The organization holding internal codename from Step 4 is affiliated with a partner organization. What is the archival reference of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Alto-4100",
+    "required_source": "doc-0020",
+    "traversal_sources": [
+      "doc-0021",
+      "link-ed99fa6cd178",
+      "doc-0022",
+      "link-ccf5d5837b22",
+      "doc-0023",
+      "link-6a84db2f4270",
+      "doc-0024",
+      "link-0f2a3175bceb",
+      "doc-0020"
+    ]
+  },
+  {
+    "index": 86,
+    "scenario_id": "s-0170",
+    "tier": "T3",
+    "prompt": "Step 1: What is the internal codename of Lodestar Foundry? Step 2: The organization holding internal codename from Step 1 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 3: The organization holding headquarters district from Step 2 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 4: The organization holding flagship product from Step 3 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 5: The organization holding headquarters district from Step 4 is affiliated with a partner organization. What is the headquarters district of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Jade-4133",
+    "required_source": "doc-0026",
+    "traversal_sources": [
+      "doc-0025",
+      "link-0a14736aee18",
+      "doc-0027",
+      "link-305a61cd4148",
+      "doc-0028",
+      "link-3e546aef0433",
+      "doc-0029",
+      "link-1cccc20cee4c",
+      "doc-0026"
+    ]
+  },
+  {
+    "index": 87,
+    "scenario_id": "s-0049",
+    "tier": "T1",
+    "prompt": "What is the internal codename of Cinder Union?",
+    "final_answer": "Prism-4589",
+    "required_source": "doc-0117",
+    "traversal_sources": [
+      "doc-0117"
+    ]
+  },
+  {
+    "index": 88,
+    "scenario_id": "s-0035",
+    "tier": "T1",
+    "prompt": "What is the internal codename of Borel Union?",
+    "final_answer": "Zinc-4499",
+    "required_source": "doc-0099",
+    "traversal_sources": [
+      "doc-0099"
+    ]
+  },
+  {
+    "index": 89,
+    "scenario_id": "s-0121",
+    "tier": "T2",
+    "prompt": "Step 1: What is the flagship product of Umbra Foundry? Step 2: The organization holding flagship product from Step 1 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 3: The organization holding headquarters district from Step 2 is affiliated with a partner organization. What is the headquarters district of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Yolk-4223",
+    "required_source": "doc-0044",
+    "traversal_sources": [
+      "doc-0037",
+      "link-9e508500eedd",
+      "doc-0039",
+      "link-c2ff41ffe153",
+      "doc-0044"
+    ]
+  },
+  {
+    "index": 90,
+    "scenario_id": "s-0179",
+    "tier": "T3",
+    "prompt": "Step 1: What is the archival reference of Juniper Collective? Step 2: The organization holding archival reference from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 4: The organization holding headquarters district from Step 3 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 5: The organization holding external auditor from Step 4 is affiliated with a partner organization. What is the external auditor of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Helix-4356",
+    "required_source": "doc-0071",
+    "traversal_sources": [
+      "doc-0070",
+      "link-446be2bf1111",
+      "doc-0072",
+      "link-33e4d56a8422",
+      "doc-0073",
+      "link-2c2195b96cbd",
+      "doc-0074",
+      "link-ddf3598a7b3c",
+      "doc-0071"
+    ]
+  },
+  {
+    "index": 91,
+    "scenario_id": "s-0135",
+    "tier": "T3",
+    "prompt": "Step 1: What is the archival reference of Aster Union? Step 2: The organization holding archival reference from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 4: The organization holding archival reference from Step 3 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 5: The organization holding headquarters district from Step 4 is affiliated with a partner organization. What is the archival reference of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Alto-4000",
+    "required_source": "doc-0000",
+    "traversal_sources": [
+      "doc-0001",
+      "link-5f01e0104a5d",
+      "doc-0002",
+      "link-81f057f22bcd",
+      "doc-0003",
+      "link-c447204a04fc",
+      "doc-0004",
+      "link-20025eaf6db4",
+      "doc-0000"
+    ]
+  },
+  {
+    "index": 92,
+    "scenario_id": "s-0199",
+    "tier": "T3",
+    "prompt": "Step 1: In which district is Kestrel Foundry headquartered? Step 2: The organization holding headquarters district from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 4: The organization holding flagship product from Step 3 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 5: The organization holding headquarters district from Step 4 is affiliated with a partner organization. What is the headquarters district of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Onyx-4113",
+    "required_source": "doc-0022",
+    "traversal_sources": [
+      "doc-0020",
+      "link-6b8f0fef28c6",
+      "doc-0021",
+      "link-03adf3c7aa81",
+      "doc-0023",
+      "link-f92214122a3d",
+      "doc-0024",
+      "link-37aaa8266489",
+      "doc-0022"
+    ]
+  },
+  {
+    "index": 93,
+    "scenario_id": "s-0125",
+    "tier": "T2",
+    "prompt": "Step 1: In which district is Halcyon Labs headquartered? Step 2: The organization holding headquarters district from Step 1 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 3: The organization holding internal codename from Step 2 is affiliated with a partner organization. What is the internal codename of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Zinc-4299",
+    "required_source": "doc-0059",
+    "traversal_sources": [
+      "doc-0048",
+      "link-832adfdaf2cb",
+      "doc-0050",
+      "link-2bc1ea1a9683",
+      "doc-0059"
+    ]
+  },
+  {
+    "index": 94,
+    "scenario_id": "s-0132",
+    "tier": "T2",
+    "prompt": "Step 1: In which district is Verdigris Systems headquartered? Step 2: The organization holding headquarters district from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the flagship product of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Sable-4442",
+    "required_source": "doc-0088",
+    "traversal_sources": [
+      "doc-0067",
+      "link-db0d6806fe28",
+      "doc-0069",
+      "link-239988ed3c91",
+      "doc-0088"
+    ]
+  },
+  {
+    "index": 95,
+    "scenario_id": "s-0099",
+    "tier": "T2",
+    "prompt": "Step 1: What is the archival reference of Borel Collective? Step 2: The organization holding archival reference from Step 1 is affiliated with a partner organization. What is the internal codename of that partner organization? Step 3: The organization holding internal codename from Step 2 is affiliated with a partner organization. What is the archival reference of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Quartz-4615",
+    "required_source": "doc-0123",
+    "traversal_sources": [
+      "doc-0124",
+      "link-3e7668b2bbb9",
+      "doc-0125",
+      "link-513e114ee2e4",
+      "doc-0123"
+    ]
+  },
+  {
+    "index": 96,
+    "scenario_id": "s-0100",
+    "tier": "T2",
+    "prompt": "Step 1: Which firm is the external auditor of Juniper Works? Step 2: The organization holding external auditor from Step 1 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 3: The organization holding flagship product from Step 2 is affiliated with a partner organization. What is the archival reference of that partner organization? Provide the final answer for Step 3.",
+    "final_answer": "Lumen-4635",
+    "required_source": "doc-0127",
+    "traversal_sources": [
+      "doc-0126",
+      "link-e719c24d3598",
+      "doc-0128",
+      "link-3ad851348e5a",
+      "doc-0127"
+    ]
+  },
+  {
+    "index": 97,
+    "scenario_id": "s-0184",
+    "tier": "T3",
+    "prompt": "Step 1: In which district is Dovetail Union headquartered? Step 2: The organization holding headquarters district from Step 1 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 3: The organization holding archival reference from Step 2 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 4: The organization holding archival reference from Step 3 is affiliated with a partner organization. What is the flagship product of that partner organization? Step 5: The organization holding flagship product from Step 4 is affiliated with a partner organization. What is the external auditor of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Helix-4481",
+    "required_source": "doc-0096",
+    "traversal_sources": [
+      "doc-0095",
+      "link-11dad73ccd85",
+      "doc-0097",
+      "link-7413ad2efdd9",
+      "doc-0098",
+      "link-b7227a5822c1",
+      "doc-0099",
+      "link-7bc754ecd9b6",
+      "doc-0096"
+    ]
+  },
+  {
+    "index": 98,
+    "scenario_id": "s-0030",
+    "tier": "T1",
+    "prompt": "Which firm is the external auditor of Halcyon Collective?",
+    "final_answer": "Mica-4461",
+    "required_source": "doc-0092",
+    "traversal_sources": [
+      "doc-0092"
+    ]
+  },
+  {
+    "index": 99,
+    "scenario_id": "s-0005",
+    "tier": "T1",
+    "prompt": "Which firm is the external auditor of Juniper Systems?",
+    "final_answer": "Rune-4566",
+    "required_source": "doc-0113",
+    "traversal_sources": [
+      "doc-0113"
+    ]
+  },
+  {
+    "index": 100,
+    "scenario_id": "s-0175",
+    "tier": "T3",
+    "prompt": "Step 1: In which district is Solace Union headquartered? Step 2: The organization holding headquarters district from Step 1 is affiliated with a partner organization. What is the headquarters district of that partner organization? Step 3: The organization holding headquarters district from Step 2 is affiliated with a partner organization. What is the archival reference of that partner organization? Step 4: The organization holding archival reference from Step 3 is affiliated with a partner organization. What is the external auditor of that partner organization? Step 5: The organization holding external auditor from Step 4 is affiliated with a partner organization. What is the external auditor of that partner organization? Provide the final answer for Step 5.",
+    "final_answer": "Helix-4256",
+    "required_source": "doc-0051",
+    "traversal_sources": [
+      "doc-0050",
+      "link-ae12898d9487",
+      "doc-0052",
+      "link-e5afc54edb6d",
+      "doc-0053",
+      "link-555dcb37d46b",
+      "doc-0054",
+      "link-334f7dd172d8",
+      "doc-0051"
+    ]
+  }
+]

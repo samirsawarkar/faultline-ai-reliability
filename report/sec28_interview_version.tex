@@ -1,0 +1,77 @@
+\section{Interview Version}
+
+\subsection{Elevator Explanations by Time Horizon}
+
+\subsubsection{The 30-Second Explanation}
+``FAULTLINE is an AI reliability workbench that answers a question dashboards miss: \textit{Did recovery actually improve the user-visible outcome, or did it only make the system look available?} We build a deterministic, seeded multi-hop world, inject six families of component faults, record gapless traces in SQLite, and prove that common recovery mechanisms---like retries and fallbacks---often cause retry storms or silently degrade answer quality. We enforce strict cost/latency bounds, Wilson confidence intervals, and fail-closed reproducibility.''
+
+\subsubsection{The 2-Minute Technical Summary}
+``In document-grounded AI systems, an HTTP 200 return code does not equal a correct answer. When a primary model times out and fallback routing switches to a cheaper model, availability reads 100\%, but our experiments show strict answer quality drops from 100\% to 75\%, with 75\% of fallback answers silently degraded. 
+
+FAULTLINE tests this systematically. We built a synthetic environment with 1,164 documents and an unmodified pure-function oracle that checks exact token correctness and required citation paths. We implemented a six-fault taxonomy spanning transport to semantic context drift. In testing recovery across 400 shared seeds, our guarded cascade policy achieved 93.25\% success within a \$1.46 cost and 50ms latency envelope, beating naive retries by 9.5\%. But under stress attacks, that same winner collapsed to 57.5\%. Everything is reproducible via a single Docker command verified in CI.''
+
+\subsubsection{The 5-Minute Architectural Walkthrough}
+``The architecture separates the system under test from the measurement engine:
+\begin{enumerate}
+    \item \textbf{Environment:} A master seed generates 1,164 documents. To prevent keyword shortcuts, Phase 2 introduced an opaque link-layer: Hop $N$'s prompt contains only Hop $N-1$'s answer token, forcing sequential traversal across 1, 3, or 5 hops.
+    \item \textbf{Agent:} A minimal reason-tool-observe loop with Pydantic v2 \code{extra="forbid"} contracts and a 12-step budget.
+    \item \textbf{Fault Injector:} Injects six fault families (F1--F6) with out-of-band ground-truth logging.
+    \item \textbf{Observability:} SQLite traces that survive unhandled crashes, exported to OpenTelemetry GenAI SemConv v1.29.0, with Google SRE multi-burn-rate alerting.
+    \item \textbf{Oracle:} A pure Python function outside the policy loop checking both answer token and citation completeness. We evaluated an LLM judge, but it reached only $\kappa=0.50$ and missed all borderline token corruptions, so we quarantined it to advisory status.
+    \item \textbf{Recovery:} A 36-cell matrix evaluating retries, breakers, fallbacks, and ceilings. We found recovery mechanisms induced 47 new operational harms. Under failure correlation, the optimal retry cap dropped from $K=3$ to $K=2$; keeping $K=3$ caused a $2.37\times$ attempt amplification storm.
+    \item \textbf{Reproducibility:} Pinned Docker containers, JSON pointer claim audits, and one-command reproduction.''
+\end{enumerate}
+
+\subsubsection{The 10-Minute Deep Dive}
+``[Follow the full narrative arc: System Boundary $\to$ Deterministic World $\to$ Q1 Depth Compounding $\to$ Q2 Miss Audit $\to$ Q3 Crossover $\to$ Q4 Silent Degradation $\to$ Q5 Constraint-First Selection $\to$ Phase 2 Status $\to$ Limitations L01--L08].''
+
+% ------------------------------------------------------------------------------
+\vspace{12pt}
+\subsection{Fifteen Tough Questions an Interviewer Will Ask}
+
+\begin{enumerate}
+    \item \textbf{Why did you build FAULTLINE instead of using existing benchmarks?}
+    \newline \textit{Answer:} Existing benchmarks (MMLU, HumanEval) treat LLMs as static question-answering engines. They do not evaluate multi-step tool-using agents under component failures, transport timeouts, or recovery storms. FAULTLINE measures the systems reliability of the entire agent execution harness.
+
+    \item \textbf{Why use synthetic documents instead of real enterprise data?}
+    \newline \textit{Answer:} Synthetic documents allow exact control over entity-attribute graphs, distractors, and link layers. Coined tokens guarantee that the model cannot answer using pre-trained parametric memory. It ensures that every failure is strictly attributable to retrieval or reasoning failure in the testbed.
+
+    \item \textbf{Why enforce a deterministic programmatic oracle instead of an LLM judge?}
+    \newline \textit{Answer:} An LLM judge cannot validate itself. On Day 16, our judge achieved only $\kappa=0.50$ and completely missed borderline entity corruptions. A programmatic oracle checking exact token strings and required citation IDs provides an ungameable, objective ground truth.
+
+    \item \textbf{Why not use an LLM judge as an advisory signal?}
+    \newline \textit{Answer:} We \textit{do} use it as an advisory signal, but we strictly bar it from determining core success. When evaluators have autonomous authority, false accepts silently pollute the evidence.
+
+    \item \textbf{How do you define reliability?}
+    \newline \textit{Answer:} Reliability is the verified property that a system improves correct user-visible outcomes within declared cost and latency constraints, preserves provenance, and fails closed when evidence is insufficient.
+
+    \item \textbf{Why separate availability from correctness?}
+    \newline \textit{Answer:} Because fallback and catch-all exception blocks can easily inflate availability to 100\% while returning 75\% degraded or hallucinated answers (as proven in Q4). Treating availability as a proxy for correctness is dangerous.
+
+    \item \textbf{How do you inject failures deterministically?}
+    \newline \textit{Answer:} Interception proxies in the tool and model execution paths trigger faults based on pre-scheduled scenario seeds and step numbers, recording ground truth out-of-band to prevent detector leakage.
+
+    \item \textbf{How do you know your detector works?}
+    \newline \textit{Answer:} We scored it against out-of-band injection logs on Day 15 (Q2). While it achieved 1.0 precision, recall was 0.615. Rather than hiding behind aggregate F1, we conducted an explicit miss audit identifying 6 threshold-reducible misses and 4 semantic escapes.
+
+    \item \textbf{How do you compare recovery policies fairly?}
+    \newline \textit{Answer:} By pairing requests on the exact same master seeds and scenario sequences, evaluating discordant outcomes via McNemar's test, and computing 10,000-resample paired bootstrap intervals on cost and latency deltas.
+
+    \item \textbf{How do you handle statistical uncertainty?}
+    \newline \textit{Answer:} Every proportion is bounded by a 95\% Wilson score interval. If confidence intervals overlap or sample size is underpowered to detect a 10 pp difference, we formally declare the result \textbf{INCONCLUSIVE}.
+
+    \item \textbf{How do you reproduce a result from cold start?}
+    \newline \textit{Answer:} Run \code{make cold-reproduce}. It builds a digest-pinned Python 3.12.4 Docker container, runs 528 tests, regenerates the research results, checks byte hashes, and verifies that every displayed number matches committed JSON pointers.
+
+    \item \textbf{What is the biggest limitation of FAULTLINE?}
+    \newline \textit{Answer:} External validity (L01). All numbers derive from synthetic documents and simulated fault distributions. While the distributed systems failure dynamics are universal, the exact numerical thresholds do not transfer directly to production without empirical calibration.
+
+    \item \textbf{What would you build next?}
+    \newline \textit{Answer:} Execute the Phase 2 live model API sweeps (Projects P1, P3, P6) across commercial endpoints, and conduct the manual qualitative coding of 150 real failure traces (P4).
+
+    \item \textbf{What would invalidate your conclusions?}
+    \newline \textit{Answer:} If production multi-hop workloads demonstrate that later tool hops maintain constant conditional reliability, or if commercial fallback models exhibit zero semantic degradation compared to frontier models.
+
+    \item \textbf{What failed during development?}
+    \newline \textit{Answer:} In Amendment A-002, our initial step cap ($8$) made 283 of 350 scenarios mathematically unsolvable by construction because T3 tasks required 9 retrievals. We discovered the owner error during dress rehearsals, expanded the cap to 12, added 500-char search snippets, and verified all 350 scenarios passed.
+\end{enumerate}
