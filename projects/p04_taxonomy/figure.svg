@@ -1,0 +1,93 @@
+<svg width="920" height="500" viewBox="0 0 920 500" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <style>
+    .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 17px; font-weight: 600; fill: #1a1a1a; }
+    .subtitle { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; fill: #666666; }
+    .axis { stroke: #cccccc; stroke-width: 1; }
+    .grid { stroke: #eeeeee; stroke-dasharray: 4,4; }
+    .label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #333333; }
+    .val { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; font-weight: 600; }
+    .legend { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #555555; }
+    .novel-tag { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 9px; font-weight: 700; fill: #2e6da4; }
+  </style>
+  <!-- Title -->
+  <text x="460.0" y="28" class="title" text-anchor="middle">P4 Failure Taxonomy: Human-Coded Axial Failure Modes (N=183 Failures)</text>
+  <text x="460.0" y="46" class="subtitle" text-anchor="middle">Qualitative Distribution across N=200 Standard Pool Multi-Hop Scenarios (T1, T2, T3)</text>
+  <!-- Y-Axis Grid & Labels -->
+  <line x1="60" y1="360.0" x2="880" y2="360.0" class="grid"/>
+  <text x="50" y="364.0" class="label" text-anchor="end">0%</text>
+  <line x1="60" y1="318.57142857142856" x2="880" y2="318.57142857142856" class="grid"/>
+  <text x="50" y="322.57142857142856" class="label" text-anchor="end">10%</text>
+  <line x1="60" y1="277.14285714285717" x2="880" y2="277.14285714285717" class="grid"/>
+  <text x="50" y="281.14285714285717" class="label" text-anchor="end">20%</text>
+  <line x1="60" y1="235.71428571428572" x2="880" y2="235.71428571428572" class="grid"/>
+  <text x="50" y="239.71428571428572" class="label" text-anchor="end">30%</text>
+  <line x1="60" y1="194.2857142857143" x2="880" y2="194.2857142857143" class="grid"/>
+  <text x="50" y="198.2857142857143" class="label" text-anchor="end">40%</text>
+  <line x1="60" y1="152.85714285714286" x2="880" y2="152.85714285714286" class="grid"/>
+  <text x="50" y="156.85714285714286" class="label" text-anchor="end">50%</text>
+  <line x1="60" y1="111.42857142857144" x2="880" y2="111.42857142857144" class="grid"/>
+  <text x="50" y="115.42857142857144" class="label" text-anchor="end">60%</text>
+  <line x1="60" y1="70.0" x2="880" y2="70.0" class="grid"/>
+  <text x="50" y="74.0" class="label" text-anchor="end">70%</text>
+  <line x1="60" y1="360" x2="880" y2="360" class="axis"/>
+  <!-- Mode INFRASTRUCTURE_RATE_LIMIT -->
+  <rect x="86.44444444444444" y="101.92037470725995" width="56" height="258.07962529274005" fill="#d9534f" rx="3"/>
+  <text x="114.44444444444444" y="95.92037470725995" class="val" fill="#d9534f" text-anchor="middle">62.3% (114)</text>
+  <text x="114.44444444444444" y="378" class="label" font-weight="600" text-anchor="middle">Infrastructure</text>
+  <text x="114.44444444444444" y="392" class="label" font-weight="600" text-anchor="middle">Rate Limit</text>
+  <!-- Mode OVERCONSTRAINED_SEARCH_LOOP -->
+  <rect x="175.33333333333331" y="278.5011709601873" width="56" height="81.49882903981266" fill="#337ab7" rx="3"/>
+  <text x="203.33333333333331" y="272.5011709601873" class="val" fill="#337ab7" text-anchor="middle">19.7% (36)</text>
+  <text x="203.33333333333331" y="378" class="label" font-weight="600" text-anchor="middle">Overconstrained</text>
+  <text x="203.33333333333331" y="392" class="label" font-weight="600" text-anchor="middle">Search Loop</text>
+  <text x="203.33333333333331" y="406" class="novel-tag" text-anchor="middle">[NOVEL vs F1–F6]</text>
+  <!-- Mode MALFORMED_TOOL_CALL -->
+  <rect x="264.22222222222223" y="307.93130366900857" width="56" height="52.068696330991415" fill="#f0ad4e" rx="3"/>
+  <text x="292.22222222222223" y="301.93130366900857" class="val" fill="#f0ad4e" text-anchor="middle">12.6% (23)</text>
+  <text x="292.22222222222223" y="378" class="label" font-weight="600" text-anchor="middle">Malformed</text>
+  <text x="292.22222222222223" y="392" class="label" font-weight="600" text-anchor="middle">Tool Call</text>
+  <!-- Mode INFRASTRUCTURE_SERVER_ERROR -->
+  <rect x="353.1111111111111" y="353.20843091334893" width="56" height="6.791569086651054" fill="#d9534f" rx="3"/>
+  <text x="381.1111111111111" y="347.20843091334893" class="val" fill="#d9534f" text-anchor="middle">1.6% (3)</text>
+  <text x="381.1111111111111" y="378" class="label" font-weight="600" text-anchor="middle">Infrastructure</text>
+  <text x="381.1111111111111" y="392" class="label" font-weight="600" text-anchor="middle">Server Error</text>
+  <!-- Mode MULTI_HOP_TRAVERSAL_EXHAUSTION -->
+  <rect x="442.0" y="353.20843091334893" width="56" height="6.791569086651054" fill="#9467bd" rx="3"/>
+  <text x="470.0" y="347.20843091334893" class="val" fill="#9467bd" text-anchor="middle">1.6% (3)</text>
+  <text x="470.0" y="378" class="label" font-weight="600" text-anchor="middle">Multi Hop</text>
+  <text x="470.0" y="392" class="label" font-weight="600" text-anchor="middle">Traversal Exhaustion</text>
+  <text x="470.0" y="406" class="novel-tag" text-anchor="middle">[NOVEL vs F1–F6]</text>
+  <!-- Mode RETRIEVAL_FAILURE_ABSTENTION -->
+  <rect x="530.8888888888889" y="357.73614363778296" width="56" height="2.2638563622170182" fill="#5cb85c" rx="3"/>
+  <text x="558.8888888888889" y="351.73614363778296" class="val" fill="#5cb85c" text-anchor="middle">0.5% (1)</text>
+  <text x="558.8888888888889" y="378" class="label" font-weight="600" text-anchor="middle">Retrieval</text>
+  <text x="558.8888888888889" y="392" class="label" font-weight="600" text-anchor="middle">Failure Abstention</text>
+  <text x="558.8888888888889" y="406" class="novel-tag" text-anchor="middle">[NOVEL vs F1–F6]</text>
+  <!-- Mode ANSWER_EXTRACTION_TRUNCATION -->
+  <rect x="619.7777777777777" y="357.73614363778296" width="56" height="2.2638563622170182" fill="#5cb85c" rx="3"/>
+  <text x="647.7777777777777" y="351.73614363778296" class="val" fill="#5cb85c" text-anchor="middle">0.5% (1)</text>
+  <text x="647.7777777777777" y="378" class="label" font-weight="600" text-anchor="middle">Answer</text>
+  <text x="647.7777777777777" y="392" class="label" font-weight="600" text-anchor="middle">Extraction Truncation</text>
+  <!-- Mode PREMATURE_STOP_WRONG_HOP -->
+  <rect x="708.6666666666666" y="357.73614363778296" width="56" height="2.2638563622170182" fill="#5cb85c" rx="3"/>
+  <text x="736.6666666666666" y="351.73614363778296" class="val" fill="#5cb85c" text-anchor="middle">0.5% (1)</text>
+  <text x="736.6666666666666" y="378" class="label" font-weight="600" text-anchor="middle">Premature Stop</text>
+  <text x="736.6666666666666" y="392" class="label" font-weight="600" text-anchor="middle">Wrong Hop</text>
+  <text x="736.6666666666666" y="406" class="novel-tag" text-anchor="middle">[NOVEL vs F1–F6]</text>
+  <!-- Mode MULTI_HOP_DIRECTION_ERROR -->
+  <rect x="797.5555555555555" y="357.73614363778296" width="56" height="2.2638563622170182" fill="#9467bd" rx="3"/>
+  <text x="825.5555555555555" y="351.73614363778296" class="val" fill="#9467bd" text-anchor="middle">0.5% (1)</text>
+  <text x="825.5555555555555" y="378" class="label" font-weight="600" text-anchor="middle">Multi Hop</text>
+  <text x="825.5555555555555" y="392" class="label" font-weight="600" text-anchor="middle">Direction Error</text>
+  <text x="825.5555555555555" y="406" class="novel-tag" text-anchor="middle">[NOVEL vs F1–F6]</text>
+  <!-- Legend -->
+  <rect x="70" y="448" width="14" height="12" fill="#d9534f" rx="2"/>
+  <text x="90" y="458" class="legend">Infrastructure (Rate Limit / 500)</text>
+  <rect x="290" y="448" width="14" height="12" fill="#337ab7" rx="2"/>
+  <text x="310" y="458" class="legend">Search Strategy / Loops</text>
+  <rect x="490" y="448" width="14" height="12" fill="#f0ad4e" rx="2"/>
+  <text x="510" y="458" class="legend">Tool Formatting</text>
+  <rect x="650" y="448" width="14" height="12" fill="#9467bd" rx="2"/>
+  <text x="670" y="458" class="legend">Multi-Hop Traversal</text>
+</svg>

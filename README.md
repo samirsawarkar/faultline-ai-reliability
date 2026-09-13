@@ -3,10 +3,30 @@
 **A reproducible research workbench for finding where document-grounded AI systems fail—and testing whether recovery actually improves the user outcome.**
 
 [![CI](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml)
-[![Tests](https://img.shields.io/badge/tests-433%20passing-brightgreen.svg)](day26/evidence/test_report.json)
+[![Tests: 614 passing](https://img.shields.io/badge/tests-614%20passing-brightgreen.svg)](report/check_evidence_index.py)
+[![Phase 2 Tests](https://img.shields.io/badge/phase%202%20tests-86%20passing-blue.svg)](tests/phase2/)
+[![Publication #1](https://img.shields.io/badge/publication%20%231-paper%20(PDF)-orange.svg)](publications/publication_01_passk_reliability/paper.pdf)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 **Phase 1** established the simulation foundations, failure taxonomy, and recovery mechanisms across 30 reproducible days. **Phase 2** measures real-world LLM agent reliability against live model APIs on a canonical 350-scenario multi-hop corpus.
+
+---
+
+### Headline Publication #1: The Illusion of Compound Independence (Project P6)
+
+**"Retry Doesn't Help The Way You Think: Grounding Collapse, Human-in-the-Loop Taxonomy, and Failure Concentration in Multi-Hop AI Agents"**  
+📄 **[Read Full Paper (PDF)](publications/publication_01_passk_reliability/paper.pdf)** · 📝 **[Markdown Paper](publications/publication_01_passk_reliability/paper.md)** · 🌐 **[Executive Blog Post](publications/publication_01_passk_reliability/blog_post.md)**
+
+Across **2,700+ agent executions**, **25,477 logged telemetry spans**, and 3 distinct foundation model rungs: **R2 (`glm-5.3-flash`)**, **R4 (`gpt-5.6-luna`)**, and **R6 (`deepseek-v4-pro`)**, we falsify universal naive compounding $(\text{pass@1})^k$ and prove that failure concentration is strictly **regime-dependent**:
+- **Regime-Dependent Failure Concentration:** In low-accuracy frontier regimes (R4, $\text{pass@1} = 14.89\%$), errors concentrate on an intractable scenario set, demonstrating a **$6.06\times$ failure concentration ratio** ($\text{pass}^3 = 2.00\%$ vs naive $0.33\%$). In disciplined commodity regimes (R2, $\text{pass@1} = 63.11\%$), errors compound as independent stochastic trials ($\text{pass}^3 = 22.67\%$ vs naive $25.14\%$).
+- **The Economic Workhorse Inversion:** Smaller, tool-disciplined models ($R2, \text{glm-5.3-flash}$) outperform high-cost frontier reasoning models ($R4, \text{gpt-5.6-luna}$) on joint multi-trial reliability by **$+20.67\text{ pp}$** ($p = 8.14 \times 10^{-7}$, McNemar paired test) while achieving an **$18.3\times$ cost reduction** per grounded answer ($\$0.0147$ vs $\$0.268$).
+
+![Joint Reliability and Cost Tradeoff](publications/publication_01_passk_reliability/figure_cost_vs_passk.svg)
+
+```bash
+pip install -e .
+make p06  # Reproduces P6 pass^k decay sweep & generates joint reliability figures
+```
 
 ---
 

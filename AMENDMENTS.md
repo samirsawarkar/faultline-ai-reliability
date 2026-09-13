@@ -63,3 +63,28 @@ impractical.
 **Open obligation.** The MEC's budget assumed 10k input / 2.5k output per run, costed
 before any multi-step agent existed. Tokens per run must be measured in P1 and the P6
 allocation re-checked before P6 runs.
+
+---
+
+## A-003 · Step cap 12 → 24 for multi-hop sweeps · 2026-09-12 · MEC v1.2 → v1.3
+
+**Changed.**
+1. Agent step cap: **12 → 24**.
+
+**Why.** Invocation of the declared trigger pre-registered in A-002: *"If more than 10%
+of T3 runs in P1 terminate on the step cap, the cap is amended again and P1 is re-run
+before P3."* In P6's 150 reserved hard pool (all T3 5-hop scenarios), 49% of runs
+saturated the 12-step cap and pass@1 collapsed to 0.0000 across all rungs.
+
+Because T3 requires 9 document retrievals (`traversal_sources`) plus 1 answer step (10 steps
+minimum), the 12-step cap provided only a 2-step margin for search branching or query
+reformulation. Raising the cap to 24 provides a 14-step operational margin, preventing
+harness-induced floor collapse.
+
+**Probe Protocol.** Before running a full multi-rung $k=3$ sweep, a cheap single-rung
+probe ($k=1$ on R2 `z-ai/glm-5.3-flash`, $n=150$, ~$0.20) is executed to verify non-zero
+pass rate and observe the empirical step distribution under the 24-step ceiling.
+
+**Prior results affected.** P6 initial run invalidated due to step cap saturation.
+Re-run under MEC v1.3.
+

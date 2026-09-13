@@ -331,7 +331,7 @@ clean:
 	find . -type d -name .pytest_cache -prune -exec rm -rf {} +
 
 # Phase 2 developer entry points
-.PHONY: phase2-install phase2-test phase2-corpus phase2-preflight p01 p02 p03 p04-view p04-export p13 p15 p16
+.PHONY: phase2-install phase2-test phase2-corpus phase2-preflight p01 p02 p03 p04-view p04-export p05 p06 p13 p15 p16
 
 phase2-install:
 	$(PY) -m pip install -e .
@@ -360,6 +360,12 @@ p04-view:
 
 p04-export:
 	.venv/bin/python projects/p04_taxonomy/export_sheet.py
+
+p05:
+	.venv/bin/python projects/p05_judge/run.py $(ARGS)
+
+p06:
+	.venv/bin/python projects/p06_passk/run.py $(ARGS)
 
 p13:
 	.venv/bin/python projects/p13_slo_incident/run.py

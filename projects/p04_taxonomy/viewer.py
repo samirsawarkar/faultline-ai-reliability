@@ -48,7 +48,12 @@ def load_trace_data(db_path: Path, run_id: Optional[str] = None) -> Dict[str, Li
     return grouped
 
 
-def render_trace_terminal(scenario_id: str, spans: List[sqlite3.Row], scenario_map: Dict[str, Any]) -> str:
+def render_trace_terminal(
+    scenario_id: str, 
+    spans: List[sqlite3.Row], 
+    scenario_map: Dict[str, Any],
+    sweep_item: Optional[Dict[str, Any]] = None,
+) -> str:
     """Render a human-readable, detailed terminal view of a single scenario execution trace."""
     sc = scenario_map.get(scenario_id)
     lines = []
@@ -64,7 +69,20 @@ def render_trace_terminal(scenario_id: str, spans: List[sqlite3.Row], scenario_m
         lines.append(f"Required Source: {sc.required_source}")
         if hasattr(sc, "traversal_sources") and sc.traversal_sources:
             lines.append(f"Traversal Path:  {' -> '.join(sc.traversal_sources)}")
+    
+    if sweep_item and "output" in sweep_item:
+        out = sweep_item["output"]
+        if out.get("answer"):
+            lines.append(f"Agent Answer:    {out.get('answer')}")
+        if out.get("cited_sources"):
+            lines.append(f"Cited Sources:   {', '.join(out.get('cited_sources'))}")
+        if out.get("reason"):
+            lines.append(f"Failure Reason:  {out.get('reason')}")
     lines.append("-" * 80)
+
+    # Detailed trace from sweep_item if available
+    trace_steps = (sweep_item or {}).get("output", {}).get("trace", [])
+    step_dict = {t.get("index"): t for t in trace_steps}
 
     for s in spans:
         step_idx = s["step_index"]
@@ -79,6 +97,23 @@ def render_trace_terminal(scenario_id: str, spans: List[sqlite3.Row], scenario_m
             header += f" | Termination: {reason}"
         lines.append(header)
 
+        # Print tool details from sweep output if present
+        step_info = step_dict.get(step_idx)
+        if step_info:
+            tc = step_info.get("tool_call") or {}
+            obs = step_info.get("observation") or {}
+            if tc:
+                call_desc = f"        Call: {tc.get('tool', tool)}(" + ", ".join(f"{k}={v!r}" for k, v in tc.items() if k != "tool") + ")"
+                lines.append(call_desc)
+            if obs:
+                if "candidates" in obs:
+                    lines.append(f"        Result: {len(obs['candidates'])} candidates returned")
+                elif "text" in obs:
+                    snippet = obs["text"][:120] + ("..." if len(obs["text"]) > 120 else "")
+                    lines.append(f"        Result: \"{snippet}\"")
+                elif obs.get("error"):
+                    lines.append(f"        Error: {obs.get('error')}")
+
     lines.append("=" * 80)
     return "\n".join(lines)
 
@@ -86,19 +121,48 @@ def render_trace_terminal(scenario_id: str, spans: List[sqlite3.Row], scenario_m
 def main():
     parser = argparse.ArgumentParser(description="P04 Trace Viewer Helper for Open Coding")
     parser.add_argument("--db", default="projects/p03_grounding/trace.db", help="Path to trace.db")
+    parser.add_argument("--sweep", default="projects/p03_grounding/sweep_output.json", help="Path to sweep_output.json")
     parser.add_argument("--scenario", help="Inspect specific scenario ID (e.g., s-0042)")
+    parser.add_argument("--doc", help="Inspect content of a document ID (e.g., doc-0098)")
     parser.add_argument("--tier", choices=["T1", "T2", "T3"], help="Filter by tier")
     parser.add_argument("--failed-only", action="store_true", help="Show only failed scenarios")
     parser.add_argument("--limit", type=int, default=10, help="Number of traces to display")
     args = parser.parse_args()
 
+    corpus = build_corpus()
+    if args.doc:
+        doc = next((d for d in corpus.documents if (d.get("id") if isinstance(d, dict) else getattr(d, "id", None)) == args.doc), None)
+        if doc:
+            d_id = doc.get("id") if isinstance(doc, dict) else getattr(doc, "id", "")
+            d_title = doc.get("title") if isinstance(doc, dict) else getattr(doc, "title", "")
+            d_text = doc.get("text") if isinstance(doc, dict) else getattr(doc, "text", "")
+            print("=" * 80)
+            print(f"DOCUMENT ID:    {d_id}")
+            print(f"DOCUMENT TITLE: {d_title}")
+            print("-" * 80)
+            print(d_text)
+            print("=" * 80)
+        else:
+            print(f"Document '{args.doc}' not found in corpus.")
+        return
+
     db_path = Path(args.db)
     if not db_path.exists():
-        # Fallback to P1 trace if P3 not available
         db_path = Path("projects/p01_baseline/trace.db")
 
     traces = load_trace_data(db_path)
-    corpus = build_corpus()
+
+    sweep_results: Dict[str, Any] = {}
+    sweep_path = Path(args.sweep)
+    if sweep_path.exists():
+        try:
+            with open(sweep_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                for item in data.get("results", []):
+                    sweep_results[item["task_id"]] = item
+        except Exception:
+            pass
+
     scenario_map = {s.scenario_id: s for s in corpus.scenarios}
 
     selected_ids = list(traces.keys())
@@ -117,7 +181,7 @@ def main():
 
     print(f"Loaded {len(traces)} total traces. Showing {min(len(selected_ids), args.limit)} matching traces:")
     for sid in selected_ids[: args.limit]:
-        print(render_trace_terminal(sid, traces[sid], scenario_map))
+        print(render_trace_terminal(sid, traces[sid], scenario_map, sweep_results.get(sid)))
         print()
 
 

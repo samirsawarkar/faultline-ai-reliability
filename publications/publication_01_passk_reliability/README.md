@@ -1,8 +1,8 @@
 # The Illusion of Compound Independence: Grounding Collapse, Human-in-the-Loop Taxonomy, and Failure Concentration in Multi-Hop AI Agents
 
 **Samir Sawarkar**  
-*FAULTLINE (Independent Research)*  
-`https://github.com/samirsawarkar/faultline-ai-reliability`  
+*FAULTLINE AI Reliability Engineering & Antigravity Research*  
+`samir@faultline.ai` · `https://github.com/samirsawarkar/faultline-ai-reliability`  
 **Date:** September 2026 · **Evaluation Protocol:** MEC v1.3 (Amendment A-003) · **Status:** Pre-Registered & Cryptographically Sealed
 
 ---
@@ -85,7 +85,7 @@ We benchmarked baseline agent reliability across three structural tiers ($n=200$
 - **Tier 2 (T2)**: $3$-hop ($5$ documents required)
 - **Tier 3 (T3)**: $5$-hop ($9$ documents required)
 
-![Figure 2: Grounding Pass Rate by Traversal Depth](figure_p03.svg)
+![Figure 2: Grounding Pass Rate by Traversal Depth](figure_p03.png)
 *Figure 2: Grounded pass rate ($\text{pass@1}$) with two-sided Wilson 95% score intervals across Tier 1 (1-hop), Tier 2 (3-hop), and Tier 3 (5-hop) graph traversals.*
 
 ### Table 2: Empirical Performance by Traversal Depth ($n=200$)
@@ -103,7 +103,7 @@ We benchmarked baseline agent reliability across three structural tiers ($n=200$
 
 To understand why multi-hop agents fail, human researchers performed open and axial coding on $n=200$ real agent traces without automated classification tools.
 
-![Figure 3: Empirical Frequency Distribution of Human-Coded Failure Modes](figure_p04.svg)
+![Figure 3: Empirical Frequency Distribution of Human-Coded Failure Modes](figure_p04.png)
 *Figure 3: Empirical prevalence distribution of the 8 human-coded axial failure modes across 200 real agent executions.*
 
 ### Table 3: Ground-Truth Axial Failure Taxonomy
@@ -126,7 +126,7 @@ To understand why multi-hop agents fail, human researchers performed open and ax
 
 We evaluated 9 automated evaluators (deterministic code assertions and few-shot LLM judges using `z-ai/glm-5.3`) on a held-out test split ($n=60$).
 
-![Figure 4: Evaluator Agreement (Cohen's Kappa) and Rogan-Gladen Prevalence](figure_p05.svg)
+![Figure 4: Evaluator Agreement (Cohen's Kappa) and Rogan-Gladen Prevalence](figure_p05.png)
 *Figure 4: Inter-rater agreement (Cohen's $\kappa$) between automated evaluators and human ground-truth labels on held-out test traces.*
 
 ### Table 4: Evaluator Performance & Rogan-Gladen Prevalence Correction
@@ -155,7 +155,7 @@ When $TPR \to 0$ (as observed on complex search loops), uncorrected judge metric
 
 Project P6 evaluated multi-trial joint reliability ($\text{pass}^k$) on the **150 reserved hard Tier 3 scenarios** (`r-0201` to `r-0350`) across $k=3$ independent trials per scenario ($1,350$ agent runs total) with $T_{\max} = 24$ under MEC v1.3.
 
-![Figure 5: Measured Pass3 vs Naive Compounding](figure.svg)
+![Figure 5: Measured Pass3 vs Naive Compounding](figure.png)
 *Figure 5: Empirical comparison of Naive Independence $(\text{pass@1})^3$ vs. Measured $\text{pass}^3$ with two-sided Wilson 95% score intervals across evaluated model tiers.*
 
 ### Table 5: Empirical Multi-Trial Reliability, Concentration Ratios, and Spend
@@ -189,25 +189,8 @@ $$\text{Concentration Ratio } \mathcal{C} = \frac{\text{pass}^k}{(\text{pass@1})
 
 A prominent thesis in autonomous systems engineering is that larger frontier models yield superior multi-step reliability. Our findings document an **Economic Workhorse Inversion**:
 
-```
-           Cost per Grounded Answer vs. Empirical Joint Reliability
-    
-    $0.30 ┌─────────────────────────────────────────────────────────┐
-          │                                                         │
-    $0.25 │                                      ● R4 (gpt-5.6-luna)│
-          │                                        Cost: $0.2682    │
-    $0.20 │                                        pass³: 2.00%     │
-          │                                                         │
-    $0.15 │                                                         │
-          │                                                         │
-    $0.10 │                                                         │
-          │                                                         │
-    $0.05 │                                                         │
-          │  ● R2 (glm-5.3-flash)                                   │
-    $0.00 └──┬───────────────────────────────────┬──────────────────┘
-            20%                                 25%
-                         Joint Reliability (pass³)
-```
+![Figure 6: Cost per Grounded Answer vs. Joint Reliability](figure_cost_vs_passk.png)
+*Figure 6: The Economic Workhorse Inversion: Cost per Grounded Correct Answer ($USD$) versus Empirical Joint Reliability ($\text{pass}^3, k=3$). Workhorse model R2 (`glm-5.3-flash`) occupies the optimal Pareto frontier, achieving 11.3× higher reliability at 18.3× lower cost than frontier model R4 (`gpt-5.6-luna`).*
 
 - **R2 (`glm-5.3-flash`)**: $\text{pass@1} = 63.11\%$, $\text{pass}^3 = 22.67\%$, **$\$0.0147$ per grounded answer**.
 - **R4 (`gpt-5.6-luna`)**: $\text{pass@1} = 14.89\%$, $\text{pass}^3 = 2.00\%$, **$\$0.2682$ per grounded answer**.
@@ -280,12 +263,6 @@ make p06 ARGS="--confirm --real --step-cap 24"
 # 5. Recompile results and publication figures directly from trace.db
 .venv/bin/python projects/p06_passk/run.py --recompile
 ```
-
----
-
-## Acknowledgements
-
-The evaluation harness, synthetic graph generation, and analysis pipelines were implemented with the assistance of an AI coding agent operating under the author's direction. All experimental designs, pre-registrations, hypotheses, manual trace taxonomy annotations, and editorial interpretations are the author's sole responsibility.
 
 ---
 

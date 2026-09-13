@@ -36,3 +36,13 @@ Append-only. Date · id · decision · why · reversal cost.
 
 ### D-004: Tokenizer as Estimator
 We added `tiktoken` to `pyproject.toml` as a dependency. The `cl100k_base` tokenizer is used as an ESTIMATOR for token counts. For non-OpenAI models, this provides a rough approximation rather than an exact count.
+
+---
+
+### 2026-09-12 · D-005 · Step Cap 24 (MEC v1.3) & P6 Pass^k Decay Validation
+**Decision.** Formally adopt Amendment A-003 raising agent step cap $12 \to 24$ for Phase 2 multi-hop sweeps under MEC v1.3. Seal Project P6 empirical results evaluating joint reliability ($\text{pass}^k$) across R2 (`glm-5.3-flash`), R4 (`gpt-5.6-luna`), and R6 (`deepseek-v4-pro`) on 150 reserved hard Tier 3 scenarios ($k=3$, 1,350 agent runs).
+
+**Why.** Tier 3 5-hop scenarios require a minimum of 10 steps (9 retrievals + 1 answer). A 12-step cap left an unworkable 2-step margin causing 49% cap saturation and artificial floor collapse. With `step_cap=24`, R2 achieved 63.11% pass@1 (only 4.0% cap saturation) and 22.67% pass$^3$, and R4 demonstrated a $6.06\times$ failure concentration ratio, providing an unfloored empirical basis for Publication #1 and Projects P7/P8.
+
+**Reversal cost.** Low; governed by pre-registered trigger in Amendment A-002 and verified against empirical step distributions.
+

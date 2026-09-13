@@ -25,6 +25,7 @@ class LiteLLMModel(ModelInterface):
 
     def generate(self, messages: List[Dict[str, Any]]) -> ModelResponse:
         import litellm
+        litellm.suppress_debug_info = True
         import os
         from dotenv import load_dotenv
         load_dotenv()
