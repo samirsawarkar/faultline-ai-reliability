@@ -17,15 +17,32 @@ class ModelInterface(Protocol):
         ...
 
 class LiteLLMModel(ModelInterface):
-    def __init__(self, model_name: str, provider: str, version: str, dry_run: bool = True):
+    def __init__(
+        self,
+        model_name: str,
+        provider: str,
+        version: str,
+        dry_run: bool = True,
+        api_base: Optional[str] = None,
+        api_key: Optional[str] = None,
+        custom_llm_provider: Optional[str] = None,
+    ):
         self.model_name = model_name
         self.provider = provider
         self.version = version
         self.dry_run = dry_run
+        self.api_base = api_base
+        self.api_key = api_key
+        self.custom_llm_provider = custom_llm_provider
 
     def generate(self, messages: List[Dict[str, Any]]) -> ModelResponse:
         import litellm
+        import logging
+        import warnings
+        warnings.filterwarnings("ignore", category=DeprecationWarning)
+        warnings.filterwarnings("ignore", message=".*temperature.*")
         litellm.suppress_debug_info = True
+        logging.getLogger("LiteLLM").setLevel(logging.ERROR)
         import os
         from dotenv import load_dotenv
         load_dotenv()
@@ -40,13 +57,23 @@ class LiteLLMModel(ModelInterface):
             raise RuntimeError("LiteLLM Seam Not Invoked", kwargs)
 
         extra_kwargs: Dict[str, Any] = {}
-        api_base = os.getenv("AICREDITS_BASE_URL")
-        api_key = os.getenv("AICREDITS_API_KEY")
-        if api_base:
-            extra_kwargs["api_base"] = api_base
-            extra_kwargs["custom_llm_provider"] = "openai"
-        if api_key:
+        api_base = self.api_base or os.getenv("AICREDITS_BASE_URL")
+        api_key = self.api_key or os.getenv("AICREDITS_API_KEY")
+
+        if self.api_key:
+            extra_kwargs["api_key"] = self.api_key
+        elif api_key:
             extra_kwargs["api_key"] = api_key
+
+        if self.api_base:
+            extra_kwargs["api_base"] = self.api_base
+        elif api_base and not self.model_name.startswith("gemini/"):
+            extra_kwargs["api_base"] = api_base
+
+        if self.custom_llm_provider:
+            extra_kwargs["custom_llm_provider"] = self.custom_llm_provider
+        elif extra_kwargs.get("api_base") and not self.model_name.startswith("gemini/"):
+            extra_kwargs["custom_llm_provider"] = "openai"
 
         tools = [
             {

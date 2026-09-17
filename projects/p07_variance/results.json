@@ -1,0 +1,70 @@
+{
+  "timestamp_utc": "2026-09-15T06:11:57.158765+00:00",
+  "manifest_sha256": "293924501f55e408bcd6467cfde503d2af1147fa254dad0f914243cb8271d77d",
+  "total_spend_usd": 0.44191,
+  "endpoints": {
+    "aicredits": {
+      "model_name": "google/gemini-3.7-flash",
+      "n": 150,
+      "passed": 144,
+      "pass_rate": 0.96,
+      "wilson_ci": [
+        0.9155,
+        0.9815
+      ],
+      "latency_p50_s": 16.0911,
+      "latency_p95_s": 29.4546,
+      "spend_usd": 0.285181
+    },
+    "agy": {
+      "model_name": "gemini-3.7-flash",
+      "n": 150,
+      "passed": 134,
+      "pass_rate": 0.8933,
+      "wilson_ci": [
+        0.8338,
+        0.9333
+      ],
+      "latency_p50_s": 18.6402,
+      "latency_p95_s": 67.8926,
+      "spend_usd": 0.156729
+    }
+  },
+  "contingency": {
+    "both_pass": 130,
+    "aicredits_only": 14,
+    "agy_only": 4,
+    "neither": 2
+  },
+  "mcnemar": {
+    "b": 14,
+    "c": 4,
+    "n_discordant": 18,
+    "chi2_statistic": 4.5,
+    "chi2_p_value": 0.0338948535246893,
+    "continuity_correction": true,
+    "exact_p_value": 0.0308837890625,
+    "recommended": "exact",
+    "p_value": 0.0308837890625,
+    "significant_at_0.05": true
+  },
+  "h6": {
+    "criterion_disjoint_ci": "NOT MET: Wilson intervals overlap on [0.9155, 0.9333]",
+    "paired_mcnemar": "SIGNIFICANT: exact p=0.0308837890625, 14 aicredits-only vs 4 agy-only discordant pairs, favouring aicredits",
+    "power_note": "Observed gap 6.67pp is below the MEC 10pp declared power. Reported as a detected difference with that caveat; never as no difference."
+  },
+  "latency": {
+    "aicredits": {
+      "p50_s": 16.0911,
+      "p95_s": 29.4546
+    },
+    "agy": {
+      "p50_s": 18.6402,
+      "p95_s": 67.8926
+    },
+    "ratio_agy_over_aicredits": {
+      "p50": 1.1584,
+      "p95": 2.305
+    }
+  }
+}

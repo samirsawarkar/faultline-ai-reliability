@@ -331,10 +331,13 @@ clean:
 	find . -type d -name .pytest_cache -prune -exec rm -rf {} +
 
 # Phase 2 developer entry points
-.PHONY: phase2-install phase2-test phase2-corpus phase2-preflight p01 p02 p03 p04-view p04-export p05 p06 p13 p15 p16
+.PHONY: phase2-install phase2-install-inspect phase2-test phase2-corpus phase2-preflight p01 p02 p03 p04-view p04-export p05 p06 p06-analysis p07 p08 p08-replay p13 p15 p16
 
 phase2-install:
 	$(PY) -m pip install -e .
+
+phase2-install-inspect:
+	python3 -m venv .venv-inspect && .venv-inspect/bin/pip install 'inspect_ai==0.3.263' 'openai==3.14.0' 'inspect-evals-mcptox @ git+https://github.com/stefanoamorelli/inspect-evals-mcptox@d45705b0a7ae6697c851e311187b06bf7488b13f' python-dotenv
 
 phase2-test:
 	$(PY) -m pytest tests/phase2 -q
@@ -366,6 +369,18 @@ p05:
 
 p06:
 	.venv/bin/python projects/p06_passk/run.py $(ARGS)
+
+p06-analysis:
+	.venv/bin/python projects/p06_passk/analysis.py $(ARGS)
+
+p07:
+	.venv/bin/python projects/p07_variance/run.py $(ARGS)
+
+p08:
+	.venv/bin/python projects/p08_mcptox/run.py $(ARGS)
+
+p08-replay:
+	.venv/bin/python projects/p08_mcptox/replay.py $(ARGS)
 
 p13:
 	.venv/bin/python projects/p13_slo_incident/run.py
