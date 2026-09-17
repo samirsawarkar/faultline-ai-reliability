@@ -15,7 +15,9 @@ dependencies = [
     "pytest>=8.0",
     "jsonschema>=4.26.0",
     "python-dotenv",
-    "openai",
+    "openai<3.0.0",
+    "inspect-evals-mcptox @ git+https://github.com/stefanoamorelli/inspect-evals-mcptox@d45705b0a7ae6697c851e311187b06bf7488b13f",
+    "inspect_ai>=0.3.263",
 ]
 
 [tool.setuptools.packages.find]

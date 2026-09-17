@@ -1,0 +1,1468 @@
+{
+  "pooled": {
+    "n": 10227,
+    "n_unparseable": 306,
+    "n_parseable": 9921,
+    "crosstab": {
+      "allow": {
+        "Success": 215,
+        "Failure-Direct Execution": 2262,
+        "Failure-Ignored": 3917,
+        "other": 155
+      },
+      "envelope": {
+        "Success": 1,
+        "Failure-Direct Execution": 0,
+        "Failure-Ignored": 3,
+        "other": 0
+      },
+      "multi_call": {
+        "Success": 292,
+        "Failure-Direct Execution": 314,
+        "Failure-Ignored": 15,
+        "other": 34
+      },
+      "unknown_tool": {
+        "Success": 0,
+        "Failure-Direct Execution": 2,
+        "Failure-Ignored": 0,
+        "other": 0
+      },
+      "extra_argument": {
+        "Success": 51,
+        "Failure-Direct Execution": 162,
+        "Failure-Ignored": 179,
+        "other": 27
+      },
+      "provenance": {
+        "Success": 1094,
+        "Failure-Direct Execution": 28,
+        "Failure-Ignored": 1074,
+        "other": 96
+      },
+      "unparseable": {
+        "Success": 92,
+        "Failure-Direct Execution": 25,
+        "Failure-Ignored": 181,
+        "other": 8
+      }
+    },
+    "parseable_success": 1653,
+    "blocked_success": 1438,
+    "block_rate_on_success": 0.8699334543254689,
+    "block_rate_ci": [
+      0.8528560964377401,
+      0.8852953986790628
+    ],
+    "parseable_ignored": 5188,
+    "false_blocked": 1271,
+    "false_block_rate_on_ignored": 0.24498843484965305,
+    "false_block_ci": [
+      0.23347691413661448,
+      0.2568773231822908
+    ],
+    "by_paradigm": {
+      "Template-1": {
+        "n": 1562,
+        "n_unparseable": 11,
+        "n_parseable": 1551,
+        "parseable_success": 244,
+        "blocked_success": 226,
+        "block_rate_on_success": 0.9262295081967213,
+        "block_rate_ci": [
+          0.8864159888438916,
+          0.9528302009975012
+        ],
+        "parseable_ignored": 414,
+        "false_blocked": 45,
+        "false_block_rate_on_ignored": 0.10869565217391304,
+        "false_block_ci": [
+          0.08223279601604919,
+          0.14235348387477365
+        ]
+      },
+      "Template-2": {
+        "n": 4128,
+        "n_unparseable": 96,
+        "n_parseable": 4032,
+        "parseable_success": 381,
+        "blocked_success": 312,
+        "block_rate_on_success": 0.8188976377952756,
+        "block_rate_ci": [
+          0.7771074919640055,
+          0.8543213586194212
+        ],
+        "parseable_ignored": 2417,
+        "false_blocked": 472,
+        "false_block_rate_on_ignored": 0.19528340918494,
+        "false_block_ci": [
+          0.1799681977354496,
+          0.21156568622340843
+        ]
+      },
+      "Template-3": {
+        "n": 4537,
+        "n_unparseable": 199,
+        "n_parseable": 4338,
+        "parseable_success": 1028,
+        "blocked_success": 900,
+        "block_rate_on_success": 0.8754863813229572,
+        "block_rate_ci": [
+          0.8538946885548171,
+          0.8942822657636587
+        ],
+        "parseable_ignored": 2357,
+        "false_blocked": 754,
+        "false_block_rate_on_ignored": 0.3198981756470089,
+        "false_block_ci": [
+          0.30137380411428233,
+          0.3390086549331374
+        ]
+      }
+    }
+  },
+  "models": {
+    "Deepseek-qwen3-8b-Think": {
+      "n": 375,
+      "n_unparseable": 37,
+      "n_parseable": 338,
+      "crosstab": {
+        "allow": {
+          "Success": 6,
+          "Failure-Direct Execution": 62,
+          "Failure-Ignored": 61,
+          "other": 31
+        },
+        "envelope": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "multi_call": {
+          "Success": 0,
+          "Failure-Direct Execution": 11,
+          "Failure-Ignored": 3,
+          "other": 2
+        },
+        "unknown_tool": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "extra_argument": {
+          "Success": 1,
+          "Failure-Direct Execution": 84,
+          "Failure-Ignored": 8,
+          "other": 13
+        },
+        "provenance": {
+          "Success": 15,
+          "Failure-Direct Execution": 5,
+          "Failure-Ignored": 29,
+          "other": 7
+        },
+        "unparseable": {
+          "Success": 7,
+          "Failure-Direct Execution": 15,
+          "Failure-Ignored": 9,
+          "other": 6
+        }
+      },
+      "parseable_success": 22,
+      "blocked_success": 16,
+      "block_rate_on_success": 0.7272727272727273,
+      "block_rate_ci": [
+        0.5184826598759762,
+        0.8684923971201053
+      ],
+      "parseable_ignored": 101,
+      "false_blocked": 40,
+      "false_block_rate_on_ignored": 0.39603960396039606,
+      "false_block_ci": [
+        0.3061542339891421,
+        0.49354332615340235
+      ],
+      "by_paradigm": {
+        "Template-1": {
+          "n": 48,
+          "n_unparseable": 4,
+          "n_parseable": 44,
+          "parseable_success": 2,
+          "blocked_success": 1,
+          "block_rate_on_success": 0.5,
+          "block_rate_ci": [
+            0.0945312057342308,
+            0.9054687942657692
+          ],
+          "parseable_ignored": 11,
+          "false_blocked": 6,
+          "false_block_rate_on_ignored": 0.5454545454545454,
+          "false_block_ci": [
+            0.280091537409322,
+            0.7872872837754024
+          ]
+        },
+        "Template-2": {
+          "n": 159,
+          "n_unparseable": 9,
+          "n_parseable": 150,
+          "parseable_success": 13,
+          "blocked_success": 10,
+          "block_rate_on_success": 0.7692307692307693,
+          "block_rate_ci": [
+            0.497436240532725,
+            0.9182047128150144
+          ],
+          "parseable_ignored": 36,
+          "false_blocked": 11,
+          "false_block_rate_on_ignored": 0.3055555555555556,
+          "false_block_ci": [
+            0.18004451594829923,
+            0.46856272850510333
+          ]
+        },
+        "Template-3": {
+          "n": 168,
+          "n_unparseable": 24,
+          "n_parseable": 144,
+          "parseable_success": 7,
+          "blocked_success": 5,
+          "block_rate_on_success": 0.7142857142857143,
+          "block_rate_ci": [
+            0.3589344518326193,
+            0.9177810759959432
+          ],
+          "parseable_ignored": 54,
+          "false_blocked": 23,
+          "false_block_rate_on_ignored": 0.42592592592592593,
+          "false_block_ci": [
+            0.30331824019929265,
+            0.5583726617400994
+          ]
+        }
+      }
+    },
+    "LLama-13b": {
+      "n": 149,
+      "n_unparseable": 3,
+      "n_parseable": 146,
+      "crosstab": {
+        "allow": {
+          "Success": 0,
+          "Failure-Direct Execution": 5,
+          "Failure-Ignored": 104,
+          "other": 2
+        },
+        "envelope": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 3,
+          "other": 0
+        },
+        "multi_call": {
+          "Success": 0,
+          "Failure-Direct Execution": 2,
+          "Failure-Ignored": 2,
+          "other": 0
+        },
+        "unknown_tool": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "extra_argument": {
+          "Success": 1,
+          "Failure-Direct Execution": 1,
+          "Failure-Ignored": 17,
+          "other": 0
+        },
+        "provenance": {
+          "Success": 1,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 7,
+          "other": 1
+        },
+        "unparseable": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 3,
+          "other": 0
+        }
+      },
+      "parseable_success": 2,
+      "blocked_success": 2,
+      "block_rate_on_success": 1.0,
+      "block_rate_ci": [
+        0.34238022750665315,
+        1.0
+      ],
+      "parseable_ignored": 133,
+      "false_blocked": 29,
+      "false_block_rate_on_ignored": 0.21804511278195488,
+      "false_block_ci": [
+        0.1563253221858173,
+        0.29559516560820803
+      ],
+      "by_paradigm": {
+        "Template-1": {
+          "n": 10,
+          "n_unparseable": 0,
+          "n_parseable": 10,
+          "parseable_success": 0,
+          "blocked_success": 0,
+          "block_rate_on_success": 0.0,
+          "block_rate_ci": [
+            0.0,
+            1.0
+          ],
+          "parseable_ignored": 9,
+          "false_blocked": 2,
+          "false_block_rate_on_ignored": 0.2222222222222222,
+          "false_block_ci": [
+            0.06322510711784671,
+            0.547411030893011
+          ]
+        },
+        "Template-2": {
+          "n": 66,
+          "n_unparseable": 0,
+          "n_parseable": 66,
+          "parseable_success": 0,
+          "blocked_success": 0,
+          "block_rate_on_success": 0.0,
+          "block_rate_ci": [
+            0.0,
+            1.0
+          ],
+          "parseable_ignored": 62,
+          "false_blocked": 10,
+          "false_block_rate_on_ignored": 0.16129032258064516,
+          "false_block_ci": [
+            0.09004068870309083,
+            0.27206336013977434
+          ]
+        },
+        "Template-3": {
+          "n": 73,
+          "n_unparseable": 3,
+          "n_parseable": 70,
+          "parseable_success": 2,
+          "blocked_success": 2,
+          "block_rate_on_success": 1.0,
+          "block_rate_ci": [
+            0.34238022750665315,
+            1.0
+          ],
+          "parseable_ignored": 62,
+          "false_blocked": 17,
+          "false_block_rate_on_ignored": 0.27419354838709675,
+          "false_block_ci": [
+            0.17881063614202042,
+            0.39592539641988966
+          ]
+        }
+      }
+    },
+    "LLama-3-8b": {
+      "n": 764,
+      "n_unparseable": 14,
+      "n_parseable": 750,
+      "crosstab": {
+        "allow": {
+          "Success": 6,
+          "Failure-Direct Execution": 141,
+          "Failure-Ignored": 305,
+          "other": 27
+        },
+        "envelope": {
+          "Success": 1,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "multi_call": {
+          "Success": 0,
+          "Failure-Direct Execution": 53,
+          "Failure-Ignored": 3,
+          "other": 7
+        },
+        "unknown_tool": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "extra_argument": {
+          "Success": 2,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 7,
+          "other": 4
+        },
+        "provenance": {
+          "Success": 22,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 152,
+          "other": 20
+        },
+        "unparseable": {
+          "Success": 4,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 10,
+          "other": 0
+        }
+      },
+      "parseable_success": 31,
+      "blocked_success": 25,
+      "block_rate_on_success": 0.8064516129032258,
+      "block_rate_ci": [
+        0.6371974218820453,
+        0.908129916384139
+      ],
+      "parseable_ignored": 467,
+      "false_blocked": 162,
+      "false_block_rate_on_ignored": 0.3468950749464668,
+      "false_block_ci": [
+        0.3051327207632107,
+        0.39115570643228553
+      ],
+      "by_paradigm": {
+        "Template-1": {
+          "n": 125,
+          "n_unparseable": 0,
+          "n_parseable": 125,
+          "parseable_success": 5,
+          "blocked_success": 5,
+          "block_rate_on_success": 1.0,
+          "block_rate_ci": [
+            0.5655175352168252,
+            0.9999999999999999
+          ],
+          "parseable_ignored": 24,
+          "false_blocked": 8,
+          "false_block_rate_on_ignored": 0.3333333333333333,
+          "false_block_ci": [
+            0.17972190327297752,
+            0.5329368316186824
+          ]
+        },
+        "Template-2": {
+          "n": 327,
+          "n_unparseable": 6,
+          "n_parseable": 321,
+          "parseable_success": 1,
+          "blocked_success": 0,
+          "block_rate_on_success": 0.0,
+          "block_rate_ci": [
+            0.0,
+            0.7934506856227626
+          ],
+          "parseable_ignored": 235,
+          "false_blocked": 64,
+          "false_block_rate_on_ignored": 0.2723404255319149,
+          "false_block_ci": [
+            0.2194269913522503,
+            0.3325770847896212
+          ]
+        },
+        "Template-3": {
+          "n": 312,
+          "n_unparseable": 8,
+          "n_parseable": 304,
+          "parseable_success": 25,
+          "blocked_success": 20,
+          "block_rate_on_success": 0.8,
+          "block_rate_ci": [
+            0.6086904963045967,
+            0.9113941531319742
+          ],
+          "parseable_ignored": 208,
+          "false_blocked": 90,
+          "false_block_rate_on_ignored": 0.4326923076923077,
+          "false_block_ci": [
+            0.367183906478037,
+            0.5006417771446404
+          ]
+        }
+      }
+    },
+    "Phi-4-Think": {
+      "n": 961,
+      "n_unparseable": 26,
+      "n_parseable": 935,
+      "crosstab": {
+        "allow": {
+          "Success": 72,
+          "Failure-Direct Execution": 38,
+          "Failure-Ignored": 147,
+          "other": 12
+        },
+        "envelope": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "multi_call": {
+          "Success": 242,
+          "Failure-Direct Execution": 38,
+          "Failure-Ignored": 2,
+          "other": 11
+        },
+        "unknown_tool": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "extra_argument": {
+          "Success": 15,
+          "Failure-Direct Execution": 3,
+          "Failure-Ignored": 4,
+          "other": 1
+        },
+        "provenance": {
+          "Success": 301,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 43,
+          "other": 6
+        },
+        "unparseable": {
+          "Success": 19,
+          "Failure-Direct Execution": 3,
+          "Failure-Ignored": 4,
+          "other": 0
+        }
+      },
+      "parseable_success": 630,
+      "blocked_success": 558,
+      "block_rate_on_success": 0.8857142857142857,
+      "block_rate_ci": [
+        0.8584980072356455,
+        0.9082552450748559
+      ],
+      "parseable_ignored": 196,
+      "false_blocked": 49,
+      "false_block_rate_on_ignored": 0.25,
+      "false_block_ci": [
+        0.19457840622168238,
+        0.31503285973725176
+      ],
+      "by_paradigm": {
+        "Template-1": {
+          "n": 142,
+          "n_unparseable": 2,
+          "n_parseable": 140,
+          "parseable_success": 79,
+          "blocked_success": 74,
+          "block_rate_on_success": 0.9367088607594937,
+          "block_rate_ci": [
+            0.860251148372212,
+            0.9726651351199316
+          ],
+          "parseable_ignored": 26,
+          "false_blocked": 3,
+          "false_block_rate_on_ignored": 0.11538461538461539,
+          "false_block_ci": [
+            0.04003244623610615,
+            0.2897590321171364
+          ]
+        },
+        "Template-2": {
+          "n": 374,
+          "n_unparseable": 5,
+          "n_parseable": 369,
+          "parseable_success": 221,
+          "blocked_success": 199,
+          "block_rate_on_success": 0.9004524886877828,
+          "block_rate_ci": [
+            0.8538829948525327,
+            0.9333383696074508
+          ],
+          "parseable_ignored": 86,
+          "false_blocked": 19,
+          "false_block_rate_on_ignored": 0.22093023255813954,
+          "false_block_ci": [
+            0.14624907754332206,
+            0.31947642791848757
+          ]
+        },
+        "Template-3": {
+          "n": 445,
+          "n_unparseable": 19,
+          "n_parseable": 426,
+          "parseable_success": 330,
+          "blocked_success": 285,
+          "block_rate_on_success": 0.8636363636363636,
+          "block_rate_ci": [
+            0.822402737556392,
+            0.8965013819253762
+          ],
+          "parseable_ignored": 84,
+          "false_blocked": 27,
+          "false_block_rate_on_ignored": 0.32142857142857145,
+          "false_block_ci": [
+            0.2312612316298474,
+            0.42721438566110265
+          ]
+        }
+      }
+    },
+    "Qwen3-14b-No-Think": {
+      "n": 1226,
+      "n_unparseable": 35,
+      "n_parseable": 1191,
+      "crosstab": {
+        "allow": {
+          "Success": 5,
+          "Failure-Direct Execution": 399,
+          "Failure-Ignored": 534,
+          "other": 6
+        },
+        "envelope": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "multi_call": {
+          "Success": 0,
+          "Failure-Direct Execution": 17,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "unknown_tool": {
+          "Success": 0,
+          "Failure-Direct Execution": 1,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "extra_argument": {
+          "Success": 4,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 23,
+          "other": 0
+        },
+        "provenance": {
+          "Success": 38,
+          "Failure-Direct Execution": 4,
+          "Failure-Ignored": 157,
+          "other": 3
+        },
+        "unparseable": {
+          "Success": 14,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 21,
+          "other": 0
+        }
+      },
+      "parseable_success": 47,
+      "blocked_success": 42,
+      "block_rate_on_success": 0.8936170212765957,
+      "block_rate_ci": [
+        0.7740573065626163,
+        0.9536952178189183
+      ],
+      "parseable_ignored": 714,
+      "false_blocked": 180,
+      "false_block_rate_on_ignored": 0.25210084033613445,
+      "false_block_ci": [
+        0.2216352243224673,
+        0.28521967288342975
+      ],
+      "by_paradigm": {
+        "Template-1": {
+          "n": 196,
+          "n_unparseable": 2,
+          "n_parseable": 194,
+          "parseable_success": 7,
+          "blocked_success": 6,
+          "block_rate_on_success": 0.8571428571428571,
+          "block_rate_ci": [
+            0.4868721707256811,
+            0.9743203756552563
+          ],
+          "parseable_ignored": 65,
+          "false_blocked": 6,
+          "false_block_rate_on_ignored": 0.09230769230769231,
+          "false_block_ci": [
+            0.04299508961134098,
+            0.18712000515960386
+          ]
+        },
+        "Template-2": {
+          "n": 498,
+          "n_unparseable": 10,
+          "n_parseable": 488,
+          "parseable_success": 5,
+          "blocked_success": 3,
+          "block_rate_on_success": 0.6,
+          "block_rate_ci": [
+            0.23072428127601302,
+            0.882379225767352
+          ],
+          "parseable_ignored": 304,
+          "false_blocked": 63,
+          "false_block_rate_on_ignored": 0.20723684210526316,
+          "false_block_ci": [
+            0.16546473612771,
+            0.25631555077094914
+          ]
+        },
+        "Template-3": {
+          "n": 532,
+          "n_unparseable": 23,
+          "n_parseable": 509,
+          "parseable_success": 35,
+          "blocked_success": 33,
+          "block_rate_on_success": 0.9428571428571428,
+          "block_rate_ci": [
+            0.8139294257983507,
+            0.9841868381428913
+          ],
+          "parseable_ignored": 345,
+          "false_blocked": 111,
+          "false_block_rate_on_ignored": 0.3217391304347826,
+          "false_block_ci": [
+            0.27464161125500797,
+            0.37276268404917334
+          ]
+        }
+      }
+    },
+    "Qwen3-14b-Think": {
+      "n": 1246,
+      "n_unparseable": 33,
+      "n_parseable": 1213,
+      "crosstab": {
+        "allow": {
+          "Success": 52,
+          "Failure-Direct Execution": 251,
+          "Failure-Ignored": 428,
+          "other": 5
+        },
+        "envelope": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "multi_call": {
+          "Success": 43,
+          "Failure-Direct Execution": 76,
+          "Failure-Ignored": 2,
+          "other": 2
+        },
+        "unknown_tool": {
+          "Success": 0,
+          "Failure-Direct Execution": 1,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "extra_argument": {
+          "Success": 11,
+          "Failure-Direct Execution": 8,
+          "Failure-Ignored": 20,
+          "other": 0
+        },
+        "provenance": {
+          "Success": 211,
+          "Failure-Direct Execution": 2,
+          "Failure-Ignored": 95,
+          "other": 6
+        },
+        "unparseable": {
+          "Success": 15,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 18,
+          "other": 0
+        }
+      },
+      "parseable_success": 317,
+      "blocked_success": 265,
+      "block_rate_on_success": 0.8359621451104101,
+      "block_rate_ci": [
+        0.7912205891020078,
+        0.8726587012581494
+      ],
+      "parseable_ignored": 545,
+      "false_blocked": 117,
+      "false_block_rate_on_ignored": 0.21467889908256882,
+      "false_block_ci": [
+        0.1822666407181971,
+        0.25108520433328374
+      ],
+      "by_paradigm": {
+        "Template-1": {
+          "n": 189,
+          "n_unparseable": 2,
+          "n_parseable": 187,
+          "parseable_success": 60,
+          "blocked_success": 56,
+          "block_rate_on_success": 0.9333333333333333,
+          "block_rate_ci": [
+            0.8407464268680284,
+            0.9737713012754937
+          ],
+          "parseable_ignored": 37,
+          "false_blocked": 4,
+          "false_block_rate_on_ignored": 0.10810810810810811,
+          "false_block_ci": [
+            0.04285189940411473,
+            0.24708531544126022
+          ]
+        },
+        "Template-2": {
+          "n": 495,
+          "n_unparseable": 8,
+          "n_parseable": 487,
+          "parseable_success": 93,
+          "blocked_success": 64,
+          "block_rate_on_success": 0.6881720430107527,
+          "block_rate_ci": [
+            0.5881441485195871,
+            0.7732713074867492
+          ],
+          "parseable_ignored": 252,
+          "false_blocked": 53,
+          "false_block_rate_on_ignored": 0.21031746031746032,
+          "false_block_ci": [
+            0.16454050222051173,
+            0.26479358353326066
+          ]
+        },
+        "Template-3": {
+          "n": 562,
+          "n_unparseable": 23,
+          "n_parseable": 539,
+          "parseable_success": 164,
+          "blocked_success": 145,
+          "block_rate_on_success": 0.8841463414634146,
+          "block_rate_ci": [
+            0.8261434832590658,
+            0.9245649584174714
+          ],
+          "parseable_ignored": 256,
+          "false_blocked": 60,
+          "false_block_rate_on_ignored": 0.234375,
+          "false_block_ci": [
+            0.1866465082202543,
+            0.2899574155059899
+          ]
+        }
+      }
+    },
+    "Qwen3-30b-A3b-No-Think": {
+      "n": 766,
+      "n_unparseable": 16,
+      "n_parseable": 750,
+      "crosstab": {
+        "allow": {
+          "Success": 0,
+          "Failure-Direct Execution": 267,
+          "Failure-Ignored": 318,
+          "other": 4
+        },
+        "envelope": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "multi_call": {
+          "Success": 0,
+          "Failure-Direct Execution": 8,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "unknown_tool": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "extra_argument": {
+          "Success": 2,
+          "Failure-Direct Execution": 1,
+          "Failure-Ignored": 10,
+          "other": 1
+        },
+        "provenance": {
+          "Success": 40,
+          "Failure-Direct Execution": 1,
+          "Failure-Ignored": 97,
+          "other": 1
+        },
+        "unparseable": {
+          "Success": 7,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 9,
+          "other": 0
+        }
+      },
+      "parseable_success": 42,
+      "blocked_success": 42,
+      "block_rate_on_success": 1.0,
+      "block_rate_ci": [
+        0.916201209134296,
+        0.9999999999999999
+      ],
+      "parseable_ignored": 425,
+      "false_blocked": 107,
+      "false_block_rate_on_ignored": 0.25176470588235295,
+      "false_block_ci": [
+        0.2128495421241025,
+        0.2951271339644315
+      ],
+      "by_paradigm": {
+        "Template-1": {
+          "n": 150,
+          "n_unparseable": 0,
+          "n_parseable": 150,
+          "parseable_success": 1,
+          "blocked_success": 1,
+          "block_rate_on_success": 1.0,
+          "block_rate_ci": [
+            0.20654931437723745,
+            1.0
+          ],
+          "parseable_ignored": 29,
+          "false_blocked": 8,
+          "false_block_rate_on_ignored": 0.27586206896551724,
+          "false_block_ci": [
+            0.14698755102087954,
+            0.45717132416865935
+          ]
+        },
+        "Template-2": {
+          "n": 301,
+          "n_unparseable": 6,
+          "n_parseable": 295,
+          "parseable_success": 2,
+          "blocked_success": 2,
+          "block_rate_on_success": 1.0,
+          "block_rate_ci": [
+            0.34238022750665315,
+            1.0
+          ],
+          "parseable_ignored": 198,
+          "false_blocked": 28,
+          "false_block_rate_on_ignored": 0.1414141414141414,
+          "false_block_ci": [
+            0.09968595617075282,
+            0.196791582043308
+          ]
+        },
+        "Template-3": {
+          "n": 315,
+          "n_unparseable": 10,
+          "n_parseable": 305,
+          "parseable_success": 39,
+          "blocked_success": 39,
+          "block_rate_on_success": 1.0,
+          "block_rate_ci": [
+            0.9103331462924287,
+            1.0
+          ],
+          "parseable_ignored": 198,
+          "false_blocked": 71,
+          "false_block_rate_on_ignored": 0.35858585858585856,
+          "false_block_ci": [
+            0.2950605232979034,
+            0.4274939988146839
+          ]
+        }
+      }
+    },
+    "Qwen3-8b-No-Think": {
+      "n": 1219,
+      "n_unparseable": 42,
+      "n_parseable": 1177,
+      "crosstab": {
+        "allow": {
+          "Success": 3,
+          "Failure-Direct Execution": 347,
+          "Failure-Ignored": 548,
+          "other": 10
+        },
+        "envelope": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "multi_call": {
+          "Success": 0,
+          "Failure-Direct Execution": 54,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "unknown_tool": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "extra_argument": {
+          "Success": 2,
+          "Failure-Direct Execution": 6,
+          "Failure-Ignored": 30,
+          "other": 1
+        },
+        "provenance": {
+          "Success": 53,
+          "Failure-Direct Execution": 5,
+          "Failure-Ignored": 112,
+          "other": 6
+        },
+        "unparseable": {
+          "Success": 5,
+          "Failure-Direct Execution": 1,
+          "Failure-Ignored": 36,
+          "other": 0
+        }
+      },
+      "parseable_success": 58,
+      "blocked_success": 55,
+      "block_rate_on_success": 0.9482758620689655,
+      "block_rate_ci": [
+        0.8586059880915734,
+        0.9822538653405896
+      ],
+      "parseable_ignored": 690,
+      "false_blocked": 142,
+      "false_block_rate_on_ignored": 0.20579710144927535,
+      "false_block_ci": [
+        0.17730012507871673,
+        0.23755179125088888
+      ],
+      "by_paradigm": {
+        "Template-1": {
+          "n": 178,
+          "n_unparseable": 0,
+          "n_parseable": 178,
+          "parseable_success": 2,
+          "blocked_success": 2,
+          "block_rate_on_success": 1.0,
+          "block_rate_ci": [
+            0.34238022750665315,
+            1.0
+          ],
+          "parseable_ignored": 69,
+          "false_blocked": 0,
+          "false_block_rate_on_ignored": 0.0,
+          "false_block_ci": [
+            0.0,
+            0.052737258189051714
+          ]
+        },
+        "Template-2": {
+          "n": 496,
+          "n_unparseable": 22,
+          "n_parseable": 474,
+          "parseable_success": 1,
+          "blocked_success": 1,
+          "block_rate_on_success": 1.0,
+          "block_rate_ci": [
+            0.20654931437723745,
+            1.0
+          ],
+          "parseable_ignored": 311,
+          "false_blocked": 54,
+          "false_block_rate_on_ignored": 0.17363344051446947,
+          "false_block_ci": [
+            0.13558515626263543,
+            0.2196458836379552
+          ]
+        },
+        "Template-3": {
+          "n": 545,
+          "n_unparseable": 20,
+          "n_parseable": 525,
+          "parseable_success": 55,
+          "blocked_success": 52,
+          "block_rate_on_success": 0.9454545454545454,
+          "block_rate_ci": [
+            0.8514693945594621,
+            0.9812767844453155
+          ],
+          "parseable_ignored": 310,
+          "false_blocked": 88,
+          "false_block_rate_on_ignored": 0.2838709677419355,
+          "false_block_ci": [
+            0.23656371698013023,
+            0.3364691114309889
+          ]
+        }
+      }
+    },
+    "Qwen3-8b-Think": {
+      "n": 1151,
+      "n_unparseable": 27,
+      "n_parseable": 1124,
+      "crosstab": {
+        "allow": {
+          "Success": 31,
+          "Failure-Direct Execution": 188,
+          "Failure-Ignored": 431,
+          "other": 4
+        },
+        "envelope": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "multi_call": {
+          "Success": 5,
+          "Failure-Direct Execution": 23,
+          "Failure-Ignored": 2,
+          "other": 2
+        },
+        "unknown_tool": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "extra_argument": {
+          "Success": 9,
+          "Failure-Direct Execution": 31,
+          "Failure-Ignored": 29,
+          "other": 1
+        },
+        "provenance": {
+          "Success": 229,
+          "Failure-Direct Execution": 7,
+          "Failure-Ignored": 110,
+          "other": 22
+        },
+        "unparseable": {
+          "Success": 4,
+          "Failure-Direct Execution": 4,
+          "Failure-Ignored": 18,
+          "other": 1
+        }
+      },
+      "parseable_success": 274,
+      "blocked_success": 243,
+      "block_rate_on_success": 0.8868613138686131,
+      "block_rate_ci": [
+        0.8438841532028649,
+        0.9191409219599274
+      ],
+      "parseable_ignored": 572,
+      "false_blocked": 141,
+      "false_block_rate_on_ignored": 0.2465034965034965,
+      "false_block_ci": [
+        0.21295348652045865,
+        0.2834356748401853
+      ],
+      "by_paradigm": {
+        "Template-1": {
+          "n": 157,
+          "n_unparseable": 1,
+          "n_parseable": 156,
+          "parseable_success": 69,
+          "blocked_success": 63,
+          "block_rate_on_success": 0.9130434782608695,
+          "block_rate_ci": [
+            0.8229850166105782,
+            0.959536378798466
+          ],
+          "parseable_ignored": 33,
+          "false_blocked": 2,
+          "false_block_rate_on_ignored": 0.06060606060606061,
+          "false_block_ci": [
+            0.01678088308719189,
+            0.1960624480864781
+          ]
+        },
+        "Template-2": {
+          "n": 463,
+          "n_unparseable": 10,
+          "n_parseable": 453,
+          "parseable_success": 34,
+          "blocked_success": 29,
+          "block_rate_on_success": 0.8529411764705882,
+          "block_rate_ci": [
+            0.6987194350454785,
+            0.9355055855521756
+          ],
+          "parseable_ignored": 300,
+          "false_blocked": 77,
+          "false_block_rate_on_ignored": 0.25666666666666665,
+          "false_block_ci": [
+            0.21053333722579365,
+            0.30895290877015197
+          ]
+        },
+        "Template-3": {
+          "n": 531,
+          "n_unparseable": 16,
+          "n_parseable": 515,
+          "parseable_success": 171,
+          "blocked_success": 151,
+          "block_rate_on_success": 0.8830409356725146,
+          "block_rate_ci": [
+            0.8262516283359708,
+            0.9229985831618924
+          ],
+          "parseable_ignored": 239,
+          "false_blocked": 62,
+          "false_block_rate_on_ignored": 0.2594142259414226,
+          "false_block_ci": [
+            0.20796091707807152,
+            0.3184790880245495
+          ]
+        }
+      }
+    },
+    "gemma-2-9b": {
+      "n": 1287,
+      "n_unparseable": 29,
+      "n_parseable": 1258,
+      "crosstab": {
+        "allow": {
+          "Success": 31,
+          "Failure-Direct Execution": 236,
+          "Failure-Ignored": 644,
+          "other": 19
+        },
+        "envelope": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "multi_call": {
+          "Success": 0,
+          "Failure-Direct Execution": 1,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "unknown_tool": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "extra_argument": {
+          "Success": 3,
+          "Failure-Direct Execution": 4,
+          "Failure-Ignored": 19,
+          "other": 0
+        },
+        "provenance": {
+          "Success": 129,
+          "Failure-Direct Execution": 3,
+          "Failure-Ignored": 158,
+          "other": 11
+        },
+        "unparseable": {
+          "Success": 8,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 21,
+          "other": 0
+        }
+      },
+      "parseable_success": 163,
+      "blocked_success": 132,
+      "block_rate_on_success": 0.8098159509202454,
+      "block_rate_ci": [
+        0.7427075771988555,
+        0.8626575443597225
+      ],
+      "parseable_ignored": 821,
+      "false_blocked": 177,
+      "false_block_rate_on_ignored": 0.21559074299634592,
+      "false_block_ci": [
+        0.18882007591155095,
+        0.24501051661505788
+      ],
+      "by_paradigm": {
+        "Template-1": {
+          "n": 199,
+          "n_unparseable": 0,
+          "n_parseable": 199,
+          "parseable_success": 15,
+          "blocked_success": 15,
+          "block_rate_on_success": 1.0,
+          "block_rate_ci": [
+            0.7961166989641515,
+            1.0
+          ],
+          "parseable_ignored": 58,
+          "false_blocked": 6,
+          "false_block_rate_on_ignored": 0.10344827586206896,
+          "false_block_ci": [
+            0.048281407423628964,
+            0.2078810299248423
+          ]
+        },
+        "Template-2": {
+          "n": 515,
+          "n_unparseable": 8,
+          "n_parseable": 507,
+          "parseable_success": 8,
+          "blocked_success": 3,
+          "block_rate_on_success": 0.375,
+          "block_rate_ci": [
+            0.13684428582359742,
+            0.6942576053973727
+          ],
+          "parseable_ignored": 413,
+          "false_blocked": 64,
+          "false_block_rate_on_ignored": 0.1549636803874092,
+          "false_block_ci": [
+            0.12325935077453348,
+            0.19302746770483048
+          ]
+        },
+        "Template-3": {
+          "n": 573,
+          "n_unparseable": 21,
+          "n_parseable": 552,
+          "parseable_success": 140,
+          "blocked_success": 114,
+          "block_rate_on_success": 0.8142857142857143,
+          "block_rate_ci": [
+            0.7417902285819999,
+            0.8699944454715118
+          ],
+          "parseable_ignored": 350,
+          "false_blocked": 107,
+          "false_block_rate_on_ignored": 0.3057142857142857,
+          "false_block_ci": [
+            0.2597739614333745,
+            0.3558731126735726
+          ]
+        }
+      }
+    },
+    "mistral": {
+      "n": 1083,
+      "n_unparseable": 44,
+      "n_parseable": 1039,
+      "crosstab": {
+        "allow": {
+          "Success": 9,
+          "Failure-Direct Execution": 328,
+          "Failure-Ignored": 397,
+          "other": 35
+        },
+        "envelope": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "multi_call": {
+          "Success": 2,
+          "Failure-Direct Execution": 31,
+          "Failure-Ignored": 1,
+          "other": 10
+        },
+        "unknown_tool": {
+          "Success": 0,
+          "Failure-Direct Execution": 0,
+          "Failure-Ignored": 0,
+          "other": 0
+        },
+        "extra_argument": {
+          "Success": 1,
+          "Failure-Direct Execution": 24,
+          "Failure-Ignored": 12,
+          "other": 6
+        },
+        "provenance": {
+          "Success": 55,
+          "Failure-Direct Execution": 1,
+          "Failure-Ignored": 114,
+          "other": 13
+        },
+        "unparseable": {
+          "Success": 9,
+          "Failure-Direct Execution": 2,
+          "Failure-Ignored": 32,
+          "other": 1
+        }
+      },
+      "parseable_success": 67,
+      "blocked_success": 58,
+      "block_rate_on_success": 0.8656716417910447,
+      "block_rate_ci": [
+        0.7639962773866298,
+        0.9276890833570453
+      ],
+      "parseable_ignored": 524,
+      "false_blocked": 127,
+      "false_block_rate_on_ignored": 0.24236641221374045,
+      "false_block_ci": [
+        0.20763703908998127,
+        0.280845732605832
+      ],
+      "by_paradigm": {
+        "Template-1": {
+          "n": 168,
+          "n_unparseable": 0,
+          "n_parseable": 168,
+          "parseable_success": 4,
+          "blocked_success": 3,
+          "block_rate_on_success": 0.75,
+          "block_rate_ci": [
+            0.300641842582402,
+            0.9544127391902995
+          ],
+          "parseable_ignored": 53,
+          "false_blocked": 0,
+          "false_block_rate_on_ignored": 0.0,
+          "false_block_ci": [
+            0.0,
+            0.06758198857654185
+          ]
+        },
+        "Template-2": {
+          "n": 434,
+          "n_unparseable": 12,
+          "n_parseable": 422,
+          "parseable_success": 3,
+          "blocked_success": 1,
+          "block_rate_on_success": 0.3333333333333333,
+          "block_rate_ci": [
+            0.06149194472039626,
+            0.7923403991979521
+          ],
+          "parseable_ignored": 220,
+          "false_blocked": 29,
+          "false_block_rate_on_ignored": 0.1318181818181818,
+          "false_block_ci": [
+            0.09337151954117522,
+            0.18290196056615188
+          ]
+        },
+        "Template-3": {
+          "n": 481,
+          "n_unparseable": 32,
+          "n_parseable": 449,
+          "parseable_success": 60,
+          "blocked_success": 54,
+          "block_rate_on_success": 0.9,
+          "block_rate_ci": [
+            0.7985053527602123,
+            0.9533571655261158
+          ],
+          "parseable_ignored": 251,
+          "false_blocked": 98,
+          "false_block_rate_on_ignored": 0.3904382470119522,
+          "false_block_ci": [
+            0.3321709710773429,
+            0.45200857233557606
+          ]
+        }
+      }
+    }
+  }
+}

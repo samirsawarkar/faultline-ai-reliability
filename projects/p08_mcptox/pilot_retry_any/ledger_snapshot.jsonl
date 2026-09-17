@@ -1,0 +1,12 @@
+{"input_tokens": 589458, "output_tokens": 316325, "project": "p08_mcptox", "run_id": "p08_armA_R1", "rung": "R1", "timestamp_utc": "2026-09-15T14:19:26.194636+00:00", "usd": 0.122211}
+{"input_tokens": 575318, "output_tokens": 213298, "project": "p08_mcptox", "run_id": "p08_armA_R2", "rung": "R2", "timestamp_utc": "2026-09-15T14:35:56.405341+00:00", "usd": 0.096473}
+{"input_tokens": 600650, "output_tokens": 250137, "project": "p08_mcptox", "run_id": "p08_armA_R3", "rung": "R3", "timestamp_utc": "2026-09-15T14:56:25.327615+00:00", "usd": 0.154129}
+{"input_tokens": 265657, "output_tokens": 240657, "project": "p08_mcptox", "run_id": "p08_armA_R4", "rung": "R4", "timestamp_utc": "2026-09-15T15:17:20.482691+00:00", "usd": 0.197526}
+{"input_tokens": 139175, "output_tokens": 46858, "project": "p08_mcptox", "run_id": "p08_armA_R5", "rung": "R5", "timestamp_utc": "2026-09-15T15:20:38.763657+00:00", "usd": 0.044305}
+{"input_tokens": 0, "output_tokens": 0, "project": "p08_mcptox", "run_id": "p08_armA_R6", "rung": "R6", "timestamp_utc": "2026-09-15T15:20:43.189473+00:00", "usd": 0.0}
+{"input_tokens": 778454, "output_tokens": 498275, "project": "p08_mcptox", "run_id": "p08_armB_R1", "rung": "R1", "timestamp_utc": "2026-09-15T16:55:33.754780+00:00", "usd": 0.180072}
+{"input_tokens": 721753, "output_tokens": 309831, "project": "p08_mcptox", "run_id": "p08_armB_R2", "rung": "R2", "timestamp_utc": "2026-09-15T17:18:56.841387+00:00", "usd": 0.131589}
+{"input_tokens": 791054, "output_tokens": 337855, "project": "p08_mcptox", "run_id": "p08_armB_R3", "rung": "R3", "timestamp_utc": "2026-09-15T17:50:48.627462+00:00", "usd": 0.19023}
+{"input_tokens": 863928, "output_tokens": 213245, "project": "p08_mcptox", "run_id": "p08_armB_R4", "rung": "R4", "timestamp_utc": "2026-09-16T03:58:25.417286+00:00", "usd": 0.235323}
+{"input_tokens": 388955, "output_tokens": 169795, "project": "p08_mcptox", "run_id": "p08_armA_R5", "rung": "R5", "timestamp_utc": "2026-09-16T04:09:15.215003+00:00", "usd": 0.143241}
+{"input_tokens": 0, "output_tokens": 0, "project": "p08_mcptox", "run_id": "p08_armA_R6", "rung": "R6", "timestamp_utc": "2026-09-16T04:12:35.969047+00:00", "usd": 0.0}
