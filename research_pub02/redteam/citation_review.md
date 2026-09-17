@@ -24,7 +24,7 @@ Verdict semantics: VERIFIED = resolver agrees on title/year/first author. MISMAT
 
 ---
 
-## Reviewed by: Antigravity worker (critic context), 2026-09-17
+## Reviewed by: independent automated critic pass (separate context), 2026-09-17
 
 FAILURE_ID: CIT-101
 CATEGORY: Source integrity

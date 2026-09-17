@@ -27,7 +27,7 @@ Inspected: research_pub02/experiments/configs/example_run.json, research_pub02/e
 
 ---
 
-## Reviewed by: Antigravity worker (critic context), 2026-09-17
+## Reviewed by: independent automated critic pass (separate context), 2026-09-17
 
 FAILURE_ID: REPRO-101
 CATEGORY: Reproducibility

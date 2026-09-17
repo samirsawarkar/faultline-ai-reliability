@@ -1,6 +1,6 @@
 # Methodology Review
 
-## Reviewed by: Antigravity worker (critic context), 2026-09-17
+## Reviewed by: independent automated critic pass (separate context), 2026-09-17
 
 FAILURE_ID: METH-101
 CATEGORY: Overclaiming

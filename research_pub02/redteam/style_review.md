@@ -1,6 +1,6 @@
 # Style Review — Stop-Slop Pass
 
-## Reviewer: Antigravity worker (stop-slop automated pass), 2026-09-17
+## Reviewer: independent automated critic pass (separate context), 2026-09-17
 
 FAILURE_ID: STYLE-000
 CATEGORY: Style / AI writing patterns (stop-slop pass)

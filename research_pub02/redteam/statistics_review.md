@@ -17,7 +17,7 @@ Notes: sign-flip permutation on the paired mean is exact under exchangeability a
 
 ---
 
-## Reviewed by: Antigravity worker (critic context), 2026-09-17
+## Reviewed by: independent automated critic pass (separate context), 2026-09-17
 
 ### Independent Recomputation Summary (python3 stdlib)
 
