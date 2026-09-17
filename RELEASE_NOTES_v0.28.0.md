@@ -4,7 +4,7 @@
 
 This release marks the public launch of **Publication #1**:  
 **"The Illusion of Compound Independence: Grounding Collapse, Human-in-the-Loop Taxonomy, and Failure Concentration in Multi-Hop AI Agents"**  
-by Samir Sawarkar (*FAULTLINE AI Reliability Engineering & Antigravity Research*).
+by Samir Sawarkar (*FAULTLINE AI Reliability Engineering*).
 
 ---
 

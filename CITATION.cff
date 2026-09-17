@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software or benchmark, please cite it as below."
+title: "FAULTLINE: Research Workbench for Agent Reliability and Tool-Poisoning Defense"
+abstract: "A reproducible research workbench for evaluating autonomous AI agent reliability under multi-trial execution and defending against Model Context Protocol (MCP) tool poisoning."
+authors:
+  - family-names: "Sawarkar"
+    given-names: "Samir"
+date-released: 2026-09-17
+repository-code: "https://github.com/samirsawarkar/faultline-ai-reliability"
+license: "MIT"
+version: "0.29.0"
+type: software

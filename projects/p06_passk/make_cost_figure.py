@@ -184,10 +184,10 @@ def generate_cost_figure():
     svg_paths = [
         'projects/p06_passk/figure_cost_vs_passk.svg',
         'publications/publication_01_passk_reliability/figure_cost_vs_passk.svg',
-        '/Users/samir/.gemini/antigravity/brain/5b03a6bd-1c05-49ea-a89b-e08dc4c3dada/figure_cost_vs_passk.svg'
     ]
 
     for p in svg_paths:
+        os.makedirs(os.path.dirname(p), exist_ok=True)
         with open(p, 'w', encoding='utf-8') as f:
             f.write(svg_content)
         print(f'Wrote SVG to {p}')
@@ -199,7 +199,6 @@ def generate_cost_figure():
     png_paths = [
         'projects/p06_passk/figure_cost_vs_passk.png',
         'publications/publication_01_passk_reliability/figure_cost_vs_passk.png',
-        '/Users/samir/.gemini/antigravity/brain/5b03a6bd-1c05-49ea-a89b-e08dc4c3dada/figure_cost_vs_passk.png'
     ]
 
     for p in png_paths:

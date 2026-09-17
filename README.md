@@ -1,75 +1,88 @@
 # FAULTLINE
 
-**A reproducible research workbench for finding where document-grounded AI systems fail—and testing whether recovery actually improves the user outcome.**
+**A reproducible research workbench for evaluating autonomous AI agent reliability under repeated execution and defending against Model Context Protocol (MCP) tool poisoning.**
 
 [![CI](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml)
-[![Tests: 614 passing](https://img.shields.io/badge/tests-614%20passing-brightgreen.svg)](report/check_evidence_index.py)
-[![Phase 2 Tests](https://img.shields.io/badge/phase%202%20tests-86%20passing-blue.svg)](tests/phase2/)
-[![Publication #1](https://img.shields.io/badge/publication%20%231-paper%20(PDF)-orange.svg)](publications/publication_01_passk_reliability/paper.pdf)
+[![Phase 2](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/phase2.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/phase2.yml)
+[![Tests: 654 passing](https://img.shields.io/badge/tests-528%20Phase%201%20%2B%20126%20Phase%202-brightgreen.svg)](tests/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-**Phase 1** established the simulation foundations, failure taxonomy, and recovery mechanisms across 30 reproducible days. **Phase 2** measures real-world LLM agent reliability against live model APIs on a canonical 350-scenario multi-hop corpus.
+---
+
+## Publications
+
+### Multi-Trial Reliability and Failure Concentration in Multi-Hop AI Agents
+*Grounding Collapse, Failure Taxonomy, and Evaluator Calibration*  
+**Samir Sawarkar** · FAULTLINE AI Reliability Engineering  
+[Paper (PDF)](publications/publication_01_passk_reliability/paper.pdf) · [Paper (Markdown)](publications/publication_01_passk_reliability/paper.md) · [Executive Summary](publications/publication_01_passk_reliability/blog_post.md)
+
+![Multi-Trial Reliability vs Naive Independence](publications/publication_01_passk_reliability/fig_2_passk_vs_naive.png)
+
+- **Empirical test of naive compounding:** Evaluated 150 held-out hard Tier-3 scenarios across $k=3$ repeated trials (1,350 total runs) across two commercial model tiers (R2: `glm-5.3-flash`, R4: `gpt-5.6-luna`, plus R6: `deepseek-v4-pro` infra-invalidated) graded by a deterministic dual-condition oracle without model judges.
+- **Independence holds within 2.5 pp:** Naive Bernoulli compounding $\text{pass}^k = (\text{pass@1})^k$ matches empirical joint reliability within 2.5 percentage points at $k=3$ ($\Delta_3 = -0.0247$ on R2; $\Delta_3 = +0.0187$ on R4 infra-excluded), well within the pre-registered 10 pp minimum effect of interest.
+- **Regime-dependent failure behavior:** Higher-accuracy tier (R2, $\text{pass@1} = 0.6311$) is consistent with a homogeneous-binomial null ($\text{pass}^3 = 0.2267$ vs naive $0.2514$, bootstrap $p = 0.3794$, Tarone $z = -0.655, p = 0.7438$, $\text{ICC} = -0.0287$). Apparent excess successes in frontier tier (R4, $\text{pass@1} = 0.1489$) was driven by gateway timeouts; purging dropouts ($n=117$) leaves a marginal excess ($\text{pass}^3 = 0.0256$ vs naive $0.0070$, Tarone $z = 0.764, p = 0.2224$).
+- **Compounding extrapolation:** Beta-binomial modeling shows that while $k=3$ leaves naive compounding accurate, even undetectable intra-scenario correlation ($\text{ICC}_{\text{hi}} = 0.0668$ on R2) yields divergence at scale ($C_8 \approx 2.25$, $\text{pass}^8 \approx 0.057$ vs naive $0.025$).
+
+### Runtime Provenance Contracts for Mitigating Tool Poisoning in MCP Agents
+*A Paired Evaluation on MCPTox Across Six Models*  
+**Samir Sawarkar** · FAULTLINE  
+[Paper (PDF)](publications/publication_02_mcptox_contract/paper.pdf) · [Paper (Markdown)](publications/publication_02_mcptox_contract/paper.md) · [Executive Summary](publications/publication_02_mcptox_contract/blog_post.md)
+
+![Attack Success Rate by Rung](publications/publication_02_mcptox_contract/fig_1_asr_by_rung.png)
+
+| Rung | Model | Arm A ASR (Valid) | Arm B ASR (Valid) | McNemar ($b/c$, $p$) | Significant |
+|---|---|---|---|---|---|
+| R1 | `qwen/qwen3.7-flash` | 28.00% (32.94%) | 6.33% (8.26%) | $b=71, c=6, p = 3.02 \times 10^{-13}$ | Yes |
+| R2 | `z-ai/glm-5.3-flash` | 17.00% (17.23%) | 4.00% (4.11%) | $b=41, c=2, p = 6.83 \times 10^{-9}$ | Yes |
+| R3 | `qwen/qwen3.8-flash` | 41.00% (41.84%) | 9.67% (9.76%) | $b=98, c=4, p = 3.31 \times 10^{-20}$ | Yes |
+| R4 | `openai/gpt-5.6-luna` | 37.00% (40.81%) | 4.67% (5.26%) | $b=99, c=2, p = 1.27 \times 10^{-21}$ | Yes |
+| R5 | `google/gemini-3.7-flash` | 3.00% (3.01%) | 1.67% (1.68%) | $b=5, c=1, p = 0.2188$ | No (n.s.) |
+| R6 | `deepseek/deepseek-v4-pro` | 47.00% (47.64%) | 15.00% (15.46%) | $b=107, c=11, p = 2.22 \times 10^{-18}$ | Yes |
+| **Pooled** | **All 6 Models** | **28.83% (30.32%)** | **6.89% (7.41%)** | **$b=421, c=26, p = 5.61 \times 10^{-93}$** | **Yes** |
+
+- **Significant attack reduction:** On 300 MCPTox instances across six models via one gateway, the provenance contract achieved a paired mean score reduction $\text{Mean } \Delta = -0.2194$ (95% CI $[-0.2400, -0.1983]$, $p < 0.0001$, $d_z = -0.49$), cutting pooled valid ASR from 30.32% to 7.41%.
+- **Asymmetric transition matrix:** Removed 421 attack successes while inducing only 26 (McNemar exact $p = 5.61 \times 10^{-93}$).
+- **Autonomous refusal regime:** Gemini 3.7 Flash (R5) reduction was non-significant ($b=5, c=1, p=0.2188$) due to high baseline resistance.
+- **Operational false-block penalty:** Replay over 10,227 traces indicates substring grounding false-blocks 24.5% of legitimate actions when tasks require ungrounded world knowledge.
 
 ---
 
-### Headline Publication #1: The Illusion of Compound Independence (Project P6)
+## How the evidence is produced
 
-**"Retry Doesn't Help The Way You Think: Grounding Collapse, Human-in-the-Loop Taxonomy, and Failure Concentration in Multi-Hop AI Agents"**  
-📄 **[Read Full Paper (PDF)](publications/publication_01_passk_reliability/paper.pdf)** · 📝 **[Markdown Paper](publications/publication_01_passk_reliability/paper.md)** · 🌐 **[Executive Blog Post](publications/publication_01_passk_reliability/blog_post.md)**
-
-Across **2,700+ agent executions**, **25,477 logged telemetry spans**, and 3 distinct foundation model rungs: **R2 (`glm-5.3-flash`)**, **R4 (`gpt-5.6-luna`)**, and **R6 (`deepseek-v4-pro`)**, we falsify universal naive compounding $(\text{pass@1})^k$ and prove that failure concentration is strictly **regime-dependent**:
-- **Regime-Dependent Failure Concentration:** In low-accuracy frontier regimes (R4, $\text{pass@1} = 14.89\%$), errors concentrate on an intractable scenario set, demonstrating a **$6.06\times$ failure concentration ratio** ($\text{pass}^3 = 2.00\%$ vs naive $0.33\%$). In disciplined commodity regimes (R2, $\text{pass@1} = 63.11\%$), errors compound as independent stochastic trials ($\text{pass}^3 = 22.67\%$ vs naive $25.14\%$).
-- **The Economic Workhorse Inversion:** Smaller, tool-disciplined models ($R2, \text{glm-5.3-flash}$) outperform high-cost frontier reasoning models ($R4, \text{gpt-5.6-luna}$) on joint multi-trial reliability by **$+20.67\text{ pp}$** ($p = 8.14 \times 10^{-7}$, McNemar paired test) while achieving an **$18.3\times$ cost reduction** per grounded answer ($\$0.0147$ vs $\$0.268$).
-
-![Joint Reliability and Cost Tradeoff](publications/publication_01_passk_reliability/figure_cost_vs_passk.svg)
-
-```bash
-pip install -e .
-make p06  # Reproduces P6 pass^k decay sweep & generates joint reliability figures
-```
+Every experimental result is bound to immutable contracts and reproducible seeds:
+- **Master Experiment Contract & Hypotheses:** Evaluation protocol frozen in [MEC.md](MEC.md); all primary hypotheses registered prior to execution in [HYPOTHESES.md](HYPOTHESES.md); protocol adjustments logged in [AMENDMENTS.md](AMENDMENTS.md).
+- **Deterministic Oracle:** Grounded answer verification uses deterministic normalization and verified citation hashes against a frozen corpus (SHA256 `84e6ff590704aa94d10912f8002716b14c7436080e1a3270b53f9385dc728efc`, master seed `42`).
+- **Cost & Rate Governance:** Pinned model pricing, per-project budget caps, and append-only ledgers (`ledger.jsonl`) recording timestamp, model, token counts, and USD cost per call.
+- **Red-Team Release Gate:** Both publications passed independent 7-gate red-team audits before publication: [Publication 1 Checklist](research/final/release_checklist.md) and [Publication 2 Checklist](research_pub02/final/release_checklist.md).
 
 ---
 
-### Grounding Zero-Point (Phase 2 / Project P3)
+## Project Board
 
-Real agent grounded pass rate on multi-hop document retrieval degrades steeply as required retrieval depth increases: **100.0%** $\to$ **61.2%** $\to$ **7.6%** on R2 (`glm-5.3-flash`), **20.9%** $\to$ **4.5%** $\to$ **0.0%** on R4 (`gpt-5.6-luna`), and **73.1%** $\to$ **26.9%** $\to$ **1.5%** on R6 (`deepseek-v4-pro`).
-
-![Grounding Zero-Point](projects/p03_grounding/figure.svg)
-
-```bash
-pip install -e .
-make p03  # runs P3 Grounding Zero-Point reproduction
-```
+| ID | Project | Focus | Status | Spend |
+|---|---|---|---|---|
+| [P01](projects/p01_baseline/) | Baseline | Grounded multi-hop agent evaluation baseline | Complete | $0.14 |
+| [P02](projects/p02_otel_exporter/) | OTel Exporter | OpenTelemetry GenAI semantic conventions & spans | Complete | $0.00 |
+| [P03](projects/p03_grounding/) | Grounding Zero-Point | Multi-hop depth grounding decay across T1–T3 | Complete | $1.43 |
+| [P04](projects/p04_taxonomy/) | Failure Taxonomy | Human-in-the-loop trace coding (8 failure modes) | Complete | $0.00 |
+| [P05](projects/p05_judge/) | Evaluator Calibration | LLM judge calibration & Rogan-Gladen correction | Complete | $0.04 |
+| [P06](projects/p06_passk/) | Multi-Trial Reliability | $\text{pass}^k$ independence testing & failure clustering (Pub 01) | Complete | $23.73 |
+| [P07](projects/p07_variance/) | Serving Variance | Temperature-0 serving nondeterminism across providers | Complete | $1.20 |
+| [P08](projects/p08_mcptox/) | MCP Defense | Client-side runtime provenance contract on MCPTox (Pub 02) | Complete | $3.55 |
+| [P13](projects/p13_slo_incident/) | SLO Incident | Multi-window burn-rate SLO alerting & incident triage | Complete | $0.00 |
+| [P15](projects/p15_resilience/) | Resilience | Adaptive circuit breakers & jittered backoff policies | Complete | $0.00 |
+| [P16](projects/p16_runtime_policy/) | Runtime Policy | Deterministic call allowlists, path containment, token caps | Complete | $0.00 |
 
 ---
 
-## Start here
+## Phase 1
 
-**Hiring or evaluating this work?** Read the
-[one-minute engineering brief](HIRING-MANAGER.md), then inspect the
-[architecture and decision boundaries](ARCHITECTURE.md). Together they show the
-problem, the measurable outcomes, the system design, the tradeoffs, and the
-claims this repository deliberately does not make.
+Phase 1 established the simulation foundations, telemetry architecture, and recovery mechanisms across 30 reproducible modules. It evaluated deterministic execution environments, bounded agents with typed contracts, multi-hop difficulty tiers, complete trace logging, and fault injection catalogs (F1–F6) without unconstrained model loops.
 
-**Reproducing or reviewing the research?** Follow
-[REPRODUCE.md](REPRODUCE.md). Every headline below is bound to a committed JSON
-value and generating command; CI rejects drift.
+Building on that foundation, Phase 1 designed and stress-tested automated recovery primitives: schema and latency detectors, wrong-data discrimination, bounded retries, adaptive circuit breakers, and multi-objective cascade policies, verifying fixes via replay postmortems and self-explaining reproducibility gates.
 
-## Three-minute staff-engineer path
-
-1. Watch or run the [2:45 incident demo](day29/DEMO.md).
-2. Read the [one-page case study](day29/CASE-STUDY.md).
-3. Inspect the [system architecture](ARCHITECTURE.md) and its reliability
-   invariants.
-4. Open the [Q1–Q5 technical article](day28/ARTICLE.md) only when you need the
-   full evidence argument.
-5. Use the [staff-level defense](day30/DEFENSE.md) to challenge every core
-   decision and limitation.
-
-The short path shows one complete chain—run → fault → trace → recover → replay—
-and states both what FAULTLINE proved and what remains unproven in production.
-
-## Results
+<details>
+<summary>Phase 1 Day 01–Day 30 Research Modules & Claims</summary>
 
 <!-- RESULTS:START -->
 | Question | Result | Evidence and generating script | Reproduce |
@@ -78,84 +91,9 @@ and states both what FAULTLINE proved and what remains unproven in production.
 | Does the frozen detector evaluation reproduce? | **Frozen test evaluation: F1 0.842105 over 17 samples** | [result](day13/evidence/eval_result.json) · [script](day13/scripts/make_evidence.py) | `make day13-evidence` |
 | Does fallback preserve availability without preserving quality? | **Availability 0.6667 → 1.0 while strict quality among answers 1.0 → 0.75** | [result](day21/evidence/availability_quality_comparison.json) · [script](day21/scripts/make_evidence.py) | `make day21-q4` |
 | Which reference cascade policy wins on correct success, cost, and latency? | **Reference P4: success 0.9325, mean cost 1.4656, p95 latency 50.0** | [result](day24/evidence/policy_comparison.json) · [script](day24/scripts/make_evidence.py) | `make day24-q5` |
-| Do incident fixes fail before and stay fixed afterward? | **2 incidents replay red → green; Checkpoint 25 passes** | [result](day25/evidence/checkpoint_25.json) · [script](day25/scripts/make_evidence.py) | `make day25-postmortems` |
-| Does the complete repository gate pass? | **433 tests collected and passed** | [result](day26/evidence/test_report.json) · [script](day26/scripts/run_test_gate.py) | `make reproduce` |
+| Do incident fixes fail before and stay fixed afterward? | **2 incidents replay red → green; Checkpoint 25 passes** | [result](day25/evidence/checkpoint_25.json) | `make day25-postmortems` |
+| Does the complete repository gate pass? | **433 tests collected and passed** | [result](day26/evidence/test_report.json) | `make reproduce` |
 <!-- RESULTS:END -->
-
-Every result cell above is executable metadata, not hand-maintained prose.
-[The traceability manifest](day26/readme_claims.json) binds each displayed number
-to a JSON pointer, source artifact, generator, and command. CI fails when any
-value drifts or a result row lacks a registration.
-
-## Method
-
-FAULTLINE uses seeded simulators, an oracle that keeps correctness separate from
-schema validity, complete failure traces, paired experiments, uncertainty
-intervals, and replay-verified incident fixes.
-
-The research loop is:
-
-```text
-question → frozen seeds/config → paired experiment → result artifact
-         → attack → trace-linked fix → red/green replay → CI
-```
-
-The important boundary is user-visible correctness. Availability, containment,
-and a plausible answer are recorded separately and never promoted to success.
-
-## One-command reproduction
-
-Cold readers should start with [REPRODUCE.md](REPRODUCE.md). It contains the
-complete public clone command, exact release revision, host requirements,
-expected numbers, and failure actions; its command block is executed verbatim by
-the Day 27 cold-start test.
-
-From a checkout with Python available:
-
-```bash
-make venv
-make reproduce
-```
-
-`make reproduce` runs every isolated test suite, re-executes the frozen
-evaluation, regenerates a fast representative experiment subset, verifies
-byte-identical evidence, audits every results-table number, and writes
-[Checkpoint 26](day26/evidence/CHECKPOINT-26.md).
-
-For the pinned clean-room build:
-
-```bash
-make container-reproduce
-```
-
-The [Dockerfile](Dockerfile) pins its Python base by tag and multi-architecture
-digest, installs the fully resolved [dependency lock](requirements.txt), runs the
-full reproduction while building, then exposes the fast gate as its default
-command.
-
-The CI-sized host command is:
-
-```bash
-make reproduce-fast
-```
-
-## Reproducibility contract
-
-- Runtime, package, build-action, image-digest, and seed pins live in
-  [pins.json](day26/pins.json).
-- Every dependency is an exact equality in [requirements.txt](requirements.txt);
-  compatible ranges are rejected.
-- Every headline result links to both its machine-readable artifact and
-  generating script.
-- Experiments use explicit seeds and a fixed Python hash seed.
-- The fast subset regenerates tool-hop, fallback-quality, and postmortem evidence
-  and compares hashes before and after.
-- CI runs the full tests across the pinned Python patch matrix, the frozen
-  evaluation and fast experiments, the README audit, and the clean Docker build.
-- Release readiness is executable in
-  [reproduction_report.json](day26/evidence/reproduction_report.json).
-
-## Research modules
 
 | Module | Focus | Entry evidence |
 |---|---|---|
@@ -190,23 +128,84 @@ make reproduce-fast
 | [Day 29](day29/) | three-minute demo, one-page case study, comprehension gate | [evidence](day29/evidence/) |
 | [Day 30](day30/) | spoken defense, expert outreach, OSS contribution, launch gate | [evidence](day30/evidence/) |
 
-Each module carries its own question, method, tests, evidence, decision log, and
-mastery gate. Start with the results table; descend into a module only when you
-need its assumptions or failure analysis.
+</details>
 
-## Release candidate
+---
 
-Environment identities remain declared in [pins.json](day26/pins.json). The
-cold-reader revision and public source are declared in
-[protocol.json](day27/protocol.json). `v0.27.0-rc1` is tagged only after the clean
-container, exact headline output, and Checkpoint 27 are green.
+## Method
 
-## Engineering standards
+FAULTLINE enforces strict evidentiary separation between generation and verification: user-visible correctness is established exclusively by deterministic oracles and programmatic assertions, never by uncalibrated model self-assessment. Every headline metric is tied to committed telemetry traces, pre-registered hypotheses, and seed-pinned execution environments.
 
-[Architecture](ARCHITECTURE.md) ·
-[Contributing](CONTRIBUTING.md) ·
-[Security](SECURITY.md) ·
-[Reproduction](REPRODUCE.md)
+---
+
+## Three-minute staff-engineer path
+
+1. Watch or run the [2:45 incident demo](day29/DEMO.md).
+2. Trace the red-to-green fix in [Incident 2 postmortem](day25/postmortems/INCIDENT-2026-02-LLM-02.md).
+3. Verify the claims in [REPRODUCE.md](REPRODUCE.md).
+
+---
+
+## Reproduce
+
+All test suites and benchmark dry-runs execute locally without network access or paid API credentials:
+
+```bash
+make venv          # Create virtualenv and install pinned requirements
+make test          # Run 528 Phase 1 unit/integration tests
+make phase2-test   # Run 126 Phase 2 tests (P00-P08, P13, P15, P16)
+make p06 ARGS=--dry-run   # Dry-run P06 multi-trial sweep
+make p07 ARGS=--dry-run   # Dry-run P07 variance analysis
+make p08 ARGS=--dry-run   # Dry-run P08 MCPTox evaluation
+make p08-replay           # Replay cached MCPTox execution traces
+```
+
+---
+
+## Layout
+
+```text
+faultline-ai-reliability/
+├── publications/              # Peer-reviewed papers, TeX source, and build artifacts
+│   ├── publication_01_passk_reliability/
+│   └── publication_02_mcptox_contract/
+├── projects/                  # Phase 2 experimental packages (P01–P16)
+│   ├── _corpus/               # Canonical 350-scenario graph corpus
+│   ├── p06_passk/             # Multi-trial reliability & trace store
+│   └── p08_mcptox/            # MCP defense & provenance engine
+├── faultline_p2/              # Core Phase 2 harness, agent loop, and OTel tooling
+├── day01/ … day30/            # Phase 1 daily simulation modules and evidence
+├── tests/phase2/              # Phase 2 pytest suite (126 tests)
+├── research/                  # Publication 1 pre-registration, data, and red-team gates
+└── research_pub02/            # Publication 2 pre-registration, data, and red-team gates
+```
+
+---
+
+## Budget
+
+Total API spend across all experimental sweeps is **$30.08 USD**, comfortably within the pre-registered **$150.00 USD** repository ceiling. Every API request is tracked in an append-only `ledger.jsonl` recording exact timestamp, model rung, input/output tokens, and dollar cost computed from pinned pricing tables.
+
+---
+
+## Limitations
+
+This repository reflects the experimental findings of a single author across a controlled set of commercial model endpoints accessed through a single unified API gateway. Evaluator calibrations for qualitative classifications were performed on held-out splits without multi-annotator human consensus panels. Model responses and serving latency are subject to cloud provider infrastructure drift and nondeterministic GPU reduction scheduling. Findings should be validated across diverse gateways and multi-turn human task distributions.
+
+---
+
+## Cite
+
+```text
+Sawarkar, S. (2026). FAULTLINE: Research Workbench for Agent Reliability and Tool-Poisoning Defense.
+https://github.com/samirsawarkar/faultline-ai-reliability
+```
+
+Publications:
+- Sawarkar, S. (2026). "Multi-Trial Reliability and Failure Concentration in Multi-Hop AI Agents: Grounding Collapse, Failure Taxonomy, and Evaluator Calibration." FAULTLINE AI Reliability Engineering.
+- Sawarkar, S. (2026). "Runtime Provenance Contracts for Mitigating Tool Poisoning in MCP Agents: A Paired Evaluation on MCPTox Across Six Models." FAULTLINE AI Reliability Engineering.
+
+---
 
 ## License
 
