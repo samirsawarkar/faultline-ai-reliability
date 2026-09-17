@@ -1,0 +1,275 @@
+{
+  "metadata": {
+    "project": "P5",
+    "reference": "MEC v1.0",
+    "judge_model": "z-ai/glm-5.3",
+    "manifest_sha256": "7460de00a0ae4d5c4357937b895ed9e848ddcaf24fb6a373f0a20f14bca1bc02",
+    "test_sample_size": 60,
+    "total_evaluators": 9,
+    "tokens_used": {
+      "prompt": 28113,
+      "completion": 68948
+    },
+    "spend_usd": 0.035244
+  },
+  "split": {
+    "train_count": 101,
+    "dev_count": 39,
+    "test_count": 60
+  },
+  "evaluators": {
+    "INFRASTRUCTURE_RATE_LIMIT": {
+      "mode": "INFRASTRUCTURE_RATE_LIMIT",
+      "evaluator_type": "code_assertion",
+      "confusion": {
+        "tp": 34,
+        "fp": 0,
+        "tn": 26,
+        "fn": 0,
+        "total": 60
+      },
+      "tpr": 1.0,
+      "tpr_wilson_ci": [
+        0.8985,
+        1.0
+      ],
+      "tnr": 1.0,
+      "tnr_wilson_ci": [
+        0.8713,
+        1.0
+      ],
+      "precision": 1.0,
+      "accuracy": 1.0,
+      "cohen_kappa": 1.0,
+      "kappa_label": "almost perfect",
+      "raw_prevalence": 0.5667,
+      "rogan_gladen_prevalence": 0.5667
+    },
+    "OVERCONSTRAINED_SEARCH_LOOP": {
+      "mode": "OVERCONSTRAINED_SEARCH_LOOP",
+      "evaluator_type": "llm_judge",
+      "confusion": {
+        "tp": 0,
+        "fp": 1,
+        "tn": 45,
+        "fn": 14,
+        "total": 60
+      },
+      "tpr": 0.0,
+      "tpr_wilson_ci": [
+        0.0,
+        0.2153
+      ],
+      "tnr": 0.9783,
+      "tnr_wilson_ci": [
+        0.8866,
+        0.9962
+      ],
+      "precision": 0.0,
+      "accuracy": 0.75,
+      "cohen_kappa": -0.0321,
+      "kappa_label": "poor / worse than chance",
+      "raw_prevalence": 0.2333,
+      "rogan_gladen_prevalence": 0.2333
+    },
+    "MALFORMED_TOOL_CALL": {
+      "mode": "MALFORMED_TOOL_CALL",
+      "evaluator_type": "code_assertion",
+      "confusion": {
+        "tp": 6,
+        "fp": 21,
+        "tn": 33,
+        "fn": 0,
+        "total": 60
+      },
+      "tpr": 1.0,
+      "tpr_wilson_ci": [
+        0.6097,
+        1.0
+      ],
+      "tnr": 0.6111,
+      "tnr_wilson_ci": [
+        0.4779,
+        0.7296
+      ],
+      "precision": 0.2222,
+      "accuracy": 0.65,
+      "cohen_kappa": 0.2391,
+      "kappa_label": "fair",
+      "raw_prevalence": 0.1,
+      "rogan_gladen_prevalence": 0.1
+    },
+    "INFRASTRUCTURE_SERVER_ERROR": {
+      "mode": "INFRASTRUCTURE_SERVER_ERROR",
+      "evaluator_type": "code_assertion",
+      "confusion": {
+        "tp": 1,
+        "fp": 0,
+        "tn": 59,
+        "fn": 0,
+        "total": 60
+      },
+      "tpr": 1.0,
+      "tpr_wilson_ci": [
+        0.2065,
+        1.0
+      ],
+      "tnr": 1.0,
+      "tnr_wilson_ci": [
+        0.9389,
+        1.0
+      ],
+      "precision": 1.0,
+      "accuracy": 1.0,
+      "cohen_kappa": 1.0,
+      "kappa_label": "almost perfect",
+      "raw_prevalence": 0.0167,
+      "rogan_gladen_prevalence": 0.0167
+    },
+    "MULTI_HOP_TRAVERSAL_EXHAUSTION": {
+      "mode": "MULTI_HOP_TRAVERSAL_EXHAUSTION",
+      "evaluator_type": "code_assertion",
+      "confusion": {
+        "tp": 0,
+        "fp": 7,
+        "tn": 53,
+        "fn": 0,
+        "total": 60
+      },
+      "tpr": 1.0,
+      "tpr_wilson_ci": [
+        0.0,
+        1.0
+      ],
+      "tnr": 0.8833,
+      "tnr_wilson_ci": [
+        0.7782,
+        0.9423
+      ],
+      "precision": 0.0,
+      "accuracy": 0.8833,
+      "cohen_kappa": 0.0,
+      "kappa_label": "slight",
+      "raw_prevalence": 0.0,
+      "rogan_gladen_prevalence": 0.0
+    },
+    "RETRIEVAL_FAILURE_ABSTENTION": {
+      "mode": "RETRIEVAL_FAILURE_ABSTENTION",
+      "evaluator_type": "llm_judge",
+      "confusion": {
+        "tp": 0,
+        "fp": 0,
+        "tn": 60,
+        "fn": 0,
+        "total": 60
+      },
+      "tpr": 1.0,
+      "tpr_wilson_ci": [
+        0.0,
+        1.0
+      ],
+      "tnr": 1.0,
+      "tnr_wilson_ci": [
+        0.9398,
+        1.0
+      ],
+      "precision": 1.0,
+      "accuracy": 1.0,
+      "cohen_kappa": 1.0,
+      "kappa_label": "almost perfect",
+      "raw_prevalence": 0.0,
+      "rogan_gladen_prevalence": 0.0
+    },
+    "ANSWER_EXTRACTION_TRUNCATION": {
+      "mode": "ANSWER_EXTRACTION_TRUNCATION",
+      "evaluator_type": "llm_judge",
+      "confusion": {
+        "tp": 0,
+        "fp": 0,
+        "tn": 60,
+        "fn": 0,
+        "total": 60
+      },
+      "tpr": 1.0,
+      "tpr_wilson_ci": [
+        0.0,
+        1.0
+      ],
+      "tnr": 1.0,
+      "tnr_wilson_ci": [
+        0.9398,
+        1.0
+      ],
+      "precision": 1.0,
+      "accuracy": 1.0,
+      "cohen_kappa": 1.0,
+      "kappa_label": "almost perfect",
+      "raw_prevalence": 0.0,
+      "rogan_gladen_prevalence": 0.0
+    },
+    "PREMATURE_STOP_WRONG_HOP": {
+      "mode": "PREMATURE_STOP_WRONG_HOP",
+      "evaluator_type": "llm_judge",
+      "confusion": {
+        "tp": 0,
+        "fp": 0,
+        "tn": 59,
+        "fn": 1,
+        "total": 60
+      },
+      "tpr": 0.0,
+      "tpr_wilson_ci": [
+        0.0,
+        0.7935
+      ],
+      "tnr": 1.0,
+      "tnr_wilson_ci": [
+        0.9389,
+        1.0
+      ],
+      "precision": 0.0,
+      "accuracy": 0.9833,
+      "cohen_kappa": 0.0,
+      "kappa_label": "slight",
+      "raw_prevalence": 0.0167,
+      "rogan_gladen_prevalence": 0.0
+    },
+    "MULTI_HOP_DIRECTION_ERROR": {
+      "mode": "MULTI_HOP_DIRECTION_ERROR",
+      "evaluator_type": "llm_judge",
+      "confusion": {
+        "tp": 0,
+        "fp": 0,
+        "tn": 60,
+        "fn": 0,
+        "total": 60
+      },
+      "tpr": 1.0,
+      "tpr_wilson_ci": [
+        0.0,
+        1.0
+      ],
+      "tnr": 1.0,
+      "tnr_wilson_ci": [
+        0.9398,
+        1.0
+      ],
+      "precision": 1.0,
+      "accuracy": 1.0,
+      "cohen_kappa": 1.0,
+      "kappa_label": "almost perfect",
+      "raw_prevalence": 0.0,
+      "rogan_gladen_prevalence": 0.0
+    }
+  },
+  "hypotheses": {
+    "H3": {
+      "claim": "A cheap judge reaches kappa >= 0.7 against human labels on >=3 of 5 modes",
+      "status": "FALSIFIED",
+      "core_modes_tested": 5,
+      "core_modes_meeting_threshold": 2,
+      "threshold_kappa": 0.7,
+      "evidence": "Measured Cohen's kappa >= 0.70 on 2 of 5 core evaluated modes against human labels on the frozen single-pass test set (n=60)."
+    }
+  }
+}

@@ -98,15 +98,15 @@ def ensure_hard_pool_manifest(manifest_path: Path) -> Dict[str, Any]:
 
 def generate_figure(results: Dict[str, Any], output_path: Path) -> None:
     """Generate publication-grade SVG chart comparing Naive p^3 vs Measured pass^3 with Wilson CIs."""
-    width = 1100
-    height = 640
+    width = 1160
+    height = 660
 
-    chart_left = 130
+    chart_left = 150
     chart_right = width - 80
     chart_width = chart_right - chart_left
 
     chart_top = 105
-    chart_bottom = 440
+    chart_bottom = 445
     chart_height = chart_bottom - chart_top
 
     rungs_order = ["R2", "R4", "R6"]
@@ -123,9 +123,9 @@ def generate_figure(results: Dict[str, Any], output_path: Path) -> None:
         '  <style>',
         '    .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 20px; font-weight: 700; fill: #111827; }',
         '    .subtitle { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 13px; fill: #4b5563; }',
-        '    .axis-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 12px; font-weight: 600; fill: #374151; }',
+        '    .axis-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 13px; font-weight: 600; fill: #374151; }',
         '    .axis { stroke: #9ca3af; stroke-width: 1.5; }',
-        '    .grid { stroke: #f3f4f6; stroke-dasharray: 4,4; stroke-width: 1; }',
+        '    .grid { stroke: #f3f4f6; stroke-dasharray: 4,4; stroke-width: 1.2; }',
         '    .tick-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 12px; fill: #4b5563; font-weight: 500; }',
         '    .val { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 13px; font-weight: 700; }',
         '    .legend-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 12px; fill: #374151; font-weight: 500; }',
@@ -140,7 +140,7 @@ def generate_figure(results: Dict[str, Any], output_path: Path) -> None:
         f'  <text x="{width/2}" y="40" class="title" text-anchor="middle">Project P6: Pass^k Decay &amp; Failure Concentration (k=3, n=150 Hard T3)</text>',
         f'  <text x="{width/2}" y="64" class="subtitle" text-anchor="middle">Empirical Joint Reliability (pass\u00b3) vs. Naive Independence ((pass@1)\u00b3) with Two-Sided Wilson 95% Score Intervals</text>',
         '  <!-- Y-Axis Title -->',
-        f'  <text x="35" y="{chart_top + chart_height/2}" class="axis-title" text-anchor="middle" transform="rotate(-90 35 {chart_top + chart_height/2})">Joint Reliability / Pass Rate</text>',
+        f'  <text x="55" y="{chart_top + chart_height/2}" class="axis-title" text-anchor="middle" transform="rotate(-90 55 {chart_top + chart_height/2})">Joint Reliability / Pass Rate</text>',
         '  <!-- Y-Axis Grid & Labels (0% to 100%) -->',
     ]
 
@@ -148,7 +148,7 @@ def generate_figure(results: Dict[str, Any], output_path: Path) -> None:
         val = pct / 100.0
         y = chart_bottom - val * chart_height
         svg_lines.append(f'  <line x1="{chart_left}" y1="{y}" x2="{chart_right}" y2="{y}" class="grid"/>')
-        svg_lines.append(f'  <text x="{chart_left - 14}" y="{y + 4}" class="tick-label" text-anchor="end">{pct}%</text>')
+        svg_lines.append(f'  <text x="{chart_left - 15}" y="{y + 4}" class="tick-label" text-anchor="end">{pct}%</text>')
 
     svg_lines.append(f'  <line x1="{chart_left}" y1="{chart_bottom}" x2="{chart_right}" y2="{chart_bottom}" class="axis"/>')
     svg_lines.append(f'  <line x1="{chart_left}" y1="{chart_top}" x2="{chart_left}" y2="{chart_bottom}" class="axis"/>')
@@ -791,6 +791,7 @@ def compile_results_from_trace(
 def main():
     parser = argparse.ArgumentParser(description="P06 Pass^k Decay & Failure Concentration Sweep")
     parser.add_argument("--confirm", action="store_true", help="Confirm execution of sweep")
+    parser.add_argument("--dry-run", action="store_true", help="Dry run without spending")
     parser.add_argument("--real", action="store_true", help="Use live LiteLLM endpoints with AICredits")
     parser.add_argument("--recompile", action="store_true", help="Recompile results directly from trace.db")
     parser.add_argument("--manifest-out", default="projects/p06_passk/manifest.json", help="Manifest destination")

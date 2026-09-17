@@ -1,0 +1,22 @@
+{
+  "run_id": "p06_passk_sweep",
+  "timestamp": "2026-09-11T12:15:51Z/2026-09-11T22:42:16Z",
+  "dataset": "faultline_p2_reserved_pool",
+  "data_split": "150 reserved hard T3 5-hop scenarios (r-0201 to r-0350), manifest sha256 7e0a1b79d6e756f712d27e29168fed8b3bc5c4cd7beba7f8fc21d50366d41b83",
+  "model": "R2: z-ai/glm-5.3-flash, R4: openai/gpt-5.6-luna, R6: deepseek/deepseek-v4-pro",
+  "model_version": "R2: z-ai/glm-5.3-flash, R4: openai/gpt-5.6-luna, R6: deepseek/deepseek-v4-pro via AI Credits gateway (upstream model snapshots and routing Unknown)",
+  "prompt": "faultline_p2/agent/prompt.py (system prompt sha256 87c7641e74964dcfe00c605051d7f5ddfade01f4019c95a00fd5dc3f1907c8df)",
+  "decoding": {"temperature": 0.0, "top_p": null, "max_tokens": 2048},
+  "sampling": {"samples_per_instance": 3},
+  "seed": 42,
+  "n_instances": 150,
+  "metric": "pass^k (all-k-pass) and pass@1 under deterministic oracle check (normalized answer and cited required source ID)",
+  "eval_protocol": "deterministic dual-condition oracle (answer match and cited required source ID); no LLM judge in success path; step cap 24 per MEC v1.3 (Amendment A-003)",
+  "contamination_check": "synthetic 300-entity pseudoword graph corpus (corpus hash 84e6ff590704aa94d10912f8002716b14c7436080e1a3270b53f9385dc728efc)",
+  "hardware": "API client on macOS Apple Silicon; remote inference via AI Credits gateway (physical GPU architecture, serving framework, CUDA driver version, and batch concurrency Unknown)",
+  "environment": "Python 3.11, LiteLLM 1.98.0 pinned, sqlite3 trace store, pure stdlib statistical analysis (random seed 42, math)",
+  "code_url": "https://github.com/samirsawarkar/faultline-ai-reliability (projects/p06_passk/run.py, projects/p06_passk/analysis.py)",
+  "runtime": "approx 10.5 hours cumulative across 3 rungs (1350 total runs)",
+  "cost": "$23.727528 USD cumulative spend recorded in ledger.jsonl",
+  "license": "MIT (code) / CC-BY-4.0 (data)"
+}

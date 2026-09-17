@@ -1,0 +1,6758 @@
+{
+  "R2": [
+    {
+      "sid": "r-0201_k1",
+      "start_time": "2026-09-11T19:20:15.709559",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0201_k2",
+      "start_time": "2026-09-11T19:20:36.634151",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0201_k3",
+      "start_time": "2026-09-11T19:20:35.761254",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0202_k1",
+      "start_time": "2026-09-11T19:20:15.906554",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0202_k2",
+      "start_time": "2026-09-11T19:20:25.832324",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0202_k3",
+      "start_time": "2026-09-11T19:20:17.931960",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0203_k1",
+      "start_time": "2026-09-11T19:20:19.112831",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0203_k2",
+      "start_time": "2026-09-11T19:20:34.568342",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0203_k3",
+      "start_time": "2026-09-11T19:20:16.619829",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0204_k1",
+      "start_time": "2026-09-11T19:20:16.991304",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0204_k2",
+      "start_time": "2026-09-11T19:20:38.533828",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0204_k3",
+      "start_time": "2026-09-11T19:20:18.942780",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0205_k1",
+      "start_time": "2026-09-11T19:21:38.667322",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0205_k2",
+      "start_time": "2026-09-11T19:21:29.212523",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0205_k3",
+      "start_time": "2026-09-11T19:22:18.190382",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0206_k1",
+      "start_time": "2026-09-11T19:22:29.928489",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0206_k2",
+      "start_time": "2026-09-11T19:22:48.569979",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0206_k3",
+      "start_time": "2026-09-11T19:23:16.406008",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0207_k1",
+      "start_time": "2026-09-11T19:22:50.366213",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0207_k2",
+      "start_time": "2026-09-11T19:23:15.928888",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0207_k3",
+      "start_time": "2026-09-11T19:23:33.015858",
+      "terminal_state": "other"
+    },
+    {
+      "sid": "r-0208_k1",
+      "start_time": "2026-09-11T19:24:24.252324",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0208_k2",
+      "start_time": "2026-09-11T19:23:57.262711",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0208_k3",
+      "start_time": "2026-09-11T19:24:16.449379",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0209_k1",
+      "start_time": "2026-09-11T19:25:11.163346",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0209_k2",
+      "start_time": "2026-09-11T19:24:35.453419",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0209_k3",
+      "start_time": "2026-09-11T19:24:40.902528",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0210_k1",
+      "start_time": "2026-09-11T19:24:47.311288",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0210_k2",
+      "start_time": "2026-09-11T19:25:25.324767",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0210_k3",
+      "start_time": "2026-09-11T19:25:17.553485",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0211_k1",
+      "start_time": "2026-09-11T19:25:16.312366",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0211_k2",
+      "start_time": "2026-09-11T19:25:32.338106",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0211_k3",
+      "start_time": "2026-09-11T19:25:37.754660",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0212_k1",
+      "start_time": "2026-09-11T19:26:16.109846",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0212_k2",
+      "start_time": "2026-09-11T19:26:19.340078",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0212_k3",
+      "start_time": "2026-09-11T19:26:31.115053",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0213_k1",
+      "start_time": "2026-09-11T19:26:34.790941",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0213_k2",
+      "start_time": "2026-09-11T19:26:34.854399",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0213_k3",
+      "start_time": "2026-09-11T19:27:17.618734",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0214_k1",
+      "start_time": "2026-09-11T19:27:39.898137",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0214_k2",
+      "start_time": "2026-09-11T19:27:39.488794",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0214_k3",
+      "start_time": "2026-09-11T19:27:37.282570",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0215_k1",
+      "start_time": "2026-09-11T19:27:39.827953",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0215_k2",
+      "start_time": "2026-09-11T19:28:20.675400",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0215_k3",
+      "start_time": "2026-09-11T19:28:18.261071",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0216_k1",
+      "start_time": "2026-09-11T19:29:19.102083",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0216_k2",
+      "start_time": "2026-09-11T19:29:18.647519",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0216_k3",
+      "start_time": "2026-09-11T19:29:16.341302",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0217_k1",
+      "start_time": "2026-09-11T19:29:22.126690",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0217_k2",
+      "start_time": "2026-09-11T19:30:36.085685",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0217_k3",
+      "start_time": "2026-09-11T19:29:37.975010",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0218_k1",
+      "start_time": "2026-09-11T19:30:26.213856",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0218_k2",
+      "start_time": "2026-09-11T19:30:17.366234",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0218_k3",
+      "start_time": "2026-09-11T19:30:31.674382",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0219_k1",
+      "start_time": "2026-09-11T19:30:43.960861",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0219_k2",
+      "start_time": "2026-09-11T19:31:28.323663",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0219_k3",
+      "start_time": "2026-09-11T19:31:32.970081",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0220_k1",
+      "start_time": "2026-09-11T19:32:21.341845",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0220_k2",
+      "start_time": "2026-09-11T19:31:40.554715",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0220_k3",
+      "start_time": "2026-09-11T19:31:48.806779",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0221_k1",
+      "start_time": "2026-09-11T19:32:21.098894",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0221_k2",
+      "start_time": "2026-09-11T19:32:32.473798",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0221_k3",
+      "start_time": "2026-09-11T19:32:41.645764",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0222_k1",
+      "start_time": "2026-09-11T19:33:18.085347",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0222_k2",
+      "start_time": "2026-09-11T19:33:26.121960",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0222_k3",
+      "start_time": "2026-09-11T19:33:30.568206",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0223_k1",
+      "start_time": "2026-09-11T19:33:28.926875",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0223_k2",
+      "start_time": "2026-09-11T19:33:30.760966",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0223_k3",
+      "start_time": "2026-09-11T19:33:38.488964",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0224_k1",
+      "start_time": "2026-09-11T19:34:28.794806",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0224_k2",
+      "start_time": "2026-09-11T19:34:47.155555",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0224_k3",
+      "start_time": "2026-09-11T19:34:36.839845",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0225_k1",
+      "start_time": "2026-09-11T19:35:17.075507",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0225_k2",
+      "start_time": "2026-09-11T19:35:37.922468",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0225_k3",
+      "start_time": "2026-09-11T19:34:47.607935",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0226_k1",
+      "start_time": "2026-09-11T19:35:29.890176",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0226_k2",
+      "start_time": "2026-09-11T19:36:28.356009",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0226_k3",
+      "start_time": "2026-09-11T19:36:28.431932",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0227_k1",
+      "start_time": "2026-09-11T19:36:32.324744",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0227_k2",
+      "start_time": "2026-09-11T19:36:36.934704",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0227_k3",
+      "start_time": "2026-09-11T19:36:42.940641",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0228_k1",
+      "start_time": "2026-09-11T19:36:44.547680",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0228_k2",
+      "start_time": "2026-09-11T19:37:18.622040",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0228_k3",
+      "start_time": "2026-09-11T19:37:18.612279",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0229_k1",
+      "start_time": "2026-09-11T19:37:34.876735",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0229_k2",
+      "start_time": "2026-09-11T19:38:17.681418",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0229_k3",
+      "start_time": "2026-09-11T19:38:34.690950",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0230_k1",
+      "start_time": "2026-09-11T19:38:39.990794",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0230_k2",
+      "start_time": "2026-09-11T19:38:17.439408",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0230_k3",
+      "start_time": "2026-09-11T19:38:27.623009",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0231_k1",
+      "start_time": "2026-09-11T19:38:37.234675",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0231_k2",
+      "start_time": "2026-09-11T19:39:38.348756",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0231_k3",
+      "start_time": "2026-09-11T19:39:22.660979",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0232_k1",
+      "start_time": "2026-09-11T19:39:33.124747",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0232_k2",
+      "start_time": "2026-09-11T19:40:17.608653",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0232_k3",
+      "start_time": "2026-09-11T19:39:32.044127",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0233_k1",
+      "start_time": "2026-09-11T19:40:17.503014",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0233_k2",
+      "start_time": "2026-09-11T19:40:31.153008",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0233_k3",
+      "start_time": "2026-09-11T19:41:17.728245",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0234_k1",
+      "start_time": "2026-09-11T19:41:37.141269",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0234_k2",
+      "start_time": "2026-09-11T19:41:20.543779",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0234_k3",
+      "start_time": "2026-09-11T19:41:29.594597",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0235_k1",
+      "start_time": "2026-09-11T19:42:33.308306",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0235_k2",
+      "start_time": "2026-09-11T19:42:17.844037",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0235_k3",
+      "start_time": "2026-09-11T19:42:35.375958",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0236_k1",
+      "start_time": "2026-09-11T19:42:25.014317",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0236_k2",
+      "start_time": "2026-09-11T19:42:28.749427",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0236_k3",
+      "start_time": "2026-09-11T19:42:37.127494",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0237_k1",
+      "start_time": "2026-09-11T19:42:37.537511",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0237_k2",
+      "start_time": "2026-09-11T19:42:38.179718",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0237_k3",
+      "start_time": "2026-09-11T19:42:38.545579",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0238_k1",
+      "start_time": "2026-09-11T19:43:21.678847",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0238_k2",
+      "start_time": "2026-09-11T19:44:18.446255",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0238_k3",
+      "start_time": "2026-09-11T19:44:24.303661",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0239_k1",
+      "start_time": "2026-09-11T19:45:26.049963",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0239_k2",
+      "start_time": "2026-09-11T19:45:18.194361",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0239_k3",
+      "start_time": "2026-09-11T19:45:18.117211",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0240_k1",
+      "start_time": "2026-09-11T19:45:18.919367",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0240_k2",
+      "start_time": "2026-09-11T19:45:27.143635",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0240_k3",
+      "start_time": "2026-09-11T19:46:39.825454",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0241_k1",
+      "start_time": "2026-09-11T19:46:28.763991",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0241_k2",
+      "start_time": "2026-09-11T19:46:18.627616",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0241_k3",
+      "start_time": "2026-09-11T19:46:41.420372",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0242_k1",
+      "start_time": "2026-09-11T19:47:34.157758",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0242_k2",
+      "start_time": "2026-09-11T19:47:41.647573",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0242_k3",
+      "start_time": "2026-09-11T19:48:21.829464",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0243_k1",
+      "start_time": "2026-09-11T19:47:36.470935",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0243_k2",
+      "start_time": "2026-09-11T19:47:45.096714",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0243_k3",
+      "start_time": "2026-09-11T19:48:21.928853",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0244_k1",
+      "start_time": "2026-09-11T19:48:20.846894",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0244_k2",
+      "start_time": "2026-09-11T19:48:58.478236",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0244_k3",
+      "start_time": "2026-09-11T19:48:31.035513",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0245_k1",
+      "start_time": "2026-09-11T19:49:18.400600",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0245_k2",
+      "start_time": "2026-09-11T19:50:03.773046",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0245_k3",
+      "start_time": "2026-09-11T19:50:22.801930",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0246_k1",
+      "start_time": "2026-09-11T19:50:40.369408",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0246_k2",
+      "start_time": "2026-09-11T19:49:38.036179",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0246_k3",
+      "start_time": "2026-09-11T19:50:23.187121",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0247_k1",
+      "start_time": "2026-09-11T19:50:24.499198",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0247_k2",
+      "start_time": "2026-09-11T19:50:30.826452",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0247_k3",
+      "start_time": "2026-09-11T19:50:37.431955",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0248_k1",
+      "start_time": "2026-09-11T19:51:45.967131",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0248_k2",
+      "start_time": "2026-09-11T19:50:42.478946",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0248_k3",
+      "start_time": "2026-09-11T19:51:40.639015",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0249_k1",
+      "start_time": "2026-09-11T19:51:18.945844",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0249_k2",
+      "start_time": "2026-09-11T19:51:18.361049",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0249_k3",
+      "start_time": "2026-09-11T19:51:37.212710",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0250_k1",
+      "start_time": "2026-09-11T19:52:19.761526",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0250_k2",
+      "start_time": "2026-09-11T19:52:24.751906",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0250_k3",
+      "start_time": "2026-09-11T19:53:26.139731",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0251_k1",
+      "start_time": "2026-09-11T19:52:38.632555",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0251_k2",
+      "start_time": "2026-09-11T19:52:44.899795",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0251_k3",
+      "start_time": "2026-09-11T19:53:20.547851",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0252_k1",
+      "start_time": "2026-09-11T19:53:29.364435",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0252_k2",
+      "start_time": "2026-09-11T19:54:22.665036",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0252_k3",
+      "start_time": "2026-09-11T19:53:40.532444",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0253_k1",
+      "start_time": "2026-09-11T19:54:35.526081",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0253_k2",
+      "start_time": "2026-09-11T19:54:28.280463",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0253_k3",
+      "start_time": "2026-09-11T19:54:28.272587",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0254_k1",
+      "start_time": "2026-09-11T19:54:57.528438",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0254_k2",
+      "start_time": "2026-09-11T19:54:30.611670",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0254_k3",
+      "start_time": "2026-09-11T19:54:42.123861",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0255_k1",
+      "start_time": "2026-09-11T19:55:20.678988",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0255_k2",
+      "start_time": "2026-09-11T19:55:27.865970",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0255_k3",
+      "start_time": "2026-09-11T19:55:30.834460",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0256_k1",
+      "start_time": "2026-09-11T19:56:23.523275",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0256_k2",
+      "start_time": "2026-09-11T19:55:43.711940",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0256_k3",
+      "start_time": "2026-09-11T19:56:24.497508",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0257_k1",
+      "start_time": "2026-09-11T19:56:36.433975",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0257_k2",
+      "start_time": "2026-09-11T19:58:21.657936",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0257_k3",
+      "start_time": "2026-09-11T19:57:35.600038",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0258_k1",
+      "start_time": "2026-09-11T19:57:36.928628",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0258_k2",
+      "start_time": "2026-09-11T19:58:26.362262",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0258_k3",
+      "start_time": "2026-09-11T19:58:24.031016",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0259_k1",
+      "start_time": "2026-09-11T19:58:39.240823",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0259_k2",
+      "start_time": "2026-09-11T19:58:35.920158",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0259_k3",
+      "start_time": "2026-09-11T19:58:39.195697",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0260_k1",
+      "start_time": "2026-09-11T19:58:48.381061",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0260_k2",
+      "start_time": "2026-09-11T19:59:21.837049",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0260_k3",
+      "start_time": "2026-09-11T19:59:19.065612",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0261_k1",
+      "start_time": "2026-09-11T20:00:22.217224",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0261_k2",
+      "start_time": "2026-09-11T20:00:45.931890",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0261_k3",
+      "start_time": "2026-09-11T20:00:27.249314",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0262_k1",
+      "start_time": "2026-09-11T20:00:40.849168",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0262_k2",
+      "start_time": "2026-09-11T20:00:44.600101",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0262_k3",
+      "start_time": "2026-09-11T20:01:19.628144",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0263_k1",
+      "start_time": "2026-09-11T20:01:39.700877",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0263_k2",
+      "start_time": "2026-09-11T20:01:26.750999",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0263_k3",
+      "start_time": "2026-09-11T20:01:34.139190",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0264_k1",
+      "start_time": "2026-09-11T20:01:38.854211",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0264_k2",
+      "start_time": "2026-09-11T20:02:25.947483",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0264_k3",
+      "start_time": "2026-09-11T20:02:19.822969",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0265_k1",
+      "start_time": "2026-09-11T20:02:32.362728",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0265_k2",
+      "start_time": "2026-09-11T20:02:27.113310",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0265_k3",
+      "start_time": "2026-09-11T20:03:45.686435",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0266_k1",
+      "start_time": "2026-09-11T20:03:45.643869",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0266_k2",
+      "start_time": "2026-09-11T20:03:19.636761",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0266_k3",
+      "start_time": "2026-09-11T20:03:51.770714",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0267_k1",
+      "start_time": "2026-09-11T20:03:41.328986",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0267_k2",
+      "start_time": "2026-09-11T20:03:42.057942",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0267_k3",
+      "start_time": "2026-09-11T20:03:43.631388",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0268_k1",
+      "start_time": "2026-09-11T20:03:50.025242",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0268_k2",
+      "start_time": "2026-09-11T20:04:03.591206",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0268_k3",
+      "start_time": "2026-09-11T20:04:01.856454",
+      "terminal_state": "other"
+    },
+    {
+      "sid": "r-0269_k1",
+      "start_time": "2026-09-11T20:04:26.835873",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0269_k2",
+      "start_time": "2026-09-11T20:05:24.290590",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0269_k3",
+      "start_time": "2026-09-11T20:05:29.584557",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0270_k1",
+      "start_time": "2026-09-11T20:05:27.477846",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0270_k2",
+      "start_time": "2026-09-11T20:06:40.242924",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0270_k3",
+      "start_time": "2026-09-11T20:06:19.794874",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0271_k1",
+      "start_time": "2026-09-11T20:06:19.877287",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0271_k2",
+      "start_time": "2026-09-11T20:06:51.954157",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0271_k3",
+      "start_time": "2026-09-11T20:07:20.399466",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0272_k1",
+      "start_time": "2026-09-11T20:06:33.009061",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0272_k2",
+      "start_time": "2026-09-11T20:07:20.818713",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0272_k3",
+      "start_time": "2026-09-11T20:07:27.684947",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0273_k1",
+      "start_time": "2026-09-11T20:07:21.662975",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0273_k2",
+      "start_time": "2026-09-11T20:07:20.000971",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0273_k3",
+      "start_time": "2026-09-11T20:07:20.070073",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0274_k1",
+      "start_time": "2026-09-11T20:07:30.758606",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0274_k2",
+      "start_time": "2026-09-11T20:08:27.803916",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0274_k3",
+      "start_time": "2026-09-11T20:08:36.636418",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0275_k1",
+      "start_time": "2026-09-11T20:08:31.038495",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0275_k2",
+      "start_time": "2026-09-11T20:08:41.526365",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0275_k3",
+      "start_time": "2026-09-11T20:09:32.945587",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0276_k1",
+      "start_time": "2026-09-11T20:08:37.010603",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0276_k2",
+      "start_time": "2026-09-11T20:08:45.338988",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0276_k3",
+      "start_time": "2026-09-11T20:08:46.495599",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0277_k1",
+      "start_time": "2026-09-11T20:09:23.732324",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0277_k2",
+      "start_time": "2026-09-11T20:09:33.722810",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0277_k3",
+      "start_time": "2026-09-11T20:10:20.156517",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0278_k1",
+      "start_time": "2026-09-11T20:10:20.665653",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0278_k2",
+      "start_time": "2026-09-11T20:10:36.813704",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0278_k3",
+      "start_time": "2026-09-11T20:11:28.192047",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0279_k1",
+      "start_time": "2026-09-11T20:11:21.153650",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0279_k2",
+      "start_time": "2026-09-11T20:11:29.049475",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0279_k3",
+      "start_time": "2026-09-11T20:11:28.855341",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0280_k1",
+      "start_time": "2026-09-11T20:11:43.803240",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0280_k2",
+      "start_time": "2026-09-11T20:11:35.471718",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0280_k3",
+      "start_time": "2026-09-11T20:11:37.518026",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0281_k1",
+      "start_time": "2026-09-11T20:12:28.983836",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0281_k2",
+      "start_time": "2026-09-11T20:12:22.607460",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0281_k3",
+      "start_time": "2026-09-11T20:12:30.986643",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0282_k1",
+      "start_time": "2026-09-11T20:13:35.063167",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0282_k2",
+      "start_time": "2026-09-11T20:13:20.367994",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0282_k3",
+      "start_time": "2026-09-11T20:13:20.989629",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0283_k1",
+      "start_time": "2026-09-11T20:13:31.030726",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0283_k2",
+      "start_time": "2026-09-11T20:14:49.471467",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0283_k3",
+      "start_time": "2026-09-11T20:14:31.118373",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0284_k1",
+      "start_time": "2026-09-11T20:14:37.047487",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0284_k2",
+      "start_time": "2026-09-11T20:15:21.526046",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0284_k3",
+      "start_time": "2026-09-11T20:15:38.579518",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0285_k1",
+      "start_time": "2026-09-11T20:15:23.178218",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0285_k2",
+      "start_time": "2026-09-11T20:15:28.474121",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0285_k3",
+      "start_time": "2026-09-11T20:16:27.171665",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0286_k1",
+      "start_time": "2026-09-11T20:15:37.653487",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0286_k2",
+      "start_time": "2026-09-11T20:16:26.743252",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0286_k3",
+      "start_time": "2026-09-11T20:16:20.357552",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0287_k1",
+      "start_time": "2026-09-11T20:16:26.399470",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0287_k2",
+      "start_time": "2026-09-11T20:16:27.670068",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0287_k3",
+      "start_time": "2026-09-11T20:16:41.964466",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0288_k1",
+      "start_time": "2026-09-11T20:17:31.838090",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0288_k2",
+      "start_time": "2026-09-11T20:17:43.785255",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0288_k3",
+      "start_time": "2026-09-11T20:17:36.716256",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0289_k1",
+      "start_time": "2026-09-11T20:17:34.221026",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0289_k2",
+      "start_time": "2026-09-11T20:19:26.418278",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0289_k3",
+      "start_time": "2026-09-11T20:18:45.602703",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0290_k1",
+      "start_time": "2026-09-11T20:19:36.661458",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0290_k2",
+      "start_time": "2026-09-11T20:19:22.596685",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0290_k3",
+      "start_time": "2026-09-11T20:19:24.115407",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0291_k1",
+      "start_time": "2026-09-11T20:19:25.176412",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0291_k2",
+      "start_time": "2026-09-11T20:19:36.329910",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0291_k3",
+      "start_time": "2026-09-11T20:19:34.147509",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0292_k1",
+      "start_time": "2026-09-11T20:19:35.609954",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0292_k2",
+      "start_time": "2026-09-11T20:19:46.416047",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0292_k3",
+      "start_time": "2026-09-11T20:19:48.604789",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0293_k1",
+      "start_time": "2026-09-11T20:20:26.876701",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0293_k2",
+      "start_time": "2026-09-11T20:21:21.313171",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0293_k3",
+      "start_time": "2026-09-11T20:21:33.859307",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0294_k1",
+      "start_time": "2026-09-11T20:21:42.977155",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0294_k2",
+      "start_time": "2026-09-11T20:21:39.684775",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0294_k3",
+      "start_time": "2026-09-11T20:21:43.988428",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0295_k1",
+      "start_time": "2026-09-11T20:21:42.448822",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0295_k2",
+      "start_time": "2026-09-11T20:22:21.383778",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0295_k3",
+      "start_time": "2026-09-11T20:22:22.282974",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0296_k1",
+      "start_time": "2026-09-11T20:22:26.998894",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0296_k2",
+      "start_time": "2026-09-11T20:23:21.748470",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0296_k3",
+      "start_time": "2026-09-11T20:23:22.484676",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0297_k1",
+      "start_time": "2026-09-11T20:23:36.508174",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0297_k2",
+      "start_time": "2026-09-11T20:24:22.922094",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0297_k3",
+      "start_time": "2026-09-11T20:23:41.869303",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0298_k1",
+      "start_time": "2026-09-11T20:24:29.513835",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0298_k2",
+      "start_time": "2026-09-11T20:24:23.903486",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0298_k3",
+      "start_time": "2026-09-11T20:24:28.091871",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0299_k1",
+      "start_time": "2026-09-11T20:25:31.205975",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0299_k2",
+      "start_time": "2026-09-11T20:25:25.252147",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0299_k3",
+      "start_time": "2026-09-11T20:26:34.507932",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0300_k1",
+      "start_time": "2026-09-11T20:25:45.381930",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0300_k2",
+      "start_time": "2026-09-11T20:26:31.530749",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0300_k3",
+      "start_time": "2026-09-11T20:26:21.519349",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0301_k1",
+      "start_time": "2026-09-11T20:26:28.445486",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0301_k2",
+      "start_time": "2026-09-11T20:27:26.459847",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0301_k3",
+      "start_time": "2026-09-11T20:26:44.450382",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0302_k1",
+      "start_time": "2026-09-11T20:27:27.590657",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0302_k2",
+      "start_time": "2026-09-11T20:28:22.879360",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0302_k3",
+      "start_time": "2026-09-11T20:28:31.445733",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0303_k1",
+      "start_time": "2026-09-11T20:27:42.805817",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0303_k2",
+      "start_time": "2026-09-11T20:28:36.192550",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0303_k3",
+      "start_time": "2026-09-11T20:28:36.044600",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0304_k1",
+      "start_time": "2026-09-11T20:28:36.301833",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0304_k2",
+      "start_time": "2026-09-11T20:29:34.772335",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0304_k3",
+      "start_time": "2026-09-11T20:29:46.888629",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0305_k1",
+      "start_time": "2026-09-11T20:29:55.595499",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0305_k2",
+      "start_time": "2026-09-11T20:29:27.047191",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0305_k3",
+      "start_time": "2026-09-11T20:29:37.667183",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0306_k1",
+      "start_time": "2026-09-11T20:30:24.404348",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0306_k2",
+      "start_time": "2026-09-11T20:30:22.287379",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0306_k3",
+      "start_time": "2026-09-11T20:30:22.718334",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0307_k1",
+      "start_time": "2026-09-11T20:30:31.408182",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0307_k2",
+      "start_time": "2026-09-11T20:30:30.175683",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0307_k3",
+      "start_time": "2026-09-11T20:31:28.479854",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0308_k1",
+      "start_time": "2026-09-11T20:31:37.416568",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0308_k2",
+      "start_time": "2026-09-11T20:32:22.720070",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0308_k3",
+      "start_time": "2026-09-11T20:31:39.256202",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0309_k1",
+      "start_time": "2026-09-11T20:33:43.290104",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0309_k2",
+      "start_time": "2026-09-11T20:32:41.750642",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0309_k3",
+      "start_time": "2026-09-11T20:33:32.836418",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0310_k1",
+      "start_time": "2026-09-11T20:32:42.136870",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0310_k2",
+      "start_time": "2026-09-11T20:33:28.922920",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0310_k3",
+      "start_time": "2026-09-11T20:33:36.232018",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0311_k1",
+      "start_time": "2026-09-11T20:33:46.759640",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0311_k2",
+      "start_time": "2026-09-11T20:33:41.210582",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0311_k3",
+      "start_time": "2026-09-11T20:34:24.271040",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0312_k1",
+      "start_time": "2026-09-11T20:34:29.313327",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0312_k2",
+      "start_time": "2026-09-11T20:34:33.461191",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0312_k3",
+      "start_time": "2026-09-11T20:35:32.908729",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0313_k1",
+      "start_time": "2026-09-11T20:36:25.235181",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0313_k2",
+      "start_time": "2026-09-11T20:35:37.795028",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0313_k3",
+      "start_time": "2026-09-11T20:36:33.171860",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0314_k1",
+      "start_time": "2026-09-11T20:36:23.766977",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0314_k2",
+      "start_time": "2026-09-11T20:36:32.494157",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0314_k3",
+      "start_time": "2026-09-11T20:36:36.967970",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0315_k1",
+      "start_time": "2026-09-11T20:36:40.870721",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0315_k2",
+      "start_time": "2026-09-11T20:37:23.352155",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0315_k3",
+      "start_time": "2026-09-11T20:37:29.734198",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0316_k1",
+      "start_time": "2026-09-11T20:37:34.617620",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0316_k2",
+      "start_time": "2026-09-11T20:37:33.223773",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0316_k3",
+      "start_time": "2026-09-11T20:38:22.694314",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0317_k1",
+      "start_time": "2026-09-11T20:38:29.702699",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0317_k2",
+      "start_time": "2026-09-11T20:38:38.146338",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0317_k3",
+      "start_time": "2026-09-11T20:38:34.015465",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0318_k1",
+      "start_time": "2026-09-11T20:38:33.452113",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0318_k2",
+      "start_time": "2026-09-11T20:39:26.010098",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0318_k3",
+      "start_time": "2026-09-11T20:38:34.794255",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0319_k1",
+      "start_time": "2026-09-11T20:39:36.718661",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0319_k2",
+      "start_time": "2026-09-11T20:39:37.836051",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0319_k3",
+      "start_time": "2026-09-11T20:40:45.105000",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0320_k1",
+      "start_time": "2026-09-11T20:40:40.857531",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0320_k2",
+      "start_time": "2026-09-11T20:40:25.083082",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0320_k3",
+      "start_time": "2026-09-11T20:40:33.727127",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0321_k1",
+      "start_time": "2026-09-11T20:40:35.008527",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0321_k2",
+      "start_time": "2026-09-11T20:40:42.441512",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0321_k3",
+      "start_time": "2026-09-11T20:41:28.940690",
+      "terminal_state": "other"
+    },
+    {
+      "sid": "r-0322_k1",
+      "start_time": "2026-09-11T20:41:22.791432",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0322_k2",
+      "start_time": "2026-09-11T20:41:40.162759",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0322_k3",
+      "start_time": "2026-09-11T20:41:45.676966",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0323_k1",
+      "start_time": "2026-09-11T20:42:23.618057",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0323_k2",
+      "start_time": "2026-09-11T20:42:29.886627",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0323_k3",
+      "start_time": "2026-09-11T20:43:30.626417",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0324_k1",
+      "start_time": "2026-09-11T20:43:23.159822",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0324_k2",
+      "start_time": "2026-09-11T20:43:25.482955",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0324_k3",
+      "start_time": "2026-09-11T20:43:30.300753",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0325_k1",
+      "start_time": "2026-09-11T20:44:23.985723",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0325_k2",
+      "start_time": "2026-09-11T20:43:41.232466",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0325_k3",
+      "start_time": "2026-09-11T20:44:25.340913",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0326_k1",
+      "start_time": "2026-09-11T20:44:49.802221",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0326_k2",
+      "start_time": "2026-09-11T20:44:37.936057",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0326_k3",
+      "start_time": "2026-09-11T20:44:29.464666",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0327_k1",
+      "start_time": "2026-09-11T20:45:25.432247",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0327_k2",
+      "start_time": "2026-09-11T20:44:41.126536",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0327_k3",
+      "start_time": "2026-09-11T20:44:39.856159",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0328_k1",
+      "start_time": "2026-09-11T20:45:35.579648",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0328_k2",
+      "start_time": "2026-09-11T20:45:30.238947",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0328_k3",
+      "start_time": "2026-09-11T20:46:27.777050",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0329_k1",
+      "start_time": "2026-09-11T20:46:44.716146",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0329_k2",
+      "start_time": "2026-09-11T20:46:24.320856",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0329_k3",
+      "start_time": "2026-09-11T20:46:24.220443",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0330_k1",
+      "start_time": "2026-09-11T20:46:41.361761",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0330_k2",
+      "start_time": "2026-09-11T20:47:23.189139",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0330_k3",
+      "start_time": "2026-09-11T20:47:30.750473",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0331_k1",
+      "start_time": "2026-09-11T20:47:52.029916",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0331_k2",
+      "start_time": "2026-09-11T20:48:41.042293",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0331_k3",
+      "start_time": "2026-09-11T20:47:42.631744",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0332_k1",
+      "start_time": "2026-09-11T20:48:44.841864",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0332_k2",
+      "start_time": "2026-09-11T20:48:28.428844",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0332_k3",
+      "start_time": "2026-09-11T20:48:23.151299",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0333_k1",
+      "start_time": "2026-09-11T20:48:25.131748",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0333_k2",
+      "start_time": "2026-09-11T20:49:30.435709",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0333_k3",
+      "start_time": "2026-09-11T20:48:33.401252",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0334_k1",
+      "start_time": "2026-09-11T20:49:28.337156",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0334_k2",
+      "start_time": "2026-09-11T20:48:47.509643",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0334_k3",
+      "start_time": "2026-09-11T20:48:47.258020",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0335_k1",
+      "start_time": "2026-09-11T20:49:27.267188",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0335_k2",
+      "start_time": "2026-09-11T20:49:34.676825",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0335_k3",
+      "start_time": "2026-09-11T20:49:41.419982",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0336_k1",
+      "start_time": "2026-09-11T20:50:23.859156",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0336_k2",
+      "start_time": "2026-09-11T20:51:31.802674",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0336_k3",
+      "start_time": "2026-09-11T20:51:24.393119",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0337_k1",
+      "start_time": "2026-09-11T20:52:24.563260",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0337_k2",
+      "start_time": "2026-09-11T20:51:40.744399",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0337_k3",
+      "start_time": "2026-09-11T20:51:34.196058",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0338_k1",
+      "start_time": "2026-09-11T20:51:40.451589",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0338_k2",
+      "start_time": "2026-09-11T20:51:44.602003",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0338_k3",
+      "start_time": "2026-09-11T20:52:24.505583",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0339_k1",
+      "start_time": "2026-09-11T20:52:28.933843",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0339_k2",
+      "start_time": "2026-09-11T20:52:30.038104",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0339_k3",
+      "start_time": "2026-09-11T20:52:32.575944",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0340_k1",
+      "start_time": "2026-09-11T20:53:41.519838",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0340_k2",
+      "start_time": "2026-09-11T20:53:24.325067",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0340_k3",
+      "start_time": "2026-09-11T20:53:36.606943",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0341_k1",
+      "start_time": "2026-09-11T20:53:36.092649",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0341_k2",
+      "start_time": "2026-09-11T20:54:30.704219",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0341_k3",
+      "start_time": "2026-09-11T20:54:36.027348",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0342_k1",
+      "start_time": "2026-09-11T20:54:41.347550",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0342_k2",
+      "start_time": "2026-09-11T20:55:25.659145",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0342_k3",
+      "start_time": "2026-09-11T20:55:35.310457",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0343_k1",
+      "start_time": "2026-09-11T20:55:34.626936",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0343_k2",
+      "start_time": "2026-09-11T20:55:36.940781",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0343_k3",
+      "start_time": "2026-09-11T20:56:41.271980",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0344_k1",
+      "start_time": "2026-09-11T20:56:29.832978",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0344_k2",
+      "start_time": "2026-09-11T20:56:33.402931",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0344_k3",
+      "start_time": "2026-09-11T20:56:43.325914",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0345_k1",
+      "start_time": "2026-09-11T20:57:27.271503",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0345_k2",
+      "start_time": "2026-09-11T20:57:25.249780",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0345_k3",
+      "start_time": "2026-09-11T20:57:40.567044",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0346_k1",
+      "start_time": "2026-09-11T20:58:46.795196",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0346_k2",
+      "start_time": "2026-09-11T20:58:35.064105",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0346_k3",
+      "start_time": "2026-09-11T20:58:44.586851",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0347_k1",
+      "start_time": "2026-09-11T20:58:35.176023",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0347_k2",
+      "start_time": "2026-09-11T20:58:37.576138",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0347_k3",
+      "start_time": "2026-09-11T20:58:45.779871",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0348_k1",
+      "start_time": "2026-09-11T20:58:46.916884",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0348_k2",
+      "start_time": "2026-09-11T20:59:25.993904",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0348_k3",
+      "start_time": "2026-09-11T21:00:32.782764",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0349_k1",
+      "start_time": "2026-09-11T21:00:32.477235",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0349_k2",
+      "start_time": "2026-09-11T21:00:32.515332",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0349_k3",
+      "start_time": "2026-09-11T21:00:40.304830",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0350_k1",
+      "start_time": "2026-09-11T21:01:26.958713",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0350_k2",
+      "start_time": "2026-09-11T21:01:49.916780",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0350_k3",
+      "start_time": "2026-09-11T21:02:24.884322",
+      "terminal_state": "answered_pass"
+    }
+  ],
+  "R4": [
+    {
+      "sid": "r-0201_k1",
+      "start_time": "2026-09-11T21:03:32.901060",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0201_k2",
+      "start_time": "2026-09-11T21:03:33.017154",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0201_k3",
+      "start_time": "2026-09-11T21:03:33.157617",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0202_k1",
+      "start_time": "2026-09-11T21:03:33.422711",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0202_k2",
+      "start_time": "2026-09-11T21:03:34.417773",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0202_k3",
+      "start_time": "2026-09-11T21:04:36.361081",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0203_k1",
+      "start_time": "2026-09-11T21:03:49.467443",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0203_k2",
+      "start_time": "2026-09-11T21:04:31.145331",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0203_k3",
+      "start_time": "2026-09-11T21:03:41.440686",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0204_k1",
+      "start_time": "2026-09-11T21:04:27.293243",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0204_k2",
+      "start_time": "2026-09-11T21:03:36.414957",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0204_k3",
+      "start_time": "2026-09-11T21:03:49.439567",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0205_k1",
+      "start_time": "2026-09-11T21:05:43.544005",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0205_k2",
+      "start_time": "2026-09-11T21:05:26.692076",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0205_k3",
+      "start_time": "2026-09-11T21:05:29.233111",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0206_k1",
+      "start_time": "2026-09-11T21:06:32.295844",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0206_k2",
+      "start_time": "2026-09-11T21:06:49.400434",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0206_k3",
+      "start_time": "2026-09-11T21:06:37.056096",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0207_k1",
+      "start_time": "2026-09-11T21:06:40.237184",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0207_k2",
+      "start_time": "2026-09-11T21:06:46.966452",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0207_k3",
+      "start_time": "2026-09-11T21:06:50.090818",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0208_k1",
+      "start_time": "2026-09-11T21:06:53.660595",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0208_k2",
+      "start_time": "2026-09-11T21:08:28.200482",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0208_k3",
+      "start_time": "2026-09-11T21:08:26.674196",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0209_k1",
+      "start_time": "2026-09-11T21:08:49.974823",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0209_k2",
+      "start_time": "2026-09-11T21:08:45.421372",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0209_k3",
+      "start_time": "2026-09-11T21:08:33.567934",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0210_k1",
+      "start_time": "2026-09-11T21:08:49.051381",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0210_k2",
+      "start_time": "2026-09-11T21:09:34.770122",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0210_k3",
+      "start_time": "2026-09-11T21:09:43.120020",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0211_k1",
+      "start_time": "2026-09-11T21:10:26.487008",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0211_k2",
+      "start_time": "2026-09-11T21:10:44.562303",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0211_k3",
+      "start_time": "2026-09-11T21:11:26.626577",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0212_k1",
+      "start_time": "2026-09-11T21:11:27.127274",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0212_k2",
+      "start_time": "2026-09-11T21:10:44.251024",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0212_k3",
+      "start_time": "2026-09-11T21:12:42.314891",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0213_k1",
+      "start_time": "2026-09-11T21:11:51.363172",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0213_k2",
+      "start_time": "2026-09-11T21:12:27.344242",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0213_k3",
+      "start_time": "2026-09-11T21:12:53.463248",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0214_k1",
+      "start_time": "2026-09-11T21:13:27.384110",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0214_k2",
+      "start_time": "2026-09-11T21:13:31.150341",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0214_k3",
+      "start_time": "2026-09-11T21:13:43.657464",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0215_k1",
+      "start_time": "2026-09-11T21:14:57.798144",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0215_k2",
+      "start_time": "2026-09-11T21:14:29.430440",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0215_k3",
+      "start_time": "2026-09-11T21:14:45.412921",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0216_k1",
+      "start_time": "2026-09-11T21:14:52.114127",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0216_k2",
+      "start_time": "2026-09-11T21:15:34.025589",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0216_k3",
+      "start_time": "2026-09-11T21:15:29.916149",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0217_k1",
+      "start_time": "2026-09-11T21:16:33.610693",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0217_k2",
+      "start_time": "2026-09-11T21:16:27.899933",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0217_k3",
+      "start_time": "2026-09-11T21:16:31.468376",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0218_k1",
+      "start_time": "2026-09-11T21:17:33.313055",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0218_k2",
+      "start_time": "2026-09-11T21:16:33.437402",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0218_k3",
+      "start_time": "2026-09-11T21:17:31.061155",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0219_k1",
+      "start_time": "2026-09-11T21:18:44.310641",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0219_k2",
+      "start_time": "2026-09-11T21:18:31.450688",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0219_k3",
+      "start_time": "2026-09-11T21:18:31.373746",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0220_k1",
+      "start_time": "2026-09-11T21:18:45.020512",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0220_k2",
+      "start_time": "2026-09-11T21:18:49.982320",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0220_k3",
+      "start_time": "2026-09-11T21:19:27.088613",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0221_k1",
+      "start_time": "2026-09-11T21:19:38.212930",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0221_k2",
+      "start_time": "2026-09-11T21:20:36.297556",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0221_k3",
+      "start_time": "2026-09-11T21:19:45.767562",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0222_k1",
+      "start_time": "2026-09-11T21:19:50.717817",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0222_k2",
+      "start_time": "2026-09-11T21:20:28.681872",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0222_k3",
+      "start_time": "2026-09-11T21:20:28.720316",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0223_k1",
+      "start_time": "2026-09-11T21:20:40.689534",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0223_k2",
+      "start_time": "2026-09-11T21:20:50.300337",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0223_k3",
+      "start_time": "2026-09-11T21:21:42.860307",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0224_k1",
+      "start_time": "2026-09-11T21:21:45.062140",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0224_k2",
+      "start_time": "2026-09-11T21:22:30.582278",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0224_k3",
+      "start_time": "2026-09-11T21:22:38.534521",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0225_k1",
+      "start_time": "2026-09-11T21:22:49.562276",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0225_k2",
+      "start_time": "2026-09-11T21:23:41.282852",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0225_k3",
+      "start_time": "2026-09-11T21:23:28.441678",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0226_k1",
+      "start_time": "2026-09-11T21:23:30.344759",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0226_k2",
+      "start_time": "2026-09-11T21:23:46.360890",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0226_k3",
+      "start_time": "2026-09-11T21:23:56.815767",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0227_k1",
+      "start_time": "2026-09-11T21:24:28.189487",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0227_k2",
+      "start_time": "2026-09-11T21:24:39.204395",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0227_k3",
+      "start_time": "2026-09-11T21:24:40.294571",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0228_k1",
+      "start_time": "2026-09-11T21:25:39.244936",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0228_k2",
+      "start_time": "2026-09-11T21:24:41.808064",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0228_k3",
+      "start_time": "2026-09-11T21:24:40.457364",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0229_k1",
+      "start_time": "2026-09-11T21:26:30.457939",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0229_k2",
+      "start_time": "2026-09-11T21:27:03.490004",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0229_k3",
+      "start_time": "2026-09-11T21:27:30.674261",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0230_k1",
+      "start_time": "2026-09-11T21:26:41.014650",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0230_k2",
+      "start_time": "2026-09-11T21:26:45.109999",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0230_k3",
+      "start_time": "2026-09-11T21:27:28.882070",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0231_k1",
+      "start_time": "2026-09-11T21:26:48.849198",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0231_k2",
+      "start_time": "2026-09-11T21:27:39.175213",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0231_k3",
+      "start_time": "2026-09-11T21:28:30.590966",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0232_k1",
+      "start_time": "2026-09-11T21:28:32.451867",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0232_k2",
+      "start_time": "2026-09-11T21:28:31.378993",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0232_k3",
+      "start_time": "2026-09-11T21:28:45.046389",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0233_k1",
+      "start_time": "2026-09-11T21:29:41.570009",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0233_k2",
+      "start_time": "2026-09-11T21:30:33.154282",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0233_k3",
+      "start_time": "2026-09-11T21:29:47.175933",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0234_k1",
+      "start_time": "2026-09-11T21:30:30.576391",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0234_k2",
+      "start_time": "2026-09-11T21:31:04.663292",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0234_k3",
+      "start_time": "2026-09-11T21:30:29.861953",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0235_k1",
+      "start_time": "2026-09-11T21:30:51.969606",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0235_k2",
+      "start_time": "2026-09-11T21:30:48.878969",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0235_k3",
+      "start_time": "2026-09-11T21:31:40.444317",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0236_k1",
+      "start_time": "2026-09-11T21:32:39.969301",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0236_k2",
+      "start_time": "2026-09-11T21:32:29.663679",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0236_k3",
+      "start_time": "2026-09-11T21:32:28.329703",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0237_k1",
+      "start_time": "2026-09-11T21:32:28.267133",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0237_k2",
+      "start_time": "2026-09-11T21:32:37.092007",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0237_k3",
+      "start_time": "2026-09-11T21:33:39.646723",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0238_k1",
+      "start_time": "2026-09-11T21:33:38.472061",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0238_k2",
+      "start_time": "2026-09-11T21:33:38.770087",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0238_k3",
+      "start_time": "2026-09-11T21:33:51.499827",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0239_k1",
+      "start_time": "2026-09-11T21:34:28.875250",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0239_k2",
+      "start_time": "2026-09-11T21:34:30.990096",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0239_k3",
+      "start_time": "2026-09-11T21:35:40.775187",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0240_k1",
+      "start_time": "2026-09-11T21:34:49.602740",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0240_k2",
+      "start_time": "2026-09-11T21:34:54.077004",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0240_k3",
+      "start_time": "2026-09-11T21:35:53.189055",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0241_k1",
+      "start_time": "2026-09-11T21:35:51.546800",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0241_k2",
+      "start_time": "2026-09-11T21:36:30.622907",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0241_k3",
+      "start_time": "2026-09-11T21:36:40.786812",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0242_k1",
+      "start_time": "2026-09-11T21:37:44.257519",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0242_k2",
+      "start_time": "2026-09-11T21:37:28.185360",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0242_k3",
+      "start_time": "2026-09-11T21:37:31.890785",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0243_k1",
+      "start_time": "2026-09-11T21:37:33.057127",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0243_k2",
+      "start_time": "2026-09-11T21:38:49.213396",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0243_k3",
+      "start_time": "2026-09-11T21:39:01.617401",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0244_k1",
+      "start_time": "2026-09-11T21:38:36.593035",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0244_k2",
+      "start_time": "2026-09-11T21:38:44.057998",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0244_k3",
+      "start_time": "2026-09-11T21:38:46.014523",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0245_k1",
+      "start_time": "2026-09-11T21:38:46.504781",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0245_k2",
+      "start_time": "2026-09-11T21:38:53.257602",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0245_k3",
+      "start_time": "2026-09-11T21:39:33.014928",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0246_k1",
+      "start_time": "2026-09-11T21:39:39.402939",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0246_k2",
+      "start_time": "2026-09-11T21:39:28.637635",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0246_k3",
+      "start_time": "2026-09-11T21:39:37.566471",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0247_k1",
+      "start_time": "2026-09-11T21:41:05.636202",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0247_k2",
+      "start_time": "2026-09-11T21:40:52.312887",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0247_k3",
+      "start_time": "2026-09-11T21:40:46.678559",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0248_k1",
+      "start_time": "2026-09-11T21:40:46.993421",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0248_k2",
+      "start_time": "2026-09-11T21:40:51.518661",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0248_k3",
+      "start_time": "2026-09-11T21:41:29.177580",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0249_k1",
+      "start_time": "2026-09-11T21:41:42.533305",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0249_k2",
+      "start_time": "2026-09-11T21:41:40.711746",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0249_k3",
+      "start_time": "2026-09-11T21:42:30.463247",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0250_k1",
+      "start_time": "2026-09-11T21:42:39.117919",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0250_k2",
+      "start_time": "2026-09-11T21:42:43.530503",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0250_k3",
+      "start_time": "2026-09-11T21:43:29.097167",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0251_k1",
+      "start_time": "2026-09-11T21:43:30.112140",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0251_k2",
+      "start_time": "2026-09-11T21:44:41.516581",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0251_k3",
+      "start_time": "2026-09-11T21:44:30.911268",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0252_k1",
+      "start_time": "2026-09-11T21:44:47.838679",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0252_k2",
+      "start_time": "2026-09-11T21:45:52.845109",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0252_k3",
+      "start_time": "2026-09-11T21:45:37.161482",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0253_k1",
+      "start_time": "2026-09-11T21:45:43.566984",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0253_k2",
+      "start_time": "2026-09-11T21:45:53.425739",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0253_k3",
+      "start_time": "2026-09-11T21:46:29.642418",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0254_k1",
+      "start_time": "2026-09-11T21:46:36.963598",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0254_k2",
+      "start_time": "2026-09-11T21:46:38.633376",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0254_k3",
+      "start_time": "2026-09-11T21:46:37.149915",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0255_k1",
+      "start_time": "2026-09-11T21:46:48.036474",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0255_k2",
+      "start_time": "2026-09-11T21:46:52.044880",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0255_k3",
+      "start_time": "2026-09-11T21:48:29.366725",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0256_k1",
+      "start_time": "2026-09-11T21:48:38.635903",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0256_k2",
+      "start_time": "2026-09-11T21:48:38.472311",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0256_k3",
+      "start_time": "2026-09-11T21:49:40.906804",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0257_k1",
+      "start_time": "2026-09-11T21:49:31.294988",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0257_k2",
+      "start_time": "2026-09-11T21:49:29.543870",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0257_k3",
+      "start_time": "2026-09-11T21:49:38.228570",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0258_k1",
+      "start_time": "2026-09-11T21:49:40.405502",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0258_k2",
+      "start_time": "2026-09-11T21:49:45.833429",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0258_k3",
+      "start_time": "2026-09-11T21:49:50.553598",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0259_k1",
+      "start_time": "2026-09-11T21:49:57.058211",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0259_k2",
+      "start_time": "2026-09-11T21:50:44.256906",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0259_k3",
+      "start_time": "2026-09-11T21:50:46.498193",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0260_k1",
+      "start_time": "2026-09-11T21:50:52.596293",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0260_k2",
+      "start_time": "2026-09-11T21:51:46.427539",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0260_k3",
+      "start_time": "2026-09-11T21:51:40.647035",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0261_k1",
+      "start_time": "2026-09-11T21:51:38.674473",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0261_k2",
+      "start_time": "2026-09-11T21:51:48.333880",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0261_k3",
+      "start_time": "2026-09-11T21:51:54.428302",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0262_k1",
+      "start_time": "2026-09-11T21:52:36.937271",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0262_k2",
+      "start_time": "2026-09-11T21:54:41.886644",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0262_k3",
+      "start_time": "2026-09-11T21:54:51.044058",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0263_k1",
+      "start_time": "2026-09-11T21:53:49.732652",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0263_k2",
+      "start_time": "2026-09-11T21:54:30.877402",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0263_k3",
+      "start_time": "2026-09-11T21:54:36.842953",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0264_k1",
+      "start_time": "2026-09-11T21:54:59.732893",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0264_k2",
+      "start_time": "2026-09-11T21:54:42.192411",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0264_k3",
+      "start_time": "2026-09-11T21:54:54.641567",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0265_k1",
+      "start_time": "2026-09-11T21:55:29.940652",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0265_k2",
+      "start_time": "2026-09-11T21:54:58.954855",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0265_k3",
+      "start_time": "2026-09-11T21:55:37.351981",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0266_k1",
+      "start_time": "2026-09-11T21:56:30.157897",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0266_k2",
+      "start_time": "2026-09-11T21:56:41.941607",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0266_k3",
+      "start_time": "2026-09-11T21:56:46.421273",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0267_k1",
+      "start_time": "2026-09-11T21:57:31.230611",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0267_k2",
+      "start_time": "2026-09-11T21:57:42.342078",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0267_k3",
+      "start_time": "2026-09-11T21:57:55.158256",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0268_k1",
+      "start_time": "2026-09-11T21:58:38.257940",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0268_k2",
+      "start_time": "2026-09-11T21:58:46.799453",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0268_k3",
+      "start_time": "2026-09-11T21:58:40.447413",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0269_k1",
+      "start_time": "2026-09-11T21:58:43.517402",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0269_k2",
+      "start_time": "2026-09-11T21:58:53.950005",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0269_k3",
+      "start_time": "2026-09-11T21:59:33.632150",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0270_k1",
+      "start_time": "2026-09-11T21:59:36.113308",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0270_k2",
+      "start_time": "2026-09-11T21:59:36.375412",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0270_k3",
+      "start_time": "2026-09-11T21:59:38.547435",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0271_k1",
+      "start_time": "2026-09-11T21:59:41.745250",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0271_k2",
+      "start_time": "2026-09-11T22:01:38.534851",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0271_k3",
+      "start_time": "2026-09-11T22:01:48.928752",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0272_k1",
+      "start_time": "2026-09-11T22:00:56.611345",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0272_k2",
+      "start_time": "2026-09-11T22:00:58.647619",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0272_k3",
+      "start_time": "2026-09-11T22:01:39.980740",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0273_k1",
+      "start_time": "2026-09-11T22:01:51.169812",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0273_k2",
+      "start_time": "2026-09-11T22:01:53.957405",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0273_k3",
+      "start_time": "2026-09-11T22:02:53.654012",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0274_k1",
+      "start_time": "2026-09-11T22:02:36.292272",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0274_k2",
+      "start_time": "2026-09-11T22:02:45.442705",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0274_k3",
+      "start_time": "2026-09-11T22:02:55.565687",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0275_k1",
+      "start_time": "2026-09-11T22:02:56.433947",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0275_k2",
+      "start_time": "2026-09-11T22:03:35.054096",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0275_k3",
+      "start_time": "2026-09-11T22:03:46.760634",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0276_k1",
+      "start_time": "2026-09-11T22:04:03.765465",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0276_k2",
+      "start_time": "2026-09-11T22:05:00.681965",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0276_k3",
+      "start_time": "2026-09-11T22:04:39.851919",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0277_k1",
+      "start_time": "2026-09-11T22:04:33.783852",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0277_k2",
+      "start_time": "2026-09-11T22:05:35.974275",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0277_k3",
+      "start_time": "2026-09-11T22:05:38.371363",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0278_k1",
+      "start_time": "2026-09-11T22:05:36.998491",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0278_k2",
+      "start_time": "2026-09-11T22:05:54.055647",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0278_k3",
+      "start_time": "2026-09-11T22:06:51.126112",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0279_k1",
+      "start_time": "2026-09-11T22:06:47.627629",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0279_k2",
+      "start_time": "2026-09-11T22:06:47.346471",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0279_k3",
+      "start_time": "2026-09-11T22:06:56.115614",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0280_k1",
+      "start_time": "2026-09-11T22:07:37.534068",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0280_k2",
+      "start_time": "2026-09-11T22:07:42.073561",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0280_k3",
+      "start_time": "2026-09-11T22:07:35.362606",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0281_k1",
+      "start_time": "2026-09-11T22:07:47.187310",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0281_k2",
+      "start_time": "2026-09-11T22:08:33.692591",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0281_k3",
+      "start_time": "2026-09-11T22:09:31.584888",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0282_k1",
+      "start_time": "2026-09-11T22:08:55.642758",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0282_k2",
+      "start_time": "2026-09-11T22:09:33.856244",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0282_k3",
+      "start_time": "2026-09-11T22:09:56.706477",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0283_k1",
+      "start_time": "2026-09-11T22:10:33.964261",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0283_k2",
+      "start_time": "2026-09-11T22:10:31.071665",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0283_k3",
+      "start_time": "2026-09-11T22:10:42.214590",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0284_k1",
+      "start_time": "2026-09-11T22:11:38.415495",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0284_k2",
+      "start_time": "2026-09-11T22:10:52.075735",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0284_k3",
+      "start_time": "2026-09-11T22:12:31.336743",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0285_k1",
+      "start_time": "2026-09-11T22:11:58.406415",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0285_k2",
+      "start_time": "2026-09-11T22:12:33.845739",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0285_k3",
+      "start_time": "2026-09-11T22:13:39.393235",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0286_k1",
+      "start_time": "2026-09-11T22:12:48.842727",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0286_k2",
+      "start_time": "2026-09-11T22:12:44.252754",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0286_k3",
+      "start_time": "2026-09-11T22:12:48.121806",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0287_k1",
+      "start_time": "2026-09-11T22:14:31.127277",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0287_k2",
+      "start_time": "2026-09-11T22:14:33.164226",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0287_k3",
+      "start_time": "2026-09-11T22:14:37.534090",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0288_k1",
+      "start_time": "2026-09-11T22:15:31.533927",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0288_k2",
+      "start_time": "2026-09-11T22:15:53.073008",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0288_k3",
+      "start_time": "2026-09-11T22:16:31.515564",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0289_k1",
+      "start_time": "2026-09-11T22:16:37.748313",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0289_k2",
+      "start_time": "2026-09-11T22:17:31.240118",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0289_k3",
+      "start_time": "2026-09-11T22:17:34.358539",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0290_k1",
+      "start_time": "2026-09-11T22:18:37.811483",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0290_k2",
+      "start_time": "2026-09-11T22:17:54.234911",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0290_k3",
+      "start_time": "2026-09-11T22:17:50.654508",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0291_k1",
+      "start_time": "2026-09-11T22:17:59.099177",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0291_k2",
+      "start_time": "2026-09-11T22:19:00.529834",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0291_k3",
+      "start_time": "2026-09-11T22:18:39.633434",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0292_k1",
+      "start_time": "2026-09-11T22:18:32.112131",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0292_k2",
+      "start_time": "2026-09-11T22:18:38.047564",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0292_k3",
+      "start_time": "2026-09-11T22:18:44.428995",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0293_k1",
+      "start_time": "2026-09-11T22:19:31.255602",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0293_k2",
+      "start_time": "2026-09-11T22:19:46.077913",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0293_k3",
+      "start_time": "2026-09-11T22:20:47.557427",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0294_k1",
+      "start_time": "2026-09-11T22:20:51.104952",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0294_k2",
+      "start_time": "2026-09-11T22:20:41.865400",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0294_k3",
+      "start_time": "2026-09-11T22:20:42.677705",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0295_k1",
+      "start_time": "2026-09-11T22:20:49.388142",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0295_k2",
+      "start_time": "2026-09-11T22:21:43.702982",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0295_k3",
+      "start_time": "2026-09-11T22:21:34.010682",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0296_k1",
+      "start_time": "2026-09-11T22:21:40.919025",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0296_k2",
+      "start_time": "2026-09-11T22:22:37.596054",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0296_k3",
+      "start_time": "2026-09-11T22:22:38.703191",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0297_k1",
+      "start_time": "2026-09-11T22:23:46.663647",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0297_k2",
+      "start_time": "2026-09-11T22:22:54.658680",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0297_k3",
+      "start_time": "2026-09-11T22:24:03.481668",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0298_k1",
+      "start_time": "2026-09-11T22:23:47.903945",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0298_k2",
+      "start_time": "2026-09-11T22:23:50.385621",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0298_k3",
+      "start_time": "2026-09-11T22:24:46.521985",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0299_k1",
+      "start_time": "2026-09-11T22:24:47.807943",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0299_k2",
+      "start_time": "2026-09-11T22:24:42.667609",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0299_k3",
+      "start_time": "2026-09-11T22:24:58.434952",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0300_k1",
+      "start_time": "2026-09-11T22:25:53.796462",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0300_k2",
+      "start_time": "2026-09-11T22:24:55.304329",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0300_k3",
+      "start_time": "2026-09-11T22:25:32.678759",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0301_k1",
+      "start_time": "2026-09-11T22:25:32.674971",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0301_k2",
+      "start_time": "2026-09-11T22:26:38.027334",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0301_k3",
+      "start_time": "2026-09-11T22:26:51.721525",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0302_k1",
+      "start_time": "2026-09-11T22:26:55.478682",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0302_k2",
+      "start_time": "2026-09-11T22:27:43.281266",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0302_k3",
+      "start_time": "2026-09-11T22:27:40.196915",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0303_k1",
+      "start_time": "2026-09-11T22:27:45.793710",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0303_k2",
+      "start_time": "2026-09-11T22:27:56.860830",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0303_k3",
+      "start_time": "2026-09-11T22:29:00.711882",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0304_k1",
+      "start_time": "2026-09-11T22:28:33.033343",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0304_k2",
+      "start_time": "2026-09-11T22:28:35.803686",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0304_k3",
+      "start_time": "2026-09-11T22:28:40.507910",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0305_k1",
+      "start_time": "2026-09-11T22:28:54.522388",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0305_k2",
+      "start_time": "2026-09-11T22:29:32.540785",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0305_k3",
+      "start_time": "2026-09-11T22:30:10.879042",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0306_k1",
+      "start_time": "2026-09-11T22:29:55.515449",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0306_k2",
+      "start_time": "2026-09-11T22:30:35.797684",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0306_k3",
+      "start_time": "2026-09-11T22:30:33.067043",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0307_k1",
+      "start_time": "2026-09-11T22:30:33.858208",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0307_k2",
+      "start_time": "2026-09-11T22:32:07.633915",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0307_k3",
+      "start_time": "2026-09-11T22:31:34.634378",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0308_k1",
+      "start_time": "2026-09-11T22:32:10.842313",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0308_k2",
+      "start_time": "2026-09-11T22:31:51.539839",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0308_k3",
+      "start_time": "2026-09-11T22:31:52.026684",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0309_k1",
+      "start_time": "2026-09-11T22:31:59.332572",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0309_k2",
+      "start_time": "2026-09-11T22:32:37.334491",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0309_k3",
+      "start_time": "2026-09-11T22:32:35.168173",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0310_k1",
+      "start_time": "2026-09-11T22:32:33.476233",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0310_k2",
+      "start_time": "2026-09-11T22:33:40.657246",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0310_k3",
+      "start_time": "2026-09-11T22:32:39.904289",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0311_k1",
+      "start_time": "2026-09-11T22:32:53.439865",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0311_k2",
+      "start_time": "2026-09-11T22:33:41.547597",
+      "terminal_state": "answered_fail"
+    },
+    {
+      "sid": "r-0311_k3",
+      "start_time": "2026-09-11T22:33:43.052890",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0312_k1",
+      "start_time": "2026-09-11T22:34:34.300541",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0312_k2",
+      "start_time": "2026-09-11T22:34:44.312022",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0312_k3",
+      "start_time": "2026-09-11T22:34:40.209401",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0313_k1",
+      "start_time": "2026-09-11T22:35:34.457517",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0313_k2",
+      "start_time": "2026-09-11T22:35:46.376078",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0313_k3",
+      "start_time": "2026-09-11T22:35:37.972300",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0314_k1",
+      "start_time": "2026-09-11T22:36:33.551971",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0314_k2",
+      "start_time": "2026-09-11T22:36:38.852073",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0314_k3",
+      "start_time": "2026-09-11T22:36:56.781832",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0315_k1",
+      "start_time": "2026-09-11T22:37:01.970492",
+      "terminal_state": "answered_pass"
+    },
+    {
+      "sid": "r-0315_k2",
+      "start_time": "2026-09-11T22:36:59.838779",
+      "terminal_state": "step_cap"
+    },
+    {
+      "sid": "r-0315_k3",
+      "start_time": "2026-09-11T22:37:40.071901",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0316_k1",
+      "start_time": "2026-09-11T22:38:33.661740",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0316_k2",
+      "start_time": "2026-09-11T22:38:40.397375",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0316_k3",
+      "start_time": "2026-09-11T22:38:46.064302",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0317_k1",
+      "start_time": "2026-09-11T22:39:46.012505",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0317_k2",
+      "start_time": "2026-09-11T22:39:48.758486",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0317_k3",
+      "start_time": "2026-09-11T22:39:52.673427",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0318_k1",
+      "start_time": "2026-09-11T22:39:56.005383",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0318_k2",
+      "start_time": "2026-09-11T22:40:51.902444",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0318_k3",
+      "start_time": "2026-09-11T22:40:37.581769",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0319_k1",
+      "start_time": "2026-09-11T22:40:47.255705",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0319_k2",
+      "start_time": "2026-09-11T22:41:35.961280",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0319_k3",
+      "start_time": "2026-09-11T22:41:40.982613",
+      "terminal_state": "midrun_no_completion"
+    },
+    {
+      "sid": "r-0320_k1",
+      "start_time": "2026-09-11T22:41:50.738873",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0320_k2",
+      "start_time": "2026-09-11T22:41:53.193480",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0320_k3",
+      "start_time": "2026-09-11T22:41:54.707771",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0321_k1",
+      "start_time": "2026-09-11T22:41:53.193507",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0321_k2",
+      "start_time": "2026-09-11T22:41:53.198789",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0321_k3",
+      "start_time": "2026-09-11T22:41:53.410497",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0322_k1",
+      "start_time": "2026-09-11T22:41:52.263085",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0322_k2",
+      "start_time": "2026-09-11T22:41:52.294747",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0322_k3",
+      "start_time": "2026-09-11T22:41:52.323465",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0323_k1",
+      "start_time": "2026-09-11T22:41:52.350529",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0323_k2",
+      "start_time": "2026-09-11T22:41:52.377464",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0323_k3",
+      "start_time": "2026-09-11T22:41:52.404447",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0324_k1",
+      "start_time": "2026-09-11T22:41:52.432437",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0324_k2",
+      "start_time": "2026-09-11T22:41:52.536060",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0324_k3",
+      "start_time": "2026-09-11T22:41:52.560523",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0325_k1",
+      "start_time": "2026-09-11T22:41:52.586115",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0325_k2",
+      "start_time": "2026-09-11T22:41:52.612103",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0325_k3",
+      "start_time": "2026-09-11T22:41:52.648477",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0326_k1",
+      "start_time": "2026-09-11T22:41:52.679557",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0326_k2",
+      "start_time": "2026-09-11T22:41:52.685994",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0326_k3",
+      "start_time": "2026-09-11T22:41:52.714419",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0327_k1",
+      "start_time": "2026-09-11T22:41:52.764264",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0327_k2",
+      "start_time": "2026-09-11T22:41:52.796539",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0327_k3",
+      "start_time": "2026-09-11T22:41:52.880668",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0328_k1",
+      "start_time": "2026-09-11T22:41:52.889013",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0328_k2",
+      "start_time": "2026-09-11T22:41:52.915268",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0328_k3",
+      "start_time": "2026-09-11T22:41:52.964524",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0329_k1",
+      "start_time": "2026-09-11T22:41:52.993043",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0329_k2",
+      "start_time": "2026-09-11T22:41:53.005793",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0329_k3",
+      "start_time": "2026-09-11T22:41:53.016024",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0330_k1",
+      "start_time": "2026-09-11T22:41:53.040491",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0330_k2",
+      "start_time": "2026-09-11T22:41:53.088536",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0330_k3",
+      "start_time": "2026-09-11T22:41:53.119159",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0331_k1",
+      "start_time": "2026-09-11T22:41:53.129972",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0331_k2",
+      "start_time": "2026-09-11T22:41:53.212947",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0331_k3",
+      "start_time": "2026-09-11T22:41:53.237225",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0332_k1",
+      "start_time": "2026-09-11T22:41:53.334874",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0332_k2",
+      "start_time": "2026-09-11T22:41:53.365814",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0332_k3",
+      "start_time": "2026-09-11T22:41:53.378844",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0333_k1",
+      "start_time": "2026-09-11T22:41:53.385634",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0333_k2",
+      "start_time": "2026-09-11T22:41:53.297901",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0333_k3",
+      "start_time": "2026-09-11T22:41:53.426384",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0334_k1",
+      "start_time": "2026-09-11T22:41:53.435978",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0334_k2",
+      "start_time": "2026-09-11T22:41:53.460424",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0334_k3",
+      "start_time": "2026-09-11T22:41:53.578776",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0335_k1",
+      "start_time": "2026-09-11T22:41:53.585797",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0335_k2",
+      "start_time": "2026-09-11T22:41:53.636947",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0335_k3",
+      "start_time": "2026-09-11T22:41:53.668236",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0336_k1",
+      "start_time": "2026-09-11T22:41:53.675204",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0336_k2",
+      "start_time": "2026-09-11T22:41:53.689050",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0336_k3",
+      "start_time": "2026-09-11T22:41:53.733016",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0337_k1",
+      "start_time": "2026-09-11T22:41:53.741408",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0337_k2",
+      "start_time": "2026-09-11T22:41:53.752086",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0337_k3",
+      "start_time": "2026-09-11T22:41:53.776815",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0338_k1",
+      "start_time": "2026-09-11T22:41:53.895140",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0338_k2",
+      "start_time": "2026-09-11T22:41:53.902215",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0338_k3",
+      "start_time": "2026-09-11T22:41:53.951326",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0339_k1",
+      "start_time": "2026-09-11T22:41:53.983039",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0339_k2",
+      "start_time": "2026-09-11T22:41:53.989955",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0339_k3",
+      "start_time": "2026-09-11T22:41:54.002248",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0340_k1",
+      "start_time": "2026-09-11T22:41:54.053235",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0340_k2",
+      "start_time": "2026-09-11T22:41:54.055282",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0340_k3",
+      "start_time": "2026-09-11T22:41:54.069013",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0341_k1",
+      "start_time": "2026-09-11T22:41:54.095529",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0341_k2",
+      "start_time": "2026-09-11T22:41:54.153517",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0341_k3",
+      "start_time": "2026-09-11T22:41:54.160208",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0342_k1",
+      "start_time": "2026-09-11T22:41:54.275278",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0342_k2",
+      "start_time": "2026-09-11T22:41:54.307059",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0342_k3",
+      "start_time": "2026-09-11T22:41:54.315639",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0343_k1",
+      "start_time": "2026-09-11T22:41:54.326852",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0343_k2",
+      "start_time": "2026-09-11T22:41:54.370545",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0343_k3",
+      "start_time": "2026-09-11T22:41:54.378424",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0344_k1",
+      "start_time": "2026-09-11T22:41:54.390133",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0344_k2",
+      "start_time": "2026-09-11T22:41:54.415035",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0344_k3",
+      "start_time": "2026-09-11T22:41:54.471925",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0345_k1",
+      "start_time": "2026-09-11T22:41:54.478392",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0345_k2",
+      "start_time": "2026-09-11T22:41:54.603945",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0345_k3",
+      "start_time": "2026-09-11T22:41:54.604020",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0346_k1",
+      "start_time": "2026-09-11T22:41:54.645359",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0346_k2",
+      "start_time": "2026-09-11T22:41:54.645416",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0346_k3",
+      "start_time": "2026-09-11T22:41:54.692911",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0347_k1",
+      "start_time": "2026-09-11T22:41:54.706365",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0347_k2",
+      "start_time": "2026-09-11T22:41:54.714404",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0347_k3",
+      "start_time": "2026-09-11T22:41:54.768423",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0348_k1",
+      "start_time": "2026-09-11T22:41:54.768489",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0348_k2",
+      "start_time": "2026-09-11T22:41:54.806352",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0348_k3",
+      "start_time": "2026-09-11T22:41:54.843564",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0349_k1",
+      "start_time": "2026-09-11T22:41:54.945286",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0349_k2",
+      "start_time": "2026-09-11T22:41:54.970560",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0349_k3",
+      "start_time": "2026-09-11T22:41:54.995952",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0350_k1",
+      "start_time": "2026-09-11T22:41:55.027960",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0350_k2",
+      "start_time": "2026-09-11T22:41:55.034538",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0350_k3",
+      "start_time": "2026-09-11T22:41:55.061108",
+      "terminal_state": "dead_at_start"
+    }
+  ],
+  "R6": [
+    {
+      "sid": "r-0201_k1",
+      "start_time": "2026-09-11T22:41:59.627224",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0201_k2",
+      "start_time": "2026-09-11T22:41:59.551264",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0201_k3",
+      "start_time": "2026-09-11T22:42:00.910231",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0202_k1",
+      "start_time": "2026-09-11T22:42:00.907430",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0202_k2",
+      "start_time": "2026-09-11T22:42:01.213495",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0202_k3",
+      "start_time": "2026-09-11T22:42:02.043936",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0203_k1",
+      "start_time": "2026-09-11T22:42:00.978044",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0203_k2",
+      "start_time": "2026-09-11T22:42:00.898946",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0203_k3",
+      "start_time": "2026-09-11T22:42:01.363092",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0204_k1",
+      "start_time": "2026-09-11T22:42:01.354937",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0204_k2",
+      "start_time": "2026-09-11T22:41:59.984095",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0204_k3",
+      "start_time": "2026-09-11T22:42:01.283738",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0205_k1",
+      "start_time": "2026-09-11T22:42:02.302810",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0205_k2",
+      "start_time": "2026-09-11T22:42:02.133410",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0205_k3",
+      "start_time": "2026-09-11T22:42:01.068218",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0206_k1",
+      "start_time": "2026-09-11T22:42:00.978438",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0206_k2",
+      "start_time": "2026-09-11T22:42:00.994273",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0206_k3",
+      "start_time": "2026-09-11T22:42:01.006140",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0207_k1",
+      "start_time": "2026-09-11T22:42:01.074976",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0207_k2",
+      "start_time": "2026-09-11T22:42:01.084971",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0207_k3",
+      "start_time": "2026-09-11T22:42:01.098880",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0208_k1",
+      "start_time": "2026-09-11T22:42:01.109867",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0208_k2",
+      "start_time": "2026-09-11T22:42:01.198902",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0208_k3",
+      "start_time": "2026-09-11T22:42:01.205518",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0209_k1",
+      "start_time": "2026-09-11T22:42:01.213549",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0209_k2",
+      "start_time": "2026-09-11T22:42:01.283785",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0209_k3",
+      "start_time": "2026-09-11T22:42:01.302630",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0210_k1",
+      "start_time": "2026-09-11T22:42:01.508202",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0210_k2",
+      "start_time": "2026-09-11T22:42:01.342160",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0210_k3",
+      "start_time": "2026-09-11T22:42:01.443512",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0211_k1",
+      "start_time": "2026-09-11T22:42:01.632600",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0211_k2",
+      "start_time": "2026-09-11T22:42:01.501484",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0211_k3",
+      "start_time": "2026-09-11T22:42:01.405686",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0212_k1",
+      "start_time": "2026-09-11T22:42:01.597420",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0212_k2",
+      "start_time": "2026-09-11T22:42:01.604308",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0212_k3",
+      "start_time": "2026-09-11T22:42:01.468997",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0213_k1",
+      "start_time": "2026-09-11T22:42:01.657924",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0213_k2",
+      "start_time": "2026-09-11T22:42:01.799242",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0213_k3",
+      "start_time": "2026-09-11T22:42:01.734203",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0214_k1",
+      "start_time": "2026-09-11T22:42:01.759829",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0214_k2",
+      "start_time": "2026-09-11T22:42:01.792626",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0214_k3",
+      "start_time": "2026-09-11T22:42:01.696518",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0215_k1",
+      "start_time": "2026-09-11T22:42:01.831613",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0215_k2",
+      "start_time": "2026-09-11T22:42:01.838207",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0215_k3",
+      "start_time": "2026-09-11T22:42:01.927072",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0216_k1",
+      "start_time": "2026-09-11T22:42:01.933970",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0216_k2",
+      "start_time": "2026-09-11T22:42:01.986195",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0216_k3",
+      "start_time": "2026-09-11T22:42:02.024073",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0217_k1",
+      "start_time": "2026-09-11T22:42:02.069660",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0217_k2",
+      "start_time": "2026-09-11T22:42:02.077318",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0217_k3",
+      "start_time": "2026-09-11T22:42:02.089258",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0218_k1",
+      "start_time": "2026-09-11T22:42:02.121947",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0218_k2",
+      "start_time": "2026-09-11T22:42:02.129217",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0218_k3",
+      "start_time": "2026-09-11T22:42:02.211497",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0219_k1",
+      "start_time": "2026-09-11T22:42:02.238967",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0219_k2",
+      "start_time": "2026-09-11T22:42:02.478186",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0219_k3",
+      "start_time": "2026-09-11T22:42:02.348532",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0220_k1",
+      "start_time": "2026-09-11T22:42:02.355304",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0220_k2",
+      "start_time": "2026-09-11T22:42:02.401940",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0220_k3",
+      "start_time": "2026-09-11T22:42:02.410756",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0221_k1",
+      "start_time": "2026-09-11T22:42:02.290041",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0221_k2",
+      "start_time": "2026-09-11T22:42:02.504344",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0221_k3",
+      "start_time": "2026-09-11T22:42:02.536751",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0222_k1",
+      "start_time": "2026-09-11T22:42:02.544606",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0222_k2",
+      "start_time": "2026-09-11T22:42:02.790821",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0222_k3",
+      "start_time": "2026-09-11T22:42:02.596645",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0223_k1",
+      "start_time": "2026-09-11T22:42:02.649321",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0223_k2",
+      "start_time": "2026-09-11T22:42:02.675331",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0223_k3",
+      "start_time": "2026-09-11T22:42:02.783693",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0224_k1",
+      "start_time": "2026-09-11T22:42:02.596584",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0224_k2",
+      "start_time": "2026-09-11T22:42:02.800848",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0224_k3",
+      "start_time": "2026-09-11T22:42:03.042788",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0225_k1",
+      "start_time": "2026-09-11T22:42:02.854767",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0225_k2",
+      "start_time": "2026-09-11T22:42:02.880574",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0225_k3",
+      "start_time": "2026-09-11T22:42:02.914320",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0226_k1",
+      "start_time": "2026-09-11T22:42:02.921013",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0226_k2",
+      "start_time": "2026-09-11T22:42:02.979551",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0226_k3",
+      "start_time": "2026-09-11T22:42:02.847953",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0227_k1",
+      "start_time": "2026-09-11T22:42:03.083410",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0227_k2",
+      "start_time": "2026-09-11T22:42:03.109859",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0227_k3",
+      "start_time": "2026-09-11T22:42:03.136016",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0228_k1",
+      "start_time": "2026-09-11T22:42:03.169008",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0228_k2",
+      "start_time": "2026-09-11T22:42:03.175836",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0228_k3",
+      "start_time": "2026-09-11T22:42:03.221617",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0229_k1",
+      "start_time": "2026-09-11T22:42:03.228675",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0229_k2",
+      "start_time": "2026-09-11T22:42:03.255904",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0229_k3",
+      "start_time": "2026-09-11T22:42:03.338135",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0230_k1",
+      "start_time": "2026-09-11T22:42:03.364980",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0230_k2",
+      "start_time": "2026-09-11T22:42:03.411439",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0230_k3",
+      "start_time": "2026-09-11T22:42:03.418116",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0231_k1",
+      "start_time": "2026-09-11T22:42:03.458914",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0231_k2",
+      "start_time": "2026-09-11T22:42:03.485584",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0231_k3",
+      "start_time": "2026-09-11T22:42:03.511657",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0232_k1",
+      "start_time": "2026-09-11T22:42:03.541576",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0232_k2",
+      "start_time": "2026-09-11T22:42:03.551873",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0232_k3",
+      "start_time": "2026-09-11T22:42:03.654003",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0233_k1",
+      "start_time": "2026-09-11T22:42:03.661156",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0233_k2",
+      "start_time": "2026-09-11T22:42:03.687687",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0233_k3",
+      "start_time": "2026-09-11T22:42:03.713736",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0234_k1",
+      "start_time": "2026-09-11T22:42:03.739860",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0234_k2",
+      "start_time": "2026-09-11T22:42:03.786127",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0234_k3",
+      "start_time": "2026-09-11T22:42:03.793185",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0235_k1",
+      "start_time": "2026-09-11T22:42:04.035353",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0235_k2",
+      "start_time": "2026-09-11T22:42:03.914034",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0235_k3",
+      "start_time": "2026-09-11T22:42:03.941328",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0236_k1",
+      "start_time": "2026-09-11T22:42:03.975336",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0236_k2",
+      "start_time": "2026-09-11T22:42:03.982446",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0236_k3",
+      "start_time": "2026-09-11T22:42:04.034846",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0237_k1",
+      "start_time": "2026-09-11T22:42:03.832270",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0237_k2",
+      "start_time": "2026-09-11T22:42:04.064022",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0237_k3",
+      "start_time": "2026-09-11T22:42:04.089970",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0238_k1",
+      "start_time": "2026-09-11T22:42:04.116689",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0238_k2",
+      "start_time": "2026-09-11T22:42:04.218684",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0238_k3",
+      "start_time": "2026-09-11T22:42:04.225900",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0239_k1",
+      "start_time": "2026-09-11T22:42:04.254159",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0239_k2",
+      "start_time": "2026-09-11T22:42:04.293801",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0239_k3",
+      "start_time": "2026-09-11T22:42:04.319981",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0240_k1",
+      "start_time": "2026-09-11T22:42:04.354183",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0240_k2",
+      "start_time": "2026-09-11T22:42:04.360996",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0240_k3",
+      "start_time": "2026-09-11T22:42:04.400703",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0241_k1",
+      "start_time": "2026-09-11T22:42:04.483259",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0241_k2",
+      "start_time": "2026-09-11T22:42:04.497721",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0241_k3",
+      "start_time": "2026-09-11T22:42:04.524318",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0242_k1",
+      "start_time": "2026-09-11T22:42:04.551115",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0242_k2",
+      "start_time": "2026-09-11T22:42:04.577833",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0242_k3",
+      "start_time": "2026-09-11T22:42:04.604354",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0243_k1",
+      "start_time": "2026-09-11T22:42:04.632113",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0243_k2",
+      "start_time": "2026-09-11T22:42:04.673905",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0243_k3",
+      "start_time": "2026-09-11T22:42:04.700770",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0244_k1",
+      "start_time": "2026-09-11T22:42:04.783933",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0244_k2",
+      "start_time": "2026-09-11T22:42:04.818994",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0244_k3",
+      "start_time": "2026-09-11T22:42:04.826141",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0245_k1",
+      "start_time": "2026-09-11T22:42:05.074226",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0245_k2",
+      "start_time": "2026-09-11T22:42:04.881554",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0245_k3",
+      "start_time": "2026-09-11T22:42:04.908881",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0246_k1",
+      "start_time": "2026-09-11T22:42:04.937167",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0246_k2",
+      "start_time": "2026-09-11T22:42:04.951127",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0246_k3",
+      "start_time": "2026-09-11T22:42:05.011099",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0247_k1",
+      "start_time": "2026-09-11T22:42:04.874641",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0247_k2",
+      "start_time": "2026-09-11T22:42:05.114635",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0247_k3",
+      "start_time": "2026-09-11T22:42:05.141688",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0248_k1",
+      "start_time": "2026-09-11T22:42:05.188517",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0248_k2",
+      "start_time": "2026-09-11T22:42:05.199753",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0248_k3",
+      "start_time": "2026-09-11T22:42:05.209530",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0249_k1",
+      "start_time": "2026-09-11T22:42:05.256533",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0249_k2",
+      "start_time": "2026-09-11T22:42:05.263580",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0249_k3",
+      "start_time": "2026-09-11T22:42:05.291538",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0250_k1",
+      "start_time": "2026-09-11T22:42:05.381645",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0250_k2",
+      "start_time": "2026-09-11T22:42:05.388911",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0250_k3",
+      "start_time": "2026-09-11T22:42:05.446318",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0251_k1",
+      "start_time": "2026-09-11T22:42:05.458118",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0251_k2",
+      "start_time": "2026-09-11T22:42:05.497742",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0251_k3",
+      "start_time": "2026-09-11T22:42:05.524821",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0252_k1",
+      "start_time": "2026-09-11T22:42:05.572467",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0252_k2",
+      "start_time": "2026-09-11T22:42:05.586496",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0252_k3",
+      "start_time": "2026-09-11T22:42:05.593476",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0253_k1",
+      "start_time": "2026-09-11T22:42:05.751600",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0253_k2",
+      "start_time": "2026-09-11T22:42:05.771522",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0253_k3",
+      "start_time": "2026-09-11T22:42:05.809287",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0254_k1",
+      "start_time": "2026-09-11T22:42:05.817694",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0254_k2",
+      "start_time": "2026-09-11T22:42:05.850074",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0254_k3",
+      "start_time": "2026-09-11T22:42:05.913105",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0255_k1",
+      "start_time": "2026-09-11T22:42:05.924640",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0255_k2",
+      "start_time": "2026-09-11T22:42:05.970957",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0255_k3",
+      "start_time": "2026-09-11T22:42:06.082487",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0256_k1",
+      "start_time": "2026-09-11T22:42:06.115375",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0256_k2",
+      "start_time": "2026-09-11T22:42:06.135173",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0256_k3",
+      "start_time": "2026-09-11T22:42:06.146028",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0257_k1",
+      "start_time": "2026-09-11T22:42:06.180778",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0257_k2",
+      "start_time": "2026-09-11T22:42:06.221766",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0257_k3",
+      "start_time": "2026-09-11T22:42:06.244018",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0258_k1",
+      "start_time": "2026-09-11T22:42:06.278254",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0258_k2",
+      "start_time": "2026-09-11T22:42:06.311074",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0258_k3",
+      "start_time": "2026-09-11T22:42:06.434099",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0259_k1",
+      "start_time": "2026-09-11T22:42:06.462536",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0259_k2",
+      "start_time": "2026-09-11T22:42:06.504168",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0259_k3",
+      "start_time": "2026-09-11T22:42:06.531132",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0260_k1",
+      "start_time": "2026-09-11T22:42:06.571169",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0260_k2",
+      "start_time": "2026-09-11T22:42:06.581127",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0260_k3",
+      "start_time": "2026-09-11T22:42:06.598954",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0261_k1",
+      "start_time": "2026-09-11T22:42:06.608526",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0261_k2",
+      "start_time": "2026-09-11T22:42:06.637079",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0261_k3",
+      "start_time": "2026-09-11T22:42:06.665510",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0262_k1",
+      "start_time": "2026-09-11T22:42:06.752346",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0262_k2",
+      "start_time": "2026-09-11T22:42:06.780726",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0262_k3",
+      "start_time": "2026-09-11T22:42:06.834953",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0263_k1",
+      "start_time": "2026-09-11T22:42:06.862882",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0263_k2",
+      "start_time": "2026-09-11T22:42:06.892120",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0263_k3",
+      "start_time": "2026-09-11T22:42:06.946805",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0264_k1",
+      "start_time": "2026-09-11T22:42:06.946890",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0264_k2",
+      "start_time": "2026-09-11T22:42:07.034251",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0264_k3",
+      "start_time": "2026-09-11T22:42:07.049014",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0265_k1",
+      "start_time": "2026-09-11T22:42:07.076126",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0265_k2",
+      "start_time": "2026-09-11T22:42:07.103780",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0265_k3",
+      "start_time": "2026-09-11T22:42:07.139701",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0266_k1",
+      "start_time": "2026-09-11T22:42:07.153871",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0266_k2",
+      "start_time": "2026-09-11T22:42:07.163780",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0266_k3",
+      "start_time": "2026-09-11T22:42:07.241841",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0267_k1",
+      "start_time": "2026-09-11T22:42:07.248970",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0267_k2",
+      "start_time": "2026-09-11T22:42:07.351567",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0267_k3",
+      "start_time": "2026-09-11T22:42:07.394460",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0268_k1",
+      "start_time": "2026-09-11T22:42:07.429893",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0268_k2",
+      "start_time": "2026-09-11T22:42:07.437671",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0268_k3",
+      "start_time": "2026-09-11T22:42:07.453662",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0269_k1",
+      "start_time": "2026-09-11T22:42:07.501803",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0269_k2",
+      "start_time": "2026-09-11T22:42:07.509074",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0269_k3",
+      "start_time": "2026-09-11T22:42:07.545226",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0270_k1",
+      "start_time": "2026-09-11T22:42:07.559399",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0270_k2",
+      "start_time": "2026-09-11T22:42:07.567901",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0270_k3",
+      "start_time": "2026-09-11T22:42:07.696330",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0271_k1",
+      "start_time": "2026-09-11T22:42:07.717821",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0271_k2",
+      "start_time": "2026-09-11T22:42:07.724972",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0271_k3",
+      "start_time": "2026-09-11T22:42:07.794069",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0272_k1",
+      "start_time": "2026-09-11T22:42:07.827325",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0272_k2",
+      "start_time": "2026-09-11T22:42:07.838824",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0272_k3",
+      "start_time": "2026-09-11T22:42:07.851801",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0273_k1",
+      "start_time": "2026-09-11T22:42:07.894386",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0273_k2",
+      "start_time": "2026-09-11T22:42:07.991511",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0273_k3",
+      "start_time": "2026-09-11T22:42:08.004269",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0274_k1",
+      "start_time": "2026-09-11T22:42:08.023247",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0274_k2",
+      "start_time": "2026-09-11T22:42:08.030470",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0274_k3",
+      "start_time": "2026-09-11T22:42:08.086169",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0275_k1",
+      "start_time": "2026-09-11T22:42:08.121423",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0275_k2",
+      "start_time": "2026-09-11T22:42:08.128675",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0275_k3",
+      "start_time": "2026-09-11T22:42:08.277028",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0276_k1",
+      "start_time": "2026-09-11T22:42:08.288972",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0276_k2",
+      "start_time": "2026-09-11T22:42:08.308777",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0276_k3",
+      "start_time": "2026-09-11T22:42:08.315934",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0277_k1",
+      "start_time": "2026-09-11T22:42:08.359578",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0277_k2",
+      "start_time": "2026-09-11T22:42:08.402271",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0277_k3",
+      "start_time": "2026-09-11T22:42:08.409485",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0278_k1",
+      "start_time": "2026-09-11T22:42:08.418427",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0278_k2",
+      "start_time": "2026-09-11T22:42:08.434069",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0278_k3",
+      "start_time": "2026-09-11T22:42:08.489779",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0279_k1",
+      "start_time": "2026-09-11T22:42:08.517932",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0279_k2",
+      "start_time": "2026-09-11T22:42:08.607830",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0279_k3",
+      "start_time": "2026-09-11T22:42:08.663642",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0280_k1",
+      "start_time": "2026-09-11T22:42:08.699191",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0280_k2",
+      "start_time": "2026-09-11T22:42:08.711044",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0280_k3",
+      "start_time": "2026-09-11T22:42:08.722320",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0281_k1",
+      "start_time": "2026-09-11T22:42:08.752720",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0281_k2",
+      "start_time": "2026-09-11T22:42:08.811447",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0281_k3",
+      "start_time": "2026-09-11T22:42:08.818809",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0282_k1",
+      "start_time": "2026-09-11T22:42:08.826288",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0282_k2",
+      "start_time": "2026-09-11T22:42:08.917947",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0282_k3",
+      "start_time": "2026-09-11T22:42:08.959044",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0283_k1",
+      "start_time": "2026-09-11T22:42:09.015281",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0283_k2",
+      "start_time": "2026-09-11T22:42:09.016867",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0283_k3",
+      "start_time": "2026-09-11T22:42:09.033543",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0284_k1",
+      "start_time": "2026-09-11T22:42:09.112730",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0284_k2",
+      "start_time": "2026-09-11T22:42:09.127396",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0284_k3",
+      "start_time": "2026-09-11T22:42:09.134779",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0285_k1",
+      "start_time": "2026-09-11T22:42:09.222613",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0285_k2",
+      "start_time": "2026-09-11T22:42:09.264128",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0285_k3",
+      "start_time": "2026-09-11T22:42:09.301712",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0286_k1",
+      "start_time": "2026-09-11T22:42:09.316512",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0286_k2",
+      "start_time": "2026-09-11T22:42:09.325030",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0286_k3",
+      "start_time": "2026-09-11T22:42:09.369690",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0287_k1",
+      "start_time": "2026-09-11T22:42:09.426566",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0287_k2",
+      "start_time": "2026-09-11T22:42:09.433819",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0287_k3",
+      "start_time": "2026-09-11T22:42:09.442610",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0288_k1",
+      "start_time": "2026-09-11T22:42:09.557025",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0288_k2",
+      "start_time": "2026-09-11T22:42:09.600843",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0288_k3",
+      "start_time": "2026-09-11T22:42:09.600907",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0289_k1",
+      "start_time": "2026-09-11T22:42:09.632042",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0289_k2",
+      "start_time": "2026-09-11T22:42:09.674884",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0289_k3",
+      "start_time": "2026-09-11T22:42:09.718348",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0290_k1",
+      "start_time": "2026-09-11T22:42:09.718431",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0290_k2",
+      "start_time": "2026-09-11T22:42:09.749299",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0290_k3",
+      "start_time": "2026-09-11T22:42:09.864197",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0291_k1",
+      "start_time": "2026-09-11T22:42:09.871775",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0291_k2",
+      "start_time": "2026-09-11T22:42:09.910815",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0291_k3",
+      "start_time": "2026-09-11T22:42:09.918227",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0292_k1",
+      "start_time": "2026-09-11T22:42:09.947827",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0292_k2",
+      "start_time": "2026-09-11T22:42:10.010933",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0292_k3",
+      "start_time": "2026-09-11T22:42:10.019734",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0293_k1",
+      "start_time": "2026-09-11T22:42:10.032989",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0293_k2",
+      "start_time": "2026-09-11T22:42:10.158908",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0293_k3",
+      "start_time": "2026-09-11T22:42:10.187813",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0294_k1",
+      "start_time": "2026-09-11T22:42:09.991453",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0294_k2",
+      "start_time": "2026-09-11T22:42:10.498966",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0294_k3",
+      "start_time": "2026-09-11T22:42:10.291034",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0295_k1",
+      "start_time": "2026-09-11T22:42:10.304319",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0295_k2",
+      "start_time": "2026-09-11T22:42:10.325811",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0295_k3",
+      "start_time": "2026-09-11T22:42:10.333237",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0296_k1",
+      "start_time": "2026-09-11T22:42:10.443767",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0296_k2",
+      "start_time": "2026-09-11T22:42:10.451585",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0296_k3",
+      "start_time": "2026-09-11T22:42:10.470107",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0297_k1",
+      "start_time": "2026-09-11T22:42:10.491411",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0297_k2",
+      "start_time": "2026-09-11T22:42:10.287973",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0297_k3",
+      "start_time": "2026-09-11T22:42:10.585525",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0298_k1",
+      "start_time": "2026-09-11T22:42:10.655636",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0298_k2",
+      "start_time": "2026-09-11T22:42:10.751847",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0298_k3",
+      "start_time": "2026-09-11T22:42:10.761318",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0299_k1",
+      "start_time": "2026-09-11T22:42:10.781554",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0299_k2",
+      "start_time": "2026-09-11T22:42:10.790872",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0299_k3",
+      "start_time": "2026-09-11T22:42:10.803450",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0300_k1",
+      "start_time": "2026-09-11T22:42:10.889182",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0300_k2",
+      "start_time": "2026-09-11T22:42:10.926524",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0300_k3",
+      "start_time": "2026-09-11T22:42:10.941383",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0301_k1",
+      "start_time": "2026-09-11T22:42:10.953843",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0301_k2",
+      "start_time": "2026-09-11T22:42:10.964576",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0301_k3",
+      "start_time": "2026-09-11T22:42:11.127744",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0302_k1",
+      "start_time": "2026-09-11T22:42:11.135405",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0302_k2",
+      "start_time": "2026-09-11T22:42:11.286552",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0302_k3",
+      "start_time": "2026-09-11T22:42:11.309322",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0303_k1",
+      "start_time": "2026-09-11T22:42:11.323769",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0303_k2",
+      "start_time": "2026-09-11T22:42:11.334398",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0303_k3",
+      "start_time": "2026-09-11T22:42:11.348336",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0304_k1",
+      "start_time": "2026-09-11T22:42:11.396002",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0304_k2",
+      "start_time": "2026-09-11T22:42:11.406001",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0304_k3",
+      "start_time": "2026-09-11T22:42:11.422066",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0305_k1",
+      "start_time": "2026-09-11T22:42:11.440788",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0305_k2",
+      "start_time": "2026-09-11T22:42:11.447936",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0305_k3",
+      "start_time": "2026-09-11T22:42:11.518327",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0306_k1",
+      "start_time": "2026-09-11T22:42:11.546641",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0306_k2",
+      "start_time": "2026-09-11T22:42:11.603405",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0306_k3",
+      "start_time": "2026-09-11T22:42:11.661334",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0307_k1",
+      "start_time": "2026-09-11T22:42:11.668594",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0307_k2",
+      "start_time": "2026-09-11T22:42:11.677520",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0307_k3",
+      "start_time": "2026-09-11T22:42:11.694613",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0308_k1",
+      "start_time": "2026-09-11T22:42:11.724435",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0308_k2",
+      "start_time": "2026-09-11T22:42:11.767820",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0308_k3",
+      "start_time": "2026-09-11T22:42:11.767925",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0309_k1",
+      "start_time": "2026-09-11T22:42:11.806994",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0309_k2",
+      "start_time": "2026-09-11T22:42:11.814345",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0309_k3",
+      "start_time": "2026-09-11T22:42:11.871726",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0310_k1",
+      "start_time": "2026-09-11T22:42:11.900226",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0310_k2",
+      "start_time": "2026-09-11T22:42:11.928711",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0310_k3",
+      "start_time": "2026-09-11T22:42:11.970856",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0311_k1",
+      "start_time": "2026-09-11T22:42:12.029184",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0311_k2",
+      "start_time": "2026-09-11T22:42:12.036640",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0311_k3",
+      "start_time": "2026-09-11T22:42:12.043815",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0312_k1",
+      "start_time": "2026-09-11T22:42:12.075790",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0312_k2",
+      "start_time": "2026-09-11T22:42:12.124281",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0312_k3",
+      "start_time": "2026-09-11T22:42:12.140499",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0313_k1",
+      "start_time": "2026-09-11T22:42:12.150725",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0313_k2",
+      "start_time": "2026-09-11T22:42:12.178866",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0313_k3",
+      "start_time": "2026-09-11T22:42:12.221160",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0314_k1",
+      "start_time": "2026-09-11T22:42:12.249727",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0314_k2",
+      "start_time": "2026-09-11T22:42:12.278509",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0314_k3",
+      "start_time": "2026-09-11T22:42:12.336941",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0315_k1",
+      "start_time": "2026-09-11T22:42:12.352093",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0315_k2",
+      "start_time": "2026-09-11T22:42:12.395658",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0315_k3",
+      "start_time": "2026-09-11T22:42:12.395723",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0316_k1",
+      "start_time": "2026-09-11T22:42:12.427512",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0316_k2",
+      "start_time": "2026-09-11T22:42:12.457156",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0316_k3",
+      "start_time": "2026-09-11T22:42:12.544328",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0317_k1",
+      "start_time": "2026-09-11T22:42:12.559739",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0317_k2",
+      "start_time": "2026-09-11T22:42:12.589169",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0317_k3",
+      "start_time": "2026-09-11T22:42:12.618312",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0318_k1",
+      "start_time": "2026-09-11T22:42:12.660779",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0318_k2",
+      "start_time": "2026-09-11T22:42:12.703536",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0318_k3",
+      "start_time": "2026-09-11T22:42:12.746001",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0319_k1",
+      "start_time": "2026-09-11T22:42:12.774508",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0319_k2",
+      "start_time": "2026-09-11T22:42:12.818071",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0319_k3",
+      "start_time": "2026-09-11T22:42:12.818133",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0320_k1",
+      "start_time": "2026-09-11T22:42:12.863545",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0320_k2",
+      "start_time": "2026-09-11T22:42:12.863606",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0320_k3",
+      "start_time": "2026-09-11T22:42:12.903149",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0321_k1",
+      "start_time": "2026-09-11T22:42:12.910709",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0321_k2",
+      "start_time": "2026-09-11T22:42:12.939847",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0321_k3",
+      "start_time": "2026-09-11T22:42:12.976133",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0322_k1",
+      "start_time": "2026-09-11T22:42:12.983490",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0322_k2",
+      "start_time": "2026-09-11T22:42:13.026338",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0322_k3",
+      "start_time": "2026-09-11T22:42:13.097449",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0323_k1",
+      "start_time": "2026-09-11T22:42:13.126048",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0323_k2",
+      "start_time": "2026-09-11T22:42:13.387159",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0323_k3",
+      "start_time": "2026-09-11T22:42:13.240455",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0324_k1",
+      "start_time": "2026-09-11T22:42:13.277071",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0324_k2",
+      "start_time": "2026-09-11T22:42:13.284969",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0324_k3",
+      "start_time": "2026-09-11T22:42:13.306984",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0325_k1",
+      "start_time": "2026-09-11T22:42:13.314649",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0325_k2",
+      "start_time": "2026-09-11T22:42:13.343216",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0325_k3",
+      "start_time": "2026-09-11T22:42:13.379651",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0326_k1",
+      "start_time": "2026-09-11T22:42:13.226087",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0326_k2",
+      "start_time": "2026-09-11T22:42:13.589744",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0326_k3",
+      "start_time": "2026-09-11T22:42:13.503087",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0327_k1",
+      "start_time": "2026-09-11T22:42:13.531667",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0327_k2",
+      "start_time": "2026-09-11T22:42:13.581782",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0327_k3",
+      "start_time": "2026-09-11T22:42:13.431694",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0328_k1",
+      "start_time": "2026-09-11T22:42:13.626222",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0328_k2",
+      "start_time": "2026-09-11T22:42:13.634542",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0328_k3",
+      "start_time": "2026-09-11T22:42:13.658935",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0329_k1",
+      "start_time": "2026-09-11T22:42:13.666534",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0329_k2",
+      "start_time": "2026-09-11T22:42:13.752922",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0329_k3",
+      "start_time": "2026-09-11T22:42:13.785252",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0330_k1",
+      "start_time": "2026-09-11T22:42:13.798204",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0330_k2",
+      "start_time": "2026-09-11T22:42:13.841331",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0330_k3",
+      "start_time": "2026-09-11T22:42:13.921132",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0331_k1",
+      "start_time": "2026-09-11T22:42:13.928820",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0331_k2",
+      "start_time": "2026-09-11T22:42:13.994121",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0331_k3",
+      "start_time": "2026-09-11T22:42:14.001652",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0332_k1",
+      "start_time": "2026-09-11T22:42:14.040645",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0332_k2",
+      "start_time": "2026-09-11T22:42:14.049484",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0332_k3",
+      "start_time": "2026-09-11T22:42:14.065619",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0333_k1",
+      "start_time": "2026-09-11T22:42:14.135633",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0333_k2",
+      "start_time": "2026-09-11T22:42:14.187866",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0333_k3",
+      "start_time": "2026-09-11T22:42:14.197239",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0334_k1",
+      "start_time": "2026-09-11T22:42:14.210569",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0334_k2",
+      "start_time": "2026-09-11T22:42:14.254466",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0334_k3",
+      "start_time": "2026-09-11T22:42:14.328984",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0335_k1",
+      "start_time": "2026-09-11T22:42:14.341973",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0335_k2",
+      "start_time": "2026-09-11T22:42:14.459413",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0335_k3",
+      "start_time": "2026-09-11T22:42:14.472583",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0336_k1",
+      "start_time": "2026-09-11T22:42:14.510058",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0336_k2",
+      "start_time": "2026-09-11T22:42:14.518785",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0336_k3",
+      "start_time": "2026-09-11T22:42:14.540434",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0337_k1",
+      "start_time": "2026-09-11T22:42:14.548072",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0337_k2",
+      "start_time": "2026-09-11T22:42:14.599900",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0337_k3",
+      "start_time": "2026-09-11T22:42:14.610729",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0338_k1",
+      "start_time": "2026-09-11T22:42:14.622780",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0338_k2",
+      "start_time": "2026-09-11T22:42:14.666849",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0338_k3",
+      "start_time": "2026-09-11T22:42:15.025153",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0339_k1",
+      "start_time": "2026-09-11T22:42:14.812651",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0339_k2",
+      "start_time": "2026-09-11T22:42:14.887466",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0339_k3",
+      "start_time": "2026-09-11T22:42:14.887531",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0340_k1",
+      "start_time": "2026-09-11T22:42:14.927851",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0340_k2",
+      "start_time": "2026-09-11T22:42:14.935876",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0340_k3",
+      "start_time": "2026-09-11T22:42:14.955268",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0341_k1",
+      "start_time": "2026-09-11T22:42:14.804803",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0341_k2",
+      "start_time": "2026-09-11T22:42:15.092496",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0341_k3",
+      "start_time": "2026-09-11T22:42:15.095593",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0342_k1",
+      "start_time": "2026-09-11T22:42:15.112568",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0342_k2",
+      "start_time": "2026-09-11T22:42:15.125765",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0342_k3",
+      "start_time": "2026-09-11T22:42:15.271616",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0343_k1",
+      "start_time": "2026-09-11T22:42:15.306884",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0343_k2",
+      "start_time": "2026-09-11T22:42:15.382589",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0343_k3",
+      "start_time": "2026-09-11T22:42:15.170369",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0344_k1",
+      "start_time": "2026-09-11T22:42:15.494280",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0344_k2",
+      "start_time": "2026-09-11T22:42:15.509910",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0344_k3",
+      "start_time": "2026-09-11T22:42:15.518077",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0345_k1",
+      "start_time": "2026-09-11T22:42:15.583349",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0345_k2",
+      "start_time": "2026-09-11T22:42:15.586160",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0345_k3",
+      "start_time": "2026-09-11T22:42:15.601197",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0346_k1",
+      "start_time": "2026-09-11T22:42:15.614875",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0346_k2",
+      "start_time": "2026-09-11T22:42:15.629443",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0346_k3",
+      "start_time": "2026-09-11T22:42:15.717712",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0347_k1",
+      "start_time": "2026-09-11T22:42:15.783444",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0347_k2",
+      "start_time": "2026-09-11T22:42:15.797055",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0347_k3",
+      "start_time": "2026-09-11T22:42:16.174732",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0348_k1",
+      "start_time": "2026-09-11T22:42:15.986347",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0348_k2",
+      "start_time": "2026-09-11T22:42:15.995723",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0348_k3",
+      "start_time": "2026-09-11T22:42:16.009783",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0349_k1",
+      "start_time": "2026-09-11T22:42:16.126251",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0349_k2",
+      "start_time": "2026-09-11T22:42:16.131930",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0349_k3",
+      "start_time": "2026-09-11T22:42:16.145734",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0350_k1",
+      "start_time": "2026-09-11T22:42:16.167238",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0350_k2",
+      "start_time": "2026-09-11T22:42:15.947509",
+      "terminal_state": "dead_at_start"
+    },
+    {
+      "sid": "r-0350_k3",
+      "start_time": "2026-09-11T22:42:16.203725",
+      "terminal_state": "dead_at_start"
+    }
+  ]
+}

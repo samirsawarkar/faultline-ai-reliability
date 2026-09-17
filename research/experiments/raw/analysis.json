@@ -1,0 +1,4212 @@
+{
+  "attempts": {
+    "pass_1": {
+      "cap": 12,
+      "rungs": {
+        "R2": {
+          "completion_tokens": 642088,
+          "prompt_tokens": 10785260,
+          "runs_count": 450,
+          "spend_usd": 0.0491,
+          "time_window": [
+            "2026-09-11T12:15:51.444565",
+            "2026-09-11T13:41:50.741247"
+          ],
+          "total_tokens": 11427348
+        },
+        "R4": {
+          "completion_tokens": 530849,
+          "prompt_tokens": 6959298,
+          "runs_count": 450,
+          "spend_usd": 0.3483,
+          "time_window": [
+            "2026-09-11T13:41:53.169554",
+            "2026-09-11T14:46:14.930293"
+          ],
+          "total_tokens": 7490147
+        }
+      },
+      "time_window": [
+        "2026-09-11T12:15:51.444565",
+        "2026-09-11T14:46:14.930293"
+      ],
+      "total_discarded_spend_usd": 0.3974,
+      "total_discarded_tokens": 18917495
+    },
+    "pass_2": {
+      "cap": 24,
+      "rungs": {
+        "R2": {
+          "completion_tokens": 871777,
+          "prompt_tokens": 15968017,
+          "runs_count": 450,
+          "spend_usd": 5.0994,
+          "time_window": [
+            "2026-09-11T19:20:15.709559",
+            "2026-09-11T21:03:30.965248"
+          ],
+          "total_tokens": 16839794
+        },
+        "R4": {
+          "completion_tokens": 769928,
+          "prompt_tokens": 17791785,
+          "runs_count": 450,
+          "spend_usd": 17.9725,
+          "time_window": [
+            "2026-09-11T21:03:32.901060",
+            "2026-09-11T22:41:55.061108"
+          ],
+          "total_tokens": 18561713
+        }
+      },
+      "time_window": [
+        "2026-09-11T19:20:15.709559",
+        "2026-09-11T22:41:55.061108"
+      ],
+      "total_final_spend_usd": 23.0719,
+      "total_final_tokens": 35401507
+    },
+    "total": {
+      "discarded_token_percentage": 34.83,
+      "grand_total_spend_usd": 23.4693,
+      "grand_total_tokens": 54319002
+    }
+  },
+  "generated_from": {
+    "trace_db_path": "projects/p06_passk/trace.db",
+    "trace_db_sha256": "1c83d147b5d7e5509a97eb46bf6fc400ca45b36aaa189bb18810bc75c56fe222"
+  },
+  "hypotheses": {
+    "H4": {
+      "details": {
+        "R2": {
+          "contains_naive": true,
+          "exceeds_naive": false,
+          "measured_pass3": 0.2267,
+          "naive_p3": 0.2514,
+          "wilson_ci": [
+            0.167,
+            0.3
+          ]
+        },
+        "R4": {
+          "contains_naive": false,
+          "exceeds_naive": true,
+          "measured_pass3": 0.02,
+          "naive_p3": 0.0033,
+          "wilson_ci": [
+            0.0068,
+            0.0571
+          ]
+        }
+      },
+      "details_infra_excluded": {
+        "R2": {
+          "contains_naive": true,
+          "exceeds_naive": false,
+          "measured_pass3": 0.2267,
+          "naive_p3": 0.2514,
+          "wilson_ci": [
+            0.167,
+            0.3
+          ]
+        },
+        "R4": {
+          "contains_naive": false,
+          "exceeds_naive": true,
+          "measured_pass3": 0.0256,
+          "naive_p3": 0.007,
+          "wilson_ci": [
+            0.0088,
+            0.0727
+          ]
+        }
+      },
+      "details_infra_excluded_strict": {
+        "R2": {
+          "contains_naive": true,
+          "exceeds_naive": false,
+          "measured_pass3": 0.6939,
+          "naive_p3": 0.6758,
+          "wilson_ci": [
+            0.5547,
+            0.8048
+          ]
+        },
+        "R4": {
+          "contains_naive": true,
+          "exceeds_naive": false,
+          "measured_pass3": 0.125,
+          "naive_p3": 0.0588,
+          "wilson_ci": [
+            0.0434,
+            0.31
+          ]
+        }
+      },
+      "per_rung_criterion_met": {
+        "as_run": {
+          "R2": false,
+          "R4": true
+        },
+        "infra_excluded": {
+          "R2": false,
+          "R4": true
+        },
+        "infra_excluded_strict": {
+          "R2": false,
+          "R4": true
+        }
+      },
+      "preregistered_falsified_by": "Wilson CI of measured contains the naive point for >=3 rungs",
+      "preregistered_text": "Measured pass\u00b3 exceeds naive (pass@1)\u00b3 for \u22654 of 6 rungs",
+      "reason": "only 2 of 6 rungs valid; criterion requires >=4 of 6",
+      "recomputed_verdict": "NOT_TESTABLE_AS_PREREGISTERED",
+      "rungs_disjoint_count": 1,
+      "rungs_evaluated": [
+        "R2",
+        "R4"
+      ],
+      "rungs_exceeding_naive": [
+        "R4"
+      ],
+      "sensitivity_verdict_infra_excluded": "NOT_TESTABLE_AS_PREREGISTERED",
+      "sensitivity_verdict_infra_excluded_strict": "NOT_TESTABLE_AS_PREREGISTERED",
+      "status": "NOT_TESTABLE_AS_PREREGISTERED"
+    },
+    "H5": {
+      "delta_difference_R4_minus_R2": {
+        "bootstrap_ci": [
+          -0.00799,
+          0.092184
+        ],
+        "difference": 0.041405,
+        "method": "paired_scenario_bootstrap_delta_difference_10000_seed42"
+      },
+      "details": {
+        "R2_cheap": {
+          "concentration_ratio": 0.901717,
+          "deviation_delta": -0.024706,
+          "deviation_delta_bootstrap_ci": [
+            -0.07041,
+            0.020094
+          ]
+        },
+        "R4_frontier": {
+          "concentration_ratio": 6.059588,
+          "deviation_delta": 0.016699,
+          "deviation_delta_bootstrap_ci": [
+            -0.002254,
+            0.041048
+          ]
+        }
+      },
+      "details_infra_excluded": {
+        "R2_cheap": {
+          "concentration_ratio": 0.901717,
+          "deviation_delta": -0.024706,
+          "deviation_delta_bootstrap_ci": [
+            -0.07041,
+            0.020094
+          ]
+        },
+        "R4_frontier": {
+          "concentration_ratio": 3.686654,
+          "deviation_delta": 0.018686,
+          "deviation_delta_bootstrap_ci": [
+            -0.004749,
+            0.047435
+          ]
+        }
+      },
+      "preregistered_falsified_by": "rank correlation across the ladder is null or reversed",
+      "preregistered_text": "Deviation from naive is larger for cheap rungs than frontier",
+      "reason": "requires multi-tier ladder across >=4 rungs; with 2 valid rungs, rank correlation is degenerate and observed point estimates (delta_R2 = -0.0247 vs delta_R4 = +0.0167) have overlapping bootstrap CIs.",
+      "recomputed_verdict": "NOT_TESTABLE_AS_PREREGISTERED (2 rungs)",
+      "sensitivity_verdict_infra_excluded": "NOT_TESTABLE_AS_PREREGISTERED (2 rungs)",
+      "sensitivity_verdict_infra_excluded_strict": "NOT_TESTABLE_AS_PREREGISTERED (2 rungs)",
+      "status": "NOT_TESTABLE_AS_PREREGISTERED (2 rungs)"
+    },
+    "family_of_tests": [
+      {
+        "description": "Chi-square independence goodness-of-fit against Binomial(3, p) on R2 (parametric bootstrap)",
+        "holm_adjusted_p_value": 0.3794,
+        "raw_p_source": "rungs.R2.as_run.independence_test.parametric_bootstrap_p_value",
+        "raw_p_value": 0.3794,
+        "significant_at_0.05": false,
+        "test": "independence_goodness_of_fit_R2"
+      },
+      {
+        "description": "Chi-square independence goodness-of-fit against Binomial(3, p) on R4 as-run (parametric bootstrap)",
+        "holm_adjusted_p_value": 0.0159,
+        "raw_p_source": "rungs.R4.as_run.independence_test.parametric_bootstrap_p_value",
+        "raw_p_value": 0.0053,
+        "significant_at_0.05": true,
+        "test": "independence_goodness_of_fit_R4_as_run"
+      },
+      {
+        "description": "Chi-square independence goodness-of-fit against Binomial(3, p) on R4 infra-excluded (parametric bootstrap)",
+        "holm_adjusted_p_value": 0.0486,
+        "raw_p_source": "rungs.R4.infra_excluded.independence_test.parametric_bootstrap_p_value",
+        "raw_p_value": 0.0243,
+        "significant_at_0.05": true,
+        "test": "independence_goodness_of_fit_R4_infra_excluded"
+      },
+      {
+        "description": "Paired McNemar test on R2 vs R4 per-scenario all-3-pass as-run (exact p)",
+        "holm_adjusted_p_value": 4.93251718580724e-07,
+        "raw_p_source": "paired_comparisons.R2_vs_R4.as_run.all_3_pass.mcnemar.exact_p_value",
+        "raw_p_value": 1.23312929645181e-07,
+        "significant_at_0.05": true,
+        "test": "paired_mcnemar_R2_vs_R4_all_3_pass"
+      },
+      {
+        "description": "Paired McNemar test on R2 vs R4 per-scenario trial-1 pass as-run (exact p)",
+        "holm_adjusted_p_value": 2.95877918676643e-13,
+        "raw_p_source": "paired_comparisons.R2_vs_R4.as_run.trial_1_pass.mcnemar.exact_p_value",
+        "raw_p_value": 5.91755837353286e-14,
+        "significant_at_0.05": true,
+        "test": "paired_mcnemar_R2_vs_R4_trial_1_pass"
+      }
+    ],
+    "family_of_tests_as_run": [
+      {
+        "description": "Paired McNemar test on R2 vs R4 per-scenario trial-1 pass as-run (exact p)",
+        "holm_adjusted_p_value": 2.367023349413144e-13,
+        "raw_p_source": "paired_comparisons.R2_vs_R4.as_run.trial_1_pass.mcnemar.exact_p_value",
+        "raw_p_value": 5.91755837353286e-14,
+        "significant_at_0.05": true,
+        "test": "paired_mcnemar_R2_vs_R4_trial_1_pass"
+      },
+      {
+        "description": "Paired McNemar test on R2 vs R4 per-scenario all-3-pass as-run (exact p)",
+        "holm_adjusted_p_value": 3.6993878893554295e-07,
+        "raw_p_source": "paired_comparisons.R2_vs_R4.as_run.all_3_pass.mcnemar.exact_p_value",
+        "raw_p_value": 1.23312929645181e-07,
+        "significant_at_0.05": true,
+        "test": "paired_mcnemar_R2_vs_R4_all_3_pass"
+      },
+      {
+        "description": "Chi-square independence goodness-of-fit against Binomial(3, p) on R4 as-run (parametric bootstrap)",
+        "holm_adjusted_p_value": 0.0106,
+        "raw_p_source": "rungs.R4.as_run.independence_test.parametric_bootstrap_p_value",
+        "raw_p_value": 0.0053,
+        "significant_at_0.05": true,
+        "test": "independence_goodness_of_fit_R4"
+      },
+      {
+        "description": "Chi-square independence goodness-of-fit against Binomial(3, p) on R2 as-run (parametric bootstrap)",
+        "holm_adjusted_p_value": 0.3794,
+        "raw_p_source": "rungs.R2.as_run.independence_test.parametric_bootstrap_p_value",
+        "raw_p_value": 0.3794,
+        "significant_at_0.05": false,
+        "test": "independence_goodness_of_fit_R2"
+      }
+    ],
+    "family_of_tests_infra_excluded": [
+      {
+        "description": "Paired McNemar test on R2 vs R4 per-scenario trial-1 pass infra-excluded (exact p)",
+        "holm_adjusted_p_value": 4.70144112360744e-08,
+        "raw_p_source": "paired_comparisons.R2_vs_R4.infra_excluded.trial_1_pass.mcnemar.exact_p_value",
+        "raw_p_value": 1.17536028090186e-08,
+        "significant_at_0.05": true,
+        "test": "paired_mcnemar_R2_vs_R4_trial_1_pass"
+      },
+      {
+        "description": "Paired McNemar test on R2 vs R4 per-scenario all-3-pass infra-excluded (exact p)",
+        "holm_adjusted_p_value": 0.00046957,
+        "raw_p_source": "paired_comparisons.R2_vs_R4.infra_excluded.all_3_pass.mcnemar.exact_p_value",
+        "raw_p_value": 0.00015652,
+        "significant_at_0.05": true,
+        "test": "paired_mcnemar_R2_vs_R4_all_3_pass"
+      },
+      {
+        "description": "Chi-square independence goodness-of-fit against Binomial(3, p) on R4 infra-excluded (parametric bootstrap)",
+        "holm_adjusted_p_value": 0.0486,
+        "raw_p_source": "rungs.R4.infra_excluded.independence_test.parametric_bootstrap_p_value",
+        "raw_p_value": 0.0243,
+        "significant_at_0.05": true,
+        "test": "independence_goodness_of_fit_R4"
+      },
+      {
+        "description": "Chi-square independence goodness-of-fit against Binomial(3, p) on R2 (parametric bootstrap)",
+        "holm_adjusted_p_value": 0.3794,
+        "raw_p_source": "rungs.R2.as_run.independence_test.parametric_bootstrap_p_value",
+        "raw_p_value": 0.3794,
+        "significant_at_0.05": false,
+        "test": "independence_goodness_of_fit_R2"
+      }
+    ],
+    "family_of_tests_infra_excluded_strict": [
+      {
+        "description": "Paired McNemar test on R2 vs R4 per-scenario trial-1 pass infra-excluded-strict (exact p)",
+        "holm_adjusted_p_value": 0.75,
+        "raw_p_source": "paired_comparisons.R2_vs_R4.infra_excluded_strict.trial_1_pass.mcnemar.exact_p_value",
+        "raw_p_value": 0.375,
+        "significant_at_0.05": false,
+        "test": "paired_mcnemar_R2_vs_R4_trial_1_pass"
+      },
+      {
+        "description": "Paired McNemar test on R2 vs R4 per-scenario all-3-pass infra-excluded-strict (exact p)",
+        "holm_adjusted_p_value": 0.384,
+        "raw_p_source": "paired_comparisons.R2_vs_R4.infra_excluded_strict.all_3_pass.mcnemar.exact_p_value",
+        "raw_p_value": 0.125,
+        "significant_at_0.05": false,
+        "test": "paired_mcnemar_R2_vs_R4_all_3_pass"
+      },
+      {
+        "description": "Chi-square independence goodness-of-fit against Binomial(3, p) on R4 infra-excluded-strict (parametric bootstrap)",
+        "holm_adjusted_p_value": 0.384,
+        "raw_p_source": "rungs.R4.infra_excluded_strict.independence_test.parametric_bootstrap_p_value",
+        "raw_p_value": 0.096,
+        "significant_at_0.05": false,
+        "test": "independence_goodness_of_fit_R4"
+      },
+      {
+        "description": "Chi-square independence goodness-of-fit against Binomial(3, p) on R2 infra-excluded-strict (parametric bootstrap)",
+        "holm_adjusted_p_value": 0.75,
+        "raw_p_source": "rungs.R2.infra_excluded_strict.independence_test.parametric_bootstrap_p_value",
+        "raw_p_value": 0.4399,
+        "significant_at_0.05": false,
+        "test": "independence_goodness_of_fit_R2"
+      }
+    ]
+  },
+  "paired_comparisons": {
+    "R2_vs_R4": {
+      "as_run": {
+        "all_3_pass": {
+          "mcnemar": {
+            "b": 34,
+            "c": 3,
+            "chi2_p_value": 8.14045801527792e-07,
+            "chi2_statistic": 24.3243243243243,
+            "continuity_correction": true,
+            "exact_p_value": 1.23312929645181e-07,
+            "n_discordant": 37,
+            "p_value": 1.23312929645181e-07,
+            "primary_p_label": "exact_binomial_two_sided",
+            "primary_p_value": 1.23312929645181e-07,
+            "secondary_p_label": "chi2_with_continuity_correction",
+            "secondary_p_value": 8.14045801527792e-07,
+            "significant_at_0.05": true,
+            "table": {
+              "a_only": 34,
+              "b_only": 3,
+              "both_correct": 0,
+              "both_wrong": 113,
+              "discordant": 37,
+              "n": 150,
+              "ties": 113
+            }
+          },
+          "mean_difference": 0.206667,
+          "mode": "all_3_pass",
+          "odds_ratio": 11.333333,
+          "odds_ratio_ci": [
+            3.480838,
+            36.900437
+          ],
+          "odds_ratio_method": "matched_pairs_odds_ratio_b_div_c_with_lognormal_ci",
+          "paired_d_z": 0.45609,
+          "paired_d_z_method": "paired_cohen_d_z_mean_diff_div_sample_sd_ddof_1",
+          "risk_difference": 0.206667,
+          "risk_difference_bootstrap_ci": [
+            0.133333,
+            0.28
+          ],
+          "risk_difference_method": "scenario_paired_risk_difference_bootstrap_10000_seed42",
+          "sd_difference": 0.453127,
+          "table": {
+            "a_only": 34,
+            "b_only": 3,
+            "both_correct": 0,
+            "both_wrong": 113,
+            "discordant": 37,
+            "n": 150,
+            "ties": 113
+          },
+          "ties": 113
+        },
+        "n_scenarios": 150,
+        "retained_scenario_ids": [
+          "r-0201",
+          "r-0202",
+          "r-0203",
+          "r-0204",
+          "r-0205",
+          "r-0206",
+          "r-0207",
+          "r-0208",
+          "r-0209",
+          "r-0210",
+          "r-0211",
+          "r-0212",
+          "r-0213",
+          "r-0214",
+          "r-0215",
+          "r-0216",
+          "r-0217",
+          "r-0218",
+          "r-0219",
+          "r-0220",
+          "r-0221",
+          "r-0222",
+          "r-0223",
+          "r-0224",
+          "r-0225",
+          "r-0226",
+          "r-0227",
+          "r-0228",
+          "r-0229",
+          "r-0230",
+          "r-0231",
+          "r-0232",
+          "r-0233",
+          "r-0234",
+          "r-0235",
+          "r-0236",
+          "r-0237",
+          "r-0238",
+          "r-0239",
+          "r-0240",
+          "r-0241",
+          "r-0242",
+          "r-0243",
+          "r-0244",
+          "r-0245",
+          "r-0246",
+          "r-0247",
+          "r-0248",
+          "r-0249",
+          "r-0250",
+          "r-0251",
+          "r-0252",
+          "r-0253",
+          "r-0254",
+          "r-0255",
+          "r-0256",
+          "r-0257",
+          "r-0258",
+          "r-0259",
+          "r-0260",
+          "r-0261",
+          "r-0262",
+          "r-0263",
+          "r-0264",
+          "r-0265",
+          "r-0266",
+          "r-0267",
+          "r-0268",
+          "r-0269",
+          "r-0270",
+          "r-0271",
+          "r-0272",
+          "r-0273",
+          "r-0274",
+          "r-0275",
+          "r-0276",
+          "r-0277",
+          "r-0278",
+          "r-0279",
+          "r-0280",
+          "r-0281",
+          "r-0282",
+          "r-0283",
+          "r-0284",
+          "r-0285",
+          "r-0286",
+          "r-0287",
+          "r-0288",
+          "r-0289",
+          "r-0290",
+          "r-0291",
+          "r-0292",
+          "r-0293",
+          "r-0294",
+          "r-0295",
+          "r-0296",
+          "r-0297",
+          "r-0298",
+          "r-0299",
+          "r-0300",
+          "r-0301",
+          "r-0302",
+          "r-0303",
+          "r-0304",
+          "r-0305",
+          "r-0306",
+          "r-0307",
+          "r-0308",
+          "r-0309",
+          "r-0310",
+          "r-0311",
+          "r-0312",
+          "r-0313",
+          "r-0314",
+          "r-0315",
+          "r-0316",
+          "r-0317",
+          "r-0318",
+          "r-0319",
+          "r-0320",
+          "r-0321",
+          "r-0322",
+          "r-0323",
+          "r-0324",
+          "r-0325",
+          "r-0326",
+          "r-0327",
+          "r-0328",
+          "r-0329",
+          "r-0330",
+          "r-0331",
+          "r-0332",
+          "r-0333",
+          "r-0334",
+          "r-0335",
+          "r-0336",
+          "r-0337",
+          "r-0338",
+          "r-0339",
+          "r-0340",
+          "r-0341",
+          "r-0342",
+          "r-0343",
+          "r-0344",
+          "r-0345",
+          "r-0346",
+          "r-0347",
+          "r-0348",
+          "r-0349",
+          "r-0350"
+        ],
+        "trial_1_pass": {
+          "mcnemar": {
+            "b": 77,
+            "c": 10,
+            "chi2_p_value": 1.48436158510456e-12,
+            "chi2_statistic": 50.0689655172414,
+            "continuity_correction": true,
+            "exact_p_value": 5.91755837353286e-14,
+            "n_discordant": 87,
+            "p_value": 5.91755837353286e-14,
+            "primary_p_label": "exact_binomial_two_sided",
+            "primary_p_value": 5.91755837353286e-14,
+            "secondary_p_label": "chi2_with_continuity_correction",
+            "secondary_p_value": 1.48436158510456e-12,
+            "significant_at_0.05": true,
+            "table": {
+              "a_only": 77,
+              "b_only": 10,
+              "both_correct": 13,
+              "both_wrong": 50,
+              "discordant": 87,
+              "n": 150,
+              "ties": 63
+            }
+          },
+          "mean_difference": 0.446667,
+          "mode": "trial_1_pass",
+          "odds_ratio": 7.7,
+          "odds_ratio_ci": [
+            3.984433,
+            14.880412
+          ],
+          "odds_ratio_method": "matched_pairs_odds_ratio_b_div_c_with_lognormal_ci",
+          "paired_d_z": 0.721706,
+          "paired_d_z_method": "paired_cohen_d_z_mean_diff_div_sample_sd_ddof_1",
+          "risk_difference": 0.446667,
+          "risk_difference_bootstrap_ci": [
+            0.346667,
+            0.54
+          ],
+          "risk_difference_method": "scenario_paired_risk_difference_bootstrap_10000_seed42",
+          "sd_difference": 0.618904,
+          "table": {
+            "a_only": 77,
+            "b_only": 10,
+            "both_correct": 13,
+            "both_wrong": 50,
+            "discordant": 87,
+            "n": 150,
+            "ties": 63
+          },
+          "ties": 63
+        }
+      },
+      "infra_excluded": {
+        "all_3_pass": {
+          "mcnemar": {
+            "b": 22,
+            "c": 3,
+            "chi2_p_value": 0.000318217180315068,
+            "chi2_statistic": 12.96,
+            "continuity_correction": true,
+            "exact_p_value": 0.000156521797180176,
+            "n_discordant": 25,
+            "p_value": 0.000156521797180176,
+            "primary_p_label": "exact_binomial_two_sided",
+            "primary_p_value": 0.000156521797180176,
+            "secondary_p_label": "chi2_with_continuity_correction",
+            "secondary_p_value": 0.000318217180315068,
+            "significant_at_0.05": true,
+            "table": {
+              "a_only": 22,
+              "b_only": 3,
+              "both_correct": 0,
+              "both_wrong": 92,
+              "discordant": 25,
+              "n": 117,
+              "ties": 92
+            }
+          },
+          "mean_difference": 0.162393,
+          "mode": "all_3_pass",
+          "odds_ratio": 7.333333,
+          "odds_ratio_ci": [
+            2.194894,
+            24.501315
+          ],
+          "odds_ratio_method": "matched_pairs_odds_ratio_b_div_c_with_lognormal_ci",
+          "paired_d_z": 0.37362,
+          "paired_d_z_method": "paired_cohen_d_z_mean_diff_div_sample_sd_ddof_1",
+          "risk_difference": 0.162393,
+          "risk_difference_bootstrap_ci": [
+            0.08547,
+            0.239316
+          ],
+          "risk_difference_method": "scenario_paired_risk_difference_bootstrap_10000_seed42",
+          "sd_difference": 0.434647,
+          "table": {
+            "a_only": 22,
+            "b_only": 3,
+            "both_correct": 0,
+            "both_wrong": 92,
+            "discordant": 25,
+            "n": 117,
+            "ties": 92
+          },
+          "ties": 92
+        },
+        "n_scenarios": 117,
+        "retained_scenario_ids": [
+          "r-0201",
+          "r-0202",
+          "r-0203",
+          "r-0204",
+          "r-0205",
+          "r-0206",
+          "r-0207",
+          "r-0208",
+          "r-0209",
+          "r-0210",
+          "r-0211",
+          "r-0212",
+          "r-0213",
+          "r-0214",
+          "r-0215",
+          "r-0216",
+          "r-0217",
+          "r-0218",
+          "r-0219",
+          "r-0220",
+          "r-0221",
+          "r-0222",
+          "r-0223",
+          "r-0224",
+          "r-0225",
+          "r-0226",
+          "r-0227",
+          "r-0228",
+          "r-0229",
+          "r-0230",
+          "r-0231",
+          "r-0232",
+          "r-0233",
+          "r-0234",
+          "r-0235",
+          "r-0236",
+          "r-0237",
+          "r-0238",
+          "r-0239",
+          "r-0240",
+          "r-0241",
+          "r-0242",
+          "r-0243",
+          "r-0244",
+          "r-0245",
+          "r-0246",
+          "r-0247",
+          "r-0248",
+          "r-0249",
+          "r-0250",
+          "r-0251",
+          "r-0252",
+          "r-0253",
+          "r-0254",
+          "r-0255",
+          "r-0256",
+          "r-0257",
+          "r-0258",
+          "r-0259",
+          "r-0260",
+          "r-0261",
+          "r-0262",
+          "r-0263",
+          "r-0264",
+          "r-0265",
+          "r-0266",
+          "r-0267",
+          "r-0268",
+          "r-0269",
+          "r-0270",
+          "r-0271",
+          "r-0272",
+          "r-0273",
+          "r-0274",
+          "r-0275",
+          "r-0276",
+          "r-0277",
+          "r-0278",
+          "r-0279",
+          "r-0280",
+          "r-0281",
+          "r-0282",
+          "r-0283",
+          "r-0284",
+          "r-0285",
+          "r-0286",
+          "r-0287",
+          "r-0288",
+          "r-0289",
+          "r-0290",
+          "r-0291",
+          "r-0292",
+          "r-0293",
+          "r-0294",
+          "r-0295",
+          "r-0296",
+          "r-0297",
+          "r-0298",
+          "r-0299",
+          "r-0300",
+          "r-0301",
+          "r-0302",
+          "r-0303",
+          "r-0304",
+          "r-0306",
+          "r-0307",
+          "r-0308",
+          "r-0309",
+          "r-0311",
+          "r-0312",
+          "r-0313",
+          "r-0314",
+          "r-0315",
+          "r-0316",
+          "r-0317",
+          "r-0318",
+          "r-0319"
+        ],
+        "trial_1_pass": {
+          "mcnemar": {
+            "b": 55,
+            "c": 10,
+            "chi2_p_value": 4.82808159258248e-08,
+            "chi2_statistic": 29.7846153846154,
+            "continuity_correction": true,
+            "exact_p_value": 1.17536028090186e-08,
+            "n_discordant": 65,
+            "p_value": 1.17536028090186e-08,
+            "primary_p_label": "exact_binomial_two_sided",
+            "primary_p_value": 1.17536028090186e-08,
+            "secondary_p_label": "chi2_with_continuity_correction",
+            "secondary_p_value": 4.82808159258248e-08,
+            "significant_at_0.05": true,
+            "table": {
+              "a_only": 55,
+              "b_only": 10,
+              "both_correct": 13,
+              "both_wrong": 39,
+              "discordant": 65,
+              "n": 117,
+              "ties": 52
+            }
+          },
+          "mean_difference": 0.384615,
+          "mode": "trial_1_pass",
+          "odds_ratio": 5.5,
+          "odds_ratio_ci": [
+            2.803721,
+            10.789233
+          ],
+          "odds_ratio_method": "matched_pairs_odds_ratio_b_div_c_with_lognormal_ci",
+          "paired_d_z": 0.599835,
+          "paired_d_z_method": "paired_cohen_d_z_mean_diff_div_sample_sd_ddof_1",
+          "risk_difference": 0.384615,
+          "risk_difference_bootstrap_ci": [
+            0.264957,
+            0.504274
+          ],
+          "risk_difference_method": "scenario_paired_risk_difference_bootstrap_10000_seed42",
+          "sd_difference": 0.641202,
+          "table": {
+            "a_only": 55,
+            "b_only": 10,
+            "both_correct": 13,
+            "both_wrong": 39,
+            "discordant": 65,
+            "n": 117,
+            "ties": 52
+          },
+          "ties": 52
+        }
+      },
+      "infra_excluded_strict": {
+        "all_3_pass": {
+          "mcnemar": {
+            "b": 6,
+            "c": 1,
+            "chi2_p_value": 0.130570018115736,
+            "chi2_statistic": 2.28571428571429,
+            "continuity_correction": true,
+            "exact_p_value": 0.125,
+            "n_discordant": 7,
+            "p_value": 0.125,
+            "primary_p_label": "exact_binomial_two_sided",
+            "primary_p_value": 0.125,
+            "secondary_p_label": "chi2_with_continuity_correction",
+            "secondary_p_value": 0.130570018115736,
+            "significant_at_0.05": false,
+            "table": {
+              "a_only": 6,
+              "b_only": 1,
+              "both_correct": 0,
+              "both_wrong": 3,
+              "discordant": 7,
+              "n": 10,
+              "ties": 3
+            }
+          },
+          "mean_difference": 0.5,
+          "mode": "all_3_pass",
+          "odds_ratio": 6.0,
+          "odds_ratio_ci": [
+            0.722323,
+            49.83918
+          ],
+          "odds_ratio_method": "matched_pairs_odds_ratio_b_div_c_with_lognormal_ci",
+          "paired_d_z": 0.707107,
+          "paired_d_z_method": "paired_cohen_d_z_mean_diff_div_sample_sd_ddof_1",
+          "risk_difference": 0.5,
+          "risk_difference_bootstrap_ci": [
+            0.1,
+            0.9
+          ],
+          "risk_difference_method": "scenario_paired_risk_difference_bootstrap_10000_seed42",
+          "sd_difference": 0.707107,
+          "table": {
+            "a_only": 6,
+            "b_only": 1,
+            "both_correct": 0,
+            "both_wrong": 3,
+            "discordant": 7,
+            "n": 10,
+            "ties": 3
+          },
+          "ties": 3
+        },
+        "n_scenarios": 10,
+        "retained_scenario_ids": [
+          "r-0203",
+          "r-0212",
+          "r-0218",
+          "r-0241",
+          "r-0249",
+          "r-0256",
+          "r-0281",
+          "r-0292",
+          "r-0299",
+          "r-0313"
+        ],
+        "trial_1_pass": {
+          "mcnemar": {
+            "b": 4,
+            "c": 1,
+            "chi2_p_value": 0.371093369522698,
+            "chi2_statistic": 0.8,
+            "continuity_correction": true,
+            "exact_p_value": 0.375,
+            "n_discordant": 5,
+            "p_value": 0.375,
+            "primary_p_label": "exact_binomial_two_sided",
+            "primary_p_value": 0.375,
+            "secondary_p_label": "chi2_with_continuity_correction",
+            "secondary_p_value": 0.371093369522698,
+            "significant_at_0.05": false,
+            "table": {
+              "a_only": 4,
+              "b_only": 1,
+              "both_correct": 3,
+              "both_wrong": 2,
+              "discordant": 5,
+              "n": 10,
+              "ties": 5
+            }
+          },
+          "mean_difference": 0.3,
+          "mode": "trial_1_pass",
+          "odds_ratio": 4.0,
+          "odds_ratio_ci": [
+            0.447065,
+            35.789014
+          ],
+          "odds_ratio_method": "matched_pairs_odds_ratio_b_div_c_with_lognormal_ci",
+          "paired_d_z": 0.444478,
+          "paired_d_z_method": "paired_cohen_d_z_mean_diff_div_sample_sd_ddof_1",
+          "risk_difference": 0.3,
+          "risk_difference_bootstrap_ci": [
+            -0.1,
+            0.7
+          ],
+          "risk_difference_method": "scenario_paired_risk_difference_bootstrap_10000_seed42",
+          "sd_difference": 0.674949,
+          "table": {
+            "a_only": 4,
+            "b_only": 1,
+            "both_correct": 3,
+            "both_wrong": 2,
+            "discordant": 5,
+            "n": 10,
+            "ties": 5
+          },
+          "ties": 5
+        }
+      }
+    }
+  },
+  "rungs": {
+    "R2": {
+      "as_run": {
+        "concentration_counts": {
+          "always_fail": 8,
+          "always_pass": 34,
+          "mixed": 108,
+          "total_scenarios": 150
+        },
+        "cost_per_grounded_pass": {
+          "cost_per_grounded_pass_bootstrap_ci": [
+            0.01683,
+            0.019316
+          ],
+          "cost_per_grounded_pass_usd": 0.017956,
+          "discarded_spend_usd": 0.04914,
+          "final_pass_spend_usd": 5.0994,
+          "method": "final_pass_ledger_spend_div_passing_trials_with_scenario_bootstrap",
+          "passing_trials": 284,
+          "passing_trials_bootstrap_ci": [
+            264,
+            303
+          ],
+          "total_spend_usd": 5.14854
+        },
+        "independence_test": {
+          "binomial_p": 0.631111,
+          "chi2_df": 2,
+          "chi2_p_value_asymptotic": 0.388319,
+          "chi2_statistic": 1.891856,
+          "expected_histogram": {
+            "0": 7.5297,
+            "1": 38.6464,
+            "2": 66.118,
+            "3": 37.7059
+          },
+          "legacy": {
+            "chi2_uncollapsed_fixed_p": {
+              "df": 3,
+              "monte_carlo_p_value": 0.5939,
+              "p_value_asymptotic": 0.595153,
+              "statistic": 1.891856
+            },
+            "collapsing": {
+              "bins": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ],
+              "cells_collapsed": false,
+              "chi2_df": 3,
+              "chi2_p_value_asymptotic": 0.595153,
+              "chi2_statistic": 1.891856,
+              "expected": [
+                7.5297,
+                38.6464,
+                66.118,
+                37.7059
+              ],
+              "monte_carlo_p_value": 0.5939,
+              "observed": [
+                8,
+                34,
+                74,
+                34
+              ],
+              "reason": "No cells had expected count < 5.0"
+            }
+          },
+          "method": "pearson_chi2_goodness_of_fit_df2_parametric_bootstrap_reestimating_p",
+          "monte_carlo_method": "parametric_bootstrap_10000_draws_reestimating_p_seed42",
+          "monte_carlo_p_value": 0.3794,
+          "observed_histogram": {
+            "0": 8,
+            "1": 34,
+            "2": 74,
+            "3": 34
+          },
+          "parametric_bootstrap_p_value": 0.3794,
+          "tail_test": {
+            "always_pass_expected": 37.7059,
+            "always_pass_observed": 34,
+            "exact_tail_p_value": 0.783971,
+            "method": "exact_binomial_upper_tail_and_parametric_bootstrap",
+            "parametric_bootstrap_tail_p_value": 0.7814
+          },
+          "tarone_z_test": {
+            "dispersion_statistic_S": 140.73477,
+            "method": "tarone_1979_c_alpha_score_test",
+            "n_clusters": 150,
+            "p_hat": 0.631111,
+            "p_value": 0.743815,
+            "trials_per_cluster": 3,
+            "z_statistic": -0.655151
+          }
+        },
+        "intra_scenario_correlation": {
+          "extrapolation_table_beta_binomial": {
+            "k1": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 1.0,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.0
+              ],
+              "expected_pass_k": 0.631111,
+              "k": 1,
+              "naive_pass_k": 0.631111
+            },
+            "k10": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 3.3599,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                3.4576
+              ],
+              "expected_pass_k": 0.010024,
+              "k": 10,
+              "naive_pass_k": 0.010024
+            },
+            "k2": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 1.039,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.0395
+              ],
+              "expected_pass_k": 0.398301,
+              "k": 2,
+              "naive_pass_k": 0.398301
+            },
+            "k3": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 1.1151,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.1168
+              ],
+              "expected_pass_k": 0.251372,
+              "k": 3,
+              "naive_pass_k": 0.251372
+            },
+            "k4": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 1.2303,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.2344
+              ],
+              "expected_pass_k": 0.158644,
+              "k": 4,
+              "naive_pass_k": 0.158644
+            },
+            "k5": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 1.3903,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.3985
+              ],
+              "expected_pass_k": 0.100122,
+              "k": 5,
+              "naive_pass_k": 0.100122
+            },
+            "k6": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 1.6045,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.6191
+              ],
+              "expected_pass_k": 0.063188,
+              "k": 6,
+              "naive_pass_k": 0.063188
+            },
+            "k7": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 1.8862,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.9108
+              ],
+              "expected_pass_k": 0.039879,
+              "k": 7,
+              "naive_pass_k": 0.039879
+            },
+            "k8": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 2.2542,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                2.2941
+              ],
+              "expected_pass_k": 0.025168,
+              "k": 8,
+              "naive_pass_k": 0.025168
+            },
+            "k9": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 2.7339,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                2.7969
+              ],
+              "expected_pass_k": 0.015884,
+              "k": 9,
+              "naive_pass_k": 0.015884
+            }
+          },
+          "fleiss_kappa": -0.030884,
+          "fleiss_kappa_bootstrap_ci": [
+            -0.123548,
+            0.064429
+          ],
+          "fleiss_kappa_method": "fleiss_multirater_kappa",
+          "icc": -0.028725,
+          "icc_bootstrap_ci": [
+            -0.121659,
+            0.066786
+          ],
+          "icc_method": "one_way_random_effects_anova_icc1_1"
+        },
+        "n_scenarios": 150,
+        "order_effects": {
+          "all_3_pass_first_half": 9,
+          "all_3_pass_second_half": 25,
+          "first_half_n": 75,
+          "manifest_order_note": "R4 infra_excluded drops 33 scenarios: r-0305 (k3 timeout), r-0310 (k2 timeout), and r-0320..r-0350 (all 3 trials dead). Scenarios r-0318 and r-0319 survived, so the retained 117 scenarios consist of 115 from the first 117 plus r-0318 and r-0319.",
+          "method": "correlation_manifest_index_vs_successes_with_permutation_test_10000_seed42",
+          "n": 150,
+          "pearson_r": 0.1896,
+          "permutation_p": 0.0144,
+          "second_half_n": 75,
+          "spearman_rho": 0.1984
+        },
+        "pass_at_1": {
+          "bootstrap_method": "scenario_level_percentile_bootstrap_10000_seed42",
+          "passing_trials": 284,
+          "scenario_bootstrap_ci": [
+            0.586667,
+            0.673333
+          ],
+          "score": 0.631111,
+          "total_trials": 450,
+          "wilson_ci": [
+            0.585596,
+            0.674406
+          ],
+          "wilson_method": "wilson_score_interval_95pct"
+        },
+        "pass_k": {
+          "k2": {
+            "concentration_ratio_C_k": 1.054478,
+            "concentration_ratio_bootstrap_ci": [
+              0.908338,
+              1.196794
+            ],
+            "deviation_delta": 0.021699,
+            "deviation_delta_bootstrap_ci": [
+              -0.036267,
+              0.078351
+            ],
+            "deviation_delta_method": "scenario_level_delta_bootstrap_10000_seed42",
+            "k": 2,
+            "naive_k": 0.398301,
+            "naive_k_bootstrap_ci": [
+              0.344178,
+              0.453378
+            ],
+            "naive_k_method": "naive_p_k_pow_2",
+            "pass_2_all_pairs": 0.391111,
+            "pass_2_all_pairs_bootstrap_ci": [
+              0.335556,
+              0.448889
+            ],
+            "pass_2_all_pairs_method": "subset_average_over_3_choose_2_pairs",
+            "pass_hat_k": 0.42,
+            "pass_hat_k_bootstrap_ci": [
+              0.34,
+              0.5
+            ],
+            "pass_hat_k_method": "pass_hat_k_first_2_trials",
+            "ratio_method": "honest_scenario_level_ratio_bootstrap_10000_seed42"
+          },
+          "k3": {
+            "concentration_ratio_C_k": 0.901717,
+            "concentration_ratio_bootstrap_ci": [
+              0.716069,
+              1.079287
+            ],
+            "deviation_delta": -0.024706,
+            "deviation_delta_bootstrap_ci": [
+              -0.07041,
+              0.020094
+            ],
+            "deviation_delta_method": "scenario_level_delta_bootstrap_10000_seed42",
+            "k": 3,
+            "naive_k": 0.251372,
+            "naive_k_bootstrap_ci": [
+              0.201918,
+              0.305274
+            ],
+            "naive_k_method": "naive_p_k_pow_3",
+            "pass_hat_k": 0.226667,
+            "pass_hat_k_bootstrap_ci": [
+              0.16,
+              0.293333
+            ],
+            "pass_hat_k_method": "pass_hat_k_first_3_trials",
+            "ratio_method": "honest_scenario_level_ratio_bootstrap_10000_seed42"
+          }
+        },
+        "retained_scenario_ids": [
+          "r-0201",
+          "r-0202",
+          "r-0203",
+          "r-0204",
+          "r-0205",
+          "r-0206",
+          "r-0207",
+          "r-0208",
+          "r-0209",
+          "r-0210",
+          "r-0211",
+          "r-0212",
+          "r-0213",
+          "r-0214",
+          "r-0215",
+          "r-0216",
+          "r-0217",
+          "r-0218",
+          "r-0219",
+          "r-0220",
+          "r-0221",
+          "r-0222",
+          "r-0223",
+          "r-0224",
+          "r-0225",
+          "r-0226",
+          "r-0227",
+          "r-0228",
+          "r-0229",
+          "r-0230",
+          "r-0231",
+          "r-0232",
+          "r-0233",
+          "r-0234",
+          "r-0235",
+          "r-0236",
+          "r-0237",
+          "r-0238",
+          "r-0239",
+          "r-0240",
+          "r-0241",
+          "r-0242",
+          "r-0243",
+          "r-0244",
+          "r-0245",
+          "r-0246",
+          "r-0247",
+          "r-0248",
+          "r-0249",
+          "r-0250",
+          "r-0251",
+          "r-0252",
+          "r-0253",
+          "r-0254",
+          "r-0255",
+          "r-0256",
+          "r-0257",
+          "r-0258",
+          "r-0259",
+          "r-0260",
+          "r-0261",
+          "r-0262",
+          "r-0263",
+          "r-0264",
+          "r-0265",
+          "r-0266",
+          "r-0267",
+          "r-0268",
+          "r-0269",
+          "r-0270",
+          "r-0271",
+          "r-0272",
+          "r-0273",
+          "r-0274",
+          "r-0275",
+          "r-0276",
+          "r-0277",
+          "r-0278",
+          "r-0279",
+          "r-0280",
+          "r-0281",
+          "r-0282",
+          "r-0283",
+          "r-0284",
+          "r-0285",
+          "r-0286",
+          "r-0287",
+          "r-0288",
+          "r-0289",
+          "r-0290",
+          "r-0291",
+          "r-0292",
+          "r-0293",
+          "r-0294",
+          "r-0295",
+          "r-0296",
+          "r-0297",
+          "r-0298",
+          "r-0299",
+          "r-0300",
+          "r-0301",
+          "r-0302",
+          "r-0303",
+          "r-0304",
+          "r-0305",
+          "r-0306",
+          "r-0307",
+          "r-0308",
+          "r-0309",
+          "r-0310",
+          "r-0311",
+          "r-0312",
+          "r-0313",
+          "r-0314",
+          "r-0315",
+          "r-0316",
+          "r-0317",
+          "r-0318",
+          "r-0319",
+          "r-0320",
+          "r-0321",
+          "r-0322",
+          "r-0323",
+          "r-0324",
+          "r-0325",
+          "r-0326",
+          "r-0327",
+          "r-0328",
+          "r-0329",
+          "r-0330",
+          "r-0331",
+          "r-0332",
+          "r-0333",
+          "r-0334",
+          "r-0335",
+          "r-0336",
+          "r-0337",
+          "r-0338",
+          "r-0339",
+          "r-0340",
+          "r-0341",
+          "r-0342",
+          "r-0343",
+          "r-0344",
+          "r-0345",
+          "r-0346",
+          "r-0347",
+          "r-0348",
+          "r-0349",
+          "r-0350"
+        ]
+      },
+      "infra_dead_scenarios": 0,
+      "infra_dead_scenarios_all3": 0,
+      "infra_dead_trials": 0,
+      "infra_excluded": {
+        "concentration_counts": {
+          "always_fail": 8,
+          "always_pass": 34,
+          "mixed": 108,
+          "total_scenarios": 150
+        },
+        "cost_per_grounded_pass": {
+          "cost_per_grounded_pass_bootstrap_ci": [
+            0.01683,
+            0.019316
+          ],
+          "cost_per_grounded_pass_usd": 0.017956,
+          "discarded_spend_usd": 0.04914,
+          "final_pass_spend_usd": 5.0994,
+          "method": "final_pass_ledger_spend_div_passing_trials_with_scenario_bootstrap",
+          "passing_trials": 284,
+          "passing_trials_bootstrap_ci": [
+            264,
+            303
+          ],
+          "total_spend_usd": 5.14854
+        },
+        "independence_test": {
+          "binomial_p": 0.631111,
+          "chi2_df": 2,
+          "chi2_p_value_asymptotic": 0.388319,
+          "chi2_statistic": 1.891856,
+          "expected_histogram": {
+            "0": 7.5297,
+            "1": 38.6464,
+            "2": 66.118,
+            "3": 37.7059
+          },
+          "legacy": {
+            "chi2_uncollapsed_fixed_p": {
+              "df": 3,
+              "monte_carlo_p_value": 0.5939,
+              "p_value_asymptotic": 0.595153,
+              "statistic": 1.891856
+            },
+            "collapsing": {
+              "bins": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ],
+              "cells_collapsed": false,
+              "chi2_df": 3,
+              "chi2_p_value_asymptotic": 0.595153,
+              "chi2_statistic": 1.891856,
+              "expected": [
+                7.5297,
+                38.6464,
+                66.118,
+                37.7059
+              ],
+              "monte_carlo_p_value": 0.5939,
+              "observed": [
+                8,
+                34,
+                74,
+                34
+              ],
+              "reason": "No cells had expected count < 5.0"
+            }
+          },
+          "method": "pearson_chi2_goodness_of_fit_df2_parametric_bootstrap_reestimating_p",
+          "monte_carlo_method": "parametric_bootstrap_10000_draws_reestimating_p_seed42",
+          "monte_carlo_p_value": 0.3794,
+          "observed_histogram": {
+            "0": 8,
+            "1": 34,
+            "2": 74,
+            "3": 34
+          },
+          "parametric_bootstrap_p_value": 0.3794,
+          "tail_test": {
+            "always_pass_expected": 37.7059,
+            "always_pass_observed": 34,
+            "exact_tail_p_value": 0.783971,
+            "method": "exact_binomial_upper_tail_and_parametric_bootstrap",
+            "parametric_bootstrap_tail_p_value": 0.7814
+          },
+          "tarone_z_test": {
+            "dispersion_statistic_S": 140.73477,
+            "method": "tarone_1979_c_alpha_score_test",
+            "n_clusters": 150,
+            "p_hat": 0.631111,
+            "p_value": 0.743815,
+            "trials_per_cluster": 3,
+            "z_statistic": -0.655151
+          }
+        },
+        "intra_scenario_correlation": {
+          "extrapolation_table_beta_binomial": {
+            "k1": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 1.0,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.0
+              ],
+              "expected_pass_k": 0.631111,
+              "k": 1,
+              "naive_pass_k": 0.631111
+            },
+            "k10": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 3.3599,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                3.4576
+              ],
+              "expected_pass_k": 0.010024,
+              "k": 10,
+              "naive_pass_k": 0.010024
+            },
+            "k2": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 1.039,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.0395
+              ],
+              "expected_pass_k": 0.398301,
+              "k": 2,
+              "naive_pass_k": 0.398301
+            },
+            "k3": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 1.1151,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.1168
+              ],
+              "expected_pass_k": 0.251372,
+              "k": 3,
+              "naive_pass_k": 0.251372
+            },
+            "k4": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 1.2303,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.2344
+              ],
+              "expected_pass_k": 0.158644,
+              "k": 4,
+              "naive_pass_k": 0.158644
+            },
+            "k5": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 1.3903,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.3985
+              ],
+              "expected_pass_k": 0.100122,
+              "k": 5,
+              "naive_pass_k": 0.100122
+            },
+            "k6": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 1.6045,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.6191
+              ],
+              "expected_pass_k": 0.063188,
+              "k": 6,
+              "naive_pass_k": 0.063188
+            },
+            "k7": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 1.8862,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.9108
+              ],
+              "expected_pass_k": 0.039879,
+              "k": 7,
+              "naive_pass_k": 0.039879
+            },
+            "k8": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 2.2542,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                2.2941
+              ],
+              "expected_pass_k": 0.025168,
+              "k": 8,
+              "naive_pass_k": 0.025168
+            },
+            "k9": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 2.7339,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                2.7969
+              ],
+              "expected_pass_k": 0.015884,
+              "k": 9,
+              "naive_pass_k": 0.015884
+            }
+          },
+          "fleiss_kappa": -0.030884,
+          "fleiss_kappa_bootstrap_ci": [
+            -0.123548,
+            0.064429
+          ],
+          "fleiss_kappa_method": "fleiss_multirater_kappa",
+          "icc": -0.028725,
+          "icc_bootstrap_ci": [
+            -0.121659,
+            0.066786
+          ],
+          "icc_method": "one_way_random_effects_anova_icc1_1"
+        },
+        "n_scenarios": 150,
+        "order_effects": {
+          "all_3_pass_first_half": 9,
+          "all_3_pass_second_half": 25,
+          "first_half_n": 75,
+          "manifest_order_note": "R4 infra_excluded drops 33 scenarios: r-0305 (k3 timeout), r-0310 (k2 timeout), and r-0320..r-0350 (all 3 trials dead). Scenarios r-0318 and r-0319 survived, so the retained 117 scenarios consist of 115 from the first 117 plus r-0318 and r-0319.",
+          "method": "correlation_manifest_index_vs_successes_with_permutation_test_10000_seed42",
+          "n": 150,
+          "pearson_r": 0.1896,
+          "permutation_p": 0.0144,
+          "second_half_n": 75,
+          "spearman_rho": 0.1984
+        },
+        "pass_at_1": {
+          "bootstrap_method": "scenario_level_percentile_bootstrap_10000_seed42",
+          "passing_trials": 284,
+          "scenario_bootstrap_ci": [
+            0.586667,
+            0.673333
+          ],
+          "score": 0.631111,
+          "total_trials": 450,
+          "wilson_ci": [
+            0.585596,
+            0.674406
+          ],
+          "wilson_method": "wilson_score_interval_95pct"
+        },
+        "pass_k": {
+          "k2": {
+            "concentration_ratio_C_k": 1.054478,
+            "concentration_ratio_bootstrap_ci": [
+              0.908338,
+              1.196794
+            ],
+            "deviation_delta": 0.021699,
+            "deviation_delta_bootstrap_ci": [
+              -0.036267,
+              0.078351
+            ],
+            "deviation_delta_method": "scenario_level_delta_bootstrap_10000_seed42",
+            "k": 2,
+            "naive_k": 0.398301,
+            "naive_k_bootstrap_ci": [
+              0.344178,
+              0.453378
+            ],
+            "naive_k_method": "naive_p_k_pow_2",
+            "pass_2_all_pairs": 0.391111,
+            "pass_2_all_pairs_bootstrap_ci": [
+              0.335556,
+              0.448889
+            ],
+            "pass_2_all_pairs_method": "subset_average_over_3_choose_2_pairs",
+            "pass_hat_k": 0.42,
+            "pass_hat_k_bootstrap_ci": [
+              0.34,
+              0.5
+            ],
+            "pass_hat_k_method": "pass_hat_k_first_2_trials",
+            "ratio_method": "honest_scenario_level_ratio_bootstrap_10000_seed42"
+          },
+          "k3": {
+            "concentration_ratio_C_k": 0.901717,
+            "concentration_ratio_bootstrap_ci": [
+              0.716069,
+              1.079287
+            ],
+            "deviation_delta": -0.024706,
+            "deviation_delta_bootstrap_ci": [
+              -0.07041,
+              0.020094
+            ],
+            "deviation_delta_method": "scenario_level_delta_bootstrap_10000_seed42",
+            "k": 3,
+            "naive_k": 0.251372,
+            "naive_k_bootstrap_ci": [
+              0.201918,
+              0.305274
+            ],
+            "naive_k_method": "naive_p_k_pow_3",
+            "pass_hat_k": 0.226667,
+            "pass_hat_k_bootstrap_ci": [
+              0.16,
+              0.293333
+            ],
+            "pass_hat_k_method": "pass_hat_k_first_3_trials",
+            "ratio_method": "honest_scenario_level_ratio_bootstrap_10000_seed42"
+          }
+        },
+        "retained_scenario_ids": [
+          "r-0201",
+          "r-0202",
+          "r-0203",
+          "r-0204",
+          "r-0205",
+          "r-0206",
+          "r-0207",
+          "r-0208",
+          "r-0209",
+          "r-0210",
+          "r-0211",
+          "r-0212",
+          "r-0213",
+          "r-0214",
+          "r-0215",
+          "r-0216",
+          "r-0217",
+          "r-0218",
+          "r-0219",
+          "r-0220",
+          "r-0221",
+          "r-0222",
+          "r-0223",
+          "r-0224",
+          "r-0225",
+          "r-0226",
+          "r-0227",
+          "r-0228",
+          "r-0229",
+          "r-0230",
+          "r-0231",
+          "r-0232",
+          "r-0233",
+          "r-0234",
+          "r-0235",
+          "r-0236",
+          "r-0237",
+          "r-0238",
+          "r-0239",
+          "r-0240",
+          "r-0241",
+          "r-0242",
+          "r-0243",
+          "r-0244",
+          "r-0245",
+          "r-0246",
+          "r-0247",
+          "r-0248",
+          "r-0249",
+          "r-0250",
+          "r-0251",
+          "r-0252",
+          "r-0253",
+          "r-0254",
+          "r-0255",
+          "r-0256",
+          "r-0257",
+          "r-0258",
+          "r-0259",
+          "r-0260",
+          "r-0261",
+          "r-0262",
+          "r-0263",
+          "r-0264",
+          "r-0265",
+          "r-0266",
+          "r-0267",
+          "r-0268",
+          "r-0269",
+          "r-0270",
+          "r-0271",
+          "r-0272",
+          "r-0273",
+          "r-0274",
+          "r-0275",
+          "r-0276",
+          "r-0277",
+          "r-0278",
+          "r-0279",
+          "r-0280",
+          "r-0281",
+          "r-0282",
+          "r-0283",
+          "r-0284",
+          "r-0285",
+          "r-0286",
+          "r-0287",
+          "r-0288",
+          "r-0289",
+          "r-0290",
+          "r-0291",
+          "r-0292",
+          "r-0293",
+          "r-0294",
+          "r-0295",
+          "r-0296",
+          "r-0297",
+          "r-0298",
+          "r-0299",
+          "r-0300",
+          "r-0301",
+          "r-0302",
+          "r-0303",
+          "r-0304",
+          "r-0305",
+          "r-0306",
+          "r-0307",
+          "r-0308",
+          "r-0309",
+          "r-0310",
+          "r-0311",
+          "r-0312",
+          "r-0313",
+          "r-0314",
+          "r-0315",
+          "r-0316",
+          "r-0317",
+          "r-0318",
+          "r-0319",
+          "r-0320",
+          "r-0321",
+          "r-0322",
+          "r-0323",
+          "r-0324",
+          "r-0325",
+          "r-0326",
+          "r-0327",
+          "r-0328",
+          "r-0329",
+          "r-0330",
+          "r-0331",
+          "r-0332",
+          "r-0333",
+          "r-0334",
+          "r-0335",
+          "r-0336",
+          "r-0337",
+          "r-0338",
+          "r-0339",
+          "r-0340",
+          "r-0341",
+          "r-0342",
+          "r-0343",
+          "r-0344",
+          "r-0345",
+          "r-0346",
+          "r-0347",
+          "r-0348",
+          "r-0349",
+          "r-0350"
+        ]
+      },
+      "infra_excluded_strict": {
+        "concentration_counts": {
+          "always_fail": 0,
+          "always_pass": 34,
+          "mixed": 15,
+          "total_scenarios": 49
+        },
+        "cost_per_grounded_pass": {
+          "cost_per_grounded_pass_bootstrap_ci": [
+            0.037222,
+            0.042144
+          ],
+          "cost_per_grounded_pass_usd": 0.03953,
+          "discarded_spend_usd": 0.04914,
+          "final_pass_spend_usd": 5.0994,
+          "method": "final_pass_ledger_spend_div_passing_trials_with_scenario_bootstrap",
+          "passing_trials": 129,
+          "passing_trials_bootstrap_ci": [
+            121,
+            137
+          ],
+          "total_spend_usd": 5.14854
+        },
+        "independence_test": {
+          "binomial_p": 0.877551,
+          "chi2_df": 2,
+          "chi2_p_value_asymptotic": 0.621574,
+          "chi2_statistic": 0.950999,
+          "expected_histogram": {
+            "0": 0.09,
+            "1": 1.9342,
+            "2": 13.8617,
+            "3": 33.1141
+          },
+          "legacy": {
+            "chi2_uncollapsed_fixed_p": {
+              "df": 3,
+              "monte_carlo_p_value": 0.6643,
+              "p_value_asymptotic": 0.813106,
+              "statistic": 0.950999
+            },
+            "collapsing": {
+              "bins": [
+                "{0,1,2}",
+                "3"
+              ],
+              "cells_collapsed": true,
+              "chi2_df": 1,
+              "chi2_p_value_asymptotic": 0.786874,
+              "chi2_statistic": 0.073101,
+              "expected": [
+                15.8859,
+                33.1141
+              ],
+              "monte_carlo_p_value": 0.8817,
+              "observed": [
+                15,
+                34
+              ],
+              "reason": "Merged adjacent tail cells with expected count < 5.0"
+            }
+          },
+          "method": "pearson_chi2_goodness_of_fit_df2_parametric_bootstrap_reestimating_p",
+          "monte_carlo_method": "parametric_bootstrap_10000_draws_reestimating_p_seed42",
+          "monte_carlo_p_value": 0.4399,
+          "observed_histogram": {
+            "0": 0,
+            "1": 3,
+            "2": 12,
+            "3": 34
+          },
+          "parametric_bootstrap_p_value": 0.4399,
+          "tail_test": {
+            "always_pass_expected": 33.1141,
+            "always_pass_observed": 34,
+            "exact_tail_p_value": 0.46029,
+            "method": "exact_binomial_upper_tail_and_parametric_bootstrap",
+            "parametric_bootstrap_tail_p_value": 0.4632
+          },
+          "tarone_z_test": {
+            "dispersion_statistic_S": 53.937984,
+            "method": "tarone_1979_c_alpha_score_test",
+            "n_clusters": 49,
+            "p_hat": 0.877551,
+            "p_value": 0.270627,
+            "trials_per_cluster": 3,
+            "z_statistic": 0.610917
+          }
+        },
+        "intra_scenario_correlation": {
+          "extrapolation_table_beta_binomial": {
+            "k1": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 1.0,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.0
+              ],
+              "expected_pass_k": 0.877551,
+              "k": 1,
+              "naive_pass_k": 0.877551
+            },
+            "k10": {
+              "concentration_ratio_C_k": 1.3158,
+              "concentration_ratio_at_icc_ci_upper": 1.8874,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                2.0028
+              ],
+              "expected_pass_k": 0.356393,
+              "k": 10,
+              "naive_pass_k": 0.270847
+            },
+            "k2": {
+              "concentration_ratio_C_k": 1.008,
+              "concentration_ratio_at_icc_ci_upper": 1.0292,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.0301
+              ],
+              "expected_pass_k": 0.776284,
+              "k": 2,
+              "naive_pass_k": 0.770096
+            },
+            "k3": {
+              "concentration_ratio_C_k": 1.0234,
+              "concentration_ratio_at_icc_ci_upper": 1.079,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.0833
+              ],
+              "expected_pass_k": 0.691582,
+              "k": 3,
+              "naive_pass_k": 0.675798
+            },
+            "k4": {
+              "concentration_ratio_C_k": 1.0455,
+              "concentration_ratio_at_icc_ci_upper": 1.1457,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.1572
+              ],
+              "expected_pass_k": 0.620018,
+              "k": 4,
+              "naive_pass_k": 0.593048
+            },
+            "k5": {
+              "concentration_ratio_C_k": 1.0741,
+              "concentration_ratio_at_icc_ci_upper": 1.2279,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.2476
+              ],
+              "expected_pass_k": 0.559011,
+              "k": 5,
+              "naive_pass_k": 0.520429
+            },
+            "k6": {
+              "concentration_ratio_C_k": 1.1092,
+              "concentration_ratio_at_icc_ci_upper": 1.3256,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.3609
+              ],
+              "expected_pass_k": 0.506581,
+              "k": 6,
+              "naive_pass_k": 0.456703
+            },
+            "k7": {
+              "concentration_ratio_C_k": 1.1507,
+              "concentration_ratio_at_icc_ci_upper": 1.4392,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.4926
+              ],
+              "expected_pass_k": 0.461193,
+              "k": 7,
+              "naive_pass_k": 0.400781
+            },
+            "k8": {
+              "concentration_ratio_C_k": 1.1988,
+              "concentration_ratio_at_icc_ci_upper": 1.5696,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.6402
+              ],
+              "expected_pass_k": 0.42164,
+              "k": 8,
+              "naive_pass_k": 0.351705
+            },
+            "k9": {
+              "concentration_ratio_C_k": 1.2538,
+              "concentration_ratio_at_icc_ci_upper": 1.7185,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.8089
+              ],
+              "expected_pass_k": 0.386963,
+              "k": 9,
+              "naive_pass_k": 0.308639
+            }
+          },
+          "fleiss_kappa": 0.050388,
+          "fleiss_kappa_bootstrap_ci": [
+            -0.099606,
+            0.20181
+          ],
+          "fleiss_kappa_method": "fleiss_multirater_kappa",
+          "icc": 0.057592,
+          "icc_bootstrap_ci": [
+            -0.093525,
+            0.209515
+          ],
+          "icc_method": "one_way_random_effects_anova_icc1_1"
+        },
+        "n_scenarios": 49,
+        "order_effects": {
+          "all_3_pass_first_half": 14,
+          "all_3_pass_second_half": 20,
+          "first_half_n": 24,
+          "manifest_order_note": "R4 infra_excluded drops 33 scenarios: r-0305 (k3 timeout), r-0310 (k2 timeout), and r-0320..r-0350 (all 3 trials dead). Scenarios r-0318 and r-0319 survived, so the retained 117 scenarios consist of 115 from the first 117 plus r-0318 and r-0319.",
+          "method": "correlation_manifest_index_vs_successes_with_permutation_test_10000_seed42",
+          "n": 49,
+          "pearson_r": 0.2415,
+          "permutation_p": 0.072,
+          "second_half_n": 25,
+          "spearman_rho": 0.2567
+        },
+        "pass_at_1": {
+          "bootstrap_method": "scenario_level_percentile_bootstrap_10000_seed42",
+          "passing_trials": 129,
+          "scenario_bootstrap_ci": [
+            0.823129,
+            0.931973
+          ],
+          "score": 0.877551,
+          "total_trials": 147,
+          "wilson_ci": [
+            0.814748,
+            0.921124
+          ],
+          "wilson_method": "wilson_score_interval_95pct"
+        },
+        "pass_k": {
+          "k2": {
+            "concentration_ratio_C_k": 1.007031,
+            "concentration_ratio_bootstrap_ci": [
+              0.917794,
+              1.100736
+            ],
+            "deviation_delta": 0.005414,
+            "deviation_delta_bootstrap_ci": [
+              -0.061224,
+              0.075061
+            ],
+            "deviation_delta_method": "scenario_level_delta_bootstrap_10000_seed42",
+            "k": 2,
+            "naive_k": 0.770096,
+            "naive_k_bootstrap_ci": [
+              0.677542,
+              0.868573
+            ],
+            "naive_k_method": "naive_p_k_pow_2",
+            "pass_2_all_pairs": 0.77551,
+            "pass_2_all_pairs_bootstrap_ci": [
+              0.673469,
+              0.870748
+            ],
+            "pass_2_all_pairs_method": "subset_average_over_3_choose_2_pairs",
+            "pass_hat_k": 0.77551,
+            "pass_hat_k_bootstrap_ci": [
+              0.653061,
+              0.877551
+            ],
+            "pass_hat_k_method": "pass_hat_k_first_2_trials",
+            "ratio_method": "honest_scenario_level_ratio_bootstrap_10000_seed42"
+          },
+          "k3": {
+            "concentration_ratio_C_k": 1.026752,
+            "concentration_ratio_bootstrap_ci": [
+              0.955234,
+              1.107676
+            ],
+            "deviation_delta": 0.018079,
+            "deviation_delta_bootstrap_ci": [
+              -0.028795,
+              0.067242
+            ],
+            "deviation_delta_method": "scenario_level_delta_bootstrap_10000_seed42",
+            "k": 3,
+            "naive_k": 0.675798,
+            "naive_k_bootstrap_ci": [
+              0.557704,
+              0.809487
+            ],
+            "naive_k_method": "naive_p_k_pow_3",
+            "pass_hat_k": 0.693878,
+            "pass_hat_k_bootstrap_ci": [
+              0.571429,
+              0.816327
+            ],
+            "pass_hat_k_method": "pass_hat_k_first_3_trials",
+            "ratio_method": "honest_scenario_level_ratio_bootstrap_10000_seed42"
+          }
+        },
+        "retained_scenario_ids": [
+          "r-0203",
+          "r-0207",
+          "r-0212",
+          "r-0215",
+          "r-0216",
+          "r-0218",
+          "r-0230",
+          "r-0239",
+          "r-0241",
+          "r-0247",
+          "r-0249",
+          "r-0251",
+          "r-0256",
+          "r-0258",
+          "r-0262",
+          "r-0265",
+          "r-0268",
+          "r-0269",
+          "r-0278",
+          "r-0281",
+          "r-0282",
+          "r-0287",
+          "r-0288",
+          "r-0292",
+          "r-0293",
+          "r-0297",
+          "r-0299",
+          "r-0302",
+          "r-0306",
+          "r-0307",
+          "r-0309",
+          "r-0310",
+          "r-0313",
+          "r-0316",
+          "r-0318",
+          "r-0322",
+          "r-0323",
+          "r-0325",
+          "r-0328",
+          "r-0335",
+          "r-0338",
+          "r-0339",
+          "r-0341",
+          "r-0344",
+          "r-0345",
+          "r-0347",
+          "r-0348",
+          "r-0349",
+          "r-0350"
+        ]
+      },
+      "live_trial_pass_at_1": 0.6311,
+      "per_trial_split": {
+        "k1": 0,
+        "k2": 0,
+        "k3": 0
+      },
+      "terminal_state_classification": {
+        "categories": {
+          "answered_fail": {
+            "k1": 8,
+            "k2": 5,
+            "k3": 4,
+            "total": 17
+          },
+          "answered_pass": {
+            "k1": 90,
+            "k2": 101,
+            "k3": 93,
+            "total": 284
+          },
+          "dead_at_start": {
+            "k1": 12,
+            "k2": 8,
+            "k3": 3,
+            "latency_signature": {
+              "<1ms": 0,
+              ">60s": 23,
+              "other": 0
+            },
+            "total": 23
+          },
+          "midrun_no_completion": {
+            "k1": 35,
+            "k2": 31,
+            "k3": 43,
+            "latency_signature": {
+              "<1ms": 0,
+              ">60s": 97,
+              "other": 12
+            },
+            "total": 109
+          },
+          "other": {
+            "k1": 0,
+            "k2": 0,
+            "k3": 3,
+            "total": 3
+          },
+          "step_cap": {
+            "k1": 5,
+            "k2": 5,
+            "k3": 4,
+            "total": 14
+          },
+          "step_cap_sub24": {
+            "k1": 0,
+            "k2": 0,
+            "k3": 0,
+            "total": 0
+          }
+        },
+        "dead_at_start_scenarios": [
+          "r-0209",
+          "r-0217",
+          "r-0231",
+          "r-0234",
+          "r-0240",
+          "r-0244",
+          "r-0245",
+          "r-0246",
+          "r-0248",
+          "r-0254",
+          "r-0266",
+          "r-0270",
+          "r-0271",
+          "r-0283",
+          "r-0304",
+          "r-0305",
+          "r-0319",
+          "r-0326",
+          "r-0329",
+          "r-0331",
+          "r-0332",
+          "r-0346"
+        ],
+        "method": "Classification using latest span at final-pass max step_index per Decision D-010: answered_pass (verdict=1); dead_at_start (max_step<=1 and completion_tokens=0 on all spans); step_cap (max_step>=24); midrun_no_completion (completion_tokens=0 on terminal span, 1<max_step<24); step_cap_sub24 (terminal termination_reason 'step_cap' with max_step=12 from prior cap); answered_fail (answer tool / termination answered, verdict=0); other (all other termination reasons).",
+        "midrun_no_completion_scenarios": [
+          "r-0201",
+          "r-0202",
+          "r-0204",
+          "r-0205",
+          "r-0206",
+          "r-0208",
+          "r-0209",
+          "r-0210",
+          "r-0211",
+          "r-0213",
+          "r-0214",
+          "r-0217",
+          "r-0219",
+          "r-0220",
+          "r-0221",
+          "r-0222",
+          "r-0223",
+          "r-0224",
+          "r-0225",
+          "r-0226",
+          "r-0227",
+          "r-0228",
+          "r-0229",
+          "r-0232",
+          "r-0233",
+          "r-0234",
+          "r-0235",
+          "r-0236",
+          "r-0237",
+          "r-0238",
+          "r-0240",
+          "r-0242",
+          "r-0243",
+          "r-0245",
+          "r-0248",
+          "r-0250",
+          "r-0252",
+          "r-0253",
+          "r-0255",
+          "r-0257",
+          "r-0259",
+          "r-0260",
+          "r-0261",
+          "r-0263",
+          "r-0264",
+          "r-0267",
+          "r-0271",
+          "r-0272",
+          "r-0273",
+          "r-0274",
+          "r-0275",
+          "r-0276",
+          "r-0277",
+          "r-0279",
+          "r-0280",
+          "r-0284",
+          "r-0285",
+          "r-0286",
+          "r-0289",
+          "r-0290",
+          "r-0291",
+          "r-0294",
+          "r-0295",
+          "r-0296",
+          "r-0298",
+          "r-0300",
+          "r-0301",
+          "r-0303",
+          "r-0305",
+          "r-0308",
+          "r-0311",
+          "r-0312",
+          "r-0314",
+          "r-0315",
+          "r-0317",
+          "r-0320",
+          "r-0321",
+          "r-0324",
+          "r-0327",
+          "r-0330",
+          "r-0333",
+          "r-0334",
+          "r-0336",
+          "r-0337",
+          "r-0340",
+          "r-0342",
+          "r-0343"
+        ],
+        "strict_dropped_scenarios": [
+          "r-0201",
+          "r-0202",
+          "r-0204",
+          "r-0205",
+          "r-0206",
+          "r-0208",
+          "r-0209",
+          "r-0210",
+          "r-0211",
+          "r-0213",
+          "r-0214",
+          "r-0217",
+          "r-0219",
+          "r-0220",
+          "r-0221",
+          "r-0222",
+          "r-0223",
+          "r-0224",
+          "r-0225",
+          "r-0226",
+          "r-0227",
+          "r-0228",
+          "r-0229",
+          "r-0231",
+          "r-0232",
+          "r-0233",
+          "r-0234",
+          "r-0235",
+          "r-0236",
+          "r-0237",
+          "r-0238",
+          "r-0240",
+          "r-0242",
+          "r-0243",
+          "r-0244",
+          "r-0245",
+          "r-0246",
+          "r-0248",
+          "r-0250",
+          "r-0252",
+          "r-0253",
+          "r-0254",
+          "r-0255",
+          "r-0257",
+          "r-0259",
+          "r-0260",
+          "r-0261",
+          "r-0263",
+          "r-0264",
+          "r-0266",
+          "r-0267",
+          "r-0270",
+          "r-0271",
+          "r-0272",
+          "r-0273",
+          "r-0274",
+          "r-0275",
+          "r-0276",
+          "r-0277",
+          "r-0279",
+          "r-0280",
+          "r-0283",
+          "r-0284",
+          "r-0285",
+          "r-0286",
+          "r-0289",
+          "r-0290",
+          "r-0291",
+          "r-0294",
+          "r-0295",
+          "r-0296",
+          "r-0298",
+          "r-0300",
+          "r-0301",
+          "r-0303",
+          "r-0304",
+          "r-0305",
+          "r-0308",
+          "r-0311",
+          "r-0312",
+          "r-0314",
+          "r-0315",
+          "r-0317",
+          "r-0319",
+          "r-0320",
+          "r-0321",
+          "r-0324",
+          "r-0326",
+          "r-0327",
+          "r-0329",
+          "r-0330",
+          "r-0331",
+          "r-0332",
+          "r-0333",
+          "r-0334",
+          "r-0336",
+          "r-0337",
+          "r-0340",
+          "r-0342",
+          "r-0343",
+          "r-0346"
+        ],
+        "strict_retained_scenarios": [
+          "r-0203",
+          "r-0207",
+          "r-0212",
+          "r-0215",
+          "r-0216",
+          "r-0218",
+          "r-0230",
+          "r-0239",
+          "r-0241",
+          "r-0247",
+          "r-0249",
+          "r-0251",
+          "r-0256",
+          "r-0258",
+          "r-0262",
+          "r-0265",
+          "r-0268",
+          "r-0269",
+          "r-0278",
+          "r-0281",
+          "r-0282",
+          "r-0287",
+          "r-0288",
+          "r-0292",
+          "r-0293",
+          "r-0297",
+          "r-0299",
+          "r-0302",
+          "r-0306",
+          "r-0307",
+          "r-0309",
+          "r-0310",
+          "r-0313",
+          "r-0316",
+          "r-0318",
+          "r-0322",
+          "r-0323",
+          "r-0325",
+          "r-0328",
+          "r-0335",
+          "r-0338",
+          "r-0339",
+          "r-0341",
+          "r-0344",
+          "r-0345",
+          "r-0347",
+          "r-0348",
+          "r-0349",
+          "r-0350"
+        ]
+      },
+      "time_window": null
+    },
+    "R4": {
+      "as_run": {
+        "concentration_counts": {
+          "always_fail": 95,
+          "always_pass": 3,
+          "mixed": 52,
+          "total_scenarios": 150
+        },
+        "cost_per_grounded_pass": {
+          "cost_per_grounded_pass_bootstrap_ci": [
+            0.213959,
+            0.352402
+          ],
+          "cost_per_grounded_pass_usd": 0.268246,
+          "discarded_spend_usd": 0.3483,
+          "final_pass_spend_usd": 17.972515,
+          "method": "final_pass_ledger_spend_div_passing_trials_with_scenario_bootstrap",
+          "passing_trials": 67,
+          "passing_trials_bootstrap_ci": [
+            51,
+            84
+          ],
+          "total_spend_usd": 18.320815
+        },
+        "independence_test": {
+          "binomial_p": 0.148889,
+          "chi2_df": 2,
+          "chi2_p_value_asymptotic": 0.001111,
+          "chi2_statistic": 13.605242,
+          "expected_histogram": {
+            "0": 92.4805,
+            "1": 48.5341,
+            "2": 8.4903,
+            "3": 0.4951
+          },
+          "legacy": {
+            "chi2_uncollapsed_fixed_p": {
+              "df": 3,
+              "monte_carlo_p_value": 0.0123,
+              "p_value_asymptotic": 0.003495,
+              "statistic": 13.605242
+            },
+            "collapsing": {
+              "bins": [
+                "0",
+                "1",
+                "{2,3}"
+              ],
+              "cells_collapsed": true,
+              "chi2_df": 2,
+              "chi2_p_value_asymptotic": 0.904393,
+              "chi2_statistic": 0.200982,
+              "expected": [
+                92.4805,
+                48.5341,
+                8.9854
+              ],
+              "monte_carlo_p_value": 0.903,
+              "observed": [
+                95,
+                46,
+                9
+              ],
+              "reason": "Merged adjacent tail cells with expected count < 5.0"
+            }
+          },
+          "method": "pearson_chi2_goodness_of_fit_df2_parametric_bootstrap_reestimating_p",
+          "monte_carlo_method": "parametric_bootstrap_10000_draws_reestimating_p_seed42",
+          "monte_carlo_p_value": 0.0053,
+          "observed_histogram": {
+            "0": 95,
+            "1": 46,
+            "2": 6,
+            "3": 3
+          },
+          "parametric_bootstrap_p_value": 0.0053,
+          "tail_test": {
+            "always_pass_expected": 0.4951,
+            "always_pass_observed": 3,
+            "exact_tail_p_value": 0.013832,
+            "method": "exact_binomial_upper_tail_and_parametric_bootstrap",
+            "parametric_bootstrap_tail_p_value": 0.0142
+          },
+          "tarone_z_test": {
+            "dispersion_statistic_S": 176.433109,
+            "method": "tarone_1979_c_alpha_score_test",
+            "n_clusters": 150,
+            "p_hat": 0.148889,
+            "p_value": 0.030804,
+            "trials_per_cluster": 3,
+            "z_statistic": 1.869103
+          }
+        },
+        "intra_scenario_correlation": {
+          "extrapolation_table_beta_binomial": {
+            "k1": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 1.0,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.0
+              ],
+              "expected_pass_k": 0.148889,
+              "k": 1,
+              "naive_pass_k": 0.148889
+            },
+            "k10": {
+              "concentration_ratio_C_k": 7158.0903,
+              "concentration_ratio_at_icc_ci_upper": 311458.1813,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                390225.3937
+              ],
+              "expected_pass_k": 3.8e-05,
+              "k": 10,
+              "naive_pass_k": 0.0
+            },
+            "k2": {
+              "concentration_ratio_C_k": 1.5174,
+              "concentration_ratio_at_icc_ci_upper": 2.3414,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                2.3569
+              ],
+              "expected_pass_k": 0.033637,
+              "k": 2,
+              "naive_pass_k": 0.022168
+            },
+            "k3": {
+              "concentration_ratio_C_k": 2.9571,
+              "concentration_ratio_at_icc_ci_upper": 7.4294,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                7.5681
+              ],
+              "expected_pass_k": 0.00976,
+              "k": 3,
+              "naive_pass_k": 0.003301
+            },
+            "k4": {
+              "concentration_ratio_C_k": 6.8433,
+              "concentration_ratio_at_icc_ci_upper": 27.7776,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                28.6483
+              ],
+              "expected_pass_k": 0.003363,
+              "k": 4,
+              "naive_pass_k": 0.000491
+            },
+            "k5": {
+              "concentration_ratio_C_k": 17.9809,
+              "concentration_ratio_at_icc_ci_upper": 115.2477,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                121.1009
+              ],
+              "expected_pass_k": 0.001316,
+              "k": 5,
+              "naive_pass_k": 7.3e-05
+            },
+            "k6": {
+              "concentration_ratio_C_k": 52.1307,
+              "concentration_ratio_at_icc_ci_upper": 513.9731,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                550.0257
+              ],
+              "expected_pass_k": 0.000568,
+              "k": 6,
+              "naive_pass_k": 1.1e-05
+            },
+            "k7": {
+              "concentration_ratio_C_k": 163.538,
+              "concentration_ratio_at_icc_ci_upper": 2417.417,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                2672.8062
+              ],
+              "expected_pass_k": 0.000265,
+              "k": 7,
+              "naive_pass_k": 2e-06
+            },
+            "k8": {
+              "concentration_ratio_C_k": 547.364,
+              "concentration_ratio_at_icc_ci_upper": 11844.2972,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                13742.6638
+              ],
+              "expected_pass_k": 0.000132,
+              "k": 8,
+              "naive_pass_k": 0.0
+            },
+            "k9": {
+              "concentration_ratio_C_k": 1934.2159,
+              "concentration_ratio_at_icc_ci_upper": 59942.8272,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                72147.6298
+              ],
+              "expected_pass_k": 7e-05,
+              "k": 9,
+              "naive_pass_k": 0.0
+            }
+          },
+          "fleiss_kappa": 0.08811,
+          "fleiss_kappa_bootstrap_ci": [
+            -0.052049,
+            0.232159
+          ],
+          "fleiss_kappa_method": "fleiss_multirater_kappa",
+          "icc": 0.090504,
+          "icc_bootstrap_ci": [
+            -0.049944,
+            0.234666
+          ],
+          "icc_method": "one_way_random_effects_anova_icc1_1"
+        },
+        "n_scenarios": 150,
+        "order_effects": {
+          "all_3_pass_first_half": 2,
+          "all_3_pass_second_half": 1,
+          "first_half_n": 75,
+          "manifest_order_note": "R4 infra_excluded drops 33 scenarios: r-0305 (k3 timeout), r-0310 (k2 timeout), and r-0320..r-0350 (all 3 trials dead). Scenarios r-0318 and r-0319 survived, so the retained 117 scenarios consist of 115 from the first 117 plus r-0318 and r-0319.",
+          "method": "correlation_manifest_index_vs_successes_with_permutation_test_10000_seed42",
+          "n": 150,
+          "pearson_r": -0.2683,
+          "permutation_p": 0.0009,
+          "second_half_n": 75,
+          "spearman_rho": -0.2699
+        },
+        "pass_at_1": {
+          "bootstrap_method": "scenario_level_percentile_bootstrap_10000_seed42",
+          "passing_trials": 67,
+          "scenario_bootstrap_ci": [
+            0.113333,
+            0.186667
+          ],
+          "score": 0.148889,
+          "total_trials": 450,
+          "wilson_ci": [
+            0.118976,
+            0.184746
+          ],
+          "wilson_method": "wilson_score_interval_95pct"
+        },
+        "pass_k": {
+          "k2": {
+            "concentration_ratio_C_k": 1.503676,
+            "concentration_ratio_bootstrap_ci": [
+              0.415512,
+              2.595156
+            ],
+            "deviation_delta": 0.011165,
+            "deviation_delta_bootstrap_ci": [
+              -0.010864,
+              0.037284
+            ],
+            "deviation_delta_method": "scenario_level_delta_bootstrap_10000_seed42",
+            "k": 2,
+            "naive_k": 0.022168,
+            "naive_k_bootstrap_ci": [
+              0.012844,
+              0.034844
+            ],
+            "naive_k_method": "naive_p_k_pow_2",
+            "pass_2_all_pairs": 0.033333,
+            "pass_2_all_pairs_bootstrap_ci": [
+              0.011111,
+              0.06
+            ],
+            "pass_2_all_pairs_method": "subset_average_over_3_choose_2_pairs",
+            "pass_hat_k": 0.033333,
+            "pass_hat_k_bootstrap_ci": [
+              0.006667,
+              0.066667
+            ],
+            "pass_hat_k_method": "pass_hat_k_first_2_trials",
+            "ratio_method": "honest_scenario_level_ratio_bootstrap_10000_seed42"
+          },
+          "k3": {
+            "concentration_ratio_C_k": 6.059588,
+            "concentration_ratio_bootstrap_ci": [
+              0.0,
+              12.74504
+            ],
+            "deviation_delta": 0.016699,
+            "deviation_delta_bootstrap_ci": [
+              -0.002254,
+              0.041048
+            ],
+            "deviation_delta_method": "scenario_level_delta_bootstrap_10000_seed42",
+            "k": 3,
+            "naive_k": 0.003301,
+            "naive_k_bootstrap_ci": [
+              0.001456,
+              0.006504
+            ],
+            "naive_k_method": "naive_p_k_pow_3",
+            "pass_hat_k": 0.02,
+            "pass_hat_k_bootstrap_ci": [
+              0.0,
+              0.046667
+            ],
+            "pass_hat_k_method": "pass_hat_k_first_3_trials",
+            "ratio_method": "honest_scenario_level_ratio_bootstrap_10000_seed42"
+          }
+        },
+        "retained_scenario_ids": [
+          "r-0201",
+          "r-0202",
+          "r-0203",
+          "r-0204",
+          "r-0205",
+          "r-0206",
+          "r-0207",
+          "r-0208",
+          "r-0209",
+          "r-0210",
+          "r-0211",
+          "r-0212",
+          "r-0213",
+          "r-0214",
+          "r-0215",
+          "r-0216",
+          "r-0217",
+          "r-0218",
+          "r-0219",
+          "r-0220",
+          "r-0221",
+          "r-0222",
+          "r-0223",
+          "r-0224",
+          "r-0225",
+          "r-0226",
+          "r-0227",
+          "r-0228",
+          "r-0229",
+          "r-0230",
+          "r-0231",
+          "r-0232",
+          "r-0233",
+          "r-0234",
+          "r-0235",
+          "r-0236",
+          "r-0237",
+          "r-0238",
+          "r-0239",
+          "r-0240",
+          "r-0241",
+          "r-0242",
+          "r-0243",
+          "r-0244",
+          "r-0245",
+          "r-0246",
+          "r-0247",
+          "r-0248",
+          "r-0249",
+          "r-0250",
+          "r-0251",
+          "r-0252",
+          "r-0253",
+          "r-0254",
+          "r-0255",
+          "r-0256",
+          "r-0257",
+          "r-0258",
+          "r-0259",
+          "r-0260",
+          "r-0261",
+          "r-0262",
+          "r-0263",
+          "r-0264",
+          "r-0265",
+          "r-0266",
+          "r-0267",
+          "r-0268",
+          "r-0269",
+          "r-0270",
+          "r-0271",
+          "r-0272",
+          "r-0273",
+          "r-0274",
+          "r-0275",
+          "r-0276",
+          "r-0277",
+          "r-0278",
+          "r-0279",
+          "r-0280",
+          "r-0281",
+          "r-0282",
+          "r-0283",
+          "r-0284",
+          "r-0285",
+          "r-0286",
+          "r-0287",
+          "r-0288",
+          "r-0289",
+          "r-0290",
+          "r-0291",
+          "r-0292",
+          "r-0293",
+          "r-0294",
+          "r-0295",
+          "r-0296",
+          "r-0297",
+          "r-0298",
+          "r-0299",
+          "r-0300",
+          "r-0301",
+          "r-0302",
+          "r-0303",
+          "r-0304",
+          "r-0305",
+          "r-0306",
+          "r-0307",
+          "r-0308",
+          "r-0309",
+          "r-0310",
+          "r-0311",
+          "r-0312",
+          "r-0313",
+          "r-0314",
+          "r-0315",
+          "r-0316",
+          "r-0317",
+          "r-0318",
+          "r-0319",
+          "r-0320",
+          "r-0321",
+          "r-0322",
+          "r-0323",
+          "r-0324",
+          "r-0325",
+          "r-0326",
+          "r-0327",
+          "r-0328",
+          "r-0329",
+          "r-0330",
+          "r-0331",
+          "r-0332",
+          "r-0333",
+          "r-0334",
+          "r-0335",
+          "r-0336",
+          "r-0337",
+          "r-0338",
+          "r-0339",
+          "r-0340",
+          "r-0341",
+          "r-0342",
+          "r-0343",
+          "r-0344",
+          "r-0345",
+          "r-0346",
+          "r-0347",
+          "r-0348",
+          "r-0349",
+          "r-0350"
+        ]
+      },
+      "infra_dead_scenarios": 33,
+      "infra_dead_scenarios_all3": 31,
+      "infra_dead_trials": 95,
+      "infra_excluded": {
+        "concentration_counts": {
+          "always_fail": 62,
+          "always_pass": 3,
+          "mixed": 52,
+          "total_scenarios": 117
+        },
+        "cost_per_grounded_pass": {
+          "cost_per_grounded_pass_bootstrap_ci": [
+            0.219177,
+            0.345625
+          ],
+          "cost_per_grounded_pass_usd": 0.268246,
+          "discarded_spend_usd": 0.3483,
+          "final_pass_spend_usd": 17.972515,
+          "method": "final_pass_ledger_spend_div_passing_trials_with_scenario_bootstrap",
+          "passing_trials": 67,
+          "passing_trials_bootstrap_ci": [
+            52,
+            82
+          ],
+          "total_spend_usd": 18.320815
+        },
+        "independence_test": {
+          "binomial_p": 0.190883,
+          "chi2_df": 2,
+          "chi2_p_value_asymptotic": 0.020194,
+          "chi2_statistic": 7.804732,
+          "expected_histogram": {
+            "0": 61.9754,
+            "1": 43.8629,
+            "2": 10.3479,
+            "3": 0.8137
+          },
+          "legacy": {
+            "chi2_uncollapsed_fixed_p": {
+              "df": 3,
+              "monte_carlo_p_value": 0.0511,
+              "p_value_asymptotic": 0.050224,
+              "statistic": 7.804732
+            },
+            "collapsing": {
+              "bins": [
+                "0",
+                "1",
+                "{2,3}"
+              ],
+              "cells_collapsed": true,
+              "chi2_df": 2,
+              "chi2_p_value_asymptotic": 0.769978,
+              "chi2_statistic": 0.522788,
+              "expected": [
+                61.9754,
+                43.8629,
+                11.1617
+              ],
+              "monte_carlo_p_value": 0.7825,
+              "observed": [
+                62,
+                46,
+                9
+              ],
+              "reason": "Merged adjacent tail cells with expected count < 5.0"
+            }
+          },
+          "method": "pearson_chi2_goodness_of_fit_df2_parametric_bootstrap_reestimating_p",
+          "monte_carlo_method": "parametric_bootstrap_10000_draws_reestimating_p_seed42",
+          "monte_carlo_p_value": 0.0243,
+          "observed_histogram": {
+            "0": 62,
+            "1": 46,
+            "2": 6,
+            "3": 3
+          },
+          "parametric_bootstrap_p_value": 0.0243,
+          "tail_test": {
+            "always_pass_expected": 0.8137,
+            "always_pass_observed": 3,
+            "exact_tail_p_value": 0.048811,
+            "method": "exact_binomial_upper_tail_and_parametric_bootstrap",
+            "parametric_bootstrap_tail_p_value": 0.0514
+          },
+          "tarone_z_test": {
+            "dispersion_statistic_S": 126.542989,
+            "method": "tarone_1979_c_alpha_score_test",
+            "n_clusters": 117,
+            "p_hat": 0.190883,
+            "p_value": 0.222419,
+            "trials_per_cluster": 3,
+            "z_statistic": 0.764051
+          }
+        },
+        "intra_scenario_correlation": {
+          "extrapolation_table_beta_binomial": {
+            "k1": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 1.0,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.0
+              ],
+              "expected_pass_k": 0.190883,
+              "k": 1,
+              "naive_pass_k": 0.190883
+            },
+            "k10": {
+              "concentration_ratio_C_k": 133.3608,
+              "concentration_ratio_at_icc_ci_upper": 21920.8406,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                22269.021
+              ],
+              "expected_pass_k": 9e-06,
+              "k": 10,
+              "naive_pass_k": 0.0
+            },
+            "k2": {
+              "concentration_ratio_C_k": 1.1855,
+              "concentration_ratio_at_icc_ci_upper": 1.8083,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.7898
+              ],
+              "expected_pass_k": 0.043194,
+              "k": 2,
+              "naive_pass_k": 0.036436
+            },
+            "k3": {
+              "concentration_ratio_C_k": 1.6068,
+              "concentration_ratio_at_icc_ci_upper": 4.2636,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                4.1681
+              ],
+              "expected_pass_k": 0.011175,
+              "k": 3,
+              "naive_pass_k": 0.006955
+            },
+            "k4": {
+              "concentration_ratio_C_k": 2.4288,
+              "concentration_ratio_at_icc_ci_upper": 11.7482,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                11.4626
+              ],
+              "expected_pass_k": 0.003225,
+              "k": 4,
+              "naive_pass_k": 0.001328
+            },
+            "k5": {
+              "concentration_ratio_C_k": 4.0216,
+              "concentration_ratio_at_icc_ci_upper": 35.9106,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                35.0613
+              ],
+              "expected_pass_k": 0.001019,
+              "k": 5,
+              "naive_pass_k": 0.000253
+            },
+            "k6": {
+              "concentration_ratio_C_k": 7.1954,
+              "concentration_ratio_at_icc_ci_upper": 118.2451,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                115.7912
+              ],
+              "expected_pass_k": 0.000348,
+              "k": 6,
+              "naive_pass_k": 4.8e-05
+            },
+            "k7": {
+              "concentration_ratio_C_k": 13.7651,
+              "concentration_ratio_at_icc_ci_upper": 411.8159,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                400.6052
+              ],
+              "expected_pass_k": 0.000127,
+              "k": 7,
+              "naive_pass_k": 9e-06
+            },
+            "k8": {
+              "concentration_ratio_C_k": 27.9197,
+              "concentration_ratio_at_icc_ci_upper": 1498.5618,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1518.2332
+              ],
+              "expected_pass_k": 4.9e-05,
+              "k": 8,
+              "naive_pass_k": 2e-06
+            },
+            "k9": {
+              "concentration_ratio_C_k": 59.6319,
+              "concentration_ratio_at_icc_ci_upper": 5648.9492,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                5731.149
+              ],
+              "expected_pass_k": 2e-05,
+              "k": 9,
+              "naive_pass_k": 0.0
+            }
+          },
+          "fleiss_kappa": 0.040782,
+          "fleiss_kappa_bootstrap_ci": [
+            -0.10037,
+            0.1875
+          ],
+          "fleiss_kappa_method": "fleiss_multirater_kappa",
+          "icc": 0.043754,
+          "icc_bootstrap_ci": [
+            -0.097849,
+            0.190698
+          ],
+          "icc_method": "one_way_random_effects_anova_icc1_1"
+        },
+        "n_scenarios": 117,
+        "order_effects": {
+          "all_3_pass_first_half": 2,
+          "all_3_pass_second_half": 1,
+          "first_half_n": 58,
+          "manifest_order_note": "R4 infra_excluded drops 33 scenarios: r-0305 (k3 timeout), r-0310 (k2 timeout), and r-0320..r-0350 (all 3 trials dead). Scenarios r-0318 and r-0319 survived, so the retained 117 scenarios consist of 115 from the first 117 plus r-0318 and r-0319.",
+          "method": "correlation_manifest_index_vs_successes_with_permutation_test_10000_seed42",
+          "n": 117,
+          "pearson_r": -0.0257,
+          "permutation_p": 0.8765,
+          "second_half_n": 59,
+          "spearman_rho": 0.014
+        },
+        "pass_at_1": {
+          "bootstrap_method": "scenario_level_percentile_bootstrap_10000_seed42",
+          "passing_trials": 67,
+          "scenario_bootstrap_ci": [
+            0.148148,
+            0.233618
+          ],
+          "score": 0.190883,
+          "total_trials": 351,
+          "wilson_ci": [
+            0.153203,
+            0.235257
+          ],
+          "wilson_method": "wilson_score_interval_95pct"
+        },
+        "pass_k": {
+          "k2": {
+            "concentration_ratio_C_k": 1.172867,
+            "concentration_ratio_bootstrap_ci": [
+              0.3241,
+              2.014668
+            ],
+            "deviation_delta": 0.006299,
+            "deviation_delta_bootstrap_ci": [
+              -0.02155,
+              0.037345
+            ],
+            "deviation_delta_method": "scenario_level_delta_bootstrap_10000_seed42",
+            "k": 2,
+            "naive_k": 0.036436,
+            "naive_k_bootstrap_ci": [
+              0.021948,
+              0.054577
+            ],
+            "naive_k_method": "naive_p_k_pow_2",
+            "pass_2_all_pairs": 0.042735,
+            "pass_2_all_pairs_bootstrap_ci": [
+              0.014245,
+              0.076923
+            ],
+            "pass_2_all_pairs_method": "subset_average_over_3_choose_2_pairs",
+            "pass_hat_k": 0.042735,
+            "pass_hat_k_bootstrap_ci": [
+              0.008547,
+              0.08547
+            ],
+            "pass_hat_k_method": "pass_hat_k_first_2_trials",
+            "ratio_method": "honest_scenario_level_ratio_bootstrap_10000_seed42"
+          },
+          "k3": {
+            "concentration_ratio_C_k": 3.686654,
+            "concentration_ratio_bootstrap_ci": [
+              0.0,
+              7.577248
+            ],
+            "deviation_delta": 0.018686,
+            "deviation_delta_bootstrap_ci": [
+              -0.004749,
+              0.047435
+            ],
+            "deviation_delta_method": "scenario_level_delta_bootstrap_10000_seed42",
+            "k": 3,
+            "naive_k": 0.006955,
+            "naive_k_bootstrap_ci": [
+              0.003252,
+              0.01275
+            ],
+            "naive_k_method": "naive_p_k_pow_3",
+            "pass_hat_k": 0.025641,
+            "pass_hat_k_bootstrap_ci": [
+              0.0,
+              0.059829
+            ],
+            "pass_hat_k_method": "pass_hat_k_first_3_trials",
+            "ratio_method": "honest_scenario_level_ratio_bootstrap_10000_seed42"
+          }
+        },
+        "retained_scenario_ids": [
+          "r-0201",
+          "r-0202",
+          "r-0203",
+          "r-0204",
+          "r-0205",
+          "r-0206",
+          "r-0207",
+          "r-0208",
+          "r-0209",
+          "r-0210",
+          "r-0211",
+          "r-0212",
+          "r-0213",
+          "r-0214",
+          "r-0215",
+          "r-0216",
+          "r-0217",
+          "r-0218",
+          "r-0219",
+          "r-0220",
+          "r-0221",
+          "r-0222",
+          "r-0223",
+          "r-0224",
+          "r-0225",
+          "r-0226",
+          "r-0227",
+          "r-0228",
+          "r-0229",
+          "r-0230",
+          "r-0231",
+          "r-0232",
+          "r-0233",
+          "r-0234",
+          "r-0235",
+          "r-0236",
+          "r-0237",
+          "r-0238",
+          "r-0239",
+          "r-0240",
+          "r-0241",
+          "r-0242",
+          "r-0243",
+          "r-0244",
+          "r-0245",
+          "r-0246",
+          "r-0247",
+          "r-0248",
+          "r-0249",
+          "r-0250",
+          "r-0251",
+          "r-0252",
+          "r-0253",
+          "r-0254",
+          "r-0255",
+          "r-0256",
+          "r-0257",
+          "r-0258",
+          "r-0259",
+          "r-0260",
+          "r-0261",
+          "r-0262",
+          "r-0263",
+          "r-0264",
+          "r-0265",
+          "r-0266",
+          "r-0267",
+          "r-0268",
+          "r-0269",
+          "r-0270",
+          "r-0271",
+          "r-0272",
+          "r-0273",
+          "r-0274",
+          "r-0275",
+          "r-0276",
+          "r-0277",
+          "r-0278",
+          "r-0279",
+          "r-0280",
+          "r-0281",
+          "r-0282",
+          "r-0283",
+          "r-0284",
+          "r-0285",
+          "r-0286",
+          "r-0287",
+          "r-0288",
+          "r-0289",
+          "r-0290",
+          "r-0291",
+          "r-0292",
+          "r-0293",
+          "r-0294",
+          "r-0295",
+          "r-0296",
+          "r-0297",
+          "r-0298",
+          "r-0299",
+          "r-0300",
+          "r-0301",
+          "r-0302",
+          "r-0303",
+          "r-0304",
+          "r-0306",
+          "r-0307",
+          "r-0308",
+          "r-0309",
+          "r-0311",
+          "r-0312",
+          "r-0313",
+          "r-0314",
+          "r-0315",
+          "r-0316",
+          "r-0317",
+          "r-0318",
+          "r-0319"
+        ]
+      },
+      "infra_excluded_strict": {
+        "concentration_counts": {
+          "always_fail": 5,
+          "always_pass": 3,
+          "mixed": 16,
+          "total_scenarios": 24
+        },
+        "cost_per_grounded_pass": {
+          "cost_per_grounded_pass_bootstrap_ci": [
+            0.485744,
+            0.898626
+          ],
+          "cost_per_grounded_pass_usd": 0.641876,
+          "discarded_spend_usd": 0.3483,
+          "final_pass_spend_usd": 17.972515,
+          "method": "final_pass_ledger_spend_div_passing_trials_with_scenario_bootstrap",
+          "passing_trials": 28,
+          "passing_trials_bootstrap_ci": [
+            20,
+            37
+          ],
+          "total_spend_usd": 18.320815
+        },
+        "independence_test": {
+          "binomial_p": 0.388889,
+          "chi2_df": 2,
+          "chi2_p_value_asymptotic": 0.10782,
+          "chi2_statistic": 4.454583,
+          "expected_histogram": {
+            "0": 5.4774,
+            "1": 10.4568,
+            "2": 6.6543,
+            "3": 1.4115
+          },
+          "legacy": {
+            "chi2_uncollapsed_fixed_p": {
+              "df": 3,
+              "monte_carlo_p_value": 0.2053,
+              "p_value_asymptotic": 0.216377,
+              "statistic": 4.454583
+            },
+            "collapsing": {
+              "bins": [
+                "0",
+                "1",
+                "{2,3}"
+              ],
+              "cells_collapsed": true,
+              "chi2_df": 2,
+              "chi2_p_value_asymptotic": 0.551769,
+              "chi2_statistic": 1.18925,
+              "expected": [
+                5.4774,
+                10.4568,
+                8.0658
+              ],
+              "monte_carlo_p_value": 0.5419,
+              "observed": [
+                5,
+                13,
+                6
+              ],
+              "reason": "Merged adjacent tail cells with expected count < 5.0"
+            }
+          },
+          "method": "pearson_chi2_goodness_of_fit_df2_parametric_bootstrap_reestimating_p",
+          "monte_carlo_method": "parametric_bootstrap_10000_draws_reestimating_p_seed42",
+          "monte_carlo_p_value": 0.096,
+          "observed_histogram": {
+            "0": 5,
+            "1": 13,
+            "2": 3,
+            "3": 3
+          },
+          "parametric_bootstrap_p_value": 0.096,
+          "tail_test": {
+            "always_pass_expected": 1.4115,
+            "always_pass_observed": 3,
+            "exact_tail_p_value": 0.164797,
+            "method": "exact_binomial_upper_tail_and_parametric_bootstrap",
+            "parametric_bootstrap_tail_p_value": 0.1641
+          },
+          "tarone_z_test": {
+            "dispersion_statistic_S": 27.116883,
+            "method": "tarone_1979_c_alpha_score_test",
+            "n_clusters": 24,
+            "p_hat": 0.388889,
+            "p_value": 0.290819,
+            "trials_per_cluster": 3,
+            "z_statistic": 0.550992
+          }
+        },
+        "intra_scenario_correlation": {
+          "extrapolation_table_beta_binomial": {
+            "k1": {
+              "concentration_ratio_C_k": 1.0,
+              "concentration_ratio_at_icc_ci_upper": 1.0,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.0
+              ],
+              "expected_pass_k": 0.388889,
+              "k": 1,
+              "naive_pass_k": 0.388889
+            },
+            "k10": {
+              "concentration_ratio_C_k": 26.0214,
+              "concentration_ratio_at_icc_ci_upper": 625.623,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                988.3093
+              ],
+              "expected_pass_k": 0.002059,
+              "k": 10,
+              "naive_pass_k": 7.9e-05
+            },
+            "k2": {
+              "concentration_ratio_C_k": 1.1257,
+              "concentration_ratio_at_icc_ci_upper": 1.5453,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                1.5312
+              ],
+              "expected_pass_k": 0.170247,
+              "k": 2,
+              "naive_pass_k": 0.151235
+            },
+            "k3": {
+              "concentration_ratio_C_k": 1.3878,
+              "concentration_ratio_at_icc_ci_upper": 2.7964,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                2.8212
+              ],
+              "expected_pass_k": 0.08162,
+              "k": 3,
+              "naive_pass_k": 0.058813
+            },
+            "k4": {
+              "concentration_ratio_C_k": 1.839,
+              "concentration_ratio_at_icc_ci_upper": 5.4969,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                5.7567
+              ],
+              "expected_pass_k": 0.042061,
+              "k": 4,
+              "naive_pass_k": 0.022872
+            },
+            "k5": {
+              "concentration_ratio_C_k": 2.5848,
+              "concentration_ratio_at_icc_ci_upper": 11.3712,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                12.5677
+              ],
+              "expected_pass_k": 0.02299,
+              "k": 5,
+              "naive_pass_k": 0.008895
+            },
+            "k6": {
+              "concentration_ratio_C_k": 3.8156,
+              "concentration_ratio_at_icc_ci_upper": 24.3539,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                28.7632
+              ],
+              "expected_pass_k": 0.013198,
+              "k": 6,
+              "naive_pass_k": 0.003459
+            },
+            "k7": {
+              "concentration_ratio_C_k": 5.8713,
+              "concentration_ratio_at_icc_ci_upper": 53.4871,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                68.1649
+              ],
+              "expected_pass_k": 0.007898,
+              "k": 7,
+              "naive_pass_k": 0.001345
+            },
+            "k8": {
+              "concentration_ratio_C_k": 9.3624,
+              "concentration_ratio_at_icc_ci_upper": 119.7301,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                165.9424
+              ],
+              "expected_pass_k": 0.004898,
+              "k": 8,
+              "naive_pass_k": 0.000523
+            },
+            "k9": {
+              "concentration_ratio_C_k": 15.3982,
+              "concentration_ratio_at_icc_ci_upper": 272.0481,
+              "concentration_ratio_bootstrap_ci": [
+                1.0,
+                412.6969
+              ],
+              "expected_pass_k": 0.003133,
+              "k": 9,
+              "naive_pass_k": 0.000203
+            }
+          },
+          "fleiss_kappa": 0.064935,
+          "fleiss_kappa_bootstrap_ci": [
+            -0.227273,
+            0.331269
+          ],
+          "fleiss_kappa_method": "fleiss_multirater_kappa",
+          "icc": 0.08,
+          "icc_bootstrap_ci": [
+            -0.217647,
+            0.347003
+          ],
+          "icc_method": "one_way_random_effects_anova_icc1_1"
+        },
+        "n_scenarios": 24,
+        "order_effects": {
+          "all_3_pass_first_half": 2,
+          "all_3_pass_second_half": 1,
+          "first_half_n": 12,
+          "manifest_order_note": "R4 infra_excluded drops 33 scenarios: r-0305 (k3 timeout), r-0310 (k2 timeout), and r-0320..r-0350 (all 3 trials dead). Scenarios r-0318 and r-0319 survived, so the retained 117 scenarios consist of 115 from the first 117 plus r-0318 and r-0319.",
+          "method": "correlation_manifest_index_vs_successes_with_permutation_test_10000_seed42",
+          "n": 24,
+          "pearson_r": -0.249,
+          "permutation_p": 0.2882,
+          "second_half_n": 12,
+          "spearman_rho": -0.2253
+        },
+        "pass_at_1": {
+          "bootstrap_method": "scenario_level_percentile_bootstrap_10000_seed42",
+          "passing_trials": 28,
+          "scenario_bootstrap_ci": [
+            0.277778,
+            0.513889
+          ],
+          "score": 0.388889,
+          "total_trials": 72,
+          "wilson_ci": [
+            0.284657,
+            0.504376
+          ],
+          "wilson_method": "wilson_score_interval_95pct"
+        },
+        "pass_k": {
+          "k2": {
+            "concentration_ratio_C_k": 1.102041,
+            "concentration_ratio_bootstrap_ci": [
+              0.3456,
+              1.728
+            ],
+            "deviation_delta": 0.015432,
+            "deviation_delta_bootstrap_ci": [
+              -0.078897,
+              0.108025
+            ],
+            "deviation_delta_method": "scenario_level_delta_bootstrap_10000_seed42",
+            "k": 2,
+            "naive_k": 0.151235,
+            "naive_k_bootstrap_ci": [
+              0.07716,
+              0.264082
+            ],
+            "naive_k_method": "naive_p_k_pow_2",
+            "pass_2_all_pairs": 0.166667,
+            "pass_2_all_pairs_bootstrap_ci": [
+              0.041667,
+              0.305556
+            ],
+            "pass_2_all_pairs_method": "subset_average_over_3_choose_2_pairs",
+            "pass_hat_k": 0.166667,
+            "pass_hat_k_bootstrap_ci": [
+              0.041667,
+              0.333333
+            ],
+            "pass_hat_k_method": "pass_hat_k_first_2_trials",
+            "ratio_method": "honest_scenario_level_ratio_bootstrap_10000_seed42"
+          },
+          "k3": {
+            "concentration_ratio_C_k": 2.125364,
+            "concentration_ratio_bootstrap_ci": [
+              0.0,
+              3.888
+            ],
+            "deviation_delta": 0.066187,
+            "deviation_delta_bootstrap_ci": [
+              -0.028528,
+              0.162209
+            ],
+            "deviation_delta_method": "scenario_level_delta_bootstrap_10000_seed42",
+            "k": 3,
+            "naive_k": 0.058813,
+            "naive_k_bootstrap_ci": [
+              0.021433,
+              0.135709
+            ],
+            "naive_k_method": "naive_p_k_pow_3",
+            "pass_hat_k": 0.125,
+            "pass_hat_k_bootstrap_ci": [
+              0.0,
+              0.25
+            ],
+            "pass_hat_k_method": "pass_hat_k_first_3_trials",
+            "ratio_method": "honest_scenario_level_ratio_bootstrap_10000_seed42"
+          }
+        },
+        "retained_scenario_ids": [
+          "r-0203",
+          "r-0212",
+          "r-0218",
+          "r-0222",
+          "r-0241",
+          "r-0246",
+          "r-0249",
+          "r-0250",
+          "r-0254",
+          "r-0255",
+          "r-0256",
+          "r-0263",
+          "r-0277",
+          "r-0279",
+          "r-0281",
+          "r-0283",
+          "r-0284",
+          "r-0286",
+          "r-0292",
+          "r-0294",
+          "r-0299",
+          "r-0300",
+          "r-0311",
+          "r-0313"
+        ]
+      },
+      "live_trial_pass_at_1": 0.1887,
+      "per_trial_split": {
+        "k1": 31,
+        "k2": 32,
+        "k3": 32
+      },
+      "terminal_state_classification": {
+        "categories": {
+          "answered_fail": {
+            "k1": 9,
+            "k2": 14,
+            "k3": 9,
+            "total": 32
+          },
+          "answered_pass": {
+            "k1": 23,
+            "k2": 18,
+            "k3": 26,
+            "total": 67
+          },
+          "dead_at_start": {
+            "k1": 37,
+            "k2": 38,
+            "k3": 39,
+            "latency_signature": {
+              "<1ms": 87,
+              ">60s": 21,
+              "other": 6
+            },
+            "total": 114
+          },
+          "midrun_no_completion": {
+            "k1": 36,
+            "k2": 36,
+            "k3": 47,
+            "latency_signature": {
+              "<1ms": 0,
+              ">60s": 95,
+              "other": 24
+            },
+            "total": 119
+          },
+          "other": {
+            "k1": 0,
+            "k2": 0,
+            "k3": 0,
+            "total": 0
+          },
+          "step_cap": {
+            "k1": 45,
+            "k2": 44,
+            "k3": 29,
+            "total": 118
+          },
+          "step_cap_sub24": {
+            "k1": 0,
+            "k2": 0,
+            "k3": 0,
+            "total": 0
+          }
+        },
+        "dead_at_start_scenarios": [
+          "r-0202",
+          "r-0215",
+          "r-0229",
+          "r-0234",
+          "r-0242",
+          "r-0243",
+          "r-0247",
+          "r-0252",
+          "r-0262",
+          "r-0271",
+          "r-0276",
+          "r-0290",
+          "r-0293",
+          "r-0297",
+          "r-0303",
+          "r-0305",
+          "r-0307",
+          "r-0308",
+          "r-0310",
+          "r-0320",
+          "r-0321",
+          "r-0322",
+          "r-0323",
+          "r-0324",
+          "r-0325",
+          "r-0326",
+          "r-0327",
+          "r-0328",
+          "r-0329",
+          "r-0330",
+          "r-0331",
+          "r-0332",
+          "r-0333",
+          "r-0334",
+          "r-0335",
+          "r-0336",
+          "r-0337",
+          "r-0338",
+          "r-0339",
+          "r-0340",
+          "r-0341",
+          "r-0342",
+          "r-0343",
+          "r-0344",
+          "r-0345",
+          "r-0346",
+          "r-0347",
+          "r-0348",
+          "r-0349",
+          "r-0350"
+        ],
+        "method": "Classification using latest span at final-pass max step_index per Decision D-010: answered_pass (verdict=1); dead_at_start (max_step<=1 and completion_tokens=0 on all spans); step_cap (max_step>=24); midrun_no_completion (completion_tokens=0 on terminal span, 1<max_step<24); step_cap_sub24 (terminal termination_reason 'step_cap' with max_step=12 from prior cap); answered_fail (answer tool / termination answered, verdict=0); other (all other termination reasons).",
+        "midrun_no_completion_scenarios": [
+          "r-0201",
+          "r-0204",
+          "r-0205",
+          "r-0206",
+          "r-0207",
+          "r-0208",
+          "r-0209",
+          "r-0210",
+          "r-0211",
+          "r-0213",
+          "r-0214",
+          "r-0215",
+          "r-0216",
+          "r-0217",
+          "r-0219",
+          "r-0220",
+          "r-0221",
+          "r-0223",
+          "r-0224",
+          "r-0225",
+          "r-0226",
+          "r-0227",
+          "r-0228",
+          "r-0229",
+          "r-0230",
+          "r-0231",
+          "r-0232",
+          "r-0233",
+          "r-0234",
+          "r-0235",
+          "r-0236",
+          "r-0237",
+          "r-0238",
+          "r-0239",
+          "r-0240",
+          "r-0244",
+          "r-0245",
+          "r-0248",
+          "r-0251",
+          "r-0252",
+          "r-0253",
+          "r-0257",
+          "r-0258",
+          "r-0259",
+          "r-0260",
+          "r-0261",
+          "r-0262",
+          "r-0264",
+          "r-0265",
+          "r-0266",
+          "r-0267",
+          "r-0268",
+          "r-0269",
+          "r-0270",
+          "r-0271",
+          "r-0272",
+          "r-0273",
+          "r-0274",
+          "r-0275",
+          "r-0278",
+          "r-0280",
+          "r-0282",
+          "r-0285",
+          "r-0287",
+          "r-0288",
+          "r-0289",
+          "r-0290",
+          "r-0291",
+          "r-0293",
+          "r-0295",
+          "r-0296",
+          "r-0298",
+          "r-0301",
+          "r-0302",
+          "r-0304",
+          "r-0305",
+          "r-0306",
+          "r-0308",
+          "r-0309",
+          "r-0310",
+          "r-0312",
+          "r-0314",
+          "r-0315",
+          "r-0316",
+          "r-0317",
+          "r-0318",
+          "r-0319"
+        ],
+        "strict_dropped_scenarios": [
+          "r-0201",
+          "r-0202",
+          "r-0204",
+          "r-0205",
+          "r-0206",
+          "r-0207",
+          "r-0208",
+          "r-0209",
+          "r-0210",
+          "r-0211",
+          "r-0213",
+          "r-0214",
+          "r-0215",
+          "r-0216",
+          "r-0217",
+          "r-0219",
+          "r-0220",
+          "r-0221",
+          "r-0223",
+          "r-0224",
+          "r-0225",
+          "r-0226",
+          "r-0227",
+          "r-0228",
+          "r-0229",
+          "r-0230",
+          "r-0231",
+          "r-0232",
+          "r-0233",
+          "r-0234",
+          "r-0235",
+          "r-0236",
+          "r-0237",
+          "r-0238",
+          "r-0239",
+          "r-0240",
+          "r-0242",
+          "r-0243",
+          "r-0244",
+          "r-0245",
+          "r-0247",
+          "r-0248",
+          "r-0251",
+          "r-0252",
+          "r-0253",
+          "r-0257",
+          "r-0258",
+          "r-0259",
+          "r-0260",
+          "r-0261",
+          "r-0262",
+          "r-0264",
+          "r-0265",
+          "r-0266",
+          "r-0267",
+          "r-0268",
+          "r-0269",
+          "r-0270",
+          "r-0271",
+          "r-0272",
+          "r-0273",
+          "r-0274",
+          "r-0275",
+          "r-0276",
+          "r-0278",
+          "r-0280",
+          "r-0282",
+          "r-0285",
+          "r-0287",
+          "r-0288",
+          "r-0289",
+          "r-0290",
+          "r-0291",
+          "r-0293",
+          "r-0295",
+          "r-0296",
+          "r-0297",
+          "r-0298",
+          "r-0301",
+          "r-0302",
+          "r-0303",
+          "r-0304",
+          "r-0305",
+          "r-0306",
+          "r-0307",
+          "r-0308",
+          "r-0309",
+          "r-0310",
+          "r-0312",
+          "r-0314",
+          "r-0315",
+          "r-0316",
+          "r-0317",
+          "r-0318",
+          "r-0319",
+          "r-0320",
+          "r-0321",
+          "r-0322",
+          "r-0323",
+          "r-0324",
+          "r-0325",
+          "r-0326",
+          "r-0327",
+          "r-0328",
+          "r-0329",
+          "r-0330",
+          "r-0331",
+          "r-0332",
+          "r-0333",
+          "r-0334",
+          "r-0335",
+          "r-0336",
+          "r-0337",
+          "r-0338",
+          "r-0339",
+          "r-0340",
+          "r-0341",
+          "r-0342",
+          "r-0343",
+          "r-0344",
+          "r-0345",
+          "r-0346",
+          "r-0347",
+          "r-0348",
+          "r-0349",
+          "r-0350"
+        ],
+        "strict_retained_scenarios": [
+          "r-0203",
+          "r-0212",
+          "r-0218",
+          "r-0222",
+          "r-0241",
+          "r-0246",
+          "r-0249",
+          "r-0250",
+          "r-0254",
+          "r-0255",
+          "r-0256",
+          "r-0263",
+          "r-0277",
+          "r-0279",
+          "r-0281",
+          "r-0283",
+          "r-0284",
+          "r-0286",
+          "r-0292",
+          "r-0294",
+          "r-0299",
+          "r-0300",
+          "r-0311",
+          "r-0313"
+        ]
+      },
+      "time_window": [
+        "2026-09-11T14:42:37.484499",
+        "2026-09-11T22:41:55.061108"
+      ]
+    },
+    "R6": {
+      "evidence": {
+        "reason": "gateway step 1 failure (infrastructure)",
+        "runs_count": 450,
+        "spans_count": 900,
+        "verdicts_count": 0
+      },
+      "status": "infra_invalid"
+    }
+  }
+}

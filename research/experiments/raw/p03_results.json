@@ -1,0 +1,272 @@
+{
+  "metadata": {
+    "project": "P3",
+    "reference": "MEC v1.0 + A-001/A-002",
+    "corpus_hash": "84e6ff590704aa94d10912f8002716b14c7436080e1a3270b53f9385dc728efc",
+    "manifest_sha256": "02180c04de27be7dd415f7f8959c8db9e92e5307e9e29934a065691618a11dbd",
+    "rungs_evaluated": [
+      "R2",
+      "R6",
+      "R4"
+    ]
+  },
+  "pass@1": {
+    "score": 0.565,
+    "wilson_ci": [
+      0.49570736259794607,
+      0.6318427449730092
+    ]
+  },
+  "tiers": {
+    "T1": {
+      "n": 67,
+      "pass_rate": 1.0,
+      "wilson_ci": [
+        0.9457738606086983,
+        1.0
+      ],
+      "avg_steps": 4.01,
+      "avg_tokens": {
+        "prompt": 2110,
+        "completion": 523
+      }
+    },
+    "T2": {
+      "n": 67,
+      "pass_rate": 0.6119402985074627,
+      "wilson_ci": [
+        0.49223089672129616,
+        0.7195095198328899
+      ],
+      "avg_steps": 10.57,
+      "avg_tokens": {
+        "prompt": 17266,
+        "completion": 1381
+      }
+    },
+    "T3": {
+      "n": 66,
+      "pass_rate": 0.07575757575757576,
+      "wilson_ci": [
+        0.03279203756296026,
+        0.16539195020610511
+      ],
+      "avg_steps": 11.74,
+      "avg_tokens": {
+        "prompt": 24518,
+        "completion": 1427
+      }
+    }
+  },
+  "rungs": {
+    "R2": {
+      "run_id": "72edafef-ab62-4362-acb5-d379868cb8bc",
+      "model": "z-ai/glm-5.3-flash",
+      "sample_size": 200,
+      "pass@1": {
+        "score": 0.565,
+        "wilson_ci": [
+          0.49570736259794607,
+          0.6318427449730092
+        ]
+      },
+      "tiers": {
+        "T1": {
+          "n": 67,
+          "pass_rate": 1.0,
+          "wilson_ci": [
+            0.9457738606086983,
+            1.0
+          ],
+          "avg_steps": 4.01,
+          "avg_tokens": {
+            "prompt": 2110,
+            "completion": 523
+          }
+        },
+        "T2": {
+          "n": 67,
+          "pass_rate": 0.6119402985074627,
+          "wilson_ci": [
+            0.49223089672129616,
+            0.7195095198328899
+          ],
+          "avg_steps": 10.57,
+          "avg_tokens": {
+            "prompt": 17266,
+            "completion": 1381
+          }
+        },
+        "T3": {
+          "n": 66,
+          "pass_rate": 0.07575757575757576,
+          "wilson_ci": [
+            0.03279203756296026,
+            0.16539195020610511
+          ],
+          "avg_steps": 11.74,
+          "avg_tokens": {
+            "prompt": 24518,
+            "completion": 1427
+          }
+        }
+      }
+    },
+    "R6": {
+      "run_id": "e9cf9e6c-5699-4b82-b131-92a581a7885d",
+      "model": "deepseek/deepseek-v4-pro",
+      "sample_size": 200,
+      "pass@1": {
+        "score": 0.34,
+        "wilson_ci": [
+          0.27791545970908793,
+          0.4081150447316374
+        ]
+      },
+      "tiers": {
+        "T1": {
+          "n": 67,
+          "pass_rate": 0.7313432835820896,
+          "wilson_ci": [
+            0.6148189100033434,
+            0.8227779508753081
+          ],
+          "avg_steps": 4.13,
+          "avg_tokens": {
+            "prompt": 2811,
+            "completion": 545
+          }
+        },
+        "T2": {
+          "n": 67,
+          "pass_rate": 0.26865671641791045,
+          "wilson_ci": [
+            0.17722204912469194,
+            0.3851810899966567
+          ],
+          "avg_steps": 6.13,
+          "avg_tokens": {
+            "prompt": 8180,
+            "completion": 1054
+          }
+        },
+        "T3": {
+          "n": 66,
+          "pass_rate": 0.015151515151515152,
+          "wilson_ci": [
+            0.0026796405439821133,
+            0.080959202620664
+          ],
+          "avg_steps": 5.86,
+          "avg_tokens": {
+            "prompt": 9238,
+            "completion": 932
+          }
+        }
+      }
+    },
+    "R4": {
+      "run_id": "887141a5-2db8-4d2b-a6e2-c5b564d898eb",
+      "model": "openai/gpt-5.6-luna",
+      "sample_size": 200,
+      "pass@1": {
+        "score": 0.085,
+        "wilson_ci": [
+          0.05374575017747562,
+          0.13189587071565564
+        ]
+      },
+      "tiers": {
+        "T1": {
+          "n": 67,
+          "pass_rate": 0.208955223880597,
+          "wilson_ci": [
+            0.12875685189029124,
+            0.3207180650688248
+          ],
+          "avg_steps": 4.01,
+          "avg_tokens": {
+            "prompt": 1745,
+            "completion": 429
+          }
+        },
+        "T2": {
+          "n": 67,
+          "pass_rate": 0.04477611940298507,
+          "wilson_ci": [
+            0.015343975122038653,
+            0.1235783308909376
+          ],
+          "avg_steps": 7.97,
+          "avg_tokens": {
+            "prompt": 11723,
+            "completion": 1066
+          }
+        },
+        "T3": {
+          "n": 66,
+          "pass_rate": 0.0,
+          "wilson_ci": [
+            3.469446951953614e-18,
+            0.05500255701354129
+          ],
+          "avg_steps": 6.88,
+          "avg_tokens": {
+            "prompt": 10948,
+            "completion": 876
+          }
+        }
+      }
+    }
+  },
+  "hypotheses": {
+    "H1": {
+      "claim": "Real-model grounded pass rate on T3 degrades significantly under multi-hop retrieval depth",
+      "status": "CONFIRMED",
+      "r2_t1_pass_rate": 1.0,
+      "r2_t1_wilson_ci": [
+        0.9457738606086983,
+        1.0
+      ],
+      "r2_t3_pass_rate": 0.07575757575757576,
+      "r2_t3_wilson_ci": [
+        0.03279203756296026,
+        0.16539195020610511
+      ],
+      "disjoint_t1_t3_intervals": true
+    }
+  },
+  "comparison": {
+    "models": {
+      "R2": "z-ai/glm-5.3-flash",
+      "R6": "deepseek/deepseek-v4-pro",
+      "R4": "openai/gpt-5.6-luna"
+    },
+    "overall_pass@1": {
+      "R2": 0.565,
+      "R6": 0.34,
+      "R4": 0.085
+    },
+    "tier_breakdown": {
+      "T1": {
+        "R2": 1.0,
+        "R6": 0.7313432835820896,
+        "R4": 0.208955223880597
+      },
+      "T2": {
+        "R2": 0.6119402985074627,
+        "R6": 0.26865671641791045,
+        "R4": 0.04477611940298507
+      },
+      "T3": {
+        "R2": 0.07575757575757576,
+        "R6": 0.015151515151515152,
+        "R4": 0.0
+      }
+    },
+    "r2_model": "z-ai/glm-5.3-flash",
+    "r6_model": "deepseek/deepseek-v4-pro",
+    "delta": -0.225,
+    "r4_model": "openai/gpt-5.6-luna"
+  }
+}

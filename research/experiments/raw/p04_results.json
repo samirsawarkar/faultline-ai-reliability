@@ -1,0 +1,299 @@
+{
+  "metadata": {
+    "project": "P4",
+    "reference": "MEC v1.0",
+    "coding_source": "human_open_and_axial_coding",
+    "total_traces_analyzed": 200,
+    "total_passed": 17,
+    "total_failed": 183,
+    "overall_grounded_pass_rate": 0.085,
+    "taxonomy_version": "1.0.0"
+  },
+  "axial_taxonomy": {
+    "INFRASTRUCTURE_RATE_LIMIT": {
+      "name": "Infrastructure Rate Limit",
+      "family": "transport_infrastructure",
+      "absent_from_f1_f6": false,
+      "maps_to": "F4 (Provider Error / Transport)",
+      "description": "Upstream API rate limit error (HTTP 429: Too Many Requests) interrupted agent execution during concurrency bursts."
+    },
+    "OVERCONSTRAINED_SEARCH_LOOP": {
+      "name": "Overconstrained Search Loop",
+      "family": "retrieval_strategy",
+      "absent_from_f1_f6": true,
+      "maps_to": "None (Emergent multi-hop search pathology / Partial F6)",
+      "description": "Model issued overconstrained multi-word search queries returning 0 candidates, looping through reformulations until step cap 12."
+    },
+    "MALFORMED_TOOL_CALL": {
+      "name": "Malformed Tool Call",
+      "family": "structured_output",
+      "absent_from_f1_f6": false,
+      "maps_to": "F1 (Structured-Output Corruption)",
+      "description": "Model emitted unstructured text reasoning without valid tool JSON, causing harness parsing errors."
+    },
+    "INFRASTRUCTURE_SERVER_ERROR": {
+      "name": "Infrastructure Server Error",
+      "family": "transport_infrastructure",
+      "absent_from_f1_f6": false,
+      "maps_to": "F4 (Provider Error / Transport)",
+      "description": "Upstream API backend 500 internal server error interrupted execution."
+    },
+    "MULTI_HOP_TRAVERSAL_EXHAUSTION": {
+      "name": "Multi-Hop Traversal Exhaustion",
+      "family": "budget_exhaustion",
+      "absent_from_f1_f6": true,
+      "maps_to": "None (Emergent 5-hop path length limitation)",
+      "description": "Model productively traversed multiple hops on T3 but ran out of the 12-step budget before reaching the terminal document."
+    },
+    "RETRIEVAL_FAILURE_ABSTENTION": {
+      "name": "Retrieval Failure Abstention",
+      "family": "epistemic_abstention",
+      "absent_from_f1_f6": true,
+      "maps_to": "None (Emergent self-abstention behavior)",
+      "description": "Model failed to locate the document in initial searches and explicitly emitted a refusal/abstention response."
+    },
+    "ANSWER_EXTRACTION_TRUNCATION": {
+      "name": "Answer Extraction Truncation",
+      "family": "fact_extraction",
+      "absent_from_f1_f6": false,
+      "maps_to": "F3 (Semantic Drift / Exact Token Match)",
+      "description": "Model retrieved the correct document and cited it, but truncated the token string in extraction (e.g., Onyx instead of Onyx-4413)."
+    },
+    "PREMATURE_STOP_WRONG_HOP": {
+      "name": "Premature Stop at Wrong Hop",
+      "family": "control_flow",
+      "absent_from_f1_f6": true,
+      "maps_to": "None (Emergent early termination defect)",
+      "description": "Model halted at step 2 on a 3-hop task and emitted an intermediate entity attribute as the final answer."
+    },
+    "MULTI_HOP_DIRECTION_ERROR": {
+      "name": "Multi-Hop Direction Error",
+      "family": "graph_traversal",
+      "absent_from_f1_f6": true,
+      "maps_to": "None (Emergent graph navigation defect)",
+      "description": "Model searched in the reverse dependency direction across multi-hop entity links."
+    }
+  },
+  "failure_mode_prevalence": {
+    "MALFORMED_TOOL_CALL": {
+      "count": 23,
+      "prevalence": 0.12568306010928962,
+      "spec": {
+        "name": "Malformed Tool Call",
+        "family": "structured_output",
+        "absent_from_f1_f6": false,
+        "maps_to": "F1 (Structured-Output Corruption)",
+        "description": "Model emitted unstructured text reasoning without valid tool JSON, causing harness parsing errors."
+      }
+    },
+    "INFRASTRUCTURE_RATE_LIMIT": {
+      "count": 114,
+      "prevalence": 0.6229508196721312,
+      "spec": {
+        "name": "Infrastructure Rate Limit",
+        "family": "transport_infrastructure",
+        "absent_from_f1_f6": false,
+        "maps_to": "F4 (Provider Error / Transport)",
+        "description": "Upstream API rate limit error (HTTP 429: Too Many Requests) interrupted agent execution during concurrency bursts."
+      }
+    },
+    "RETRIEVAL_FAILURE_ABSTENTION": {
+      "count": 1,
+      "prevalence": 0.00546448087431694,
+      "spec": {
+        "name": "Retrieval Failure Abstention",
+        "family": "epistemic_abstention",
+        "absent_from_f1_f6": true,
+        "maps_to": "None (Emergent self-abstention behavior)",
+        "description": "Model failed to locate the document in initial searches and explicitly emitted a refusal/abstention response."
+      }
+    },
+    "ANSWER_EXTRACTION_TRUNCATION": {
+      "count": 1,
+      "prevalence": 0.00546448087431694,
+      "spec": {
+        "name": "Answer Extraction Truncation",
+        "family": "fact_extraction",
+        "absent_from_f1_f6": false,
+        "maps_to": "F3 (Semantic Drift / Exact Token Match)",
+        "description": "Model retrieved the correct document and cited it, but truncated the token string in extraction (e.g., Onyx instead of Onyx-4413)."
+      }
+    },
+    "INFRASTRUCTURE_SERVER_ERROR": {
+      "count": 3,
+      "prevalence": 0.01639344262295082,
+      "spec": {
+        "name": "Infrastructure Server Error",
+        "family": "transport_infrastructure",
+        "absent_from_f1_f6": false,
+        "maps_to": "F4 (Provider Error / Transport)",
+        "description": "Upstream API backend 500 internal server error interrupted execution."
+      }
+    },
+    "OVERCONSTRAINED_SEARCH_LOOP": {
+      "count": 36,
+      "prevalence": 0.19672131147540983,
+      "spec": {
+        "name": "Overconstrained Search Loop",
+        "family": "retrieval_strategy",
+        "absent_from_f1_f6": true,
+        "maps_to": "None (Emergent multi-hop search pathology / Partial F6)",
+        "description": "Model issued overconstrained multi-word search queries returning 0 candidates, looping through reformulations until step cap 12."
+      }
+    },
+    "PREMATURE_STOP_WRONG_HOP": {
+      "count": 1,
+      "prevalence": 0.00546448087431694,
+      "spec": {
+        "name": "Premature Stop at Wrong Hop",
+        "family": "control_flow",
+        "absent_from_f1_f6": true,
+        "maps_to": "None (Emergent early termination defect)",
+        "description": "Model halted at step 2 on a 3-hop task and emitted an intermediate entity attribute as the final answer."
+      }
+    },
+    "MULTI_HOP_TRAVERSAL_EXHAUSTION": {
+      "count": 3,
+      "prevalence": 0.01639344262295082,
+      "spec": {
+        "name": "Multi-Hop Traversal Exhaustion",
+        "family": "budget_exhaustion",
+        "absent_from_f1_f6": true,
+        "maps_to": "None (Emergent 5-hop path length limitation)",
+        "description": "Model productively traversed multiple hops on T3 but ran out of the 12-step budget before reaching the terminal document."
+      }
+    },
+    "MULTI_HOP_DIRECTION_ERROR": {
+      "count": 1,
+      "prevalence": 0.00546448087431694,
+      "spec": {
+        "name": "Multi-Hop Direction Error",
+        "family": "graph_traversal",
+        "absent_from_f1_f6": true,
+        "maps_to": "None (Emergent graph navigation defect)",
+        "description": "Model searched in the reverse dependency direction across multi-hop entity links."
+      }
+    }
+  },
+  "by_tier": {
+    "T1": {
+      "total_scenarios": 67,
+      "failures": 53,
+      "mode_breakdown": {
+        "MALFORMED_TOOL_CALL": 22,
+        "INFRASTRUCTURE_RATE_LIMIT": 28,
+        "RETRIEVAL_FAILURE_ABSTENTION": 1,
+        "ANSWER_EXTRACTION_TRUNCATION": 1,
+        "INFRASTRUCTURE_SERVER_ERROR": 1
+      }
+    },
+    "T2": {
+      "total_scenarios": 67,
+      "failures": 64,
+      "mode_breakdown": {
+        "INFRASTRUCTURE_RATE_LIMIT": 42,
+        "OVERCONSTRAINED_SEARCH_LOOP": 20,
+        "MALFORMED_TOOL_CALL": 1,
+        "PREMATURE_STOP_WRONG_HOP": 1
+      }
+    },
+    "T3": {
+      "total_scenarios": 66,
+      "failures": 66,
+      "mode_breakdown": {
+        "OVERCONSTRAINED_SEARCH_LOOP": 16,
+        "INFRASTRUCTURE_RATE_LIMIT": 44,
+        "MULTI_HOP_TRAVERSAL_EXHAUSTION": 3,
+        "MULTI_HOP_DIRECTION_ERROR": 1,
+        "INFRASTRUCTURE_SERVER_ERROR": 2
+      }
+    }
+  },
+  "saturation": {
+    "saturation_point_failure_index": 148,
+    "total_failures": 183,
+    "saturation_fraction": 0.8087431693989071,
+    "total_modes_discovered": 9,
+    "status": "SATURATED",
+    "saturation_milestones": [
+      {
+        "failure_index": 1,
+        "scenario_id": "s-0001",
+        "tier": "T1",
+        "mode_discovered": "MALFORMED_TOOL_CALL",
+        "total_modes": 1
+      },
+      {
+        "failure_index": 7,
+        "scenario_id": "s-0008",
+        "tier": "T1",
+        "mode_discovered": "INFRASTRUCTURE_RATE_LIMIT",
+        "total_modes": 2
+      },
+      {
+        "failure_index": 16,
+        "scenario_id": "s-0020",
+        "tier": "T1",
+        "mode_discovered": "RETRIEVAL_FAILURE_ABSTENTION",
+        "total_modes": 3
+      },
+      {
+        "failure_index": 19,
+        "scenario_id": "s-0023",
+        "tier": "T1",
+        "mode_discovered": "ANSWER_EXTRACTION_TRUNCATION",
+        "total_modes": 4
+      },
+      {
+        "failure_index": 43,
+        "scenario_id": "s-0051",
+        "tier": "T1",
+        "mode_discovered": "INFRASTRUCTURE_SERVER_ERROR",
+        "total_modes": 5
+      },
+      {
+        "failure_index": 59,
+        "scenario_id": "s-0074",
+        "tier": "T2",
+        "mode_discovered": "OVERCONSTRAINED_SEARCH_LOOP",
+        "total_modes": 6
+      },
+      {
+        "failure_index": 94,
+        "scenario_id": "s-0110",
+        "tier": "T2",
+        "mode_discovered": "PREMATURE_STOP_WRONG_HOP",
+        "total_modes": 7
+      },
+      {
+        "failure_index": 121,
+        "scenario_id": "s-0138",
+        "tier": "T3",
+        "mode_discovered": "MULTI_HOP_TRAVERSAL_EXHAUSTION",
+        "total_modes": 8
+      },
+      {
+        "failure_index": 148,
+        "scenario_id": "s-0165",
+        "tier": "T3",
+        "mode_discovered": "MULTI_HOP_DIRECTION_ERROR",
+        "total_modes": 9
+      }
+    ]
+  },
+  "hypotheses": {
+    "H2": {
+      "claim": ">=2 discovered failure modes are absent from the injected F1-F6 catalog",
+      "status": "CONFIRMED",
+      "novel_modes_count": 5,
+      "novel_modes_absent_from_f1_f6": [
+        "OVERCONSTRAINED_SEARCH_LOOP",
+        "MULTI_HOP_TRAVERSAL_EXHAUSTION",
+        "RETRIEVAL_FAILURE_ABSTENTION",
+        "PREMATURE_STOP_WRONG_HOP",
+        "MULTI_HOP_DIRECTION_ERROR"
+      ],
+      "evidence": "Discovered 5 emergent failure modes (OVERCONSTRAINED_SEARCH_LOOP, MULTI_HOP_TRAVERSAL_EXHAUSTION, RETRIEVAL_FAILURE_ABSTENTION, PREMATURE_STOP_WRONG_HOP, MULTI_HOP_DIRECTION_ERROR) that had no counterpart in the Phase 1 single-step synthetic injection catalog (F1-F6)."
+    }
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "metadata": {
+    "project": "P6",
+    "reference": "MEC v1.0 \u00a73 & \u00a75",
+    "manifest_sha256": "7e0a1b79d6e756f712d27e29168fed8b3bc5c4cd7beba7f8fc21d50366d41b83",
+    "k_trials": 3,
+    "hard_scenarios_count": 150,
+    "total_agent_runs": 1350,
+    "total_spend_usd": 23.727528,
+    "timestamp_utc": "2026-09-12T07:30:18.141750+00:00"
+  },
+  "rungs": {
+    "R2": {
+      "rung": "R2",
+      "model": "z-ai/glm-5.3-flash",
+      "role": "Cheap Workhorse",
+      "total_runs": 450,
+      "hard_scenarios": 150,
+      "k_trials": 3,
+      "tokens": {
+        "prompt": 26753277,
+        "completion": 1513865,
+        "total": 28267142
+      },
+      "pass@1": {
+        "score": 0.6311,
+        "passed_count": 284,
+        "wilson_ci": [
+          0.5856,
+          0.6744
+        ]
+      },
+      "naive_p3": {
+        "score": 0.2514,
+        "formula": "(0.6311)^3"
+      },
+      "measured_pass3": {
+        "score": 0.2267,
+        "passed_all_k_count": 34,
+        "wilson_ci": [
+          0.167,
+          0.3
+        ]
+      },
+      "disjoint_from_naive": false,
+      "delta_measured_minus_naive": -0.0247,
+      "concentration_ratio": 0.902,
+      "spend_usd": 4.1693,
+      "cost_per_grounded_answer_usd": 0.01468
+    },
+    "R4": {
+      "rung": "R4",
+      "model": "openai/gpt-5.6-luna",
+      "role": "OpenAI Frontier",
+      "total_runs": 450,
+      "hard_scenarios": 150,
+      "k_trials": 3,
+      "tokens": {
+        "prompt": 24751083,
+        "completion": 1300777,
+        "total": 26051860
+      },
+      "pass@1": {
+        "score": 0.1489,
+        "passed_count": 67,
+        "wilson_ci": [
+          0.119,
+          0.1847
+        ]
+      },
+      "naive_p3": {
+        "score": 0.0033,
+        "formula": "(0.1489)^3"
+      },
+      "measured_pass3": {
+        "score": 0.02,
+        "passed_all_k_count": 3,
+        "wilson_ci": [
+          0.0068,
+          0.0571
+        ]
+      },
+      "disjoint_from_naive": true,
+      "delta_measured_minus_naive": 0.0167,
+      "concentration_ratio": 6.06,
+      "spend_usd": 17.9725,
+      "cost_per_grounded_answer_usd": 0.26825
+    },
+    "R6": {
+      "rung": "R6",
+      "model": "deepseek/deepseek-v4-pro",
+      "role": "Frontier Anchor",
+      "total_runs": 450,
+      "hard_scenarios": 150,
+      "k_trials": 3,
+      "tokens": {
+        "prompt": 161502,
+        "completion": 0,
+        "total": 161502
+      },
+      "pass@1": {
+        "score": 0.0,
+        "passed_count": 0,
+        "wilson_ci": [
+          0.0,
+          0.0085
+        ]
+      },
+      "naive_p3": {
+        "score": 0.0,
+        "formula": "(0.0000)^3"
+      },
+      "measured_pass3": {
+        "score": 0.0,
+        "passed_all_k_count": 0,
+        "wilson_ci": [
+          0.0,
+          0.025
+        ]
+      },
+      "disjoint_from_naive": false,
+      "delta_measured_minus_naive": 0.0,
+      "concentration_ratio": 1.0,
+      "spend_usd": 0.0703,
+      "cost_per_grounded_answer_usd": 0.0
+    }
+  },
+  "paired_comparisons": {
+    "R2_vs_R4": {
+      "comparison": "R2 (z-ai/glm-5.3-flash) vs R4 (openai/gpt-5.6-luna)",
+      "mcnemar": {
+        "b": 34,
+        "c": 3,
+        "n_discordant": 37,
+        "chi2_statistic": 24.3243243243243,
+        "chi2_p_value": 8.14045801527792e-07,
+        "continuity_correction": true,
+        "exact_p_value": 1.23312929645181e-07,
+        "recommended": "chi2",
+        "p_value": 8.14045801527792e-07,
+        "significant_at_0.05": true,
+        "table": {
+          "both_correct": 0,
+          "a_only": 34,
+          "b_only": 3,
+          "both_wrong": 113,
+          "n": 150,
+          "discordant": 37
+        }
+      },
+      "difference_pp": 20.67,
+      "power_declaration": "ADEQUATELY_POWERED (>=10pp)"
+    },
+    "R2_vs_R6": {
+      "comparison": "R2 (z-ai/glm-5.3-flash) vs R6 (deepseek/deepseek-v4-pro)",
+      "mcnemar": {
+        "b": 34,
+        "c": 0,
+        "n_discordant": 34,
+        "chi2_statistic": 32.0294117647059,
+        "chi2_p_value": 1.51855955235199e-08,
+        "continuity_correction": true,
+        "exact_p_value": 1.16415321826935e-10,
+        "recommended": "chi2",
+        "p_value": 1.51855955235199e-08,
+        "significant_at_0.05": true,
+        "table": {
+          "both_correct": 0,
+          "a_only": 34,
+          "b_only": 0,
+          "both_wrong": 116,
+          "n": 150,
+          "discordant": 34
+        }
+      },
+      "difference_pp": 22.67,
+      "power_declaration": "ADEQUATELY_POWERED (>=10pp)"
+    },
+    "R4_vs_R6": {
+      "comparison": "R4 (openai/gpt-5.6-luna) vs R6 (deepseek/deepseek-v4-pro)",
+      "mcnemar": {
+        "b": 3,
+        "c": 0,
+        "n_discordant": 3,
+        "chi2_statistic": 1.33333333333333,
+        "chi2_p_value": 0.248213078989924,
+        "continuity_correction": true,
+        "exact_p_value": 0.25,
+        "recommended": "exact",
+        "p_value": 0.25,
+        "significant_at_0.05": false,
+        "table": {
+          "both_correct": 0,
+          "a_only": 3,
+          "b_only": 0,
+          "both_wrong": 147,
+          "n": 150,
+          "discordant": 3
+        }
+      },
+      "difference_pp": 2.0,
+      "power_declaration": "UNDERPOWERED (<10pp)"
+    }
+  },
+  "hypotheses": {
+    "H4": {
+      "claim": "Measured pass^3 exceeds naive (pass@1)^3 for >= 2 of 3 evaluated rungs",
+      "status": "FALSIFIED",
+      "rungs_disjoint_count": 1,
+      "total_rungs": 3,
+      "evidence": "Measured pass^3 Wilson CI strictly exceeded naive (pass@1)^3 on 1 of 3 evaluated rungs."
+    },
+    "H5": {
+      "claim": "Deviation from naive compounding is larger for cheaper rungs than frontier rungs",
+      "status": "FALSIFIED",
+      "delta_R2": -0.0247,
+      "delta_R6": 0.0,
+      "evidence": "Deviation delta R2 (-0.0247) vs R6 (0.0)."
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "incident_summary": {
+    "caveat": "The traces do not store exception text, so the breaker explanation is an inference from latency signatures.",
+    "incident_description": "One gateway incident across two windows (14:42-14:47 and 22:30-22:42 UTC), amplified by the client-side circuit breaker in projects/p06_passk/run.py line 385: CircuitBreaker(failure_threshold=5, cooldown_seconds=30) opening after ~67s gateway timeouts. R6 lost every run, R4 lost its final 95 trials."
+  },
+  "r4_dead_trials": {
+    "all_3_trials_dead_scenarios": 31,
+    "dead_trials_count": 95,
+    "run_id": "p06_r4_7e0a1b79",
+    "spans_per_trial": 2,
+    "sql_used": "SELECT scenario_id, step_index, latency_ms, completion_tokens, timestamp FROM spans WHERE run_id = 'p06_r4_7e0a1b79'",
+    "total_spans_in_dead_trials": 190,
+    "touched_base_scenarios": 33,
+    "window_1_first_attempt": {
+      "completion_tokens_zero": 95,
+      "spans_count": 95,
+      "spans_latency_lt_1ms": 93,
+      "spans_timeouts_gt_60s": 2,
+      "timestamp_range": [
+        "2026-09-11T14:42:37.484499",
+        "2026-09-11T14:45:38.377375"
+      ]
+    },
+    "window_2_sweep_retry": {
+      "completion_tokens_zero": 95,
+      "spans_count": 95,
+      "spans_latency_lt_1ms": 87,
+      "spans_timeouts_gt_60s": 2,
+      "timestamp_range": [
+        "2026-09-11T22:30:10.879042",
+        "2026-09-11T22:41:55.061108"
+      ]
+    }
+  },
+  "r6_infrastructure_signature": {
+    "end_timestamp": "2026-09-11T22:42:16.203725",
+    "run_id": "p06_r6_7e0a1b79",
+    "spans_latency_lt_1ms": 869,
+    "spans_latency_other": 19,
+    "spans_timeouts_gt_60s": 12,
+    "sql_used": "SELECT count(*), sum(case when latency_ms < 1.0 then 1 else 0 end), sum(case when latency_ms > 60000.0 then 1 else 0 end), min(timestamp), max(timestamp) FROM spans WHERE run_id = 'p06_r6_7e0a1b79'",
+    "start_timestamp": "2026-09-11T14:47:33.567951",
+    "total_runs": 450,
+    "total_spans": 900,
+    "verdicts_count": 0
+  }
+}
