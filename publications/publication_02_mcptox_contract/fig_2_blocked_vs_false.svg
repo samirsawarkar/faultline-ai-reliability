@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460">
+  <rect width="900" height="460" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="40" y="38" font-family="Helvetica, Inter, sans-serif" font-size="15" font-weight="600" fill="#1e293b">Contract defense vs benign impact: attacks removed vs false blocks (N=300 per rung)</text>
+
+  <!-- Legend -->
+  <rect x="40" y="55" width="13" height="13" fill="#2563eb" fill-opacity="0.22" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="58" y="66" font-family="Helvetica, Inter, sans-serif" font-size="11" fill="#1e293b">Attacks removed (Arm A Success not Arm B Success)</text>
+  <rect x="440" y="55" width="13" height="13" fill="#d97706" fill-opacity="0.22" stroke="#d97706" stroke-width="1.5"/>
+  <text x="458" y="66" font-family="Helvetica, Inter, sans-serif" font-size="11" fill="#1e293b">Benign blocked (false_block_proxy)</text>
+
+  <!-- Grid & Y-Ticks -->
+  <g stroke="#e2e8f0" stroke-width="1">
+    <line x1="65" y1="355.0" x2="865" y2="355.0"/>
+    <line x1="65" y1="311.7" x2="865" y2="311.7"/>
+    <line x1="65" y1="268.3" x2="865" y2="268.3"/>
+    <line x1="65" y1="225.0" x2="865" y2="225.0"/>
+    <line x1="65" y1="181.7" x2="865" y2="181.7"/>
+    <line x1="65" y1="138.3" x2="865" y2="138.3"/>
+    <line x1="65" y1="95.0" x2="865" y2="95.0"/>
+  </g>
+  <g font-family="Helvetica, Inter, sans-serif" font-size="10" fill="#64748b" text-anchor="end">
+    <text x="57" y="358.5">0</text>
+    <text x="57" y="315.2">20</text>
+    <text x="57" y="271.8">40</text>
+    <text x="57" y="228.5">60</text>
+    <text x="57" y="185.2">80</text>
+    <text x="57" y="141.8">100</text>
+    <text x="57" y="98.5">120</text>
+  </g>
+  <line x1="65" y1="95" x2="65" y2="355" stroke="#cbd5e1" stroke-width="1"/>
+
+  <!-- Grouped Bars per Rung -->
+  <!-- R1: Qwen 3.7 Flash -->
+  <g id="rung-R1">
+    <!-- Attacks Removed Bar -->
+    <rect x="96.7" y="201.2" width="32" height="153.8" fill="#2563eb" fill-opacity="0.22" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="112.7" y="196.2" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#2563eb" text-anchor="middle">71</text>
+
+    <!-- Benign Blocked Bar -->
+    <rect x="134.7" y="342.0" width="32" height="13.0" fill="#d97706" fill-opacity="0.22" stroke="#d97706" stroke-width="1.5"/>
+    <text x="150.7" y="337.0" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#d97706" text-anchor="middle">6</text>
+
+    <!-- X Labels -->
+    <text x="131.7" y="372" font-family="Helvetica, Inter, sans-serif" font-size="11.5" font-weight="600" fill="#1e293b" text-anchor="middle">R1</text>
+    <text x="131.7" y="385" font-family="Helvetica, Inter, sans-serif" font-size="9.5" fill="#64748b" text-anchor="middle">Qwen 3.7 Flash</text>
+  </g>
+
+  <!-- R2: GLM 5.3 Flash -->
+  <g id="rung-R2">
+    <!-- Attacks Removed Bar -->
+    <rect x="230.0" y="266.2" width="32" height="88.8" fill="#2563eb" fill-opacity="0.22" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="246.0" y="261.2" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#2563eb" text-anchor="middle">41</text>
+
+    <!-- Benign Blocked Bar -->
+    <rect x="268.0" y="320.3" width="32" height="34.7" fill="#d97706" fill-opacity="0.22" stroke="#d97706" stroke-width="1.5"/>
+    <text x="284.0" y="315.3" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#d97706" text-anchor="middle">16</text>
+
+    <!-- X Labels -->
+    <text x="265.0" y="372" font-family="Helvetica, Inter, sans-serif" font-size="11.5" font-weight="600" fill="#1e293b" text-anchor="middle">R2</text>
+    <text x="265.0" y="385" font-family="Helvetica, Inter, sans-serif" font-size="9.5" fill="#64748b" text-anchor="middle">GLM 5.3 Flash</text>
+  </g>
+
+  <!-- R3: Qwen 3.8 Flash -->
+  <g id="rung-R3">
+    <!-- Attacks Removed Bar -->
+    <rect x="363.3" y="142.7" width="32" height="212.3" fill="#2563eb" fill-opacity="0.22" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="379.3" y="137.7" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#2563eb" text-anchor="middle">98</text>
+
+    <!-- Benign Blocked Bar -->
+    <rect x="401.3" y="348.5" width="32" height="6.5" fill="#d97706" fill-opacity="0.22" stroke="#d97706" stroke-width="1.5"/>
+    <text x="417.3" y="343.5" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#d97706" text-anchor="middle">3</text>
+
+    <!-- X Labels -->
+    <text x="398.3" y="372" font-family="Helvetica, Inter, sans-serif" font-size="11.5" font-weight="600" fill="#1e293b" text-anchor="middle">R3</text>
+    <text x="398.3" y="385" font-family="Helvetica, Inter, sans-serif" font-size="9.5" fill="#64748b" text-anchor="middle">Qwen 3.8 Flash</text>
+  </g>
+
+  <!-- R4: GPT 5.6 Luna -->
+  <g id="rung-R4">
+    <!-- Attacks Removed Bar -->
+    <rect x="496.7" y="140.5" width="32" height="214.5" fill="#2563eb" fill-opacity="0.22" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="512.7" y="135.5" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#2563eb" text-anchor="middle">99</text>
+
+    <!-- Benign Blocked Bar -->
+    <rect x="534.7" y="348.5" width="32" height="6.5" fill="#d97706" fill-opacity="0.22" stroke="#d97706" stroke-width="1.5"/>
+    <text x="550.7" y="343.5" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#d97706" text-anchor="middle">3</text>
+
+    <!-- X Labels -->
+    <text x="531.7" y="372" font-family="Helvetica, Inter, sans-serif" font-size="11.5" font-weight="600" fill="#1e293b" text-anchor="middle">R4</text>
+    <text x="531.7" y="385" font-family="Helvetica, Inter, sans-serif" font-size="9.5" fill="#64748b" text-anchor="middle">GPT 5.6 Luna</text>
+  </g>
+
+  <!-- R5: Gemini 3.7 Flash -->
+  <g id="rung-R5">
+    <!-- Attacks Removed Bar -->
+    <rect x="630.0" y="344.2" width="32" height="10.8" fill="#2563eb" fill-opacity="0.22" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="646.0" y="339.2" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#2563eb" text-anchor="middle">5</text>
+
+    <!-- Benign Blocked Bar -->
+    <rect x="668.0" y="348.5" width="32" height="6.5" fill="#d97706" fill-opacity="0.22" stroke="#d97706" stroke-width="1.5"/>
+    <text x="684.0" y="343.5" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#d97706" text-anchor="middle">3</text>
+
+    <!-- X Labels -->
+    <text x="665.0" y="372" font-family="Helvetica, Inter, sans-serif" font-size="11.5" font-weight="600" fill="#1e293b" text-anchor="middle">R5</text>
+    <text x="665.0" y="385" font-family="Helvetica, Inter, sans-serif" font-size="9.5" fill="#64748b" text-anchor="middle">Gemini 3.7 Flash</text>
+  </g>
+
+  <!-- R6: DeepSeek v4 Pro -->
+  <g id="rung-R6">
+    <!-- Attacks Removed Bar -->
+    <rect x="763.3" y="123.2" width="32" height="231.8" fill="#2563eb" fill-opacity="0.22" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="779.3" y="118.2" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#2563eb" text-anchor="middle">107</text>
+
+    <!-- Benign Blocked Bar -->
+    <rect x="801.3" y="342.0" width="32" height="13.0" fill="#d97706" fill-opacity="0.22" stroke="#d97706" stroke-width="1.5"/>
+    <text x="817.3" y="337.0" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#d97706" text-anchor="middle">6</text>
+
+    <!-- X Labels -->
+    <text x="798.3" y="372" font-family="Helvetica, Inter, sans-serif" font-size="11.5" font-weight="600" fill="#1e293b" text-anchor="middle">R6</text>
+    <text x="798.3" y="385" font-family="Helvetica, Inter, sans-serif" font-size="9.5" fill="#64748b" text-anchor="middle">DeepSeek v4 Pro</text>
+  </g>
+
+  <!-- Footer -->
+  <line x1="40" y1="425" x2="865" y2="425" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="40" y="443" font-family="Helvetica, Inter, sans-serif" font-size="9.5" fill="#64748b">FAULTLINE P8 · MCPTox (commit f85189f) · 300 instances/rung · attacks removed = Arm A Success &amp; not Arm B Success · false_block_proxy = benign calls blocked</text>
+</svg>

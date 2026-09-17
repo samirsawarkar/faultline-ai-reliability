@@ -1,0 +1,22 @@
+{
+  "run_id": "",
+  "timestamp": "",
+  "dataset": "",
+  "data_split": "",
+  "model": "",
+  "model_version": "",
+  "prompt": "prompts/…",
+  "decoding": {"temperature": null, "top_p": null, "max_tokens": null},
+  "sampling": {"samples_per_instance": 1},
+  "seed": null,
+  "n_instances": null,
+  "metric": "",
+  "eval_protocol": "",
+  "contamination_check": "",
+  "hardware": "",
+  "environment": "",
+  "code_url": "",
+  "runtime": "",
+  "cost": "",
+  "license": ""
+}

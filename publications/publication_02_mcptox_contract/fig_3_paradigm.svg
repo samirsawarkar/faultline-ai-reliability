@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460">
+  <rect width="900" height="460" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="40" y="38" font-family="Helvetica, Inter, sans-serif" font-size="15" font-weight="600" fill="#1e293b">Attack success and replay block-rate across poisoning paradigms (pooled N=1800)</text>
+
+  <!-- Legend -->
+  <rect x="40" y="55" width="13" height="13" fill="#dc2626" fill-opacity="0.22" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="58" y="66" font-family="Helvetica, Inter, sans-serif" font-size="10.5" fill="#1e293b">Arm A: Baseline ASR</text>
+  <rect x="175" y="55" width="13" height="13" fill="#2563eb" fill-opacity="0.22" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="193" y="66" font-family="Helvetica, Inter, sans-serif" font-size="10.5" fill="#1e293b">Arm B: Runtime contract ASR</text>
+  <polygon points="365,61.5 371,55.5 377,61.5 371,67.5" fill="#059669" stroke="#059669" stroke-width="1.5"/>
+  <text x="383" y="66" font-family="Helvetica, Inter, sans-serif" font-size="10" fill="#1e293b">Replay block-rate on the MCPTox authors' recorded Success responses (replay_results.json)</text>
+
+  <!-- Grid & Y-Ticks -->
+  <g stroke="#e2e8f0" stroke-width="1">
+    <line x1="65" y1="355.0" x2="865" y2="355.0"/>
+    <line x1="65" y1="305.5" x2="865" y2="305.5"/>
+    <line x1="65" y1="256.0" x2="865" y2="256.0"/>
+    <line x1="65" y1="206.4" x2="865" y2="206.4"/>
+    <line x1="65" y1="156.9" x2="865" y2="156.9"/>
+    <line x1="65" y1="107.4" x2="865" y2="107.4"/>
+  </g>
+  <g font-family="Helvetica, Inter, sans-serif" font-size="10" fill="#64748b" text-anchor="end">
+    <text x="57" y="358.5">0.0</text>
+    <text x="57" y="309.0">0.2</text>
+    <text x="57" y="259.5">0.4</text>
+    <text x="57" y="209.9">0.6</text>
+    <text x="57" y="160.4">0.8</text>
+    <text x="57" y="110.9">1.0</text>
+  </g>
+  <line x1="65" y1="95" x2="65" y2="355" stroke="#cbd5e1" stroke-width="1"/>
+
+  <!-- Grouped Elements per Paradigm -->
+  <!-- Template-1 -->
+  <g id="paradigm-Template-1">
+    <!-- Arm A Bar & Error Bar -->
+    <rect x="126.3" y="294.0" width="34" height="61.0" fill="#dc2626" fill-opacity="0.22" stroke="#dc2626" stroke-width="1.5"/>
+    <line x1="143.3" y1="305.8" x2="143.3" y2="280.5" stroke="#1e293b" stroke-width="1.2"/>
+    <line x1="137.3" y1="280.5" x2="149.3" y2="280.5" stroke="#1e293b" stroke-width="1.2"/>
+    <line x1="137.3" y1="305.8" x2="149.3" y2="305.8" stroke="#1e293b" stroke-width="1.2"/>
+    <text x="143.3" y="275.5" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#dc2626" text-anchor="middle">0.246</text>
+
+    <!-- Arm B Bar & Error Bar -->
+    <rect x="181.3" y="350.5" width="34" height="4.5" fill="#2563eb" fill-opacity="0.22" stroke="#2563eb" stroke-width="1.5"/>
+    <line x1="198.3" y1="353.1" x2="198.3" y2="344.6" stroke="#1e293b" stroke-width="1.2"/>
+    <line x1="192.3" y1="344.6" x2="204.3" y2="344.6" stroke="#1e293b" stroke-width="1.2"/>
+    <line x1="192.3" y1="353.1" x2="204.3" y2="353.1" stroke="#1e293b" stroke-width="1.2"/>
+    <text x="198.3" y="339.6" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#2563eb" text-anchor="middle">0.018</text>
+
+    <!-- Replay Block Rate Marker & Error Bar -->
+    <line x1="253.3" y1="135.5" x2="253.3" y2="119.1" stroke="#059669" stroke-width="1.2"/>
+    <line x1="247.3" y1="119.1" x2="259.3" y2="119.1" stroke="#059669" stroke-width="1.2"/>
+    <line x1="247.3" y1="135.5" x2="259.3" y2="135.5" stroke="#059669" stroke-width="1.2"/>
+    <polygon points="253.3,119.6 259.3,125.6 253.3,131.6 247.3,125.6" fill="#059669" stroke="#059669" stroke-width="1.5"/>
+    <text x="253.3" y="114.1" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#059669" text-anchor="middle">0.926</text>
+
+    <!-- X Labels -->
+    <text x="198.3" y="372" font-family="Helvetica, Inter, sans-serif" font-size="11.5" font-weight="600" fill="#1e293b" text-anchor="middle">Template-1</text>
+    <text x="198.3" y="385" font-family="Helvetica, Inter, sans-serif" font-size="9.5" fill="#64748b" text-anchor="middle">explicit trigger</text>
+  </g>
+
+  <!-- Template-2 -->
+  <g id="paradigm-Template-2">
+    <!-- Arm A Bar & Error Bar -->
+    <rect x="393.0" y="295.2" width="34" height="59.8" fill="#dc2626" fill-opacity="0.22" stroke="#dc2626" stroke-width="1.5"/>
+    <line x1="410.0" y1="303.1" x2="410.0" y2="286.5" stroke="#1e293b" stroke-width="1.2"/>
+    <line x1="404.0" y1="286.5" x2="416.0" y2="286.5" stroke="#1e293b" stroke-width="1.2"/>
+    <line x1="404.0" y1="303.1" x2="416.0" y2="303.1" stroke="#1e293b" stroke-width="1.2"/>
+    <text x="410.0" y="281.5" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#dc2626" text-anchor="middle">0.242</text>
+
+    <!-- Arm B Bar & Error Bar -->
+    <rect x="448.0" y="327.9" width="34" height="27.1" fill="#2563eb" fill-opacity="0.22" stroke="#2563eb" stroke-width="1.5"/>
+    <line x1="465.0" y1="333.5" x2="465.0" y2="321.2" stroke="#1e293b" stroke-width="1.2"/>
+    <line x1="459.0" y1="321.2" x2="471.0" y2="321.2" stroke="#1e293b" stroke-width="1.2"/>
+    <line x1="459.0" y1="333.5" x2="471.0" y2="333.5" stroke="#1e293b" stroke-width="1.2"/>
+    <text x="465.0" y="316.2" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#2563eb" text-anchor="middle">0.109</text>
+
+    <!-- Replay Block Rate Marker & Error Bar -->
+    <line x1="520.0" y1="162.6" x2="520.0" y2="143.5" stroke="#059669" stroke-width="1.2"/>
+    <line x1="514.0" y1="143.5" x2="526.0" y2="143.5" stroke="#059669" stroke-width="1.2"/>
+    <line x1="514.0" y1="162.6" x2="526.0" y2="162.6" stroke="#059669" stroke-width="1.2"/>
+    <polygon points="520.0,146.2 526.0,152.2 520.0,158.2 514.0,152.2" fill="#059669" stroke="#059669" stroke-width="1.5"/>
+    <text x="520.0" y="138.5" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#059669" text-anchor="middle">0.819</text>
+
+    <!-- X Labels -->
+    <text x="465.0" y="372" font-family="Helvetica, Inter, sans-serif" font-size="11.5" font-weight="600" fill="#1e293b" text-anchor="middle">Template-2</text>
+    <text x="465.0" y="385" font-family="Helvetica, Inter, sans-serif" font-size="9.5" fill="#64748b" text-anchor="middle">implicit trigger via function hijack</text>
+  </g>
+
+  <!-- Template-3 -->
+  <g id="paradigm-Template-3">
+    <!-- Arm A Bar & Error Bar -->
+    <rect x="659.7" y="263.5" width="34" height="91.5" fill="#dc2626" fill-opacity="0.22" stroke="#dc2626" stroke-width="1.5"/>
+    <line x1="676.7" y1="271.6" x2="676.7" y2="255.2" stroke="#1e293b" stroke-width="1.2"/>
+    <line x1="670.7" y1="255.2" x2="682.7" y2="255.2" stroke="#1e293b" stroke-width="1.2"/>
+    <line x1="670.7" y1="271.6" x2="682.7" y2="271.6" stroke="#1e293b" stroke-width="1.2"/>
+    <text x="676.7" y="250.2" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#dc2626" text-anchor="middle">0.369</text>
+
+    <!-- Arm B Bar & Error Bar -->
+    <rect x="714.7" y="338.7" width="34" height="16.3" fill="#2563eb" fill-opacity="0.22" stroke="#2563eb" stroke-width="1.5"/>
+    <line x1="731.7" y1="342.5" x2="731.7" y2="333.9" stroke="#1e293b" stroke-width="1.2"/>
+    <line x1="725.7" y1="333.9" x2="737.7" y2="333.9" stroke="#1e293b" stroke-width="1.2"/>
+    <line x1="725.7" y1="342.5" x2="737.7" y2="342.5" stroke="#1e293b" stroke-width="1.2"/>
+    <text x="731.7" y="328.9" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#2563eb" text-anchor="middle">0.066</text>
+
+    <!-- Replay Block Rate Marker & Error Bar -->
+    <line x1="786.7" y1="143.6" x2="786.7" y2="133.6" stroke="#059669" stroke-width="1.2"/>
+    <line x1="780.7" y1="133.6" x2="792.7" y2="133.6" stroke="#059669" stroke-width="1.2"/>
+    <line x1="780.7" y1="143.6" x2="792.7" y2="143.6" stroke="#059669" stroke-width="1.2"/>
+    <polygon points="786.7,132.2 792.7,138.2 786.7,144.2 780.7,138.2" fill="#059669" stroke="#059669" stroke-width="1.5"/>
+    <text x="786.7" y="128.6" font-family="Helvetica, Inter, sans-serif" font-size="10" font-weight="600" fill="#059669" text-anchor="middle">0.875</text>
+
+    <!-- X Labels -->
+    <text x="731.7" y="372" font-family="Helvetica, Inter, sans-serif" font-size="11.5" font-weight="600" fill="#1e293b" text-anchor="middle">Template-3</text>
+    <text x="731.7" y="385" font-family="Helvetica, Inter, sans-serif" font-size="9.5" fill="#64748b" text-anchor="middle">parameter tampering</text>
+  </g>
+
+  <!-- Footer -->
+  <line x1="40" y1="425" x2="865" y2="425" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="40" y="443" font-family="Helvetica, Inter, sans-serif" font-size="9.5" fill="#64748b">FAULTLINE P8 · MCPTox (commit f85189f) · 1800 instances pooled · Wilson 95% CIs · diamonds = counterfactual replay block-rate</text>
+</svg>
