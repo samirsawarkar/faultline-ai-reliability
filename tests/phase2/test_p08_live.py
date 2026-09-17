@@ -326,6 +326,20 @@ def test_responses_jsonl_has_both_steps(tmp_path: Path):
 
 def test_arm_a_incomplete_eval_raises_runtime_error(tmp_path: Path, monkeypatch):
     """Verify run_arm_a raises RuntimeError and cleans spans on incomplete eval log."""
+    fake_python = tmp_path / ".venv-inspect" / "bin" / "python"
+    fake_python.parent.mkdir(parents=True, exist_ok=True)
+    fake_python.touch()
+    fake_python.chmod(0o755)
+
+    orig_exists = Path.exists
+
+    def mock_exists(path_self):
+        if str(path_self).endswith(".venv-inspect/bin/python"):
+            return True
+        return orig_exists(path_self)
+
+    monkeypatch.setattr(Path, "exists", mock_exists)
+
     dummy_log_file = tmp_path / "dummy.eval"
     dummy_log_file.write_text("fake")
 
