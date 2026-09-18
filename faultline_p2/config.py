@@ -5,6 +5,7 @@ to the OpenAI-compatible endpoint (e.g. aicredits.in) and the configured model l
 """
 from __future__ import annotations
 
+import json
 import os
 from pathlib import Path
 from typing import Any, Dict, Optional
@@ -20,46 +21,26 @@ load_dotenv(_ENV_PATH)
 AICREDITS_BASE_URL: str = os.getenv("AICREDITS_BASE_URL", "https://aicredits.in/v1")
 AICREDITS_API_KEY: str = os.getenv("AICREDITS_API_KEY", "")
 
-# Default ladder mapping from environment variables
-MODEL_LADDER: Dict[str, Dict[str, Any]] = {
-    "R1": {
-        "model": os.getenv("MODEL_R1", "qwen/qwen3.7-flash"),
-        "name": "qwen3.7-flash",
-        "input_price_per_m": 0.10,
-        "output_price_per_m": 0.20,
-    },
-    "R2": {
-        "model": os.getenv("MODEL_R2", "z-ai/glm-5.3-flash"),
-        "name": "glm-5.3-flash",
-        "input_price_per_m": 0.075,
-        "output_price_per_m": 0.25,
-    },
-    "R3": {
-        "model": os.getenv("MODEL_R3", "qwen/qwen3.8-flash"),
-        "name": "qwen3.8-flash",
-        "input_price_per_m": 0.14,
-        "output_price_per_m": 0.28,
-    },
-    "R4": {
-        "model": os.getenv("MODEL_R4", "openai/gpt-5.6-luna"),
-        "name": "gpt-5.6-luna",
-        "input_price_per_m": 0.20,
-        "output_price_per_m": 0.60,
-    },
-    "R5": {
-        "model": os.getenv("MODEL_R5", "google/gemini-3.7-flash"),
-        "name": "gemini-3.7-flash",
-        # PROVISIONAL: Placeholder estimate until pre-flight measures gemini-3.7-flash
-        "input_price_per_m": 0.15,
-        "output_price_per_m": 0.50,
-    },
-    "R6": {
-        "model": os.getenv("MODEL_R6", "deepseek/deepseek-v4-pro"),
-        "name": "deepseek-v4-pro",
-        "input_price_per_m": 0.435,
-        "output_price_per_m": 0.87,
-    },
-}
+_MODELS_PATH = Path(__file__).resolve().parent / "models.json"
+
+
+def _load_model_ladder() -> Dict[str, Dict[str, Any]]:
+    if not _MODELS_PATH.exists():
+        return {}
+    with open(_MODELS_PATH, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    ladder: Dict[str, Dict[str, Any]] = {}
+    for rung, spec in data.items():
+        spec_copy = dict(spec)
+        env_val = os.getenv(f"MODEL_{rung}")
+        if env_val:
+            spec_copy["model"] = env_val
+        ladder[rung] = spec_copy
+    return ladder
+
+
+# Default ladder mapping loaded from models.json (environment variables override model id)
+MODEL_LADDER: Dict[str, Dict[str, Any]] = _load_model_ladder()
 
 
 def get_openai_client() -> openai.OpenAI:

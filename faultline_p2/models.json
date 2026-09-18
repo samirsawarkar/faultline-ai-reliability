@@ -1,0 +1,50 @@
+{
+  "R1": {
+    "model": "qwen/qwen3.7-flash",
+    "name": "qwen3.7-flash",
+    "provider": "aicredits",
+    "input_price_per_m": 0.10,
+    "output_price_per_m": 0.20,
+    "source": "config.py"
+  },
+  "R2": {
+    "model": "z-ai/glm-5.3-flash",
+    "name": "glm-5.3-flash",
+    "provider": "aicredits",
+    "input_price_per_m": 0.14,
+    "output_price_per_m": 0.28,
+    "source": "p06_passk/p10_cascade/p12_attribution"
+  },
+  "R3": {
+    "model": "qwen/qwen3.8-flash",
+    "name": "qwen3.8-flash",
+    "provider": "aicredits",
+    "input_price_per_m": 0.14,
+    "output_price_per_m": 0.28,
+    "source": "config.py"
+  },
+  "R4": {
+    "model": "openai/gpt-5.6-luna",
+    "name": "gpt-5.6-luna",
+    "provider": "aicredits",
+    "input_price_per_m": 0.60,
+    "output_price_per_m": 2.40,
+    "source": "p06_passk/p10_cascade/p12_attribution"
+  },
+  "R5": {
+    "model": "google/gemini-3.7-flash",
+    "name": "gemini-3.7-flash",
+    "provider": "aicredits",
+    "input_price_per_m": 0.15,
+    "output_price_per_m": 0.50,
+    "source": "config.py"
+  },
+  "R6": {
+    "model": "deepseek/deepseek-v4-pro",
+    "name": "deepseek-v4-pro",
+    "provider": "aicredits",
+    "input_price_per_m": 0.435,
+    "output_price_per_m": 0.87,
+    "source": "projects/p06_passk/run.py"
+  }
+}

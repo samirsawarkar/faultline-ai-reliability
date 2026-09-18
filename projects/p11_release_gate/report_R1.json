@@ -1,0 +1,151 @@
+{
+  "verdict": "FAIL",
+  "metrics": {
+    "n_golden": 30,
+    "pass_count": 7,
+    "pass_rate": 0.23333333333333334,
+    "malformed_count": 10,
+    "malformed_rate": 0.3333333333333333,
+    "pass_threshold": 0.5666666666666667,
+    "fail_threshold": 0.5,
+    "malformed_threshold": 0.03333333333333333
+  },
+  "band": {
+    "pass_rate": {
+      "min": 0.6,
+      "max": 0.8,
+      "mean": 0.6916666666666667,
+      "sources": 4
+    },
+    "malformed_rate": {
+      "max": 0.0
+    },
+    "per_scenario_agreement": {
+      "r-0336": 2,
+      "r-0221": 3,
+      "r-0204": 3,
+      "r-0286": 3,
+      "r-0232": 2,
+      "r-0300": 1,
+      "r-0216": 4,
+      "r-0292": 4,
+      "r-0214": 3,
+      "r-0263": 0,
+      "r-0318": 4,
+      "r-0344": 4,
+      "r-0320": 3,
+      "r-0349": 4,
+      "r-0307": 4,
+      "r-0350": 3,
+      "r-0224": 2,
+      "r-0242": 1,
+      "r-0332": 3,
+      "r-0279": 3,
+      "r-0330": 3,
+      "r-0226": 3,
+      "r-0258": 3,
+      "r-0324": 3,
+      "r-0322": 4,
+      "r-0274": 3,
+      "r-0317": 2,
+      "r-0208": 2,
+      "r-0205": 2,
+      "r-0277": 2
+    },
+    "golden_ids": [
+      "r-0336",
+      "r-0221",
+      "r-0204",
+      "r-0286",
+      "r-0232",
+      "r-0300",
+      "r-0216",
+      "r-0292",
+      "r-0214",
+      "r-0263",
+      "r-0318",
+      "r-0344",
+      "r-0320",
+      "r-0349",
+      "r-0307",
+      "r-0350",
+      "r-0224",
+      "r-0242",
+      "r-0332",
+      "r-0279",
+      "r-0330",
+      "r-0226",
+      "r-0258",
+      "r-0324",
+      "r-0322",
+      "r-0274",
+      "r-0317",
+      "r-0208",
+      "r-0205",
+      "r-0277"
+    ],
+    "tolerance_rule": {
+      "n_golden": 30,
+      "slack_pass": 0.03333333333333333,
+      "slack_fail": 0.1,
+      "slack_malformed": 0.03333333333333333,
+      "min_pass_threshold": 0.5666666666666667,
+      "fail_pass_threshold": 0.5,
+      "max_malformed_threshold": 0.03333333333333333,
+      "rule_description": "PASS if candidate pass_rate >= (min_observed - 1/n_golden) AND malformed_rate <= (max_observed + 1/n_golden); FAIL if pass_rate < (min_observed - 3/n_golden); otherwise WARN."
+    },
+    "sources": {
+      "p06_k1": {
+        "pass_count": 18,
+        "pass_rate": 0.6,
+        "malformed_count": 0,
+        "malformed_rate": 0.0
+      },
+      "p06_k2": {
+        "pass_count": 21,
+        "pass_rate": 0.7,
+        "malformed_count": 0,
+        "malformed_rate": 0.0
+      },
+      "p06_k3": {
+        "pass_count": 20,
+        "pass_rate": 0.6666666666666666,
+        "malformed_count": 0,
+        "malformed_rate": 0.0
+      },
+      "p12_a": {
+        "pass_count": 24,
+        "pass_rate": 0.8,
+        "malformed_count": 0,
+        "malformed_rate": 0.0
+      }
+    },
+    "manifest_sha256": "e79897ea42129ccd4fe38ce3e0a8f7ec0b321aa8be0f7a3899036f5148dcb06f"
+  },
+  "regressions": [
+    "r-0292",
+    "r-0318",
+    "r-0344",
+    "r-0349",
+    "r-0307"
+  ],
+  "model_config_used": {
+    "model": "R1",
+    "stub": false,
+    "model_id": "qwen/qwen3.7-flash",
+    "provider": "aicredits",
+    "input_price_per_m": 0.1,
+    "output_price_per_m": 0.2
+  },
+  "golden_manifest_sha": "e79897ea42129ccd4fe38ce3e0a8f7ec0b321aa8be0f7a3899036f5148dcb06f",
+  "timestamps": {
+    "start_utc": "2026-09-18T06:09:42.579207+00:00",
+    "end_utc": "2026-09-18T07:02:13.470007+00:00"
+  },
+  "spend": {
+    "total_usd": 0.20465130000000006,
+    "input_tokens": 1760121,
+    "output_tokens": 143196
+  },
+  "band_file": "band_v1.json"
+}
