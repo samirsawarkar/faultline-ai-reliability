@@ -108,7 +108,7 @@ All spend recorded per-call to `ledger.jsonl` under the pre-registered $8.00 P10
   --r4-file projects/p10_cascade/sweep_output_R4_A.json \
   --output-dir projects/p10_cascade
 
-# Generate Pareto frontier figure (figure.svg and figure.png)
+# Generate Pareto frontier figure (figure.svg, figure.png, figure.pdf)
 .venv/bin/python projects/p10_cascade/make_figure.py
 
 # Re-run full P12 runner sweep (requires --confirm and live API keys)

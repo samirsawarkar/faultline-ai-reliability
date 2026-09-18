@@ -1,9 +1,8 @@
-"""Generate publication-quality Figure 10 for Project P10: Calibrated Cascade."""
+"""Generate publication-standard figure for Project P10: Calibrated Cascade."""
 from __future__ import annotations
 
 import json
 from pathlib import Path
-import shutil
 import subprocess
 import xml.etree.ElementTree as ET
 
@@ -12,286 +11,378 @@ def generate_figure(
     results_path: Path,
     output_svg: Path,
     output_png: Path,
+    output_pdf: Path,
 ) -> None:
     with open(results_path, "r", encoding="utf-8") as f:
         res = json.load(f)
 
+    # Dynamic numbers read directly from results.json
     all_test = res.get("all_test_metrics", {})
-    side_by_side = res.get("side_by_side", {})
+    test_m = res.get("test_metrics", {})
+    frontier_pts = res.get("frontier_points", [])
     p6_rep = res.get("p6_replicate", {})
+    p6_side = p6_rep.get("infra_excluded", {}).get("side_by_side", {})
 
-    width = 1200
-    height = 720
+    r2_test = test_m.get("r2_only", {})
+    r4_test = test_m.get("r4_only", {})
+    cascade_test = test_m.get("escalate_if_not_answered_or_steps_ge_23", test_m.get("escalate_if_not_answered", {}))
+
+    width = 1600
+    height = 700
+
+    # Okabe-Ito / scientific palette
+    c_blue = "#2563eb"     # Frontier / R2
+    c_green = "#009E73"    # Cascade non-dominated
+    c_red = "#dc2626"      # Dominated / R4
+    c_text = "#1e293b"     # Slate 800
+    c_muted = "#64748b"    # Slate 500
+    c_grid = "#f1f5f9"     # Slate 100
+    c_axis = "#94a3b8"     # Slate 400
 
     svg = []
-    svg.append(f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg">')
-    svg.append('  <rect width="100%" height="100%" fill="#ffffff" rx="8"/>')
-    svg.append('  <style>')
-    svg.append('    .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 20px; font-weight: 700; fill: #111827; }')
-    svg.append('    .subtitle { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13px; fill: #4b5563; }')
-    svg.append('    .panel-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 15px; font-weight: 700; fill: #1f2937; }')
-    svg.append('    .panel-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #6b7280; }')
-    svg.append('    .axis-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; font-weight: 600; fill: #4b5563; }')
-    svg.append('    .tick-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 10px; fill: #6b7280; }')
-    svg.append('    .point-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; font-weight: 600; fill: #1f2937; }')
-    svg.append('    .point-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 10px; fill: #4b5563; }')
-    svg.append('    .ceiling-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; font-weight: 700; fill: #dc2626; }')
-    svg.append('    .callout-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; font-weight: 700; fill: #1e3a8a; }')
-    svg.append('    .callout-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #1e40af; }')
-    svg.append('  </style>')
+    svg.append(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">')
+    svg.append(f'  <rect width="{width}" height="{height}" fill="#ffffff"/>')
 
-    # Outer border
-    svg.append(f'  <rect x="1" y="1" width="{width-2}" height="{height-2}" fill="none" stroke="#e5e7eb" stroke-width="1.5" rx="8"/>')
-
-    # Main header
-    svg.append(f'  <text x="{width/2}" y="36" class="title" text-anchor="middle">Figure 10: Calibrated Model Cascade &amp; Pareto Frontier</text>')
-    svg.append(f'  <text x="{width/2}" y="56" class="subtitle" text-anchor="middle">Test Split Evaluation: Cheap Workhorse R2 (glm-5.3-flash) vs Frontier Anchor R4 (gpt-5.6-luna)</text>')
+    # Main title
+    svg.append('  <!-- Title -->')
+    svg.append(f'  <text x="50" y="45" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="{c_text}">Calibrated model cascade and empirical Pareto frontier across model rungs</text>')
 
     # -------------------------------------------------------------
-    # PANEL 1: Main Test Split Pareto Frontier (Left)
+    # PANEL (a): Held-out test split (n=30)
     # -------------------------------------------------------------
-    p1_x = 40
-    p1_y = 75
-    p1_w = 710
-    p1_h = 615
+    svg.append('  <!-- Panel (a) -->')
+    svg.append(f'  <text x="50" y="85" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="{c_text}">(a) Cost–reliability frontier, held-out test split (n=30)</text>')
 
-    svg.append(f'  <!-- PANEL 1: Test Split Frontier -->')
-    svg.append(f'  <rect x="{p1_x}" y="{p1_y}" width="{p1_w}" height="{p1_h}" fill="#f9fafb" rx="6" stroke="#e5e7eb" stroke-width="1"/>')
-    svg.append(f'  <text x="{p1_x+20}" y="{p1_y+26}" class="panel-title">A. Held-out Test Split Pareto Frontier (N=30)</text>')
-    svg.append(f'  <text x="{p1_x+20}" y="{p1_y+42}" class="panel-sub">Evaluates deterministic escalation rules vs theoretical rescue ceiling; error bars show Wilson 95% CI</text>')
+    # Legend for Panel (a)
+    leg_y = 115
+    svg.append(f'  <line x1="50" y1="{leg_y + 6}" x2="70" y2="{leg_y + 6}" stroke="{c_blue}" stroke-width="2"/>')
+    svg.append(f'  <text x="76" y="{leg_y + 10}" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="{c_text}">Pareto frontier</text>')
 
-    plot_x0 = p1_x + 65
-    plot_y0 = p1_y + 65
-    plot_w = p1_w - 95
-    plot_h = p1_h - 180
+    svg.append(f'  <circle cx="180" cy="{leg_y + 6}" r="4.5" fill="{c_blue}"/>')
+    svg.append(f'  <text x="190" y="{leg_y + 10}" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="{c_text}">R2 baseline</text>')
 
-    def px1(cost: float) -> float:
-        return plot_x0 + (cost / 0.070) * plot_w
+    svg.append(f'  <circle cx="280" cy="{leg_y + 6}" r="4.5" fill="{c_green}"/>')
+    svg.append(f'  <text x="290" y="{leg_y + 10}" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="{c_text}">Chosen cascade</text>')
 
-    def py1(pass_rate: float) -> float:
-        return plot_y0 + (1.0 - pass_rate) * plot_h
+    svg.append(f'  <circle cx="400" cy="{leg_y + 6}" r="4.5" fill="{c_red}"/>')
+    svg.append(f'  <text x="410" y="{leg_y + 10}" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="{c_text}">R4 anchor (dominated)</text>')
 
-    # Gridlines and axes
-    svg.append(f'  <!-- Plot 1 Grid & Axes -->')
+    svg.append(f'  <circle cx="560" cy="{leg_y + 6}" r="3" fill="#94a3b8" fill-opacity="0.6"/>')
+    svg.append(f'  <text x="568" y="{leg_y + 10}" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="{c_text}">Candidate policies</text>')
+
+    svg.append(f'  <line x1="685" y1="{leg_y + 6}" x2="705" y2="{leg_y + 6}" stroke="{c_red}" stroke-width="1.5" stroke-dasharray="4,3"/>')
+    svg.append(f'  <text x="712" y="{leg_y + 10}" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="{c_red}">Ceiling</text>')
+
+    # Plot coordinates for Panel (a)
+    p1_left = 110.0
+    p1_right = 750.0
+    p1_w = p1_right - p1_left
+    p1_top = 150.0
+    p1_bot = 540.0
+    p1_h = p1_bot - p1_top
+
+    def px_a(cost: float) -> float:
+        return p1_left + (cost / 0.070) * p1_w
+
+    def py_a(pass_rate: float) -> float:
+        return p1_bot - pass_rate * p1_h
+
+    # Grid and axes for Panel (a)
     for tick_y in [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]:
-        y_pos = py1(tick_y)
-        svg.append(f'  <line x1="{plot_x0}" y1="{y_pos:.1f}" x2="{plot_x0+plot_w}" y2="{y_pos:.1f}" stroke="#e5e7eb" stroke-width="1"/>')
-        svg.append(f'  <text x="{plot_x0-10}" y="{y_pos+4:.1f}" class="tick-label" text-anchor="end">{tick_y*100:.0f}%</text>')
+        y_pos = py_a(tick_y)
+        svg.append(f'  <line x1="{p1_left}" y1="{y_pos:.1f}" x2="{p1_right}" y2="{y_pos:.1f}" stroke="{c_grid}" stroke-width="1"/>')
+        svg.append(f'  <text x="{p1_left - 10}" y="{y_pos + 4:.1f}" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="{c_muted}" text-anchor="end">{int(tick_y * 100)}%</text>')
 
     for tick_x in [0.00, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07]:
-        x_pos = px1(tick_x)
-        svg.append(f'  <line x1="{x_pos:.1f}" y1="{plot_y0}" x2="{x_pos:.1f}" y2="{plot_y0+plot_h}" stroke="#e5e7eb" stroke-width="1"/>')
-        svg.append(f'  <text x="{x_pos:.1f}" y="{plot_y0+plot_h+16}" class="tick-label" text-anchor="middle">${tick_x:.2f}</text>')
+        x_pos = px_a(tick_x)
+        svg.append(f'  <line x1="{x_pos:.1f}" y1="{p1_top}" x2="{x_pos:.1f}" y2="{p1_bot}" stroke="{c_grid}" stroke-width="1"/>')
+        svg.append(f'  <text x="{x_pos:.1f}" y="{p1_bot + 18}" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="{c_muted}" text-anchor="middle">${tick_x:.2f}</text>')
 
-    svg.append(f'  <line x1="{plot_x0}" y1="{plot_y0}" x2="{plot_x0}" y2="{plot_y0+plot_h}" stroke="#9ca3af" stroke-width="1.5"/>')
-    svg.append(f'  <line x1="{plot_x0}" y1="{plot_y0+plot_h}" x2="{plot_x0+plot_w}" y2="{plot_y0+plot_h}" stroke="#9ca3af" stroke-width="1.5"/>')
-    svg.append(f'  <text x="{plot_x0 + plot_w/2}" y="{plot_y0+plot_h+38}" class="axis-label" text-anchor="middle">Mean Cost per Scenario (USD)</text>')
-    svg.append(f'  <text x="{plot_x0-42}" y="{plot_y0 + plot_h/2}" class="axis-label" text-anchor="middle" transform="rotate(-90 {plot_x0-42} {plot_y0 + plot_h/2})">Pass Rate (Oracle Grounded)</text>')
+    svg.append(f'  <line x1="{p1_left}" y1="{p1_bot}" x2="{p1_right}" y2="{p1_bot}" stroke="{c_axis}" stroke-width="1"/>')
+    svg.append(f'  <line x1="{p1_left}" y1="{p1_top}" x2="{p1_left}" y2="{p1_bot}" stroke="{c_axis}" stroke-width="1"/>')
+    svg.append(f'  <text x="{p1_left + p1_w / 2:.1f}" y="{p1_bot + 45}" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="{c_muted}" text-anchor="middle">Mean cost per scenario (USD)</text>')
+    svg.append(f'  <text x="35" y="{p1_top + p1_h / 2:.1f}" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="{c_muted}" text-anchor="middle" transform="rotate(-90 35 {p1_top + p1_h / 2:.1f})">Pass rate (oracle grounded)</text>')
 
-    # 1. Theoretical Test-Split Rescue Ceiling Line at 25/30 = 83.3%
-    ceil_test = 25.0 / 30.0
-    ceil_y = py1(ceil_test)
-    svg.append(f'  <!-- Test-Split Rescue Ceiling Line (25/30 = 83.3%) -->')
-    svg.append(f'  <line x1="{plot_x0}" y1="{ceil_y:.1f}" x2="{plot_x0+plot_w}" y2="{ceil_y:.1f}" stroke="#dc2626" stroke-width="2" stroke-dasharray="6,4"/>')
-    # Right-aligned label above the right end of dashed line in open space
-    ceil_label_x = plot_x0 + plot_w - 6
-    ceil_label_y = ceil_y - 8
-    svg.append(f'  <text x="{ceil_label_x:.1f}" y="{ceil_label_y:.1f}" class="ceiling-text" text-anchor="end">Test-split Ceiling: 25/30 = 83.3% [Full-100: 82.0%]</text>')
+    # 1. Oracle-router ceiling line at 25/30 = 83.3%
+    ceil_val = 25.0 / 30.0
+    ceil_y = py_a(ceil_val)
+    svg.append(f'  <line x1="{p1_left}" y1="{ceil_y:.1f}" x2="{p1_right}" y2="{ceil_y:.1f}" stroke="{c_red}" stroke-width="1.5" stroke-dasharray="5,4"/>')
+    svg.append(f'  <text x="{p1_right - 6}" y="{ceil_y - 8:.1f}" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="{c_red}" text-anchor="end">oracle-router ceiling (test split): 25/30 ({ceil_val * 100:.1f}%)</text>')
 
-    # Background policies (all 50)
-    svg.append(f'  <!-- Background Policies -->')
-    for pol_name, met in all_test.items():
-        cx = px1(met["mean_cost"])
-        cy = py1(met["pass_rate"])
-        svg.append(f'  <circle cx="{cx:.1f}" cy="{cy:.1f}" r="4" fill="#9ca3af" fill-opacity="0.55"/>')
+    # 2. All candidate policies as small grey points
+    for pol_k, pol_v in all_test.items():
+        cx = px_a(pol_v["mean_cost"])
+        cy = py_a(pol_v["pass_rate"])
+        svg.append(f'  <circle cx="{cx:.1f}" cy="{cy:.1f}" r="3" fill="#94a3b8" fill-opacity="0.5"/>')
 
-    # Frontier line connecting test frontier points
-    fp1 = (px1(0.0078), py1(0.767))
-    fp2 = (px1(0.0159), py1(0.800))
-    fp3 = (px1(0.0193), py1(0.833))
+    # 3. Stepped Pareto frontier line through unique non-dominated points
+    # Distinct points on frontier:
+    # (r2_only: 0.00777, 0.7667), (cascade: 0.01586, 0.8000), (steps_21: 0.01931, 0.8333)
+    p_step1_x, p_step1_y = px_a(0.007772), py_a(0.766667)
+    p_step2_x, p_step2_y = px_a(0.015860), py_a(0.800000)
+    p_step3_x, p_step3_y = px_a(0.019315), py_a(0.833333)
+    p_end_x = px_a(0.070)
 
-    svg.append(f'  <!-- Frontier line -->')
-    svg.append(f'  <polyline points="{fp1[0]:.1f},{fp1[1]:.1f} {fp2[0]:.1f},{fp2[1]:.1f} {fp3[0]:.1f},{fp3[1]:.1f}" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round"/>')
+    frontier_path = f"M {p_step1_x:.1f},{p_step1_y:.1f} H {p_step2_x:.1f} V {p_step2_y:.1f} H {p_step3_x:.1f} V {p_step3_y:.1f} H {p_end_x:.1f}"
+    svg.append(f'  <path d="{frontier_path}" fill="none" stroke="{c_blue}" stroke-width="2"/>')
 
-    # Wilson CI Error bars
-    ci_points = [
-        ("r2_only", 0.0078, 0.767, 0.591, 0.882, "#059669"),
-        ("escalate_if_not_answered", 0.0159, 0.800, 0.627, 0.905, "#2563eb"),
-        ("r4_only", 0.0634, 0.200, 0.095, 0.373, "#dc2626"),
-    ]
-    for name, c, p, clo, chi, col in ci_points:
-        cx = px1(c)
-        y_top = py1(chi)
-        y_bot = py1(clo)
-        svg.append(f'  <line x1="{cx:.1f}" y1="{y_top:.1f}" x2="{cx:.1f}" y2="{y_bot:.1f}" stroke="{col}" stroke-width="1.8"/>')
-        svg.append(f'  <line x1="{cx-4:.1f}" y1="{y_top:.1f}" x2="{cx+4:.1f}" y2="{y_top:.1f}" stroke="{col}" stroke-width="1.8"/>')
-        svg.append(f'  <line x1="{cx-4:.1f}" y1="{y_bot:.1f}" x2="{cx+4:.1f}" y2="{y_bot:.1f}" stroke="{col}" stroke-width="1.8"/>')
+    # 4. Highlighted points with Wilson whiskers and leader lines
+    # A. r2_only
+    r2_cost = r2_test["mean_cost"]
+    r2_pass = r2_test["pass_rate"]
+    r2_ci = r2_test["wilson_ci"]
+    r2_x = px_a(r2_cost)
+    r2_y = py_a(r2_pass)
+    r2_ci_low = py_a(r2_ci[0])
+    r2_ci_high = py_a(r2_ci[1])
 
-    # 1. R2-only Point & Callout (below-left)
-    r2_cx, r2_cy = px1(0.0078), py1(0.767)
-    svg.append(f'  <circle cx="{r2_cx:.1f}" cy="{r2_cy:.1f}" r="7" fill="#10b981" stroke="#047857" stroke-width="2"/>')
-    r2_box_x = plot_x0 + 10
-    r2_box_y = r2_cy + 32
-    svg.append(f'  <line x1="{r2_cx:.1f}" y1="{r2_cy+7:.1f}" x2="{r2_box_x+60:.1f}" y2="{r2_box_y:.1f}" stroke="#059669" stroke-width="1" stroke-dasharray="2,2"/>')
-    svg.append(f'  <rect x="{r2_box_x:.1f}" y="{r2_box_y:.1f}" width="125" height="30" fill="#ffffff" rx="4" stroke="#10b981" stroke-width="1"/>')
-    svg.append(f'  <text x="{r2_box_x+62:.1f}" y="{r2_box_y+14:.1f}" class="point-label" fill="#047857" text-anchor="middle">R2-only (Baseline)</text>')
-    svg.append(f'  <text x="{r2_box_x+62:.1f}" y="{r2_box_y+25:.1f}" class="point-sub" text-anchor="middle">76.7% @ $0.0078 (esc 0%)</text>')
+    svg.append(f'  <line x1="{r2_x:.1f}" y1="{r2_ci_low:.1f}" x2="{r2_x:.1f}" y2="{r2_ci_high:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <line x1="{r2_x - 5:.1f}" y1="{r2_ci_low:.1f}" x2="{r2_x + 5:.1f}" y2="{r2_ci_low:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <line x1="{r2_x - 5:.1f}" y1="{r2_ci_high:.1f}" x2="{r2_x + 5:.1f}" y2="{r2_ci_high:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <circle cx="{r2_x:.1f}" cy="{r2_y:.1f}" r="5.5" fill="{c_blue}" stroke="{c_text}" stroke-width="1.5"/>')
 
-    # 2. Chosen Cascades Point & Callout (above-right with leader line)
-    casc_cx, casc_cy = px1(0.0159), py1(0.800)
-    svg.append(f'  <circle cx="{casc_cx:.1f}" cy="{casc_cy:.1f}" r="7" fill="#2563eb" stroke="#1e40af" stroke-width="2"/>')
-    casc_box_x = casc_cx + 25
-    casc_box_y = casc_cy - 74
-    svg.append(f'  <line x1="{casc_cx:.1f}" y1="{casc_cy-7:.1f}" x2="{casc_box_x+10:.1f}" y2="{casc_box_y+34:.1f}" stroke="#2563eb" stroke-width="1.2" stroke-dasharray="2,2"/>')
-    svg.append(f'  <rect x="{casc_box_x:.1f}" y="{casc_box_y:.1f}" width="205" height="34" fill="#ffffff" rx="4" stroke="#2563eb" stroke-width="1"/>')
-    svg.append(f'  <text x="{casc_box_x+10:.1f}" y="{casc_box_y+15:.1f}" class="point-label" fill="#1e40af">Chosen Cascades (t=23 / status)</text>')
-    svg.append(f'  <text x="{casc_box_x+10:.1f}" y="{casc_box_y+28:.1f}" class="point-sub">80.0% @ $0.0159 (16.7% esc, +1 pass)</text>')
+    # Leader line for r2_only (left-up)
+    svg.append(f'  <polyline points="{r2_x:.1f},{r2_y - 6:.1f} {r2_x - 25:.1f},{r2_y - 50:.1f} {r2_x - 55:.1f},{r2_y - 50:.1f}" fill="none" stroke="{c_axis}" stroke-width="1"/>')
+    svg.append(f'  <text x="{r2_x - 60:.1f}" y="{r2_y - 54:.1f}" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" fill="{c_blue}" text-anchor="end">r2_only: {r2_pass * 100:.1f}%</text>')
+    svg.append(f'  <text x="{r2_x - 60:.1f}" y="{r2_y - 40:.1f}" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="{c_muted}" text-anchor="end">${r2_cost:.4f} / run</text>')
 
-    # 3. Frontier High (steps>=21) - label placed neatly above-left
-    fh_cx, fh_cy = px1(0.0193), py1(0.833)
-    svg.append(f'  <circle cx="{fh_cx:.1f}" cy="{fh_cy:.1f}" r="5" fill="#6366f1" stroke="#4338ca" stroke-width="1.5"/>')
-    svg.append(f'  <text x="{fh_cx-8:.1f}" y="{fh_cy-8:.1f}" class="point-sub" fill="#4338ca" font-weight="600" text-anchor="end">steps&gt;=21 (83.3%)</text>')
+    # B. chosen cascade (escalate if not answered / steps >= 23)
+    cas_cost = cascade_test["mean_cost"]
+    cas_pass = cascade_test["pass_rate"]
+    cas_ci = cascade_test["wilson_ci"]
+    cas_esc = cascade_test.get("escalation_rate", 0.166667)
+    cas_x = px_a(cas_cost)
+    cas_y = py_a(cas_pass)
+    cas_ci_low = py_a(cas_ci[0])
+    cas_ci_high = py_a(cas_ci[1])
 
-    # 4. R4-only (Dominated)
-    r4_cx, r4_cy = px1(0.0634), py1(0.200)
-    svg.append(f'  <circle cx="{r4_cx:.1f}" cy="{r4_cy:.1f}" r="7" fill="#ef4444" stroke="#b91c1c" stroke-width="2"/>')
-    svg.append(f'  <rect x="{r4_cx-175:.1f}" y="{r4_cy+12:.1f}" width="170" height="30" fill="#ffffff" rx="4" stroke="#ef4444" stroke-width="1"/>')
-    svg.append(f'  <text x="{r4_cx-90:.1f}" y="{r4_cy+26:.1f}" class="point-label" fill="#b91c1c" text-anchor="middle">R4-only (Frontier Anchor)</text>')
-    svg.append(f'  <text x="{r4_cx-90:.1f}" y="{r4_cy+38:.1f}" class="point-sub" text-anchor="middle">20.0% @ $0.0634 (Dominated)</text>')
+    svg.append(f'  <line x1="{cas_x:.1f}" y1="{cas_ci_low:.1f}" x2="{cas_x:.1f}" y2="{cas_ci_high:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <line x1="{cas_x - 5:.1f}" y1="{cas_ci_low:.1f}" x2="{cas_x + 5:.1f}" y2="{cas_ci_low:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <line x1="{cas_x - 5:.1f}" y1="{cas_ci_high:.1f}" x2="{cas_x + 5:.1f}" y2="{cas_ci_high:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <circle cx="{cas_x:.1f}" cy="{cas_y:.1f}" r="5.5" fill="{c_green}" stroke="{c_text}" stroke-width="1.5"/>')
 
-    # Deliverable Callout Box in Panel 1
-    callout_y = plot_y0 + plot_h + 50
-    svg.append(f'  <rect x="{p1_x+16}" y="{callout_y}" width="{p1_w-32}" height="38" fill="#eff6ff" rx="4" stroke="#bfdbfe" stroke-width="1"/>')
-    svg.append(f'  <text x="{p1_x+26}" y="{callout_y+17}" class="callout-title">Deliverable Finding:</text>')
-    svg.append(f'  <text x="{p1_x+26}" y="{callout_y+31}" class="callout-body">Cheap R2 is on the frontier. Escalating to frontier R4 buys one extra pass in thirty (+3.3pp) at 2.0x cost ($0.0159 vs $0.0078).</text>')
+    # Leader line for cascade (right-up)
+    svg.append(f'  <polyline points="{cas_x:.1f},{cas_y - 6:.1f} {cas_x + 35:.1f},{cas_y - 55:.1f} {cas_x + 65:.1f},{cas_y - 55:.1f}" fill="none" stroke="{c_axis}" stroke-width="1"/>')
+    svg.append(f'  <text x="{cas_x + 70:.1f}" y="{cas_y - 59:.1f}" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" fill="{c_green}" text-anchor="start">Cascade (unanswered / steps ≥ 23): {cas_pass * 100:.1f}%</text>')
+    svg.append(f'  <text x="{cas_x + 70:.1f}" y="{cas_y - 45:.1f}" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="{c_muted}" text-anchor="start">${cas_cost:.4f} / run ({cas_esc * 100:.1f}% esc)</text>')
+
+    # C. r4_only
+    r4_cost = r4_test["mean_cost"]
+    r4_pass = r4_test["pass_rate"]
+    r4_ci = r4_test["wilson_ci"]
+    r4_x = px_a(r4_cost)
+    r4_y = py_a(r4_pass)
+    r4_ci_low = py_a(r4_ci[0])
+    r4_ci_high = py_a(r4_ci[1])
+
+    svg.append(f'  <line x1="{r4_x:.1f}" y1="{r4_ci_low:.1f}" x2="{r4_x:.1f}" y2="{r4_ci_high:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <line x1="{r4_x - 5:.1f}" y1="{r4_ci_low:.1f}" x2="{r4_x + 5:.1f}" y2="{r4_ci_low:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <line x1="{r4_x - 5:.1f}" y1="{r4_ci_high:.1f}" x2="{r4_x + 5:.1f}" y2="{r4_ci_high:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <circle cx="{r4_x:.1f}" cy="{r4_y:.1f}" r="5.5" fill="{c_red}" stroke="{c_text}" stroke-width="1.5"/>')
+
+    # Leader line for r4_only (left-up)
+    svg.append(f'  <polyline points="{r4_x:.1f},{r4_y - 6:.1f} {r4_x - 30:.1f},{r4_y - 40:.1f} {r4_x - 60:.1f},{r4_y - 40:.1f}" fill="none" stroke="{c_axis}" stroke-width="1"/>')
+    svg.append(f'  <text x="{r4_x - 65:.1f}" y="{r4_y - 44:.1f}" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" fill="{c_red}" text-anchor="end">r4_only: {r4_pass * 100:.1f}% (dominated)</text>')
+    svg.append(f'  <text x="{r4_x - 65:.1f}" y="{r4_y - 30:.1f}" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="{c_muted}" text-anchor="end">${r4_cost:.4f} / run</text>')
 
     # -------------------------------------------------------------
-    # PANEL 2: P6 Replicate (Right)
+    # PANEL (b): P6 replicate, infra-excluded test split (n=107)
     # -------------------------------------------------------------
-    p2_x = 770
-    p2_y = 75
-    p2_w = 390
-    p2_h = 615
+    svg.append('  <!-- Panel (b) -->')
+    svg.append(f'  <text x="890" y="85" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="{c_text}">(b) P6 replicate, infra-excluded test split (n=107)</text>')
 
-    svg.append(f'  <!-- PANEL 2: P6 Replicate -->')
-    svg.append(f'  <rect x="{p2_x}" y="{p2_y}" width="{p2_w}" height="{p2_h}" fill="#f9fafb" rx="6" stroke="#e5e7eb" stroke-width="1"/>')
-    svg.append(f'  <text x="{p2_x+16}" y="{p2_y+26}" class="panel-title">B. P6 replicate, infra-excluded test split (n=107)</text>')
-    svg.append(f'  <text x="{p2_x+16}" y="{p2_y+42}" class="panel-sub">P6 replicate (R4 incident-damaged)</text>')
+    # Legend for Panel (b)
+    svg.append(f'  <line x1="890" y1="{leg_y + 6}" x2="910" y2="{leg_y + 6}" stroke="{c_blue}" stroke-width="2"/>')
+    svg.append(f'  <text x="916" y="{leg_y + 10}" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="{c_text}">Pareto frontier</text>')
 
-    p2_plot_x0 = p2_x + 55
-    p2_plot_y0 = p2_y + 65
-    p2_plot_w = p2_w - 75
-    p2_plot_h = p2_h - 180
+    svg.append(f'  <circle cx="1020" cy="{leg_y + 6}" r="4.5" fill="{c_blue}"/>')
+    svg.append(f'  <text x="1030" y="{leg_y + 10}" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="{c_text}">R2 baseline</text>')
 
-    def px2(cost: float) -> float:
-        return p2_plot_x0 + (cost / 0.070) * p2_plot_w
+    svg.append(f'  <circle cx="1130" cy="{leg_y + 6}" r="4.5" fill="{c_green}"/>')
+    svg.append(f'  <text x="1140" y="{leg_y + 10}" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="{c_text}">Cascade policies</text>')
 
-    def py2(pass_rate: float) -> float:
-        return p2_plot_y0 + (1.0 - pass_rate) * p2_plot_h
+    svg.append(f'  <circle cx="1270" cy="{leg_y + 6}" r="4.5" fill="{c_red}"/>')
+    svg.append(f'  <text x="1280" y="{leg_y + 10}" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="{c_text}">R4 anchor (dominated)</text>')
 
-    # Gridlines for Panel 2
+    p2_left = 930.0
+    p2_right = 1550.0
+    p2_w = p2_right - p2_left
+
+    def px_b(cost: float) -> float:
+        return p2_left + (cost / 0.070) * p2_w
+
+    def py_b(pass_rate: float) -> float:
+        return p1_bot - pass_rate * p1_h
+
+    # Grid and axes for Panel (b)
     for tick_y in [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]:
-        y_pos = py2(tick_y)
-        svg.append(f'  <line x1="{p2_plot_x0}" y1="{y_pos:.1f}" x2="{p2_plot_x0+p2_plot_w}" y2="{y_pos:.1f}" stroke="#e5e7eb" stroke-width="1"/>')
-        svg.append(f'  <text x="{p2_plot_x0-8}" y="{y_pos+4:.1f}" class="tick-label" text-anchor="end">{tick_y*100:.0f}%</text>')
+        y_pos = py_b(tick_y)
+        svg.append(f'  <line x1="{p2_left}" y1="{y_pos:.1f}" x2="{p2_right}" y2="{y_pos:.1f}" stroke="{c_grid}" stroke-width="1"/>')
+        svg.append(f'  <text x="{p2_left - 10}" y="{y_pos + 4:.1f}" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="{c_muted}" text-anchor="end">{int(tick_y * 100)}%</text>')
 
-    for tick_x in [0.00, 0.02, 0.04, 0.06]:
-        x_pos = px2(tick_x)
-        svg.append(f'  <line x1="{x_pos:.1f}" y1="{p2_plot_y0}" x2="{x_pos:.1f}" y2="{p2_plot_y0+p2_plot_h}" stroke="#e5e7eb" stroke-width="1"/>')
-        svg.append(f'  <text x="{x_pos:.1f}" y="{p2_plot_y0+p2_plot_h+16}" class="tick-label" text-anchor="middle">${tick_x:.2f}</text>')
+    for tick_x in [0.00, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07]:
+        x_pos = px_b(tick_x)
+        svg.append(f'  <line x1="{x_pos:.1f}" y1="{p1_top}" x2="{x_pos:.1f}" y2="{p1_bot}" stroke="{c_grid}" stroke-width="1"/>')
+        svg.append(f'  <text x="{x_pos:.1f}" y="{p1_bot + 18}" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="{c_muted}" text-anchor="middle">${tick_x:.2f}</text>')
 
-    svg.append(f'  <line x1="{p2_plot_x0}" y1="{p2_plot_y0}" x2="{p2_plot_x0}" y2="{p2_plot_y0+p2_plot_h}" stroke="#9ca3af" stroke-width="1.5"/>')
-    svg.append(f'  <line x1="{p2_plot_x0}" y1="{p2_plot_y0+p2_plot_h}" x2="{p2_plot_x0+p2_plot_w}" y2="{p2_plot_y0+p2_plot_h}" stroke="#9ca3af" stroke-width="1.5"/>')
-    svg.append(f'  <text x="{p2_plot_x0 + p2_plot_w/2}" y="{p2_plot_y0+p2_plot_h+38}" class="axis-label" text-anchor="middle">Mean Cost (USD)</text>')
+    svg.append(f'  <line x1="{p2_left}" y1="{p1_bot}" x2="{p2_right}" y2="{p1_bot}" stroke="{c_axis}" stroke-width="1"/>')
+    svg.append(f'  <line x1="{p2_left}" y1="{p1_top}" x2="{p2_left}" y2="{p1_bot}" stroke="{c_axis}" stroke-width="1"/>')
+    svg.append(f'  <text x="{p2_left + p2_w / 2:.1f}" y="{p1_bot + 45}" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="{c_muted}" text-anchor="middle">Mean cost per scenario (USD)</text>')
 
-    # Test split points:
-    # r2_only: cost $0.0090, pass 0.579
-    # steps_ge_24: cost $0.0124, pass 0.589
-    # not_answered: cost $0.0299, pass 0.617
-    # r4_only: cost $0.0621, pass 0.131
-    p6_p1 = (px2(0.0090), py2(0.579))
-    p6_p2 = (px2(0.0124), py2(0.589))
-    p6_p3 = (px2(0.0299), py2(0.617))
-    p6_r4 = (px2(0.0621), py2(0.131))
+    # P6 Replicate side-by-side points
+    p6_r2 = p6_side.get("r2_only", {}).get("test", {})
+    p6_s24 = p6_side.get("escalate_if_steps_ge_24", {}).get("test", {})
+    p6_unans = p6_side.get("escalate_if_not_answered", {}).get("test", {})
+    p6_r4 = p6_side.get("r4_only", {}).get("test", {})
 
-    svg.append(f'  <!-- P6 Frontier Line -->')
-    svg.append(f'  <polyline points="{p6_p1[0]:.1f},{p6_p1[1]:.1f} {p6_p2[0]:.1f},{p6_p2[1]:.1f} {p6_p3[0]:.1f},{p6_p3[1]:.1f}" fill="none" stroke="#2563eb" stroke-width="2"/>')
+    # Stepped Pareto frontier for P6 replicate:
+    # r2_only -> steps_ge_24 -> escalate_if_not_answered
+    p6_step1_x, p6_step1_y = px_b(p6_r2["mean_cost"]), py_b(p6_r2["pass_rate"])
+    p6_step2_x, p6_step2_y = px_b(p6_s24["mean_cost"]), py_b(p6_s24["pass_rate"])
+    p6_step3_x, p6_step3_y = px_b(p6_unans["mean_cost"]), py_b(p6_unans["pass_rate"])
+    p6_end_x = px_b(0.070)
 
-    # Separated non-overlapping labels in Panel B:
-    # 1. R2-only: label positioned ABOVE the point, centered
-    svg.append(f'  <circle cx="{p6_p1[0]:.1f}" cy="{p6_p1[1]:.1f}" r="5.5" fill="#10b981" stroke="#047857" stroke-width="1.5"/>')
-    svg.append(f'  <text x="{p6_p1[0]-6:.1f}" y="{p6_p1[1]-10:.1f}" class="point-sub" fill="#047857" font-weight="600" text-anchor="start">R2-only: 57.9%</text>')
+    p6_frontier_path = f"M {p6_step1_x:.1f},{p6_step1_y:.1f} H {p6_step2_x:.1f} V {p6_step2_y:.1f} H {p6_step3_x:.1f} V {p6_step3_y:.1f} H {p6_end_x:.1f}"
+    svg.append(f'  <path d="{p6_frontier_path}" fill="none" stroke="{c_blue}" stroke-width="2"/>')
 
-    # 2. steps>=24: label positioned BELOW the point, shifted right
-    svg.append(f'  <circle cx="{p6_p2[0]:.1f}" cy="{p6_p2[1]:.1f}" r="5" fill="#2563eb" stroke="#1e40af" stroke-width="1.5"/>')
-    svg.append(f'  <text x="{p6_p2[0]+8:.1f}" y="{p6_p2[1]+16:.1f}" class="point-sub" fill="#1e40af" font-weight="600" text-anchor="start">steps&gt;=24: 58.9%</text>')
+    # Points with Wilson whiskers in Panel (b)
+    # 1. P6 r2_only
+    c_x = px_b(p6_r2["mean_cost"])
+    c_y = py_b(p6_r2["pass_rate"])
+    ci_l = py_b(p6_r2["wilson_ci"][0])
+    ci_h = py_b(p6_r2["wilson_ci"][1])
+    svg.append(f'  <line x1="{c_x:.1f}" y1="{ci_l:.1f}" x2="{c_x:.1f}" y2="{ci_h:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <line x1="{c_x - 5:.1f}" y1="{ci_l:.1f}" x2="{c_x + 5:.1f}" y2="{ci_l:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <line x1="{c_x - 5:.1f}" y1="{ci_h:.1f}" x2="{c_x + 5:.1f}" y2="{ci_h:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <circle cx="{c_x:.1f}" cy="{c_y:.1f}" r="5.5" fill="{c_blue}" stroke="{c_text}" stroke-width="1.5"/>')
 
-    # 3. not_answered: label positioned ABOVE the point
-    svg.append(f'  <circle cx="{p6_p3[0]:.1f}" cy="{p6_p3[1]:.1f}" r="5" fill="#2563eb" stroke="#1e40af" stroke-width="1.5"/>')
-    svg.append(f'  <text x="{p6_p3[0]:.1f}" y="{p6_p3[1]-10:.1f}" class="point-sub" fill="#1e40af" font-weight="600" text-anchor="middle">not_answered: 61.7%</text>')
+    # Leader line for P6 r2_only (left-up)
+    svg.append(f'  <polyline points="{c_x:.1f},{c_y - 6:.1f} {c_x - 25:.1f},{c_y - 45:.1f} {c_x - 45:.1f},{c_y - 45:.1f}" fill="none" stroke="{c_axis}" stroke-width="1"/>')
+    svg.append(f'  <text x="{c_x - 50:.1f}" y="{c_y - 49:.1f}" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" fill="{c_blue}" text-anchor="end">r2_only: {p6_r2["pass_rate"] * 100:.1f}%</text>')
+    svg.append(f'  <text x="{c_x - 50:.1f}" y="{c_y - 35:.1f}" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="{c_muted}" text-anchor="end">${p6_r2["mean_cost"]:.4f} / run</text>')
 
-    # 4. P6 R4-only point (0.0621, 0.131)
-    svg.append(f'  <circle cx="{p6_r4[0]:.1f}" cy="{p6_r4[1]:.1f}" r="6" fill="#ef4444" stroke="#b91c1c" stroke-width="1.5"/>')
-    svg.append(f'  <text x="{p6_r4[0]-10:.1f}" y="{p6_r4[1]-6:.1f}" class="point-sub" fill="#b91c1c" font-weight="600" text-anchor="end">R4-only: 13.1%</text>')
-    svg.append(f'  <text x="{p6_r4[0]-10:.1f}" y="{p6_r4[1]+6:.1f}" class="point-sub" fill="#6b7280" text-anchor="end">(Dominated)</text>')
+    # 2. P6 steps_ge_24
+    c_x = px_b(p6_s24["mean_cost"])
+    c_y = py_b(p6_s24["pass_rate"])
+    ci_l = py_b(p6_s24["wilson_ci"][0])
+    ci_h = py_b(p6_s24["wilson_ci"][1])
+    svg.append(f'  <line x1="{c_x:.1f}" y1="{ci_l:.1f}" x2="{c_x:.1f}" y2="{ci_h:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <line x1="{c_x - 5:.1f}" y1="{ci_l:.1f}" x2="{c_x + 5:.1f}" y2="{ci_l:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <line x1="{c_x - 5:.1f}" y1="{ci_h:.1f}" x2="{c_x + 5:.1f}" y2="{ci_h:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <circle cx="{c_x:.1f}" cy="{c_y:.1f}" r="5.5" fill="{c_green}" stroke="{c_text}" stroke-width="1.5"/>')
 
-    # P6 Incident Warning Callout Box
-    p6_box_y = p2_plot_y0 + p2_plot_h + 50
-    svg.append(f'  <rect x="{p2_x+16}" y="{p6_box_y}" width="{p2_w-32}" height="38" fill="#fffbeb" rx="4" stroke="#fde68a" stroke-width="1"/>')
-    svg.append(f'  <text x="{p2_x+24}" y="{p6_box_y+16}" class="callout-title" fill="#92400e">P6 Incident Damage:</text>')
-    svg.append(f'  <text x="{p2_x+24}" y="{p6_box_y+30}" class="callout-body" fill="#b45309">95 of 450 R4 runs had completion_tokens=0. R2 dominates.</text>')
+    # Leader line for P6 steps_ge_24 (right-up high)
+    svg.append(f'  <polyline points="{c_x:.1f},{c_y - 6:.1f} {c_x + 30:.1f},{c_y - 75:.1f} {c_x + 55:.1f},{c_y - 75:.1f}" fill="none" stroke="{c_axis}" stroke-width="1"/>')
+    svg.append(f'  <text x="{c_x + 60:.1f}" y="{c_y - 79:.1f}" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" fill="{c_green}" text-anchor="start">Cascade (steps ≥ 24): {p6_s24["pass_rate"] * 100:.1f}%</text>')
+    svg.append(f'  <text x="{c_x + 60:.1f}" y="{c_y - 65:.1f}" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="{c_muted}" text-anchor="start">${p6_s24["mean_cost"]:.4f} / run</text>')
+
+    # 3. P6 escalate_if_not_answered
+    c_x = px_b(p6_unans["mean_cost"])
+    c_y = py_b(p6_unans["pass_rate"])
+    ci_l = py_b(p6_unans["wilson_ci"][0])
+    ci_h = py_b(p6_unans["wilson_ci"][1])
+    svg.append(f'  <line x1="{c_x:.1f}" y1="{ci_l:.1f}" x2="{c_x:.1f}" y2="{ci_h:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <line x1="{c_x - 5:.1f}" y1="{ci_l:.1f}" x2="{c_x + 5:.1f}" y2="{ci_l:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <line x1="{c_x - 5:.1f}" y1="{ci_h:.1f}" x2="{c_x + 5:.1f}" y2="{ci_h:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <circle cx="{c_x:.1f}" cy="{c_y:.1f}" r="5.5" fill="{c_green}" stroke="{c_text}" stroke-width="1.5"/>')
+
+    # Leader line for P6 unanswered (right-up)
+    svg.append(f'  <polyline points="{c_x:.1f},{c_y - 6:.1f} {c_x + 25:.1f},{c_y - 45:.1f} {c_x + 50:.1f},{c_y - 45:.1f}" fill="none" stroke="{c_axis}" stroke-width="1"/>')
+    svg.append(f'  <text x="{c_x + 55:.1f}" y="{c_y - 49:.1f}" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" fill="{c_green}" text-anchor="start">Cascade (unanswered): {p6_unans["pass_rate"] * 100:.1f}%</text>')
+    svg.append(f'  <text x="{c_x + 55:.1f}" y="{c_y - 35:.1f}" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="{c_muted}" text-anchor="start">${p6_unans["mean_cost"]:.4f} / run</text>')
+
+    # 4. P6 r4_only
+    c_x = px_b(p6_r4["mean_cost"])
+    c_y = py_b(p6_r4["pass_rate"])
+    ci_l = py_b(p6_r4["wilson_ci"][0])
+    ci_h = py_b(p6_r4["wilson_ci"][1])
+    svg.append(f'  <line x1="{c_x:.1f}" y1="{ci_l:.1f}" x2="{c_x:.1f}" y2="{ci_h:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <line x1="{c_x - 5:.1f}" y1="{ci_l:.1f}" x2="{c_x + 5:.1f}" y2="{ci_l:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <line x1="{c_x - 5:.1f}" y1="{ci_h:.1f}" x2="{c_x + 5:.1f}" y2="{ci_h:.1f}" stroke="{c_text}" stroke-width="1.5"/>')
+    svg.append(f'  <circle cx="{c_x:.1f}" cy="{c_y:.1f}" r="5.5" fill="{c_red}" stroke="{c_text}" stroke-width="1.5"/>')
+
+    # Leader line for P6 r4_only (left-up)
+    svg.append(f'  <polyline points="{c_x:.1f},{c_y - 6:.1f} {c_x - 30:.1f},{c_y - 40:.1f} {c_x - 55:.1f},{c_y - 40:.1f}" fill="none" stroke="{c_axis}" stroke-width="1"/>')
+    svg.append(f'  <text x="{c_x - 60:.1f}" y="{c_y - 44:.1f}" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" fill="{c_red}" text-anchor="end">r4_only: {p6_r4["pass_rate"] * 100:.1f}% (dominated)</text>')
+    svg.append(f'  <text x="{c_x - 60:.1f}" y="{c_y - 30:.1f}" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="{c_muted}" text-anchor="end">${p6_r4["mean_cost"]:.4f} / run</text>')
+
+    # Footer
+    svg.append('  <!-- Footer -->')
+    svg.append(f'  <line x1="50" y1="655" x2="{width - 50}" y2="655" stroke="#e2e8f0" stroke-width="1"/>')
+    svg.append(f'  <text x="50" y="675" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="{c_muted}">FAULTLINE P10 · 100 paired R2/R4 runs · sha256 70/30 split, thresholds fit on train · Wilson 95% CIs</text>')
 
     svg.append('</svg>')
 
     svg_content = "\n".join(svg)
 
-    # Validate XML with ElementTree
-    try:
-        ET.fromstring(svg_content)
-        print("XML validation passed successfully.")
-    except Exception as e:
-        raise ValueError(f"Generated SVG is not valid XML: {e}")
+    # Validate XML
+    ET.fromstring(svg_content)
 
     output_svg.write_text(svg_content, encoding="utf-8")
-    print(f"Written valid SVG to {output_svg}")
+    print(f"Generated valid SVG: {output_svg}")
 
-    # Render PNG
-    rendered = False
-    chrome_path = Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
-    if chrome_path.exists():
-        try:
-            cmd = [
-                str(chrome_path),
-                "--headless",
-                "--disable-gpu",
-                f"--screenshot={output_png}",
-                f"--window-size={width},{height}",
-                str(output_svg.resolve()),
-            ]
-            subprocess.run(cmd, check=True, capture_output=True)
-            print(f"Rendered PNG via Chrome headless to {output_png}")
-            rendered = True
-        except Exception as e:
-            print(f"Notice: Chrome headless render: {e}")
+    # Render 2x PNG via headless Chrome
+    chrome_path = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+    cmd_png = [
+        chrome_path,
+        "--headless",
+        "--disable-gpu",
+        "--force-device-scale-factor=2",
+        f"--screenshot={output_png.resolve()}",
+        f"--window-size={width},{height}",
+        output_svg.resolve().as_uri(),
+    ]
+    res_png = subprocess.run(cmd_png, capture_output=True, timeout=20)
+    if res_png.returncode != 0:
+        raise RuntimeError(f"Chrome PNG generation failed: {res_png.stderr.decode('utf-8', errors='ignore')}")
+    print(f"Generated 2x PNG: {output_png} ({output_png.stat().st_size} bytes)")
 
-    if not rendered:
-        try:
-            subprocess.run(["qlmanage", "-t", "-s", "2400", "-o", "/tmp", str(output_svg)], check=True, capture_output=True)
-            tmp_png = Path(f"/tmp/{output_svg.name}.png")
-            if tmp_png.exists():
-                shutil.copyfile(tmp_png, output_png)
-                print(f"Rendered PNG via qlmanage to {output_png}")
-        except Exception as e:
-            print(f"Notice: qlmanage PNG render: {e}")
+    # Render 1-page PDF via headless Chrome
+    html_content = f"""<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@page {{ size: {width}px {height}px; margin: 0; }}
+html, body {{ margin: 0; padding: 0; width: {width}px; height: {height}px; overflow: hidden; }}
+svg {{ display: block; width: {width}px; height: {height}px; }}
+</style>
+</head>
+<body>
+{svg_content}
+</body>
+</html>"""
+    tmp_html = output_svg.parent / f"_temp_{output_svg.stem}.html"
+    try:
+        tmp_html.write_text(html_content, encoding="utf-8")
+        cmd_pdf = [
+            chrome_path,
+            "--headless",
+            "--disable-gpu",
+            "--no-pdf-header-footer",
+            f"--print-to-pdf={output_pdf.resolve()}",
+            tmp_html.resolve().as_uri(),
+        ]
+        res_pdf = subprocess.run(cmd_pdf, capture_output=True, timeout=20)
+        if res_pdf.returncode != 0:
+            raise RuntimeError(f"Chrome PDF generation failed: {res_pdf.stderr.decode('utf-8', errors='ignore')}")
+        pdf_bytes = output_pdf.read_bytes()
+        if not pdf_bytes.startswith(b"%PDF"):
+            raise ValueError(f"Generated file {output_pdf} does not start with %PDF")
+        print(f"Generated 1-page PDF: {output_pdf} ({len(pdf_bytes)} bytes)")
+    finally:
+        if tmp_html.exists():
+            tmp_html.unlink()
 
 
-def main():
-    base_dir = Path("projects/p10_cascade")
-    results_path = base_dir / "results.json"
-    output_svg = base_dir / "figure.svg"
-    output_png = base_dir / "figure.png"
+def main() -> None:
+    base = Path("projects/p10_cascade")
+    results_path = base / "results.json"
+    output_svg = base / "figure.svg"
+    output_png = base / "figure.png"
+    output_pdf = base / "figure.pdf"
 
-    generate_figure(results_path, output_svg, output_png)
+    generate_figure(results_path, output_svg, output_png, output_pdf)
 
 
 if __name__ == "__main__":

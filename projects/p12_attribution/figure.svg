@@ -1,100 +1,87 @@
-<svg width="1200" height="680" viewBox="0 0 1200 680" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#ffffff" rx="8"/>
-  <style>
-    .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 20px; font-weight: 700; fill: #111827; }
-    .subtitle { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13px; fill: #4b5563; }
-    .panel-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 15px; font-weight: 700; fill: #1f2937; }
-    .sec-hdr { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; font-weight: 700; fill: #374151; }
-    .axis-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #4b5563; }
-    .val-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; font-weight: 700; }
-    .grid-cell-hdr { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; font-weight: 600; fill: #4b5563; }
-    .grid-cell-val { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 16px; font-weight: 800; }
-    .badge-hdr { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; font-weight: 700; }
-    .badge-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #374151; }
-  </style>
-  <rect x="1" y="1" width="1198" height="678" fill="none" stroke="#e5e7eb" stroke-width="1.5" rx="8"/>
-  <text x="600.0" y="36" class="title" text-anchor="middle">Figure 12: Grounding Failure Attribution &amp; Oracle Retrieval Analysis</text>
-  <text x="600.0" y="58" class="subtitle" text-anchor="middle">Matched-Pair Attribution: Arm A (Standard Substring Search) vs Arm B (Oracle Retrieval Traversal Sources)</text>
-  <!-- PANEL R2 -->
-  <rect x="40" y="75" width="540" height="575" fill="#f9fafb" rx="6" stroke="#e5e7eb" stroke-width="1"/>
-  <text x="56" y="101" class="panel-title">Rung R2: Cheap Workhorse (GLM 5.3 Flash, N=150)</text>
-  <text x="56" y="119" class="axis-label" fill="#6b7280">150 Matched Scenarios, Step Cap 24, Spend $1.47</text>
-  <rect x="56" y="135" width="249.0" height="64" fill="#ecfdf5" rx="4" stroke="#a7f3d0" stroke-width="1"/>
-  <text x="66" y="155" class="grid-cell-hdr" fill="#065f46">BOTH PASS (A+ &amp; B+)</text>
-  <text x="66" y="179" class="grid-cell-val" fill="#047857">112 <tspan font-size="12px" font-weight="500">(74.7%)</tspan></text>
-  <rect x="315.0" y="135" width="249.0" height="64" fill="#eff6ff" rx="4" stroke="#bfdbfe" stroke-width="1.5"/>
-  <text x="325.0" y="155" class="grid-cell-hdr" fill="#1e40af">RETRIEVER-OWNED (A- &amp; B+)</text>
-  <text x="325.0" y="179" class="grid-cell-val" fill="#1d4ed8">32 <tspan font-size="12px" font-weight="500">(21.3%)</tspan></text>
-  <rect x="56" y="207" width="249.0" height="64" fill="#fffbeb" rx="4" stroke="#fde68a" stroke-width="1"/>
-  <text x="66" y="227" class="grid-cell-hdr" fill="#92400e">REVERSE (A+ &amp; B-)</text>
-  <text x="66" y="251" class="grid-cell-val" fill="#b45309">4 <tspan font-size="12px" font-weight="500">(2.7%)</tspan></text>
-  <rect x="315.0" y="207" width="249.0" height="64" fill="#fef2f2" rx="4" stroke="#fecaca" stroke-width="1"/>
-  <text x="325.0" y="227" class="grid-cell-hdr" fill="#991b1b">GENERATOR-OWNED (A- &amp; B-)</text>
-  <text x="325.0" y="251" class="grid-cell-val" fill="#b91c1c">2 <tspan font-size="12px" font-weight="500">(1.3%)</tspan></text>
-  <text x="56" y="297" class="sec-hdr">Retriever Share of Grounding Failures (Wilson 95% CI vs 50% Threshold)</text>
-  <line x1="75" y1="339" x2="538" y2="339" stroke="#d1d5db" stroke-width="2"/>
-  <line x1="75.0" y1="334" x2="75.0" y2="344" stroke="#9ca3af" stroke-width="1"/>
-  <text x="75.0" y="357" class="axis-label" text-anchor="middle" font-weight="400">0%</text>
-  <line x1="190.75" y1="334" x2="190.75" y2="344" stroke="#9ca3af" stroke-width="1"/>
-  <text x="190.75" y="357" class="axis-label" text-anchor="middle" font-weight="400">25%</text>
-  <line x1="306.5" y1="334" x2="306.5" y2="344" stroke="#9ca3af" stroke-width="1"/>
-  <text x="306.5" y="357" class="axis-label" text-anchor="middle" font-weight="700">50% (H8)</text>
-  <line x1="422.25" y1="334" x2="422.25" y2="344" stroke="#9ca3af" stroke-width="1"/>
-  <text x="422.25" y="357" class="axis-label" text-anchor="middle" font-weight="400">75%</text>
-  <line x1="538.0" y1="334" x2="538.0" y2="344" stroke="#9ca3af" stroke-width="1"/>
-  <text x="538.0" y="357" class="axis-label" text-anchor="middle" font-weight="400">100%</text>
-  <line x1="306.5" y1="314" x2="306.5" y2="359" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <line x1="449.596600033179" y1="329" x2="530.4611306377132" y2="329" stroke="#1d4ed8" stroke-width="3"/>
-  <line x1="449.596600033179" y1="322" x2="449.596600033179" y2="336" stroke="#1d4ed8" stroke-width="3"/>
-  <line x1="530.4611306377132" y1="322" x2="530.4611306377132" y2="336" stroke="#1d4ed8" stroke-width="3"/>
-  <circle cx="510.7647058823529" cy="329" r="6" fill="#1d4ed8"/>
-  <text x="510.7647058823529" y="317" class="val-text" fill="#1d4ed8" text-anchor="middle">94.1% [80.9%, 98.4%]</text>
-  <rect x="56" y="381" width="508" height="165" fill="#eff6ff" rx="6" stroke="#93c5fd" stroke-width="1.5"/>
-  <text x="70" y="405" class="badge-hdr" fill="#1e40af">H8 VERDICT: SUPPORTED</text>
-  <text x="70" y="425" class="badge-body" font-weight="600">Supported: Wilson CI [80.9%, 98.4%] strictly exceeds 50% generator boundary.</text>
-  <text x="70" y="451" class="badge-body">• <tspan font-weight="700">Root Cause Decomposition:</tspan> 29/32 (90.6%) never surfaced chain document.</text>
-  <text x="70" y="471" class="badge-body">• <tspan font-weight="700">Surfaced but Unused:</tspan> 3/32 (9.4%) surfaced all documents but model failed to cite/answer.</text>
-  <text x="70" y="496" class="badge-body">• <tspan font-weight="700">Execution Burden:</tspan> Arm A mean 17.43 spans/run (50279 tokens);</text>
-  <text x="70" y="516" class="badge-body">  Arm B oracle mean 5.35 spans/run (16281 tokens) — answers directly from snippets.</text>
-  <!-- PANEL R4 -->
-  <rect x="620" y="75" width="540" height="575" fill="#f9fafb" rx="6" stroke="#e5e7eb" stroke-width="1"/>
-  <text x="636" y="101" class="panel-title">Rung R4: Frontier Pilot (GPT 5.6 Luna, pilot, n=10)</text>
-  <text x="636" y="119" class="axis-label" fill="#6b7280">10 Matched Scenarios, Step Cap 24, Spend $0.46</text>
-  <rect x="636" y="135" width="249.0" height="64" fill="#ecfdf5" rx="4" stroke="#a7f3d0" stroke-width="1"/>
-  <text x="646" y="155" class="grid-cell-hdr" fill="#065f46">BOTH PASS (A+ &amp; B+)</text>
-  <text x="646" y="179" class="grid-cell-val" fill="#047857">7 <tspan font-size="12px" font-weight="500">(70.0%)</tspan></text>
-  <rect x="895.0" y="135" width="249.0" height="64" fill="#eff6ff" rx="4" stroke="#bfdbfe" stroke-width="1.5"/>
-  <text x="905.0" y="155" class="grid-cell-hdr" fill="#1e40af">RETRIEVER-OWNED (A- &amp; B+)</text>
-  <text x="905.0" y="179" class="grid-cell-val" fill="#1d4ed8">3 <tspan font-size="12px" font-weight="500">(30.0%)</tspan></text>
-  <rect x="636" y="207" width="249.0" height="64" fill="#fffbeb" rx="4" stroke="#fde68a" stroke-width="1"/>
-  <text x="646" y="227" class="grid-cell-hdr" fill="#92400e">REVERSE (A+ &amp; B-)</text>
-  <text x="646" y="251" class="grid-cell-val" fill="#b45309">0 <tspan font-size="12px" font-weight="500">(0.0%)</tspan></text>
-  <rect x="895.0" y="207" width="249.0" height="64" fill="#fef2f2" rx="4" stroke="#fecaca" stroke-width="1"/>
-  <text x="905.0" y="227" class="grid-cell-hdr" fill="#991b1b">GENERATOR-OWNED (A- &amp; B-)</text>
-  <text x="905.0" y="251" class="grid-cell-val" fill="#b91c1c">0 <tspan font-size="12px" font-weight="500">(0.0%)</tspan></text>
-  <text x="636" y="297" class="sec-hdr">Retriever Share of Grounding Failures (Wilson 95% CI vs 50% Threshold)</text>
-  <line x1="655" y1="339" x2="1118" y2="339" stroke="#d1d5db" stroke-width="2"/>
-  <line x1="655.0" y1="334" x2="655.0" y2="344" stroke="#9ca3af" stroke-width="1"/>
-  <text x="655.0" y="357" class="axis-label" text-anchor="middle" font-weight="400">0%</text>
-  <line x1="770.75" y1="334" x2="770.75" y2="344" stroke="#9ca3af" stroke-width="1"/>
-  <text x="770.75" y="357" class="axis-label" text-anchor="middle" font-weight="400">25%</text>
-  <line x1="886.5" y1="334" x2="886.5" y2="344" stroke="#9ca3af" stroke-width="1"/>
-  <text x="886.5" y="357" class="axis-label" text-anchor="middle" font-weight="700">50% (H8)</text>
-  <line x1="1002.25" y1="334" x2="1002.25" y2="344" stroke="#9ca3af" stroke-width="1"/>
-  <text x="1002.25" y="357" class="axis-label" text-anchor="middle" font-weight="400">75%</text>
-  <line x1="1118.0" y1="334" x2="1118.0" y2="344" stroke="#9ca3af" stroke-width="1"/>
-  <text x="1118.0" y="357" class="axis-label" text-anchor="middle" font-weight="400">100%</text>
-  <line x1="886.5" y1="314" x2="886.5" y2="359" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <line x1="858.026874297414" y1="329" x2="1118.0" y2="329" stroke="#6b7280" stroke-width="3"/>
-  <line x1="858.026874297414" y1="322" x2="858.026874297414" y2="336" stroke="#6b7280" stroke-width="3"/>
-  <line x1="1118.0" y1="322" x2="1118.0" y2="336" stroke="#6b7280" stroke-width="3"/>
-  <circle cx="1118.0" cy="329" r="6" fill="#6b7280"/>
-  <text x="1118.0" y="317" class="val-text" fill="#6b7280" text-anchor="middle">100.0% [43.9%, 100.0%]</text>
-  <rect x="636" y="381" width="508" height="165" fill="#f3f4f6" rx="6" stroke="#d1d5db" stroke-width="1.5"/>
-  <text x="650" y="405" class="badge-hdr" fill="#374151">H8 VERDICT: UNDECIDED</text>
-  <text x="650" y="425" class="badge-body" font-weight="600">Undecided: Wilson CI [43.9%, 100.0%] spans 50% threshold due to pilot sample size.</text>
-  <text x="650" y="451" class="badge-body">• <tspan font-weight="700">Root Cause Decomposition:</tspan> 3/3 (100.0%) never surfaced chain document.</text>
-  <text x="650" y="471" class="badge-body">• <tspan font-weight="700">Surfaced but Unused:</tspan> 0/3 (0.0%) surfaced all documents but model failed to cite/answer.</text>
-  <text x="650" y="496" class="badge-body">• <tspan font-weight="700">Execution Burden:</tspan> Arm A mean 20.7 spans/run (66006 tokens);</text>
-  <text x="650" y="516" class="badge-body">  Arm B oracle mean 2.0 spans/run (1710 tokens) — answers directly from snippets.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" width="1600" height="700">
+  <rect width="1600" height="700" fill="#ffffff"/>
+  <!-- Title -->
+  <text x="50" y="45" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#1e293b">Failure attribution and oracle retrieval ablation across model rungs</text>
+  <!-- Panel (a) -->
+  <text x="50" y="85" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#1e293b">(a) Paired outcomes per rung</text>
+  <rect x="50" y="115" width="13" height="13" fill="#009E73"/>
+  <text x="68" y="126" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#1e293b">Both pass</text>
+  <rect x="165" y="115" width="13" height="13" fill="#0072B2"/>
+  <text x="183" y="126" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#1e293b">Retriever-owned</text>
+  <rect x="315" y="115" width="13" height="13" fill="#D55E00"/>
+  <text x="333" y="126" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#1e293b">Generator-owned</text>
+  <rect x="465" y="115" width="13" height="13" fill="#E69F00"/>
+  <text x="483" y="126" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#1e293b">Reverse</text>
+  <line x1="190.0" y1="160" x2="190.0" y2="480" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="190.0" y="498" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">0%</text>
+  <line x1="302.0" y1="160" x2="302.0" y2="480" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="302.0" y="498" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">20%</text>
+  <line x1="414.0" y1="160" x2="414.0" y2="480" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="414.0" y="498" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">40%</text>
+  <line x1="526.0" y1="160" x2="526.0" y2="480" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="526.0" y="498" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">60%</text>
+  <line x1="638.0" y1="160" x2="638.0" y2="480" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="638.0" y="498" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">80%</text>
+  <line x1="750.0" y1="160" x2="750.0" y2="480" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="750.0" y="498" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">100%</text>
+  <line x1="190.0" y1="480" x2="750.0" y2="480" stroke="#94a3b8" stroke-width="1"/>
+  <text x="470.0" y="526" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Share of paired scenarios</text>
+  <text x="175.0" y="240.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#1e293b" text-anchor="end">R2: GLM 5.3 Flash</text>
+  <text x="175.0" y="256.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="end">(n=150)</text>
+  <rect x="190.0" y="220.0" width="418.1" height="46.0" fill="#009E73"/>
+  <text x="399.1" y="248.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">112 (74.7%)</text>
+  <rect x="608.1" y="220.0" width="119.5" height="46.0" fill="#0072B2"/>
+  <text x="667.9" y="248.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">32 (21.3%)</text>
+  <rect x="727.6" y="220.0" width="14.9" height="46.0" fill="#E69F00"/>
+  <polyline points="735.1,220.0 720.1,195.0 690.1,195.0" fill="none" stroke="#94a3b8" stroke-width="1"/>
+  <text x="685.1" y="199.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#E69F00" text-anchor="end">reverse: 4 (2.7%)</text>
+  <rect x="742.5" y="220.0" width="7.5" height="46.0" fill="#D55E00"/>
+  <polyline points="746.3,266.0 761.3,291.0 791.3,291.0" fill="none" stroke="#94a3b8" stroke-width="1"/>
+  <text x="796.3" y="295.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#D55E00" text-anchor="start">generator-owned: 2 (1.3%)</text>
+  <text x="175.0" y="390.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#1e293b" text-anchor="end">R4: GPT 5.6 Luna</text>
+  <text x="175.0" y="406.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="end">(pilot, n=10)</text>
+  <rect x="190.0" y="370.0" width="392.0" height="46.0" fill="#009E73"/>
+  <text x="386.0" y="398.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">7 (70.0%)</text>
+  <rect x="582.0" y="370.0" width="168.0" height="46.0" fill="#0072B2"/>
+  <text x="666.0" y="398.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">3 (30.0%)</text>
+  <text x="762.0" y="398.0" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#64748b">gen: 0, rev: 0</text>
+  <!-- Panel (b) -->
+  <text x="890" y="85" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#1e293b">(b) Retriever share of arm-A failures</text>
+  <line x1="1000.0" y1="160" x2="1000.0" y2="480" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="1000.0" y="498" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">0.0</text>
+  <line x1="1088.0" y1="160" x2="1088.0" y2="480" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="1088.0" y="498" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">0.2</text>
+  <line x1="1176.0" y1="160" x2="1176.0" y2="480" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="1176.0" y="498" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">0.4</text>
+  <line x1="1264.0" y1="160" x2="1264.0" y2="480" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="1264.0" y="498" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">0.6</text>
+  <line x1="1352.0" y1="160" x2="1352.0" y2="480" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="1352.0" y="498" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">0.8</text>
+  <line x1="1440.0" y1="160" x2="1440.0" y2="480" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="1440.0" y="498" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">1.0</text>
+  <line x1="1000.0" y1="480" x2="1440.0" y2="480" stroke="#94a3b8" stroke-width="1"/>
+  <text x="1220.0" y="526" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Retriever share (retriever-owned / arm-A failures)</text>
+  <line x1="1000.0" y1="243" x2="1440.0" y2="243" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="1000.0" y1="393" x2="1440.0" y2="393" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="1220.0" y1="150" x2="1220.0" y2="480" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="1220.0" y="142" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#dc2626" text-anchor="middle">H8 threshold (0.50)</text>
+  <text x="985.0" y="238" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#1e293b" text-anchor="end">R2: GLM 5.3 Flash</text>
+  <text x="985.0" y="254" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="end">32/34 failures</text>
+  <line x1="1356.0" y1="243" x2="1432.8" y2="243" stroke="#1e293b" stroke-width="1.5"/>
+  <line x1="1356.0" y1="236" x2="1356.0" y2="250" stroke="#1e293b" stroke-width="1.5"/>
+  <line x1="1432.8" y1="236" x2="1432.8" y2="250" stroke="#1e293b" stroke-width="1.5"/>
+  <circle cx="1414.1" cy="243" r="5.5" fill="#0072B2" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="1446.8" y="239" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#1e293b">0.941 [0.809, 0.984]</text>
+  <text x="1446.8" y="255" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#059669">H8 SUPPORTED</text>
+  <text x="985.0" y="388" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#1e293b" text-anchor="end">R4: GPT 5.6 Luna (pilot)</text>
+  <text x="985.0" y="404" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#64748b" text-anchor="end">3/3 failures</text>
+  <line x1="1192.9" y1="393" x2="1440.0" y2="393" stroke="#1e293b" stroke-width="1.5"/>
+  <line x1="1192.9" y1="386" x2="1192.9" y2="400" stroke="#1e293b" stroke-width="1.5"/>
+  <line x1="1440.0" y1="386" x2="1440.0" y2="400" stroke="#1e293b" stroke-width="1.5"/>
+  <circle cx="1440.0" cy="393" r="5.5" fill="#0072B2" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="1454.0" y="389" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#1e293b">1.000 [0.439, 1.000]</text>
+  <text x="1454.0" y="405" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#64748b">UNDECIDED (pilot)</text>
+  <!-- Footer -->
+  <line x1="50" y1="655" x2="1550" y2="655" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="50" y="675" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#64748b">FAULTLINE P12 · P6 reserved hard pool · arm B = oracle retrieval (traversal_sources) · Wilson 95% CIs · McNemar exact p = 1.94e-6 (R2)</text>
 </svg>
