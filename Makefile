@@ -331,7 +331,7 @@ clean:
 	find . -type d -name .pytest_cache -prune -exec rm -rf {} +
 
 # Phase 2 developer entry points
-.PHONY: phase2-install phase2-install-inspect phase2-test phase2-corpus phase2-preflight p01 p02 p03 p04-view p04-export p05 p06 p06-analysis p07 p08 p08-replay p13 p15 p16
+.PHONY: phase2-install phase2-install-inspect phase2-test phase2-corpus phase2-preflight p01 p02 p03 p04-view p04-export p05 p06 p06-analysis p07 p08 p08-replay p10 p10-simulate p12 p12-recompile p13 p15 p16
 
 phase2-install:
 	$(PY) -m pip install -e .
@@ -381,6 +381,18 @@ p08:
 
 p08-replay:
 	.venv/bin/python projects/p08_mcptox/replay.py $(ARGS)
+
+p10:
+	.venv/bin/python projects/p10_cascade/run.py --dry-run
+
+p10-simulate:
+	.venv/bin/python projects/p10_cascade/run.py --simulate --r4-file projects/p10_cascade/sweep_output_R4_A.json --output-dir projects/p10_cascade
+
+p12:
+	.venv/bin/python projects/p12_attribution/run.py $(if $(ARGS),$(ARGS),--dry-run --rung R2 --scenarios 150)
+
+p12-recompile:
+	.venv/bin/python projects/p12_attribution/run.py --recompile --rung R2
 
 p13:
 	.venv/bin/python projects/p13_slo_incident/run.py

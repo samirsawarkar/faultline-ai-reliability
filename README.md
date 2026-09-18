@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml)
 [![Phase 2](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/phase2.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/phase2.yml)
-[![Tests: 654 passing](https://img.shields.io/badge/tests-528%20Phase%201%20%2B%20126%20Phase%202-brightgreen.svg)](tests/)
+[![Tests: 664 passing](https://img.shields.io/badge/tests-528%20Phase%201%20%2B%20136%20Phase%202-brightgreen.svg)](tests/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ---
@@ -156,6 +156,39 @@ hashes without subjective model judges in the loop.
 
 ---
 
+## Findings into engineering
+
+### Failure Attribution: Retriever vs Generator (Project P12)
+
+![Failure Attribution](projects/p12_attribution/figure.png)
+
+*For this workload, when the agent fails it is almost always because the search never surfaced a chain document — a stronger model does not fix that (R4 pilot: 3 of 3 failures also retriever-owned).*
+
+| Rung | Model | Role | $n$ | Failures | Retriever Share | Wilson 95% CI | McNemar $p$ | H8 Verdict |
+|---|---|---|---|---|---|---|---|---|
+| **R2** | `glm-5.3-flash` | Cheap Workhorse | 150 | 34 | **0.9412** (32/34) | [0.8091, 0.9837] | exact $p = 1.94 \times 10^{-6}$ / $\chi^2$ $p = 6.80 \times 10^{-6}$ | **SUPPORTED** |
+| **R4** | `gpt-5.6-luna` | Frontier Anchor | 10 | 3 | **1.0000** (3/3) | [0.4385, 1.0000] | exact $p = 0.250$ | **UNDECIDED** (pilot) |
+
+*Mechanism:* 29 of 32 R2 failures (90.6%) never surfaced a required chain document during search. Oracle retrieval rescues 32 failures while cutting token consumption 3.1× and steps 3.3×.  
+*Disclosure:* The retriever evaluated here is a deterministic case-insensitive substring matcher over document titles and text, not a chunked dense-embedding RAG pipeline.
+
+### Calibrated Cheap-to-Frontier Cascade (Project P10)
+
+![Calibrated Cascade Pareto Frontier](projects/p10_cascade/figure.png)
+
+*On this workload the cheap model is on the frontier and escalating to the frontier model buys one extra pass in thirty at twice the cost — consistent with P12, where failures were retriever-owned.*
+
+| Policy | Split | Pass Rate | Wilson 95% CI | Mean Cost / Run | Escalation Rate | Status |
+|---|---|---|---|---|---|---|
+| `r2_only` (Baseline) | Test ($n=30$) | 0.767 (23/30) | [0.591, 0.882] | $0.0078 | 0.0% | **Frontier** |
+| `r4_only` (Frontier Anchor) | Test ($n=30$) | 0.200 (6/30) | [0.095, 0.373] | $0.0634 | 100.0% | Dominated |
+| `escalate_if_not_answered` / `steps >= 23` | Test ($n=30$) | **0.800** (24/30) | [0.627, 0.905] | **$0.0159** | 16.7% (5/30) | **Frontier** |
+
+*Theoretical Router Ceiling:* Across all 100 scenarios, R2 passes 75 and fails 25; R4 rescues 7 of 25 R2 failures $\rightarrow$ full ceiling $(75 + 7)/100 = \mathbf{82.0\%}$ (held-out test split ceiling $25/30 = \mathbf{83.3\%}$).  
+*Disclosure:* R4 same-model gateway drift across runs and dates is disclosed without post-hoc rationalization: 0.24 pass rate in P10 (24/100) vs 0.15 in P6 as-run (67/450) vs 7/10 in P12 pilot.
+
+---
+
 ## How the evidence is produced
 
 Every experimental result is bound to immutable contracts and reproducible seeds:
@@ -178,6 +211,8 @@ Every experimental result is bound to immutable contracts and reproducible seeds
 | [P06](projects/p06_passk/) | Multi-Trial Reliability | $\text{pass}^k$ independence testing & failure clustering (Pub 01) | Complete | $23.73 |
 | [P07](projects/p07_variance/) | Serving Variance | Temperature-0 serving nondeterminism across providers | Complete | $1.20 |
 | [P08](projects/p08_mcptox/) | MCP Defense | Client-side runtime provenance contract on MCPTox (Pub 02) | Complete | $3.55 |
+| [P10](projects/p10_cascade/) | Calibrated Cascade | Cheap→frontier router on deterministic signals; Pareto frontier | Complete | $4.67 |
+| [P12](projects/p12_attribution/) | Failure Attribution | Retriever-vs-generator ablation with oracle retrieval (H8) | Complete | $1.93 |
 | [P13](projects/p13_slo_incident/) | SLO Incident | Multi-window burn-rate SLO alerting & incident triage | Complete | $0.00 |
 | [P15](projects/p15_resilience/) | Resilience | Adaptive circuit breakers & jittered backoff policies | Complete | $0.00 |
 | [P16](projects/p16_runtime_policy/) | Runtime Policy | Deterministic call allowlists, path containment, token caps | Complete | $0.00 |
@@ -277,11 +312,13 @@ All test suites and benchmark dry-runs execute locally without network access or
 ```bash
 make venv          # Create virtualenv and install pinned requirements
 make test          # Run 528 Phase 1 unit/integration tests
-make phase2-test   # Run 126 Phase 2 tests (P00-P08, P13, P15, P16)
+make phase2-test   # Run 136 Phase 2 tests (P00-P08, P10, P12, P13, P15, P16)
 make p06 ARGS=--dry-run   # Dry-run P06 multi-trial sweep
 make p07 ARGS=--dry-run   # Dry-run P07 variance analysis
 make p08 ARGS=--dry-run   # Dry-run P08 MCPTox evaluation
 make p08-replay           # Replay cached MCPTox execution traces
+make p10-simulate         # Simulate P10 cheap-to-frontier cascade
+make p12 ARGS=--dry-run   # Dry-run P12 failure attribution
 ```
 
 ---
@@ -296,10 +333,12 @@ faultline-ai-reliability/
 ├── projects/                  # Phase 2 experimental packages (P01–P16)
 │   ├── _corpus/               # Canonical 350-scenario graph corpus
 │   ├── p06_passk/             # Multi-trial reliability & trace store
-│   └── p08_mcptox/            # MCP defense & provenance engine
-├── faultline_p2/              # Core Phase 2 harness, agent loop, and OTel tooling
+│   ├── p08_mcptox/            # MCP defense & provenance engine
+│   ├── p10_cascade/           # Calibrated cheap-to-frontier cascade & router
+│   └── p12_attribution/       # Failure attribution & oracle retrieval ablation
+├── faultline_p2/              # Core Phase 2 harness, agent loop, attribute/, cascade/, and OTel tooling
 ├── day01/ … day30/            # Phase 1 daily simulation modules and evidence
-├── tests/phase2/              # Phase 2 pytest suite (126 tests)
+├── tests/phase2/              # Phase 2 pytest suite (136 tests)
 ├── research/                  # Publication 1 pre-registration, data, and red-team gates
 └── research_pub02/            # Publication 2 pre-registration, data, and red-team gates
 ```
@@ -308,7 +347,7 @@ faultline-ai-reliability/
 
 ## Budget
 
-Total API spend across all experimental sweeps is **$30.08 USD**, comfortably within the pre-registered **$150.00 USD** repository ceiling. Every API request is tracked in an append-only `ledger.jsonl` recording exact timestamp, model rung, input/output tokens, and dollar cost computed from pinned pricing tables.
+Total API spend across all experimental sweeps is **$36.67 USD** ($30.08 prior + $1.93 P12 + $4.67 P10), comfortably within the pre-registered **$150.00 USD** repository ceiling. Every API request is tracked in an append-only `ledger.jsonl` recording exact timestamp, model rung, input/output tokens, and dollar cost computed from pinned pricing tables.
 
 ---
 
