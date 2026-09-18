@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml)
 [![Phase 2](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/phase2.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/phase2.yml)
-[![Tests: 671 passing](https://img.shields.io/badge/tests-528%20Phase%201%20%2B%20143%20Phase%202-brightgreen.svg)](tests/)
+[![Tests: 684 passing](https://img.shields.io/badge/tests-528%20Phase%201%20%2B%20156%20Phase%202-brightgreen.svg)](tests/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ---
@@ -203,6 +203,19 @@ hashes without subjective model judges in the loop.
 *Decision rule:* `PASS if candidate pass_rate >= (min_observed - 1/n_golden) AND malformed_rate <= (max_observed + 1/n_golden); FAIL if pass_rate < (min_observed - 3/n_golden); otherwise WARN.`  
 *CI integration:* `release-gate.yml` executes two-way stub drills (verifying PASS on solver and exit code 2 on wrong-answer) per push; live model evaluations run via manual workflow dispatch.
 
+### Red-team regression: mention is not compromise (Project P9)
+
+![Red-Team Regression](projects/p09_redteam/figure.png)
+
+*Models frequently mention or quote injected adversarial text (up to 75% in `answer_hijack`) while correctly resolving the ground truth entity (79% benign accuracy); requiring oracle task failure separates true compromise from surface quoting and prevents dramatic over-reporting of vulnerability.*
+
+| Arm | Interposition | Pooled ASR (95% CI) | Mention Rate | Structural Attempted | Open Regressions |
+|---|---|---|---|---|---|
+| **Arm A** | Baseline (no policy) | 3.0% (6/200) [1.4%, 6.4%] | 24.5% (49/200) | 0 (0.0%) | N/A |
+| **Arm B** | + RuntimePolicy | 2.5% (5/200) [1.1%, 5.7%] | 17.5% (35/200) | 0 (0.0% blocked) | 5 (strictly xfailed) |
+
+*Across 400 live runs, `RuntimePolicy` deterministically enforced a 0.0% ASR invariant on all four structural attack categories (path traversal, unlisted tools, query overflows, and budget loops) by intercepting calls at the execution boundary.*
+
 ---
 
 ## How the evidence is produced
@@ -227,6 +240,7 @@ Every experimental result is bound to immutable contracts and reproducible seeds
 | [P06](projects/p06_passk/) | Multi-Trial Reliability | $\text{pass}^k$ independence testing & failure clustering (Pub 01) | Complete | $23.73 |
 | [P07](projects/p07_variance/) | Serving Variance | Temperature-0 serving nondeterminism across providers | Complete | $1.20 |
 | [P08](projects/p08_mcptox/) | MCP Defense | Client-side runtime provenance contract on MCPTox (Pub 02) | Complete | $3.55 |
+| [P09](projects/p09_redteam/) | Red-Team Regression | Document-text injection suite, 10 categories, two arms; regressions as strict xfails | Complete | $0.63 |
 | [P10](projects/p10_cascade/) | Calibrated Cascade | Cheap→frontier router on deterministic signals; Pareto frontier | Complete | $4.67 |
 | [P11](projects/p11_release_gate/) | Release Gate | Tolerance-band gate: sha256 golden set, pinned oracle judge, live upgrade drill | Complete | $1.84 |
 | [P12](projects/p12_attribution/) | Failure Attribution | Retriever-vs-generator ablation with oracle retrieval (H8) | Complete | $1.93 |
@@ -329,11 +343,13 @@ All test suites and benchmark dry-runs execute locally without network access or
 ```bash
 make venv          # Create virtualenv and install pinned requirements
 make test          # Run 528 Phase 1 unit/integration tests
-make phase2-test   # Run 143 Phase 2 tests (P00-P08, P10, P11, P12, P13, P15, P16)
+make phase2-test   # Run 156 Phase 2 tests (P00-P08, P09, P10, P11, P12, P13, P15, P16; 5 strict xfails)
 make p06 ARGS=--dry-run   # Dry-run P06 multi-trial sweep
 make p07 ARGS=--dry-run   # Dry-run P07 variance analysis
 make p08 ARGS=--dry-run   # Dry-run P08 MCPTox evaluation
 make p08-replay           # Replay cached MCPTox execution traces
+make p09 ARGS=--dry-run   # Dry-run P09 red-team regression suite
+make p09-rescore          # Re-score P09 results from disk without model calls
 make p10-simulate         # Simulate P10 cheap-to-frontier cascade
 make p11 ARGS=--dry-run   # Dry-run P11 release gate
 make p11-drill            # Run P11 CI release-gate stub drills (both pass & fail)
@@ -353,12 +369,13 @@ faultline-ai-reliability/
 │   ├── _corpus/               # Canonical 350-scenario graph corpus
 │   ├── p06_passk/             # Multi-trial reliability & trace store
 │   ├── p08_mcptox/            # MCP defense & provenance engine
+│   ├── p09_redteam/           # Red-team prompt injection regression suite
 │   ├── p10_cascade/           # Calibrated cheap-to-frontier cascade & router
 │   ├── p11_release_gate/      # Tolerance-band release gate & live upgrade drill
 │   └── p12_attribution/       # Failure attribution & oracle retrieval ablation
-├── faultline_p2/              # Core Phase 2 harness, agent loop, attribute/, cascade/, gate/, models.json, and OTel tooling
+├── faultline_p2/              # Core Phase 2 harness, agent loop, attribute/, cascade/, gate/, redteam/, models.json, and OTel tooling
 ├── day01/ … day30/            # Phase 1 daily simulation modules and evidence
-├── tests/phase2/              # Phase 2 pytest suite (143 tests)
+├── tests/phase2/              # Phase 2 pytest suite (156 tests, 5 strict xfails)
 ├── research/                  # Publication 1 pre-registration, data, and red-team gates
 └── research_pub02/            # Publication 2 pre-registration, data, and red-team gates
 ```
@@ -367,7 +384,7 @@ faultline-ai-reliability/
 
 ## Budget
 
-Total API spend across all experimental sweeps is **$38.51 USD** ($36.67 prior + $1.84 P11), comfortably within the pre-registered **$150.00 USD** repository ceiling. Every API request is tracked in an append-only `ledger.jsonl` recording exact timestamp, model rung, input/output tokens, and dollar cost computed from pinned pricing tables.
+Total API spend across all experimental sweeps is **$39.14 USD** ($38.51 prior + $0.63 P09; +≈$0.07 unledgered, see P9), comfortably within the pre-registered **$150.00 USD** repository ceiling. Every API request is tracked in an append-only `ledger.jsonl` recording exact timestamp, model rung, input/output tokens, and dollar cost computed from pinned pricing tables.
 
 ---
 

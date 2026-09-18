@@ -331,7 +331,7 @@ clean:
 	find . -type d -name .pytest_cache -prune -exec rm -rf {} +
 
 # Phase 2 developer entry points
-.PHONY: phase2-install phase2-install-inspect phase2-test phase2-corpus phase2-preflight p01 p02 p03 p04-view p04-export p05 p06 p06-analysis p07 p08 p08-replay p10 p10-simulate p11 p11-drill p11-band p12 p12-recompile p13 p15 p16
+.PHONY: phase2-install phase2-install-inspect phase2-test phase2-corpus phase2-preflight p01 p02 p03 p04-view p04-export p05 p06 p06-analysis p07 p08 p08-replay p09 p09-rescore p09-stub p10 p10-simulate p11 p11-drill p11-band p12 p12-recompile p13 p15 p16
 
 phase2-install:
 	$(PY) -m pip install -e .
@@ -381,6 +381,15 @@ p08:
 
 p08-replay:
 	.venv/bin/python projects/p08_mcptox/replay.py $(ARGS)
+
+p09:
+	.venv/bin/python projects/p09_redteam/run.py --rung R2 --scenarios 20 $(if $(ARGS),$(ARGS),--dry-run)
+
+p09-rescore:
+	.venv/bin/python projects/p09_redteam/run.py --rescore
+
+p09-stub:
+	.venv/bin/python projects/p09_redteam/run.py --stub hostile --scenarios 5 --output-dir /tmp/p09_stub
 
 p10:
 	.venv/bin/python projects/p10_cascade/run.py --dry-run
