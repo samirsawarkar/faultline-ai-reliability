@@ -40,12 +40,12 @@ jobs:
           python -m pip install -e .
 
       - name: Drill 1 - stub solver (expect PASS, exit 0)
-        run: python projects/p11_release_gate/run.py --model stub:solver --band projects/p11_release_gate/band_stub.json --golden projects/p11_release_gate/golden.json
+        run: python projects/p11_release_gate/run.py --model stub:solver --band projects/p11_release_gate/band_stub.json --golden projects/p11_release_gate/golden.json --output-dir /tmp/p11_drill
 
       - name: Drill 2 - stub wrong_answer (assert FAIL, exit 2)
         run: |
           set +e
-          python projects/p11_release_gate/run.py --model stub:wrong_answer --band projects/p11_release_gate/band_stub.json --golden projects/p11_release_gate/golden.json
+          python projects/p11_release_gate/run.py --model stub:wrong_answer --band projects/p11_release_gate/band_stub.json --golden projects/p11_release_gate/golden.json --output-dir /tmp/p11_drill
           EXIT_CODE=$?
           if [ $EXIT_CODE -ne 2 ]; then
             echo "Expected exit code 2, got $EXIT_CODE"

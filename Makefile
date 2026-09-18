@@ -331,7 +331,7 @@ clean:
 	find . -type d -name .pytest_cache -prune -exec rm -rf {} +
 
 # Phase 2 developer entry points
-.PHONY: phase2-install phase2-install-inspect phase2-test phase2-corpus phase2-preflight p01 p02 p03 p04-view p04-export p05 p06 p06-analysis p07 p08 p08-replay p10 p10-simulate p12 p12-recompile p13 p15 p16
+.PHONY: phase2-install phase2-install-inspect phase2-test phase2-corpus phase2-preflight p01 p02 p03 p04-view p04-export p05 p06 p06-analysis p07 p08 p08-replay p10 p10-simulate p11 p11-drill p11-band p12 p12-recompile p13 p15 p16
 
 phase2-install:
 	$(PY) -m pip install -e .
@@ -388,6 +388,22 @@ p10:
 p10-simulate:
 	.venv/bin/python projects/p10_cascade/run.py --simulate --r4-file projects/p10_cascade/sweep_output_R4_A.json --output-dir projects/p10_cascade
 
+p11:
+	.venv/bin/python projects/p11_release_gate/run.py --model R2 --golden projects/p11_release_gate/golden.json --band projects/p11_release_gate/band.json $(if $(ARGS),$(ARGS),--dry-run)
+
+p11-drill:
+	.venv/bin/python projects/p11_release_gate/run.py --model stub:solver --band projects/p11_release_gate/band_stub.json --golden projects/p11_release_gate/golden.json --output-dir /tmp/p11_drill --report report.json
+	@set +e; \
+	.venv/bin/python projects/p11_release_gate/run.py --model stub:wrong_answer --band projects/p11_release_gate/band_stub.json --golden projects/p11_release_gate/golden.json --output-dir /tmp/p11_drill --report report.json; \
+	EXIT_CODE=$$?; \
+	if [ $$EXIT_CODE -ne 2 ]; then \
+		echo "Expected exit code 2, got $$EXIT_CODE"; exit 1; \
+	fi; \
+	echo "Drill 2 correctly exited with code 2"
+
+p11-band:
+	.venv/bin/python projects/p11_release_gate/build_band.py
+
 p12:
 	.venv/bin/python projects/p12_attribution/run.py $(if $(ARGS),$(ARGS),--dry-run --rung R2 --scenarios 150)
 
@@ -402,4 +418,5 @@ p15:
 
 p16:
 	.venv/bin/python projects/p16_runtime_policy/run.py
+
 

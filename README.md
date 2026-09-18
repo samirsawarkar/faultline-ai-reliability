@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/ci.yml)
 [![Phase 2](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/phase2.yml/badge.svg)](https://github.com/samirsawarkar/faultline-ai-reliability/actions/workflows/phase2.yml)
-[![Tests: 664 passing](https://img.shields.io/badge/tests-528%20Phase%201%20%2B%20136%20Phase%202-brightgreen.svg)](tests/)
+[![Tests: 671 passing](https://img.shields.io/badge/tests-528%20Phase%201%20%2B%20143%20Phase%202-brightgreen.svg)](tests/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ---
@@ -187,6 +187,22 @@ hashes without subjective model judges in the loop.
 *Theoretical Router Ceiling:* Across all 100 scenarios, R2 passes 75 and fails 25; R4 rescues 7 of 25 R2 failures $\rightarrow$ full ceiling $(75 + 7)/100 = \mathbf{82.0\%}$ (held-out test split ceiling $25/30 = \mathbf{83.3\%}$).  
 *Disclosure:* R4 same-model gateway drift across runs and dates is disclosed without post-hoc rationalization: 0.24 pass rate in P10 (24/100) vs 0.15 in P6 as-run (67/450) vs 7/10 in P12 pilot.
 
+### Release Gate: bands, not thresholds (Project P11)
+
+![Release Gate Evaluation](projects/p11_release_gate/figure.png)
+
+*A model upgrade cannot be judged against a fixed point threshold because serving variance shifts same-model pass rates across runs; candidate models must clear an empirical tolerance band graded by a deterministic oracle judge on a pinned golden set.*
+
+| Candidate | Pass Rate (95% CI) | Primary Failure Mode | Regressions | Verdict | Cost |
+|---|---|---|---|---|---|
+| **R1** (`qwen/qwen3.7-flash`) | 0.2333 (7/30) [0.12, 0.41] | Malformed tool calls (10/30) | 5 | **FAIL** | $0.2047 |
+| **R4** (`openai/gpt-5.6-luna`) | 0.2667 (8/30) [0.14, 0.44] | Step cap reached (18/30) | 4 | **FAIL** | $1.4408 |
+| **R2 fresh** (`z-ai/glm-5.3-flash`) | 0.8667 (26/30) [0.70, 0.95] | Step cap (2/30), 0 malformed | 0 | **PASS** | $0.1967 |
+
+*Why bands, not thresholds:* Across five separate evaluations of the exact same R2 model, historical baseline pass rates were 18/30, 21/30, 20/30, 24/30, and 26/30 (ranging from 0.6000 to 0.8667). A naive fixed threshold (e.g. 75%) would fail a production workhorse purely due to benign serving noise.  
+*Decision rule:* `PASS if candidate pass_rate >= (min_observed - 1/n_golden) AND malformed_rate <= (max_observed + 1/n_golden); FAIL if pass_rate < (min_observed - 3/n_golden); otherwise WARN.`  
+*CI integration:* `release-gate.yml` executes two-way stub drills (verifying PASS on solver and exit code 2 on wrong-answer) per push; live model evaluations run via manual workflow dispatch.
+
 ---
 
 ## How the evidence is produced
@@ -212,6 +228,7 @@ Every experimental result is bound to immutable contracts and reproducible seeds
 | [P07](projects/p07_variance/) | Serving Variance | Temperature-0 serving nondeterminism across providers | Complete | $1.20 |
 | [P08](projects/p08_mcptox/) | MCP Defense | Client-side runtime provenance contract on MCPTox (Pub 02) | Complete | $3.55 |
 | [P10](projects/p10_cascade/) | Calibrated Cascade | Cheap→frontier router on deterministic signals; Pareto frontier | Complete | $4.67 |
+| [P11](projects/p11_release_gate/) | Release Gate | Tolerance-band gate: sha256 golden set, pinned oracle judge, live upgrade drill | Complete | $1.84 |
 | [P12](projects/p12_attribution/) | Failure Attribution | Retriever-vs-generator ablation with oracle retrieval (H8) | Complete | $1.93 |
 | [P13](projects/p13_slo_incident/) | SLO Incident | Multi-window burn-rate SLO alerting & incident triage | Complete | $0.00 |
 | [P15](projects/p15_resilience/) | Resilience | Adaptive circuit breakers & jittered backoff policies | Complete | $0.00 |
@@ -312,12 +329,14 @@ All test suites and benchmark dry-runs execute locally without network access or
 ```bash
 make venv          # Create virtualenv and install pinned requirements
 make test          # Run 528 Phase 1 unit/integration tests
-make phase2-test   # Run 136 Phase 2 tests (P00-P08, P10, P12, P13, P15, P16)
+make phase2-test   # Run 143 Phase 2 tests (P00-P08, P10, P11, P12, P13, P15, P16)
 make p06 ARGS=--dry-run   # Dry-run P06 multi-trial sweep
 make p07 ARGS=--dry-run   # Dry-run P07 variance analysis
 make p08 ARGS=--dry-run   # Dry-run P08 MCPTox evaluation
 make p08-replay           # Replay cached MCPTox execution traces
 make p10-simulate         # Simulate P10 cheap-to-frontier cascade
+make p11 ARGS=--dry-run   # Dry-run P11 release gate
+make p11-drill            # Run P11 CI release-gate stub drills (both pass & fail)
 make p12 ARGS=--dry-run   # Dry-run P12 failure attribution
 ```
 
@@ -335,10 +354,11 @@ faultline-ai-reliability/
 │   ├── p06_passk/             # Multi-trial reliability & trace store
 │   ├── p08_mcptox/            # MCP defense & provenance engine
 │   ├── p10_cascade/           # Calibrated cheap-to-frontier cascade & router
+│   ├── p11_release_gate/      # Tolerance-band release gate & live upgrade drill
 │   └── p12_attribution/       # Failure attribution & oracle retrieval ablation
-├── faultline_p2/              # Core Phase 2 harness, agent loop, attribute/, cascade/, and OTel tooling
+├── faultline_p2/              # Core Phase 2 harness, agent loop, attribute/, cascade/, gate/, models.json, and OTel tooling
 ├── day01/ … day30/            # Phase 1 daily simulation modules and evidence
-├── tests/phase2/              # Phase 2 pytest suite (136 tests)
+├── tests/phase2/              # Phase 2 pytest suite (143 tests)
 ├── research/                  # Publication 1 pre-registration, data, and red-team gates
 └── research_pub02/            # Publication 2 pre-registration, data, and red-team gates
 ```
@@ -347,7 +367,7 @@ faultline-ai-reliability/
 
 ## Budget
 
-Total API spend across all experimental sweeps is **$36.67 USD** ($30.08 prior + $1.93 P12 + $4.67 P10), comfortably within the pre-registered **$150.00 USD** repository ceiling. Every API request is tracked in an append-only `ledger.jsonl` recording exact timestamp, model rung, input/output tokens, and dollar cost computed from pinned pricing tables.
+Total API spend across all experimental sweeps is **$38.51 USD** ($36.67 prior + $1.84 P11), comfortably within the pre-registered **$150.00 USD** repository ceiling. Every API request is tracked in an append-only `ledger.jsonl` recording exact timestamp, model rung, input/output tokens, and dollar cost computed from pinned pricing tables.
 
 ---
 
