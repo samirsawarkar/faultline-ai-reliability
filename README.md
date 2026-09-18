@@ -193,11 +193,11 @@ hashes without subjective model judges in the loop.
 
 *A model upgrade cannot be judged against a fixed point threshold because serving variance shifts same-model pass rates across runs; candidate models must clear an empirical tolerance band graded by a deterministic oracle judge on a pinned golden set.*
 
-| Candidate | Pass Rate (95% CI) | Primary Failure Mode | Regressions | Verdict | Cost |
-|---|---|---|---|---|---|
-| **R1** (`qwen/qwen3.7-flash`) | 0.2333 (7/30) [0.12, 0.41] | Malformed tool calls (10/30) | 5 | **FAIL** | $0.2047 |
-| **R4** (`openai/gpt-5.6-luna`) | 0.2667 (8/30) [0.14, 0.44] | Step cap reached (18/30) | 4 | **FAIL** | $1.4408 |
-| **R2 fresh** (`z-ai/glm-5.3-flash`) | 0.8667 (26/30) [0.70, 0.95] | Step cap (2/30), 0 malformed | 0 | **PASS** | $0.1967 |
+| Candidate | Pass Rate (95% CI) | Primary Failure Mode | Regressions | Verdict |
+|---|---|---|---|---|
+| **R1** (`qwen/qwen3.7-flash`) | 0.2333 (7/30) [0.12, 0.41] | Malformed tool calls (10/30) | 5 | **FAIL** |
+| **R4** (`openai/gpt-5.6-luna`) | 0.2667 (8/30) [0.14, 0.44] | Step cap reached (18/30) | 4 | **FAIL** |
+| **R2 fresh** (`z-ai/glm-5.3-flash`) | 0.8667 (26/30) [0.70, 0.95] | Step cap (2/30), 0 malformed | 0 | **PASS** |
 
 *Why bands, not thresholds:* Across five separate evaluations of the exact same R2 model, historical baseline pass rates were 18/30, 21/30, 20/30, 24/30, and 26/30 (ranging from 0.6000 to 0.8667). A naive fixed threshold (e.g. 75%) would fail a production workhorse purely due to benign serving noise.  
 *Decision rule:* `PASS if candidate pass_rate >= (min_observed - 1/n_golden) AND malformed_rate <= (max_observed + 1/n_golden); FAIL if pass_rate < (min_observed - 3/n_golden); otherwise WARN.`  
@@ -230,23 +230,23 @@ Every experimental result is bound to immutable contracts and reproducible seeds
 
 ## Project Board
 
-| ID | Project | Focus | Status | Spend |
-|---|---|---|---|---|
-| [P01](projects/p01_baseline/) | Baseline | Grounded multi-hop agent evaluation baseline | Complete | $0.14 |
-| [P02](projects/p02_otel_exporter/) | OTel Exporter | OpenTelemetry GenAI semantic conventions & spans | Complete | $0.00 |
-| [P03](projects/p03_grounding/) | Grounding Zero-Point | Multi-hop depth grounding decay across T1–T3 | Complete | $1.43 |
-| [P04](projects/p04_taxonomy/) | Failure Taxonomy | Human-in-the-loop trace coding (8 failure modes) | Complete | $0.00 |
-| [P05](projects/p05_judge/) | Evaluator Calibration | LLM judge calibration & Rogan-Gladen correction | Complete | $0.04 |
-| [P06](projects/p06_passk/) | Multi-Trial Reliability | $\text{pass}^k$ independence testing & failure clustering (Pub 01) | Complete | $23.73 |
-| [P07](projects/p07_variance/) | Serving Variance | Temperature-0 serving nondeterminism across providers | Complete | $1.20 |
-| [P08](projects/p08_mcptox/) | MCP Defense | Client-side runtime provenance contract on MCPTox (Pub 02) | Complete | $3.55 |
-| [P09](projects/p09_redteam/) | Red-Team Regression | Document-text injection suite, 10 categories, two arms; regressions as strict xfails | Complete | $0.63 |
-| [P10](projects/p10_cascade/) | Calibrated Cascade | Cheap→frontier router on deterministic signals; Pareto frontier | Complete | $4.67 |
-| [P11](projects/p11_release_gate/) | Release Gate | Tolerance-band gate: sha256 golden set, pinned oracle judge, live upgrade drill | Complete | $1.84 |
-| [P12](projects/p12_attribution/) | Failure Attribution | Retriever-vs-generator ablation with oracle retrieval (H8) | Complete | $1.93 |
-| [P13](projects/p13_slo_incident/) | SLO Incident | Multi-window burn-rate SLO alerting & incident triage | Complete | $0.00 |
-| [P15](projects/p15_resilience/) | Resilience | Adaptive circuit breakers & jittered backoff policies | Complete | $0.00 |
-| [P16](projects/p16_runtime_policy/) | Runtime Policy | Deterministic call allowlists, path containment, token caps | Complete | $0.00 |
+| ID | Project | Focus | Status |
+|---|---|---|---|
+| [P01](projects/p01_baseline/) | Baseline | Grounded multi-hop agent evaluation baseline | Complete |
+| [P02](projects/p02_otel_exporter/) | OTel Exporter | OpenTelemetry GenAI semantic conventions & spans | Complete |
+| [P03](projects/p03_grounding/) | Grounding Zero-Point | Multi-hop depth grounding decay across T1–T3 | Complete |
+| [P04](projects/p04_taxonomy/) | Failure Taxonomy | Human-in-the-loop trace coding (8 failure modes) | Complete |
+| [P05](projects/p05_judge/) | Evaluator Calibration | LLM judge calibration & Rogan-Gladen correction | Complete |
+| [P06](projects/p06_passk/) | Multi-Trial Reliability | $\text{pass}^k$ independence testing & failure clustering (Pub 01) | Complete |
+| [P07](projects/p07_variance/) | Serving Variance | Temperature-0 serving nondeterminism across providers | Complete |
+| [P08](projects/p08_mcptox/) | MCP Defense | Client-side runtime provenance contract on MCPTox (Pub 02) | Complete |
+| [P09](projects/p09_redteam/) | Red-Team Regression | Document-text injection suite, 10 categories, two arms; regressions as strict xfails | Complete |
+| [P10](projects/p10_cascade/) | Calibrated Cascade | Cheap→frontier router on deterministic signals; Pareto frontier | Complete |
+| [P11](projects/p11_release_gate/) | Release Gate | Tolerance-band gate: sha256 golden set, pinned oracle judge, live upgrade drill | Complete |
+| [P12](projects/p12_attribution/) | Failure Attribution | Retriever-vs-generator ablation with oracle retrieval (H8) | Complete |
+| [P13](projects/p13_slo_incident/) | SLO Incident | Multi-window burn-rate SLO alerting & incident triage | Complete |
+| [P15](projects/p15_resilience/) | Resilience | Adaptive circuit breakers & jittered backoff policies | Complete |
+| [P16](projects/p16_runtime_policy/) | Runtime Policy | Deterministic call allowlists, path containment, token caps | Complete |
 
 ---
 
@@ -379,12 +379,6 @@ faultline-ai-reliability/
 ├── research/                  # Publication 1 pre-registration, data, and red-team gates
 └── research_pub02/            # Publication 2 pre-registration, data, and red-team gates
 ```
-
----
-
-## Budget
-
-Total API spend across all experimental sweeps is **$39.14 USD** ($38.51 prior + $0.63 P09; +≈$0.07 unledgered, see P9), comfortably within the pre-registered **$150.00 USD** repository ceiling. Every API request is tracked in an append-only `ledger.jsonl` recording exact timestamp, model rung, input/output tokens, and dollar cost computed from pinned pricing tables.
 
 ---
 
