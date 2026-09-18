@@ -1,0 +1,1792 @@
+[
+  {
+    "task_id": "r-0201",
+    "status": "answered",
+    "answer": "Ferro-5354",
+    "cited_sources": [
+      "doc-0270"
+    ],
+    "steps_used": 2,
+    "step_cap": 24,
+    "reason": null,
+    "trace": [
+      {
+        "index": 1,
+        "thought": "",
+        "tool_call": {
+          "tool": "search",
+          "query": "\"Juniper Systems\" \"Sector Beta\" internal codename"
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0150",
+              "title": "Juniper Systems (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Juniper Systems (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Juniper Systems (Sector Beta) is Alto-4750. The external auditor of Juniper Systems (Sector Beta) is Basalt-4751. The flagship product of Juniper Systems (Sector Beta) is Cobalt-4752. The headquarters district of Juniper Systems (Sector Beta) is Drift-4753. The internal codename of Juniper Systems (Sector Beta) is Ferro-4754."
+            },
+            {
+              "doc_id": "link-d59ed49beb03",
+              "title": "Affiliation record link-d59ed49beb03",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding internal codename Ferro-4754 is officially affiliated with Solace Systems (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0180",
+              "title": "Solace Systems (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Solace Systems (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Solace Systems (Sector Beta) is Alto-4900. The external auditor of Solace Systems (Sector Beta) is Basalt-4901. The flagship product of Solace Systems (Sector Beta) is Cobalt-4902. The headquarters district of Solace Systems (Sector Beta) is Drift-4903. The internal codename of Solace Systems (Sector Beta) is Ferro-4904."
+            },
+            {
+              "doc_id": "link-6885add6c98e",
+              "title": "Affiliation record link-6885add6c98e",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding flagship product Cobalt-4902 is officially affiliated with Lodestar Works (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0210",
+              "title": "Lodestar Works (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Lodestar Works (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Lodestar Works (Sector Beta) is Alto-5050. The external auditor of Lodestar Works (Sector Beta) is Basalt-5051. The flagship product of Lodestar Works (Sector Beta) is Cobalt-5052. The headquarters district of Lodestar Works (Sector Beta) is Drift-5053. The internal codename of Lodestar Works (Sector Beta) is Ferro-5054."
+            },
+            {
+              "doc_id": "link-2b99ab3225ce",
+              "title": "Affiliation record link-2b99ab3225ce",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding internal codename Ferro-5054 is officially affiliated with Borel Collective (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0240",
+              "title": "Borel Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Borel Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Borel Collective (Sector Beta) is Alto-5200. The external auditor of Borel Collective (Sector Beta) is Basalt-5201. The flagship product of Borel Collective (Sector Beta) is Cobalt-5202. The headquarters district of Borel Collective (Sector Beta) is Drift-5203. The internal codename of Borel Collective (Sector Beta) is Ferro-5204."
+            },
+            {
+              "doc_id": "link-5c169c2c9ef5",
+              "title": "Affiliation record link-5c169c2c9ef5",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding external auditor Basalt-5201 is officially affiliated with Ember Works (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0270",
+              "title": "Ember Works (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Ember Works (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Ember Works (Sector Beta) is Alto-5350. The external auditor of Ember Works (Sector Beta) is Basalt-5351. The flagship product of Ember Works (Sector Beta) is Cobalt-5352. The headquarters district of Ember Works (Sector Beta) is Drift-5353. The internal codename of Ember Works (Sector Beta) is Ferro-5354."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "steps": [
+      {
+        "index": 1,
+        "thought": "",
+        "tool_call": {
+          "tool": "search",
+          "query": "\"Juniper Systems\" \"Sector Beta\" internal codename"
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0150",
+              "title": "Juniper Systems (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Juniper Systems (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Juniper Systems (Sector Beta) is Alto-4750. The external auditor of Juniper Systems (Sector Beta) is Basalt-4751. The flagship product of Juniper Systems (Sector Beta) is Cobalt-4752. The headquarters district of Juniper Systems (Sector Beta) is Drift-4753. The internal codename of Juniper Systems (Sector Beta) is Ferro-4754."
+            },
+            {
+              "doc_id": "link-d59ed49beb03",
+              "title": "Affiliation record link-d59ed49beb03",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding internal codename Ferro-4754 is officially affiliated with Solace Systems (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0180",
+              "title": "Solace Systems (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Solace Systems (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Solace Systems (Sector Beta) is Alto-4900. The external auditor of Solace Systems (Sector Beta) is Basalt-4901. The flagship product of Solace Systems (Sector Beta) is Cobalt-4902. The headquarters district of Solace Systems (Sector Beta) is Drift-4903. The internal codename of Solace Systems (Sector Beta) is Ferro-4904."
+            },
+            {
+              "doc_id": "link-6885add6c98e",
+              "title": "Affiliation record link-6885add6c98e",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding flagship product Cobalt-4902 is officially affiliated with Lodestar Works (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0210",
+              "title": "Lodestar Works (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Lodestar Works (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Lodestar Works (Sector Beta) is Alto-5050. The external auditor of Lodestar Works (Sector Beta) is Basalt-5051. The flagship product of Lodestar Works (Sector Beta) is Cobalt-5052. The headquarters district of Lodestar Works (Sector Beta) is Drift-5053. The internal codename of Lodestar Works (Sector Beta) is Ferro-5054."
+            },
+            {
+              "doc_id": "link-2b99ab3225ce",
+              "title": "Affiliation record link-2b99ab3225ce",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding internal codename Ferro-5054 is officially affiliated with Borel Collective (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0240",
+              "title": "Borel Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Borel Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Borel Collective (Sector Beta) is Alto-5200. The external auditor of Borel Collective (Sector Beta) is Basalt-5201. The flagship product of Borel Collective (Sector Beta) is Cobalt-5202. The headquarters district of Borel Collective (Sector Beta) is Drift-5203. The internal codename of Borel Collective (Sector Beta) is Ferro-5204."
+            },
+            {
+              "doc_id": "link-5c169c2c9ef5",
+              "title": "Affiliation record link-5c169c2c9ef5",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding external auditor Basalt-5201 is officially affiliated with Ember Works (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0270",
+              "title": "Ember Works (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Ember Works (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Ember Works (Sector Beta) is Alto-5350. The external auditor of Ember Works (Sector Beta) is Basalt-5351. The flagship product of Ember Works (Sector Beta) is Cobalt-5352. The headquarters district of Ember Works (Sector Beta) is Drift-5353. The internal codename of Ember Works (Sector Beta) is Ferro-5354."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "scenario_id": "r-0201",
+    "run_id": "R4-B-r-0201",
+    "tier": "T3",
+    "grounded": true,
+    "correct_answer": true,
+    "cited_required": true,
+    "wall_time_ms": 4067.5714015960693,
+    "input_tokens": 1448,
+    "output_tokens": 210,
+    "cost_usd": 0.0013728
+  },
+  {
+    "task_id": "r-0202",
+    "status": "answered",
+    "answer": "Kelvin-5359",
+    "cited_sources": [
+      "doc-0271"
+    ],
+    "steps_used": 2,
+    "step_cap": 24,
+    "reason": null,
+    "trace": [
+      {
+        "index": 1,
+        "thought": "",
+        "tool_call": {
+          "tool": "search",
+          "query": "\"Verdigris Collective\" \"Sector Beta\""
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0151",
+              "title": "Verdigris Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Verdigris Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Verdigris Collective (Sector Beta) is Gossamer-4755. The external auditor of Verdigris Collective (Sector Beta) is Helix-4756. The flagship product of Verdigris Collective (Sector Beta) is Indigo-4757. The headquarters district of Verdigris Collective (Sector Beta) is Jade-4758. The internal codename of Verdigris Collective (Sector Beta) is Kelvin-4759."
+            },
+            {
+              "doc_id": "link-84a1613376f0",
+              "title": "Affiliation record link-84a1613376f0",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding headquarters district Jade-4758 is officially affiliated with Peregrine Foundry (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0181",
+              "title": "Peregrine Foundry (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Peregrine Foundry (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Peregrine Foundry (Sector Beta) is Gossamer-4905. The external auditor of Peregrine Foundry (Sector Beta) is Helix-4906. The flagship product of Peregrine Foundry (Sector Beta) is Indigo-4907. The headquarters district of Peregrine Foundry (Sector Beta) is Jade-4908. The internal codename of Peregrine Foundry (Sector Beta) is Kelvin-4909."
+            },
+            {
+              "doc_id": "link-213c651bc94d",
+              "title": "Affiliation record link-213c651bc94d",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding flagship product Indigo-4907 is officially affiliated with Juniper Labs (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0211",
+              "title": "Juniper Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Juniper Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Juniper Labs (Sector Beta) is Gossamer-5055. The external auditor of Juniper Labs (Sector Beta) is Helix-5056. The flagship product of Juniper Labs (Sector Beta) is Indigo-5057. The headquarters district of Juniper Labs (Sector Beta) is Jade-5058. The internal codename of Juniper Labs (Sector Beta) is Kelvin-5059."
+            },
+            {
+              "doc_id": "link-e483bbb0e131",
+              "title": "Affiliation record link-e483bbb0e131",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding archival reference Gossamer-5055 is officially affiliated with Xebec Foundry (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0241",
+              "title": "Xebec Foundry (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Xebec Foundry (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Xebec Foundry (Sector Beta) is Gossamer-5205. The external auditor of Xebec Foundry (Sector Beta) is Helix-5206. The flagship product of Xebec Foundry (Sector Beta) is Indigo-5207. The headquarters district of Xebec Foundry (Sector Beta) is Jade-5208. The internal codename of Xebec Foundry (Sector Beta) is Kelvin-5209."
+            },
+            {
+              "doc_id": "link-4ceff5b0b03c",
+              "title": "Affiliation record link-4ceff5b0b03c",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding internal codename Kelvin-5209 is officially affiliated with Marrow Systems (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0271",
+              "title": "Marrow Systems (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Marrow Systems (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Marrow Systems (Sector Beta) is Gossamer-5355. The external auditor of Marrow Systems (Sector Beta) is Helix-5356. The flagship product of Marrow Systems (Sector Beta) is Indigo-5357. The headquarters district of Marrow Systems (Sector Beta) is Jade-5358. The internal codename of Marrow Systems (Sector Beta) is Kelvin-5359."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "steps": [
+      {
+        "index": 1,
+        "thought": "",
+        "tool_call": {
+          "tool": "search",
+          "query": "\"Verdigris Collective\" \"Sector Beta\""
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0151",
+              "title": "Verdigris Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Verdigris Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Verdigris Collective (Sector Beta) is Gossamer-4755. The external auditor of Verdigris Collective (Sector Beta) is Helix-4756. The flagship product of Verdigris Collective (Sector Beta) is Indigo-4757. The headquarters district of Verdigris Collective (Sector Beta) is Jade-4758. The internal codename of Verdigris Collective (Sector Beta) is Kelvin-4759."
+            },
+            {
+              "doc_id": "link-84a1613376f0",
+              "title": "Affiliation record link-84a1613376f0",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding headquarters district Jade-4758 is officially affiliated with Peregrine Foundry (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0181",
+              "title": "Peregrine Foundry (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Peregrine Foundry (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Peregrine Foundry (Sector Beta) is Gossamer-4905. The external auditor of Peregrine Foundry (Sector Beta) is Helix-4906. The flagship product of Peregrine Foundry (Sector Beta) is Indigo-4907. The headquarters district of Peregrine Foundry (Sector Beta) is Jade-4908. The internal codename of Peregrine Foundry (Sector Beta) is Kelvin-4909."
+            },
+            {
+              "doc_id": "link-213c651bc94d",
+              "title": "Affiliation record link-213c651bc94d",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding flagship product Indigo-4907 is officially affiliated with Juniper Labs (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0211",
+              "title": "Juniper Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Juniper Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Juniper Labs (Sector Beta) is Gossamer-5055. The external auditor of Juniper Labs (Sector Beta) is Helix-5056. The flagship product of Juniper Labs (Sector Beta) is Indigo-5057. The headquarters district of Juniper Labs (Sector Beta) is Jade-5058. The internal codename of Juniper Labs (Sector Beta) is Kelvin-5059."
+            },
+            {
+              "doc_id": "link-e483bbb0e131",
+              "title": "Affiliation record link-e483bbb0e131",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding archival reference Gossamer-5055 is officially affiliated with Xebec Foundry (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0241",
+              "title": "Xebec Foundry (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Xebec Foundry (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Xebec Foundry (Sector Beta) is Gossamer-5205. The external auditor of Xebec Foundry (Sector Beta) is Helix-5206. The flagship product of Xebec Foundry (Sector Beta) is Indigo-5207. The headquarters district of Xebec Foundry (Sector Beta) is Jade-5208. The internal codename of Xebec Foundry (Sector Beta) is Kelvin-5209."
+            },
+            {
+              "doc_id": "link-4ceff5b0b03c",
+              "title": "Affiliation record link-4ceff5b0b03c",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding internal codename Kelvin-5209 is officially affiliated with Marrow Systems (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0271",
+              "title": "Marrow Systems (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Marrow Systems (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Marrow Systems (Sector Beta) is Gossamer-5355. The external auditor of Marrow Systems (Sector Beta) is Helix-5356. The flagship product of Marrow Systems (Sector Beta) is Indigo-5357. The headquarters district of Marrow Systems (Sector Beta) is Jade-5358. The internal codename of Marrow Systems (Sector Beta) is Kelvin-5359."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "scenario_id": "r-0202",
+    "run_id": "R4-B-r-0202",
+    "tier": "T3",
+    "grounded": true,
+    "correct_answer": true,
+    "cited_required": true,
+    "wall_time_ms": 5598.932981491089,
+    "input_tokens": 1482,
+    "output_tokens": 205,
+    "cost_usd": 0.0013812
+  },
+  {
+    "task_id": "r-0203",
+    "status": "answered",
+    "answer": "Lumen-5360",
+    "cited_sources": [
+      "doc-0272"
+    ],
+    "steps_used": 2,
+    "step_cap": 24,
+    "reason": null,
+    "trace": [
+      {
+        "index": 1,
+        "thought": "",
+        "tool_call": {
+          "tool": "search",
+          "query": "\"Marrow Union\" \"Sector Beta\""
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0152",
+              "title": "Marrow Union (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Marrow Union (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Marrow Union (Sector Beta) is Lumen-4760. The external auditor of Marrow Union (Sector Beta) is Mica-4761. The flagship product of Marrow Union (Sector Beta) is Nyx-4762. The headquarters district of Marrow Union (Sector Beta) is Onyx-4763. The internal codename of Marrow Union (Sector Beta) is Prism-4764."
+            },
+            {
+              "doc_id": "link-43c7b6c4a8d1",
+              "title": "Affiliation record link-43c7b6c4a8d1",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding internal codename Prism-4764 is officially affiliated with Fathom Collective (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0182",
+              "title": "Fathom Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Fathom Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Fathom Collective (Sector Beta) is Lumen-4910. The external auditor of Fathom Collective (Sector Beta) is Mica-4911. The flagship product of Fathom Collective (Sector Beta) is Nyx-4912. The headquarters district of Fathom Collective (Sector Beta) is Onyx-4913. The internal codename of Fathom Collective (Sector Beta) is Prism-4914."
+            },
+            {
+              "doc_id": "link-fb191a0c1e43",
+              "title": "Affiliation record link-fb191a0c1e43",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding flagship product Nyx-4912 is officially affiliated with Willow Systems (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0212",
+              "title": "Willow Systems (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Willow Systems (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Willow Systems (Sector Beta) is Lumen-5060. The external auditor of Willow Systems (Sector Beta) is Mica-5061. The flagship product of Willow Systems (Sector Beta) is Nyx-5062. The headquarters district of Willow Systems (Sector Beta) is Onyx-5063. The internal codename of Willow Systems (Sector Beta) is Prism-5064."
+            },
+            {
+              "doc_id": "link-c09c78a1db13",
+              "title": "Affiliation record link-c09c78a1db13",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding flagship product Nyx-5062 is officially affiliated with Aster Labs (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0242",
+              "title": "Aster Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Aster Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Aster Labs (Sector Beta) is Lumen-5210. The external auditor of Aster Labs (Sector Beta) is Mica-5211. The flagship product of Aster Labs (Sector Beta) is Nyx-5212. The headquarters district of Aster Labs (Sector Beta) is Onyx-5213. The internal codename of Aster Labs (Sector Beta) is Prism-5214."
+            },
+            {
+              "doc_id": "link-3bff786359c9",
+              "title": "Affiliation record link-3bff786359c9",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding headquarters district Onyx-5213 is officially affiliated with Aster Collective (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0272",
+              "title": "Aster Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Aster Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Aster Collective (Sector Beta) is Lumen-5360. The external auditor of Aster Collective (Sector Beta) is Mica-5361. The flagship product of Aster Collective (Sector Beta) is Nyx-5362. The headquarters district of Aster Collective (Sector Beta) is Onyx-5363. The internal codename of Aster Collective (Sector Beta) is Prism-5364."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "steps": [
+      {
+        "index": 1,
+        "thought": "",
+        "tool_call": {
+          "tool": "search",
+          "query": "\"Marrow Union\" \"Sector Beta\""
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0152",
+              "title": "Marrow Union (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Marrow Union (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Marrow Union (Sector Beta) is Lumen-4760. The external auditor of Marrow Union (Sector Beta) is Mica-4761. The flagship product of Marrow Union (Sector Beta) is Nyx-4762. The headquarters district of Marrow Union (Sector Beta) is Onyx-4763. The internal codename of Marrow Union (Sector Beta) is Prism-4764."
+            },
+            {
+              "doc_id": "link-43c7b6c4a8d1",
+              "title": "Affiliation record link-43c7b6c4a8d1",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding internal codename Prism-4764 is officially affiliated with Fathom Collective (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0182",
+              "title": "Fathom Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Fathom Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Fathom Collective (Sector Beta) is Lumen-4910. The external auditor of Fathom Collective (Sector Beta) is Mica-4911. The flagship product of Fathom Collective (Sector Beta) is Nyx-4912. The headquarters district of Fathom Collective (Sector Beta) is Onyx-4913. The internal codename of Fathom Collective (Sector Beta) is Prism-4914."
+            },
+            {
+              "doc_id": "link-fb191a0c1e43",
+              "title": "Affiliation record link-fb191a0c1e43",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding flagship product Nyx-4912 is officially affiliated with Willow Systems (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0212",
+              "title": "Willow Systems (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Willow Systems (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Willow Systems (Sector Beta) is Lumen-5060. The external auditor of Willow Systems (Sector Beta) is Mica-5061. The flagship product of Willow Systems (Sector Beta) is Nyx-5062. The headquarters district of Willow Systems (Sector Beta) is Onyx-5063. The internal codename of Willow Systems (Sector Beta) is Prism-5064."
+            },
+            {
+              "doc_id": "link-c09c78a1db13",
+              "title": "Affiliation record link-c09c78a1db13",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding flagship product Nyx-5062 is officially affiliated with Aster Labs (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0242",
+              "title": "Aster Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Aster Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Aster Labs (Sector Beta) is Lumen-5210. The external auditor of Aster Labs (Sector Beta) is Mica-5211. The flagship product of Aster Labs (Sector Beta) is Nyx-5212. The headquarters district of Aster Labs (Sector Beta) is Onyx-5213. The internal codename of Aster Labs (Sector Beta) is Prism-5214."
+            },
+            {
+              "doc_id": "link-3bff786359c9",
+              "title": "Affiliation record link-3bff786359c9",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding headquarters district Onyx-5213 is officially affiliated with Aster Collective (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0272",
+              "title": "Aster Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Aster Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Aster Collective (Sector Beta) is Lumen-5360. The external auditor of Aster Collective (Sector Beta) is Mica-5361. The flagship product of Aster Collective (Sector Beta) is Nyx-5362. The headquarters district of Aster Collective (Sector Beta) is Onyx-5363. The internal codename of Aster Collective (Sector Beta) is Prism-5364."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "scenario_id": "r-0203",
+    "run_id": "R4-B-r-0203",
+    "tier": "T3",
+    "grounded": true,
+    "correct_answer": true,
+    "cited_required": true,
+    "wall_time_ms": 4381.230115890503,
+    "input_tokens": 1427,
+    "output_tokens": 205,
+    "cost_usd": 0.0013482
+  },
+  {
+    "task_id": "r-0204",
+    "status": "answered",
+    "answer": "Rune-5366",
+    "cited_sources": [
+      "doc-0273"
+    ],
+    "steps_used": 2,
+    "step_cap": 24,
+    "reason": null,
+    "trace": [
+      {
+        "index": 1,
+        "thought": "",
+        "tool_call": {
+          "tool": "search",
+          "query": "Girona Labs Sector Beta internal codename"
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0153",
+              "title": "Girona Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Girona Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Girona Labs (Sector Beta) is Quartz-4765. The external auditor of Girona Labs (Sector Beta) is Rune-4766. The flagship product of Girona Labs (Sector Beta) is Sable-4767. The headquarters district of Girona Labs (Sector Beta) is Talc-4768. The internal codename of Girona Labs (Sector Beta) is Ultra-4769."
+            },
+            {
+              "doc_id": "link-97a7761f0d25",
+              "title": "Affiliation record link-97a7761f0d25",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding internal codename Ultra-4769 is officially affiliated with Girona Foundry (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0183",
+              "title": "Girona Foundry (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Girona Foundry (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Girona Foundry (Sector Beta) is Quartz-4915. The external auditor of Girona Foundry (Sector Beta) is Rune-4916. The flagship product of Girona Foundry (Sector Beta) is Sable-4917. The headquarters district of Girona Foundry (Sector Beta) is Talc-4918. The internal codename of Girona Foundry (Sector Beta) is Ultra-4919."
+            },
+            {
+              "doc_id": "link-d6f1a16c9c40",
+              "title": "Affiliation record link-d6f1a16c9c40",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding external auditor Rune-4916 is officially affiliated with Ember Foundry (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0213",
+              "title": "Ember Foundry (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Ember Foundry (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Ember Foundry (Sector Beta) is Quartz-5065. The external auditor of Ember Foundry (Sector Beta) is Rune-5066. The flagship product of Ember Foundry (Sector Beta) is Sable-5067. The headquarters district of Ember Foundry (Sector Beta) is Talc-5068. The internal codename of Ember Foundry (Sector Beta) is Ultra-5069."
+            },
+            {
+              "doc_id": "link-31e0bf13ae26",
+              "title": "Affiliation record link-31e0bf13ae26",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding headquarters district Talc-5068 is officially affiliated with Aster Union (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0243",
+              "title": "Aster Union (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Aster Union (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Aster Union (Sector Beta) is Quartz-5215. The external auditor of Aster Union (Sector Beta) is Rune-5216. The flagship product of Aster Union (Sector Beta) is Sable-5217. The headquarters district of Aster Union (Sector Beta) is Talc-5218. The internal codename of Aster Union (Sector Beta) is Ultra-5219."
+            },
+            {
+              "doc_id": "link-9783a2a7494e",
+              "title": "Affiliation record link-9783a2a7494e",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding external auditor Rune-5216 is officially affiliated with Borel Systems (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0273",
+              "title": "Borel Systems (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Borel Systems (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Borel Systems (Sector Beta) is Quartz-5365. The external auditor of Borel Systems (Sector Beta) is Rune-5366. The flagship product of Borel Systems (Sector Beta) is Sable-5367. The headquarters district of Borel Systems (Sector Beta) is Talc-5368. The internal codename of Borel Systems (Sector Beta) is Ultra-5369."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "steps": [
+      {
+        "index": 1,
+        "thought": "",
+        "tool_call": {
+          "tool": "search",
+          "query": "Girona Labs Sector Beta internal codename"
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0153",
+              "title": "Girona Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Girona Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Girona Labs (Sector Beta) is Quartz-4765. The external auditor of Girona Labs (Sector Beta) is Rune-4766. The flagship product of Girona Labs (Sector Beta) is Sable-4767. The headquarters district of Girona Labs (Sector Beta) is Talc-4768. The internal codename of Girona Labs (Sector Beta) is Ultra-4769."
+            },
+            {
+              "doc_id": "link-97a7761f0d25",
+              "title": "Affiliation record link-97a7761f0d25",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding internal codename Ultra-4769 is officially affiliated with Girona Foundry (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0183",
+              "title": "Girona Foundry (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Girona Foundry (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Girona Foundry (Sector Beta) is Quartz-4915. The external auditor of Girona Foundry (Sector Beta) is Rune-4916. The flagship product of Girona Foundry (Sector Beta) is Sable-4917. The headquarters district of Girona Foundry (Sector Beta) is Talc-4918. The internal codename of Girona Foundry (Sector Beta) is Ultra-4919."
+            },
+            {
+              "doc_id": "link-d6f1a16c9c40",
+              "title": "Affiliation record link-d6f1a16c9c40",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding external auditor Rune-4916 is officially affiliated with Ember Foundry (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0213",
+              "title": "Ember Foundry (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Ember Foundry (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Ember Foundry (Sector Beta) is Quartz-5065. The external auditor of Ember Foundry (Sector Beta) is Rune-5066. The flagship product of Ember Foundry (Sector Beta) is Sable-5067. The headquarters district of Ember Foundry (Sector Beta) is Talc-5068. The internal codename of Ember Foundry (Sector Beta) is Ultra-5069."
+            },
+            {
+              "doc_id": "link-31e0bf13ae26",
+              "title": "Affiliation record link-31e0bf13ae26",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding headquarters district Talc-5068 is officially affiliated with Aster Union (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0243",
+              "title": "Aster Union (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Aster Union (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Aster Union (Sector Beta) is Quartz-5215. The external auditor of Aster Union (Sector Beta) is Rune-5216. The flagship product of Aster Union (Sector Beta) is Sable-5217. The headquarters district of Aster Union (Sector Beta) is Talc-5218. The internal codename of Aster Union (Sector Beta) is Ultra-5219."
+            },
+            {
+              "doc_id": "link-9783a2a7494e",
+              "title": "Affiliation record link-9783a2a7494e",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding external auditor Rune-5216 is officially affiliated with Borel Systems (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0273",
+              "title": "Borel Systems (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Borel Systems (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Borel Systems (Sector Beta) is Quartz-5365. The external auditor of Borel Systems (Sector Beta) is Rune-5366. The flagship product of Borel Systems (Sector Beta) is Sable-5367. The headquarters district of Borel Systems (Sector Beta) is Talc-5368. The internal codename of Borel Systems (Sector Beta) is Ultra-5369."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "scenario_id": "r-0204",
+    "run_id": "R4-B-r-0204",
+    "tier": "T3",
+    "grounded": true,
+    "correct_answer": true,
+    "cited_required": true,
+    "wall_time_ms": 4378.1609535217285,
+    "input_tokens": 1458,
+    "output_tokens": 200,
+    "cost_usd": 0.0013548
+  },
+  {
+    "task_id": "r-0205",
+    "status": "answered",
+    "answer": "Step 5: Vellum-5370.",
+    "cited_sources": [
+      "doc-0274"
+    ],
+    "steps_used": 2,
+    "step_cap": 24,
+    "reason": null,
+    "trace": [
+      {
+        "index": 1,
+        "thought": "**Searching for research graphs**\n\nI realize I need to conduct research on graphs, so that means I need to search through web sources. It looks like starting with an exact query is a good plan to find what I'm looking for quickly. There\u2019s a bit of urgency here since I want to ensure that I gather all relevant information effectively. Let\u2019s see what I can find in the corpus to get a solid foundation for my search!",
+        "tool_call": {
+          "tool": "search",
+          "query": "\"Solace Union\" \"Sector Beta\""
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0154",
+              "title": "Solace Union (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Solace Union (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Solace Union (Sector Beta) is Vellum-4770. The external auditor of Solace Union (Sector Beta) is Wisp-4771. The flagship product of Solace Union (Sector Beta) is Xeno-4772. The headquarters district of Solace Union (Sector Beta) is Yolk-4773. The internal codename of Solace Union (Sector Beta) is Zinc-4774."
+            },
+            {
+              "doc_id": "link-41b1d27ddb03",
+              "title": "Affiliation record link-41b1d27ddb03",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding headquarters district Yolk-4773 is officially affiliated with Zephyr Foundry (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0184",
+              "title": "Zephyr Foundry (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Zephyr Foundry (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Zephyr Foundry (Sector Beta) is Vellum-4920. The external auditor of Zephyr Foundry (Sector Beta) is Wisp-4921. The flagship product of Zephyr Foundry (Sector Beta) is Xeno-4922. The headquarters district of Zephyr Foundry (Sector Beta) is Yolk-4923. The internal codename of Zephyr Foundry (Sector Beta) is Zinc-4924."
+            },
+            {
+              "doc_id": "link-3f1b9f3639a0",
+              "title": "Affiliation record link-3f1b9f3639a0",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding headquarters district Yolk-4923 is officially affiliated with Borel Labs (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0214",
+              "title": "Borel Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Borel Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Borel Labs (Sector Beta) is Vellum-5070. The external auditor of Borel Labs (Sector Beta) is Wisp-5071. The flagship product of Borel Labs (Sector Beta) is Xeno-5072. The headquarters district of Borel Labs (Sector Beta) is Yolk-5073. The internal codename of Borel Labs (Sector Beta) is Zinc-5074."
+            },
+            {
+              "doc_id": "link-417b8c245f0b",
+              "title": "Affiliation record link-417b8c245f0b",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding archival reference Vellum-5070 is officially affiliated with Cinder Collective (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0244",
+              "title": "Cinder Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Cinder Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Cinder Collective (Sector Beta) is Vellum-5220. The external auditor of Cinder Collective (Sector Beta) is Wisp-5221. The flagship product of Cinder Collective (Sector Beta) is Xeno-5222. The headquarters district of Cinder Collective (Sector Beta) is Yolk-5223. The internal codename of Cinder Collective (Sector Beta) is Zinc-5224."
+            },
+            {
+              "doc_id": "link-2fa800df1eda",
+              "title": "Affiliation record link-2fa800df1eda",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding archival reference Vellum-5220 is officially affiliated with Zephyr Collective (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0274",
+              "title": "Zephyr Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Zephyr Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Zephyr Collective (Sector Beta) is Vellum-5370. The external auditor of Zephyr Collective (Sector Beta) is Wisp-5371. The flagship product of Zephyr Collective (Sector Beta) is Xeno-5372. The headquarters district of Zephyr Collective (Sector Beta) is Yolk-5373. The internal codename of Zephyr Collective (Sector Beta) is Zinc-5374."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "steps": [
+      {
+        "index": 1,
+        "thought": "**Searching for research graphs**\n\nI realize I need to conduct research on graphs, so that means I need to search through web sources. It looks like starting with an exact query is a good plan to find what I'm looking for quickly. There\u2019s a bit of urgency here since I want to ensure that I gather all relevant information effectively. Let\u2019s see what I can find in the corpus to get a solid foundation for my search!",
+        "tool_call": {
+          "tool": "search",
+          "query": "\"Solace Union\" \"Sector Beta\""
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0154",
+              "title": "Solace Union (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Solace Union (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Solace Union (Sector Beta) is Vellum-4770. The external auditor of Solace Union (Sector Beta) is Wisp-4771. The flagship product of Solace Union (Sector Beta) is Xeno-4772. The headquarters district of Solace Union (Sector Beta) is Yolk-4773. The internal codename of Solace Union (Sector Beta) is Zinc-4774."
+            },
+            {
+              "doc_id": "link-41b1d27ddb03",
+              "title": "Affiliation record link-41b1d27ddb03",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding headquarters district Yolk-4773 is officially affiliated with Zephyr Foundry (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0184",
+              "title": "Zephyr Foundry (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Zephyr Foundry (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Zephyr Foundry (Sector Beta) is Vellum-4920. The external auditor of Zephyr Foundry (Sector Beta) is Wisp-4921. The flagship product of Zephyr Foundry (Sector Beta) is Xeno-4922. The headquarters district of Zephyr Foundry (Sector Beta) is Yolk-4923. The internal codename of Zephyr Foundry (Sector Beta) is Zinc-4924."
+            },
+            {
+              "doc_id": "link-3f1b9f3639a0",
+              "title": "Affiliation record link-3f1b9f3639a0",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding headquarters district Yolk-4923 is officially affiliated with Borel Labs (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0214",
+              "title": "Borel Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Borel Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Borel Labs (Sector Beta) is Vellum-5070. The external auditor of Borel Labs (Sector Beta) is Wisp-5071. The flagship product of Borel Labs (Sector Beta) is Xeno-5072. The headquarters district of Borel Labs (Sector Beta) is Yolk-5073. The internal codename of Borel Labs (Sector Beta) is Zinc-5074."
+            },
+            {
+              "doc_id": "link-417b8c245f0b",
+              "title": "Affiliation record link-417b8c245f0b",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding archival reference Vellum-5070 is officially affiliated with Cinder Collective (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0244",
+              "title": "Cinder Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Cinder Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Cinder Collective (Sector Beta) is Vellum-5220. The external auditor of Cinder Collective (Sector Beta) is Wisp-5221. The flagship product of Cinder Collective (Sector Beta) is Xeno-5222. The headquarters district of Cinder Collective (Sector Beta) is Yolk-5223. The internal codename of Cinder Collective (Sector Beta) is Zinc-5224."
+            },
+            {
+              "doc_id": "link-2fa800df1eda",
+              "title": "Affiliation record link-2fa800df1eda",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding archival reference Vellum-5220 is officially affiliated with Zephyr Collective (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0274",
+              "title": "Zephyr Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Zephyr Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Zephyr Collective (Sector Beta) is Vellum-5370. The external auditor of Zephyr Collective (Sector Beta) is Wisp-5371. The flagship product of Zephyr Collective (Sector Beta) is Xeno-5372. The headquarters district of Zephyr Collective (Sector Beta) is Yolk-5373. The internal codename of Zephyr Collective (Sector Beta) is Zinc-5374."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "scenario_id": "r-0205",
+    "run_id": "R4-B-r-0205",
+    "tier": "T3",
+    "grounded": true,
+    "correct_answer": true,
+    "cited_required": true,
+    "wall_time_ms": 6135.4241371154785,
+    "input_tokens": 1566,
+    "output_tokens": 312,
+    "cost_usd": 0.0016884
+  },
+  {
+    "task_id": "r-0206",
+    "status": "answered",
+    "answer": "Basalt-5376",
+    "cited_sources": [
+      "doc-0275"
+    ],
+    "steps_used": 2,
+    "step_cap": 24,
+    "reason": null,
+    "trace": [
+      {
+        "index": 1,
+        "thought": "**Searching for research graph**\n\nI\u2019m recognizing that I need to conduct some research to find a specific graph. It\u2019s clear that I should formulate an exact search query to gather the information I need. I\u2019ll focus on being precise in what I\u2019m looking for, so I can find the most relevant results. Let\u2019s see what I can uncover with the right search terms!",
+        "tool_call": {
+          "tool": "search",
+          "query": "\"Umbra Works\" \"Sector Beta\" flagship product"
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0155",
+              "title": "Umbra Works (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Umbra Works (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Umbra Works (Sector Beta) is Alto-4775. The external auditor of Umbra Works (Sector Beta) is Basalt-4776. The flagship product of Umbra Works (Sector Beta) is Cobalt-4777. The headquarters district of Umbra Works (Sector Beta) is Drift-4778. The internal codename of Umbra Works (Sector Beta) is Ferro-4779."
+            },
+            {
+              "doc_id": "link-4484266a0bcf",
+              "title": "Affiliation record link-4484266a0bcf",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding flagship product Cobalt-4777 is officially affiliated with Kestrel Foundry (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0185",
+              "title": "Kestrel Foundry (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Kestrel Foundry (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Kestrel Foundry (Sector Beta) is Alto-4925. The external auditor of Kestrel Foundry (Sector Beta) is Basalt-4926. The flagship product of Kestrel Foundry (Sector Beta) is Cobalt-4927. The headquarters district of Kestrel Foundry (Sector Beta) is Drift-4928. The internal codename of Kestrel Foundry (Sector Beta) is Ferro-4929."
+            },
+            {
+              "doc_id": "link-04df5f4a0e73",
+              "title": "Affiliation record link-04df5f4a0e73",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding external auditor Basalt-4926 is officially affiliated with Umbra Collective (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0215",
+              "title": "Umbra Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Umbra Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Umbra Collective (Sector Beta) is Alto-5075. The external auditor of Umbra Collective (Sector Beta) is Basalt-5076. The flagship product of Umbra Collective (Sector Beta) is Cobalt-5077. The headquarters district of Umbra Collective (Sector Beta) is Drift-5078. The internal codename of Umbra Collective (Sector Beta) is Ferro-5079."
+            },
+            {
+              "doc_id": "link-7bf325428e2e",
+              "title": "Affiliation record link-7bf325428e2e",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding archival reference Alto-5075 is officially affiliated with Lodestar Collective (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0245",
+              "title": "Lodestar Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Lodestar Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Lodestar Collective (Sector Beta) is Alto-5225. The external auditor of Lodestar Collective (Sector Beta) is Basalt-5226. The flagship product of Lodestar Collective (Sector Beta) is Cobalt-5227. The headquarters district of Lodestar Collective (Sector Beta) is Drift-5228. The internal codename of Lodestar Collective (Sector Beta) is Ferro-5229."
+            },
+            {
+              "doc_id": "link-a43fb57442ff",
+              "title": "Affiliation record link-a43fb57442ff",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding headquarters district Drift-5228 is officially affiliated with Verdigris Union (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0275",
+              "title": "Verdigris Union (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Verdigris Union (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Verdigris Union (Sector Beta) is Alto-5375. The external auditor of Verdigris Union (Sector Beta) is Basalt-5376. The flagship product of Verdigris Union (Sector Beta) is Cobalt-5377. The headquarters district of Verdigris Union (Sector Beta) is Drift-5378. The internal codename of Verdigris Union (Sector Beta) is Ferro-5379."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "steps": [
+      {
+        "index": 1,
+        "thought": "**Searching for research graph**\n\nI\u2019m recognizing that I need to conduct some research to find a specific graph. It\u2019s clear that I should formulate an exact search query to gather the information I need. I\u2019ll focus on being precise in what I\u2019m looking for, so I can find the most relevant results. Let\u2019s see what I can uncover with the right search terms!",
+        "tool_call": {
+          "tool": "search",
+          "query": "\"Umbra Works\" \"Sector Beta\" flagship product"
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0155",
+              "title": "Umbra Works (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Umbra Works (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Umbra Works (Sector Beta) is Alto-4775. The external auditor of Umbra Works (Sector Beta) is Basalt-4776. The flagship product of Umbra Works (Sector Beta) is Cobalt-4777. The headquarters district of Umbra Works (Sector Beta) is Drift-4778. The internal codename of Umbra Works (Sector Beta) is Ferro-4779."
+            },
+            {
+              "doc_id": "link-4484266a0bcf",
+              "title": "Affiliation record link-4484266a0bcf",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding flagship product Cobalt-4777 is officially affiliated with Kestrel Foundry (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0185",
+              "title": "Kestrel Foundry (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Kestrel Foundry (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Kestrel Foundry (Sector Beta) is Alto-4925. The external auditor of Kestrel Foundry (Sector Beta) is Basalt-4926. The flagship product of Kestrel Foundry (Sector Beta) is Cobalt-4927. The headquarters district of Kestrel Foundry (Sector Beta) is Drift-4928. The internal codename of Kestrel Foundry (Sector Beta) is Ferro-4929."
+            },
+            {
+              "doc_id": "link-04df5f4a0e73",
+              "title": "Affiliation record link-04df5f4a0e73",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding external auditor Basalt-4926 is officially affiliated with Umbra Collective (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0215",
+              "title": "Umbra Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Umbra Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Umbra Collective (Sector Beta) is Alto-5075. The external auditor of Umbra Collective (Sector Beta) is Basalt-5076. The flagship product of Umbra Collective (Sector Beta) is Cobalt-5077. The headquarters district of Umbra Collective (Sector Beta) is Drift-5078. The internal codename of Umbra Collective (Sector Beta) is Ferro-5079."
+            },
+            {
+              "doc_id": "link-7bf325428e2e",
+              "title": "Affiliation record link-7bf325428e2e",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding archival reference Alto-5075 is officially affiliated with Lodestar Collective (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0245",
+              "title": "Lodestar Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Lodestar Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Lodestar Collective (Sector Beta) is Alto-5225. The external auditor of Lodestar Collective (Sector Beta) is Basalt-5226. The flagship product of Lodestar Collective (Sector Beta) is Cobalt-5227. The headquarters district of Lodestar Collective (Sector Beta) is Drift-5228. The internal codename of Lodestar Collective (Sector Beta) is Ferro-5229."
+            },
+            {
+              "doc_id": "link-a43fb57442ff",
+              "title": "Affiliation record link-a43fb57442ff",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding headquarters district Drift-5228 is officially affiliated with Verdigris Union (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0275",
+              "title": "Verdigris Union (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Verdigris Union (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Verdigris Union (Sector Beta) is Alto-5375. The external auditor of Verdigris Union (Sector Beta) is Basalt-5376. The flagship product of Verdigris Union (Sector Beta) is Cobalt-5377. The headquarters district of Verdigris Union (Sector Beta) is Drift-5378. The internal codename of Verdigris Union (Sector Beta) is Ferro-5379."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "scenario_id": "r-0206",
+    "run_id": "R4-B-r-0206",
+    "tier": "T3",
+    "grounded": true,
+    "correct_answer": true,
+    "cited_required": true,
+    "wall_time_ms": 5412.590980529785,
+    "input_tokens": 1554,
+    "output_tokens": 302,
+    "cost_usd": 0.0016572
+  },
+  {
+    "task_id": "r-0207",
+    "status": "answered",
+    "answer": "Jade-5383",
+    "cited_sources": [
+      "doc-0276"
+    ],
+    "steps_used": 2,
+    "step_cap": 24,
+    "reason": null,
+    "trace": [
+      {
+        "index": 1,
+        "thought": "",
+        "tool_call": {
+          "tool": "search",
+          "query": "\"Dovetail Union\" \"Sector Beta\" flagship product"
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0156",
+              "title": "Dovetail Union (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Dovetail Union (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Dovetail Union (Sector Beta) is Gossamer-4780. The external auditor of Dovetail Union (Sector Beta) is Helix-4781. The flagship product of Dovetail Union (Sector Beta) is Indigo-4782. The headquarters district of Dovetail Union (Sector Beta) is Jade-4783. The internal codename of Dovetail Union (Sector Beta) is Kelvin-4784."
+            },
+            {
+              "doc_id": "link-492ca05416cb",
+              "title": "Affiliation record link-492ca05416cb",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding flagship product Indigo-4782 is officially affiliated with Tamarisk Union (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0186",
+              "title": "Tamarisk Union (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Tamarisk Union (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Tamarisk Union (Sector Beta) is Gossamer-4930. The external auditor of Tamarisk Union (Sector Beta) is Helix-4931. The flagship product of Tamarisk Union (Sector Beta) is Indigo-4932. The headquarters district of Tamarisk Union (Sector Beta) is Jade-4933. The internal codename of Tamarisk Union (Sector Beta) is Kelvin-4934."
+            },
+            {
+              "doc_id": "link-3361f681dfea",
+              "title": "Affiliation record link-3361f681dfea",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding flagship product Indigo-4932 is officially affiliated with Dovetail Labs (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0216",
+              "title": "Dovetail Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Dovetail Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Dovetail Labs (Sector Beta) is Gossamer-5080. The external auditor of Dovetail Labs (Sector Beta) is Helix-5081. The flagship product of Dovetail Labs (Sector Beta) is Indigo-5082. The headquarters district of Dovetail Labs (Sector Beta) is Jade-5083. The internal codename of Dovetail Labs (Sector Beta) is Kelvin-5084."
+            },
+            {
+              "doc_id": "link-93a43c329906",
+              "title": "Affiliation record link-93a43c329906",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding external auditor Helix-5081 is officially affiliated with Verdigris Labs (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0246",
+              "title": "Verdigris Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Verdigris Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Verdigris Labs (Sector Beta) is Gossamer-5230. The external auditor of Verdigris Labs (Sector Beta) is Helix-5231. The flagship product of Verdigris Labs (Sector Beta) is Indigo-5232. The headquarters district of Verdigris Labs (Sector Beta) is Jade-5233. The internal codename of Verdigris Labs (Sector Beta) is Kelvin-5234."
+            },
+            {
+              "doc_id": "link-970ea1ccb427",
+              "title": "Affiliation record link-970ea1ccb427",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding internal codename Kelvin-5234 is officially affiliated with Aster Foundry (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0276",
+              "title": "Aster Foundry (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Aster Foundry (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Aster Foundry (Sector Beta) is Gossamer-5380. The external auditor of Aster Foundry (Sector Beta) is Helix-5381. The flagship product of Aster Foundry (Sector Beta) is Indigo-5382. The headquarters district of Aster Foundry (Sector Beta) is Jade-5383. The internal codename of Aster Foundry (Sector Beta) is Kelvin-5384."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "steps": [
+      {
+        "index": 1,
+        "thought": "",
+        "tool_call": {
+          "tool": "search",
+          "query": "\"Dovetail Union\" \"Sector Beta\" flagship product"
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0156",
+              "title": "Dovetail Union (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Dovetail Union (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Dovetail Union (Sector Beta) is Gossamer-4780. The external auditor of Dovetail Union (Sector Beta) is Helix-4781. The flagship product of Dovetail Union (Sector Beta) is Indigo-4782. The headquarters district of Dovetail Union (Sector Beta) is Jade-4783. The internal codename of Dovetail Union (Sector Beta) is Kelvin-4784."
+            },
+            {
+              "doc_id": "link-492ca05416cb",
+              "title": "Affiliation record link-492ca05416cb",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding flagship product Indigo-4782 is officially affiliated with Tamarisk Union (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0186",
+              "title": "Tamarisk Union (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Tamarisk Union (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Tamarisk Union (Sector Beta) is Gossamer-4930. The external auditor of Tamarisk Union (Sector Beta) is Helix-4931. The flagship product of Tamarisk Union (Sector Beta) is Indigo-4932. The headquarters district of Tamarisk Union (Sector Beta) is Jade-4933. The internal codename of Tamarisk Union (Sector Beta) is Kelvin-4934."
+            },
+            {
+              "doc_id": "link-3361f681dfea",
+              "title": "Affiliation record link-3361f681dfea",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding flagship product Indigo-4932 is officially affiliated with Dovetail Labs (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0216",
+              "title": "Dovetail Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Dovetail Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Dovetail Labs (Sector Beta) is Gossamer-5080. The external auditor of Dovetail Labs (Sector Beta) is Helix-5081. The flagship product of Dovetail Labs (Sector Beta) is Indigo-5082. The headquarters district of Dovetail Labs (Sector Beta) is Jade-5083. The internal codename of Dovetail Labs (Sector Beta) is Kelvin-5084."
+            },
+            {
+              "doc_id": "link-93a43c329906",
+              "title": "Affiliation record link-93a43c329906",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding external auditor Helix-5081 is officially affiliated with Verdigris Labs (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0246",
+              "title": "Verdigris Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Verdigris Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Verdigris Labs (Sector Beta) is Gossamer-5230. The external auditor of Verdigris Labs (Sector Beta) is Helix-5231. The flagship product of Verdigris Labs (Sector Beta) is Indigo-5232. The headquarters district of Verdigris Labs (Sector Beta) is Jade-5233. The internal codename of Verdigris Labs (Sector Beta) is Kelvin-5234."
+            },
+            {
+              "doc_id": "link-970ea1ccb427",
+              "title": "Affiliation record link-970ea1ccb427",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding internal codename Kelvin-5234 is officially affiliated with Aster Foundry (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0276",
+              "title": "Aster Foundry (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Aster Foundry (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Aster Foundry (Sector Beta) is Gossamer-5380. The external auditor of Aster Foundry (Sector Beta) is Helix-5381. The flagship product of Aster Foundry (Sector Beta) is Indigo-5382. The headquarters district of Aster Foundry (Sector Beta) is Jade-5383. The internal codename of Aster Foundry (Sector Beta) is Kelvin-5384."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "scenario_id": "r-0207",
+    "run_id": "R4-B-r-0207",
+    "tier": "T3",
+    "grounded": true,
+    "correct_answer": true,
+    "cited_required": true,
+    "wall_time_ms": 4594.7160720825195,
+    "input_tokens": 1459,
+    "output_tokens": 206,
+    "cost_usd": 0.0013698
+  },
+  {
+    "task_id": "r-0208",
+    "status": "answered",
+    "answer": "Mica-5386",
+    "cited_sources": [
+      "doc-0277"
+    ],
+    "steps_used": 2,
+    "step_cap": 24,
+    "reason": null,
+    "trace": [
+      {
+        "index": 1,
+        "thought": "",
+        "tool_call": {
+          "tool": "search",
+          "query": "\"Yarrow Foundry\" \"Sector Beta\""
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0157",
+              "title": "Yarrow Foundry (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Yarrow Foundry (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Yarrow Foundry (Sector Beta) is Lumen-4785. The external auditor of Yarrow Foundry (Sector Beta) is Mica-4786. The flagship product of Yarrow Foundry (Sector Beta) is Nyx-4787. The headquarters district of Yarrow Foundry (Sector Beta) is Onyx-4788. The internal codename of Yarrow Foundry (Sector Beta) is Prism-4789."
+            },
+            {
+              "doc_id": "link-a31ae31a5149",
+              "title": "Affiliation record link-a31ae31a5149",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding flagship product Nyx-4787 is officially affiliated with Aster Systems (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0187",
+              "title": "Aster Systems (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Aster Systems (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Aster Systems (Sector Beta) is Lumen-4935. The external auditor of Aster Systems (Sector Beta) is Mica-4936. The flagship product of Aster Systems (Sector Beta) is Nyx-4937. The headquarters district of Aster Systems (Sector Beta) is Onyx-4938. The internal codename of Aster Systems (Sector Beta) is Prism-4939."
+            },
+            {
+              "doc_id": "link-c55fb9bbfa85",
+              "title": "Affiliation record link-c55fb9bbfa85",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding archival reference Lumen-4935 is officially affiliated with Fathom Labs (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0217",
+              "title": "Fathom Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Fathom Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Fathom Labs (Sector Beta) is Lumen-5085. The external auditor of Fathom Labs (Sector Beta) is Mica-5086. The flagship product of Fathom Labs (Sector Beta) is Nyx-5087. The headquarters district of Fathom Labs (Sector Beta) is Onyx-5088. The internal codename of Fathom Labs (Sector Beta) is Prism-5089."
+            },
+            {
+              "doc_id": "link-6859ce0b2841",
+              "title": "Affiliation record link-6859ce0b2841",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding archival reference Lumen-5085 is officially affiliated with Quill Labs (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0247",
+              "title": "Quill Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Quill Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Quill Labs (Sector Beta) is Lumen-5235. The external auditor of Quill Labs (Sector Beta) is Mica-5236. The flagship product of Quill Labs (Sector Beta) is Nyx-5237. The headquarters district of Quill Labs (Sector Beta) is Onyx-5238. The internal codename of Quill Labs (Sector Beta) is Prism-5239."
+            },
+            {
+              "doc_id": "link-d941b3398493",
+              "title": "Affiliation record link-d941b3398493",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding flagship product Nyx-5237 is officially affiliated with Umbra Foundry (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0277",
+              "title": "Umbra Foundry (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Umbra Foundry (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Umbra Foundry (Sector Beta) is Lumen-5385. The external auditor of Umbra Foundry (Sector Beta) is Mica-5386. The flagship product of Umbra Foundry (Sector Beta) is Nyx-5387. The headquarters district of Umbra Foundry (Sector Beta) is Onyx-5388. The internal codename of Umbra Foundry (Sector Beta) is Prism-5389."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "steps": [
+      {
+        "index": 1,
+        "thought": "",
+        "tool_call": {
+          "tool": "search",
+          "query": "\"Yarrow Foundry\" \"Sector Beta\""
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0157",
+              "title": "Yarrow Foundry (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Yarrow Foundry (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Yarrow Foundry (Sector Beta) is Lumen-4785. The external auditor of Yarrow Foundry (Sector Beta) is Mica-4786. The flagship product of Yarrow Foundry (Sector Beta) is Nyx-4787. The headquarters district of Yarrow Foundry (Sector Beta) is Onyx-4788. The internal codename of Yarrow Foundry (Sector Beta) is Prism-4789."
+            },
+            {
+              "doc_id": "link-a31ae31a5149",
+              "title": "Affiliation record link-a31ae31a5149",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding flagship product Nyx-4787 is officially affiliated with Aster Systems (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0187",
+              "title": "Aster Systems (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Aster Systems (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Aster Systems (Sector Beta) is Lumen-4935. The external auditor of Aster Systems (Sector Beta) is Mica-4936. The flagship product of Aster Systems (Sector Beta) is Nyx-4937. The headquarters district of Aster Systems (Sector Beta) is Onyx-4938. The internal codename of Aster Systems (Sector Beta) is Prism-4939."
+            },
+            {
+              "doc_id": "link-c55fb9bbfa85",
+              "title": "Affiliation record link-c55fb9bbfa85",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding archival reference Lumen-4935 is officially affiliated with Fathom Labs (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0217",
+              "title": "Fathom Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Fathom Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Fathom Labs (Sector Beta) is Lumen-5085. The external auditor of Fathom Labs (Sector Beta) is Mica-5086. The flagship product of Fathom Labs (Sector Beta) is Nyx-5087. The headquarters district of Fathom Labs (Sector Beta) is Onyx-5088. The internal codename of Fathom Labs (Sector Beta) is Prism-5089."
+            },
+            {
+              "doc_id": "link-6859ce0b2841",
+              "title": "Affiliation record link-6859ce0b2841",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding archival reference Lumen-5085 is officially affiliated with Quill Labs (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0247",
+              "title": "Quill Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Quill Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Quill Labs (Sector Beta) is Lumen-5235. The external auditor of Quill Labs (Sector Beta) is Mica-5236. The flagship product of Quill Labs (Sector Beta) is Nyx-5237. The headquarters district of Quill Labs (Sector Beta) is Onyx-5238. The internal codename of Quill Labs (Sector Beta) is Prism-5239."
+            },
+            {
+              "doc_id": "link-d941b3398493",
+              "title": "Affiliation record link-d941b3398493",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding flagship product Nyx-5237 is officially affiliated with Umbra Foundry (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0277",
+              "title": "Umbra Foundry (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Umbra Foundry (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Umbra Foundry (Sector Beta) is Lumen-5385. The external auditor of Umbra Foundry (Sector Beta) is Mica-5386. The flagship product of Umbra Foundry (Sector Beta) is Nyx-5387. The headquarters district of Umbra Foundry (Sector Beta) is Onyx-5388. The internal codename of Umbra Foundry (Sector Beta) is Prism-5389."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "scenario_id": "r-0208",
+    "run_id": "R4-B-r-0208",
+    "tier": "T3",
+    "grounded": true,
+    "correct_answer": true,
+    "cited_required": true,
+    "wall_time_ms": 12142.182111740112,
+    "input_tokens": 1435,
+    "output_tokens": 207,
+    "cost_usd": 0.0013578
+  },
+  {
+    "task_id": "r-0209",
+    "status": "answered",
+    "answer": "Ultra-5394",
+    "cited_sources": [
+      "doc-0278"
+    ],
+    "steps_used": 2,
+    "step_cap": 24,
+    "reason": null,
+    "trace": [
+      {
+        "index": 1,
+        "thought": "",
+        "tool_call": {
+          "tool": "search",
+          "query": "\"Verdigris Systems\" \"Sector Beta\" external auditor"
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0158",
+              "title": "Verdigris Systems (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Verdigris Systems (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Verdigris Systems (Sector Beta) is Quartz-4790. The external auditor of Verdigris Systems (Sector Beta) is Rune-4791. The flagship product of Verdigris Systems (Sector Beta) is Sable-4792. The headquarters district of Verdigris Systems (Sector Beta) is Talc-4793. The internal codename of Verdigris Systems (Sector Beta) is Ultra-4794."
+            },
+            {
+              "doc_id": "link-a85bc2aae0ec",
+              "title": "Affiliation record link-a85bc2aae0ec",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding external auditor Rune-4791 is officially affiliated with Halcyon Union (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0188",
+              "title": "Halcyon Union (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Halcyon Union (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Halcyon Union (Sector Beta) is Quartz-4940. The external auditor of Halcyon Union (Sector Beta) is Rune-4941. The flagship product of Halcyon Union (Sector Beta) is Sable-4942. The headquarters district of Halcyon Union (Sector Beta) is Talc-4943. The internal codename of Halcyon Union (Sector Beta) is Ultra-4944."
+            },
+            {
+              "doc_id": "link-f28c235fc6b0",
+              "title": "Affiliation record link-f28c235fc6b0",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding headquarters district Talc-4943 is officially affiliated with Marrow Collective (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0218",
+              "title": "Marrow Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Marrow Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Marrow Collective (Sector Beta) is Quartz-5090. The external auditor of Marrow Collective (Sector Beta) is Rune-5091. The flagship product of Marrow Collective (Sector Beta) is Sable-5092. The headquarters district of Marrow Collective (Sector Beta) is Talc-5093. The internal codename of Marrow Collective (Sector Beta) is Ultra-5094."
+            },
+            {
+              "doc_id": "link-e661fc7c3f1f",
+              "title": "Affiliation record link-e661fc7c3f1f",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding internal codename Ultra-5094 is officially affiliated with Tamarisk Collective (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0248",
+              "title": "Tamarisk Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Tamarisk Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Tamarisk Collective (Sector Beta) is Quartz-5240. The external auditor of Tamarisk Collective (Sector Beta) is Rune-5241. The flagship product of Tamarisk Collective (Sector Beta) is Sable-5242. The headquarters district of Tamarisk Collective (Sector Beta) is Talc-5243. The internal codename of Tamarisk Collective (Sector Beta) is Ultra-5244."
+            },
+            {
+              "doc_id": "link-58fcf6b2489d",
+              "title": "Affiliation record link-58fcf6b2489d",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding headquarters district Talc-5243 is officially affiliated with Tamarisk Works (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0278",
+              "title": "Tamarisk Works (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Tamarisk Works (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Tamarisk Works (Sector Beta) is Quartz-5390. The external auditor of Tamarisk Works (Sector Beta) is Rune-5391. The flagship product of Tamarisk Works (Sector Beta) is Sable-5392. The headquarters district of Tamarisk Works (Sector Beta) is Talc-5393. The internal codename of Tamarisk Works (Sector Beta) is Ultra-5394."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "steps": [
+      {
+        "index": 1,
+        "thought": "",
+        "tool_call": {
+          "tool": "search",
+          "query": "\"Verdigris Systems\" \"Sector Beta\" external auditor"
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0158",
+              "title": "Verdigris Systems (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Verdigris Systems (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Verdigris Systems (Sector Beta) is Quartz-4790. The external auditor of Verdigris Systems (Sector Beta) is Rune-4791. The flagship product of Verdigris Systems (Sector Beta) is Sable-4792. The headquarters district of Verdigris Systems (Sector Beta) is Talc-4793. The internal codename of Verdigris Systems (Sector Beta) is Ultra-4794."
+            },
+            {
+              "doc_id": "link-a85bc2aae0ec",
+              "title": "Affiliation record link-a85bc2aae0ec",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding external auditor Rune-4791 is officially affiliated with Halcyon Union (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0188",
+              "title": "Halcyon Union (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Halcyon Union (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Halcyon Union (Sector Beta) is Quartz-4940. The external auditor of Halcyon Union (Sector Beta) is Rune-4941. The flagship product of Halcyon Union (Sector Beta) is Sable-4942. The headquarters district of Halcyon Union (Sector Beta) is Talc-4943. The internal codename of Halcyon Union (Sector Beta) is Ultra-4944."
+            },
+            {
+              "doc_id": "link-f28c235fc6b0",
+              "title": "Affiliation record link-f28c235fc6b0",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding headquarters district Talc-4943 is officially affiliated with Marrow Collective (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0218",
+              "title": "Marrow Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Marrow Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Marrow Collective (Sector Beta) is Quartz-5090. The external auditor of Marrow Collective (Sector Beta) is Rune-5091. The flagship product of Marrow Collective (Sector Beta) is Sable-5092. The headquarters district of Marrow Collective (Sector Beta) is Talc-5093. The internal codename of Marrow Collective (Sector Beta) is Ultra-5094."
+            },
+            {
+              "doc_id": "link-e661fc7c3f1f",
+              "title": "Affiliation record link-e661fc7c3f1f",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding internal codename Ultra-5094 is officially affiliated with Tamarisk Collective (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0248",
+              "title": "Tamarisk Collective (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Tamarisk Collective (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Tamarisk Collective (Sector Beta) is Quartz-5240. The external auditor of Tamarisk Collective (Sector Beta) is Rune-5241. The flagship product of Tamarisk Collective (Sector Beta) is Sable-5242. The headquarters district of Tamarisk Collective (Sector Beta) is Talc-5243. The internal codename of Tamarisk Collective (Sector Beta) is Ultra-5244."
+            },
+            {
+              "doc_id": "link-58fcf6b2489d",
+              "title": "Affiliation record link-58fcf6b2489d",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding headquarters district Talc-5243 is officially affiliated with Tamarisk Works (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0278",
+              "title": "Tamarisk Works (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Tamarisk Works (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Tamarisk Works (Sector Beta) is Quartz-5390. The external auditor of Tamarisk Works (Sector Beta) is Rune-5391. The flagship product of Tamarisk Works (Sector Beta) is Sable-5392. The headquarters district of Tamarisk Works (Sector Beta) is Talc-5393. The internal codename of Tamarisk Works (Sector Beta) is Ultra-5394."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "scenario_id": "r-0209",
+    "run_id": "R4-B-r-0209",
+    "tier": "T3",
+    "grounded": true,
+    "correct_answer": true,
+    "cited_required": true,
+    "wall_time_ms": 6025.726795196533,
+    "input_tokens": 1475,
+    "output_tokens": 212,
+    "cost_usd": 0.0013938000000000002
+  },
+  {
+    "task_id": "r-0210",
+    "status": "answered",
+    "answer": "Yolk-5398",
+    "cited_sources": [
+      "doc-0279"
+    ],
+    "steps_used": 2,
+    "step_cap": 24,
+    "reason": null,
+    "trace": [
+      {
+        "index": 1,
+        "thought": "",
+        "tool_call": {
+          "tool": "search",
+          "query": "Zephyr Labs Sector Beta external auditor"
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0159",
+              "title": "Zephyr Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Zephyr Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Zephyr Labs (Sector Beta) is Vellum-4795. The external auditor of Zephyr Labs (Sector Beta) is Wisp-4796. The flagship product of Zephyr Labs (Sector Beta) is Xeno-4797. The headquarters district of Zephyr Labs (Sector Beta) is Yolk-4798. The internal codename of Zephyr Labs (Sector Beta) is Zinc-4799."
+            },
+            {
+              "doc_id": "link-8882ffd7f4ed",
+              "title": "Affiliation record link-8882ffd7f4ed",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding external auditor Wisp-4796 is officially affiliated with Riven Works (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0189",
+              "title": "Riven Works (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Riven Works (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Riven Works (Sector Beta) is Vellum-4945. The external auditor of Riven Works (Sector Beta) is Wisp-4946. The flagship product of Riven Works (Sector Beta) is Xeno-4947. The headquarters district of Riven Works (Sector Beta) is Yolk-4948. The internal codename of Riven Works (Sector Beta) is Zinc-4949."
+            },
+            {
+              "doc_id": "link-eaa1dc881db6",
+              "title": "Affiliation record link-eaa1dc881db6",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding internal codename Zinc-4949 is officially affiliated with Cinder Systems (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0219",
+              "title": "Cinder Systems (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Cinder Systems (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Cinder Systems (Sector Beta) is Vellum-5095. The external auditor of Cinder Systems (Sector Beta) is Wisp-5096. The flagship product of Cinder Systems (Sector Beta) is Xeno-5097. The headquarters district of Cinder Systems (Sector Beta) is Yolk-5098. The internal codename of Cinder Systems (Sector Beta) is Zinc-5099."
+            },
+            {
+              "doc_id": "link-ce41be9c4c8d",
+              "title": "Affiliation record link-ce41be9c4c8d",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding headquarters district Yolk-5098 is officially affiliated with Yarrow Labs (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0249",
+              "title": "Yarrow Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Yarrow Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Yarrow Labs (Sector Beta) is Vellum-5245. The external auditor of Yarrow Labs (Sector Beta) is Wisp-5246. The flagship product of Yarrow Labs (Sector Beta) is Xeno-5247. The headquarters district of Yarrow Labs (Sector Beta) is Yolk-5248. The internal codename of Yarrow Labs (Sector Beta) is Zinc-5249."
+            },
+            {
+              "doc_id": "link-bbae68c7b829",
+              "title": "Affiliation record link-bbae68c7b829",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding archival reference Vellum-5245 is officially affiliated with Nimbus Systems (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0279",
+              "title": "Nimbus Systems (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Nimbus Systems (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Nimbus Systems (Sector Beta) is Vellum-5395. The external auditor of Nimbus Systems (Sector Beta) is Wisp-5396. The flagship product of Nimbus Systems (Sector Beta) is Xeno-5397. The headquarters district of Nimbus Systems (Sector Beta) is Yolk-5398. The internal codename of Nimbus Systems (Sector Beta) is Zinc-5399."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "**Citing archival references**\n\nI see I need to prepare a final answer that cites a source. Step 5 involves the organization holding the archival reference, and I\u2019ve identified \"Yarrow archival Vellum-5245\" related to Nimbus. I might need to look up a document to ensure it\u2019s cited properly. The search results could potentially provide me with the necessary document ID. It seems I can use doc-0279, but I should check that the fact is accurately represented in the snippet.",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "steps": [
+      {
+        "index": 1,
+        "thought": "",
+        "tool_call": {
+          "tool": "search",
+          "query": "Zephyr Labs Sector Beta external auditor"
+        },
+        "observation": {
+          "tool": "search",
+          "ok": true,
+          "error": null,
+          "candidates": [
+            {
+              "doc_id": "doc-0159",
+              "title": "Zephyr Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Zephyr Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Zephyr Labs (Sector Beta) is Vellum-4795. The external auditor of Zephyr Labs (Sector Beta) is Wisp-4796. The flagship product of Zephyr Labs (Sector Beta) is Xeno-4797. The headquarters district of Zephyr Labs (Sector Beta) is Yolk-4798. The internal codename of Zephyr Labs (Sector Beta) is Zinc-4799."
+            },
+            {
+              "doc_id": "link-8882ffd7f4ed",
+              "title": "Affiliation record link-8882ffd7f4ed",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding external auditor Wisp-4796 is officially affiliated with Riven Works (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0189",
+              "title": "Riven Works (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Riven Works (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Riven Works (Sector Beta) is Vellum-4945. The external auditor of Riven Works (Sector Beta) is Wisp-4946. The flagship product of Riven Works (Sector Beta) is Xeno-4947. The headquarters district of Riven Works (Sector Beta) is Yolk-4948. The internal codename of Riven Works (Sector Beta) is Zinc-4949."
+            },
+            {
+              "doc_id": "link-eaa1dc881db6",
+              "title": "Affiliation record link-eaa1dc881db6",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding internal codename Zinc-4949 is officially affiliated with Cinder Systems (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0219",
+              "title": "Cinder Systems (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Cinder Systems (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Cinder Systems (Sector Beta) is Vellum-5095. The external auditor of Cinder Systems (Sector Beta) is Wisp-5096. The flagship product of Cinder Systems (Sector Beta) is Xeno-5097. The headquarters district of Cinder Systems (Sector Beta) is Yolk-5098. The internal codename of Cinder Systems (Sector Beta) is Zinc-5099."
+            },
+            {
+              "doc_id": "link-ce41be9c4c8d",
+              "title": "Affiliation record link-ce41be9c4c8d",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding headquarters district Yolk-5098 is officially affiliated with Yarrow Labs (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0249",
+              "title": "Yarrow Labs (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Yarrow Labs (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Yarrow Labs (Sector Beta) is Vellum-5245. The external auditor of Yarrow Labs (Sector Beta) is Wisp-5246. The flagship product of Yarrow Labs (Sector Beta) is Xeno-5247. The headquarters district of Yarrow Labs (Sector Beta) is Yolk-5248. The internal codename of Yarrow Labs (Sector Beta) is Zinc-5249."
+            },
+            {
+              "doc_id": "link-bbae68c7b829",
+              "title": "Affiliation record link-bbae68c7b829",
+              "score": 3.0,
+              "snippet": "Affiliation record: The organization holding archival reference Vellum-5245 is officially affiliated with Nimbus Systems (Sector Beta)."
+            },
+            {
+              "doc_id": "doc-0279",
+              "title": "Nimbus Systems (Sector Beta)",
+              "score": 3.0,
+              "snippet": "Nimbus Systems (Sector Beta) is a registered organization in the FAULTLINE corpus. The archival reference of Nimbus Systems (Sector Beta) is Vellum-5395. The external auditor of Nimbus Systems (Sector Beta) is Wisp-5396. The flagship product of Nimbus Systems (Sector Beta) is Xeno-5397. The headquarters district of Nimbus Systems (Sector Beta) is Yolk-5398. The internal codename of Nimbus Systems (Sector Beta) is Zinc-5399."
+            }
+          ]
+        },
+        "action_type": "tool"
+      },
+      {
+        "index": 2,
+        "thought": "**Citing archival references**\n\nI see I need to prepare a final answer that cites a source. Step 5 involves the organization holding the archival reference, and I\u2019ve identified \"Yarrow archival Vellum-5245\" related to Nimbus. I might need to look up a document to ensure it\u2019s cited properly. The search results could potentially provide me with the necessary document ID. It seems I can use doc-0279, but I should check that the fact is accurately represented in the snippet.",
+        "tool_call": null,
+        "observation": null,
+        "action_type": "answer"
+      }
+    ],
+    "scenario_id": "r-0210",
+    "run_id": "R4-B-r-0210",
+    "tier": "T3",
+    "grounded": true,
+    "correct_answer": true,
+    "cited_required": true,
+    "wall_time_ms": 5682.063102722168,
+    "input_tokens": 1431,
+    "output_tokens": 307,
+    "cost_usd": 0.0015953999999999999
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "spec_version": "2.0.0",
+  "experiment": "p12_attribution",
+  "hypothesis": "H8: Retrieval owns >50% of grounding failures; falsified if attribution CI excludes 50% on generator side",
+  "rung": "R4",
+  "pool": "hard",
+  "corpus_hash": "84e6ff590704aa94d10912f8002716b14c7436080e1a3270b53f9385dc728efc",
+  "scenario_count": 10,
+  "tier_counts": {
+    "T1": 0,
+    "T2": 0,
+    "T3": 10
+  },
+  "scenario_ids_sha256": "9e7140579ae11d3d2c383336c26de50324f17e047707aa64dbde97f31a70600d",
+  "scenario_ids": [
+    "r-0201",
+    "r-0202",
+    "r-0203",
+    "r-0204",
+    "r-0205",
+    "r-0206",
+    "r-0207",
+    "r-0208",
+    "r-0209",
+    "r-0210"
+  ],
+  "manifest_sha256": "64da803c8340e67c1e52c456fc4bf4a7b97ea2b3a12f17927e7eafd667152b4d"
+}

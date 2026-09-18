@@ -1,0 +1,209 @@
+{
+  "spec_version": "2.0.0",
+  "experiment": "p12_attribution",
+  "hypothesis": "H8: Retrieval owns >50% of grounding failures; falsified if attribution CI excludes 50% on generator side",
+  "rung": "R4",
+  "n": 10,
+  "step_cap": 24,
+  "spend_usd": 0.4575,
+  "timestamps": {
+    "start_utc": "2026-09-17T08:07:36.241751+00:00",
+    "end_utc": "2026-09-17T08:07:36.291496+00:00"
+  },
+  "metadata": {
+    "rung": "R4",
+    "n": 10,
+    "step_cap": 24,
+    "spend_usd": 0.4575,
+    "timestamps": {
+      "start_utc": "2026-09-17T08:07:36.241751+00:00",
+      "end_utc": "2026-09-17T08:07:36.291496+00:00"
+    }
+  },
+  "h8_verdict": "UNDECIDED",
+  "as_run": {
+    "counts": {
+      "retriever_owned": 3,
+      "generator_owned": 0,
+      "reverse": 0,
+      "both_pass": 7,
+      "n_failures_a": 3,
+      "total_pairs": 10
+    },
+    "retriever_owned": 3,
+    "generator_owned": 0,
+    "reverse": 0,
+    "both_pass": 7,
+    "n_failures_a": 3,
+    "retriever_share": 1.0,
+    "wilson_ci": [
+      0.4385029682449546,
+      1.0
+    ],
+    "h8_verdict": "UNDECIDED",
+    "mcnemar": {
+      "b": 0,
+      "c": 3,
+      "n_discordant": 3,
+      "chi2_statistic": 1.33333333333333,
+      "chi2_p_value": 0.248213078989924,
+      "continuity_correction": true,
+      "exact_p_value": 0.25,
+      "recommended": "exact",
+      "p_value": 0.25,
+      "significant_at_0.05": false,
+      "table": {
+        "both_correct": 7,
+        "a_only": 0,
+        "b_only": 3,
+        "both_wrong": 0,
+        "n": 10,
+        "discordant": 3
+      }
+    },
+    "per_tier": {
+      "T3": {
+        "counts": {
+          "retriever_owned": 3,
+          "generator_owned": 0,
+          "reverse": 0,
+          "both_pass": 7,
+          "n_failures_a": 3,
+          "total_pairs": 10
+        },
+        "retriever_owned": 3,
+        "generator_owned": 0,
+        "reverse": 0,
+        "both_pass": 7,
+        "n_failures_a": 3,
+        "retriever_share": 1.0,
+        "wilson_ci": [
+          0.4385029682449546,
+          1.0
+        ],
+        "h8_verdict": "UNDECIDED",
+        "total_pairs": 10
+      }
+    },
+    "per_a_status": {
+      "step_cap": {
+        "count": 3,
+        "retriever_owned": 3,
+        "generator_owned": 0,
+        "retriever_share": 1.0,
+        "wilson_ci": [
+          0.4385029682449546,
+          1.0
+        ]
+      }
+    },
+    "total_pairs": 10
+  },
+  "infra_excluded": {
+    "counts": {
+      "retriever_owned": 3,
+      "generator_owned": 0,
+      "reverse": 0,
+      "both_pass": 7,
+      "n_failures_a": 3,
+      "total_pairs": 10
+    },
+    "retriever_owned": 3,
+    "generator_owned": 0,
+    "reverse": 0,
+    "both_pass": 7,
+    "n_failures_a": 3,
+    "retriever_share": 1.0,
+    "wilson_ci": [
+      0.4385029682449546,
+      1.0
+    ],
+    "h8_verdict": "UNDECIDED",
+    "mcnemar": {
+      "b": 0,
+      "c": 3,
+      "n_discordant": 3,
+      "chi2_statistic": 1.33333333333333,
+      "chi2_p_value": 0.248213078989924,
+      "continuity_correction": true,
+      "exact_p_value": 0.25,
+      "recommended": "exact",
+      "p_value": 0.25,
+      "significant_at_0.05": false,
+      "table": {
+        "both_correct": 7,
+        "a_only": 0,
+        "b_only": 3,
+        "both_wrong": 0,
+        "n": 10,
+        "discordant": 3
+      }
+    },
+    "per_tier": {
+      "T3": {
+        "counts": {
+          "retriever_owned": 3,
+          "generator_owned": 0,
+          "reverse": 0,
+          "both_pass": 7,
+          "n_failures_a": 3,
+          "total_pairs": 10
+        },
+        "retriever_owned": 3,
+        "generator_owned": 0,
+        "reverse": 0,
+        "both_pass": 7,
+        "n_failures_a": 3,
+        "retriever_share": 1.0,
+        "wilson_ci": [
+          0.4385029682449546,
+          1.0
+        ],
+        "h8_verdict": "UNDECIDED",
+        "total_pairs": 10
+      }
+    },
+    "per_a_status": {
+      "step_cap": {
+        "count": 3,
+        "retriever_owned": 3,
+        "generator_owned": 0,
+        "retriever_share": 1.0,
+        "wilson_ci": [
+          0.4385029682449546,
+          1.0
+        ]
+      }
+    },
+    "total_pairs": 10
+  },
+  "mechanism": {
+    "never_surfaced": 3,
+    "surfaced_but_unused": 0,
+    "missing_doc_histogram": {
+      "4": 1,
+      "7": 2
+    },
+    "status_split": {
+      "retriever_owned": {
+        "step_cap": 3
+      },
+      "generator_owned": {}
+    },
+    "arm_means": {
+      "A": {
+        "mean_spans": 20.7,
+        "mean_prompt_tokens": 63399.6,
+        "mean_completion_tokens": 2606.9,
+        "mean_total_tokens": 66006.5
+      },
+      "B": {
+        "mean_spans": 2.0,
+        "mean_prompt_tokens": 1473.5,
+        "mean_completion_tokens": 236.6,
+        "mean_total_tokens": 1710.1
+      }
+    }
+  },
+  "manifest_sha256": "64da803c8340e67c1e52c456fc4bf4a7b97ea2b3a12f17927e7eafd667152b4d"
+}

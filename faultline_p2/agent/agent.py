@@ -23,10 +23,12 @@ def run_agent(
     trace_store: Optional[TraceStore] = None,
     run_id: Optional[str] = None,
     policy: Optional[PolicyProtocol] = None,
+    toolbox: Optional[ToolBox] = None,
 ) -> AgentOutcome:
     if policy is None and isinstance(env, dict):
         policy = env.get("policy")
-    toolbox = ToolBox(env)
+    if toolbox is None:
+        toolbox = ToolBox(env)
     
     messages = [
         {"role": "system", "content": "You are a fact-finding agent..."},

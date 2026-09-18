@@ -1,0 +1,259 @@
+{
+  "spec_version": "2.0.0",
+  "experiment": "p12_attribution",
+  "hypothesis": "H8: Retrieval owns >50% of grounding failures; falsified if attribution CI excludes 50% on generator side",
+  "rung": "R2",
+  "n": 150,
+  "step_cap": 24,
+  "spend_usd": 1.4683,
+  "timestamps": {
+    "start_utc": "2026-09-17T08:07:35.812642+00:00",
+    "end_utc": "2026-09-17T08:07:36.138588+00:00"
+  },
+  "metadata": {
+    "rung": "R2",
+    "n": 150,
+    "step_cap": 24,
+    "spend_usd": 1.4683,
+    "timestamps": {
+      "start_utc": "2026-09-17T08:07:35.812642+00:00",
+      "end_utc": "2026-09-17T08:07:36.138588+00:00"
+    }
+  },
+  "h8_verdict": "SUPPORTED",
+  "as_run": {
+    "counts": {
+      "retriever_owned": 32,
+      "generator_owned": 2,
+      "reverse": 4,
+      "both_pass": 112,
+      "n_failures_a": 34,
+      "total_pairs": 150
+    },
+    "retriever_owned": 32,
+    "generator_owned": 2,
+    "reverse": 4,
+    "both_pass": 112,
+    "n_failures_a": 34,
+    "retriever_share": 0.9411764705882353,
+    "wilson_ci": [
+      0.8090639309571901,
+      0.9837173447898773
+    ],
+    "h8_verdict": "SUPPORTED",
+    "mcnemar": {
+      "b": 4,
+      "c": 32,
+      "n_discordant": 36,
+      "chi2_statistic": 20.25,
+      "chi2_p_value": 6.79534624946012e-06,
+      "continuity_correction": true,
+      "exact_p_value": 1.94157473742962e-06,
+      "recommended": "chi2",
+      "p_value": 6.79534624946012e-06,
+      "significant_at_0.05": true,
+      "table": {
+        "both_correct": 112,
+        "a_only": 4,
+        "b_only": 32,
+        "both_wrong": 2,
+        "n": 150,
+        "discordant": 36
+      }
+    },
+    "per_tier": {
+      "T3": {
+        "counts": {
+          "retriever_owned": 32,
+          "generator_owned": 2,
+          "reverse": 4,
+          "both_pass": 112,
+          "n_failures_a": 34,
+          "total_pairs": 150
+        },
+        "retriever_owned": 32,
+        "generator_owned": 2,
+        "reverse": 4,
+        "both_pass": 112,
+        "n_failures_a": 34,
+        "retriever_share": 0.9411764705882353,
+        "wilson_ci": [
+          0.8090639309571901,
+          0.9837173447898773
+        ],
+        "h8_verdict": "SUPPORTED",
+        "total_pairs": 150
+      }
+    },
+    "per_a_status": {
+      "answered": {
+        "count": 15,
+        "retriever_owned": 15,
+        "generator_owned": 0,
+        "retriever_share": 1.0,
+        "wilson_ci": [
+          0.7961166989641515,
+          1.0
+        ]
+      },
+      "malformed": {
+        "count": 1,
+        "retriever_owned": 1,
+        "generator_owned": 0,
+        "retriever_share": 1.0,
+        "wilson_ci": [
+          0.20654931437723745,
+          1.0
+        ]
+      },
+      "step_cap": {
+        "count": 18,
+        "retriever_owned": 16,
+        "generator_owned": 2,
+        "retriever_share": 0.8888888888888888,
+        "wilson_ci": [
+          0.672002348698212,
+          0.9689804773543876
+        ]
+      }
+    },
+    "total_pairs": 150
+  },
+  "infra_excluded": {
+    "counts": {
+      "retriever_owned": 32,
+      "generator_owned": 2,
+      "reverse": 4,
+      "both_pass": 112,
+      "n_failures_a": 34,
+      "total_pairs": 150
+    },
+    "retriever_owned": 32,
+    "generator_owned": 2,
+    "reverse": 4,
+    "both_pass": 112,
+    "n_failures_a": 34,
+    "retriever_share": 0.9411764705882353,
+    "wilson_ci": [
+      0.8090639309571901,
+      0.9837173447898773
+    ],
+    "h8_verdict": "SUPPORTED",
+    "mcnemar": {
+      "b": 4,
+      "c": 32,
+      "n_discordant": 36,
+      "chi2_statistic": 20.25,
+      "chi2_p_value": 6.79534624946012e-06,
+      "continuity_correction": true,
+      "exact_p_value": 1.94157473742962e-06,
+      "recommended": "chi2",
+      "p_value": 6.79534624946012e-06,
+      "significant_at_0.05": true,
+      "table": {
+        "both_correct": 112,
+        "a_only": 4,
+        "b_only": 32,
+        "both_wrong": 2,
+        "n": 150,
+        "discordant": 36
+      }
+    },
+    "per_tier": {
+      "T3": {
+        "counts": {
+          "retriever_owned": 32,
+          "generator_owned": 2,
+          "reverse": 4,
+          "both_pass": 112,
+          "n_failures_a": 34,
+          "total_pairs": 150
+        },
+        "retriever_owned": 32,
+        "generator_owned": 2,
+        "reverse": 4,
+        "both_pass": 112,
+        "n_failures_a": 34,
+        "retriever_share": 0.9411764705882353,
+        "wilson_ci": [
+          0.8090639309571901,
+          0.9837173447898773
+        ],
+        "h8_verdict": "SUPPORTED",
+        "total_pairs": 150
+      }
+    },
+    "per_a_status": {
+      "answered": {
+        "count": 15,
+        "retriever_owned": 15,
+        "generator_owned": 0,
+        "retriever_share": 1.0,
+        "wilson_ci": [
+          0.7961166989641515,
+          1.0
+        ]
+      },
+      "malformed": {
+        "count": 1,
+        "retriever_owned": 1,
+        "generator_owned": 0,
+        "retriever_share": 1.0,
+        "wilson_ci": [
+          0.20654931437723745,
+          1.0
+        ]
+      },
+      "step_cap": {
+        "count": 18,
+        "retriever_owned": 16,
+        "generator_owned": 2,
+        "retriever_share": 0.8888888888888888,
+        "wilson_ci": [
+          0.672002348698212,
+          0.9689804773543876
+        ]
+      }
+    },
+    "total_pairs": 150
+  },
+  "mechanism": {
+    "never_surfaced": 29,
+    "surfaced_but_unused": 3,
+    "missing_doc_histogram": {
+      "0": 3,
+      "1": 9,
+      "2": 6,
+      "3": 4,
+      "4": 2,
+      "7": 2,
+      "8": 3,
+      "9": 3
+    },
+    "status_split": {
+      "retriever_owned": {
+        "answered": 15,
+        "step_cap": 16,
+        "malformed": 1
+      },
+      "generator_owned": {
+        "step_cap": 2
+      }
+    },
+    "arm_means": {
+      "A": {
+        "mean_spans": 17.43,
+        "mean_prompt_tokens": 47852.0,
+        "mean_completion_tokens": 2427.4,
+        "mean_total_tokens": 50279.4
+      },
+      "B": {
+        "mean_spans": 5.35,
+        "mean_prompt_tokens": 15348.7,
+        "mean_completion_tokens": 932.5,
+        "mean_total_tokens": 16281.2
+      }
+    }
+  },
+  "manifest_sha256": "410e6cd6e1ba205a543cf390b3dd1fd7c8c445e98b90f302a897d19dd39de2d6"
+}
