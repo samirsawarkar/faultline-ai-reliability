@@ -1,0 +1,1921 @@
+{
+  "spec_version": "2.0.0",
+  "experiment": "p10_cascade",
+  "n_pairs": 100,
+  "split": {
+    "train_ids": [
+      "r-0221",
+      "r-0204",
+      "r-0286",
+      "r-0232",
+      "r-0300",
+      "r-0216",
+      "r-0292",
+      "r-0214",
+      "r-0263",
+      "r-0224",
+      "r-0242",
+      "r-0279",
+      "r-0226",
+      "r-0258",
+      "r-0274",
+      "r-0208",
+      "r-0205",
+      "r-0277",
+      "r-0270",
+      "r-0210",
+      "r-0282",
+      "r-0222",
+      "r-0296",
+      "r-0298",
+      "r-0223",
+      "r-0289",
+      "r-0240",
+      "r-0203",
+      "r-0295",
+      "r-0201",
+      "r-0283",
+      "r-0241",
+      "r-0212",
+      "r-0233",
+      "r-0255",
+      "r-0259",
+      "r-0252",
+      "r-0228",
+      "r-0248",
+      "r-0251",
+      "r-0290",
+      "r-0202",
+      "r-0246",
+      "r-0243",
+      "r-0260",
+      "r-0275",
+      "r-0288",
+      "r-0264",
+      "r-0276",
+      "r-0238",
+      "r-0249",
+      "r-0297",
+      "r-0265",
+      "r-0237",
+      "r-0217",
+      "r-0206",
+      "r-0209",
+      "r-0272",
+      "r-0218",
+      "r-0220",
+      "r-0207",
+      "r-0273",
+      "r-0262",
+      "r-0229",
+      "r-0271",
+      "r-0291",
+      "r-0261",
+      "r-0230",
+      "r-0293",
+      "r-0267"
+    ],
+    "test_ids": [
+      "r-0236",
+      "r-0280",
+      "r-0299",
+      "r-0268",
+      "r-0287",
+      "r-0213",
+      "r-0234",
+      "r-0269",
+      "r-0247",
+      "r-0256",
+      "r-0225",
+      "r-0250",
+      "r-0215",
+      "r-0257",
+      "r-0253",
+      "r-0231",
+      "r-0284",
+      "r-0235",
+      "r-0219",
+      "r-0294",
+      "r-0254",
+      "r-0285",
+      "r-0244",
+      "r-0211",
+      "r-0281",
+      "r-0239",
+      "r-0266",
+      "r-0245",
+      "r-0278",
+      "r-0227"
+    ],
+    "train_count": 70,
+    "test_count": 30,
+    "train_sha256": "5e5d4980deb99fd77d204634d7ba1ffafc7fdf5be3383ee719d69dea1a9c7bf8",
+    "test_sha256": "fb7c397e921ede356b543a6c0bb7cbbecfd3c207d504c8e20ea63486941649e1",
+    "all_sha256": "c9402fdbdce9174b04f41c3ccf4d7bdc04a6b06c937b26ce1bf99319a41a6b31"
+  },
+  "split_ids_sha256": "c9402fdbdce9174b04f41c3ccf4d7bdc04a6b06c937b26ce1bf99319a41a6b31",
+  "chosen_thresholds": {
+    "escalate_if_steps_ge_t": 23,
+    "escalate_if_not_answered_or_steps_ge_t": 23
+  },
+  "baselines": {
+    "r2_only": {
+      "train": {
+        "policy": "r2_only",
+        "n": 70,
+        "passed": 52,
+        "pass_rate": 0.7428571428571429,
+        "wilson_ci": [
+          0.6297386985284518,
+          0.8307072425865615
+        ],
+        "mean_cost": 0.007375191999999998,
+        "total_cost": 0.5162634399999999,
+        "escalations": 0,
+        "escalation_rate": 0.0
+      },
+      "test": {
+        "policy": "r2_only",
+        "n": 30,
+        "passed": 23,
+        "pass_rate": 0.7666666666666667,
+        "wilson_ci": [
+          0.5907167384187784,
+          0.8820761185551049
+        ],
+        "mean_cost": 0.007772482666666667,
+        "total_cost": 0.23317448000000002,
+        "escalations": 0,
+        "escalation_rate": 0.0
+      }
+    },
+    "r4_only": {
+      "train": {
+        "policy": "r4_only",
+        "n": 70,
+        "passed": 18,
+        "pass_rate": 0.2571428571428571,
+        "wilson_ci": [
+          0.16929275741343847,
+          0.3702613014715483
+        ],
+        "mean_cost": 0.05652740628571431,
+        "total_cost": 3.9569184400000017,
+        "escalations": 70,
+        "escalation_rate": 1.0
+      },
+      "test": {
+        "policy": "r4_only",
+        "n": 30,
+        "passed": 6,
+        "pass_rate": 0.2,
+        "wilson_ci": [
+          0.09505107177289873,
+          0.3730569641314825
+        ],
+        "mean_cost": 0.06335612266666667,
+        "total_cost": 1.90068368,
+        "escalations": 30,
+        "escalation_rate": 1.0
+      }
+    }
+  },
+  "train_metrics": {
+    "r2_only": {
+      "policy": "r2_only",
+      "n": 70,
+      "passed": 52,
+      "pass_rate": 0.7428571428571429,
+      "wilson_ci": [
+        0.6297386985284518,
+        0.8307072425865615
+      ],
+      "mean_cost": 0.007375191999999998,
+      "total_cost": 0.5162634399999999,
+      "escalations": 0,
+      "escalation_rate": 0.0
+    },
+    "r4_only": {
+      "policy": "r4_only",
+      "n": 70,
+      "passed": 18,
+      "pass_rate": 0.2571428571428571,
+      "wilson_ci": [
+        0.16929275741343847,
+        0.3702613014715483
+      ],
+      "mean_cost": 0.05652740628571431,
+      "total_cost": 3.9569184400000017,
+      "escalations": 70,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_not_answered": {
+      "policy": "escalate_if_not_answered",
+      "n": 70,
+      "passed": 56,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6918335550374695,
+        0.8769526075163705
+      ],
+      "mean_cost": 0.011904137714285716,
+      "total_cost": 0.8332896400000002,
+      "escalations": 7,
+      "escalation_rate": 0.1
+    },
+    "escalate_if_no_citation": {
+      "policy": "escalate_if_no_citation",
+      "n": 70,
+      "passed": 56,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6918335550374695,
+        0.8769526075163705
+      ],
+      "mean_cost": 0.011904137714285716,
+      "total_cost": 0.8332896400000002,
+      "escalations": 7,
+      "escalation_rate": 0.1
+    },
+    "escalate_if_steps_ge_23": {
+      "policy": "escalate_if_steps_ge_23",
+      "n": 70,
+      "passed": 56,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6918335550374695,
+        0.8769526075163705
+      ],
+      "mean_cost": 0.011904137714285716,
+      "total_cost": 0.8332896400000002,
+      "escalations": 7,
+      "escalation_rate": 0.1
+    },
+    "escalate_if_not_answered_or_steps_ge_23": {
+      "policy": "escalate_if_not_answered_or_steps_ge_23",
+      "n": 70,
+      "passed": 56,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6918335550374695,
+        0.8769526075163705
+      ],
+      "mean_cost": 0.011904137714285716,
+      "total_cost": 0.8332896400000002,
+      "escalations": 7,
+      "escalation_rate": 0.1
+    }
+  },
+  "test_metrics": {
+    "r2_only": {
+      "policy": "r2_only",
+      "n": 30,
+      "passed": 23,
+      "pass_rate": 0.7666666666666667,
+      "wilson_ci": [
+        0.5907167384187784,
+        0.8820761185551049
+      ],
+      "mean_cost": 0.007772482666666667,
+      "total_cost": 0.23317448000000002,
+      "escalations": 0,
+      "escalation_rate": 0.0
+    },
+    "r4_only": {
+      "policy": "r4_only",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_not_answered": {
+      "policy": "escalate_if_not_answered",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    },
+    "escalate_if_no_citation": {
+      "policy": "escalate_if_no_citation",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    },
+    "escalate_if_steps_ge_23": {
+      "policy": "escalate_if_steps_ge_23",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    },
+    "escalate_if_not_answered_or_steps_ge_23": {
+      "policy": "escalate_if_not_answered_or_steps_ge_23",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    }
+  },
+  "side_by_side": {
+    "r2_only": {
+      "train": {
+        "policy": "r2_only",
+        "n": 70,
+        "passed": 52,
+        "pass_rate": 0.7428571428571429,
+        "wilson_ci": [
+          0.6297386985284518,
+          0.8307072425865615
+        ],
+        "mean_cost": 0.007375191999999998,
+        "total_cost": 0.5162634399999999,
+        "escalations": 0,
+        "escalation_rate": 0.0
+      },
+      "test": {
+        "policy": "r2_only",
+        "n": 30,
+        "passed": 23,
+        "pass_rate": 0.7666666666666667,
+        "wilson_ci": [
+          0.5907167384187784,
+          0.8820761185551049
+        ],
+        "mean_cost": 0.007772482666666667,
+        "total_cost": 0.23317448000000002,
+        "escalations": 0,
+        "escalation_rate": 0.0
+      }
+    },
+    "r4_only": {
+      "train": {
+        "policy": "r4_only",
+        "n": 70,
+        "passed": 18,
+        "pass_rate": 0.2571428571428571,
+        "wilson_ci": [
+          0.16929275741343847,
+          0.3702613014715483
+        ],
+        "mean_cost": 0.05652740628571431,
+        "total_cost": 3.9569184400000017,
+        "escalations": 70,
+        "escalation_rate": 1.0
+      },
+      "test": {
+        "policy": "r4_only",
+        "n": 30,
+        "passed": 6,
+        "pass_rate": 0.2,
+        "wilson_ci": [
+          0.09505107177289873,
+          0.3730569641314825
+        ],
+        "mean_cost": 0.06335612266666667,
+        "total_cost": 1.90068368,
+        "escalations": 30,
+        "escalation_rate": 1.0
+      }
+    },
+    "escalate_if_not_answered": {
+      "train": {
+        "policy": "escalate_if_not_answered",
+        "n": 70,
+        "passed": 56,
+        "pass_rate": 0.8,
+        "wilson_ci": [
+          0.6918335550374695,
+          0.8769526075163705
+        ],
+        "mean_cost": 0.011904137714285716,
+        "total_cost": 0.8332896400000002,
+        "escalations": 7,
+        "escalation_rate": 0.1
+      },
+      "test": {
+        "policy": "escalate_if_not_answered",
+        "n": 30,
+        "passed": 24,
+        "pass_rate": 0.8,
+        "wilson_ci": [
+          0.6269430358685175,
+          0.9049489282271013
+        ],
+        "mean_cost": 0.015860462666666665,
+        "total_cost": 0.47581387999999997,
+        "escalations": 5,
+        "escalation_rate": 0.16666666666666666
+      }
+    },
+    "escalate_if_no_citation": {
+      "train": {
+        "policy": "escalate_if_no_citation",
+        "n": 70,
+        "passed": 56,
+        "pass_rate": 0.8,
+        "wilson_ci": [
+          0.6918335550374695,
+          0.8769526075163705
+        ],
+        "mean_cost": 0.011904137714285716,
+        "total_cost": 0.8332896400000002,
+        "escalations": 7,
+        "escalation_rate": 0.1
+      },
+      "test": {
+        "policy": "escalate_if_no_citation",
+        "n": 30,
+        "passed": 24,
+        "pass_rate": 0.8,
+        "wilson_ci": [
+          0.6269430358685175,
+          0.9049489282271013
+        ],
+        "mean_cost": 0.015860462666666665,
+        "total_cost": 0.47581387999999997,
+        "escalations": 5,
+        "escalation_rate": 0.16666666666666666
+      }
+    },
+    "escalate_if_steps_ge_23": {
+      "train": {
+        "policy": "escalate_if_steps_ge_23",
+        "n": 70,
+        "passed": 56,
+        "pass_rate": 0.8,
+        "wilson_ci": [
+          0.6918335550374695,
+          0.8769526075163705
+        ],
+        "mean_cost": 0.011904137714285716,
+        "total_cost": 0.8332896400000002,
+        "escalations": 7,
+        "escalation_rate": 0.1
+      },
+      "test": {
+        "policy": "escalate_if_steps_ge_23",
+        "n": 30,
+        "passed": 24,
+        "pass_rate": 0.8,
+        "wilson_ci": [
+          0.6269430358685175,
+          0.9049489282271013
+        ],
+        "mean_cost": 0.015860462666666665,
+        "total_cost": 0.47581387999999997,
+        "escalations": 5,
+        "escalation_rate": 0.16666666666666666
+      }
+    },
+    "escalate_if_not_answered_or_steps_ge_23": {
+      "train": {
+        "policy": "escalate_if_not_answered_or_steps_ge_23",
+        "n": 70,
+        "passed": 56,
+        "pass_rate": 0.8,
+        "wilson_ci": [
+          0.6918335550374695,
+          0.8769526075163705
+        ],
+        "mean_cost": 0.011904137714285716,
+        "total_cost": 0.8332896400000002,
+        "escalations": 7,
+        "escalation_rate": 0.1
+      },
+      "test": {
+        "policy": "escalate_if_not_answered_or_steps_ge_23",
+        "n": 30,
+        "passed": 24,
+        "pass_rate": 0.8,
+        "wilson_ci": [
+          0.6269430358685175,
+          0.9049489282271013
+        ],
+        "mean_cost": 0.015860462666666665,
+        "total_cost": 0.47581387999999997,
+        "escalations": 5,
+        "escalation_rate": 0.16666666666666666
+      }
+    }
+  },
+  "all_test_metrics": {
+    "r2_only": {
+      "policy": "r2_only",
+      "n": 30,
+      "passed": 23,
+      "pass_rate": 0.7666666666666667,
+      "wilson_ci": [
+        0.5907167384187784,
+        0.8820761185551049
+      ],
+      "mean_cost": 0.007772482666666667,
+      "total_cost": 0.23317448000000002,
+      "escalations": 0,
+      "escalation_rate": 0.0
+    },
+    "r4_only": {
+      "policy": "r4_only",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_not_answered": {
+      "policy": "escalate_if_not_answered",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    },
+    "escalate_if_no_citation": {
+      "policy": "escalate_if_no_citation",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    },
+    "escalate_if_steps_ge_2": {
+      "policy": "escalate_if_steps_ge_2",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_steps_ge_3": {
+      "policy": "escalate_if_steps_ge_3",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_steps_ge_4": {
+      "policy": "escalate_if_steps_ge_4",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_steps_ge_5": {
+      "policy": "escalate_if_steps_ge_5",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_steps_ge_6": {
+      "policy": "escalate_if_steps_ge_6",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_steps_ge_7": {
+      "policy": "escalate_if_steps_ge_7",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_steps_ge_8": {
+      "policy": "escalate_if_steps_ge_8",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_steps_ge_9": {
+      "policy": "escalate_if_steps_ge_9",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_steps_ge_10": {
+      "policy": "escalate_if_steps_ge_10",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_steps_ge_11": {
+      "policy": "escalate_if_steps_ge_11",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_steps_ge_12": {
+      "policy": "escalate_if_steps_ge_12",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_steps_ge_13": {
+      "policy": "escalate_if_steps_ge_13",
+      "n": 30,
+      "passed": 7,
+      "pass_rate": 0.23333333333333334,
+      "wilson_ci": [
+        0.11792388144489496,
+        0.40928326158122164
+      ],
+      "mean_cost": 0.059988042666666665,
+      "total_cost": 1.79964128,
+      "escalations": 28,
+      "escalation_rate": 0.9333333333333333
+    },
+    "escalate_if_steps_ge_14": {
+      "policy": "escalate_if_steps_ge_14",
+      "n": 30,
+      "passed": 9,
+      "pass_rate": 0.3,
+      "wilson_ci": [
+        0.16664748268243793,
+        0.47875787458714947
+      ],
+      "mean_cost": 0.053617342666666665,
+      "total_cost": 1.60852028,
+      "escalations": 24,
+      "escalation_rate": 0.8
+    },
+    "escalate_if_steps_ge_15": {
+      "policy": "escalate_if_steps_ge_15",
+      "n": 30,
+      "passed": 9,
+      "pass_rate": 0.3,
+      "wilson_ci": [
+        0.16664748268243793,
+        0.47875787458714947
+      ],
+      "mean_cost": 0.053617342666666665,
+      "total_cost": 1.60852028,
+      "escalations": 24,
+      "escalation_rate": 0.8
+    },
+    "escalate_if_steps_ge_16": {
+      "policy": "escalate_if_steps_ge_16",
+      "n": 30,
+      "passed": 12,
+      "pass_rate": 0.4,
+      "wilson_ci": [
+        0.24590628116801858,
+        0.5767963974667751
+      ],
+      "mean_cost": 0.04724400266666666,
+      "total_cost": 1.4173200799999999,
+      "escalations": 21,
+      "escalation_rate": 0.7
+    },
+    "escalate_if_steps_ge_17": {
+      "policy": "escalate_if_steps_ge_17",
+      "n": 30,
+      "passed": 14,
+      "pass_rate": 0.4666666666666667,
+      "wilson_ci": [
+        0.3023238890769975,
+        0.6385770038012669
+      ],
+      "mean_cost": 0.04300516266666666,
+      "total_cost": 1.2901548799999998,
+      "escalations": 19,
+      "escalation_rate": 0.6333333333333333
+    },
+    "escalate_if_steps_ge_18": {
+      "policy": "escalate_if_steps_ge_18",
+      "n": 30,
+      "passed": 17,
+      "pass_rate": 0.5666666666666667,
+      "wilson_ci": [
+        0.3919730700081361,
+        0.7262251442353347
+      ],
+      "mean_cost": 0.03564518266666667,
+      "total_cost": 1.06935548,
+      "escalations": 16,
+      "escalation_rate": 0.5333333333333333
+    },
+    "escalate_if_steps_ge_19": {
+      "policy": "escalate_if_steps_ge_19",
+      "n": 30,
+      "passed": 19,
+      "pass_rate": 0.6333333333333333,
+      "wilson_ci": [
+        0.45513563654794875,
+        0.7812607919389928
+      ],
+      "mean_cost": 0.03249314266666666,
+      "total_cost": 0.9747942799999999,
+      "escalations": 14,
+      "escalation_rate": 0.4666666666666667
+    },
+    "escalate_if_steps_ge_20": {
+      "policy": "escalate_if_steps_ge_20",
+      "n": 30,
+      "passed": 23,
+      "pass_rate": 0.7666666666666667,
+      "wilson_ci": [
+        0.5907167384187784,
+        0.8820761185551049
+      ],
+      "mean_cost": 0.025212902666666665,
+      "total_cost": 0.75638708,
+      "escalations": 10,
+      "escalation_rate": 0.3333333333333333
+    },
+    "escalate_if_steps_ge_21": {
+      "policy": "escalate_if_steps_ge_21",
+      "n": 30,
+      "passed": 25,
+      "pass_rate": 0.8333333333333334,
+      "wilson_ci": [
+        0.6643564949358396,
+        0.9266345762815145
+      ],
+      "mean_cost": 0.019314502666666664,
+      "total_cost": 0.5794350799999999,
+      "escalations": 7,
+      "escalation_rate": 0.23333333333333334
+    },
+    "escalate_if_steps_ge_22": {
+      "policy": "escalate_if_steps_ge_22",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    },
+    "escalate_if_steps_ge_23": {
+      "policy": "escalate_if_steps_ge_23",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    },
+    "escalate_if_steps_ge_24": {
+      "policy": "escalate_if_steps_ge_24",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    },
+    "escalate_if_not_answered_or_steps_ge_2": {
+      "policy": "escalate_if_not_answered_or_steps_ge_2",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_not_answered_or_steps_ge_3": {
+      "policy": "escalate_if_not_answered_or_steps_ge_3",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_not_answered_or_steps_ge_4": {
+      "policy": "escalate_if_not_answered_or_steps_ge_4",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_not_answered_or_steps_ge_5": {
+      "policy": "escalate_if_not_answered_or_steps_ge_5",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_not_answered_or_steps_ge_6": {
+      "policy": "escalate_if_not_answered_or_steps_ge_6",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_not_answered_or_steps_ge_7": {
+      "policy": "escalate_if_not_answered_or_steps_ge_7",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_not_answered_or_steps_ge_8": {
+      "policy": "escalate_if_not_answered_or_steps_ge_8",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_not_answered_or_steps_ge_9": {
+      "policy": "escalate_if_not_answered_or_steps_ge_9",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_not_answered_or_steps_ge_10": {
+      "policy": "escalate_if_not_answered_or_steps_ge_10",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_not_answered_or_steps_ge_11": {
+      "policy": "escalate_if_not_answered_or_steps_ge_11",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_not_answered_or_steps_ge_12": {
+      "policy": "escalate_if_not_answered_or_steps_ge_12",
+      "n": 30,
+      "passed": 6,
+      "pass_rate": 0.2,
+      "wilson_ci": [
+        0.09505107177289873,
+        0.3730569641314825
+      ],
+      "mean_cost": 0.06335612266666667,
+      "total_cost": 1.90068368,
+      "escalations": 30,
+      "escalation_rate": 1.0
+    },
+    "escalate_if_not_answered_or_steps_ge_13": {
+      "policy": "escalate_if_not_answered_or_steps_ge_13",
+      "n": 30,
+      "passed": 7,
+      "pass_rate": 0.23333333333333334,
+      "wilson_ci": [
+        0.11792388144489496,
+        0.40928326158122164
+      ],
+      "mean_cost": 0.059988042666666665,
+      "total_cost": 1.79964128,
+      "escalations": 28,
+      "escalation_rate": 0.9333333333333333
+    },
+    "escalate_if_not_answered_or_steps_ge_14": {
+      "policy": "escalate_if_not_answered_or_steps_ge_14",
+      "n": 30,
+      "passed": 9,
+      "pass_rate": 0.3,
+      "wilson_ci": [
+        0.16664748268243793,
+        0.47875787458714947
+      ],
+      "mean_cost": 0.053617342666666665,
+      "total_cost": 1.60852028,
+      "escalations": 24,
+      "escalation_rate": 0.8
+    },
+    "escalate_if_not_answered_or_steps_ge_15": {
+      "policy": "escalate_if_not_answered_or_steps_ge_15",
+      "n": 30,
+      "passed": 9,
+      "pass_rate": 0.3,
+      "wilson_ci": [
+        0.16664748268243793,
+        0.47875787458714947
+      ],
+      "mean_cost": 0.053617342666666665,
+      "total_cost": 1.60852028,
+      "escalations": 24,
+      "escalation_rate": 0.8
+    },
+    "escalate_if_not_answered_or_steps_ge_16": {
+      "policy": "escalate_if_not_answered_or_steps_ge_16",
+      "n": 30,
+      "passed": 12,
+      "pass_rate": 0.4,
+      "wilson_ci": [
+        0.24590628116801858,
+        0.5767963974667751
+      ],
+      "mean_cost": 0.04724400266666666,
+      "total_cost": 1.4173200799999999,
+      "escalations": 21,
+      "escalation_rate": 0.7
+    },
+    "escalate_if_not_answered_or_steps_ge_17": {
+      "policy": "escalate_if_not_answered_or_steps_ge_17",
+      "n": 30,
+      "passed": 14,
+      "pass_rate": 0.4666666666666667,
+      "wilson_ci": [
+        0.3023238890769975,
+        0.6385770038012669
+      ],
+      "mean_cost": 0.04300516266666666,
+      "total_cost": 1.2901548799999998,
+      "escalations": 19,
+      "escalation_rate": 0.6333333333333333
+    },
+    "escalate_if_not_answered_or_steps_ge_18": {
+      "policy": "escalate_if_not_answered_or_steps_ge_18",
+      "n": 30,
+      "passed": 17,
+      "pass_rate": 0.5666666666666667,
+      "wilson_ci": [
+        0.3919730700081361,
+        0.7262251442353347
+      ],
+      "mean_cost": 0.03564518266666667,
+      "total_cost": 1.06935548,
+      "escalations": 16,
+      "escalation_rate": 0.5333333333333333
+    },
+    "escalate_if_not_answered_or_steps_ge_19": {
+      "policy": "escalate_if_not_answered_or_steps_ge_19",
+      "n": 30,
+      "passed": 19,
+      "pass_rate": 0.6333333333333333,
+      "wilson_ci": [
+        0.45513563654794875,
+        0.7812607919389928
+      ],
+      "mean_cost": 0.03249314266666666,
+      "total_cost": 0.9747942799999999,
+      "escalations": 14,
+      "escalation_rate": 0.4666666666666667
+    },
+    "escalate_if_not_answered_or_steps_ge_20": {
+      "policy": "escalate_if_not_answered_or_steps_ge_20",
+      "n": 30,
+      "passed": 23,
+      "pass_rate": 0.7666666666666667,
+      "wilson_ci": [
+        0.5907167384187784,
+        0.8820761185551049
+      ],
+      "mean_cost": 0.025212902666666665,
+      "total_cost": 0.75638708,
+      "escalations": 10,
+      "escalation_rate": 0.3333333333333333
+    },
+    "escalate_if_not_answered_or_steps_ge_21": {
+      "policy": "escalate_if_not_answered_or_steps_ge_21",
+      "n": 30,
+      "passed": 25,
+      "pass_rate": 0.8333333333333334,
+      "wilson_ci": [
+        0.6643564949358396,
+        0.9266345762815145
+      ],
+      "mean_cost": 0.019314502666666664,
+      "total_cost": 0.5794350799999999,
+      "escalations": 7,
+      "escalation_rate": 0.23333333333333334
+    },
+    "escalate_if_not_answered_or_steps_ge_22": {
+      "policy": "escalate_if_not_answered_or_steps_ge_22",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    },
+    "escalate_if_not_answered_or_steps_ge_23": {
+      "policy": "escalate_if_not_answered_or_steps_ge_23",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    },
+    "escalate_if_not_answered_or_steps_ge_24": {
+      "policy": "escalate_if_not_answered_or_steps_ge_24",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    }
+  },
+  "frontier_points": [
+    {
+      "policy": "r2_only",
+      "n": 30,
+      "passed": 23,
+      "pass_rate": 0.7666666666666667,
+      "wilson_ci": [
+        0.5907167384187784,
+        0.8820761185551049
+      ],
+      "mean_cost": 0.007772482666666667,
+      "total_cost": 0.23317448000000002,
+      "escalations": 0,
+      "escalation_rate": 0.0
+    },
+    {
+      "policy": "escalate_if_not_answered",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    },
+    {
+      "policy": "escalate_if_no_citation",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    },
+    {
+      "policy": "escalate_if_steps_ge_22",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    },
+    {
+      "policy": "escalate_if_steps_ge_23",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    },
+    {
+      "policy": "escalate_if_steps_ge_24",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    },
+    {
+      "policy": "escalate_if_not_answered_or_steps_ge_22",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    },
+    {
+      "policy": "escalate_if_not_answered_or_steps_ge_23",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    },
+    {
+      "policy": "escalate_if_not_answered_or_steps_ge_24",
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "wilson_ci": [
+        0.6269430358685175,
+        0.9049489282271013
+      ],
+      "mean_cost": 0.015860462666666665,
+      "total_cost": 0.47581387999999997,
+      "escalations": 5,
+      "escalation_rate": 0.16666666666666666
+    },
+    {
+      "policy": "escalate_if_steps_ge_21",
+      "n": 30,
+      "passed": 25,
+      "pass_rate": 0.8333333333333334,
+      "wilson_ci": [
+        0.6643564949358396,
+        0.9266345762815145
+      ],
+      "mean_cost": 0.019314502666666664,
+      "total_cost": 0.5794350799999999,
+      "escalations": 7,
+      "escalation_rate": 0.23333333333333334
+    },
+    {
+      "policy": "escalate_if_not_answered_or_steps_ge_21",
+      "n": 30,
+      "passed": 25,
+      "pass_rate": 0.8333333333333334,
+      "wilson_ci": [
+        0.6643564949358396,
+        0.9266345762815145
+      ],
+      "mean_cost": 0.019314502666666664,
+      "total_cost": 0.5794350799999999,
+      "escalations": 7,
+      "escalation_rate": 0.23333333333333334
+    }
+  ],
+  "p6_replicate": {
+    "as_run": {
+      "n_pairs": 450,
+      "r2_only": {
+        "policy": "r2_only",
+        "n": 450,
+        "passed": 284,
+        "pass_rate": 0.6311111111111111,
+        "wilson_ci": [
+          0.5855962932259174,
+          0.674406396494459
+        ],
+        "mean_cost": 0.009265202177777775,
+        "total_cost": 4.1693409799999985,
+        "escalations": 0,
+        "escalation_rate": 0.0
+      },
+      "r4_only": {
+        "policy": "r4_only",
+        "n": 450,
+        "passed": 67,
+        "pass_rate": 0.14888888888888888,
+        "wilson_ci": [
+          0.11897556341386412,
+          0.1847460471654664
+        ],
+        "mean_cost": 0.04920412351111104,
+        "total_cost": 22.141855579999966,
+        "escalations": 450,
+        "escalation_rate": 1.0
+      },
+      "chosen_thresholds": {
+        "escalate_if_steps_ge_t": 24,
+        "escalate_if_not_answered_or_steps_ge_t": 24
+      },
+      "side_by_side": {
+        "r2_only": {
+          "train": {
+            "policy": "r2_only",
+            "n": 315,
+            "passed": 202,
+            "pass_rate": 0.6412698412698413,
+            "wilson_ci": [
+              0.5868943305772586,
+              0.6922412634235539
+            ],
+            "mean_cost": 0.009345267999999997,
+            "total_cost": 2.9437594199999992,
+            "escalations": 0,
+            "escalation_rate": 0.0
+          },
+          "test": {
+            "policy": "r2_only",
+            "n": 135,
+            "passed": 82,
+            "pass_rate": 0.6074074074074074,
+            "wilson_ci": [
+              0.523154473167425,
+              0.68571685565844
+            ],
+            "mean_cost": 0.009078381925925926,
+            "total_cost": 1.22558156,
+            "escalations": 0,
+            "escalation_rate": 0.0
+          }
+        },
+        "r4_only": {
+          "train": {
+            "policy": "r4_only",
+            "n": 315,
+            "passed": 53,
+            "pass_rate": 0.16825396825396827,
+            "wilson_ci": [
+              0.13099496273881484,
+              0.21350684460759212
+            ],
+            "mean_cost": 0.047868888952380964,
+            "total_cost": 15.078700020000003,
+            "escalations": 315,
+            "escalation_rate": 1.0
+          },
+          "test": {
+            "policy": "r4_only",
+            "n": 135,
+            "passed": 14,
+            "pass_rate": 0.1037037037037037,
+            "wilson_ci": [
+              0.0627845011302634,
+              0.1665523200984415
+            ],
+            "mean_cost": 0.05231967081481481,
+            "total_cost": 7.063155559999999,
+            "escalations": 135,
+            "escalation_rate": 1.0
+          }
+        },
+        "escalate_if_not_answered": {
+          "train": {
+            "policy": "escalate_if_not_answered",
+            "n": 315,
+            "passed": 208,
+            "pass_rate": 0.6603174603174603,
+            "wilson_ci": [
+              0.6063655758325387,
+              0.7104062780335517
+            ],
+            "mean_cost": 0.022368730857142863,
+            "total_cost": 7.046150220000002,
+            "escalations": 108,
+            "escalation_rate": 0.34285714285714286
+          },
+          "test": {
+            "policy": "escalate_if_not_answered",
+            "n": 135,
+            "passed": 86,
+            "pass_rate": 0.6370370370370371,
+            "wilson_ci": [
+              0.5531718921883638,
+              0.7133191135549813
+            ],
+            "mean_cost": 0.025577799703703694,
+            "total_cost": 3.4530029599999987,
+            "escalations": 50,
+            "escalation_rate": 0.37037037037037035
+          }
+        },
+        "escalate_if_no_citation": {
+          "train": {
+            "policy": "escalate_if_no_citation",
+            "n": 315,
+            "passed": 53,
+            "pass_rate": 0.16825396825396827,
+            "wilson_ci": [
+              0.13099496273881484,
+              0.21350684460759212
+            ],
+            "mean_cost": 0.047868888952380964,
+            "total_cost": 15.078700020000003,
+            "escalations": 315,
+            "escalation_rate": 1.0
+          },
+          "test": {
+            "policy": "escalate_if_no_citation",
+            "n": 135,
+            "passed": 14,
+            "pass_rate": 0.1037037037037037,
+            "wilson_ci": [
+              0.0627845011302634,
+              0.1665523200984415
+            ],
+            "mean_cost": 0.05231967081481481,
+            "total_cost": 7.063155559999999,
+            "escalations": 135,
+            "escalation_rate": 1.0
+          }
+        },
+        "escalate_if_steps_ge_24": {
+          "train": {
+            "policy": "escalate_if_steps_ge_24",
+            "n": 315,
+            "passed": 203,
+            "pass_rate": 0.6444444444444445,
+            "wilson_ci": [
+              0.5901332696010084,
+              0.6952750343773504
+            ],
+            "mean_cost": 0.011106254666666657,
+            "total_cost": 3.498470219999997,
+            "escalations": 13,
+            "escalation_rate": 0.04126984126984127
+          },
+          "test": {
+            "policy": "escalate_if_steps_ge_24",
+            "n": 135,
+            "passed": 83,
+            "pass_rate": 0.6148148148148148,
+            "wilson_ci": [
+              0.5306298022064447,
+              0.6926464458487903
+            ],
+            "mean_cost": 0.011758648592592597,
+            "total_cost": 1.5874175600000004,
+            "escalations": 5,
+            "escalation_rate": 0.037037037037037035
+          }
+        },
+        "escalate_if_not_answered_or_steps_ge_24": {
+          "train": {
+            "policy": "escalate_if_not_answered_or_steps_ge_24",
+            "n": 315,
+            "passed": 206,
+            "pass_rate": 0.653968253968254,
+            "wilson_ci": [
+              0.5998650687918463,
+              0.7043613651191514
+            ],
+            "mean_cost": 0.022745029904761915,
+            "total_cost": 7.164684420000003,
+            "escalations": 111,
+            "escalation_rate": 0.3523809523809524
+          },
+          "test": {
+            "policy": "escalate_if_not_answered_or_steps_ge_24",
+            "n": 135,
+            "passed": 85,
+            "pass_rate": 0.6296296296296297,
+            "wilson_ci": [
+              0.5456382937513186,
+              0.7064477927626566
+            ],
+            "mean_cost": 0.026251199703703692,
+            "total_cost": 3.5439119599999986,
+            "escalations": 51,
+            "escalation_rate": 0.37777777777777777
+          }
+        }
+      },
+      "test_frontier": [
+        {
+          "policy": "r2_only",
+          "n": 135,
+          "passed": 82,
+          "pass_rate": 0.6074074074074074,
+          "wilson_ci": [
+            0.523154473167425,
+            0.68571685565844
+          ],
+          "mean_cost": 0.009078381925925926,
+          "total_cost": 1.22558156,
+          "escalations": 0,
+          "escalation_rate": 0.0
+        },
+        {
+          "policy": "escalate_if_steps_ge_24",
+          "n": 135,
+          "passed": 83,
+          "pass_rate": 0.6148148148148148,
+          "wilson_ci": [
+            0.5306298022064447,
+            0.6926464458487903
+          ],
+          "mean_cost": 0.011758648592592597,
+          "total_cost": 1.5874175600000004,
+          "escalations": 5,
+          "escalation_rate": 0.037037037037037035
+        },
+        {
+          "policy": "escalate_if_not_answered",
+          "n": 135,
+          "passed": 86,
+          "pass_rate": 0.6370370370370371,
+          "wilson_ci": [
+            0.5531718921883638,
+            0.7133191135549813
+          ],
+          "mean_cost": 0.025577799703703694,
+          "total_cost": 3.4530029599999987,
+          "escalations": 50,
+          "escalation_rate": 0.37037037037037035
+        }
+      ]
+    },
+    "infra_excluded": {
+      "n_pairs": 355,
+      "infra_dead_count": 95,
+      "r2_only": {
+        "policy": "r2_only",
+        "n": 355,
+        "passed": 216,
+        "pass_rate": 0.6084507042253521,
+        "wilson_ci": [
+          0.5567750604118005,
+          0.6578043815876129
+        ],
+        "mean_cost": 0.00920568501408451,
+        "total_cost": 3.2680181800000008,
+        "escalations": 0,
+        "escalation_rate": 0.0
+      },
+      "r4_only": {
+        "policy": "r4_only",
+        "n": 355,
+        "passed": 67,
+        "pass_rate": 0.18873239436619718,
+        "wilson_ci": [
+          0.15144193196076938,
+          0.23268720204091448
+        ],
+        "mean_cost": 0.059775018535211236,
+        "total_cost": 21.22013157999999,
+        "escalations": 355,
+        "escalation_rate": 1.0
+      },
+      "chosen_thresholds": {
+        "escalate_if_steps_ge_t": 24,
+        "escalate_if_not_answered_or_steps_ge_t": 24
+      },
+      "side_by_side": {
+        "r2_only": {
+          "train": {
+            "policy": "r2_only",
+            "n": 248,
+            "passed": 154,
+            "pass_rate": 0.6209677419354839,
+            "wilson_ci": [
+              0.5591761892926199,
+              0.6790689363549358
+            ],
+            "mean_cost": 0.009273434032258065,
+            "total_cost": 2.29981164,
+            "escalations": 0,
+            "escalation_rate": 0.0
+          },
+          "test": {
+            "policy": "r2_only",
+            "n": 107,
+            "passed": 62,
+            "pass_rate": 0.5794392523364486,
+            "wilson_ci": [
+              0.4847449221141086,
+              0.6686272924062772
+            ],
+            "mean_cost": 0.009048659252336444,
+            "total_cost": 0.9682065399999995,
+            "escalations": 0,
+            "escalation_rate": 0.0
+          }
+        },
+        "r4_only": {
+          "train": {
+            "policy": "r4_only",
+            "n": 248,
+            "passed": 53,
+            "pass_rate": 0.21370967741935484,
+            "wilson_ci": [
+              0.16726093309197426,
+              0.26889226954214396
+            ],
+            "mean_cost": 0.058771914677419365,
+            "total_cost": 14.575434840000003,
+            "escalations": 248,
+            "escalation_rate": 1.0
+          },
+          "test": {
+            "policy": "r4_only",
+            "n": 107,
+            "passed": 14,
+            "pass_rate": 0.1308411214953271,
+            "wilson_ci": [
+              0.07956512495452905,
+              0.20770517227426666
+            ],
+            "mean_cost": 0.06209996953271028,
+            "total_cost": 6.64469674,
+            "escalations": 107,
+            "escalation_rate": 1.0
+          }
+        },
+        "escalate_if_not_answered": {
+          "train": {
+            "policy": "escalate_if_not_answered",
+            "n": 248,
+            "passed": 162,
+            "pass_rate": 0.6532258064516129,
+            "wilson_ci": [
+              0.5920607857978154,
+              0.7097163733557551
+            ],
+            "mean_cost": 0.025798019516129044,
+            "total_cost": 6.397908840000003,
+            "escalations": 88,
+            "escalation_rate": 0.3548387096774194
+          },
+          "test": {
+            "policy": "escalate_if_not_answered",
+            "n": 107,
+            "passed": 66,
+            "pass_rate": 0.616822429906542,
+            "wilson_ci": [
+              0.5221772310609086,
+              0.7033701432337761
+            ],
+            "mean_cost": 0.029853737757009332,
+            "total_cost": 3.1943499399999986,
+            "escalations": 44,
+            "escalation_rate": 0.411214953271028
+          }
+        },
+        "escalate_if_no_citation": {
+          "train": {
+            "policy": "escalate_if_no_citation",
+            "n": 248,
+            "passed": 53,
+            "pass_rate": 0.21370967741935484,
+            "wilson_ci": [
+              0.16726093309197426,
+              0.26889226954214396
+            ],
+            "mean_cost": 0.058771914677419365,
+            "total_cost": 14.575434840000003,
+            "escalations": 248,
+            "escalation_rate": 1.0
+          },
+          "test": {
+            "policy": "escalate_if_no_citation",
+            "n": 107,
+            "passed": 14,
+            "pass_rate": 0.1308411214953271,
+            "wilson_ci": [
+              0.07956512495452905,
+              0.20770517227426666
+            ],
+            "mean_cost": 0.06209996953271028,
+            "total_cost": 6.64469674,
+            "escalations": 107,
+            "escalation_rate": 1.0
+          }
+        },
+        "escalate_if_steps_ge_24": {
+          "train": {
+            "policy": "escalate_if_steps_ge_24",
+            "n": 248,
+            "passed": 155,
+            "pass_rate": 0.625,
+            "wilson_ci": [
+              0.5632713291857945,
+              0.682915300650013
+            ],
+            "mean_cost": 0.011508434032258066,
+            "total_cost": 2.8540916400000005,
+            "escalations": 11,
+            "escalation_rate": 0.04435483870967742
+          },
+          "test": {
+            "policy": "escalate_if_steps_ge_24",
+            "n": 107,
+            "passed": 63,
+            "pass_rate": 0.5887850467289719,
+            "wilson_ci": [
+              0.4940533124006841,
+              0.6773626920632765
+            ],
+            "mean_cost": 0.012430304112149532,
+            "total_cost": 1.33004254,
+            "escalations": 5,
+            "escalation_rate": 0.04672897196261682
+          }
+        },
+        "escalate_if_not_answered_or_steps_ge_24": {
+          "train": {
+            "policy": "escalate_if_not_answered_or_steps_ge_24",
+            "n": 248,
+            "passed": 160,
+            "pass_rate": 0.6451612903225806,
+            "wilson_ci": [
+              0.583812866887119,
+              0.702081283889948
+            ],
+            "mean_cost": 0.026275980000000008,
+            "total_cost": 6.516443040000002,
+            "escalations": 91,
+            "escalation_rate": 0.36693548387096775
+          },
+          "test": {
+            "policy": "escalate_if_not_answered_or_steps_ge_24",
+            "n": 107,
+            "passed": 65,
+            "pass_rate": 0.6074766355140186,
+            "wilson_ci": [
+              0.5127690996854534,
+              0.6947344846656566
+            ],
+            "mean_cost": 0.030703354579439242,
+            "total_cost": 3.285258939999999,
+            "escalations": 45,
+            "escalation_rate": 0.4205607476635514
+          }
+        }
+      },
+      "test_frontier": [
+        {
+          "policy": "r2_only",
+          "n": 107,
+          "passed": 62,
+          "pass_rate": 0.5794392523364486,
+          "wilson_ci": [
+            0.4847449221141086,
+            0.6686272924062772
+          ],
+          "mean_cost": 0.009048659252336444,
+          "total_cost": 0.9682065399999995,
+          "escalations": 0,
+          "escalation_rate": 0.0
+        },
+        {
+          "policy": "escalate_if_steps_ge_24",
+          "n": 107,
+          "passed": 63,
+          "pass_rate": 0.5887850467289719,
+          "wilson_ci": [
+            0.4940533124006841,
+            0.6773626920632765
+          ],
+          "mean_cost": 0.012430304112149532,
+          "total_cost": 1.33004254,
+          "escalations": 5,
+          "escalation_rate": 0.04672897196261682
+        },
+        {
+          "policy": "escalate_if_not_answered",
+          "n": 107,
+          "passed": 66,
+          "pass_rate": 0.616822429906542,
+          "wilson_ci": [
+            0.5221772310609086,
+            0.7033701432337761
+          ],
+          "mean_cost": 0.029853737757009332,
+          "total_cost": 3.1943499399999986,
+          "escalations": 44,
+          "escalation_rate": 0.411214953271028
+        }
+      ]
+    }
+  },
+  "spend_usd": 4.6652
+}

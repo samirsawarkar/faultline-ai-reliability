@@ -1,0 +1,181 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#ffffff" rx="8"/>
+  <style>
+    .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 20px; font-weight: 700; fill: #111827; }
+    .subtitle { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13px; fill: #4b5563; }
+    .panel-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 15px; font-weight: 700; fill: #1f2937; }
+    .panel-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #6b7280; }
+    .axis-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; font-weight: 600; fill: #4b5563; }
+    .tick-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 10px; fill: #6b7280; }
+    .point-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; font-weight: 600; fill: #1f2937; }
+    .point-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 10px; fill: #4b5563; }
+    .ceiling-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; font-weight: 700; fill: #dc2626; }
+    .callout-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; font-weight: 700; fill: #1e3a8a; }
+    .callout-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #1e40af; }
+  </style>
+  <rect x="1" y="1" width="1198" height="718" fill="none" stroke="#e5e7eb" stroke-width="1.5" rx="8"/>
+  <text x="600.0" y="36" class="title" text-anchor="middle">Figure 10: Calibrated Model Cascade &amp; Pareto Frontier</text>
+  <text x="600.0" y="56" class="subtitle" text-anchor="middle">Test Split Evaluation: Cheap Workhorse R2 (glm-5.3-flash) vs Frontier Anchor R4 (gpt-5.6-luna)</text>
+  <!-- PANEL 1: Test Split Frontier -->
+  <rect x="40" y="75" width="710" height="615" fill="#f9fafb" rx="6" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="60" y="101" class="panel-title">A. Held-out Test Split Pareto Frontier (N=30)</text>
+  <text x="60" y="117" class="panel-sub">Evaluates deterministic escalation rules vs theoretical rescue ceiling; error bars show Wilson 95% CI</text>
+  <!-- Plot 1 Grid & Axes -->
+  <line x1="105" y1="575.0" x2="720" y2="575.0" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="95" y="579.0" class="tick-label" text-anchor="end">0%</text>
+  <line x1="105" y1="488.0" x2="720" y2="488.0" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="95" y="492.0" class="tick-label" text-anchor="end">20%</text>
+  <line x1="105" y1="401.0" x2="720" y2="401.0" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="95" y="405.0" class="tick-label" text-anchor="end">40%</text>
+  <line x1="105" y1="314.0" x2="720" y2="314.0" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="95" y="318.0" class="tick-label" text-anchor="end">60%</text>
+  <line x1="105" y1="227.0" x2="720" y2="227.0" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="95" y="231.0" class="tick-label" text-anchor="end">80%</text>
+  <line x1="105" y1="140.0" x2="720" y2="140.0" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="95" y="144.0" class="tick-label" text-anchor="end">100%</text>
+  <line x1="105.0" y1="140" x2="105.0" y2="575" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="105.0" y="591" class="tick-label" text-anchor="middle">$0.00</text>
+  <line x1="192.9" y1="140" x2="192.9" y2="575" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="192.9" y="591" class="tick-label" text-anchor="middle">$0.01</text>
+  <line x1="280.7" y1="140" x2="280.7" y2="575" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="280.7" y="591" class="tick-label" text-anchor="middle">$0.02</text>
+  <line x1="368.6" y1="140" x2="368.6" y2="575" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="368.6" y="591" class="tick-label" text-anchor="middle">$0.03</text>
+  <line x1="456.4" y1="140" x2="456.4" y2="575" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="456.4" y="591" class="tick-label" text-anchor="middle">$0.04</text>
+  <line x1="544.3" y1="140" x2="544.3" y2="575" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="544.3" y="591" class="tick-label" text-anchor="middle">$0.05</text>
+  <line x1="632.1" y1="140" x2="632.1" y2="575" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="632.1" y="591" class="tick-label" text-anchor="middle">$0.06</text>
+  <line x1="720.0" y1="140" x2="720.0" y2="575" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="720.0" y="591" class="tick-label" text-anchor="middle">$0.07</text>
+  <line x1="105" y1="140" x2="105" y2="575" stroke="#9ca3af" stroke-width="1.5"/>
+  <line x1="105" y1="575" x2="720" y2="575" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="412.5" y="613" class="axis-label" text-anchor="middle">Mean Cost per Scenario (USD)</text>
+  <text x="63" y="357.5" class="axis-label" text-anchor="middle" transform="rotate(-90 63 357.5)">Pass Rate (Oracle Grounded)</text>
+  <!-- Test-Split Rescue Ceiling Line (25/30 = 83.3%) -->
+  <line x1="105" y1="212.5" x2="720" y2="212.5" stroke="#dc2626" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="714.0" y="204.5" class="ceiling-text" text-anchor="end">Test-split Ceiling: 25/30 = 83.3% [Full-100: 82.0%]</text>
+  <!-- Background Policies -->
+  <circle cx="173.3" cy="241.5" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="244.3" cy="227.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="244.3" cy="227.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="632.0" cy="473.5" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="576.1" cy="444.5" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="576.1" cy="444.5" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="520.1" cy="401.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="482.8" cy="372.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="418.2" cy="328.5" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="390.5" cy="299.5" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="326.5" cy="241.5" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="274.7" cy="212.5" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="244.3" cy="227.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="244.3" cy="227.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="244.3" cy="227.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="661.6" cy="488.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="632.0" cy="473.5" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="576.1" cy="444.5" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="576.1" cy="444.5" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="520.1" cy="401.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="482.8" cy="372.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="418.2" cy="328.5" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="390.5" cy="299.5" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="326.5" cy="241.5" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="274.7" cy="212.5" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="244.3" cy="227.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="244.3" cy="227.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <circle cx="244.3" cy="227.0" r="4" fill="#9ca3af" fill-opacity="0.55"/>
+  <!-- Frontier line -->
+  <polyline points="173.5,241.4 244.7,227.0 274.6,212.6" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="173.5" y1="191.3" x2="173.5" y2="317.9" stroke="#059669" stroke-width="1.8"/>
+  <line x1="169.5" y1="191.3" x2="177.5" y2="191.3" stroke="#059669" stroke-width="1.8"/>
+  <line x1="169.5" y1="317.9" x2="177.5" y2="317.9" stroke="#059669" stroke-width="1.8"/>
+  <line x1="244.7" y1="181.3" x2="244.7" y2="302.3" stroke="#2563eb" stroke-width="1.8"/>
+  <line x1="240.7" y1="181.3" x2="248.7" y2="181.3" stroke="#2563eb" stroke-width="1.8"/>
+  <line x1="240.7" y1="302.3" x2="248.7" y2="302.3" stroke="#2563eb" stroke-width="1.8"/>
+  <line x1="662.0" y1="412.7" x2="662.0" y2="533.7" stroke="#dc2626" stroke-width="1.8"/>
+  <line x1="658.0" y1="412.7" x2="666.0" y2="412.7" stroke="#dc2626" stroke-width="1.8"/>
+  <line x1="658.0" y1="533.7" x2="666.0" y2="533.7" stroke="#dc2626" stroke-width="1.8"/>
+  <circle cx="173.5" cy="241.4" r="7" fill="#10b981" stroke="#047857" stroke-width="2"/>
+  <line x1="173.5" y1="248.4" x2="175.0" y2="273.4" stroke="#059669" stroke-width="1" stroke-dasharray="2,2"/>
+  <rect x="115.0" y="273.4" width="125" height="30" fill="#ffffff" rx="4" stroke="#10b981" stroke-width="1"/>
+  <text x="177.0" y="287.4" class="point-label" fill="#047857" text-anchor="middle">R2-only (Baseline)</text>
+  <text x="177.0" y="298.4" class="point-sub" text-anchor="middle">76.7% @ $0.0078 (esc 0%)</text>
+  <circle cx="244.7" cy="227.0" r="7" fill="#2563eb" stroke="#1e40af" stroke-width="2"/>
+  <line x1="244.7" y1="220.0" x2="279.7" y2="187.0" stroke="#2563eb" stroke-width="1.2" stroke-dasharray="2,2"/>
+  <rect x="269.7" y="153.0" width="205" height="34" fill="#ffffff" rx="4" stroke="#2563eb" stroke-width="1"/>
+  <text x="279.7" y="168.0" class="point-label" fill="#1e40af">Chosen Cascades (t=23 / status)</text>
+  <text x="279.7" y="181.0" class="point-sub">80.0% @ $0.0159 (16.7% esc, +1 pass)</text>
+  <circle cx="274.6" cy="212.6" r="5" fill="#6366f1" stroke="#4338ca" stroke-width="1.5"/>
+  <text x="266.6" y="204.6" class="point-sub" fill="#4338ca" font-weight="600" text-anchor="end">steps&gt;=21 (83.3%)</text>
+  <circle cx="662.0" cy="488.0" r="7" fill="#ef4444" stroke="#b91c1c" stroke-width="2"/>
+  <rect x="487.0" y="500.0" width="170" height="30" fill="#ffffff" rx="4" stroke="#ef4444" stroke-width="1"/>
+  <text x="572.0" y="514.0" class="point-label" fill="#b91c1c" text-anchor="middle">R4-only (Frontier Anchor)</text>
+  <text x="572.0" y="526.0" class="point-sub" text-anchor="middle">20.0% @ $0.0634 (Dominated)</text>
+  <rect x="56" y="625" width="678" height="38" fill="#eff6ff" rx="4" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="66" y="642" class="callout-title">Deliverable Finding:</text>
+  <text x="66" y="656" class="callout-body">Cheap R2 is on the frontier. Escalating to frontier R4 buys one extra pass in thirty (+3.3pp) at 2.0x cost ($0.0159 vs $0.0078).</text>
+  <!-- PANEL 2: P6 Replicate -->
+  <rect x="770" y="75" width="390" height="615" fill="#f9fafb" rx="6" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="786" y="101" class="panel-title">B. P6 replicate, infra-excluded test split (n=107)</text>
+  <text x="786" y="117" class="panel-sub">P6 replicate (R4 incident-damaged)</text>
+  <line x1="825" y1="575.0" x2="1140" y2="575.0" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="817" y="579.0" class="tick-label" text-anchor="end">0%</text>
+  <line x1="825" y1="488.0" x2="1140" y2="488.0" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="817" y="492.0" class="tick-label" text-anchor="end">20%</text>
+  <line x1="825" y1="401.0" x2="1140" y2="401.0" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="817" y="405.0" class="tick-label" text-anchor="end">40%</text>
+  <line x1="825" y1="314.0" x2="1140" y2="314.0" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="817" y="318.0" class="tick-label" text-anchor="end">60%</text>
+  <line x1="825" y1="227.0" x2="1140" y2="227.0" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="817" y="231.0" class="tick-label" text-anchor="end">80%</text>
+  <line x1="825" y1="140.0" x2="1140" y2="140.0" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="817" y="144.0" class="tick-label" text-anchor="end">100%</text>
+  <line x1="825.0" y1="140" x2="825.0" y2="575" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="825.0" y="591" class="tick-label" text-anchor="middle">$0.00</text>
+  <line x1="915.0" y1="140" x2="915.0" y2="575" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="915.0" y="591" class="tick-label" text-anchor="middle">$0.02</text>
+  <line x1="1005.0" y1="140" x2="1005.0" y2="575" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="1005.0" y="591" class="tick-label" text-anchor="middle">$0.04</text>
+  <line x1="1095.0" y1="140" x2="1095.0" y2="575" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="1095.0" y="591" class="tick-label" text-anchor="middle">$0.06</text>
+  <line x1="825" y1="140" x2="825" y2="575" stroke="#9ca3af" stroke-width="1.5"/>
+  <line x1="825" y1="575" x2="1140" y2="575" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="982.5" y="613" class="axis-label" text-anchor="middle">Mean Cost (USD)</text>
+  <!-- P6 Frontier Line -->
+  <polyline points="865.5,323.1 880.8,318.8 959.5,306.6" fill="none" stroke="#2563eb" stroke-width="2"/>
+  <circle cx="865.5" cy="323.1" r="5.5" fill="#10b981" stroke="#047857" stroke-width="1.5"/>
+  <text x="859.5" y="313.1" class="point-sub" fill="#047857" font-weight="600" text-anchor="start">R2-only: 57.9%</text>
+  <circle cx="880.8" cy="318.8" r="5" fill="#2563eb" stroke="#1e40af" stroke-width="1.5"/>
+  <text x="888.8" y="334.8" class="point-sub" fill="#1e40af" font-weight="600" text-anchor="start">steps&gt;=24: 58.9%</text>
+  <circle cx="959.5" cy="306.6" r="5" fill="#2563eb" stroke="#1e40af" stroke-width="1.5"/>
+  <text x="959.5" y="296.6" class="point-sub" fill="#1e40af" font-weight="600" text-anchor="middle">not_answered: 61.7%</text>
+  <circle cx="1104.5" cy="518.0" r="6" fill="#ef4444" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="1094.5" y="512.0" class="point-sub" fill="#b91c1c" font-weight="600" text-anchor="end">R4-only: 13.1%</text>
+  <text x="1094.5" y="524.0" class="point-sub" fill="#6b7280" text-anchor="end">(Dominated)</text>
+  <rect x="786" y="625" width="358" height="38" fill="#fffbeb" rx="4" stroke="#fde68a" stroke-width="1"/>
+  <text x="794" y="641" class="callout-title" fill="#92400e">P6 Incident Damage:</text>
+  <text x="794" y="655" class="callout-body" fill="#b45309">95 of 450 R4 runs had completion_tokens=0. R2 dominates.</text>
+</svg>
