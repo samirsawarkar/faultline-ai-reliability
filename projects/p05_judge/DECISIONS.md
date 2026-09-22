@@ -84,3 +84,47 @@ Using the measured test sensitivity ($\text{TPR}$) and specificity ($\text{TNR}$
 - **Tokens Emitted**: 68,948 completion tokens
 - **Total Cost**: **$0.0352 USD** ($< 0.4\%$ of budget cap)
 - **Spend Ledger**: Recorded in [`projects/p05_judge/ledger.jsonl`](file:///Volumes/SamirDrive/Development/FAULTLINE/projects/p05_judge/ledger.jsonl).
+
+---
+
+## Laya evaluator (local, $0)
+
+### 1. Specification & Execution
+- **Checkpoint**: `convaiinnovations/laya` (revision/sha: `1c5edc17a7acd8701df6fc341c0d179f1c62c982`), pip package `laya` 0.3.5.
+- **Architecture**: ModernBERT-large backbone (421M total params), 512-token context window, native `noul` (yes/no) calibrated decision head.
+- **Execution**: Local execution on CPU/MPS, 300 evaluator calls across 60 held-out test scenarios.
+- **Wall Time**: 71s total (including initial cold model load into memory).
+- **Cost**: **$0.00 USD** (0 API tokens used, no ledger entries written).
+- **Context Truncation**: 0 / 300 calls truncated (0.0% truncation rate; all test contexts fit within the 512-token budget).
+
+### 2. Empirical Results on Frozen Test Set ($n=60$)
+
+| Failure Mode | Type | TP | FP | TN | FN | TPR | TNR | GLM-5.3 kappa | Laya kappa |
+|---|---|---|---|---|---|---|---|---|---|
+| `INFRASTRUCTURE_RATE_LIMIT` | Code | 34 | 0 | 26 | 0 | 100.0% | 100.0% | 1.0000 | 1.0000 |
+| `INFRASTRUCTURE_SERVER_ERROR` | Code | 1 | 0 | 59 | 0 | 100.0% | 100.0% | 1.0000 | 1.0000 |
+| `MALFORMED_TOOL_CALL` | Code | 6 | 21 | 33 | 0 | 100.0% | 61.1% | 0.2391 | 0.2391 |
+| `MULTI_HOP_TRAVERSAL_EXHAUSTION` | Code | 0 | 7 | 53 | 0 | 100.0% | 88.3% | 0.0000 | 0.0000 |
+| `OVERCONSTRAINED_SEARCH_LOOP` | Judge | 14 | 29 | 17 | 0 | 100.0% | 37.0% | -0.0321 | 0.2148 |
+| `RETRIEVAL_FAILURE_ABSTENTION` | Judge | 0 | 4 | 56 | 0 | 100.0% | 93.3% | 1.0000 | 0.0000 |
+| `ANSWER_EXTRACTION_TRUNCATION` | Judge | 0 | 1 | 59 | 0 | 100.0% | 98.3% | 1.0000 | 0.0000 |
+| `PREMATURE_STOP_WRONG_HOP` | Judge | 0 | 1 | 58 | 1 | 0.0% | 98.3% | 0.0000 | -0.0169 |
+| `MULTI_HOP_DIRECTION_ERROR` | Judge | 0 | 29 | 31 | 0 | 100.0% | 51.7% | 1.0000 | 0.0000 |
+
+> [!NOTE]
+> **Temperature Calibration Warning:** Laya emitted a `RuntimeWarning` at load (`RuntimeWarning: laya: this checkpoint ships temperatures outside [0.5, 5] which would distort confidence; clamping choice:11+=0.1006. Treat confidence from the affected buckets as uncalibrated.`). The checkpoint's reported confidence scores are uncalibrated for affected decision buckets.
+
+### 3. Hypothesis H3 Evaluation
+- **Claim**: *"A cheap judge reaches Cohen's $\kappa \ge 0.70$ against human labels on $\ge 3$ of 5 core modes."*
+- **Empirical Measurement**:
+  - `INFRASTRUCTURE_RATE_LIMIT`: $\kappa = 1.0000$ ($\ge 0.70$ ✅) — *Deterministic code assertion*
+  - `MALFORMED_TOOL_CALL`: $\kappa = 0.2391$ ($< 0.70$ ❌) — *Deterministic code assertion*
+  - `OVERCONSTRAINED_SEARCH_LOOP`: $\kappa = 0.2148$ ($< 0.70$ ❌) — *Laya judge*
+  - `MULTI_HOP_TRAVERSAL_EXHAUSTION`: $\kappa = 0.0000$ ($< 0.70$ ❌) — *Deterministic code assertion*
+  - `RETRIEVAL_FAILURE_ABSTENTION`: $\kappa = 0.0000$ ($< 0.70$ ❌) — *Laya judge*
+- **Core Modes Meeting Target**: **1 of 5** core modes achieved $\kappa \ge 0.70$ (only `INFRASTRUCTURE_RATE_LIMIT`, which is a code assertion, not Laya).
+- **Hypothesis Status**: **FALSIFIED**
+
+### 4. Findings & Analysis
+On the only core semantic mode with positives in the test split (`OVERCONSTRAINED_SEARCH_LOOP`, 14 positives) GLM found 0/14 ($\kappa = -0.03$) while Laya found 14/14 but with 29 false positives ($\kappa = 0.21$, TPR = 1.00, TNR = 0.37); on zero-positive modes Laya fires false positives (29/60 on `MULTI_HOP_DIRECTION_ERROR`) where GLM's $\kappa = 1.00$ is a degenerate all-negative artefact. In conclusion, Laya is a high-recall / low-precision signal — usable as a local pre-filter that escalates, not as a gate judge; and the test split has too few positives outside one mode to say more.
+

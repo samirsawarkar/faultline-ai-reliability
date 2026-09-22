@@ -208,6 +208,7 @@ def run_judge_validation(
     ledger_path: Path,
     confirm: bool = False,
     real: bool = False,
+    judge: Optional[str] = None,
 ) -> Dict[str, Any]:
     load_dotenv()
     manifest = ensure_split_manifest(csv_path, manifest_path)
@@ -233,7 +234,8 @@ def run_judge_validation(
         spans_by_sc[s["scenario_id"]].append(s)
     conn.close()
 
-    judge_model = os.getenv("MODEL_R7", "z-ai/glm-5.3")
+    is_laya = (judge == "laya")
+    judge_model = "laya" if is_laya else os.getenv("MODEL_R7", "z-ai/glm-5.3")
     in_price = float(os.getenv("PRICE_R7_INPUT", "0.15"))
     out_price = float(os.getenv("PRICE_R7_OUTPUT", "0.45"))
 
@@ -246,9 +248,9 @@ def run_judge_validation(
     test_ids = manifest.test_ids
     n_llm_modes = sum(1 for spec in EVALUATOR_SPECS.values() if spec["type"] == "llm_judge")
     est_llm_calls = len(test_ids) * n_llm_modes
-    est_in_tokens = est_llm_calls * 450
-    est_out_tokens = est_llm_calls * 60
-    est_cost = (est_in_tokens / 1e6) * in_price + (est_out_tokens / 1e6) * out_price
+    est_in_tokens = 0 if is_laya else est_llm_calls * 450
+    est_out_tokens = 0 if is_laya else est_llm_calls * 60
+    est_cost = 0.0 if is_laya else ((est_in_tokens / 1e6) * in_price + (est_out_tokens / 1e6) * out_price)
 
     if not confirm:
         print("============================================================")
@@ -256,13 +258,13 @@ def run_judge_validation(
         print(f"  Test Scenarios:     {len(test_ids)} (read exactly once)")
         print(f"  LLM Evaluator Calls: {est_llm_calls}")
         print(f"  Est. Tokens:        in={est_in_tokens}, out={est_out_tokens}")
-        print(f"  Est. Total Cost:    ${est_cost:.6f} USD")
+        print(f"  Est. Total Cost:    ${est_cost:.2f} USD" if is_laya else f"  Est. Total Cost:    ${est_cost:.6f} USD")
         print(f"  Project Cap:        $10.00 USD (Spent so far: ${ledger.spent(project='p05_judge'):.4f})")
         print("============================================================")
         return {}
 
-    print(f"Executing Judge Validation on frozen test set (n={len(test_ids)}) using {judge_model} (real={real})...")
-    registry = EvaluatorRegistry(judge_model_name=judge_model, real=real)
+    print(f"Executing Judge Validation on frozen test set (n={len(test_ids)}) using {judge_model} (real={real or is_laya})...")
+    registry = EvaluatorRegistry(judge_model_name=judge_model, real=(real or is_laya))
 
     # Prepare all evaluation tasks across modes and test scenarios
     tasks = []
@@ -276,7 +278,7 @@ def run_judge_validation(
 
     # Concurrently execute evaluator queries
     verdicts: Dict[Tuple[str, str], Any] = {}
-    max_workers = 12 if real else 1
+    max_workers = 1 if is_laya else (12 if real else 1)
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         future_map = {
             executor.submit(registry.evaluate_mode, m, s, t, sp, sw, sc): (m, s)
@@ -322,7 +324,7 @@ def run_judge_validation(
                 core_modes_passing_h3 += 1
 
     # Record cost in ledger
-    if real and (total_tokens["prompt"] > 0 or total_tokens["completion"] > 0):
+    if not is_laya and real and (total_tokens["prompt"] > 0 or total_tokens["completion"] > 0):
         cost_usd = (total_tokens["prompt"] / 1e6) * in_price + (total_tokens["completion"] / 1e6) * out_price
         ledger.record(
             LedgerEntry(
@@ -336,6 +338,12 @@ def run_judge_validation(
             )
         )
 
+    truncation_info: Optional[Dict[str, Any]] = None
+    if is_laya:
+        from faultline_p2.judge.laya_judge import get_truncation_stats
+        truncation_info = get_truncation_stats()
+        print(f"Laya Context Truncation: {truncation_info['truncated_calls']}/{truncation_info['total_calls']} calls ({truncation_info['truncation_rate']:.1%}) exceeded 512 tokens.")
+
     # Hypothesis H3
     h3_status = "CONFIRMED" if core_modes_passing_h3 >= 3 else "FALSIFIED"
 
@@ -348,7 +356,8 @@ def run_judge_validation(
             "test_sample_size": len(test_ids),
             "total_evaluators": len(EVALUATOR_SPECS),
             "tokens_used": total_tokens,
-            "spend_usd": ledger.spent(project="p05_judge"),
+            "spend_usd": 0.0 if is_laya else ledger.spent(project="p05_judge"),
+            **({"truncation": truncation_info} if truncation_info else {}),
         },
         "split": {
             "train_count": manifest.train_count,
@@ -387,6 +396,7 @@ def main():
     parser = argparse.ArgumentParser(description="P05 Judge Validation Runner")
     parser.add_argument("--confirm", action="store_true", help="Confirm and execute validation on test split")
     parser.add_argument("--real", action="store_true", help="Use live LiteLLM judge endpoint (AICredits)")
+    parser.add_argument("--judge", default=None, choices=["laya"], help="Judge backend (e.g. 'laya')")
     parser.add_argument("--csv", default="projects/p04_taxonomy/coding_sheet.csv", help="Human coding sheet path")
     parser.add_argument("--db", default="projects/p03_grounding/trace.db", help="Trace DB path")
     parser.add_argument("--sweep-json", default="projects/p03_grounding/sweep_output.json", help="Sweep output JSON")
@@ -396,16 +406,25 @@ def main():
     parser.add_argument("--ledger", default="projects/p05_judge/ledger.jsonl", help="Ledger path")
     args = parser.parse_args()
 
+    results_path = Path(args.results_out)
+    figure_path = Path(args.figure_out)
+    if args.judge == "laya":
+        if args.results_out == "projects/p05_judge/results.json":
+            results_path = Path("projects/p05_judge/results_laya.json")
+        if args.figure_out == "projects/p05_judge/figure.svg":
+            figure_path = Path("projects/p05_judge/figure_laya.svg")
+
     run_judge_validation(
         csv_path=Path(args.csv),
         trace_db_path=Path(args.db),
         sweep_output_path=Path(args.sweep_json),
         manifest_path=Path(args.manifest_out),
-        results_path=Path(args.results_out),
-        figure_path=Path(args.figure_out),
+        results_path=results_path,
+        figure_path=figure_path,
         ledger_path=Path(args.ledger),
         confirm=args.confirm,
         real=args.real,
+        judge=args.judge,
     )
 
 

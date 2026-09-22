@@ -162,6 +162,10 @@ class EvaluatorRegistry:
 
     def _call_llm_judge(self, rubric: str, trace_context: str):
         """Invoke LLM judge via LiteLLM with strict temperature=0.0."""
+        if self.model_name == "laya":
+            from faultline_p2.judge.laya_judge import call_laya
+            return call_laya(rubric, trace_context)
+
         if not self.real:
             # Offline mock judge based on prompt rubric rules
             return self._offline_judge_heuristic(rubric, trace_context)

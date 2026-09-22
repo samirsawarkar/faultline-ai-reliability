@@ -133,3 +133,24 @@ def test_p05_figure_generation(tmp_path):
     assert "<svg" in content
     assert "P5 Judge Validation" in content
     assert "H3 Target" in content
+
+
+def test_p05_evaluators_laya_routing(monkeypatch):
+    called = []
+
+    def mock_call_laya(rubric: str, trace_context: str):
+        called.append((rubric, trace_context))
+        return True, 0.95, "laya p=0.95", {"prompt": 0, "completion": 0}
+
+    monkeypatch.setattr("faultline_p2.judge.laya_judge.call_laya", mock_call_laya)
+
+    registry = EvaluatorRegistry(judge_model_name="laya", real=True)
+    detected, conf, reason, tokens = registry._call_llm_judge("test_rubric", "test_context")
+
+    assert len(called) == 1
+    assert called[0] == ("test_rubric", "test_context")
+    assert detected is True
+    assert conf == 0.95
+    assert reason == "laya p=0.95"
+    assert tokens == {"prompt": 0, "completion": 0}
+
