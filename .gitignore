@@ -19,3 +19,8 @@ report/*.png
 faultline_phase2.egg-info/
 *.egg-info/
 test_font.pdf
+
+.DS_Store
+test_*.aux
+test_*.log
+test_*.out

@@ -1,0 +1,27 @@
+# Changelog
+
+One line per release. Full notes live on the GitHub Releases page.
+
+- **v0.32.0** (2026-09-18) — Phase 2: P9 red-team regression suite · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.32.0)
+- **v0.31.0** (2026-09-18) — Phase 2: P11 release gate with tolerance bands · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.31.0)
+- **v0.30.0** (2026-09-18) — Phase 2: P12 failure attribution and P10 calibrated cascade · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.30.0)
+- **v0.29.0** (2026-09-17) — Phase 2: P7, P8 and Publication 2 (Runtime Provenance Contracts for Mitigating Tool Poisoning in MCP Agents) · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.29.0)
+- **v0.28.0** (2026-09-13) — Phase 2: Publication 1 (Multi-Trial Reliability and Failure Concentration in Multi-Hop AI Agents) · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.28.0)
+- **v0.18.0** (2026-07-27) — Day 18: M1/M2 bounded recovery · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.18.0)
+- **v0.17.0** (2026-07-27) — Day 17: subgroup analysis + measurement gate · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.17.0)
+- **v0.16.0** (2026-07-27) — Day 16: validate a narrow LLM judge · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.16.0)
+- **v0.15.0** (2026-07-27) — Day 15: Q2 — per-fault precision/recall/confusion vs injection truth · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.15.0)
+- **v0.14.0** (2026-07-23) — Day 14: verified intervals + McNemar paired design · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.14.0)
+- **v0.13.0** (2026-07-23) — Day 13: versioned evaluation harness + oracle-grounded dataset · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.13.0)
+- **v0.12.0** (2026-07-21) — Day 12: fault catalog + gallery · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.12.0)
+- **v0.11.0** (2026-07-21) — Day 11: F5/F6 complete the six-fault spectrum + deterministic-vs-semantic map · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.11.0)
+- **v0.10.0** (2026-07-20) — Day 10: schema-valid wrong data vs explicit provider errors · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.10.0)
+- **v0.9.0** (2026-07-20) — Day 9: F1/F2 fault families + detectors scored against injection truth · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.9.0)
+- **v0.8.0** (2026-07-18) — Day 8: Reproducible fault injection + independent ground truth · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.8.0)
+- **v0.7.0** (2026-07-17) — Day 7: Q1 — reliability vs required tool hops · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.7.0)
+- **v0.6.0** (2026-07-17) — Day 6: Exact replay + reproducibility boundary · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.6.0)
+- **v0.5.0** (2026-07-16) — Day 5: Reconstruct a failed run in minutes · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.5.0)
+- **v0.4.0** (2026-07-15) — Day 4: Linked spans that survive failures · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.4.0)
+- **v0.3.0** (2026-07-15) — Day 3: The zero point (reproducible baseline) · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.3.0)
+- **v0.2.0** (2026-07-14) — Day 2: Bounded single agent + typed contracts · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.2.0)
+- **v0.1.0** (2026-07-14) — Day 1: Deterministic env + oracle · [notes](https://github.com/samirsawarkar/faultline-ai-reliability/releases/tag/v0.1.0)
