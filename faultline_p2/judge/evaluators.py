@@ -10,6 +10,45 @@ from dotenv import load_dotenv
 from faultline_p2.judge.contracts import JudgeVerdict
 
 
+def extract_trace_queries(sweep_item: Dict[str, Any]) -> List[str]:
+    out = sweep_item.get("output") or {}
+    trace = (out.get("trace") or []) if isinstance(out, dict) else []
+    queries: List[str] = []
+    for step in trace:
+        if not isinstance(step, dict):
+            continue
+        tc = step.get("tool_call")
+        if isinstance(tc, dict):
+            q = tc.get("query") or tc.get("entity") or tc.get("doc_id") or tc.get("field") or ""
+            if q:
+                queries.append(str(q))
+    return queries
+
+
+OVERCONSTRAINED_SEARCH_RUBRIC = (
+    "You are an expert AI reliability judge evaluating agent retrieval logs. "
+    "Determine whether the agent experienced an OVERCONSTRAINED_SEARCH_LOOP.\n"
+    "Rule: Return detected=true IF the agent issued overly constrained, multi-word queries that returned 0 candidates, "
+    "looping through reformulations until step cap exhaustion (12 steps).\n"
+    "Respond ONLY with valid JSON: {\"detected\": bool, \"confidence\": float, \"reasoning\": str}"
+)
+
+
+def build_overconstrained_context(
+    sid: str,
+    spans: List[Any],
+    sweep_item: Dict[str, Any],
+    sc: Any,
+) -> str:
+    out = sweep_item.get("output") or {}
+    reason = (out.get("reason") or "") if isinstance(out, dict) else ""
+    context = f"Scenario: {sid}\nPrompt: {sc.prompt if sc else ''}\nSteps Used: {len(spans)}\n"
+    context += f"Termination Reason: {reason}\n"
+    queries = extract_trace_queries(sweep_item)
+    context += f"Search Queries: {queries}\n"
+    return context
+
+
 class EvaluatorRegistry:
     """Registry of all failure mode evaluators."""
 
@@ -53,18 +92,7 @@ class EvaluatorRegistry:
         raise ValueError(f"Unknown evaluator mode: {mode}")
 
     def _extract_trace_queries(self, sweep_item: Dict[str, Any]) -> List[str]:
-        out = sweep_item.get("output") or {}
-        trace = (out.get("trace") or []) if isinstance(out, dict) else []
-        queries: List[str] = []
-        for step in trace:
-            if not isinstance(step, dict):
-                continue
-            tc = step.get("tool_call")
-            if isinstance(tc, dict):
-                q = tc.get("query") or tc.get("entity") or tc.get("doc_id") or tc.get("field") or ""
-                if q:
-                    queries.append(str(q))
-        return queries
+        return extract_trace_queries(sweep_item)
 
     # --- Code Assertion Evaluators ---
 
@@ -242,20 +270,8 @@ class EvaluatorRegistry:
         return False, 0.5, "Offline heuristic: no pattern matched", {"prompt": 50, "completion": 10}
 
     def _eval_overconstrained_search(self, sid: str, spans: List[sqlite3.Row], sweep_item: Dict[str, Any], sc: Any) -> JudgeVerdict:
-        rubric = (
-            "You are an expert AI reliability judge evaluating agent retrieval logs. "
-            "Determine whether the agent experienced an OVERCONSTRAINED_SEARCH_LOOP.\n"
-            "Rule: Return detected=true IF the agent issued overly constrained, multi-word queries that returned 0 candidates, "
-            "looping through reformulations until step cap exhaustion (12 steps).\n"
-            "Respond ONLY with valid JSON: {\"detected\": bool, \"confidence\": float, \"reasoning\": str}"
-        )
-        out = sweep_item.get("output") or {}
-        reason = (out.get("reason") or "") if isinstance(out, dict) else ""
-        context = f"Scenario: {sid}\nPrompt: {sc.prompt if sc else ''}\nSteps Used: {len(spans)}\n"
-        context += f"Termination Reason: {reason}\n"
-        queries = self._extract_trace_queries(sweep_item)
-        context += f"Search Queries: {queries}\n"
-
+        rubric = OVERCONSTRAINED_SEARCH_RUBRIC
+        context = build_overconstrained_context(sid, spans, sweep_item, sc)
         detected, conf, reason_str, tokens = self._call_llm_judge(rubric, context)
         return JudgeVerdict(
             scenario_id=sid,

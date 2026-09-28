@@ -1,0 +1,461 @@
+{
+  "metadata": {
+    "candidate": "finetuned_tau_0_282",
+    "model_description": "fine-tuned (/private/tmp/claude-501/-Volumes-SamirDrive-Development-FAULTLINE/c6455afd-359c-4b98-abde-a4fa6395bfde/scratchpad/out/laya_finetuned_overconstrained)",
+    "decision_threshold": 0.282,
+    "test_sample_size": 60,
+    "manifest_sha256": "7460de00a0ae4d5c4357937b895ed9e848ddcaf24fb6a373f0a20f14bca1bc02",
+    "target_tpr": 0.9285714285714286,
+    "target_tnr": 0.8,
+    "prereg_verdict": "PASS"
+  },
+  "metrics": {
+    "confusion": {
+      "tp": 13,
+      "fp": 2,
+      "tn": 44,
+      "fn": 1,
+      "total": 60
+    },
+    "sensitivity_tpr": 0.9286,
+    "tpr_wilson_ci": [
+      0.6853,
+      0.9873
+    ],
+    "tpr_meets_target": true,
+    "specificity_tnr": 0.9565,
+    "tnr_wilson_ci": [
+      0.8547,
+      0.988
+    ],
+    "tnr_meets_target": true,
+    "accuracy": 0.95,
+    "precision": 0.8667,
+    "cohen_kappa": 0.8636,
+    "kappa_label": "almost perfect",
+    "raw_prevalence": 0.2333,
+    "rogan_gladen_prevalence": 0.2333
+  },
+  "scenarios": [
+    {
+      "scenario_id": "s-0002",
+      "probability": 0.0139,
+      "confidence": 0.9861,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0003",
+      "probability": 0.0085,
+      "confidence": 0.9915,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0004",
+      "probability": 0.0115,
+      "confidence": 0.9885,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0006",
+      "probability": 0.0182,
+      "confidence": 0.9818,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0007",
+      "probability": 0.0107,
+      "confidence": 0.9893,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0009",
+      "probability": 0.0191,
+      "confidence": 0.9809,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0014",
+      "probability": 0.01,
+      "confidence": 0.99,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0015",
+      "probability": 0.0076,
+      "confidence": 0.9924,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0028",
+      "probability": 0.0213,
+      "confidence": 0.9787,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0032",
+      "probability": 0.0075,
+      "confidence": 0.9925,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0033",
+      "probability": 0.0071,
+      "confidence": 0.9929,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0035",
+      "probability": 0.0073,
+      "confidence": 0.9927,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0036",
+      "probability": 0.0097,
+      "confidence": 0.9903,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0038",
+      "probability": 0.0151,
+      "confidence": 0.9849,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0044",
+      "probability": 0.0089,
+      "confidence": 0.9911,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0048",
+      "probability": 0.0068,
+      "confidence": 0.9932,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0056",
+      "probability": 0.009,
+      "confidence": 0.991,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0061",
+      "probability": 0.0081,
+      "confidence": 0.9919,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0063",
+      "probability": 0.0129,
+      "confidence": 0.9871,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0067",
+      "probability": 0.0095,
+      "confidence": 0.9905,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0072",
+      "probability": 0.2784,
+      "confidence": 0.7216,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0078",
+      "probability": 0.3534,
+      "confidence": 0.6466,
+      "prediction": true,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0080",
+      "probability": 0.3332,
+      "confidence": 0.6668,
+      "prediction": true,
+      "ground_truth": true
+    },
+    {
+      "scenario_id": "s-0081",
+      "probability": 0.3617,
+      "confidence": 0.6383,
+      "prediction": true,
+      "ground_truth": true
+    },
+    {
+      "scenario_id": "s-0085",
+      "probability": 0.0069,
+      "confidence": 0.9931,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0090",
+      "probability": 0.0115,
+      "confidence": 0.9885,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0091",
+      "probability": 0.4073,
+      "confidence": 0.5927,
+      "prediction": true,
+      "ground_truth": true
+    },
+    {
+      "scenario_id": "s-0103",
+      "probability": 0.359,
+      "confidence": 0.641,
+      "prediction": true,
+      "ground_truth": true
+    },
+    {
+      "scenario_id": "s-0106",
+      "probability": 0.0314,
+      "confidence": 0.9686,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0108",
+      "probability": 0.0069,
+      "confidence": 0.9931,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0109",
+      "probability": 0.0102,
+      "confidence": 0.9898,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0110",
+      "probability": 0.1373,
+      "confidence": 0.8627,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0111",
+      "probability": 0.1625,
+      "confidence": 0.8375,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0112",
+      "probability": 0.305,
+      "confidence": 0.695,
+      "prediction": true,
+      "ground_truth": true
+    },
+    {
+      "scenario_id": "s-0116",
+      "probability": 0.0109,
+      "confidence": 0.9891,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0121",
+      "probability": 0.3038,
+      "confidence": 0.6962,
+      "prediction": true,
+      "ground_truth": true
+    },
+    {
+      "scenario_id": "s-0126",
+      "probability": 0.3771,
+      "confidence": 0.6229,
+      "prediction": true,
+      "ground_truth": true
+    },
+    {
+      "scenario_id": "s-0127",
+      "probability": 0.3564,
+      "confidence": 0.6436,
+      "prediction": true,
+      "ground_truth": true
+    },
+    {
+      "scenario_id": "s-0128",
+      "probability": 0.0068,
+      "confidence": 0.9932,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0130",
+      "probability": 0.2147,
+      "confidence": 0.7853,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0135",
+      "probability": 0.2816,
+      "confidence": 0.7184,
+      "prediction": false,
+      "ground_truth": true
+    },
+    {
+      "scenario_id": "s-0142",
+      "probability": 0.0068,
+      "confidence": 0.9932,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0143",
+      "probability": 0.2125,
+      "confidence": 0.7875,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0151",
+      "probability": 0.007,
+      "confidence": 0.993,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0152",
+      "probability": 0.007,
+      "confidence": 0.993,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0155",
+      "probability": 0.3118,
+      "confidence": 0.6882,
+      "prediction": true,
+      "ground_truth": true
+    },
+    {
+      "scenario_id": "s-0159",
+      "probability": 0.0102,
+      "confidence": 0.9898,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0164",
+      "probability": 0.1541,
+      "confidence": 0.8459,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0168",
+      "probability": 0.0106,
+      "confidence": 0.9894,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0169",
+      "probability": 0.008,
+      "confidence": 0.992,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0170",
+      "probability": 0.2965,
+      "confidence": 0.7035,
+      "prediction": true,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0173",
+      "probability": 0.3524,
+      "confidence": 0.6476,
+      "prediction": true,
+      "ground_truth": true
+    },
+    {
+      "scenario_id": "s-0176",
+      "probability": 0.0109,
+      "confidence": 0.9891,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0178",
+      "probability": 0.0068,
+      "confidence": 0.9932,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0181",
+      "probability": 0.3341,
+      "confidence": 0.6659,
+      "prediction": true,
+      "ground_truth": true
+    },
+    {
+      "scenario_id": "s-0183",
+      "probability": 0.007,
+      "confidence": 0.993,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0188",
+      "probability": 0.3571,
+      "confidence": 0.6429,
+      "prediction": true,
+      "ground_truth": true
+    },
+    {
+      "scenario_id": "s-0189",
+      "probability": 0.0079,
+      "confidence": 0.9921,
+      "prediction": false,
+      "ground_truth": false
+    },
+    {
+      "scenario_id": "s-0190",
+      "probability": 0.3474,
+      "confidence": 0.6526,
+      "prediction": true,
+      "ground_truth": true
+    },
+    {
+      "scenario_id": "s-0197",
+      "probability": 0.0069,
+      "confidence": 0.9931,
+      "prediction": false,
+      "ground_truth": false
+    }
+  ]
+}
